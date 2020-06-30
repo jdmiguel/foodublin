@@ -75,7 +75,7 @@ const StyledLoader = styled.div`
   }
 `;
 
-const StyledBoxList = styled.div`
+const StyledListbox = styled.div`
   display: none;
   position: absolute;
   box-sizing: border-box;
@@ -261,7 +261,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         withSearchIcon={withSearchIcon}
         className={inputClassName}
       />
-      <StyledBoxList
+      <StyledListbox
         role="listbox"
         ref={listRef}
         onBlur={handleListBlur}
@@ -304,7 +304,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             )}
           </StyledList>
         )}
-      </StyledBoxList>
+      </StyledListbox>
     </StyledAutocomplete>
   );
 };
