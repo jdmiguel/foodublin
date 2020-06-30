@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     // Include .prettierrc.js rules
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
   },
 };
