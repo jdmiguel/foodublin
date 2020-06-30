@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Input should not render icon 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c1 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #222C3C;
+  background: transparent;
+}
+
+<div
+  class="c0 default-className"
+  data-testid="input-wrapper"
+>
+  <input
+    autocomplete="no"
+    class="c1"
+    id="default-input-id"
+    maxlength="70"
+    minlength="1"
+    name="default-input-name"
+    placeholder="default-placeholder"
+    step="1"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Component: Input should render including icon and update value 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c1 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #222C3C;
+  background: transparent;
+}
+
+<div
+  class="c0 default-className"
+  data-testid="input-wrapper"
+>
+  <i
+    class="material-icons"
+    data-testid="input-icon"
+  >
+    search
+  </i>
+  <input
+    autocomplete="no"
+    class="c1"
+    id="default-input-id"
+    maxlength="70"
+    minlength="1"
+    name="default-input-name"
+    placeholder="default-placeholder"
+    step="1"
+    type="text"
+    value="fake-value"
+  />
+</div>
+`;
