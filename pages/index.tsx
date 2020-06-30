@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logo from '../components/Logo/Logo';
+import Logo from '../components/core/Logo/Logo';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
 
