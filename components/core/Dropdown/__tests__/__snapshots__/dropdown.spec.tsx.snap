@@ -1,0 +1,604 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Dropdown should render 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+}
+
+.c1 {
+  position: relative;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.c2 {
+  width: 100%;
+  height: 55px;
+  background-color: #FFFFFF;
+  line-height: 55px;
+  padding: 0 4px 0 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c2 i:first-of-type {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: #D48C24;
+}
+
+.c2:not(.clearable) i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
+}
+
+.c2.clearable {
+  background-color: #FDF3E5;
+}
+
+.c2:hover {
+  background-color: #FDF3E5;
+}
+
+.c2:focus {
+  background-color: #FDF3E5;
+}
+
+.c3 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  z-index: 2;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  border-top: 0;
+  border-bottom: 0;
+  outline: none;
+}
+
+.c3.active {
+  display: block;
+}
+
+.c4 {
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  display: block;
+}
+
+.c4 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c4:hover {
+  opacity: 0.5;
+}
+
+.c5 {
+  width: 100%;
+  height: 55px;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 9px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c5.active p {
+  font-weight: 600;
+}
+
+.c5:hover {
+  background-color: #FDF3E5;
+}
+
+.c5:focus {
+  background-color: #FDF3E5;
+}
+
+.c6 {
+  color: #222C3C;
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c3 {
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="dropdown"
+  role="listbox"
+>
+  <div
+    class="c1"
+  >
+    <button
+      class="c2"
+      type="button"
+    >
+      <i
+        class="material-icons"
+        data-testid="label-icon"
+      >
+        label
+      </i>
+      <span>
+        Select any option
+      </span>
+      <i
+        class="material-icons"
+      >
+        arrow_drop_down
+      </i>
+    </button>
+  </div>
+  <div
+    class="c3"
+    data-testid="dropdown-list"
+    role="list"
+    tabindex="0"
+  >
+    <button
+      class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c4"
+      type="button"
+    >
+      <i
+        class="material-icons"
+      >
+        close
+      </i>
+    </button>
+    <div
+      class="c5"
+      role="listitem"
+    >
+      <p
+        class="c6"
+      >
+        First option
+      </p>
+    </div>
+    <div
+      class="c5"
+      role="listitem"
+    >
+      <p
+        class="c6"
+      >
+        Second option
+      </p>
+    </div>
+    <div
+      class="c5"
+      role="listitem"
+    >
+      <p
+        class="c6"
+      >
+        Third option
+      </p>
+    </div>
+    <div
+      class="c5"
+      role="listitem"
+    >
+      <p
+        class="c6"
+      >
+        Fourth option
+      </p>
+    </div>
+    <div
+      class="c5"
+      role="listitem"
+    >
+      <p
+        class="c6"
+      >
+        Fifth option
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Dropdown should render with clearable option 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+}
+
+.c1 {
+  position: relative;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.c2 {
+  width: 100%;
+  height: 55px;
+  background-color: #FFFFFF;
+  line-height: 55px;
+  padding: 0 4px 0 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c2 i:first-of-type {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: #D48C24;
+}
+
+.c2:not(.clearable) i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
+}
+
+.c2.clearable {
+  background-color: #FDF3E5;
+}
+
+.c2:hover {
+  background-color: #FDF3E5;
+}
+
+.c2:focus {
+  background-color: #FDF3E5;
+}
+
+.c4 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  z-index: 2;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  border-top: 0;
+  border-bottom: 0;
+  outline: none;
+}
+
+.c4.active {
+  display: block;
+}
+
+.c3 {
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c3 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c3:hover {
+  opacity: 0.5;
+}
+
+.c5 {
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  display: block;
+}
+
+.c5 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c5:hover {
+  opacity: 0.5;
+}
+
+.c6 {
+  width: 100%;
+  height: 55px;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 9px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c6.active p {
+  font-weight: 600;
+}
+
+.c6:hover {
+  background-color: #FDF3E5;
+}
+
+.c6:focus {
+  background-color: #FDF3E5;
+}
+
+.c7 {
+  color: #222C3C;
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c5 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="dropdown"
+  role="listbox"
+>
+  <div
+    class="c1"
+  >
+    <button
+      class="c2 clearable"
+      type="button"
+    >
+      <i
+        class="material-icons"
+        data-testid="label-icon"
+      >
+        label
+      </i>
+      <span>
+        First option
+      </span>
+    </button>
+    <button
+      class="c3"
+      type="button"
+    >
+      <i
+        class="material-icons"
+      >
+        close
+      </i>
+    </button>
+  </div>
+  <div
+    class="c4"
+    data-testid="dropdown-list"
+    role="list"
+    tabindex="0"
+  >
+    <button
+      class="c5"
+      type="button"
+    >
+      <i
+        class="material-icons"
+      >
+        close
+      </i>
+    </button>
+    <div
+      class="c6 active"
+      role="listitem"
+    >
+      <p
+        class="c7"
+      >
+        First option
+      </p>
+    </div>
+    <div
+      class="c6"
+      role="listitem"
+    >
+      <p
+        class="c7"
+      >
+        Second option
+      </p>
+    </div>
+    <div
+      class="c6"
+      role="listitem"
+    >
+      <p
+        class="c7"
+      >
+        Third option
+      </p>
+    </div>
+    <div
+      class="c6"
+      role="listitem"
+    >
+      <p
+        class="c7"
+      >
+        Fourth option
+      </p>
+    </div>
+    <div
+      class="c6"
+      role="listitem"
+    >
+      <p
+        class="c7"
+      >
+        Fifth option
+      </p>
+    </div>
+  </div>
+</div>
+`;
