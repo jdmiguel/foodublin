@@ -1,0 +1,20 @@
+module.exports = {
+  collectCoverageFrom: [
+    'api/**/*.{js,jsx,ts,tsx}',
+    'components/**/*.{js,jsx,ts,tsx}',
+    'helpers/**/*.{js,jsx,ts,tsx}',
+    'layouts/**/*.{js,jsx,ts,tsx}',
+    'server/**/*.{js,jsx,ts,tsx}',
+    'services/**/*.{js,jsx,ts,tsx}',
+    '!pages/**/*.{js,jsx,ts,tsx}',
+    '!**/__stories__/**',
+    '!**/__tests__/**',
+    '!**/__mocks__/**',
+    '!helpers/polyfills.ts',
+    '!helpers/GlobalStylesHelper.ts',
+  ],
+  testMatch: ['**/__tests__/**/*.spec.ts?(x)'],
+  testURL: 'http://localhost',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  coverageDirectory: 'jest-coverage',
+};

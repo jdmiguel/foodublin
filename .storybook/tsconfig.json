@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "noEmit": false
+  },
+  // TODO: Enable typescript on test files
+  "exclude": ["../**/*.spec.tsx", "../**/*.test.tsx"]
+}

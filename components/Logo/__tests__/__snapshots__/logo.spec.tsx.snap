@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Logo should render 1`] = `
+.c0 {
+  max-width: 300px;
+}
+
+<h1
+  data-testid="logo"
+>
+  <img
+    alt="FooDublin"
+    class="c0"
+    src="http://localhost:3003/static/public/light_logo.svg"
+  />
+</h1>
+`;
