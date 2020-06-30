@@ -20,5 +20,6 @@ module.exports = {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
   },
 };
