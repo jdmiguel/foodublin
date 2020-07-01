@@ -146,7 +146,7 @@ exports[`Component: Header should render Header 1`] = `
       <img
         alt="FooDublin Logo"
         class="c3"
-        src="http://localhost:3000/static/static/images/primary_logo.svg"
+        src="http://localhost:3000/static/images/primary_logo.svg"
       />
     </h1>
     <h2
@@ -630,7 +630,7 @@ exports[`Component: Header should render extended Header 1`] = `
 
 .c1 {
   background-size: cover;
-  background-image: url(http://localhost:3003/static/images/food.jpg);
+  background-image: url(http://localhost:3003/images/food.jpg);
   background-color: #A7A7A7;
   display: -webkit-box;
   display: -webkit-flex;
@@ -892,7 +892,7 @@ exports[`Component: Header should render extended Header 1`] = `
         <img
           alt="FooDublin Logo"
           class="c4"
-          src="http://localhost:3000/static/static/images/light_logo.svg"
+          src="http://localhost:3000/static/images/light_logo.svg"
         />
       </h1>
       <h2
@@ -1372,7 +1372,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Irish"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/stew.svg"
+                  src="http://localhost:3000/static/images/stew.svg"
                 />
                 <p
                   class="c30"
@@ -1387,7 +1387,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Italian"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/pizza.svg"
+                  src="http://localhost:3000/static/images/pizza.svg"
                 />
                 <p
                   class="c30"
@@ -1402,7 +1402,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Mediterranean"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/bruschetta.svg"
+                  src="http://localhost:3000/static/images/bruschetta.svg"
                 />
                 <p
                   class="c30"
@@ -1417,7 +1417,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Asian"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/rice.svg"
+                  src="http://localhost:3000/static/images/rice.svg"
                 />
                 <p
                   class="c30"
@@ -1432,7 +1432,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Healthy Food"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/healthy_food.svg"
+                  src="http://localhost:3000/static/images/healthy_food.svg"
                 />
                 <p
                   class="c30"
@@ -1447,7 +1447,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Indian"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/gulab.svg"
+                  src="http://localhost:3000/static/images/gulab.svg"
                 />
                 <p
                   class="c30"
@@ -1462,7 +1462,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Mexican"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/taco.svg"
+                  src="http://localhost:3000/static/images/taco.svg"
                 />
                 <p
                   class="c30"
@@ -1477,7 +1477,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Fast Food"
                   class="c31"
-                  src="http://localhost:3000/static/static/images/fries.svg"
+                  src="http://localhost:3000/static/images/fries.svg"
                 />
                 <p
                   class="c30"

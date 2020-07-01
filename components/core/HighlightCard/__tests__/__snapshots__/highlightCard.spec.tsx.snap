@@ -79,7 +79,7 @@ exports[`should render 1`] = `
   >
     <img
       alt="alt restaurant mocked"
-      src="http://localhost:3000/static/static/images/highlight-generic.png"
+      src="http://localhost:3000/static/images/highlight-generic.png"
     />
   </div>
   <div

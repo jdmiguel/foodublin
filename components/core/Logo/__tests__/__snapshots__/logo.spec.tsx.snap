@@ -11,7 +11,7 @@ exports[`Component: Logo should render 1`] = `
   <img
     alt="FooDublin"
     class="c0"
-    src="http://localhost:3003/static/public/light_logo.svg"
+    src="http://localhost:3003/public/images/light_logo.svg"
   />
 </h1>
 `;

@@ -141,7 +141,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
   return (
     <StyledFinder className={className}>
       <StyledAutocomplete
-        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/loader.svg`}
+        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
         suggestions={suggestions}
         fetchSuggestions={fetchSuggestions}
         selectSuggestion={selectSuggestion}
@@ -168,7 +168,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       <StyledButton
         buttonTxt="Search"
         loading={false}
-        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/light_loader.svg`}
+        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
       />
     </StyledFinder>
   );

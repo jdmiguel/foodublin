@@ -15,7 +15,7 @@ describe('Component: Logo', () => {
     const { container } = render(
       renderWithTheme(
         <Logo
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/static/public/${logoLightSrc}`}
+          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/public/images/${logoLightSrc}`}
           logoAltTxt={logoAltTxt}
         />,
       ),
