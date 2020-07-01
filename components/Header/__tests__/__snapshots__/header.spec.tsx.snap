@@ -1,0 +1,1505 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Header should render Header 1`] = `
+.c3 {
+  max-width: 300px;
+}
+
+.c5 {
+  width: 100%;
+  max-width: 123px;
+  height: 55px;
+}
+
+.c7 {
+  width: 100%;
+  height: 55px;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background-color: #FBA52B;
+  color: #FFFFFF;
+  font-weight: 600;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.c7:hover {
+  background-color: #EC7E00;
+}
+
+.c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-bottom: 1px solid #D8D8D8;
+  background-color: #660000;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 1100px;
+  height: 80px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  width: 160px;
+}
+
+.c4 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #E5EAED;
+  display: none;
+}
+
+.c6 {
+  width: 90px;
+}
+
+@media only screen and (min-width:1200px) {
+  .c1 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c2 {
+    width: 180px;
+  }
+}
+
+@media only screen and (min-width:500px) {
+  .c2 {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c2 {
+    width: 220px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    display: block;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width:500px) {
+  .c6 {
+    width: 100px;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c6 {
+    width: 110px;
+  }
+}
+
+<header
+  class="c0"
+  data-testid="header"
+>
+  <div
+    class="c1"
+  >
+    <h1
+      class="c2"
+      data-testid="logo"
+    >
+      <img
+        alt="FooDublin Logo"
+        class="c3"
+        src="http://localhost:3000/static/static/images/primary_logo.svg"
+      />
+    </h1>
+    <h2
+      class="c4"
+    >
+      Mocked claim text
+    </h2>
+    <div
+      class="c5 c6"
+    >
+      <button
+        class="c7"
+        type="button"
+      >
+        Finder
+      </button>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Component: Header should render extended Header 1`] = `
+.c4 {
+  max-width: 300px;
+}
+
+.c9 {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c11 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #222C3C;
+  background: transparent;
+}
+
+.c7 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+  cursor: pointer;
+}
+
+.c10 {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.c10:hover {
+  background-color: #FDF3E5;
+}
+
+.c10:focus {
+  background-color: #FDF3E5;
+}
+
+.c10.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c10 input {
+  cursor: pointer;
+}
+
+.c12 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 0 0 4px 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top: 0;
+  outline: none;
+}
+
+.c12.active {
+  display: block;
+}
+
+.c13 {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c13 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c13:hover {
+  opacity: 0.5;
+}
+
+.c14 {
+  width: 100%;
+}
+
+.c15 {
+  width: 100%;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+}
+
+.c16 {
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 6px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c16:hover {
+  background-color: #FDF3E5;
+}
+
+.c17 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c18 {
+  margin-left: 12px;
+}
+
+.c19 {
+  color: #222C3C;
+  font-size: 1.05rem;
+}
+
+.c20 {
+  color: #A7A7A7;
+  font-size: 0.85rem;
+}
+
+.c23 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+}
+
+.c25 {
+  position: relative;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.c26 {
+  width: 100%;
+  height: 55px;
+  background-color: #FFFFFF;
+  line-height: 55px;
+  padding: 0 4px 0 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c26 i:first-of-type {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: #D48C24;
+}
+
+.c26:not(.clearable) i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
+}
+
+.c26.clearable {
+  background-color: #FDF3E5;
+}
+
+.c26:hover {
+  background-color: #FDF3E5;
+}
+
+.c26:focus {
+  background-color: #FDF3E5;
+}
+
+.c27 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  z-index: 2;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  border-top: 0;
+  border-bottom: 0;
+  outline: none;
+}
+
+.c27.active {
+  display: block;
+}
+
+.c28 {
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  display: block;
+}
+
+.c28 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c28:hover {
+  opacity: 0.5;
+}
+
+.c29 {
+  width: 100%;
+  height: 55px;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 9px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c29.active p {
+  font-weight: 600;
+}
+
+.c29:hover {
+  background-color: #FDF3E5;
+}
+
+.c29:focus {
+  background-color: #FDF3E5;
+}
+
+.c31 {
+  width: 18px;
+  margin-right: 12px;
+}
+
+.c30 {
+  color: #222C3C;
+  font-size: 0.9rem;
+}
+
+.c32 {
+  width: 100%;
+  max-width: 123px;
+  height: 55px;
+}
+
+.c34 {
+  width: 100%;
+  height: 55px;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background-color: #FBA52B;
+  color: #FFFFFF;
+  font-weight: 600;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.c34:hover {
+  background-color: #EC7E00;
+}
+
+.c6 {
+  width: 85%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  width: 100%;
+  margin: 0 0 25px 0;
+}
+
+.c21 {
+  background-color: #A7A7A7;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 25px 0;
+  max-width: 550px;
+}
+
+.c22 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.c22:first-child {
+  margin-right: 2%;
+}
+
+.c24 {
+  width: 100%;
+}
+
+.c24:first-of-type {
+  margin-right: 2%;
+  margin-bottom: 15px;
+}
+
+.c33 {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
+  background-size: cover;
+  background-image: url(http://localhost:3003/static/images/food.jpg);
+  background-color: #A7A7A7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 550px;
+  margin: 0;
+}
+
+.c2 {
+  background: linear-gradient( 180deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.85) 40% );
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  width: 225px;
+  margin: 15px 0 25px;
+}
+
+.c5 {
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 35px;
+}
+
+@media only screen and (min-width:768px) {
+  .c7 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c12 {
+    top: 55px;
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c23 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c27 {
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c28 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width:470px) {
+  .c6 {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c6 {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c6 {
+    width: 58rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width:1250px) {
+  .c6 {
+    width: 71rem;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c8 {
+    margin: 0 2% 0 0;
+    width: 39%;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c8 {
+    width: 44%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c21 {
+    width: 1px;
+    height: 90%;
+    margin: 0 2% 0 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c22 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c22 {
+    width: 47%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    margin-bottom: 0;
+  }
+
+  .c22:first-child {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c24 {
+    max-width: 270px;
+  }
+
+  .c24:first-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c24 {
+    margin-right: 2%;
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c33 {
+    width: 300px;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c33 {
+    width: 10%;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c2 {
+    background: linear-gradient( 180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.8) 48% );
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c2 {
+    background: linear-gradient( 180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.8) 52% );
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c3 {
+    width: 270px;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c3 {
+    width: 300px;
+    margin: 0 0 30px;
+  }
+}
+
+@media only screen and (min-width:350px) {
+  .c5 {
+    font-size: 1.45rem;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c5 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c5 {
+    font-size: 2.5rem;
+  }
+}
+
+<header
+  class="c0"
+  data-testid="header"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <h1
+        class="c3"
+        data-testid="logo"
+      >
+        <img
+          alt="FooDublin Logo"
+          class="c4"
+          src="http://localhost:3000/static/static/images/light_logo.svg"
+        />
+      </h1>
+      <h2
+        class="c5"
+      >
+        Mocked claim text
+      </h2>
+      <div
+        class="c6"
+      >
+        <div
+          class="c7 c8"
+          data-testid="autocomplete"
+        >
+          <div
+            class="c9 c10"
+            data-testid="input-wrapper"
+          >
+            <i
+              class="material-icons"
+              data-testid="input-icon"
+            >
+              search
+            </i>
+            <input
+              class="c11"
+              placeholder="Search for locals..."
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="c12"
+            data-testid="autocomplete-box-list"
+            role="listbox"
+            tabindex="0"
+          >
+            <button
+              class="c13"
+              type="button"
+            >
+              <i
+                class="material-icons"
+              >
+                close
+              </i>
+            </button>
+            <ul
+              class="c14"
+            >
+              <li
+                class="c15"
+              >
+                <a
+                  class="c16"
+                >
+                  <img
+                    alt=""
+                    class="c17"
+                    src=""
+                  />
+                  <div
+                    class="c18"
+                  >
+                    <p
+                      class="c19"
+                    />
+                    <p
+                      class="c20"
+                    />
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <span
+          class="c21"
+        />
+        <div
+          class="c22"
+        >
+          <div
+            class="c23 c24"
+            data-testid="dropdown"
+            role="listbox"
+          >
+            <div
+              class="c25"
+            >
+              <button
+                class="c26"
+                type="button"
+              >
+                <i
+                  class="material-icons"
+                  data-testid="label-icon"
+                >
+                  near_me
+                </i>
+                <span>
+                  Select any location
+                </span>
+                <i
+                  class="material-icons"
+                >
+                  arrow_drop_down
+                </i>
+              </button>
+            </div>
+            <div
+              class="c27"
+              data-testid="dropdown-list"
+              role="list"
+              tabindex="0"
+            >
+              <button
+                class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c28"
+                type="button"
+              >
+                <i
+                  class="material-icons"
+                >
+                  close
+                </i>
+              </button>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  South City West
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Temple Bar
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Clondalkin
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Swords
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Tallaght
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  North City
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Blanchardstown
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  South City East
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Dundrum
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Finglas
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Ballyfermot
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Santry
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Lucan
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Artane
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Malahide
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Dun Laoghaire
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Walkinstown
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Blackrock
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Palmerstown
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Rathmines
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Balbriggan
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Ballybrack
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Smithfield
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Crumlin
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Castleknock
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Howth
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Cabra
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Whitehall
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Portmarnock
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <p
+                  class="c30"
+                >
+                  Kimmage
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c23 c24"
+            data-testid="dropdown"
+            role="listbox"
+          >
+            <div
+              class="c25"
+            >
+              <button
+                class="c26"
+                type="button"
+              >
+                <i
+                  class="material-icons"
+                  data-testid="label-icon"
+                >
+                  restaurant
+                </i>
+                <span>
+                  Select any cuisine
+                </span>
+                <i
+                  class="material-icons"
+                >
+                  arrow_drop_down
+                </i>
+              </button>
+            </div>
+            <div
+              class="c27"
+              data-testid="dropdown-list"
+              role="list"
+              tabindex="0"
+            >
+              <button
+                class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c28"
+                type="button"
+              >
+                <i
+                  class="material-icons"
+                >
+                  close
+                </i>
+              </button>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Irish"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/stew.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Irish
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Italian"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/pizza.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Italian
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Mediterranean"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/bruschetta.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Mediterranean
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Asian"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/rice.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Asian
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Healthy Food"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/healthy_food.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Healthy Food
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Indian"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/gulab.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Indian
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Mexican"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/taco.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Mexican
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="listitem"
+              >
+                <img
+                  alt="Fast Food"
+                  class="c31"
+                  src="http://localhost:3000/static/static/images/fries.svg"
+                />
+                <p
+                  class="c30"
+                >
+                  Fast Food
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c32 c33"
+        >
+          <button
+            class="c34"
+            type="button"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+`;
