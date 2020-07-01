@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
       <StyledExtendedHeaderContent bgImg={bgImgSrc}>
         <StyledOverlay>
           <StyledExtendedHeaderLogo
-            logoSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/light_logo.svg`}
+            logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
             logoAltTxt="FooDublin Logo"
           />
           <StyledExtendedHeaderClaim>{claimTxt}</StyledExtendedHeaderClaim>
@@ -158,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
     ) : (
       <StyledHeaderContent>
         <StyledHeaderLogo
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/primary_logo.svg`}
+          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/primary_logo.svg`}
           logoAltTxt="FooDublin Logo"
         />
         <StyledHeaderClaim>{claimTxt}</StyledHeaderClaim>

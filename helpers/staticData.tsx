@@ -127,42 +127,42 @@ export const LOCATIONS = [
 
 export const CUISINES = [
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/stew.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/stew.svg`,
     id: 135,
     name: 'Irish',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/pizza.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/pizza.svg`,
     id: 55,
     name: 'Italian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/bruschetta.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/bruschetta.svg`,
     id: 70,
     name: 'Mediterranean',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/rice.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rice.svg`,
     id: 3,
     name: 'Asian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/healthy_food.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/healthy_food.svg`,
     id: 143,
     name: 'Healthy Food',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/gulab.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/gulab.svg`,
     id: 148,
     name: 'Indian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/taco.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/taco.svg`,
     id: 73,
     name: 'Mexican',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/fries.svg`,
+    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/fries.svg`,
     id: 40,
     name: 'Fast Food',
   },
@@ -170,7 +170,7 @@ export const CUISINES = [
 
 export const HIGHLIGHTED_RESTAURANTS = [
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/cleaver-east.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
     id: 1,
     name: 'Cleaver East Restaurant',
     description:
@@ -178,7 +178,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
     link: 'https://theclarence.ie/cleaver-east/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/tapas-de-lola.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
     id: 2,
     name: 'Tapas de Lola',
     description:
@@ -186,7 +186,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
     link: 'http://lastapasdelola.com/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/ely-wine.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
     id: 3,
     name: 'Ely Wine Bar',
     description:
@@ -194,7 +194,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
     link: 'http://www.elywinebar.ie/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/locks.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/locks.jpg`,
     id: 4,
     name: 'Locks',
     description:
@@ -202,7 +202,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
     link: 'https://www.locksrestaurant.ie/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/chapter-one.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
     id: 5,
     name: 'Chapter One',
     description:
@@ -210,7 +210,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
     link: 'https://www.chapteronerestaurant.com/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/static/images/rosa-madre.jpg`,
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
     id: 6,
     name: 'Rosa Madre',
     description:
@@ -219,7 +219,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
 ];
 
-export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/static/images/highlight-generic.png`;
+export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/highlight-generic.png`;
 
 enum FILTER_SORT {
   cost = 'cost',

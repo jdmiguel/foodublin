@@ -14,7 +14,7 @@ describe('Component: Header', () => {
     const { container } = render(
       renderWithTheme(
         <Header
-          bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/${bgImgSrc}`}
+          bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/${bgImgSrc}`}
           claimTxt={claimTxt}
           isExtended={true}
         />,
@@ -28,7 +28,7 @@ describe('Component: Header', () => {
     const { container } = render(
       renderWithTheme(
         <Header
-          bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/static/images/${bgImgSrc}`}
+          bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/${bgImgSrc}`}
           claimTxt={claimTxt}
           isExtended={false}
         />,
