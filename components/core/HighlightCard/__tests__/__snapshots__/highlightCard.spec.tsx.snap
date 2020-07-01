@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 350px;
+  background-color: #FFFFFF;
+  padding: 1rem;
+  margin-bottom: 50px;
+  border: 1px solid #D8D8D8;
+  border-radius: 4px;
+}
+
+.c0 img {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 18px;
+  border: 1px solid #F3F3F3;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #222C3C;
+  margin-bottom: 15px;
+}
+
+.c3 {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #222C3C;
+  margin-bottom: 15px;
+}
+
+.c4 {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c4:hover {
+  color: #EC7E00;
+}
+
+@media only screen and (min-width:1200px) {
+  .c0 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="LazyImage-Placeholder"
+  >
+    <img
+      alt="alt restaurant mocked"
+      src="http://localhost:3000/static/static/images/highlight-generic.png"
+    />
+  </div>
+  <div
+    class="c1"
+  >
+    <h4
+      class="c2"
+    >
+      Title mocked
+    </h4>
+    <p
+      class="c3"
+    >
+      Description mocked
+    </p>
+    <a
+      class="c4"
+      href="https://theclarence.ie/cleaver-east/"
+      target="blank"
+    >
+      link-text
+    </a>
+  </div>
+</div>
+`;
