@@ -1,0 +1,1202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Finder should render 1`] = `
+.c3 {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c5 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #222C3C;
+  background: transparent;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+  cursor: pointer;
+}
+
+.c4 {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.c4:hover {
+  background-color: #FDF3E5;
+}
+
+.c4:focus {
+  background-color: #FDF3E5;
+}
+
+.c4.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c4 input {
+  cursor: pointer;
+}
+
+.c6 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 0 0 4px 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top: 0;
+  outline: none;
+}
+
+.c6.active {
+  display: block;
+}
+
+.c7 {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c7 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c7:hover {
+  opacity: 0.5;
+}
+
+.c8 {
+  width: 100%;
+}
+
+.c9 {
+  width: 100%;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+}
+
+.c10 {
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 6px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c10:hover {
+  background-color: #FDF3E5;
+}
+
+.c11 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c12 {
+  margin-left: 12px;
+}
+
+.c13 {
+  color: #222C3C;
+  font-size: 1.05rem;
+}
+
+.c14 {
+  color: #A7A7A7;
+  font-size: 0.85rem;
+}
+
+.c17 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+  position: initial;
+}
+
+.c19 {
+  position: relative;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.c20 {
+  width: 100%;
+  height: 55px;
+  background-color: #FFFFFF;
+  line-height: 55px;
+  padding: 0 4px 0 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.c20 i:first-of-type {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: #D48C24;
+}
+
+.c20:not(.clearable) i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
+}
+
+.c20.clearable {
+  background-color: #FDF3E5;
+}
+
+.c20:hover {
+  background-color: #FDF3E5;
+}
+
+.c20:focus {
+  background-color: #FDF3E5;
+}
+
+.c21 {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  z-index: 2;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  padding: 50px 10px 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  border-top: 0;
+  border-bottom: 0;
+  outline: none;
+}
+
+.c21.active {
+  display: block;
+}
+
+.c22 {
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  right: 7px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  display: block;
+}
+
+.c22 i {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.c22:hover {
+  opacity: 0.5;
+}
+
+.c23 {
+  width: 100%;
+  height: 55px;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 9px 11px;
+  color: #222C3C;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 400;
+  width: 100%;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.c23.active p {
+  font-weight: 600;
+}
+
+.c23:hover {
+  background-color: #FDF3E5;
+}
+
+.c23:focus {
+  background-color: #FDF3E5;
+}
+
+.c25 {
+  width: 18px;
+  margin-right: 12px;
+}
+
+.c24 {
+  color: #222C3C;
+  font-size: 0.9rem;
+}
+
+.c26 {
+  width: 100%;
+  max-width: 123px;
+  height: 55px;
+}
+
+.c28 {
+  width: 100%;
+  height: 55px;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background-color: #FBA52B;
+  color: #FFFFFF;
+  font-weight: 600;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.c28:hover {
+  background-color: #EC7E00;
+}
+
+.c0 {
+  width: 85%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  width: 100%;
+  margin: 0 0 25px 0;
+}
+
+.c15 {
+  background-color: #A7A7A7;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 25px 0;
+  max-width: 550px;
+}
+
+.c16 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.c16:first-child {
+  margin-right: 2%;
+}
+
+.c18 {
+  width: 100%;
+}
+
+.c18:first-of-type {
+  margin-right: 2%;
+  margin-bottom: 15px;
+}
+
+.c27 {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c6 {
+    top: 55px;
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c7 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c17 {
+    height: 55px;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c21 {
+    height: auto;
+    padding: 0;
+    max-height: 440px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c22 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width:470px) {
+  .c0 {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    width: 58rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width:1250px) {
+  .c0 {
+    width: 71rem;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c2 {
+    margin: 0 2% 0 0;
+    width: 39%;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c2 {
+    width: 44%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c15 {
+    width: 1px;
+    height: 90%;
+    margin: 0 2% 0 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c16 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c16 {
+    width: 47%;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    margin-bottom: 0;
+  }
+
+  .c16:first-child {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c18 {
+    max-width: 270px;
+  }
+
+  .c18:first-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c18 {
+    margin-right: 2%;
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c27 {
+    width: 300px;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c27 {
+    width: 10%;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 c2"
+    data-testid="autocomplete"
+  >
+    <div
+      class="c3 c4"
+      data-testid="input-wrapper"
+    >
+      <i
+        class="material-icons"
+        data-testid="input-icon"
+      >
+        search
+      </i>
+      <input
+        class="c5"
+        placeholder="Search for locals..."
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="c6"
+      data-testid="autocomplete-box-list"
+      role="listbox"
+      tabindex="0"
+    >
+      <button
+        class="c7"
+        type="button"
+      >
+        <i
+          class="material-icons"
+        >
+          close
+        </i>
+      </button>
+      <ul
+        class="c8"
+      >
+        <li
+          class="c9"
+        >
+          <a
+            class="c10"
+          >
+            <img
+              alt=""
+              class="c11"
+              src=""
+            />
+            <div
+              class="c12"
+            >
+              <p
+                class="c13"
+              />
+              <p
+                class="c14"
+              />
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <span
+    class="c15"
+  />
+  <div
+    class="c16"
+  >
+    <div
+      class="c17 c18"
+      data-testid="dropdown"
+      role="listbox"
+    >
+      <div
+        class="c19"
+      >
+        <button
+          class="c20"
+          type="button"
+        >
+          <i
+            class="material-icons"
+            data-testid="label-icon"
+          >
+            near_me
+          </i>
+          <span>
+            Select any location
+          </span>
+          <i
+            class="material-icons"
+          >
+            arrow_drop_down
+          </i>
+        </button>
+      </div>
+      <div
+        class="c21"
+        data-testid="dropdown-list"
+        role="list"
+        tabindex="0"
+      >
+        <button
+          class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c22"
+          type="button"
+        >
+          <i
+            class="material-icons"
+          >
+            close
+          </i>
+        </button>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            South City West
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Temple Bar
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Clondalkin
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Swords
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Tallaght
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            North City
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Blanchardstown
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            South City East
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Dundrum
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Finglas
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Ballyfermot
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Santry
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Lucan
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Artane
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Malahide
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Dun Laoghaire
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Walkinstown
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Blackrock
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Palmerstown
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Rathmines
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Balbriggan
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Ballybrack
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Smithfield
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Crumlin
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Castleknock
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Howth
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Cabra
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Whitehall
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Portmarnock
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <p
+            class="c24"
+          >
+            Kimmage
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c17 c18"
+      data-testid="dropdown"
+      role="listbox"
+    >
+      <div
+        class="c19"
+      >
+        <button
+          class="c20"
+          type="button"
+        >
+          <i
+            class="material-icons"
+            data-testid="label-icon"
+          >
+            restaurant
+          </i>
+          <span>
+            Select any cuisine
+          </span>
+          <i
+            class="material-icons"
+          >
+            arrow_drop_down
+          </i>
+        </button>
+      </div>
+      <div
+        class="c21"
+        data-testid="dropdown-list"
+        role="list"
+        tabindex="0"
+      >
+        <button
+          class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c22"
+          type="button"
+        >
+          <i
+            class="material-icons"
+          >
+            close
+          </i>
+        </button>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Irish"
+            class="c25"
+            src="http://localhost:3000/static/static/images/stew.svg"
+          />
+          <p
+            class="c24"
+          >
+            Irish
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Italian"
+            class="c25"
+            src="http://localhost:3000/static/static/images/pizza.svg"
+          />
+          <p
+            class="c24"
+          >
+            Italian
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Mediterranean"
+            class="c25"
+            src="http://localhost:3000/static/static/images/bruschetta.svg"
+          />
+          <p
+            class="c24"
+          >
+            Mediterranean
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Asian"
+            class="c25"
+            src="http://localhost:3000/static/static/images/rice.svg"
+          />
+          <p
+            class="c24"
+          >
+            Asian
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Healthy Food"
+            class="c25"
+            src="http://localhost:3000/static/static/images/healthy_food.svg"
+          />
+          <p
+            class="c24"
+          >
+            Healthy Food
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Indian"
+            class="c25"
+            src="http://localhost:3000/static/static/images/gulab.svg"
+          />
+          <p
+            class="c24"
+          >
+            Indian
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Mexican"
+            class="c25"
+            src="http://localhost:3000/static/static/images/taco.svg"
+          />
+          <p
+            class="c24"
+          >
+            Mexican
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="listitem"
+        >
+          <img
+            alt="Fast Food"
+            class="c25"
+            src="http://localhost:3000/static/static/images/fries.svg"
+          />
+          <p
+            class="c24"
+          >
+            Fast Food
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c26 c27"
+  >
+    <button
+      class="c28"
+      type="button"
+    >
+      Search
+    </button>
+  </div>
+</div>
+`;
