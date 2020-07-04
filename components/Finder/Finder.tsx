@@ -151,17 +151,15 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       <StyledSpacer />
       <StyledDropdownsWrapper>
         <StyledDropdown
-          withIcon="near_me"
+          icon="near_me"
           labelTxt="Select any location"
           list={LOCATIONS}
-          clearable={true}
           onSelect={(id: number) => console.log(id)}
         />
         <StyledDropdown
-          withIcon="restaurant"
+          icon="restaurant"
           labelTxt="Select any cuisine"
           list={CUISINES}
-          clearable={true}
           onSelect={(id: number) => console.log(id)}
         />
       </StyledDropdownsWrapper>

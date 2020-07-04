@@ -228,24 +228,20 @@ exports[`Component: Finder should render 1`] = `
   color: #D48C24;
 }
 
-.c20:not(.clearable) i:last-of-type {
-  position: absolute;
-  z-index: 1;
-  top: 14px;
-  right: 7px;
-  font-size: 1.7rem;
-}
-
-.c20.clearable {
-  background-color: #FDF3E5;
-}
-
 .c20:hover {
   background-color: #FDF3E5;
 }
 
 .c20:focus {
   background-color: #FDF3E5;
+}
+
+.c20 i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
 }
 
 .c21 {

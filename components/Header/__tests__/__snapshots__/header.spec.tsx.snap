@@ -400,24 +400,20 @@ exports[`Component: Header should render extended Header 1`] = `
   color: #D48C24;
 }
 
-.c26:not(.clearable) i:last-of-type {
-  position: absolute;
-  z-index: 1;
-  top: 14px;
-  right: 7px;
-  font-size: 1.7rem;
-}
-
-.c26.clearable {
-  background-color: #FDF3E5;
-}
-
 .c26:hover {
   background-color: #FDF3E5;
 }
 
 .c26:focus {
   background-color: #FDF3E5;
+}
+
+.c26 i:last-of-type {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 7px;
+  font-size: 1.7rem;
 }
 
 .c27 {

@@ -1,7 +1,6 @@
 import React, {
   useState,
   useRef,
-  useLayoutEffect,
   useEffect,
   useReducer,
   Dispatch,
@@ -18,9 +17,8 @@ type ListItemTypeWithIsActive = ListItemType & { isActive: boolean };
 
 type DropdownProps = {
   className?: string;
-  withIcon?: string;
+  icon?: string;
   labelTxt: string;
-  clearable?: boolean;
   list: ListItemType[];
   onSelect: (id: number) => void;
   onFocus?: (event: React.FocusEvent) => void;
@@ -47,7 +45,7 @@ const StyledLabel = styled.div`
   cursor: pointer;
 `;
 
-const StyledLabelButton = styled.button`
+const StyledLabelButton = styled.button<{ clearable: boolean }>`
   width: 100%;
   height: 55px;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
@@ -71,26 +69,28 @@ const StyledLabelButton = styled.button`
       color: ${(props) => props.theme.palette.PRIMARY_DARK};
     }
   }
-  &:not(.clearable) {
-    i {
-      &:last-of-type {
-        position: absolute;
-        z-index: 1;
-        top: 14px;
-        right: 7px;
-        font-size: 1.7rem;
-      }
-    }
-  }
-  &.clearable {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
-  }
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
   &:focus {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
+
+  ${(props) => {
+    if (props.clearable) {
+      return `background-color: ${props.theme.palette.PRIMARY_LIGHT}`;
+    } else {
+      return `i {
+        &:last-of-type {
+          position: absolute;
+          z-index: 1;
+          top: 14px;
+          right: 7px;
+          font-size: 1.7rem;
+        }
+      }`;
+    }
+  }}
 `;
 
 const StyledListbox = styled.div`
@@ -206,10 +206,9 @@ const listReducer = (list: ListItemType[], action: ListAction) => {
 
 const Dropdown: React.FC<DropdownProps> = ({
   className,
-  withIcon,
+  icon,
   labelTxt,
   list,
-  clearable,
   onSelect,
   onFocus,
   onBlur,
@@ -225,21 +224,21 @@ const Dropdown: React.FC<DropdownProps> = ({
   const listRef = useRef<HTMLDivElement>(null);
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);
   const [selectedId, setSelectedId] = useState(0);
-  const [labelButtonClassName, setLabelButtonClassName] = useState('');
+  const [isClearable, setIsClearable] = useState(false);
   const [listClassName, setListClassName] = useState('');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (listClassName === 'active') {
       listRef.current?.focus();
     }
   }, [listClassName]);
 
   useEffect(() => {
-    if (!selectedId) {
-      setLabelButtonClassName('');
-      setCurrentLabelTxt(labelTxt);
+    if (selectedId) {
+      setIsClearable(true);
     } else {
-      setLabelButtonClassName('clearable');
+      setIsClearable(false);
+      setCurrentLabelTxt(labelTxt);
     }
   }, [selectedId, labelTxt]);
 
@@ -267,21 +266,21 @@ const Dropdown: React.FC<DropdownProps> = ({
       <StyledLabel>
         <StyledLabelButton
           type="button"
+          clearable={isClearable}
           onClick={(event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
             setListClassName('active');
           }}
-          className={labelButtonClassName}
         >
-          {withIcon && (
+          {icon && (
             <i data-testid={'label-icon'} className="material-icons">
-              {withIcon}
+              {icon}
             </i>
           )}
           <span>{currentLabelTxt}</span>
           {!selectedId && <i className="material-icons">arrow_drop_down</i>}
         </StyledLabelButton>
-        {clearable && selectedId > 0 && (
+        {selectedId > 0 && (
           <StyledClearButton
             type="button"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
