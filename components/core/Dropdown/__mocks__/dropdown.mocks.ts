@@ -21,8 +21,15 @@ const LIST_MOCK = [
   },
 ];
 
+export const ICON_OPTIONS = {
+  label: 'label',
+  location: 'near_me',
+  cuisine: 'restaurant',
+  none: '',
+};
+
 export const DROPDOWN_PROPS_MOCK = {
-  withIcon: 'label',
+  icon: 'label',
   labelTxt: 'Select any option',
   list: LIST_MOCK,
   onSelect: () => {},
