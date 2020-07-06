@@ -93,8 +93,14 @@ const StyledLabelButton = styled.button<{ clearable: boolean }>`
   }}
 `;
 
-const StyledListbox = styled.div`
-  display: none;
+const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
+  visibility: ${({ isListboxFocused }) =>
+    isListboxFocused ? 'visible' : 'hidden'};
+  opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
+  transform: translateY(
+    ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
+  );
+  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
@@ -111,9 +117,6 @@ const StyledListbox = styled.div`
   border-top: 0;
   border-bottom: 0;
   outline: none;
-  &.active {
-    display: block;
-  }
   @media only screen and (min-width: 768px) {
     height: auto;
     padding: 0;
@@ -162,15 +165,10 @@ const StyledListboxItem = styled.div`
   color: ${(props) => props.theme.palette.DARK_MAX};
   display: flex;
   align-items: center;
-  font-weight: 400;
   width: 100%;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  &.active {
-    p {
-      font-weight: 600;
-    }
-  }
+
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
@@ -184,9 +182,10 @@ const StyledListboxItemIcon = styled.img`
   margin-right: 12px;
 `;
 
-const StyledListboxItemText = styled.p`
+const StyledListboxItemText = styled.p<{ isActive: boolean }>`
   color: ${(props) => props.theme.palette.DARK_MAX};
   font-size: 0.9rem;
+  font-weight: ${({ isActive }) => (!isActive ? 400 : 600)};
 `;
 
 const listReducer = (list: ListItemType[], action: ListAction) => {
@@ -225,13 +224,11 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);
   const [selectedId, setSelectedId] = useState(0);
   const [isClearable, setIsClearable] = useState(false);
-  const [listClassName, setListClassName] = useState('');
+  const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    if (listClassName === 'active') {
-      listRef.current?.focus();
-    }
-  }, [listClassName]);
+    isListboxFocused && listRef.current?.focus();
+  }, [isListboxFocused]);
 
   useEffect(() => {
     if (selectedId) {
@@ -247,7 +244,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     setSelectedId(id);
 
     dispatch({ type: 'select', id });
-    setListClassName('');
+    setIsListboxFocused(false);
 
     onSelect && onSelect(id);
   };
@@ -257,19 +254,19 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleBlur = (event: React.FocusEvent) => {
-    setListClassName('');
+    setIsListboxFocused(false);
     onBlur && onBlur(event);
   };
 
   return (
-    <StyledDropdown data-testid="dropdown" role="listbox" className={className}>
+    <StyledDropdown data-testid="dropdown" className={className}>
       <StyledLabel>
         <StyledLabelButton
           type="button"
           clearable={isClearable}
           onClick={(event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
-            setListClassName('active');
+            setIsListboxFocused(true);
           }}
         >
           {icon && (
@@ -294,19 +291,19 @@ const Dropdown: React.FC<DropdownProps> = ({
         )}
       </StyledLabel>
       <StyledListbox
-        role="list"
+        role="listbox"
         ref={listRef}
         onFocus={handleFocus}
         onBlur={handleBlur}
         tabIndex={0}
         data-testid="dropdown-list"
-        className={listClassName}
+        isListboxFocused={isListboxFocused}
       >
         <StyledCloseButton
           type="button"
           onClick={(event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
-            setListClassName('');
+            setIsListboxFocused(false);
           }}
         >
           <i className="material-icons">close</i>
@@ -314,9 +311,8 @@ const Dropdown: React.FC<DropdownProps> = ({
         {initialListState.map((listItem: ListItemTypeWithIsActive) => (
           <StyledListboxItem
             key={listItem.name}
-            role="listitem"
+            role="option"
             onClick={() => handleSelect(listItem.name, listItem.id)}
-            className={listItem.isActive ? 'active' : ''}
           >
             {listItem.iconSrc && (
               <StyledListboxItemIcon
@@ -324,7 +320,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                 alt={listItem.name}
               />
             )}
-            <StyledListboxItemText>{listItem.name}</StyledListboxItemText>
+            <StyledListboxItemText isActive={listItem.isActive}>
+              {listItem.name}
+            </StyledListboxItemText>
           </StyledListboxItem>
         ))}
       </StyledListbox>

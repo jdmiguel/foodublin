@@ -44,7 +44,7 @@ describe('Component: Autocomplete', () => {
 
   it('should show/hide suggestions list', async () => {
     const handleSelectSuggestion = jest.fn();
-    const { getByTestId, queryByTestId, getByPlaceholderText } = render(
+    const { getByTestId, getByPlaceholderText } = render(
       renderWithTheme(
         <Autocomplete
           {...AUTOCOMPLETE_PROPS_MOCK}
@@ -61,11 +61,8 @@ describe('Component: Autocomplete', () => {
     fireEvent.blur(input);
 
     await waitFor(() => {
-      expect(queryByTestId('listbox-wrapper')).toHaveStyleRule('opacity', '0');
-      expect(queryByTestId('listbox-wrapper')).toHaveStyleRule(
-        'visibility',
-        'hidden',
-      );
+      expect(listboxWrapper).toHaveStyleRule('opacity', '0');
+      expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
     });
 
     // show suggestions list by activating focus event

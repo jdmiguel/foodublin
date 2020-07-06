@@ -17,40 +17,50 @@ describe('Component: Dropdown', () => {
   });
 
   it('should show/hide options list', () => {
-    const { getByRole } = render(
+    const { container } = render(
       renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />),
     );
-    const dropdown = getByRole('listbox');
+    const dropdown = container.firstChild as HTMLDivElement;
     const dropdownButton = dropdown.querySelector('button');
-    const listbox = dropdown.querySelector('div[role="list"]');
+    const listbox = dropdown.querySelector('div[role="listbox"]');
     const closeButton = listbox.querySelector('button');
-    const firstOption = listbox.querySelector('div[role="listitem"]');
+    const firstOption = listbox.querySelector('div[role="option"]');
+    const firstOptionText = firstOption.querySelector('p');
 
-    // initially, options list is hidden
-    expect(listbox.getAttribute('class')).not.toContain('active');
-
-    // show options list bu clicking dropdown button
-    fireEvent.click(dropdownButton);
-    expect(listbox.getAttribute('class')).toContain('active');
-
-    // hide options list by activating blur event
-    fireEvent.blur(listbox);
-    expect(listbox.getAttribute('class')).not.toContain('active');
+    // check if options list is not showed
+    expect(listbox).toHaveStyleRule('opacity', '0');
+    expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
     // show options list by clicking dropdown button
     fireEvent.click(dropdownButton);
-    expect(listbox.getAttribute('class')).toContain('active');
+    expect(listbox).toHaveStyleRule('opacity', '1');
+    expect(listbox).toHaveStyleRule('visibility', 'visible');
+
+    // hide options list by activating blur event
+    fireEvent.blur(listbox);
+    expect(listbox).toHaveStyleRule('opacity', '0');
+    expect(listbox).toHaveStyleRule('visibility', 'hidden');
+
+    // show options list by clicking dropdown button
+    fireEvent.click(dropdownButton);
 
     // hide options list by clicking close button
     fireEvent.click(closeButton);
-    expect(listbox.getAttribute('class')).not.toContain('active');
+    expect(listbox).toHaveStyleRule('opacity', '0');
+    expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
-    // show options list and hide it by clicking the first option
+    // show options list and check if first option is not active
     fireEvent.click(dropdownButton);
-    expect(firstOption.getAttribute('class')).not.toContain('active');
+    expect(firstOptionText).toHaveStyleRule('font-weight', '400');
+
+    // click first option and hide options list
     fireEvent.click(firstOption as HTMLDivElement);
-    expect(firstOption.getAttribute('class')).toContain('active');
-    expect(listbox.getAttribute('class')).not.toContain('active');
+    expect(listbox).toHaveStyleRule('opacity', '0');
+    expect(listbox).toHaveStyleRule('visibility', 'hidden');
+
+    // show options list and check if first option is active
+    fireEvent.click(dropdownButton);
+    expect(firstOptionText).toHaveStyleRule('font-weight', '600');
   });
 
   it('should change button name by clicking any option or clear button', () => {
@@ -59,30 +69,29 @@ describe('Component: Dropdown', () => {
       clearable: true,
     };
     const handleSelect = jest.fn();
-    const { getByRole, getAllByRole } = render(
+    const { container, getAllByRole } = render(
       renderWithTheme(
         <Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} onSelect={handleSelect} />,
       ),
     );
-    const dropdown = getByRole('listbox');
+    const dropdown = container.firstChild as HTMLDivElement;
     const dropdownButton = dropdown.querySelector('button');
 
-    // initially, dropdown button name has to be 'Select any option'
+    // check if dropdown button name is 'Select any option'
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'Select any option',
     );
 
-    // after clicking the first option of the list, callback function has to been called
-    // and button name has to be 'First option'
+    // click the first option of the list, call callback function and check if button name is 'First option'
     fireEvent.click(dropdownButton);
-    const [firstOption] = getAllByRole('listitem');
+    const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
     expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'First option',
     );
 
-    // after clicking clear button, dropdown button name has to be 'Select any option'
+    // click clear button and check if dropdown button name is 'Select any option'
     fireEvent.click(dropdown.querySelector('button:last-of-type'));
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'Select any option',
@@ -94,13 +103,14 @@ describe('Component: Dropdown', () => {
       ...DROPDOWN_PROPS_MOCK,
       clearable: true,
     };
-    const { getByRole, getAllByRole, container } = render(
+    const { container, getAllByRole } = render(
       renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} />),
     );
+    const dropdown = container.firstChild as HTMLDivElement;
 
     // click dropdown button, select first option of the dropdown list and click it
-    fireEvent.click(getByRole('listbox').querySelector('button'));
-    const [firstOption] = getAllByRole('listitem');
+    fireEvent.click(dropdown.querySelector('button'));
+    const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
     expect(container.firstChild).toMatchSnapshot();
   });
