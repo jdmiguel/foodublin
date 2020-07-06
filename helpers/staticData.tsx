@@ -22,10 +22,6 @@ export const LOCATIONS = [
     name: 'Tallaght',
   },
   {
-    id: 96201,
-    name: 'North City',
-  },
-  {
     id: 94881,
     name: 'Blanchardstown',
   },

@@ -264,11 +264,6 @@ exports[`Component: Header should render extended Header 1`] = `
   outline: none;
 }
 
-.c12.active {
-  visibility: visible;
-  opacity: 1;
-}
-
 .c13 {
   display: block;
   position: absolute;
@@ -420,7 +415,14 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 .c27 {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY( 10px );
+  -ms-transform: translateY( 10px );
+  transform: translateY( 10px );
+  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -437,10 +439,6 @@ exports[`Component: Header should render extended Header 1`] = `
   border-top: 0;
   border-bottom: 0;
   outline: none;
-}
-
-.c27.active {
-  display: block;
 }
 
 .c28 {
@@ -491,15 +489,10 @@ exports[`Component: Header should render extended Header 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-weight: 400;
   width: 100%;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-}
-
-.c29.active p {
-  font-weight: 600;
 }
 
 .c29:hover {
@@ -518,6 +511,7 @@ exports[`Component: Header should render extended Header 1`] = `
 .c30 {
   color: #222C3C;
   font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .c32 {
@@ -977,7 +971,6 @@ exports[`Component: Header should render extended Header 1`] = `
           <div
             class="c23 c24"
             data-testid="dropdown"
-            role="listbox"
           >
             <div
               class="c25"
@@ -1005,7 +998,7 @@ exports[`Component: Header should render extended Header 1`] = `
             <div
               class="c27"
               data-testid="dropdown-list"
-              role="list"
+              role="listbox"
               tabindex="0"
             >
               <button
@@ -1020,7 +1013,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </button>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1030,7 +1023,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1040,7 +1033,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1050,7 +1043,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1060,7 +1053,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1070,17 +1063,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
-              >
-                <p
-                  class="c30"
-                >
-                  North City
-                </p>
-              </div>
-              <div
-                class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1090,7 +1073,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1100,7 +1083,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1110,7 +1093,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1120,7 +1103,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1130,7 +1113,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1140,7 +1123,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1150,7 +1133,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1160,7 +1143,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1170,7 +1153,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1180,7 +1163,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1190,7 +1173,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1200,7 +1183,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1210,7 +1193,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1220,7 +1203,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1230,7 +1213,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1240,7 +1223,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1250,7 +1233,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1260,7 +1243,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1270,7 +1253,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1280,7 +1263,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1290,7 +1273,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1300,7 +1283,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1310,7 +1293,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <p
                   class="c30"
@@ -1323,7 +1306,6 @@ exports[`Component: Header should render extended Header 1`] = `
           <div
             class="c23 c24"
             data-testid="dropdown"
-            role="listbox"
           >
             <div
               class="c25"
@@ -1351,7 +1333,7 @@ exports[`Component: Header should render extended Header 1`] = `
             <div
               class="c27"
               data-testid="dropdown-list"
-              role="list"
+              role="listbox"
               tabindex="0"
             >
               <button
@@ -1366,7 +1348,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </button>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Irish"
@@ -1381,7 +1363,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Italian"
@@ -1396,7 +1378,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Mediterranean"
@@ -1411,7 +1393,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Asian"
@@ -1426,7 +1408,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Healthy Food"
@@ -1441,7 +1423,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Indian"
@@ -1456,7 +1438,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Mexican"
@@ -1471,7 +1453,7 @@ exports[`Component: Header should render extended Header 1`] = `
               </div>
               <div
                 class="c29"
-                role="listitem"
+                role="option"
               >
                 <img
                   alt="Fast Food"

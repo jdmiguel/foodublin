@@ -92,11 +92,6 @@ exports[`Component: Autocomplete should render 1`] = `
   outline: none;
 }
 
-.c4.active {
-  visibility: visible;
-  opacity: 1;
-}
-
 .c5 {
   display: block;
   position: absolute;

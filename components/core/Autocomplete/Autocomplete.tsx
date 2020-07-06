@@ -82,10 +82,6 @@ const StyledListboxWrapper = styled.div<{ isListboxFocused: boolean }>`
   border-bottom-left-radius: 4px;
   border-top: 0;
   outline: none;
-  &.active {
-    visibility: visible;
-    opacity: 1;
-  }
   @media only screen and (min-width: 768px) {
     top: 55px;
     height: auto;

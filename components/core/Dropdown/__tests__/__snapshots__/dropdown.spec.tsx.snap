@@ -67,7 +67,14 @@ exports[`Component: Dropdown should render 1`] = `
 }
 
 .c3 {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY( 10px );
+  -ms-transform: translateY( 10px );
+  transform: translateY( 10px );
+  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -84,10 +91,6 @@ exports[`Component: Dropdown should render 1`] = `
   border-top: 0;
   border-bottom: 0;
   outline: none;
-}
-
-.c3.active {
-  display: block;
 }
 
 .c4 {
@@ -138,15 +141,10 @@ exports[`Component: Dropdown should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-weight: 400;
   width: 100%;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-}
-
-.c5.active p {
-  font-weight: 600;
 }
 
 .c5:hover {
@@ -160,6 +158,7 @@ exports[`Component: Dropdown should render 1`] = `
 .c6 {
   color: #222C3C;
   font-size: 0.9rem;
+  font-weight: 400;
 }
 
 @media only screen and (min-width:768px) {
@@ -186,7 +185,6 @@ exports[`Component: Dropdown should render 1`] = `
 <div
   class="c0"
   data-testid="dropdown"
-  role="listbox"
 >
   <div
     class="c1"
@@ -214,7 +212,7 @@ exports[`Component: Dropdown should render 1`] = `
   <div
     class="c3"
     data-testid="dropdown-list"
-    role="list"
+    role="listbox"
     tabindex="0"
   >
     <button
@@ -229,7 +227,7 @@ exports[`Component: Dropdown should render 1`] = `
     </button>
     <div
       class="c5"
-      role="listitem"
+      role="option"
     >
       <p
         class="c6"
@@ -239,7 +237,7 @@ exports[`Component: Dropdown should render 1`] = `
     </div>
     <div
       class="c5"
-      role="listitem"
+      role="option"
     >
       <p
         class="c6"
@@ -249,7 +247,7 @@ exports[`Component: Dropdown should render 1`] = `
     </div>
     <div
       class="c5"
-      role="listitem"
+      role="option"
     >
       <p
         class="c6"
@@ -259,7 +257,7 @@ exports[`Component: Dropdown should render 1`] = `
     </div>
     <div
       class="c5"
-      role="listitem"
+      role="option"
     >
       <p
         class="c6"
@@ -269,7 +267,7 @@ exports[`Component: Dropdown should render 1`] = `
     </div>
     <div
       class="c5"
-      role="listitem"
+      role="option"
     >
       <p
         class="c6"
@@ -341,7 +339,14 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 }
 
 .c4 {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY( 10px );
+  -ms-transform: translateY( 10px );
+  transform: translateY( 10px );
+  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -358,10 +363,6 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   border-top: 0;
   border-bottom: 0;
   outline: none;
-}
-
-.c4.active {
-  display: block;
 }
 
 .c3 {
@@ -440,15 +441,10 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-weight: 400;
   width: 100%;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-}
-
-.c6.active p {
-  font-weight: 600;
 }
 
 .c6:hover {
@@ -459,9 +455,16 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   background-color: #FDF3E5;
 }
 
+.c8 {
+  color: #222C3C;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
 .c7 {
   color: #222C3C;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 @media only screen and (min-width:768px) {
@@ -480,6 +483,10 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 }
 
 @media only screen and (min-width:768px) {
+
+}
+
+@media only screen and (min-width:768px) {
   .c5 {
     display: none;
   }
@@ -488,7 +495,6 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 <div
   class="c0"
   data-testid="dropdown"
-  role="listbox"
 >
   <div
     class="c1"
@@ -521,7 +527,7 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   <div
     class="c4"
     data-testid="dropdown-list"
-    role="list"
+    role="listbox"
     tabindex="0"
   >
     <button
@@ -535,8 +541,8 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
       </i>
     </button>
     <div
-      class="c6 active"
-      role="listitem"
+      class="c6"
+      role="option"
     >
       <p
         class="c7"
@@ -546,40 +552,40 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
     </div>
     <div
       class="c6"
-      role="listitem"
+      role="option"
     >
       <p
-        class="c7"
+        class="c8"
       >
         Second option
       </p>
     </div>
     <div
       class="c6"
-      role="listitem"
+      role="option"
     >
       <p
-        class="c7"
+        class="c8"
       >
         Third option
       </p>
     </div>
     <div
       class="c6"
-      role="listitem"
+      role="option"
     >
       <p
-        class="c7"
+        class="c8"
       >
         Fourth option
       </p>
     </div>
     <div
       class="c6"
-      role="listitem"
+      role="option"
     >
       <p
-        class="c7"
+        class="c8"
       >
         Fifth option
       </p>
