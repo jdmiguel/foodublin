@@ -232,17 +232,19 @@ exports[`Component: Header should render extended Header 1`] = `
   background-color: #FDF3E5;
 }
 
-.c10.active {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .c10 input {
   cursor: pointer;
 }
 
 .c12 {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY( 10px );
+  -ms-transform: translateY( 10px );
+  transform: translateY( 10px );
+  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background: #FFFFFF;
@@ -263,7 +265,8 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 .c12.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .c13 {
@@ -922,9 +925,7 @@ exports[`Component: Header should render extended Header 1`] = `
           </div>
           <div
             class="c12"
-            data-testid="autocomplete-box-list"
-            role="listbox"
-            tabindex="0"
+            data-testid="listbox-wrapper"
           >
             <button
               class="c13"
@@ -938,9 +939,11 @@ exports[`Component: Header should render extended Header 1`] = `
             </button>
             <ul
               class="c14"
+              role="listbox"
             >
               <li
                 class="c15"
+                role="option"
               >
                 <a
                   class="c16"
@@ -1006,7 +1009,7 @@ exports[`Component: Header should render extended Header 1`] = `
               tabindex="0"
             >
               <button
-                class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c28"
+                class="sc-fzoyAV c28"
                 type="button"
               >
                 <i
@@ -1352,7 +1355,7 @@ exports[`Component: Header should render extended Header 1`] = `
               tabindex="0"
             >
               <button
-                class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c28"
+                class="sc-fzoyAV c28"
                 type="button"
               >
                 <i

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 export const theme: DefaultTheme = {
@@ -19,6 +19,6 @@ export const theme: DefaultTheme = {
   },
 };
 
-export const renderWithTheme = (component: any) => (
+export const renderWithTheme = (component: ReactNode) => (
   <ThemeProvider theme={theme}>{component}</ThemeProvider>
 );

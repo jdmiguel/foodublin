@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Input from '../Input/Input';
@@ -37,7 +37,7 @@ const StyledAutocomplete = styled.div`
   }
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(Input)<{ isListboxFocused: boolean }>`
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   transition: background-color 0.2s ease-out;
   &:hover {
@@ -46,37 +46,25 @@ const StyledInput = styled(Input)`
   &:focus {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
-  &.active {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+
+  ${({ isListboxFocused }) =>
+    isListboxFocused &&
+    `border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;`}
+
   input {
     cursor: pointer;
   }
 `;
 
-const StyledLoader = styled.div`
-  width: 100%;
-  height: 100%;
-  background: ${(props) => props.theme.palette.LIGHT_MAX};
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media only screen and (min-width: 992px) {
-    height: 470px;
-  }
-  img {
-    margin-bottom: 8px;
-  }
-  p {
-    font-size: 0.85rem;
-  }
-`;
-
-const StyledListbox = styled.div`
-  display: none;
+const StyledListboxWrapper = styled.div<{ isListboxFocused: boolean }>`
+  visibility: ${({ isListboxFocused }) =>
+    isListboxFocused ? 'visible' : 'hidden'};
+  opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
+  transform: translateY(
+    ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
+  );
+  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
@@ -95,7 +83,8 @@ const StyledListbox = styled.div`
   border-top: 0;
   outline: none;
   &.active {
-    display: block;
+    visibility: visible;
+    opacity: 1;
   }
   @media only screen and (min-width: 768px) {
     top: 55px;
@@ -131,11 +120,31 @@ const StyledCloseButton = styled.button`
   }
 `;
 
-const StyledList = styled.ul`
+const StyledLoader = styled.div`
+  width: 100%;
+  height: 100%;
+  background: ${(props) => props.theme.palette.LIGHT_MAX};
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 992px) {
+    height: 470px;
+  }
+  img {
+    margin-bottom: 8px;
+  }
+  p {
+    font-size: 0.85rem;
+  }
+`;
+
+const StyledListbox = styled.ul`
   width: 100%;
 `;
 
-const StyledListElement = styled.li`
+const StyledListboxItem = styled.li`
   width: 100%;
   border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
   list-style: none;
@@ -190,51 +199,39 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   withSearchIcon,
   className,
 }) => {
-  const listRef = useRef<HTMLDivElement>(null);
-  const [currentValue, setCurrentValue] = useState('');
+  const [value, setValue] = useState('');
   const [focusedPlaceholder, setFocusedPlaceholder] = useState(
     PLACEHOLDER_TEXT.BLURRED,
   );
-  const [isBoxListFocused, setIsBoxListFocused] = useState(false);
-  const [inputClassName, setInputClassName] = useState('');
-  const [listClassName, setListClassName] = useState('');
+  const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    if (currentValue.length > 2 && fetchSuggestions) {
-      fetchSuggestions(currentValue);
+    if (value.length > 2 && fetchSuggestions) {
+      fetchSuggestions(value);
     }
-  }, [currentValue, fetchSuggestions]);
-
-  useLayoutEffect(() => {
-    if (isBoxListFocused) {
-      setListClassName('active');
-      setInputClassName('active');
-      listRef.current?.focus();
-    } else {
-      setListClassName('');
-      setInputClassName('');
-    }
-  }, [isBoxListFocused, listClassName, inputClassName]);
+  }, [value, fetchSuggestions]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
 
-    setIsBoxListFocused(currentValue.length > 2);
-    setCurrentValue(currentValue);
+    setIsListboxFocused(currentValue.length > 2);
+    setValue(currentValue);
   };
 
   const handleInputFocus = () => {
-    setFocusedPlaceholder(PLACEHOLDER_TEXT.FOCUSED);
-    currentValue.length > 2 && setIsBoxListFocused(true);
+    if (value.length === 0) {
+      setFocusedPlaceholder(PLACEHOLDER_TEXT.FOCUSED);
+    } else if (value.length > 2) {
+      setIsListboxFocused(true);
+    }
   };
 
   const handleInputBlur = () => {
-    setFocusedPlaceholder(PLACEHOLDER_TEXT.BLURRED);
-    !isBoxListFocused && setIsBoxListFocused(false);
-  };
+    value.length === 0 && setFocusedPlaceholder(PLACEHOLDER_TEXT.BLURRED);
 
-  const handleListBlur = () => {
-    isBoxListFocused && setIsBoxListFocused(false);
+    setTimeout(() => {
+      setIsListboxFocused(false);
+    }, 100);
   };
 
   const handleSuggestionClick = (
@@ -245,35 +242,30 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     event.preventDefault();
 
     selectSuggestion(id);
-    setCurrentValue(localName);
-    setIsBoxListFocused(false);
+    setValue(localName);
   };
 
   return (
     <StyledAutocomplete data-testid="autocomplete" className={className}>
       <StyledInput
         type="text"
+        isListboxFocused={isListboxFocused}
         placeholder={focusedPlaceholder}
         onChange={handleChange}
-        value={currentValue}
+        value={value}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         withSearchIcon={withSearchIcon}
-        className={inputClassName}
       />
-      <StyledListbox
-        role="listbox"
-        ref={listRef}
-        onBlur={handleListBlur}
-        tabIndex={0}
-        data-testid="autocomplete-box-list"
-        className={listClassName}
+      <StyledListboxWrapper
+        isListboxFocused={isListboxFocused}
+        data-testid="listbox-wrapper"
       >
         <StyledCloseButton
           type="button"
           onClick={(event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
-            setIsBoxListFocused(false);
+            setIsListboxFocused(false);
           }}
         >
           <i className="material-icons">close</i>
@@ -284,14 +276,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             <p>Coming right up...</p>
           </StyledLoader>
         ) : (
-          <StyledList>
+          <StyledListbox role="listbox">
             {suggestions.map(
               ({ id, thumbSrc, localName, locationName }: Suggestion) => (
-                <StyledListElement key={id}>
+                <StyledListboxItem key={id} role="option">
                   <StyledLink
-                    onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {
-                      handleSuggestionClick(event, id, localName);
-                    }}
+                    onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                      handleSuggestionClick(event, id, localName)
+                    }
                   >
                     <StyledThumb src={thumbSrc} alt={localName} />
                     <StyledTextWrapper>
@@ -299,12 +291,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                       <StyledLocation>{locationName}</StyledLocation>
                     </StyledTextWrapper>
                   </StyledLink>
-                </StyledListElement>
+                </StyledListboxItem>
               ),
             )}
-          </StyledList>
+          </StyledListbox>
         )}
-      </StyledListbox>
+      </StyledListboxWrapper>
     </StyledAutocomplete>
   );
 };

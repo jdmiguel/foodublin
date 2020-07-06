@@ -33,7 +33,7 @@ export const EMPTY_SUGGESTIONS_MOCK = [
 
 export const AUTOCOMPLETE_PROPS_MOCK = {
   loaderSrc: 'loader.svg',
-  suggestions: SUGGESTIONS_MOCK,
+  suggestions: EMPTY_SUGGESTIONS_MOCK,
   fetchSuggestions: () => {},
   selectSuggestion: () => {},
   loading: false,
