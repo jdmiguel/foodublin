@@ -218,7 +218,7 @@ exports[`Component: Dropdown should render 1`] = `
     tabindex="0"
   >
     <button
-      class="Dropdown__StyledClearButton-sc-1cz9k6i-4 c4"
+      class="sc-AxhUy c4"
       type="button"
     >
       <i

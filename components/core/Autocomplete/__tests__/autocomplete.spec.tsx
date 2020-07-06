@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import 'jest-styled-components';
 
 import { Autocomplete } from '../Autocomplete';
 
@@ -16,22 +17,9 @@ describe('Component: Autocomplete', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should not show suggestions list with a search of less than 3 characters', () => {
-    const { getByPlaceholderText, getByTestId } = render(
-      renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />),
-    );
-
-    fireEvent.change(getByPlaceholderText('Search for locals...'), {
-      target: { value: 'tr' },
-    });
-    expect(
-      getByTestId('autocomplete-box-list').getAttribute('class'),
-    ).not.toContain('active');
-  });
-
   it('should show suggestions list with a search of 3 characters and call callback function', () => {
     const handleFetchSuggestion = jest.fn();
-    const { getByPlaceholderText, getByTestId } = render(
+    const { getByTestId, getByPlaceholderText } = render(
       renderWithTheme(
         <Autocomplete
           {...AUTOCOMPLETE_PROPS_MOCK}
@@ -39,19 +27,24 @@ describe('Component: Autocomplete', () => {
         />,
       ),
     );
+    const listboxWrapper = getByTestId('listbox-wrapper');
 
+    // check if suggestions list is not showed
+    expect(listboxWrapper).toHaveStyleRule('opacity', '0');
+    expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+
+    // text 3 characters, check if suggestions list is showed and call callback function
     fireEvent.change(getByPlaceholderText('Search for locals...'), {
       target: { value: 'tre' },
     });
-    expect(
-      getByTestId('autocomplete-box-list').getAttribute('class'),
-    ).toContain('active');
+    expect(listboxWrapper).toHaveStyleRule('opacity', '1');
+    expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
     expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
   });
 
   it('should show/hide suggestions list', async () => {
     const handleSelectSuggestion = jest.fn();
-    const { getByPlaceholderText, getByTestId, findByPlaceholderText } = render(
+    const { getByTestId, queryByTestId, getByPlaceholderText } = render(
       renderWithTheme(
         <Autocomplete
           {...AUTOCOMPLETE_PROPS_MOCK}
@@ -59,44 +52,43 @@ describe('Component: Autocomplete', () => {
         />,
       ),
     );
-    const listbox = getByTestId('autocomplete-box-list');
+    const listboxWrapper = getByTestId('listbox-wrapper');
     const input = getByPlaceholderText('Search for locals...');
-    const closeButton = listbox.querySelector('button');
+    const closeButton = listboxWrapper.querySelector('button');
 
-    // show options list by typing three characters
+    // show suggestions list by texting three characters and hide it by activating blur event
     fireEvent.change(input, { target: { value: 'tre' } });
-    expect(listbox.getAttribute('class')).toContain('active');
+    fireEvent.blur(input);
 
-    // hide options list by activating blur event
-    fireEvent.blur(listbox);
-    expect(listbox.getAttribute('class')).not.toContain('active');
+    await waitFor(() => {
+      expect(queryByTestId('listbox-wrapper')).toHaveStyleRule('opacity', '0');
+      expect(queryByTestId('listbox-wrapper')).toHaveStyleRule(
+        'visibility',
+        'hidden',
+      );
+    });
 
-    // show options list by activating focus event
+    // show suggestions list by activating focus event
     fireEvent.focus(input);
-    expect(listbox.getAttribute('class')).toContain('active');
+    expect(listboxWrapper).toHaveStyleRule('opacity', '1');
+    expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
 
-    // hide options list by clicking close buton
+    // hide suggestions list by clicking close buton
     fireEvent.click(closeButton);
-    expect(listbox.getAttribute('class')).not.toContain('active');
+    expect(listboxWrapper).toHaveStyleRule('opacity', '0');
+    expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
 
-    // show options list by activating focus event
+    // show suggestions list by activating focus event
     fireEvent.focus(input);
-    expect(listbox.getAttribute('class')).toContain('active');
+    expect(listboxWrapper).toHaveStyleRule('opacity', '1');
+    expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
 
-    // call callback function and hide options list by clicking any suggestion
-    const firstSuggestionLink = listbox
+    // call callback function by clicking any suggestion
+    const firstSuggestionLink = listboxWrapper
       .querySelectorAll('li')[0]
       .querySelector('a');
 
     fireEvent.click(firstSuggestionLink);
     expect(handleSelectSuggestion).toHaveBeenCalledTimes(1);
-
-    const inputUpdated = await findByPlaceholderText(
-      'Start typing to search...',
-    );
-    const castedInput = inputUpdated as HTMLInputElement;
-
-    expect(castedInput.value).toBe('Manifesto');
-    expect(listbox.getAttribute('class')).not.toContain('active');
   });
 });

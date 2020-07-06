@@ -60,17 +60,19 @@ exports[`Component: Autocomplete should render 1`] = `
   background-color: #FDF3E5;
 }
 
-.c2.active {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .c2 input {
   cursor: pointer;
 }
 
 .c4 {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY( 10px );
+  -ms-transform: translateY( 10px );
+  transform: translateY( 10px );
+  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background: #FFFFFF;
@@ -91,7 +93,8 @@ exports[`Component: Autocomplete should render 1`] = `
 }
 
 .c4.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .c5 {
@@ -224,9 +227,7 @@ exports[`Component: Autocomplete should render 1`] = `
   </div>
   <div
     class="c4"
-    data-testid="autocomplete-box-list"
-    role="listbox"
-    tabindex="0"
+    data-testid="listbox-wrapper"
   >
     <button
       class="c5"
@@ -240,85 +241,29 @@ exports[`Component: Autocomplete should render 1`] = `
     </button>
     <ul
       class="c6"
+      role="listbox"
     >
       <li
         class="c7"
+        role="option"
       >
         <a
           class="c8"
         >
           <img
-            alt="Manifesto"
+            alt=""
             class="c9"
-            src="https://b.zmtcdn.com/data/pictures/chains/6/16518306/cacec634483f94b6b8a50b85a7b226fc_featured_v2.jpg?fit=around%7C150%3A150&crop=150%3A150%3B%2A%2C%2A"
+            src=""
           />
           <div
             class="c10"
           >
             <p
               class="c11"
-            >
-              Manifesto
-            </p>
+            />
             <p
               class="c12"
-            >
-              Rathmines
-            </p>
-          </div>
-        </a>
-      </li>
-      <li
-        class="c7"
-      >
-        <a
-          class="c8"
-        >
-          <img
-            alt="Dragon Inn"
-            class="c9"
-            src="https://b.zmtcdn.com/data/pictures/7/9101117/46ff6ab924384eacb9a3493ba158f9b7_featured_v2.jpg?fit=around%7C150%3A150&crop=150%3A150%3B%2A%2C%2A"
-          />
-          <div
-            class="c10"
-          >
-            <p
-              class="c11"
-            >
-              Dragon Inn
-            </p>
-            <p
-              class="c12"
-            >
-              South City West
-            </p>
-          </div>
-        </a>
-      </li>
-      <li
-        class="c7"
-      >
-        <a
-          class="c8"
-        >
-          <img
-            alt="Casa Del Toro"
-            class="c9"
-            src="https://b.zmtcdn.com/data/pictures/9/16518269/5ef3412808820207794fb57f0cb3ba56_featured_v2.jpg?fit=around%7C150%3A150&crop=150%3A150%3B%2A%2C%2A"
-          />
-          <div
-            class="c10"
-          >
-            <p
-              class="c11"
-            >
-              Casa Del Toro
-            </p>
-            <p
-              class="c12"
-            >
-              Drumcondra
-            </p>
+            />
           </div>
         </a>
       </li>

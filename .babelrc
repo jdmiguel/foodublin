@@ -30,8 +30,8 @@
         [
           "babel-plugin-styled-components",
           {
-            "ssr": true,
-            "displayName": true
+            "ssr": false,
+            "displayName": false
           }
         ]
       ]
