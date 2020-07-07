@@ -23,9 +23,7 @@ type DataAction = { type: 'select'; id: number } | { type: 'clear' };
 const StyledFilterWrapper = styled.div`
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  @media only screen and (min-width: 480px) {
-    padding: 20px 20px 10px;
-  }
+  padding: 20px 20px 10px;
   @media only screen and (min-width: 768px) {
     padding: 20px;
   }
