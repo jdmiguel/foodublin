@@ -3,7 +3,8 @@
 exports[`Component: Title should render 1`] = `
 .c0 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  line-height: 30px;
   font-weight: 500;
   color: #222C3C;
   margin-bottom: 35px;
@@ -12,6 +13,7 @@ exports[`Component: Title should render 1`] = `
 @media only screen and (min-width:768px) {
   .c0 {
     font-size: 2.3rem;
+    line-height: 32px;
   }
 }
 
@@ -24,6 +26,6 @@ exports[`Component: Title should render 1`] = `
 <h3
   class="c0"
 >
-  default-title
+  This is a default title
 </h3>
 `;

@@ -7,12 +7,14 @@ type TitleProps = {
 
 const StyledTitle = styled.h3`
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  line-height: 30px;
   font-weight: 500;
   color: ${(props) => props.theme.palette.DARK_MAX};
   margin-bottom: 35px;
   @media only screen and (min-width: 768px) {
     font-size: 2.3rem;
+    line-height: 32px;
   }
   @media only screen and (min-width: 1024px) {
     text-align: left;
