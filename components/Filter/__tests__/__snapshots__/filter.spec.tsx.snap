@@ -4,6 +4,7 @@ exports[`Component: Filter should render 1`] = `
 .c0 {
   background-color: #FFFFFF;
   border-bottom: 1px solid #D8D8D8;
+  padding: 20px 20px 10px;
 }
 
 .c1 {
@@ -40,12 +41,6 @@ exports[`Component: Filter should render 1`] = `
   line-height: 18px;
   margin-left: 10px;
   display: block;
-}
-
-@media only screen and (min-width:480px) {
-  .c0 {
-    padding: 20px 20px 10px;
-  }
 }
 
 @media only screen and (min-width:768px) {
