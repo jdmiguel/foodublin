@@ -2,20 +2,6 @@
 
 exports[`Component: Filter should render 1`] = `
 .c0 {
-  width: 100%;
-  max-width: 71rem;
-  padding: 20px 0 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   background-color: #FFFFFF;
   border-bottom: 1px solid #D8D8D8;
 }
@@ -30,7 +16,30 @@ exports[`Component: Filter should render 1`] = `
   color: #585858;
   outline: none;
   cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   background-color: #F3F3F3;
+}
+
+.c2 {
+  text-transform: uppercase;
+}
+
+.c3 {
+  display: none;
+}
+
+.c4 {
+  font-size: 1.1rem;
+  line-height: 18px;
+  margin-left: 10px;
+  display: block;
 }
 
 @media only screen and (min-width:480px) {
@@ -41,11 +50,7 @@ exports[`Component: Filter should render 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
-    padding: 25px 0;
-    -webkit-box-pack: space-evenly;
-    -webkit-justify-content: space-evenly;
-    -ms-flex-pack: space-evenly;
-    justify-content: space-evenly;
+    padding: 20px;
   }
 }
 
@@ -90,28 +95,100 @@ exports[`Component: Filter should render 1`] = `
   }
 }
 
+@media only screen and (min-width:920px) {
+  .c3 {
+    display: block;
+  }
+}
+
+@media only screen and (min-width:920px) {
+  .c4 {
+    display: none;
+  }
+}
+
 <div
-  class="c0"
+  class="c0  grid-container"
 >
-  <button
-    class="c1"
+  <div
+    class="grid-x grid-margin-x"
   >
-    COST - high to low
-  </button>
-  <button
-    class="c1"
-  >
-    COST - low to high
-  </button>
-  <button
-    class="c1"
-  >
-    RATING - high to low
-  </button>
-  <button
-    class="c1"
-  >
-    RATING - low to high
-  </button>
+    <button
+      class="c1 cell small-6 medium-3 large-3"
+    >
+      <span
+        class="c2"
+      >
+        cost
+      </span>
+      <span
+        class="c3"
+      >
+         - high to low
+      </span>
+      <i
+        class="c4 material-icons"
+      >
+        keyboard_arrow_up
+      </i>
+    </button>
+    <button
+      class="c1 cell small-6 medium-3 large-3"
+    >
+      <span
+        class="c2"
+      >
+        cost
+      </span>
+      <span
+        class="c3"
+      >
+         - low to high
+      </span>
+      <i
+        class="c4 material-icons"
+      >
+        keyboard_arrow_down
+      </i>
+    </button>
+    <button
+      class="c1 cell small-6 medium-3 large-3"
+    >
+      <span
+        class="c2"
+      >
+        rank
+      </span>
+      <span
+        class="c3"
+      >
+         - high to low
+      </span>
+      <i
+        class="c4 material-icons"
+      >
+        keyboard_arrow_up
+      </i>
+    </button>
+    <button
+      class="c1 cell small-6 medium-3 large-3"
+    >
+      <span
+        class="c2"
+      >
+        rank
+      </span>
+      <span
+        class="c3"
+      >
+         - low to high
+      </span>
+      <i
+        class="c4 material-icons"
+      >
+        keyboard_arrow_down
+      </i>
+    </button>
+  </div>
 </div>
 `;

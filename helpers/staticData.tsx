@@ -219,7 +219,7 @@ export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/highlig
 
 enum FILTER_SORT {
   cost = 'cost',
-  rating = 'rating',
+  rank = 'rank',
 }
 enum FILTER_ORDER {
   asc = 'asc',
@@ -228,26 +228,34 @@ enum FILTER_ORDER {
 
 export const FILTER_DATA = [
   {
-    text: 'COST - high to low',
+    primaryText: 'cost',
+    secondaryText: '- high to low',
+    icon: 'keyboard_arrow_up',
     sort: FILTER_SORT.cost,
     order: FILTER_ORDER.asc,
     id: 1,
   },
   {
-    text: 'COST - low to high',
+    primaryText: 'cost',
+    secondaryText: '- low to high',
+    icon: 'keyboard_arrow_down',
     sort: FILTER_SORT.cost,
     order: FILTER_ORDER.desc,
     id: 2,
   },
   {
-    text: 'RATING - high to low',
-    sort: FILTER_SORT.rating,
+    primaryText: 'rank',
+    secondaryText: '- high to low',
+    icon: 'keyboard_arrow_up',
+    sort: FILTER_SORT.rank,
     order: FILTER_ORDER.asc,
     id: 3,
   },
   {
-    text: 'RATING - low to high',
-    sort: FILTER_SORT.rating,
+    primaryText: 'rank',
+    secondaryText: '- low to high',
+    icon: 'keyboard_arrow_down',
+    sort: FILTER_SORT.rank,
     order: FILTER_ORDER.desc,
     id: 4,
   },
