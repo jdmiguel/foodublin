@@ -2,11 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { HIGHLIGHTED_RESTAURANTS } from '../../../helpers/staticData';
+import Title from '../../core/Title/Title';
 import HighlightCard from '../../core/HighlightCard/HighlightCard';
-
-type HighlightsProps = {
-  title: string;
-};
 
 const StyledHighlights = styled.div`
   margin-top: 50px;
@@ -24,23 +21,10 @@ const StyledHighlightWrapper = styled.div`
     justify-content: space-between;
   }
 `;
-const StyledTitle = styled.h4`
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 500;
-  color: ${(props) => props.theme.palette.DARK_MAX};
-  margin-bottom: 35px;
-  @media only screen and (min-width: 768px) {
-    font-size: 2.3rem;
-  }
-  @media only screen and (min-width: 1024px) {
-    text-align: left;
-  }
-`;
 
-const HighLights: React.FC<HighlightsProps> = ({ title }) => (
+const HighLights: React.FC = () => (
   <StyledHighlights className="grid-container">
-    <StyledTitle>{title}</StyledTitle>
+    <Title text="Featured restaurants" />
     <StyledHighlightWrapper className="grid-x grid-margin-x">
       {HIGHLIGHTED_RESTAURANTS.map((restaurant) => (
         <HighlightCard
