@@ -216,6 +216,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
 ];
 
 export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/highlight-generic.png`;
+export const THUMB_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/generic-thumb.png`;
 
 enum FILTER_SORT {
   cost = 'cost',

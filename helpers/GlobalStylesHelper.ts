@@ -21,6 +21,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     margin: 0;
+    overflow-x: hidden;
   }
   article,
   aside,
