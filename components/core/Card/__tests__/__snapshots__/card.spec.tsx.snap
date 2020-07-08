@@ -33,7 +33,7 @@ exports[`should render 1`] = `
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  padding: 10px 0;
+  padding: 5px 0;
   width: 65%;
 }
 
@@ -62,7 +62,7 @@ exports[`should render 1`] = `
   font-size: 1rem;
   line-height: 1rem;
   font-weight: 500;
-  color: #222C3C;
+  color: #585858;
 }
 
 .c5 {
@@ -72,7 +72,7 @@ exports[`should render 1`] = `
   width: 92%;
   font-size: 0.9rem;
   line-height: 0.9rem;
-  color: #585858;
+  color: #89959B;
 }
 
 @media only screen and (min-width:768px) {
@@ -96,6 +96,14 @@ exports[`should render 1`] = `
   }
 }
 
+@media only screen and (min-width:768px) {
+  .c2 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 10px 0;
+  }
+}
+
 @media only screen and (min-width:1200px) {
   .c3 {
     font-size: 1.3rem;
@@ -105,8 +113,8 @@ exports[`should render 1`] = `
 
 @media only screen and (min-width:1200px) {
   .c4 {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.1rem;
   }
 }
 

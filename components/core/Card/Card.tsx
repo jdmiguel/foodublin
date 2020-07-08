@@ -63,8 +63,13 @@ const StyledText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 10px 0;
+  padding: 5px 0;
   width: 65%;
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 10px 0;
+  }
 `;
 
 const StyledTitle = styled.a`
@@ -88,10 +93,10 @@ const StyledFirstText = styled.p`
   font-size: 1rem;
   line-height: 1rem;
   font-weight: 500;
-  color: ${(props) => props.theme.palette.DARK_MAX};
+  color: ${(props) => props.theme.palette.DARK_MEDIUM};
   @media only screen and (min-width: 1200px) {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.1rem;
   }
 `;
 
@@ -99,7 +104,7 @@ const StyledSecondText = styled.p`
   ${CardTextCSS}
   font-size: 0.9rem;
   line-height: 0.9rem;
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${(props) => props.theme.palette.DARK_MIN};
   @media only screen and (min-width: 1200px) {
     font-size: 1rem;
     line-height: 1rem;
