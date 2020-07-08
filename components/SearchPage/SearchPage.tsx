@@ -19,7 +19,7 @@ const StyledSearchPage = styled.div`
 `;
 
 const StyledCardsWrapper = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 35px;
   display: flex;
   justify-content: center;
@@ -28,9 +28,7 @@ const StyledCardsWrapper = styled.div`
   }
   @media only screen and (min-width: 768px) {
     justify-content: flex-start;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin-top: 75px;
+    margin-top: 35px;
   }
 `;
 
