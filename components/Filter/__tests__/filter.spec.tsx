@@ -27,18 +27,18 @@ describe('Component: Filter', () => {
     const fourthFilterItem = filter.querySelector('button:nth-of-type(4)');
 
     // check background color of first filterItem and rest filterItems
-    expect(firstFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
-    expect(secondFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
-    expect(thirdFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
-    expect(fourthFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
+    expect(firstFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(secondFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(thirdFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(fourthFilterItem).toHaveStyleRule('background-color', '#E5EAED');
 
     fireEvent.click(firstFilterItem);
 
     //  check background color of first filterItem and rest filterItems and call callback
     expect(firstFilterItem).toHaveStyleRule('background-color', '#FDF3E5');
-    expect(secondFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
-    expect(thirdFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
-    expect(fourthFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
+    expect(secondFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(thirdFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(fourthFilterItem).toHaveStyleRule('background-color', '#E5EAED');
     expect(handleSelect).toHaveBeenCalledTimes(1);
   });
 });
