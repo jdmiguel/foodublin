@@ -7,7 +7,7 @@ type TitleProps = {
 
 const StyledTitle = styled.h3`
   text-align: center;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   line-height: 30px;
   font-weight: 500;
   color: ${(props) => props.theme.palette.DARK_MAX};

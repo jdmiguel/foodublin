@@ -20,25 +20,11 @@ type FilterProps = {
 
 type DataAction = { type: 'select'; id: number } | { type: 'clear' };
 
-const StyledFilterWrapper = styled.div`
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  padding: 20px 20px 10px;
-  @media only screen and (min-width: 768px) {
-    padding: 20px;
-  }
-  @media only screen and (min-width: 992px) {
-    border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-    border-radius: 4px;
-  }
-`;
-
 const StyledFilterItem = styled.button<{ isActive: boolean }>`
   width: 144px;
   padding: 15px 8px;
   margin: 0 8px 15px;
   border: 1px solid ${(props) => props.theme.palette.DARK_MIN};
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
   font-size: 0.9rem;
   color: ${(props) => props.theme.palette.DARK_MEDIUM};
   outline: none;
@@ -46,7 +32,7 @@ const StyledFilterItem = styled.button<{ isActive: boolean }>`
   display: flex;
   justify-content: center;
   background-color: ${({ theme, isActive }) =>
-    `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MEDIUM}`};
+    `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MIN}`};
 
   @media only screen and (min-width: 400px) {
     width: 180px;
@@ -105,7 +91,7 @@ const dataReducer = (data: FilterData[], action: DataAction) => {
   }
 };
 
-const Filter: React.FC<FilterProps> = ({ onSelect, data, className }) => {
+const Filter: React.FC<FilterProps> = ({ onSelect, data }) => {
   const dataWithIsActiveProp = data.map((dataItem) => ({
     ...dataItem,
     isActive: false,
@@ -120,34 +106,28 @@ const Filter: React.FC<FilterProps> = ({ onSelect, data, className }) => {
     onSelect && onSelect(sort, order);
   };
 
-  const filterClasses = `${className || ''} grid-container`;
-
   return (
-    <StyledFilterWrapper className={filterClasses}>
-      <div className="grid-x grid-margin-x">
-        {dataState.map((item: FilterDataItemTypeWithIsActive) => (
-          <StyledFilterItem
-            isActive={item.isActive}
-            className="cell small-6 medium-3 large-3"
-            key={item.id}
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              event.preventDefault();
-              handleSelect(item.id, item.sort, item.order);
-            }}
-          >
-            <StyledFilterPrimaryText>
-              {item.primaryText}
-            </StyledFilterPrimaryText>
-            <StyledFilterSecondaryText>
-              {` ${item.secondaryText}`}
-            </StyledFilterSecondaryText>
-            <StyledFilterIcon className="material-icons">
-              {item.icon}
-            </StyledFilterIcon>
-          </StyledFilterItem>
-        ))}
-      </div>
-    </StyledFilterWrapper>
+    <div className="grid-x grid-margin-x">
+      {dataState.map((item) => (
+        <StyledFilterItem
+          isActive={item.isActive}
+          className="cell small-6 medium-3 large-3"
+          key={item.id}
+          onClick={(event) => {
+            event.preventDefault();
+            handleSelect(item.id, item.sort, item.order);
+          }}
+        >
+          <StyledFilterPrimaryText>{item.primaryText}</StyledFilterPrimaryText>
+          <StyledFilterSecondaryText>
+            {` ${item.secondaryText}`}
+          </StyledFilterSecondaryText>
+          <StyledFilterIcon className="material-icons">
+            {item.icon}
+          </StyledFilterIcon>
+        </StyledFilterItem>
+      ))}
+    </div>
   );
 };
 
