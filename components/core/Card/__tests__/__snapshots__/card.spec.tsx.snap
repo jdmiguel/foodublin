@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 485px;
+  background-color: #FFFFFF;
+  border: 1px solid #D8D8D8;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
+.c1 {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 10px 0;
+  width: 65%;
+}
+
+.c3 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c3:hover {
+  color: #EC7E00;
+}
+
+.c4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: #222C3C;
+}
+
+.c5 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  color: #585858;
+}
+
+@media only screen and (min-width:768px) {
+
+}
+
+@media only screen and (min-width:768px) {
+
+}
+
+@media only screen and (min-width:1200px) {
+
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c3 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c4 {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c5 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="LazyImage-Placeholder"
+  >
+    <img
+      alt="restaurant"
+      class="c1"
+      src="http://localhost:3000/static/images/generic-thumb.png"
+    />
+  </div>
+  <div
+    class="c2"
+  >
+    <a
+      class="c3"
+      href=""
+      target="blank"
+    >
+      Default title
+    </a>
+    <p
+      class="c4"
+    >
+      Default firstText
+    </p>
+    <p
+      class="c5"
+    >
+      Default secondText
+    </p>
+  </div>
+</div>
+`;
