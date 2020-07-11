@@ -4,6 +4,10 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: { jsx: true },
   },
+  globals: {
+    module: 'readonly',
+    process: 'readonly',
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -21,5 +25,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
   },
 };

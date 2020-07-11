@@ -18,7 +18,7 @@ const StyledHighlightCard = styled.div`
   width: 100%;
   max-width: 350px;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  padding: 1rem;
+  padding: 15px;
   border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
   border-radius: 4px;
   img {
