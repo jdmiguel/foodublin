@@ -1,14 +1,11 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 
-import DetailPage from '../../components/DetailPage/DetailPage';
-
-/*type DetailProps = {
+type DetailProps = {
   id: string;
-};*/
+};
 
-//const Detail = ({ id }: DetailProps) => <DetailPage />;
-const Detail = () => <DetailPage />;
+const Detail = ({ id }: DetailProps) => <div>Detail: {id}</div>;
 
 Detail.getInitialProps = async ({ query }: NextPageContext) => {
   const { id } = query;
