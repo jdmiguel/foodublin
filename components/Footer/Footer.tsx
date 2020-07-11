@@ -6,7 +6,7 @@ type FooterProps = {
 };
 
 const StyledFooter = styled.footer`
-  background-color: ${(props) => props.theme.palette.DARK_MAX};
+  background-color: ${(props) => props.theme.palette.SECONDARY};
   padding: 25px 0;
   display: flex;
   justify-content: center;
