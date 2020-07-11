@@ -69,8 +69,11 @@ const StyledJumbotron = styled.div<{ bgImg: string }>`
 const StyledOverlay = styled.div`
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.7) 60%
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0.3) 100%
   );
   width: 100%;
   height: 100%;
@@ -82,23 +85,6 @@ const StyledOverlay = styled.div`
   padding: 50px 0;
   @media only screen and (min-width: 640px) {
     padding: 70px 0;
-  }
-  @media only screen and (min-width: 768px) {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.8) 48%
-    );
-  }
-  @media only screen and (min-width: 992px) {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.5) 25%,
-      rgba(0, 0, 0, 0.6) 50%,
-      rgba(0, 0, 0, 0.5) 75%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
   }
 `;
 
