@@ -12,9 +12,9 @@ export const theme: DefaultTheme = {
     LIGHT_MEDIUM: '#F3F3F3',
     LIGHT_MIN: '#E5EAED',
     LIGHT_SOFT: '#D8D8D8',
-    DARK_MAX: '#222C3C',
+    DARK_MAX: '#2f3235',
     DARK_MEDIUM: '#585858',
-    DARK_MIN: '#89959B',
+    DARK_MIN: '#798186',
     DARK_SOFT: '#A7A7A7',
   },
 };
