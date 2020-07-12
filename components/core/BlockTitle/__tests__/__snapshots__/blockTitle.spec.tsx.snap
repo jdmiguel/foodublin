@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: BlockTitle should render 1`] = `
+.c0 {
+  color: #585858;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    font-size: 1.45rem;
+  }
+}
+
+<h4
+  class="c0"
+>
+  This is a default block title
+</h4>
+`;

@@ -2,7 +2,7 @@
 
 exports[`Component: Footer should render 1`] = `
 .c0 {
-  background-color: #222C3C;
+  background-color: #660000;
   padding: 25px 0;
   display: -webkit-box;
   display: -webkit-flex;
