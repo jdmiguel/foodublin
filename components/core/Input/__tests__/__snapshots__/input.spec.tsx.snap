@@ -34,7 +34,7 @@ exports[`Component: Input should not render icon 1`] = `
   line-height: 20px;
   border: none;
   outline: none;
-  color: #222C3C;
+  color: #2f3235;
   background: transparent;
 }
 
@@ -91,7 +91,7 @@ exports[`Component: Input should render including icon and update value 1`] = `
   line-height: 20px;
   border: none;
   outline: none;
-  color: #222C3C;
+  color: #2f3235;
   background: transparent;
 }
 

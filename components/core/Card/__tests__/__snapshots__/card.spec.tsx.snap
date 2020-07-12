@@ -72,7 +72,7 @@ exports[`should render 1`] = `
   width: 92%;
   font-size: 0.9rem;
   line-height: 0.9rem;
-  color: #89959B;
+  color: #798186;
 }
 
 @media only screen and (min-width:768px) {

@@ -34,7 +34,7 @@ exports[`Component: Autocomplete should render 1`] = `
   line-height: 20px;
   border: none;
   outline: none;
-  color: #222C3C;
+  color: #2f3235;
   background: transparent;
 }
 
@@ -137,7 +137,7 @@ exports[`Component: Autocomplete should render 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   padding: 6px 11px;
-  color: #222C3C;
+  color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +168,7 @@ exports[`Component: Autocomplete should render 1`] = `
 }
 
 .c11 {
-  color: #222C3C;
+  color: #2f3235;
   font-size: 1.05rem;
 }
 
