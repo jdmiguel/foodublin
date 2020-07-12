@@ -4,9 +4,6 @@ exports[`should render 1`] = `
 .c0 {
   width: 100%;
   max-width: 485px;
-  background-color: #FFFFFF;
-  border: 1px solid #D8D8D8;
-  border-radius: 4px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -126,7 +123,7 @@ exports[`should render 1`] = `
 }
 
 <div
-  class="c0"
+  class="c0 undefined paper"
 >
   <div
     class="LazyImage-Placeholder"

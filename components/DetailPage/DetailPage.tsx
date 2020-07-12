@@ -130,8 +130,6 @@ const StyledPhone = styled.h5`
 `;
 
 const StyledAddressWrapper = styled.div`
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
   padding: 15px;
 `;
 
@@ -194,7 +192,7 @@ const DetailPage: React.FC = () => (
             </div>
           </div>
           <div className="cell small-12 medium-4">
-            <StyledAddressWrapper>
+            <StyledAddressWrapper className="paper">
               <StyledSectionBlock>
                 <BlockTitle text="Phone" />
                 <StyledPhone>{phone}</StyledPhone>

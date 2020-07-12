@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BlockText from '../core/BlockText/BlockText';
-
 type AddressProps = {
   mapSrc: string;
   address: string;
@@ -41,7 +39,7 @@ const Address = ({ mapSrc, address }: AddressProps) => (
     </StyledAddressMapWrapper>
     <StyledAddress>
       <StyledAddressIcon className="material-icons">place</StyledAddressIcon>
-      <BlockText text={address} />
+      <p>{address}</p>
     </StyledAddress>
   </>
 );
