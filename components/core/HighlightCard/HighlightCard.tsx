@@ -20,10 +20,7 @@ type HighlightCardProps = {
 const StyledHighlightCard = styled.div`
   width: 100%;
   max-width: 350px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   padding: 15px;
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  border-radius: 4px;
   img {
     width: 100%;
     max-width: 350px;
@@ -65,7 +62,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   linkText,
   linkUrl,
 }) => (
-  <StyledHighlightCard className={className}>
+  <StyledHighlightCard className={`${className} paper`}>
     <LazyImage
       src={imgSrc}
       alt={imgAlt}

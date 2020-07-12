@@ -271,5 +271,11 @@ export const GlobalStyles = createGlobalStyle`
  textarea,
  * {
     font-family: 'Baloo Chettan 2', sans-serif;
-  }   
+  }  
+
+.paper{
+  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
+  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  border-radius: 4px;
+} 
 `;

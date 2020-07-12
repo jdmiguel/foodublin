@@ -37,9 +37,6 @@ const CardImageCSS = css`
 const StyledCard = styled.div`
   width: 100%;
   max-width: 485px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  border-radius: 4px;
   display: flex;
   overflow: hidden;
 `;
@@ -120,7 +117,7 @@ const Card: React.FC<CardProps> = ({
   firstText,
   secondText,
 }) => (
-  <StyledCard className={className}>
+  <StyledCard className={`${className} paper`}>
     <StyledImage
       src={imgSrc}
       alt={imgAlt}

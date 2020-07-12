@@ -952,3 +952,9 @@ textarea,
     padding: 5px 10px;
   }
 }
+
+.paper{
+  background-color: #FFFFFF;
+  border: 1px solid #E5EAED;
+  border-radius: 4px;
+} 
