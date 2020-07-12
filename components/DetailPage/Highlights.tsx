@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import BlockText from '../core/BlockText/BlockText';
+
 type HighLightsProps = {
   highlights: string[];
 };
@@ -29,7 +31,7 @@ const HighLights = ({ highlights }: HighLightsProps) => (
         <StyledHighlightIcon className="material-icons">
           check_circle
         </StyledHighlightIcon>
-        <p>{highlight}</p>
+        <BlockText text={highlight} />
       </StyledHighlight>
     ))}
   </StyledHighlightsWrapper>

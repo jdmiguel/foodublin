@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: BlockText should render 1`] = `
+.c0 {
+  color: #585858;
+  line-height: 1.2rem;
+}
+
+<p
+  class="c0"
+>
+  This is a default block text with a default description to check how it looks like
+</p>
+`;

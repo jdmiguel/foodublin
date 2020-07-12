@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import BlockTitle from '../BlockTitle/BlockTitle';
+import BlockText from '../BlockText/BlockText';
 
 import { HIGHLIGHT_GENERIC_SRC } from '../../../helpers/staticData';
 
@@ -43,19 +44,13 @@ const StyledText = styled.div`
   justify-content: space-around;
 `;
 
-const StyledDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.2rem;
-  color: ${(props) => props.theme.palette.DARK_MAX};
-  margin-bottom: 15px;
-`;
-
 const StyledLink = styled.a`
   font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;
   color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
   transition: color 0.2s ease-out;
+  margin-top: 15px;
   &:hover {
     color: ${(props) => props.theme.palette.PRIMARY};
   }
@@ -87,7 +82,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
     />
     <StyledText>
       <BlockTitle text={title} />
-      <StyledDescription>{description}</StyledDescription>
+      <BlockText text={description} />
       <StyledLink href={linkUrl} target="blank">
         {linkText}
       </StyledLink>

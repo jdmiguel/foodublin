@@ -5,6 +5,7 @@ import { DefaultLayout } from '../../layouts';
 
 import Title from '../core/Title/Title';
 import BlockTitle from '../core/BlockTitle/BlockTitle';
+import BlockText from '../core/BlockText/BlockText';
 
 import Timmings from './Timings';
 import Cuisines from './Cuisines';
@@ -151,6 +152,8 @@ const {
   address,
 } = DETAIL;
 
+const [establishmentType] = establishment;
+
 const DetailPage: React.FC = () => (
   <DefaultLayout isExtendedHeader={false}>
     <StyledDetailPage className="grid-container">
@@ -176,11 +179,11 @@ const DetailPage: React.FC = () => (
               </StyledSectionBlock>
               <StyledSectionBlock>
                 <BlockTitle text="Average Cost" />
-                <p>{`€${average} for two people`}</p>
+                <BlockText text={`€${average} for two people`} />
               </StyledSectionBlock>
               <StyledSectionBlock>
                 <BlockTitle text="Establishment type" />
-                <p>{establishment}</p>
+                <BlockText text={establishmentType} />
               </StyledSectionBlock>
             </div>
             <div className="cell small-12 medium-6">
