@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
+import BlockTitle from '../BlockTitle/BlockTitle';
+
 import { HIGHLIGHT_GENERIC_SRC } from '../../../helpers/staticData';
 
 type HighlightCardProps = {
@@ -39,13 +41,6 @@ const StyledText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`;
-
-const StyledTitle = styled.h4`
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: ${(props) => props.theme.palette.DARK_MAX};
-  margin-bottom: 15px;
 `;
 
 const StyledDescription = styled.p`
@@ -91,7 +86,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
       )}
     />
     <StyledText>
-      <StyledTitle>{title}</StyledTitle>
+      <BlockTitle text={title} />
       <StyledDescription>{description}</StyledDescription>
       <StyledLink href={linkUrl} target="blank">
         {linkText}
