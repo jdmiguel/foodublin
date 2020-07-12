@@ -46,7 +46,5 @@ export const getMapSrc = (name: string) => {
     return `${acc}+${next}`;
   }, '');
 
-  console.log('GOOGLE_KEY: ', process.env.googleKey);
-
-  return `https://www.google.com/maps/embed/v1/place?key=${process.env.googleKey}&q=${formattedName},Dublin&zoom=16`;
+  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${formattedName},Dublin&zoom=16`;
 };

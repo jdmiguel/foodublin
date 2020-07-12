@@ -6,6 +6,7 @@ module.exports = {
   },
   globals: {
     module: 'readonly',
+    require: 'readonly',
     process: 'readonly',
   },
   extends: [
