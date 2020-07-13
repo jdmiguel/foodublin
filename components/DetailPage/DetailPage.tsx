@@ -14,11 +14,13 @@ import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
 import {
-  FOURTH_DETAIL,
+  FIRST_DETAIL as FOURTH_DETAIL,
   RELATED_RESTAURANTS,
 } from './__mocks__/detailpage.mocks';
 
 import { getTimmings, getMapSrc } from '../../helpers/utils';
+
+import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
 
 const RankStars = () => {
   const StyledRankStarsWrapper = styled.div`
@@ -59,7 +61,7 @@ const StyledDetailPage = styled.div`
 
 const StyledJumbotron = styled.div<{ bgImg: string }>`
   background-size: cover;
-  background-image: url(${(props) => props.bgImg && props.bgImg});
+  background-image: url(${(props) => props.bgImg});
   background-color: ${(props) => props.theme.palette.DARK_SOFT};
   background-position: center;
   display: flex;
@@ -74,11 +76,9 @@ const StyledJumbotron = styled.div<{ bgImg: string }>`
 const StyledOverlay = styled.div`
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.45) 0%,
     rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.5) 75%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(0, 0, 0, 0.75) 100%
   );
   width: 100%;
   height: 100%;
@@ -158,7 +158,7 @@ const [establishmentType] = establishment;
 const DetailPage: React.FC = () => (
   <DefaultLayout isExtendedHeader={false}>
     <StyledDetailPage className="grid-container">
-      <StyledJumbotron bgImg={imgSrc}>
+      <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
         <StyledOverlay>
           <StyledName>{name}</StyledName>
           <StyledLocation>{location}</StyledLocation>
