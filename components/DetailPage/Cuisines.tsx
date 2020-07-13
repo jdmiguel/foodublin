@@ -9,14 +9,16 @@ const StyledCuisinesWrapper = styled.div`
   margin-top: 20px;
 `;
 
-const StyledCuisine = styled.span`
+const StyledCuisine = styled.p`
   background-color: ${(props) => props.theme.palette.DARK_MIN};
   color: ${(props) => props.theme.palette.LIGHT_MAX};
   font-weight: 500;
   border-radius: 15px;
   padding: 5px 10px;
+  display: inline-block;
   &:not(:last-of-type) {
     margin-right: 10px;
+    margin-bottom: 5px;
   }
 `;
 

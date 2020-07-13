@@ -41,10 +41,23 @@ export const getTimmings = (timmingsStr: string) =>
     return acc;
   }, []);
 
-export const getMapSrc = (name: string) => {
-  const formattedName = name.split(' ').reduce((acc: string, next: string) => {
-    return `${acc}+${next}`;
+//const checkAlphanumeric = (name: string) => !!name.match(/^[0-9a-zA-Z]+$/);
+
+export const getAlphanumericText = (text: string) =>
+  text.replace(/[^a-z0-9]/gi, '');
+
+export const getLoweredText = (text: string) => text.toLowerCase();
+
+export const getFormattedUrlText = (text: string) =>
+  text.split(' ').reduce((acc: string, next: string) => {
+    const concatenator = acc && getAlphanumericText(next) ? '+' : '';
+
+    return `${acc}${concatenator}${getLoweredText(getAlphanumericText(next))}`;
   }, '');
 
-  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${formattedName},Dublin&zoom=16`;
+export const getMapSrc = (name: string, location: string) => {
+  const urlName = getFormattedUrlText(name);
+  const urlLocation = getFormattedUrlText(location);
+
+  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };

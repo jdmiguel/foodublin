@@ -13,7 +13,10 @@ import Highlights from './Highlights';
 import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
-import { DETAIL, RELATED_RESTAURANTS } from './__mocks__/detailpage.mocks';
+import {
+  FOURTH_DETAIL,
+  RELATED_RESTAURANTS,
+} from './__mocks__/detailpage.mocks';
 
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 
@@ -148,7 +151,7 @@ const {
   highlights,
   phone,
   address,
-} = DETAIL;
+} = FOURTH_DETAIL;
 
 const [establishmentType] = establishment;
 
@@ -179,10 +182,12 @@ const DetailPage: React.FC = () => (
                 <BlockTitle text="Average Cost" />
                 <BlockText text={`€${average} for two people`} />
               </StyledSectionBlock>
-              <StyledSectionBlock>
-                <BlockTitle text="Establishment type" />
-                <BlockText text={establishmentType} />
-              </StyledSectionBlock>
+              {establishmentType && (
+                <StyledSectionBlock>
+                  <BlockTitle text="Establishment type" />
+                  <BlockText text={establishmentType} />
+                </StyledSectionBlock>
+              )}
             </div>
             <div className="cell small-12 medium-6">
               <StyledSectionBlock>
@@ -199,7 +204,7 @@ const DetailPage: React.FC = () => (
               </StyledSectionBlock>
               <StyledSectionBlock>
                 <BlockTitle text="Address" />
-                <Address mapSrc={getMapSrc(name)} address={address} />
+                <Address mapSrc={getMapSrc(name, location)} address={address} />
               </StyledSectionBlock>
             </StyledAddressWrapper>
           </div>
