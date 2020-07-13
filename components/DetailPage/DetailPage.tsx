@@ -14,7 +14,7 @@ import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
 import {
-  FIRST_DETAIL as FOURTH_DETAIL,
+  FOURTH_DETAIL,
   RELATED_RESTAURANTS,
 } from './__mocks__/detailpage.mocks';
 
