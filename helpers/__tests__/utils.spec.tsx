@@ -1,4 +1,5 @@
 import {
+  compose,
   getTimmings,
   getAlphanumericText,
   getLoweredText,
@@ -12,9 +13,18 @@ import {
   FOURTH_DETAIL,
 } from '../../components/DetailPage/__mocks__/detailpage.mocks';
 
+describe('compose', () => {
+  it('should be equal to mocked text', () => {
+    const expectedText = 'fx.buckley';
+    const formattedText = compose(getLoweredText, getAlphanumericText);
+
+    expect(formattedText(THIRD_DETAIL.name)).toEqual(expectedText);
+  });
+});
+
 describe('getTimmings', () => {
   it('should be equal to mocked timmings', () => {
-    const mockedTimmings = [
+    const expectedTimmings = [
       {
         id: '11:30 AM to 9 PM (Mon-Fri)',
         day: 'Mon-Fri',
@@ -31,52 +41,55 @@ describe('getTimmings', () => {
         schedule: '1 PM to 6 PM',
       },
     ];
-    expect(getTimmings(FIRST_DETAIL.timmings)).toEqual(mockedTimmings);
+
+    expect(getTimmings(FIRST_DETAIL.timmings)).toEqual(expectedTimmings);
   });
 });
 
 describe('getAlphanumericText', () => {
   it('should be equal to mocked alphanumeric text', () => {
-    const mockedAlphanumericText = 'FXBuckley';
-    expect(getAlphanumericText(THIRD_DETAIL.name)).toEqual(
-      mockedAlphanumericText,
-    );
+    const expectedText = 'FXBuckley';
+
+    expect(getAlphanumericText(THIRD_DETAIL.name)).toEqual(expectedText);
   });
 });
 
 describe('getLoweredText', () => {
   it('should be equal to mocked lowered text', () => {
-    const mockedLoweredText = 'ballyfermot';
-    expect(getLoweredText(SECOND_DETAIL.location)).toBe(mockedLoweredText);
+    const expectedText = 'ballyfermot';
+
+    expect(getLoweredText(SECOND_DETAIL.location)).toBe(expectedText);
   });
 });
 
 describe('getFormattedUrlText', () => {
   it('should be equal to mocked formatted url text if text is composed of one word', () => {
-    const mockedFormattedUrlText = 'boojum';
-    expect(getFormattedUrlText(FIRST_DETAIL.name)).toBe(mockedFormattedUrlText);
+    const expectedText = 'boojum';
+
+    expect(getFormattedUrlText(FIRST_DETAIL.name)).toBe(expectedText);
   });
 
   it('should be equal to mocked formatted url text if text is composed of several words, spaces and symbols', () => {
-    const mockedFormattedUrlText = 'sophies+the+dean+hotel';
-    expect(getFormattedUrlText(FOURTH_DETAIL.name)).toBe(
-      mockedFormattedUrlText,
-    );
+    const expectedText = 'sophies+the+dean+hotel';
+
+    expect(getFormattedUrlText(FOURTH_DETAIL.name)).toBe(expectedText);
   });
 });
 
 describe('getMapSrc', () => {
   it('should be equal to mocked map src if name is composed of one word and location is composed of two', () => {
-    const mockedMapSrc = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=boojum-north+city,Dublin&zoom=16`;
+    const expectedUrl = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=boojum-north+city,Dublin&zoom=16`;
+
     expect(getMapSrc(FIRST_DETAIL.name, FIRST_DETAIL.location)).toBe(
-      mockedMapSrc,
+      expectedUrl,
     );
   });
 
   it('should be equal to mocked map src if restaurant name and location are composed of several words, spaces and symbols', () => {
-    const mockedMapSrc = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=sophies+the+dean+hotel-the+dean+hotel+city+centre+south,Dublin&zoom=16`;
+    const expectedUrl = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=sophies+the+dean+hotel-the+dean+hotel+city+centre+south,Dublin&zoom=16`;
+
     expect(getMapSrc(FOURTH_DETAIL.name, FOURTH_DETAIL.location)).toBe(
-      mockedMapSrc,
+      expectedUrl,
     );
   });
 });

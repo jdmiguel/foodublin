@@ -23,6 +23,14 @@ export const CDN_URL_STATIC_DIRECTORY = `${BASE_CDN_URL}${
   APP_VERSION && ENVIRONMENT_NAME !== 'preview' ? `/${APP_VERSION}` : ''
 }`;
 
+// GENERAL UTILS
+
+type ComposableStringFunction = (text: string) => string;
+
+export const compose = (...fns: ComposableStringFunction[]) => (
+  value: string,
+) => fns.reduce((acc, fn) => fn(acc), value);
+
 // DETAIL PAGE UTILS
 
 export const getTimmings = (timmingsStr: string) =>
@@ -51,8 +59,9 @@ export const getLoweredText = (text: string) => text.toLowerCase();
 export const getFormattedUrlText = (text: string) =>
   text.split(' ').reduce((acc: string, next: string) => {
     const concatenator = acc && getAlphanumericText(next) ? '+' : '';
+    const formattedText = compose(getLoweredText, getAlphanumericText);
 
-    return `${acc}${concatenator}${getLoweredText(getAlphanumericText(next))}`;
+    return `${acc}${concatenator}${formattedText(next)}`;
   }, '');
 
 export const getMapSrc = (name: string, location: string) => {
