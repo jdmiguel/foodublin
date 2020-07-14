@@ -218,6 +218,13 @@ export const HIGHLIGHTED_RESTAURANTS = [
 export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/highlight-generic.png`;
 export const THUMB_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/generic-thumb.png`;
 export const DETAIL_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/generic-detail.png`;
+export const DEFAULT_RATING_STAR_LIST = [
+  { id: 1, type: 'star_outline' },
+  { id: 2, type: 'star_outline' },
+  { id: 3, type: 'star_outline' },
+  { id: 4, type: 'star_outline' },
+  { id: 5, type: 'star_outline' },
+];
 
 enum FILTER_SORT {
   cost = 'cost',

@@ -7,6 +7,7 @@ import Title from '../core/Title/Title';
 import BlockTitle from '../core/BlockTitle/BlockTitle';
 import BlockText from '../core/BlockText/BlockText';
 
+import Rating from '../core/Rating/Rating';
 import Timmings from './Timings';
 import Cuisines from './Cuisines';
 import Highlights from './Highlights';
@@ -22,32 +23,8 @@ import { getTimmings, getMapSrc } from '../../helpers/utils';
 
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
 
-const RankStars = () => {
-  const StyledRankStarsWrapper = styled.div`
-    display: flex;
-  `;
-
-  const StyledRankStar = styled.i`
-    font-size: 2.2rem;
-    color: ${(props) => props.theme.palette.LIGHT_MIN};
-    @media only screen and (min-width: 640px) {
-      font-size: 2.7rem;
-    }
-  `;
-
-  return (
-    <StyledRankStarsWrapper>
-      <StyledRankStar className="material-icons">star</StyledRankStar>
-      <StyledRankStar className="material-icons">star</StyledRankStar>
-      <StyledRankStar className="material-icons">star</StyledRankStar>
-      <StyledRankStar className="material-icons">star_outline</StyledRankStar>
-      <StyledRankStar className="material-icons">star_outline</StyledRankStar>
-    </StyledRankStarsWrapper>
-  );
-};
-
 const JumbotronTextCSS = css`
-  color: ${(props) => props.theme.palette.LIGHT_MIN};
+  color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
 `;
 
 const StyledDetailPage = styled.div`
@@ -78,7 +55,7 @@ const StyledOverlay = styled.div`
     180deg,
     rgba(0, 0, 0, 0.45) 0%,
     rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.75) 100%
+    rgba(0, 0, 0, 0.7) 100%
   );
   width: 100%;
   height: 100%;
@@ -142,6 +119,7 @@ const StyledRelatedRestaurants = styled.div`
 
 const {
   imgSrc,
+  rating,
   name,
   location,
   average,
@@ -162,7 +140,7 @@ const DetailPage: React.FC = () => (
         <StyledOverlay>
           <StyledName>{name}</StyledName>
           <StyledLocation>{location}</StyledLocation>
-          <RankStars />
+          <Rating value={rating} />
         </StyledOverlay>
       </StyledJumbotron>
       <StyledInformation>
