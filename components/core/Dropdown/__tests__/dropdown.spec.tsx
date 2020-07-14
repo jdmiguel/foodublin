@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
+import 'jest-styled-components';
+
 import Dropdown from '../Dropdown';
 
 import { DROPDOWN_PROPS_MOCK } from '../__mocks__/dropdown.mocks';
@@ -33,11 +35,13 @@ describe('Component: Dropdown', () => {
 
     // show options list by clicking dropdown button
     fireEvent.click(dropdownButton);
+
     expect(listbox).toHaveStyleRule('opacity', '1');
     expect(listbox).toHaveStyleRule('visibility', 'visible');
 
     // hide options list by activating blur event
     fireEvent.blur(listbox);
+
     expect(listbox).toHaveStyleRule('opacity', '0');
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
@@ -46,20 +50,24 @@ describe('Component: Dropdown', () => {
 
     // hide options list by clicking close button
     fireEvent.click(closeButton);
+
     expect(listbox).toHaveStyleRule('opacity', '0');
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
     // show options list and check if first option is not active
     fireEvent.click(dropdownButton);
+
     expect(firstOptionText).toHaveStyleRule('font-weight', '400');
 
     // click first option and hide options list
     fireEvent.click(firstOption as HTMLDivElement);
+
     expect(listbox).toHaveStyleRule('opacity', '0');
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
     // show options list and check if first option is active
     fireEvent.click(dropdownButton);
+
     expect(firstOptionText).toHaveStyleRule('font-weight', '600');
   });
 
@@ -86,6 +94,7 @@ describe('Component: Dropdown', () => {
     fireEvent.click(dropdownButton);
     const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
+
     expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'First option',
@@ -93,6 +102,7 @@ describe('Component: Dropdown', () => {
 
     // click clear button and check if dropdown button name is 'Select any option'
     fireEvent.click(dropdown.querySelector('button:last-of-type'));
+
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'Select any option',
     );
@@ -112,6 +122,7 @@ describe('Component: Dropdown', () => {
     fireEvent.click(dropdown.querySelector('button'));
     const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
+
     expect(container.firstChild).toMatchSnapshot();
   });
 });

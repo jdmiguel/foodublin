@@ -37,6 +37,7 @@ describe('Component: Autocomplete', () => {
     fireEvent.change(getByPlaceholderText('Search for locals...'), {
       target: { value: 'tre' },
     });
+
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
     expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
@@ -67,16 +68,19 @@ describe('Component: Autocomplete', () => {
 
     // show suggestions list by activating focus event
     fireEvent.focus(input);
+
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
 
     // hide suggestions list by clicking close buton
     fireEvent.click(closeButton);
+
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
 
     // show suggestions list by activating focus event
     fireEvent.focus(input);
+
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
 
@@ -84,8 +88,8 @@ describe('Component: Autocomplete', () => {
     const firstSuggestionLink = listboxWrapper
       .querySelectorAll('li')[0]
       .querySelector('a');
-
     fireEvent.click(firstSuggestionLink);
+
     expect(handleSelectSuggestion).toHaveBeenCalledTimes(1);
   });
 });
