@@ -15,7 +15,7 @@ import {
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {
-    const expectedText = 'fx.buckley';
+    const expectedText = 'fxbuckley';
     const formattedText = compose(getLoweredText, getAlphanumericText);
 
     expect(formattedText(THIRD_DETAIL.name)).toEqual(expectedText);
