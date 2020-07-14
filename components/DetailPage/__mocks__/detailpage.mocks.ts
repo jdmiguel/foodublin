@@ -12,10 +12,7 @@ export const FIRST_DETAIL = {
     '11:30 AM to 9 PM (Mon-Fri),12 Noon to 9 PM (Sat),1 PM to 6 PM (Sun)',
   cuisines: 'Mexican',
   average: '20',
-  user_rating: {
-    aggregate_rating: 4.4,
-    votes: 161,
-  },
+  rating: 4.4,
   establishment: ['Quick Bites'],
   highlights: [
     'Lunch',
@@ -36,10 +33,7 @@ export const SECOND_DETAIL = {
   timmings: '12 Noon to 1 AM (Mon-Sat),5 PM to 1 AM (Sun)',
   cuisines: 'Chinese, Asian',
   average: '25',
-  user_rating: {
-    aggregate_rating: 2.5,
-    votes: 105,
-  },
+  rating: 2.5,
   establishment: [''],
   highlights: ['Takeaway Available', 'Dinner', 'Delivery', 'Lunch'],
 };
@@ -55,10 +49,7 @@ export const THIRD_DETAIL = {
   timmings: '12 Noon to 10:30 PM (Mon-Wed),12 Noon to 11 PM (Thu-Sun)',
   cuisines: 'Steak',
   average: '90',
-  user_rating: {
-    aggregate_rating: 3.4,
-    votes: 258,
-  },
+  rating: 3.4,
   establishment: ['Casual Dining'],
   highlights: [
     'Credit Card',
@@ -88,10 +79,7 @@ export const FOURTH_DETAIL = {
   timmings: '7 AM to 11 AM, 12 Noon to 2:30 PM, 5:30 PM to 11 PM (Mon-Sun)',
   cuisines: 'Italian',
   average: '65',
-  user_rating: {
-    aggregate_rating: 4.8,
-    votes: 350,
-  },
+  rating: 4.8,
   establishment: ['Casual Dining'],
   highlights: [
     'Credit Card',
