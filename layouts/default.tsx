@@ -9,6 +9,8 @@ import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
 type MainLayoutProps = {
   children: ReactNode;
   isExtendedHeader: boolean;
+  isExtendedFooter: boolean;
+  onClickFavourites?: () => void;
 };
 
 const StyledMainLayout = styled.div`
@@ -19,21 +21,19 @@ const StyledMainLayout = styled.div`
 `;
 
 const StyledMain = styled.main`
-  margin-bottom: 60px;
+  margin-bottom: 120px;
   padding: 0 10px;
   @media only screen and (min-width: 768px) {
     padding: 0 20px;
   }
 `;
 
-const StyledFooter = styled(Footer)`
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-`;
-
-const MainLayout = ({ children, isExtendedHeader }: MainLayoutProps) => (
+const MainLayout = ({
+  children,
+  isExtendedHeader,
+  isExtendedFooter,
+  onClickFavourites,
+}: MainLayoutProps) => (
   <StyledMainLayout>
     <Header
       bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
@@ -41,7 +41,10 @@ const MainLayout = ({ children, isExtendedHeader }: MainLayoutProps) => (
       isExtended={isExtendedHeader}
     />
     <StyledMain>{children}</StyledMain>
-    <StyledFooter />
+    <Footer
+      isExtended={isExtendedFooter}
+      onClickFavourites={onClickFavourites}
+    />
   </StyledMainLayout>
 );
 
