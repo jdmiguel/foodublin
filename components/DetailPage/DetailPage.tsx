@@ -134,7 +134,13 @@ const {
 const [establishmentType] = establishment;
 
 const DetailPage: React.FC = () => (
-  <DefaultLayout isExtendedHeader={false}>
+  <DefaultLayout
+    isExtendedHeader={false}
+    isExtendedFooter={true}
+    onClickFavourites={() => {
+      console.log('onClickFavourites');
+    }}
+  >
     <StyledDetailPage className="grid-container">
       <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
         <StyledOverlay>

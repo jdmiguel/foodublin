@@ -25,7 +25,7 @@ const StyledHighlightWrapper = styled.div`
 `;
 
 const HomePage: React.FC = () => (
-  <DefaultLayout isExtendedHeader={true}>
+  <DefaultLayout isExtendedHeader={true} isExtendedFooter={false}>
     <StyledHighlights className="grid-container">
       <Title text="Featured restaurants" />
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">

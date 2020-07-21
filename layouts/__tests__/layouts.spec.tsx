@@ -1,17 +1,15 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from '../../helpers/Theme';
 
 import { DefaultLayout } from '../index';
 
-afterEach(cleanup);
-
 test('default layout can be passed a child', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>
-      <DefaultLayout>
+      <DefaultLayout isExtendedHeader={false} isExtendedFooter={false}>
         <div>
           <h1>Hello World</h1>
         </div>

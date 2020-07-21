@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import DetailPage from '../../components/DetailPage/DetailPage';
@@ -14,11 +13,6 @@ const Detail = () => {
   console.log(router.query);
 
   return <DetailPage />;
-};
-
-Detail.getInitialProps = async ({ query }: NextPageContext) => {
-  const { id } = query;
-  return { id };
 };
 
 export default Detail;

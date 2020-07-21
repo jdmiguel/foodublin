@@ -2,8 +2,14 @@
 
 exports[`Component: Footer should render 1`] = `
 .c0 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.c1 {
   background-color: #660000;
-  padding: 25px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12,28 +18,29 @@ exports[`Component: Footer should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  padding: 20px 0;
 }
 
-.c1 {
+.c2 {
   color: #D8D8D8;
   font-weight: 300;
   font-size: 0.9em;
 }
 
-.c1:not(:first-of-type) {
+.c2:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c1:not(:last-of-type):after {
+.c2:not(:last-of-type):after {
   content: ' | ';
   margin-left: 3px;
 }
 
-.c1:last-of-type {
+.c2:last-of-type {
   margin-right: 1px;
 }
 
-.c2 {
+.c3 {
   color: #D8D8D8;
   font-weight: 600;
   font-size: 0.9em;
@@ -43,31 +50,25 @@ exports[`Component: Footer should render 1`] = `
   transition: color 0.2s ease-out;
 }
 
-.c2:hover {
+.c3:hover {
   color: #FFFFFF;
 }
 
 @media only screen and (min-width:375px) {
-  .c1:not(:first-of-type) {
+  .c2:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c1:not(:last-of-type):after {
+  .c2:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c1:last-of-type {
+  .c2:last-of-type {
     margin-right: 3px;
-  }
-}
-
-@media only screen and (min-width:375px) {
-  .c1 {
-    font-size: 1em;
   }
 }
 
@@ -77,30 +78,40 @@ exports[`Component: Footer should render 1`] = `
   }
 }
 
+@media only screen and (min-width:375px) {
+  .c3 {
+    font-size: 1em;
+  }
+}
+
 <footer
   class="c0"
 >
-  <p
+  <div
     class="c1"
   >
-    FOODUBLIN
-  </p>
-  <p
-    class="c1"
-  >
-    COPYRIGHT ©2020
-  </p>
-  <p
-    class="c1"
-  >
-    BY
-  </p>
-  <a
-    class="c2"
-    href="https://jdmiguel.netlify.app/"
-    target="_blank"
-  >
-    JDMIGUEL
-  </a>
+    <p
+      class="c2"
+    >
+      FOODUBLIN
+    </p>
+    <p
+      class="c2"
+    >
+      COPYRIGHT ©2020
+    </p>
+    <p
+      class="c2"
+    >
+      BY
+    </p>
+    <a
+      class="c3"
+      href="https://jdmiguel.netlify.app/"
+      target="_blank"
+    >
+      JDMIGUEL
+    </a>
+  </div>
 </footer>
 `;
