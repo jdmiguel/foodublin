@@ -29,23 +29,22 @@ const StyledNavFooter = styled.div`
 `;
 
 const StyledFavLink = styled.button`
-  color: ${(props) => props.theme.palette.PRIMARY};
   font-weight: 600;
-  transition: color 0.2s ease-out;
   cursor: pointer;
   background: none;
   outline: none;
-  display: none;
+  display: flex;
+  align-items: center;
   i {
     font-size: 0.9rem;
     margin-right: 4px;
   }
+  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+  transition: color 0.2s ease-out;
   &:hover {
-    color: ${(props) => props.theme.palette.PRIMARY_DARK};
+    color: ${(props) => props.theme.palette.PRIMARY};
   }
   @media only screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
   }
 `;
 
