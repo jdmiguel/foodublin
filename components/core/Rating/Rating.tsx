@@ -9,23 +9,26 @@ type RatingStar = {
 };
 
 type RatingProps = {
-  className?: string;
   value: number;
+  votes: number;
 };
 
 const StyledRankStarsWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const StyledRankStar = styled.i`
-  font-size: 2.2rem;
-  color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  @media only screen and (min-width: 640px) {
-    font-size: 2.7rem;
-  }
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.palette.DARK_MEDIUM};
 `;
 
-const Rating: React.FC<RatingProps> = ({ value }) => {
+const StyledText = styled.p`
+  color: ${(props) => props.theme.palette.DARK_MIN};
+  margin-left: 10px;
+`;
+
+const Rating: React.FC<RatingProps> = ({ value, votes }) => {
   const roundedValue = Math.round(value);
   const ratingStartList: RatingStar[] = DEFAULT_RATING_STAR_LIST.map((star) => {
     const starType = roundedValue >= star.id ? 'star' : star.type;
@@ -39,6 +42,7 @@ const Rating: React.FC<RatingProps> = ({ value }) => {
           {star.type}
         </StyledRankStar>
       ))}
+      <StyledText>{`(${votes} votes)`}</StyledText>
     </StyledRankStarsWrapper>
   );
 };

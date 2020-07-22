@@ -5,3 +5,5 @@ export const RATING_VALUE_MOCK = {
   two: 2.2,
   one: 1.4,
 };
+
+export const RATING_VOTES_MOCK = 54;

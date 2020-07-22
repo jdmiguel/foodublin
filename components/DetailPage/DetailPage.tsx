@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { DefaultLayout } from '../../layouts';
 
 import Title from '../core/Title/Title';
+import Button from '../core/Button/Button';
 import BlockTitle from '../core/BlockTitle/BlockTitle';
 import BlockText from '../core/BlockText/BlockText';
 
@@ -25,6 +26,8 @@ import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
 
 const JumbotronTextCSS = css`
   color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  text-align: center;
+  line-height: 1.5rem;
 `;
 
 const StyledDetailPage = styled.div`
@@ -45,7 +48,7 @@ const StyledJumbotron = styled.div<{ bgImg: string }>`
   background-position: center;
   display: flex;
   width: 100%;
-  height: 220px;
+  height: 250px;
   margin: 0;
   @media only screen and (min-width: 640px) {
     height: 300px;
@@ -76,6 +79,10 @@ const StyledName = styled.h2`
   ${JumbotronTextCSS}
   font-size: 1.7rem;
   font-weight: 600;
+  margin: 10px 0;
+  @media only screen and (min-width: 640px) {
+    margin: 20px 0 30px;
+  }
   @media only screen and (min-width: 992px) {
     font-size: 3.2rem;
   }
@@ -84,6 +91,10 @@ const StyledName = styled.h2`
 const StyledLocation = styled.h2`
   ${JumbotronTextCSS}
   font-size: 1.3rem;
+  margin-bottom: 20px;
+  @media only screen and (min-width: 640px) {
+    margin-bottom: 40px;
+  }
   @media only screen and (min-width: 992px) {
     font-size: 2.6rem;
   }
@@ -122,6 +133,7 @@ const StyledRelatedRestaurants = styled.div`
 const {
   imgSrc,
   rating,
+  votes,
   name,
   location,
   average,
@@ -135,78 +147,92 @@ const {
 
 const [establishmentType] = establishment;
 
-const DetailPage: React.FC = () => (
-  <DefaultLayout
-    isExtendedHeader={false}
-    isExtendedFooter={true}
-    onClickFavourites={() => {
-      console.log('onClickFavourites');
-    }}
-    onClickBreadcrumbs={(link: string) => {
-      console.log('link: ', link);
-    }}
-  >
-    <StyledDetailPage className="grid-container">
-      <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
-        <StyledOverlay>
-          <StyledName>{name}</StyledName>
-          <StyledLocation>{location}</StyledLocation>
-          <Rating value={rating} />
-        </StyledOverlay>
-      </StyledJumbotron>
-      <StyledInformation>
-        <Title text="Relevant information" />
-        <div className="grid-x">
-          <div className="grid-x cell small-12 medium-8">
-            <div className="cell small-12 medium-6">
-              <StyledSectionBlock>
-                <BlockTitle text="Cuisines" />
-                <Cuisines cuisines={cuisines} />
-              </StyledSectionBlock>
-              <StyledSectionBlock>
-                <BlockTitle text="Schedule" />
-                <Timmings timmings={getTimmings(timmings)} />
-              </StyledSectionBlock>
-              <StyledSectionBlock>
-                <BlockTitle text="Average Cost" />
-                <BlockText text={`€${average} for two people`} />
-              </StyledSectionBlock>
-              {establishmentType && (
+const DetailPage: React.FC = () => {
+  return (
+    <DefaultLayout
+      isExtendedHeader={false}
+      isExtendedFooter={true}
+      onClickFavourites={() => {
+        console.log('onClickFavourites');
+      }}
+      onClickBreadcrumbs={(link: string) => {
+        console.log('link: ', link);
+      }}
+    >
+      <StyledDetailPage className="grid-container">
+        <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
+          <StyledOverlay>
+            <StyledName>{name}</StyledName>
+            <StyledLocation>{location}</StyledLocation>
+            <Button
+              onClick={() => {
+                'handle favourite';
+              }}
+              buttonTxt={'Add to favourites'}
+            />
+          </StyledOverlay>
+        </StyledJumbotron>
+        <StyledInformation>
+          <Title text="Relevant information" />
+          <div className="grid-x">
+            <div className="grid-x cell small-12 medium-8">
+              <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
-                  <BlockTitle text="Establishment type" />
-                  <BlockText text={establishmentType} />
+                  <BlockTitle text="Cuisines" />
+                  <Cuisines cuisines={cuisines} />
                 </StyledSectionBlock>
-              )}
+                <StyledSectionBlock>
+                  <BlockTitle text="Schedule" />
+                  <Timmings timmings={getTimmings(timmings)} />
+                </StyledSectionBlock>
+                <StyledSectionBlock>
+                  <BlockTitle text="Rating" />
+                  <Rating value={rating} votes={votes} />
+                </StyledSectionBlock>
+                <StyledSectionBlock>
+                  <BlockTitle text="Average Cost" />
+                  <BlockText text={`€${average} for two people`} />
+                </StyledSectionBlock>
+                {establishmentType && (
+                  <StyledSectionBlock>
+                    <BlockTitle text="Establishment type" />
+                    <BlockText text={establishmentType} />
+                  </StyledSectionBlock>
+                )}
+              </div>
+              <div className="cell small-12 medium-6">
+                <StyledSectionBlock>
+                  <BlockTitle text="More info" />
+                  <Highlights highlights={highlights} />
+                </StyledSectionBlock>
+              </div>
             </div>
-            <div className="cell small-12 medium-6">
-              <StyledSectionBlock>
-                <BlockTitle text="More info" />
-                <Highlights highlights={highlights} />
-              </StyledSectionBlock>
+            <div className="cell small-12 medium-4">
+              <StyledAddressWrapper className="paper">
+                <StyledSectionBlock>
+                  <BlockTitle text="Phone" />
+                  <StyledPhone>{phone}</StyledPhone>
+                </StyledSectionBlock>
+                <StyledSectionBlock>
+                  <BlockTitle text="Address" />
+                  <Address
+                    mapSrc={getMapSrc(name, location)}
+                    address={address}
+                  />
+                </StyledSectionBlock>
+              </StyledAddressWrapper>
             </div>
           </div>
-          <div className="cell small-12 medium-4">
-            <StyledAddressWrapper className="paper">
-              <StyledSectionBlock>
-                <BlockTitle text="Phone" />
-                <StyledPhone>{phone}</StyledPhone>
-              </StyledSectionBlock>
-              <StyledSectionBlock>
-                <BlockTitle text="Address" />
-                <Address mapSrc={getMapSrc(name, location)} address={address} />
-              </StyledSectionBlock>
-            </StyledAddressWrapper>
+        </StyledInformation>
+        <StyledRelatedRestaurants>
+          <Title text="Related restaurants" />
+          <div className="grid-x grid-margin-x grid-margin-y">
+            <RelatedRestaurants restaurants={RELATED_RESTAURANTS} />
           </div>
-        </div>
-      </StyledInformation>
-      <StyledRelatedRestaurants>
-        <Title text="Related restaurants" />
-        <div className="grid-x grid-margin-x grid-margin-y">
-          <RelatedRestaurants restaurants={RELATED_RESTAURANTS} />
-        </div>
-      </StyledRelatedRestaurants>
-    </StyledDetailPage>
-  </DefaultLayout>
-);
+        </StyledRelatedRestaurants>
+      </StyledDetailPage>
+    </DefaultLayout>
+  );
+};
 
 export default DetailPage;

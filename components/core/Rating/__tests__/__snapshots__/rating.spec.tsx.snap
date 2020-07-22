@@ -6,17 +6,20 @@ exports[`Component: Rating should render five stars 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
-  font-size: 2.2rem;
-  color: #F3F3F3;
+  font-size: 1.5rem;
+  color: #585858;
 }
 
-@media only screen and (min-width:640px) {
-  .c1 {
-    font-size: 2.7rem;
-  }
+.c2 {
+  color: #798186;
+  margin-left: 10px;
 }
 
 <div
@@ -47,6 +50,11 @@ exports[`Component: Rating should render five stars 1`] = `
   >
     star
   </i>
+  <p
+    class="c2"
+  >
+    (undefined votes)
+  </p>
 </div>
 `;
 
@@ -56,17 +64,20 @@ exports[`Component: Rating should render four stars 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
-  font-size: 2.2rem;
-  color: #F3F3F3;
+  font-size: 1.5rem;
+  color: #585858;
 }
 
-@media only screen and (min-width:640px) {
-  .c1 {
-    font-size: 2.7rem;
-  }
+.c2 {
+  color: #798186;
+  margin-left: 10px;
 }
 
 <div
@@ -97,6 +108,11 @@ exports[`Component: Rating should render four stars 1`] = `
   >
     star_outline
   </i>
+  <p
+    class="c2"
+  >
+    (undefined votes)
+  </p>
 </div>
 `;
 
@@ -106,17 +122,20 @@ exports[`Component: Rating should render one star 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
-  font-size: 2.2rem;
-  color: #F3F3F3;
+  font-size: 1.5rem;
+  color: #585858;
 }
 
-@media only screen and (min-width:640px) {
-  .c1 {
-    font-size: 2.7rem;
-  }
+.c2 {
+  color: #798186;
+  margin-left: 10px;
 }
 
 <div
@@ -147,6 +166,11 @@ exports[`Component: Rating should render one star 1`] = `
   >
     star_outline
   </i>
+  <p
+    class="c2"
+  >
+    (undefined votes)
+  </p>
 </div>
 `;
 
@@ -156,17 +180,20 @@ exports[`Component: Rating should render three stars 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
-  font-size: 2.2rem;
-  color: #F3F3F3;
+  font-size: 1.5rem;
+  color: #585858;
 }
 
-@media only screen and (min-width:640px) {
-  .c1 {
-    font-size: 2.7rem;
-  }
+.c2 {
+  color: #798186;
+  margin-left: 10px;
 }
 
 <div
@@ -197,6 +224,11 @@ exports[`Component: Rating should render three stars 1`] = `
   >
     star_outline
   </i>
+  <p
+    class="c2"
+  >
+    (undefined votes)
+  </p>
 </div>
 `;
 
@@ -206,17 +238,20 @@ exports[`Component: Rating should render two stars 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
-  font-size: 2.2rem;
-  color: #F3F3F3;
+  font-size: 1.5rem;
+  color: #585858;
 }
 
-@media only screen and (min-width:640px) {
-  .c1 {
-    font-size: 2.7rem;
-  }
+.c2 {
+  color: #798186;
+  margin-left: 10px;
 }
 
 <div
@@ -247,5 +282,10 @@ exports[`Component: Rating should render two stars 1`] = `
   >
     star_outline
   </i>
+  <p
+    class="c2"
+  >
+    (undefined votes)
+  </p>
 </div>
 `;
