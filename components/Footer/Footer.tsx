@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 
 type FooterProps = {
   isExtended: boolean;
+  onClickBreadcrumbs?: (link: string) => void;
   onClickFavourites?: () => void;
 };
 
@@ -15,26 +17,30 @@ const StyledFooterWrapper = styled.footer`
 
 const StyledNavFooterWrapper = styled.div`
   border-top: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  padding: 15px 20px;
 `;
 
 const StyledNavFooter = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  max-width: 1100px;
+  align-items: center;
+  padding: 15px 10px;
   @media only screen and (min-width: 768px) {
+    padding: 15px 20px;
+    flex-direction: row;
     justify-content: space-between;
   }
 `;
 
-const StyledFavLink = styled.button`
+const StyledFavLink = styled.button<{ breadcrumbsSteps: number }>`
   font-weight: 600;
   cursor: pointer;
   background: none;
   outline: none;
   display: flex;
   align-items: center;
+  margin-top: 7px;
+  align-self: ${({ breadcrumbsSteps }) => breadcrumbsSteps > 2 && 'flex-end'};
   i {
     font-size: 0.9rem;
     margin-right: 4px;
@@ -44,7 +50,11 @@ const StyledFavLink = styled.button`
   &:hover {
     color: ${(props) => props.theme.palette.PRIMARY};
   }
+  @media only screen and (min-width: 428px) {
+    align-self: ${({ breadcrumbsSteps }) => breadcrumbsSteps > 2 && 'initial'};
+  }
   @media only screen and (min-width: 768px) {
+    margin-top: 0;
   }
 `;
 
@@ -99,17 +109,33 @@ const StyledLink = styled.a`
   }
 `;
 
-const Footer: React.FC<FooterProps> = ({ isExtended, onClickFavourites }) => (
+const breadrumbsData = [
+  { text: 'Home', link: '/' },
+  {
+    text: 'Search Restaurants',
+    link: '/search/rathmines/fast-food',
+  },
+  { text: 'Restaurant Details', link: '/detail/elefant-castle' },
+];
+
+const Footer: React.FC<FooterProps> = ({
+  isExtended,
+  onClickBreadcrumbs,
+  onClickFavourites,
+}) => (
   <StyledFooterWrapper>
     {isExtended && (
       <StyledNavFooterWrapper>
-        <StyledNavFooter>
-          <div>Home / Search Fast Food in Rathmines / Elephant & Castle</div>
+        <StyledNavFooter className="grid-container">
+          <Breadcrumbs
+            breadcrumbsData={breadrumbsData}
+            onClick={(link: string) =>
+              onClickBreadcrumbs && onClickBreadcrumbs(link)
+            }
+          />
           <StyledFavLink
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              event.preventDefault();
-              onClickFavourites && onClickFavourites();
-            }}
+            onClick={() => onClickFavourites && onClickFavourites()}
+            breadcrumbsSteps={breadrumbsData.length}
           >
             <i className="material-icons">bookmarks</i>FAVOURITES
           </StyledFavLink>

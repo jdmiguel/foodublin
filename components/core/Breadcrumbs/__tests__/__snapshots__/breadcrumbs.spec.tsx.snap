@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Breadcrumbs should render 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-block;
+}
+
+.c1 {
+  color: #FBA52B;
+  white-space: nowrap;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  position: relative;
+  font-weight: 500;
+  margin-right: 3px;
+}
+
+.c1:hover {
+  color: #EC7E00;
+}
+
+.c3 {
+  color: #FBA52B;
+  white-space: nowrap;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  position: relative;
+  font-weight: 500;
+  margin-right: 3px;
+  pointer-events: none;
+  color: #A7A7A7;
+}
+
+.c3:hover {
+  color: #EC7E00;
+}
+
+.c2 {
+  color: #A7A7A7;
+  font-weight: 600;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1"
+    >
+      First step
+    </button>
+    <span
+      class="c2"
+    >
+      &gt;
+    </span>
+  </div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1"
+    >
+      Second step
+    </button>
+    <span
+      class="c2"
+    >
+      &gt;
+    </span>
+  </div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c3"
+    >
+      Third step
+    </button>
+  </div>
+</div>
+`;
