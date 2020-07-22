@@ -13,6 +13,7 @@ export const FIRST_DETAIL = {
   cuisines: 'Mexican',
   average: '20',
   rating: 4.4,
+  votes: 21,
   establishment: ['Quick Bites'],
   highlights: [
     'Lunch',
@@ -34,6 +35,7 @@ export const SECOND_DETAIL = {
   cuisines: 'Chinese, Asian',
   average: '25',
   rating: 2.5,
+  votes: 105,
   establishment: [''],
   highlights: ['Takeaway Available', 'Dinner', 'Delivery', 'Lunch'],
 };
@@ -50,6 +52,7 @@ export const THIRD_DETAIL = {
   cuisines: 'Steak',
   average: '90',
   rating: 3.4,
+  votes: 82,
   establishment: ['Casual Dining'],
   highlights: [
     'Credit Card',
@@ -80,6 +83,7 @@ export const FOURTH_DETAIL = {
   cuisines: 'Italian',
   average: '65',
   rating: 4.8,
+  votes: 50,
   establishment: ['Casual Dining'],
   highlights: [
     'Credit Card',
