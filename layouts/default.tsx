@@ -11,6 +11,7 @@ type MainLayoutProps = {
   isExtendedHeader: boolean;
   isExtendedFooter: boolean;
   onClickFavourites?: () => void;
+  onClickBreadcrumbs?: (link: string) => void;
 };
 
 const StyledMainLayout = styled.div`
@@ -25,6 +26,7 @@ const StyledMain = styled.main`
   padding: 0 10px;
   @media only screen and (min-width: 768px) {
     padding: 0 20px;
+    margin-bottom: 80px;
   }
 `;
 
@@ -33,6 +35,7 @@ const MainLayout = ({
   isExtendedHeader,
   isExtendedFooter,
   onClickFavourites,
+  onClickBreadcrumbs,
 }: MainLayoutProps) => (
   <StyledMainLayout>
     <Header
@@ -44,6 +47,7 @@ const MainLayout = ({
     <Footer
       isExtended={isExtendedFooter}
       onClickFavourites={onClickFavourites}
+      onClickBreadcrumbs={onClickBreadcrumbs}
     />
   </StyledMainLayout>
 );

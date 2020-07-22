@@ -28,17 +28,19 @@ const JumbotronTextCSS = css`
 `;
 
 const StyledDetailPage = styled.div`
-  margin-top: 50px;
-  margin-bottom: 35px;
+  margin: 50px auto 70px;
+  @media only screen and (min-width: 428px) {
+    margin: 50px auto;
+  }
   @media only screen and (min-width: 1024px) {
-    margin-top: 75px;
+    margin: 75px auto 60px;
     padding: 0 30px;
   }
 `;
 
 const StyledJumbotron = styled.div<{ bgImg: string }>`
   background-size: cover;
-  background-image: url(${(props) => props.bgImg});
+  background-image: url(${({ bgImg }) => bgImg});
   background-color: ${(props) => props.theme.palette.DARK_SOFT};
   background-position: center;
   display: flex;
@@ -139,6 +141,9 @@ const DetailPage: React.FC = () => (
     isExtendedFooter={true}
     onClickFavourites={() => {
       console.log('onClickFavourites');
+    }}
+    onClickBreadcrumbs={(link: string) => {
+      console.log('link: ', link);
     }}
   >
     <StyledDetailPage className="grid-container">

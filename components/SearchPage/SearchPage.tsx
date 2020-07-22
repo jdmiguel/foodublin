@@ -11,7 +11,10 @@ import { RESTAURANTS } from './__mocks__/searchpage.mocks';
 
 const StyledSearchPage = styled.div`
   margin-top: 50px;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 35px;
+  }
   @media only screen and (min-width: 1024px) {
     margin-top: 75px;
     padding: 0 30px;
@@ -38,6 +41,9 @@ const SearchPage: React.FC = () => (
     isExtendedFooter={true}
     onClickFavourites={() => {
       console.log('onClickFavourites');
+    }}
+    onClickBreadcrumbs={(link: string) => {
+      console.log('link: ', link);
     }}
   >
     <StyledSearchPage className="grid-container">
