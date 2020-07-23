@@ -160,7 +160,7 @@ const {
 const [establishmentType] = establishment;
 
 const DetailPage: React.FC = () => {
-  const [isFavourite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
@@ -171,14 +171,14 @@ const DetailPage: React.FC = () => {
             <StyledLocation>{location}</StyledLocation>
             <StyledButton
               onClick={() => {
-                'handle favourite';
+                'handle favorite';
                 setIsFavorite((favorite) => !favorite);
               }}
             >
               <i className="material-icons">{`${
-                isFavourite ? 'favorite_border' : 'favorite'
+                isFavorite ? 'favorite_border' : 'favorite'
               }`}</i>
-              {`${isFavourite ? 'unsaved' : 'saved'}`}
+              {`${isFavorite ? 'unsaved' : 'saved'}`}
             </StyledButton>
           </StyledOverlay>
         </StyledJumbotron>

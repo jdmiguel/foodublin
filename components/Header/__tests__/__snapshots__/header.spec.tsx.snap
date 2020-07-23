@@ -178,7 +178,7 @@ exports[`Component: Header should render Header 1`] = `
       <span
         class="c8"
       >
-        FAVOURITES
+        FAVORITES
       </span>
     </a>
   </div>
