@@ -6,15 +6,17 @@ import { action } from '@storybook/addon-actions';
 
 import Button from '../Button';
 
-import { BUTTON_PROPS_MOCKS } from '../__mocks__/button.mocks';
+import { BUTTON_MOCK } from '../__mocks__/button.mocks';
 
 const stories = storiesOf('Button', module);
 
 stories.add('Button', () => (
   <Button
-    {...BUTTON_PROPS_MOCKS}
     loading={boolean('loading', false)}
+    loaderSrc={BUTTON_MOCK.loaderSrc}
     onClick={action('button: on click event')}
-    buttonTxt={text('button text', 'text')}
-  />
+    fullWidth={false}
+  >
+    {text('button text', BUTTON_MOCK.text)}
+  </Button>
 ));

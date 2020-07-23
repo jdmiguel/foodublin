@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -69,9 +69,9 @@ const StyledOverlay = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 50px 0;
+  padding: 50px 10px;
   @media only screen and (min-width: 640px) {
-    padding: 70px 0;
+    padding: 70px 20px;
   }
 `;
 
@@ -81,10 +81,12 @@ const StyledName = styled.h2`
   font-weight: 600;
   margin: 10px 0;
   @media only screen and (min-width: 640px) {
-    margin: 20px 0 30px;
+    font-size: 2.8rem;
+    margin: 15px 0 25px;
   }
   @media only screen and (min-width: 992px) {
     font-size: 3.2rem;
+    margin: 20px 0 30px;
   }
 `;
 
@@ -93,10 +95,20 @@ const StyledLocation = styled.h2`
   font-size: 1.3rem;
   margin-bottom: 20px;
   @media only screen and (min-width: 640px) {
-    margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
   @media only screen and (min-width: 992px) {
     font-size: 2.6rem;
+    margin-bottom: 40px;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  max-width: 140px;
+  @media only screen and (max-width: 639px) {
+    max-width: 127px;
+    height: 45px;
   }
 `;
 
@@ -148,6 +160,8 @@ const {
 const [establishmentType] = establishment;
 
 const DetailPage: React.FC = () => {
+  const [isFavourite, setIsFavorite] = useState(false);
+
   return (
     <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
@@ -155,12 +169,17 @@ const DetailPage: React.FC = () => {
           <StyledOverlay>
             <StyledName>{name}</StyledName>
             <StyledLocation>{location}</StyledLocation>
-            <Button
+            <StyledButton
               onClick={() => {
                 'handle favourite';
+                setIsFavorite((favorite) => !favorite);
               }}
-              buttonTxt={'Add to favourites'}
-            />
+            >
+              <i className="material-icons">{`${
+                isFavourite ? 'favorite_border' : 'favorite'
+              }`}</i>
+              {`${isFavourite ? 'unsaved' : 'saved'}`}
+            </StyledButton>
           </StyledOverlay>
         </StyledJumbotron>
         <StyledInformation>

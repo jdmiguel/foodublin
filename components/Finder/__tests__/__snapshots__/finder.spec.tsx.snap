@@ -344,13 +344,12 @@ exports[`Component: Finder should render 1`] = `
 
 .c26 {
   width: 100%;
-  max-width: 123px;
   height: 55px;
 }
 
 .c28 {
   width: 100%;
-  height: 55px;
+  height: 100%;
   -webkit-letter-spacing: 0.5px;
   -moz-letter-spacing: 0.5px;
   -ms-letter-spacing: 0.5px;
@@ -365,6 +364,23 @@ exports[`Component: Finder should render 1`] = `
   font-weight: 600;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c28 i {
+  margin-right: 6px;
+  font-size: 1.3em;
 }
 
 .c28:hover {

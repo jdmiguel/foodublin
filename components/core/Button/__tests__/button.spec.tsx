@@ -3,25 +3,38 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Button from '../Button';
 
-import { BUTTON_PROPS_MOCKS } from '../__mocks__/button.mocks';
+import { BUTTON_MOCK } from '../__mocks__/button.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 
-it('should render with text', () => {
+it('should render with a simple text', () => {
   const { container } = render(
-    renderWithTheme(<Button {...BUTTON_PROPS_MOCKS} />),
+    renderWithTheme(<Button>{BUTTON_MOCK.text}</Button>),
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+it('should render with HTML nodes', () => {
+  const { container } = render(
+    renderWithTheme(
+      <Button>
+        <i className="material-icons">{BUTTON_MOCK.icon}</i>
+        {BUTTON_MOCK.text}
+      </Button>,
+    ),
   );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 it('should render with loader', () => {
-  const BUTTON_PROPS_MOCKS_WITH_LOADER = {
-    ...BUTTON_PROPS_MOCKS,
-    loading: true,
-  };
   const { container } = render(
-    renderWithTheme(<Button {...BUTTON_PROPS_MOCKS_WITH_LOADER} />),
+    renderWithTheme(
+      <Button loading={true} loaderSrc={BUTTON_MOCK.loaderSrc}>
+        {BUTTON_MOCK.text}
+      </Button>,
+    ),
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -30,10 +43,10 @@ it('should render with loader', () => {
 it('should call function on click', () => {
   const handleClick = jest.fn();
   const { getByText } = render(
-    renderWithTheme(<Button {...BUTTON_PROPS_MOCKS} onClick={handleClick} />),
+    renderWithTheme(<Button onClick={handleClick}>{BUTTON_MOCK.text}</Button>),
   );
 
-  fireEvent.click(getByText('Search'));
+  fireEvent.click(getByText('Default button'));
 
   expect(handleClick).toHaveBeenCalledTimes(1);
 });

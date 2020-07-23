@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 type ButtonProps = {
   className?: string;
-  buttonTxt: string;
-  onClick?: (event: React.MouseEvent) => void;
+  children: ReactNode | string;
+  onClick?: () => void;
   loading?: boolean;
   loaderSrc?: string;
+  fullWidth?: boolean;
 };
 
-const StyledButtonWrapper = styled.div`
-  width: 100%;
-  max-width: 123px;
+const StyledButtonWrapper = styled.div<{ fullWidth: boolean }>`
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : '200px')};
   height: 55px;
 `;
 
-const StyledButton = styled.button`
-  width: 100%;
-  height: 55px;
+const StyledButton = styled.button<{ fullWidth: boolean }>`
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : '200px')};
+  height: 100%;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 0 15px;
@@ -28,6 +28,13 @@ const StyledButton = styled.button`
   color: ${(props) => props.theme.palette.LIGHT_MAX};
   font-weight: 600;
   transition: background-color 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    margin-right: 6px;
+    font-size: 1.3em;
+  }
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY};
   }
@@ -36,19 +43,20 @@ const StyledButton = styled.button`
 const Button: React.FC<ButtonProps> = ({
   className,
   onClick,
-  buttonTxt,
+  children,
   loading,
   loaderSrc,
+  fullWidth = true,
 }) => (
-  <StyledButtonWrapper className={className}>
+  <StyledButtonWrapper className={className} fullWidth={fullWidth}>
     <StyledButton
       type="button"
-      onClick={(event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        onClick && onClick(event);
+      onClick={() => {
+        onClick && onClick();
       }}
+      fullWidth={fullWidth}
     >
-      {loading ? <img src={loaderSrc && loaderSrc} alt="loader" /> : buttonTxt}
+      {loading ? <img src={loaderSrc && loaderSrc} alt="loader" /> : children}
     </StyledButton>
   </StyledButtonWrapper>
 );
