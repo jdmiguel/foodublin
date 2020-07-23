@@ -40,7 +40,7 @@ exports[`Component: CustomLink should render external link 1`] = `
 </a>
 `;
 
-exports[`Component: CustomLink should render with a React Node 1`] = `
+exports[`Component: CustomLink should render with HTML nodes 1`] = `
 .c0 {
   font-size: 1rem;
   display: -webkit-box;

@@ -19,7 +19,7 @@ const StyledImg = styled.img`
   max-width: 300px;
 `;
 
-const getLogoContent = (className: string | undefined, logoSrc: string) => (
+const getContentLogo = (className: string | undefined, logoSrc: string) => (
   <h1 className={className} data-testid="logo">
     <StyledImg src={logoSrc} alt="FooDublin Logo" />
   </h1>
@@ -29,10 +29,10 @@ const Logo: React.FC<LogoProps> = ({ className, logoSrc, isLink = false }) => (
   <>
     {isLink ? (
       <Link href="/" passHref>
-        <StyledLink>{getLogoContent(className, logoSrc)}</StyledLink>
+        <StyledLink>{getContentLogo(className, logoSrc)}</StyledLink>
       </Link>
     ) : (
-      getLogoContent(className, logoSrc)
+      getContentLogo(className, logoSrc)
     )}
   </>
 );

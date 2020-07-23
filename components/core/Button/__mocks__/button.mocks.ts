@@ -1,4 +1,5 @@
-export const BUTTON_PROPS_MOCKS = {
+export const BUTTON_MOCK = {
   loaderSrc: 'light_loader.svg',
-  buttonTxt: 'Search',
+  text: 'Default button',
+  icon: 'label',
 };

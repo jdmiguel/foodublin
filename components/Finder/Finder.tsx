@@ -164,10 +164,11 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         />
       </StyledDropdownsWrapper>
       <StyledButton
-        buttonTxt="Search"
         loading={false}
         loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
-      />
+      >
+        Search
+      </StyledButton>
     </StyledFinder>
   );
 };
