@@ -25,7 +25,7 @@ const StyledNavFooter = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 10px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 540px) {
     padding: 15px 20px;
     flex-direction: row;
     justify-content: space-between;
@@ -34,7 +34,7 @@ const StyledNavFooter = styled.div`
 
 const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
   margin-top: 7px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 540px) {
     margin-top: 0;
   }
 `;

@@ -23,13 +23,15 @@ const StyledContent = styled.a<{ size: CustomLinkSize }>`
   font-weight: 600;
   cursor: pointer;
   color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
-  transition: color 0.2s ease-out;
-  &:hover {
-    color: ${(props) => props.theme.palette.PRIMARY};
-  }
   i {
-    font-size: ${({ size }) => (size === 'big' ? '1.1rem' : '0.9rem')};
+    font-size: 0.8em;
     margin-right: ${({ size }) => (size === 'big' ? '6px' : '4px')};
+  }
+  @media only screen and (min-width: 540px) {
+    transition: color 0.2s ease-out;
+    &:hover {
+      color: ${(props) => props.theme.palette.PRIMARY};
+    }
   }
 `;
 

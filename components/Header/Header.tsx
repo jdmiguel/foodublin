@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Logo from '../core/Logo/Logo';
 import Finder from '../Finder/Finder';
-import Button from '../core/Button/Button';
+import CustomLink, { CustomLinkSize } from '../core/CustomLink/CustomLink';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
 
@@ -107,13 +107,7 @@ const StyledHeaderContent = styled.div`
 `;
 
 const StyledHeaderLogo = styled(Logo)`
-  width: 160px;
-  @media only screen and (min-width: 375px) {
-    width: 180px;
-  }
-  @media only screen and (min-width: 500px) {
-    width: 200px;
-  }
+  width: 190px;
   @media only screen and (min-width: 992px) {
     width: 220px;
   }
@@ -132,13 +126,22 @@ const StyledHeaderClaim = styled.h2`
   }
 `;
 
-const StyledButton = styled(Button)`
-  width: 90px;
-  @media only screen and (min-width: 500px) {
-    width: 100px;
+const StyledCustomLink = styled(CustomLink)`
+  @media only screen and (max-width: 539px) {
+    color: ${(props) => props.theme.palette.LIGHT_MAX};
+    padding: 10px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+    i {
+      margin-right: 0;
+    }
   }
-  @media only screen and (min-width: 992px) {
-    width: 110px;
+`;
+
+const StyledCustomLinkText = styled.span`
+  display: none;
+  @media only screen and (min-width: 540px) {
+    display: block;
   }
 `;
 
@@ -149,7 +152,6 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
         <StyledOverlay>
           <StyledExtendedHeaderLogo
             logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
-            logoAltTxt="FooDublin Logo"
           />
           <StyledExtendedHeaderClaim>{claimTxt}</StyledExtendedHeaderClaim>
           <Finder />
@@ -159,10 +161,13 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
       <StyledHeaderContent>
         <StyledHeaderLogo
           logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/primary_logo.svg`}
-          logoAltTxt="FooDublin Logo"
+          isLink={true}
         />
         <StyledHeaderClaim>{claimTxt}</StyledHeaderClaim>
-        <StyledButton buttonTxt="Finder" />
+        <StyledCustomLink route="/" size={CustomLinkSize.BIG}>
+          <i className="material-icons">bookmarks</i>
+          <StyledCustomLinkText>FAVOURITES</StyledCustomLinkText>
+        </StyledCustomLink>
       </StyledHeaderContent>
     )}
   </StyledHeader>

@@ -14,16 +14,10 @@ exports[`Component: Breadcrumbs should render 1`] = `
   font-weight: 600;
   cursor: pointer;
   color: #FBA52B;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-}
-
-.c2:hover {
-  color: #EC7E00;
 }
 
 .c2 i {
-  font-size: 0.9rem;
+  font-size: 0.8em;
   margin-right: 4px;
 }
 
@@ -73,6 +67,17 @@ exports[`Component: Breadcrumbs should render 1`] = `
 .c4 {
   color: #A7A7A7;
   font-weight: 600;
+}
+
+@media only screen and (min-width:540px) {
+  .c2 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c2:hover {
+    color: #EC7E00;
+  }
 }
 
 <div

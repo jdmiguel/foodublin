@@ -14,16 +14,10 @@ exports[`should render 1`] = `
   font-weight: 600;
   cursor: pointer;
   color: #FBA52B;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-}
-
-.c2:hover {
-  color: #EC7E00;
 }
 
 .c2 i {
-  font-size: 1.1rem;
+  font-size: 0.8em;
   margin-right: 6px;
 }
 
@@ -64,6 +58,17 @@ exports[`should render 1`] = `
 
 .c3 {
   margin-bottom: 6px;
+}
+
+@media only screen and (min-width:540px) {
+  .c2 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c2:hover {
+    color: #EC7E00;
+  }
 }
 
 @media only screen and (min-width:1200px) {

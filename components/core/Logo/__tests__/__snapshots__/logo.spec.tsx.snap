@@ -1,6 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Logo should render 1`] = `
+exports[`Component: Logo should render as a Link 1`] = `
+.c0 {
+  margin-bottom: 5px;
+}
+
+.c1 {
+  max-width: 300px;
+}
+
+@media only screen and (min-width:540px) {
+  .c0 {
+    margin-bottom: 7px;
+  }
+}
+
+<a
+  class="c0"
+  href="/"
+>
+  <h1
+    data-testid="logo"
+  >
+    <img
+      alt="FooDublin Logo"
+      class="c1"
+      src="http://localhost:3003/public/images/light_logo.svg"
+    />
+  </h1>
+</a>
+`;
+
+exports[`Component: Logo should render as simple H1 1`] = `
 .c0 {
   max-width: 300px;
 }
@@ -9,7 +40,7 @@ exports[`Component: Logo should render 1`] = `
   data-testid="logo"
 >
   <img
-    alt="FooDublin"
+    alt="FooDublin Logo"
     class="c0"
     src="http://localhost:3003/public/images/light_logo.svg"
   />
