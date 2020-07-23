@@ -34,10 +34,6 @@ const StyledNavFooter = styled.div`
 
 const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
   margin-top: 7px;
-  align-self: ${({ breadcrumbsSteps }) => breadcrumbsSteps > 2 && 'flex-end'};
-  @media only screen and (min-width: 428px) {
-    align-self: ${({ breadcrumbsSteps }) => breadcrumbsSteps > 2 && 'initial'};
-  }
   @media only screen and (min-width: 768px) {
     margin-top: 0;
   }
@@ -86,7 +82,7 @@ const breadrumbsData = [
     text: 'Search Restaurants',
     route: '/search/rathmines/fast-food',
   },
-  { text: 'Restaurant Details', route: '/detail/elefant-castle' },
+  { text: 'Restaurant', route: '/detail/elefant-castle' },
 ];
 
 const Footer: React.FC<FooterProps> = ({ isExtended }) => (
