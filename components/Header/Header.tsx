@@ -166,7 +166,7 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
         <StyledHeaderClaim>{claimTxt}</StyledHeaderClaim>
         <StyledCustomLink route="/" size={CustomLinkSize.BIG}>
           <i className="material-icons">bookmarks</i>
-          <StyledCustomLinkText>FAVOURITES</StyledCustomLinkText>
+          <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
         </StyledCustomLink>
       </StyledHeaderContent>
     )}

@@ -92,7 +92,7 @@ const Footer: React.FC<FooterProps> = ({ isExtended }) => (
         <StyledNavFooter className="grid-container">
           <Breadcrumbs breadcrumbsData={breadrumbsData} />
           <StyledCustomLink breadcrumbsSteps={breadrumbsData.length} route="/">
-            <i className="material-icons">bookmarks</i>FAVOURITES
+            <i className="material-icons">bookmarks</i>FAVORITES
           </StyledCustomLink>
         </StyledNavFooter>
       </StyledNavFooterWrapper>
