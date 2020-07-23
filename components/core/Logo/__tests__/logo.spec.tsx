@@ -8,15 +8,27 @@ import { LOGO_TEXT_MOCKS } from '../__mocks__/logo.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 const CDN_URL_STATIC_DIRECTORY = 'http://localhost:3003';
-const { logoLightSrc, logoAltTxt } = LOGO_TEXT_MOCKS;
+const { logoLightSrc } = LOGO_TEXT_MOCKS;
 
 describe('Component: Logo', () => {
-  it('should render', () => {
+  it('should render as simple H1', () => {
     const { container } = render(
       renderWithTheme(
         <Logo
           logoSrc={`${CDN_URL_STATIC_DIRECTORY}/public/images/${logoLightSrc}`}
-          logoAltTxt={logoAltTxt}
+        />,
+      ),
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render as a Link', () => {
+    const { container } = render(
+      renderWithTheme(
+        <Logo
+          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/public/images/${logoLightSrc}`}
+          isLink={true}
         />,
       ),
     );

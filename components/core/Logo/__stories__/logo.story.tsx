@@ -21,6 +21,5 @@ stories.add('Logo', () => (
       logoOptions,
       LOGO_TEXT_MOCKS.logoPrimarySrc,
     )}
-    logoAltTxt={LOGO_TEXT_MOCKS.logoAltTxt}
   />
 ));

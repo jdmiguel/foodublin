@@ -27,5 +27,6 @@ module.exports = {
     'react/prop-types': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
   },
 };

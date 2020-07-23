@@ -14,16 +14,10 @@ exports[`Component: Footer should render 1`] = `
   font-weight: 600;
   cursor: pointer;
   color: #FBA52B;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-}
-
-.c3:hover {
-  color: #EC7E00;
 }
 
 .c3 i {
-  font-size: 0.9rem;
+  font-size: 0.8em;
   margin-right: 4px;
 }
 
@@ -64,6 +58,17 @@ exports[`Component: Footer should render 1`] = `
 
 .c2:last-of-type {
   margin-right: 1px;
+}
+
+@media only screen and (min-width:540px) {
+  .c3 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c3:hover {
+    color: #EC7E00;
+  }
 }
 
 @media only screen and (min-width:375px) {
