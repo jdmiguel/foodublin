@@ -20,7 +20,7 @@ export type AutocompleteProps = {
   selectSuggestion: (id: string) => void;
 };
 
-enum PLACEHOLDER_TEXT {
+enum PlaceholderText {
   BLURRED = 'Search for locals...',
   FOCUSED = 'Start typing to search...',
 }
@@ -197,7 +197,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 }) => {
   const [value, setValue] = useState('');
   const [focusedPlaceholder, setFocusedPlaceholder] = useState(
-    PLACEHOLDER_TEXT.BLURRED,
+    PlaceholderText.BLURRED,
   );
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
@@ -216,14 +216,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleInputFocus = () => {
     if (value.length === 0) {
-      setFocusedPlaceholder(PLACEHOLDER_TEXT.FOCUSED);
+      setFocusedPlaceholder(PlaceholderText.FOCUSED);
     } else if (value.length > 2) {
       setIsListboxFocused(true);
     }
   };
 
   const handleInputBlur = () => {
-    value.length === 0 && setFocusedPlaceholder(PLACEHOLDER_TEXT.BLURRED);
+    value.length === 0 && setFocusedPlaceholder(PlaceholderText.BLURRED);
 
     setTimeout(() => {
       setIsListboxFocused(false);

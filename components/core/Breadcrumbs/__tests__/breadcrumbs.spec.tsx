@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import 'jest-styled-components';
 
@@ -18,31 +18,17 @@ describe('Component: Breadcrumbs', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should display properly the first two steps and call function on click them', () => {
-    const handleClick = jest.fn();
+  it('should display properly the first two steps', () => {
     const { getByText } = render(
-      renderWithTheme(
-        <Breadcrumbs
-          breadcrumbsData={BREADCRUMBS_MOCK}
-          onClick={handleClick}
-        />,
-      ),
+      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
     );
     const firstStep = getByText('First step');
     const secondStep = getByText('Second step');
 
     expect(firstStep).toHaveStyleRule('color', '#FBA52B');
+    expect(firstStep).toHaveStyleRule('font-weight', '600');
     expect(secondStep).toHaveStyleRule('color', '#FBA52B');
-
-    fireEvent.click(firstStep);
-
-    expect(handleClick).toHaveBeenCalled();
-    expect(handleClick).toHaveBeenCalledWith('/first-link');
-
-    fireEvent.click(secondStep);
-
-    expect(handleClick).toHaveBeenCalled();
-    expect(handleClick).toHaveBeenCalledWith('/second-link');
+    expect(secondStep).toHaveStyleRule('font-weight', '600');
   });
 
   it('should display arrows after the first two steps', () => {
@@ -56,24 +42,15 @@ describe('Component: Breadcrumbs', () => {
     expect(secondStep.nextElementSibling).toBeTruthy();
   });
 
-  it('should display properly the last step and do not call function on click it', () => {
-    const handleClick = jest.fn();
+  it('should display properly the last step', () => {
     const { getByText } = render(
-      renderWithTheme(
-        <Breadcrumbs
-          breadcrumbsData={BREADCRUMBS_MOCK}
-          onClick={handleClick}
-        />,
-      ),
+      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
     );
     const lastStep = getByText('Third step');
 
     expect(lastStep).toHaveStyleRule('color', '#A7A7A7');
     expect(lastStep).toHaveStyleRule('pointer-events', 'none');
-
-    fireEvent.click(lastStep);
-
-    expect(handleClick).not.toHaveBeenCalled();
+    expect(lastStep).toHaveStyleRule('font-weight', '400');
   });
 });
 

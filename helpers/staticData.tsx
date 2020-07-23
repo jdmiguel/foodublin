@@ -226,13 +226,13 @@ export const DEFAULT_RATING_STAR_LIST = [
   { id: 5, type: 'star_outline' },
 ];
 
-enum FILTER_SORT {
-  cost = 'cost',
-  rank = 'rank',
+enum FilterSort {
+  COST = 'COST',
+  RANK = 'RANK',
 }
-enum FILTER_ORDER {
-  asc = 'asc',
-  desc = 'desc',
+enum FilterOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
 }
 
 export const FILTER_DATA = [
@@ -240,32 +240,32 @@ export const FILTER_DATA = [
     primaryText: 'cost',
     secondaryText: '- high to low',
     icon: 'keyboard_arrow_up',
-    sort: FILTER_SORT.cost,
-    order: FILTER_ORDER.asc,
+    sort: FilterSort.COST,
+    order: FilterOrder.ASC,
     id: 1,
   },
   {
     primaryText: 'cost',
     secondaryText: '- low to high',
     icon: 'keyboard_arrow_down',
-    sort: FILTER_SORT.cost,
-    order: FILTER_ORDER.desc,
+    sort: FilterSort.COST,
+    order: FilterOrder.DESC,
     id: 2,
   },
   {
     primaryText: 'rank',
     secondaryText: '- high to low',
     icon: 'keyboard_arrow_up',
-    sort: FILTER_SORT.rank,
-    order: FILTER_ORDER.asc,
+    sort: FilterSort.RANK,
+    order: FilterOrder.ASC,
     id: 3,
   },
   {
     primaryText: 'rank',
     secondaryText: '- low to high',
     icon: 'keyboard_arrow_down',
-    sort: FILTER_SORT.rank,
-    order: FILTER_ORDER.desc,
+    sort: FilterSort.RANK,
+    order: FilterOrder.DESC,
     id: 4,
   },
 ];

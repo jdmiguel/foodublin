@@ -36,9 +36,8 @@ const HomePage: React.FC = () => (
             imgSrc={restaurant.imgSrc}
             imgAlt={restaurant.name}
             title={restaurant.name}
-            description={restaurant.description}
-            linkText="visit website"
             linkUrl={restaurant.link}
+            description={restaurant.description}
           />
         ))}
       </StyledHighlightWrapper>

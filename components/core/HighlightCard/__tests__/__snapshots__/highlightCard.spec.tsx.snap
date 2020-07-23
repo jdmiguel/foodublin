@@ -2,13 +2,32 @@
 
 exports[`should render 1`] = `
 .c2 {
-  color: #585858;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-size: 1.3rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
 }
 
-.c3 {
+.c2:hover {
+  color: #EC7E00;
+}
+
+.c2 i {
+  font-size: 1.1rem;
+  margin-right: 6px;
+}
+
+.c4 {
   color: #585858;
   line-height: 1.2rem;
 }
@@ -16,7 +35,7 @@ exports[`should render 1`] = `
 .c0 {
   width: 100%;
   max-width: 350px;
-  padding: 15px;
+  padding: 15px 15px 25px;
 }
 
 .c0 img {
@@ -43,24 +62,8 @@ exports[`should render 1`] = `
   justify-content: space-around;
 }
 
-.c4 {
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #FBA52B;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-  margin-top: 15px;
-}
-
-.c4:hover {
-  color: #EC7E00;
-}
-
-@media only screen and (min-width:992px) {
-  .c2 {
-    font-size: 1.45rem;
-  }
+.c3 {
+  margin-bottom: 6px;
 }
 
 @media only screen and (min-width:1200px) {
@@ -86,23 +89,17 @@ exports[`should render 1`] = `
   <div
     class="c1"
   >
-    <h4
-      class="c2"
+    <a
+      class="c2 c3"
+      href="https://theclarence.ie/cleaver-east/"
     >
       Title mocked
-    </h4>
+    </a>
     <p
-      class="c3"
+      class="c4"
     >
       Description mocked
     </p>
-    <a
-      class="c4"
-      href="https://theclarence.ie/cleaver-east/"
-      target="blank"
-    >
-      link-text
-    </a>
   </div>
 </div>
 `;

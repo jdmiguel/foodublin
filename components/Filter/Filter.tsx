@@ -5,8 +5,8 @@ type FilterData = {
   primaryText: string;
   secondaryText: string;
   icon: string;
-  sort: 'cost' | 'rank';
-  order: 'asc' | 'desc';
+  sort: 'COST' | 'RANK';
+  order: 'ASC' | 'DESC';
   id: number;
 };
 
