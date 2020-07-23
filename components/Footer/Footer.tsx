@@ -46,10 +46,9 @@ const StyledRightsFooter = styled.div`
   padding: 20px 0;
 `;
 
-const StyledText = styled.p`
+const StyledBlock = styled.div`
+  display: flex;
   color: ${(props) => props.theme.palette.LIGHT_SOFT};
-  font-weight: 300;
-  font-size: 0.9em;
   &:not(:first-of-type) {
     margin-left: 5px;
     @media only screen and (min-width: 375px) {
@@ -71,9 +70,11 @@ const StyledText = styled.p`
       margin-right: 3px;
     }
   }
-  @media only screen and (min-width: 375px) {
-    font-size: 1em;
-  }
+`;
+
+const StyledText = styled.p<{ addSeparation: boolean }>`
+  font-weight: 300;
+  margin-right: ${({ addSeparation }) => addSeparation && '3px'};
 `;
 
 const breadrumbsData = [
@@ -98,12 +99,23 @@ const Footer: React.FC<FooterProps> = ({ isExtended }) => (
       </StyledNavFooterWrapper>
     )}
     <StyledRightsFooter>
-      <StyledText>FOODUBLIN</StyledText>
-      <StyledText>COPYRIGHT ©2020</StyledText>
-      <StyledText>BY</StyledText>
-      <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
-        JDMIGUEL
-      </CustomLink>
+      <StyledBlock>
+        <CustomLink
+          route="https://github.com/jdmiguel/foodublin"
+          isExternal={true}
+        >
+          GITHUB
+        </CustomLink>
+      </StyledBlock>
+      <StyledBlock>
+        <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
+      </StyledBlock>
+      <StyledBlock>
+        <StyledText addSeparation={true}>BY</StyledText>
+        <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
+          JDMIGUEL
+        </CustomLink>
+      </StyledBlock>
     </StyledRightsFooter>
   </StyledFooterWrapper>
 );

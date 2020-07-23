@@ -42,9 +42,11 @@ exports[`Component: Footer should render 1`] = `
 }
 
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: #D8D8D8;
-  font-weight: 300;
-  font-size: 0.9em;
 }
 
 .c2:not(:first-of-type) {
@@ -58,6 +60,15 @@ exports[`Component: Footer should render 1`] = `
 
 .c2:last-of-type {
   margin-right: 1px;
+}
+
+.c4 {
+  font-weight: 300;
+}
+
+.c5 {
+  font-weight: 300;
+  margin-right: 3px;
 }
 
 @media only screen and (min-width:540px) {
@@ -89,39 +100,46 @@ exports[`Component: Footer should render 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
-  .c2 {
-    font-size: 1em;
-  }
-}
-
 <footer
   class="c0"
 >
   <div
     class="c1"
   >
-    <p
+    <div
       class="c2"
     >
-      FOODUBLIN
-    </p>
-    <p
+      <a
+        class="c3"
+        href="https://github.com/jdmiguel/foodublin"
+      >
+        GITHUB
+      </a>
+    </div>
+    <div
       class="c2"
     >
-      COPYRIGHT ©2020
-    </p>
-    <p
+      <p
+        class="c4"
+      >
+        FOODUBLIN ©2020
+      </p>
+    </div>
+    <div
       class="c2"
     >
-      BY
-    </p>
-    <a
-      class="c3"
-      href="https://jdmiguel.netlify.app/"
-    >
-      JDMIGUEL
-    </a>
+      <p
+        class="c5"
+      >
+        BY
+      </p>
+      <a
+        class="c3"
+        href="https://jdmiguel.netlify.app/"
+      >
+        JDMIGUEL
+      </a>
+    </div>
   </div>
 </footer>
 `;
