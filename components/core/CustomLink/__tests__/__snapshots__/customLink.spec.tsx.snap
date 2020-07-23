@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: CustomLink should render external link 1`] = `
+.c0 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c0:hover {
+  color: #EC7E00;
+}
+
+.c0 i {
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+<a
+  class="c0"
+  href="https://theclarence.ie/cleaver-east/"
+>
+  Default link
+</a>
+`;
+
+exports[`Component: CustomLink should render with a React Node 1`] = `
+.c0 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c0:hover {
+  color: #EC7E00;
+}
+
+.c0 i {
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+<a
+  class="c0"
+  href="/"
+>
+  <i
+    class="material-icons"
+  >
+    label
+  </i>
+  Default link
+</a>
+`;
+
+exports[`Component: CustomLink should render with a simple text 1`] = `
+.c0 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c0:hover {
+  color: #EC7E00;
+}
+
+.c0 i {
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+<a
+  class="c0"
+  href="/"
+>
+  Default link
+</a>
+`;

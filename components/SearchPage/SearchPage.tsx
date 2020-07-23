@@ -36,16 +36,7 @@ const StyledCardsWrapper = styled.div`
 `;
 
 const SearchPage: React.FC = () => (
-  <DefaultLayout
-    isExtendedHeader={false}
-    isExtendedFooter={true}
-    onClickFavourites={() => {
-      console.log('onClickFavourites');
-    }}
-    onClickBreadcrumbs={(link: string) => {
-      console.log('link: ', link);
-    }}
-  >
+  <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
     <StyledSearchPage className="grid-container">
       <Title text="32 restaurants in Rathmines" />
       <Filter

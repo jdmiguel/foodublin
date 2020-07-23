@@ -14,6 +14,5 @@ stories.add('HighlightCard', () => (
     {...HIGHLIGHT_CARD_PROPS_MOCKS}
     title={text('title', HIGHLIGHT_CARD_PROPS_MOCKS.title)}
     description={text('description', HIGHLIGHT_CARD_PROPS_MOCKS.description)}
-    linkText={text('link-text', HIGHLIGHT_CARD_PROPS_MOCKS.linkText)}
   />
 ));

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import BlockTitle from '../BlockTitle/BlockTitle';
+import CustomLink, { CustomLinkSize } from '../CustomLink/CustomLink';
 import BlockText from '../BlockText/BlockText';
 
 import { HIGHLIGHT_GENERIC_SRC } from '../../../helpers/staticData';
@@ -12,15 +12,14 @@ type HighlightCardProps = {
   imgSrc: string;
   imgAlt: string;
   title: string;
-  description: string;
-  linkText: string;
   linkUrl: string;
+  description: string;
 };
 
 const StyledHighlightCard = styled.div`
   width: 100%;
   max-width: 350px;
-  padding: 15px;
+  padding: 15px 15px 25px;
   img {
     width: 100%;
     max-width: 350px;
@@ -41,16 +40,8 @@ const StyledText = styled.div`
   justify-content: space-around;
 `;
 
-const StyledLink = styled.a`
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
-  transition: color 0.2s ease-out;
-  margin-top: 15px;
-  &:hover {
-    color: ${(props) => props.theme.palette.PRIMARY};
-  }
+const StyledCustomLink = styled(CustomLink)`
+  margin-bottom: 6px;
 `;
 
 const HighlightCard: React.FC<HighlightCardProps> = ({
@@ -59,7 +50,6 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   imgAlt,
   title,
   description,
-  linkText,
   linkUrl,
 }) => (
   <StyledHighlightCard className={`${className} paper`}>
@@ -78,11 +68,14 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
       )}
     />
     <StyledText>
-      <BlockTitle text={title} />
+      <StyledCustomLink
+        route={linkUrl}
+        isExternal={true}
+        size={CustomLinkSize.BIG}
+      >
+        {title}
+      </StyledCustomLink>
       <BlockText text={description} />
-      <StyledLink href={linkUrl} target="blank">
-        {linkText}
-      </StyledLink>
     </StyledText>
   </StyledHighlightCard>
 );

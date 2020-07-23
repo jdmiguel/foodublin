@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
+import CustomLink, { CustomLinkSize } from '../CustomLink/CustomLink';
+
 import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
 
 type CardProps = {
@@ -63,26 +65,13 @@ const StyledText = styled.div`
   padding: 5px 0;
   width: 65%;
   @media only screen and (min-width: 768px) {
-    font-size: 1.3rem;
-    line-height: 1.3rem;
     padding: 10px 0;
   }
 `;
 
-const StyledTitle = styled.a`
+const StyledTitle = styled(CustomLink)`
   ${CardTextCSS}
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  font-weight: 600;
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
-  transition: color 0.2s ease-out;
-  &:hover {
-    color: ${(props) => props.theme.palette.PRIMARY};
-  }
-  @media only screen and (min-width: 1200px) {
-    font-size: 1.3rem;
-    line-height: 1.3rem;
-  }
+  display: block;
 `;
 
 const StyledFirstText = styled.p`
@@ -133,7 +122,7 @@ const Card: React.FC<CardProps> = ({
       )}
     />
     <StyledText>
-      <StyledTitle href={link} target="blank">
+      <StyledTitle route={link} size={CustomLinkSize.BIG}>
         {title}
       </StyledTitle>
       <StyledFirstText>{firstText}</StyledFirstText>

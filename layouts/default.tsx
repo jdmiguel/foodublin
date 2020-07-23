@@ -10,8 +10,6 @@ type MainLayoutProps = {
   children: ReactNode;
   isExtendedHeader: boolean;
   isExtendedFooter: boolean;
-  onClickFavourites?: () => void;
-  onClickBreadcrumbs?: (link: string) => void;
 };
 
 const StyledMainLayout = styled.div`
@@ -34,8 +32,6 @@ const MainLayout = ({
   children,
   isExtendedHeader,
   isExtendedFooter,
-  onClickFavourites,
-  onClickBreadcrumbs,
 }: MainLayoutProps) => (
   <StyledMainLayout>
     <Header
@@ -44,11 +40,7 @@ const MainLayout = ({
       isExtended={isExtendedHeader}
     />
     <StyledMain>{children}</StyledMain>
-    <Footer
-      isExtended={isExtendedFooter}
-      onClickFavourites={onClickFavourites}
-      onClickBreadcrumbs={onClickBreadcrumbs}
-    />
+    <Footer isExtended={isExtendedFooter} />
   </StyledMainLayout>
 );
 

@@ -1,8 +1,8 @@
 export const BREADCRUMBS_MOCK = [
-  { text: 'First step', link: '/first-link' },
+  { text: 'First step', route: '/first-link' },
   {
     text: 'Second step',
-    link: '/second-link',
+    route: '/second-link',
   },
-  { text: 'Third step', link: '/third-link' },
+  { text: 'Third step', route: '/third-link' },
 ];

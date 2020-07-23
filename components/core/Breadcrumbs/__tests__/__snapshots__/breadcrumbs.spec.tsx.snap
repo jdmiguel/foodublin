@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: Breadcrumbs should render 1`] = `
-.c0 {
+.c2 {
+  font-size: 1rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,87 +11,112 @@ exports[`Component: Breadcrumbs should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: inline-block;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.c2:hover {
+  color: #EC7E00;
+}
+
+.c2 i {
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 {
-  color: #FBA52B;
-  white-space: nowrap;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-  cursor: pointer;
-  background: none;
-  outline: none;
-  position: relative;
-  font-weight: 500;
-  margin-right: 3px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 5px;
 }
 
-.c1:hover {
-  color: #EC7E00;
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c3 {
-  color: #FBA52B;
   white-space: nowrap;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-  cursor: pointer;
-  background: none;
-  outline: none;
-  position: relative;
-  font-weight: 500;
-  margin-right: 3px;
+  margin-right: 5px;
+}
+
+.c6 {
+  white-space: nowrap;
+  margin-right: 5px;
   pointer-events: none;
   color: #A7A7A7;
+  font-weight: 400;
 }
 
-.c3:hover {
-  color: #EC7E00;
-}
-
-.c2 {
+.c4 {
   color: #A7A7A7;
   font-weight: 600;
 }
 
-<div>
+<div
+  class="c0"
+>
   <div
-    class="c0"
+    class="c1"
   >
-    <button
-      class="c1"
+    <a
+      class="c2 c3"
+      href="/first-link"
     >
       First step
-    </button>
+    </a>
     <span
-      class="c2"
+      class="c4"
     >
       &gt;
     </span>
   </div>
   <div
-    class="c0"
+    class="c1"
   >
-    <button
-      class="c1"
+    <a
+      class="c2 c3"
+      href="/second-link"
     >
       Second step
-    </button>
+    </a>
     <span
-      class="c2"
+      class="c4"
     >
       &gt;
     </span>
   </div>
   <div
-    class="c0"
+    class="c5"
   >
-    <button
-      class="c3"
+    <a
+      class="c2 c6"
+      href="/third-link"
     >
       Third step
-    </button>
+    </a>
   </div>
 </div>
 `;

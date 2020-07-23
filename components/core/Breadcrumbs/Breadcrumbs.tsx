@@ -1,41 +1,37 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import CustomLink from '../CustomLink/CustomLink';
+
 type BreadcrumbData = {
   text: string;
-  link: string;
+  route: string;
 };
 
 type BreadcrumbsProps = {
   className?: string;
   breadcrumbsData: BreadcrumbData[];
-  onClick?: (link: string) => void;
 };
 
 const lastBreadcrumbCSS = css`
   pointer-events: none;
   color: ${(props) => props.theme.palette.DARK_SOFT};
+  font-weight: 400;
 `;
 
-const StyledBreadcrumbWrapper = styled.div`
+const StyledBreadcrumbsWrapper = styled.div`
+  display: flex;
+`;
+
+const StyledBreadcrumb = styled.div<{ isLast: boolean }>`
   display: flex;
   align-items: center;
-  display: inline-block;
+  margin-right: ${({ isLast }) => !isLast && '5px'};
 `;
 
-const StyledBreadcrumb = styled.button<{ isLast: boolean }>`
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+const StyledLink = styled(CustomLink)<{ isLast: boolean }>`
   white-space: nowrap;
-  transition: color 0.2s ease-out;
-  cursor: pointer;
-  background: none;
-  outline: none;
-  position: relative;
-  font-weight: 500;
-  margin-right: 3px;
-  &:hover {
-    color: ${(props) => props.theme.palette.PRIMARY};
-  }
+  margin-right: 5px;
   ${({ isLast }) => isLast && lastBreadcrumbCSS};
 `;
 
@@ -44,27 +40,20 @@ const StyledArrow = styled.span`
   font-weight: 600;
 `;
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
-  breadcrumbsData,
-  onClick,
-}) => (
-  <div>
-    {breadcrumbsData.map((breadcrumbData, itemIndex, items) => (
-      <StyledBreadcrumbWrapper key={breadcrumbData.text}>
-        <StyledBreadcrumb
-          onClick={() => {
-            onClick &&
-              itemIndex < items.length - 1 &&
-              onClick(breadcrumbData.link);
-          }}
-          isLast={itemIndex === items.length - 1}
-        >
-          {breadcrumbData.text}
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
+  <StyledBreadcrumbsWrapper>
+    {breadcrumbsData.map((breadcrumbData, itemIndex, items) => {
+      const isLast = itemIndex === items.length - 1;
+      return (
+        <StyledBreadcrumb key={breadcrumbData.text} isLast={isLast}>
+          <StyledLink route={breadcrumbData.route} isLast={isLast}>
+            {breadcrumbData.text}
+          </StyledLink>
+          {itemIndex < items.length - 1 && <StyledArrow>{'>'}</StyledArrow>}
         </StyledBreadcrumb>
-        {itemIndex < items.length - 1 && <StyledArrow>{'>'}</StyledArrow>}
-      </StyledBreadcrumbWrapper>
-    ))}
-  </div>
+      );
+    })}
+  </StyledBreadcrumbsWrapper>
 );
 
 export default Breadcrumbs;
