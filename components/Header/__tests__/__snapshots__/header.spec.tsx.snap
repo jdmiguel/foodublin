@@ -1051,6 +1051,16 @@ exports[`Component: Header should render extended Header 1`] = `
                 <p
                   class="c30"
                 >
+                  Dublin
+                </p>
+              </div>
+              <div
+                class="c29"
+                role="option"
+              >
+                <p
+                  class="c30"
+                >
                   South City West
                 </p>
               </div>

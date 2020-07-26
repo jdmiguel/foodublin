@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
@@ -121,6 +122,10 @@ const StyledButton = styled(Button)`
 const Finder: React.FC<FinderProps> = ({ className }) => {
   const [suggestions, setSuggestions] = useState(EMPTY_SUGGESTIONS_MOCK);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
+  const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
+
+  const router = useRouter();
 
   const fetchSuggestions = useCallback(
     (search: string) => {
@@ -136,6 +141,18 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const selectSuggestion = (id: string) => {
     console.log('id: ', id);
+  };
+
+  const handleBtnClick = () => {
+    if (!isLoading) {
+      setIsLoading(true);
+      router
+        .push(
+          '/search/[location]/[cuisine]',
+          `/search/${currentLocationPath}/${currentCuisinePath}`,
+        )
+        .then(() => window.scrollTo(0, 0));
+    }
   };
 
   return (
@@ -154,18 +171,21 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
           icon="near_me"
           labelTxt="Select any location"
           list={LOCATIONS}
-          onSelect={(id: number) => console.log(id)}
+          onSelect={(path: string) => setCurrentLocationPath(path)}
+          onClear={() => setCurrentLocationPath('dublin')}
         />
         <StyledDropdown
           icon="restaurant"
           labelTxt="Select any cuisine"
           list={CUISINES}
-          onSelect={(id: number) => console.log(id)}
+          onSelect={(path: string) => setCurrentCuisinePath(path)}
+          onClear={() => setCurrentCuisinePath('any-food')}
         />
       </StyledDropdownsWrapper>
       <StyledButton
-        loading={false}
+        loading={isLoading}
         loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
+        onClick={handleBtnClick}
       >
         Search
       </StyledButton>

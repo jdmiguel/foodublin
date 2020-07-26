@@ -12,6 +12,7 @@ type CustomLinkProps = {
   className?: string;
   size?: CustomLinkSize;
   route: string;
+  asRoute?: string;
   children: ReactNode | string;
   isExternal?: boolean;
 };
@@ -37,9 +38,10 @@ const StyledContent = styled.a<{ size: CustomLinkSize }>`
 
 const CustomLink = ({
   className,
-  route,
-  size = CustomLinkSize.SMALL,
   children,
+  route,
+  asRoute,
+  size = CustomLinkSize.SMALL,
   isExternal,
 }: CustomLinkProps) => (
   <>
@@ -48,7 +50,7 @@ const CustomLink = ({
         {children}
       </StyledContent>
     ) : (
-      <Link href={route} passHref={true}>
+      <Link href={route} as={asRoute} passHref={true}>
         <StyledContent className={className} size={size}>
           {children}
         </StyledContent>

@@ -56,13 +56,16 @@ export const getAlphanumericText = (text: string) =>
 
 export const getLoweredText = (text: string) => text.toLowerCase();
 
-export const getFormattedUrlText = (text: string) =>
-  text.split(' ').reduce((acc: string, next: string) => {
-    const concatenator = acc && getAlphanumericText(next) ? '+' : '';
+export const getFormattedUrlText = (text: string, isPath = false) => {
+  const concatenatorSymbol = isPath ? '-' : '+';
+  return text.split(' ').reduce((acc: string, next: string) => {
+    const concatenator =
+      acc && getAlphanumericText(next) ? concatenatorSymbol : '';
     const formattedText = compose(getLoweredText, getAlphanumericText);
 
     return `${acc}${concatenator}${formattedText(next)}`;
   }, '');
+};
 
 export const getMapSrc = (name: string, location: string) => {
   const urlName = getFormattedUrlText(name);

@@ -14,6 +14,5 @@ stories.add('Card', () => (
     {...CARD_PROPS_MOCKS}
     title={text('title', CARD_PROPS_MOCKS.title)}
     firstText={text('firstText', CARD_PROPS_MOCKS.firstText)}
-    secondText={text('secondText', CARD_PROPS_MOCKS.secondText)}
   />
 ));

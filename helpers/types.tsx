@@ -13,3 +13,18 @@ export type Timming = {
   day: string;
   schedule: string;
 };
+
+export type ListItemType = {
+  iconSrc?: string;
+  id: number;
+  name: string;
+  path: string;
+};
+
+export type RestaurantType = {
+  id: string;
+  imgSrc: string;
+  title: string;
+  link: string;
+  firstText: string;
+};
