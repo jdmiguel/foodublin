@@ -1,3 +1,10 @@
+export type Suggestion = {
+  id: number;
+  imgSrc: string;
+  firstText: string;
+  secondText: string;
+};
+
 export type CardProps = {
   id: string;
   imgSrc: string;

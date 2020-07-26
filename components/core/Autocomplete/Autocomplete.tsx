@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { LazyImage } from 'react-lazy-images';
 
 import Input from '../Input/Input';
 
-type Suggestion = {
-  id: string;
-  thumbSrc: string;
-  localName: string;
-  locationName: string;
-};
+import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
+import { Suggestion } from '../../../helpers/types';
 
 export type AutocompleteProps = {
   className?: string;
@@ -17,7 +14,7 @@ export type AutocompleteProps = {
   suggestions: Suggestion[];
   loading: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: string) => void;
+  selectSuggestion: (name: string) => void;
 };
 
 enum PlaceholderText {
@@ -126,7 +123,7 @@ const StyledLoader = styled.div`
   justify-content: center;
   align-items: center;
   @media only screen and (min-width: 992px) {
-    height: 470px;
+    min-height: 200px;
   }
   img {
     margin-bottom: 8px;
@@ -162,7 +159,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const StyledThumb = styled.img`
+const ImageCSS = css`
   width: 30px;
   height: 30px;
   border: solid ${(props) => props.theme.palette.LIGHT_MAX} 1px;
@@ -172,16 +169,24 @@ const StyledThumb = styled.img`
   box-shadow: 1px 2px 5px #888;
 `;
 
+const StyledImage = styled(LazyImage)`
+  ${ImageCSS}
+`;
+
+const StyledGenericThumb = styled.img`
+  ${ImageCSS}
+`;
+
 const StyledTextWrapper = styled.div`
   margin-left: 12px;
 `;
 
-const StyledLocal = styled.p`
+const StyledFirstText = styled.p`
   color: ${(props) => props.theme.palette.DARK_MAX};
   font-size: 1.05rem;
 `;
 
-const StyledLocation = styled.p`
+const StyledSecondText = styled.p`
   color: ${(props) => props.theme.palette.DARK_SOFT};
   font-size: 0.85rem;
 `;
@@ -230,15 +235,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }, 100);
   };
 
-  const handleSuggestionClick = (
-    event: React.MouseEvent,
-    id: string,
-    localName: string,
-  ) => {
-    event.preventDefault();
-
-    selectSuggestion(id);
-    setValue(localName);
+  const handleSuggestionClick = (showedText: string) => {
+    selectSuggestion(showedText);
+    setValue(showedText);
   };
 
   return (
@@ -259,8 +258,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       >
         <StyledCloseButton
           type="button"
-          onClick={(event: React.MouseEvent<HTMLElement>) => {
-            event.preventDefault();
+          onClick={() => {
             setIsListboxFocused(false);
           }}
         >
@@ -274,17 +272,29 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         ) : (
           <StyledListbox role="listbox">
             {suggestions.map(
-              ({ id, thumbSrc, localName, locationName }: Suggestion) => (
+              ({ id, imgSrc, firstText, secondText }: Suggestion) => (
                 <StyledListboxItem key={id} role="option">
-                  <StyledLink
-                    onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                      handleSuggestionClick(event, id, localName)
-                    }
-                  >
-                    <StyledThumb src={thumbSrc} alt={localName} />
+                  <StyledLink onClick={() => handleSuggestionClick(firstText)}>
+                    <StyledImage
+                      src={imgSrc}
+                      alt={firstText}
+                      placeholder={({ imageProps, ref }) => (
+                        <div ref={ref} className="LazyImage-Placeholder">
+                          <StyledGenericThumb
+                            src={THUMB_GENERIC_SRC}
+                            alt={imageProps.alt}
+                          />
+                        </div>
+                      )}
+                      actual={({ imageProps }) => (
+                        <div className="LazyImage-Actual">
+                          <img {...imageProps} alt={firstText} />
+                        </div>
+                      )}
+                    />
                     <StyledTextWrapper>
-                      <StyledLocal>{localName}</StyledLocal>
-                      <StyledLocation>{locationName}</StyledLocation>
+                      <StyledFirstText>{firstText}</StyledFirstText>
+                      <StyledSecondText>{secondText}</StyledSecondText>
                     </StyledTextWrapper>
                   </StyledLink>
                 </StyledListboxItem>

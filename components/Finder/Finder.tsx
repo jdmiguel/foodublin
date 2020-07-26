@@ -2,17 +2,24 @@ import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
+import {
+  CDN_URL_STATIC_DIRECTORY,
+  getFormattedUrlText,
+} from '../../helpers/utils';
+import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
+
+import { getRestaurants } from '../../services';
 
 import Autocomplete from '../core/Autocomplete/Autocomplete';
 import Dropdown from '../core/Dropdown/Dropdown';
 import Button from '../core/Button/Button';
 
 import {
-  SUGGESTIONS_MOCK,
-  EMPTY_SUGGESTIONS_MOCK,
-} from '../core/Autocomplete/__mocks__/autocomplete.mocks';
-import { LOCATIONS, CUISINES } from '../../helpers/staticData';
+  DUBLIN_ID,
+  DEFAULT_SUGGESTIONS,
+  LOCATIONS,
+  CUISINES,
+} from '../../helpers/staticData';
 
 type FinderProps = {
   className?: string;
@@ -120,32 +127,43 @@ const StyledButton = styled(Button)`
 `;
 
 const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions] = useState(EMPTY_SUGGESTIONS_MOCK);
-  const [isLoading, setIsLoading] = useState(false);
+  const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTIONS);
+  const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
 
   const router = useRouter();
 
   const fetchSuggestions = useCallback(
-    (search: string) => {
-      setIsLoading(true);
-      setTimeout(() => {
-        console.log('search: ', search);
-        setSuggestions(SUGGESTIONS_MOCK);
-        setIsLoading(false);
-      }, 1000);
+    async (search: string) => {
+      setIsAutocompleteLoading(true);
+
+      const response = await getRestaurants(DUBLIN_ID, 'city', 0, search);
+      const restaurants = response.restaurants.map((restaurant: any) => ({
+        id: restaurant.restaurant.id,
+        imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+        firstText: restaurant.restaurant.name,
+        secondText: restaurant.restaurant.location.locality,
+      }));
+
+      setSuggestions(restaurants);
+      setIsAutocompleteLoading(false);
     },
-    [setIsLoading, setSuggestions],
+    [setIsAutocompleteLoading, setSuggestions],
   );
 
-  const selectSuggestion = (id: string) => {
-    console.log('id: ', id);
+  const selectSuggestion = (name: string) => {
+    const path = getFormattedUrlText(name, true);
+
+    router
+      .push('/detail/[name]', `/detail/${path}`)
+      .then(() => window.scrollTo(0, 0));
   };
 
-  const handleBtnClick = () => {
-    if (!isLoading) {
-      setIsLoading(true);
+  const handleButtonClick = () => {
+    if (!isButtonLoading) {
+      setIsButtonLoading(true);
       router
         .push(
           '/search/[location]/[cuisine]',
@@ -162,7 +180,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         suggestions={suggestions}
         fetchSuggestions={fetchSuggestions}
         selectSuggestion={selectSuggestion}
-        loading={isLoading}
+        loading={isAutocompleteLoading}
         withSearchIcon={true}
       />
       <StyledSpacer />
@@ -183,9 +201,9 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         />
       </StyledDropdownsWrapper>
       <StyledButton
-        loading={isLoading}
+        loading={isButtonLoading}
         loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
-        onClick={handleBtnClick}
+        onClick={handleButtonClick}
       >
         Search
       </StyledButton>

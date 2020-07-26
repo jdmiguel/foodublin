@@ -3,6 +3,15 @@ import { CDN_URL_STATIC_DIRECTORY } from './utils';
 export const DUBLIN_ID = 91;
 export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
 
+export const DEFAULT_SUGGESTIONS = [
+  {
+    id: 0,
+    imgSrc: '',
+    firstText: '',
+    secondText: '',
+  },
+];
+
 export const LOCATIONS = [
   {
     id: 91,

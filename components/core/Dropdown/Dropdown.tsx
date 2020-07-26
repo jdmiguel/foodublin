@@ -94,20 +94,18 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   visibility: ${({ isListboxFocused }) =>
     isListboxFocused ? 'visible' : 'hidden'};
   opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
-  transform: translateY(
-    ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
-  );
+  overflow-y: auto;
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   z-index: 2;
-  overflow: auto;
-  top: 0;
+  top: 50px;
   left: 0;
   padding: 50px 10px 0;
   width: 100%;
   height: 100%;
+  max-height: 440px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   border: 1px solid ${(props) => props.theme.palette.LIGHT_MAX};
   border-radius: 4px;
@@ -117,7 +115,12 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   @media only screen and (min-width: 768px) {
     height: auto;
     padding: 0;
-    max-height: 440px;
+    top: 0;
+  }
+  @media only screen and (min-width: 992px) {
+    transform: translateY(
+      ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
+    );
   }
 `;
 
