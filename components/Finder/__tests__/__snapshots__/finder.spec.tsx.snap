@@ -734,6 +734,16 @@ exports[`Component: Finder should render 1`] = `
           <p
             class="c24"
           >
+            Dublin
+          </p>
+        </div>
+        <div
+          class="c23"
+          role="option"
+        >
+          <p
+            class="c24"
+          >
             South City West
           </p>
         </div>

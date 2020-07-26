@@ -7,11 +7,7 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-type ListItemType = {
-  iconSrc?: string;
-  id: number;
-  name: string;
-};
+import { ListItemType } from '../../../helpers/types';
 
 type ListItemTypeWithIsActive = ListItemType & { isActive: boolean };
 
@@ -20,7 +16,8 @@ type DropdownProps = {
   icon?: string;
   labelTxt: string;
   list: ListItemType[];
-  onSelect: (id: number) => void;
+  onSelect: (path: string) => void;
+  onClear: () => void;
   onFocus?: (event: React.FocusEvent) => void;
   onBlur?: (event: React.FocusEvent) => void;
 };
@@ -168,7 +165,6 @@ const StyledListboxItem = styled.div`
   width: 100%;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
@@ -209,6 +205,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   labelTxt,
   list,
   onSelect,
+  onClear,
   onFocus,
   onBlur,
 }) => {
@@ -239,14 +236,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   }, [selectedId, labelTxt]);
 
-  const handleSelect = (name: string, id: number) => {
+  const handleSelect = (name: string, id: number, path: string) => {
     setCurrentLabelTxt(name);
     setSelectedId(id);
 
     dispatch({ type: 'select', id });
     setIsListboxFocused(false);
 
-    onSelect && onSelect(id);
+    onSelect && onSelect(path);
   };
 
   const handleFocus = (event: React.FocusEvent) => {
@@ -264,10 +261,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         <StyledLabelButton
           type="button"
           clearable={isClearable}
-          onClick={(event: React.MouseEvent<HTMLElement>) => {
-            event.preventDefault();
-            setIsListboxFocused(true);
-          }}
+          onClick={() => setIsListboxFocused(true)}
         >
           {icon && (
             <i data-testid={'label-icon'} className="material-icons">
@@ -284,6 +278,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               event.preventDefault();
               dispatch({ type: 'clear' });
               setSelectedId(0);
+              onClear();
             }}
           >
             <i className="material-icons">close</i>
@@ -312,7 +307,9 @@ const Dropdown: React.FC<DropdownProps> = ({
           <StyledListboxItem
             key={listItem.name}
             role="option"
-            onClick={() => handleSelect(listItem.name, listItem.id)}
+            onClick={() =>
+              handleSelect(listItem.name, listItem.id, listItem.path)
+            }
           >
             {listItem.iconSrc && (
               <StyledListboxItemIcon

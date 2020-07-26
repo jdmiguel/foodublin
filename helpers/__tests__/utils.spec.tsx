@@ -12,6 +12,7 @@ import {
   THIRD_DETAIL,
   FOURTH_DETAIL,
 } from '../../components/DetailPage/__mocks__/detailpage.mocks';
+import { LOCATIONS } from '../staticData';
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {
@@ -73,6 +74,12 @@ describe('getFormattedUrlText', () => {
     const expectedText = 'sophies+the+dean+hotel';
 
     expect(getFormattedUrlText(FOURTH_DETAIL.name)).toBe(expectedText);
+  });
+
+  it('should be equal to mocked formatted url text if text is a path by displaying hyphen between words (instead of plus)', () => {
+    const expectedText = 'south-city-west';
+
+    expect(getFormattedUrlText(LOCATIONS[1].name, true)).toBe(expectedText);
   });
 });
 

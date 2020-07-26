@@ -3,17 +3,14 @@ import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import CustomLink, { CustomLinkSize } from '../CustomLink/CustomLink';
-
 import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
 
 type CardProps = {
-  className?: string;
-  link: string;
   imgSrc: string;
-  imgAlt: string;
   title: string;
+  route: string;
+  asRoute: string;
   firstText: string;
-  secondText: string;
 };
 
 const CardTextCSS = css`
@@ -24,20 +21,18 @@ const CardTextCSS = css`
 `;
 
 const CardImageCSS = css`
-  width: 80px;
-  height: 80px;
+  max-width: 100px;
+  height: 100%;
   min-width: 80px;
-  min-height: 80px;
   @media only screen and (min-width: 768px) {
     width: 100px;
-    height: 100px;
     min-width: 100px;
-    min-height: 100px;
   }
 `;
 
 const StyledCard = styled.div`
   width: 100%;
+  height: 100px;
   max-width: 485px;
   display: flex;
   overflow: hidden;
@@ -45,17 +40,15 @@ const StyledCard = styled.div`
 
 const StyledImage = styled(LazyImage)`
   ${CardImageCSS}
-  margin-right: 14px;
-  @media only screen and (min-width: 768px) {
-    margin-right: 16px;
-  }
-  @media only screen and (min-width: 1200px) {
-    margin-right: 20px;
-  }
 `;
 
 const StyledGenericThumb = styled.img`
   ${CardImageCSS}
+`;
+
+const StyledTitle = styled(CustomLink)`
+  ${CardTextCSS}
+  display: block;
 `;
 
 const StyledText = styled.div`
@@ -64,17 +57,19 @@ const StyledText = styled.div`
   justify-content: space-evenly;
   padding: 5px 0;
   width: 65%;
+  margin-left: 14px;
   @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
     padding: 10px 0;
+    margin-left: 16px;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-left: 20px;
   }
 `;
 
-const StyledTitle = styled(CustomLink)`
-  ${CardTextCSS}
-  display: block;
-`;
-
-const StyledFirstText = styled.p`
+const StyledSubtitle = styled.p`
   ${CardTextCSS}
   font-size: 1rem;
   line-height: 1rem;
@@ -86,30 +81,17 @@ const StyledFirstText = styled.p`
   }
 `;
 
-const StyledSecondText = styled.p`
-  ${CardTextCSS}
-  font-size: 0.9rem;
-  line-height: 0.9rem;
-  color: ${(props) => props.theme.palette.DARK_MIN};
-  @media only screen and (min-width: 1200px) {
-    font-size: 1rem;
-    line-height: 1rem;
-  }
-`;
-
 const Card: React.FC<CardProps> = ({
-  className,
-  link,
   imgSrc,
-  imgAlt,
   title,
   firstText,
-  secondText,
+  route,
+  asRoute,
 }) => (
-  <StyledCard className={`${className} paper`}>
+  <StyledCard className="paper">
     <StyledImage
       src={imgSrc}
-      alt={imgAlt}
+      alt={title}
       placeholder={({ imageProps, ref }) => (
         <div ref={ref} className="LazyImage-Placeholder">
           <StyledGenericThumb src={THUMB_GENERIC_SRC} alt={imageProps.alt} />
@@ -117,16 +99,15 @@ const Card: React.FC<CardProps> = ({
       )}
       actual={({ imageProps }) => (
         <div className="LazyImage-Actual">
-          <img {...imageProps} alt={imgAlt} />
+          <img {...imageProps} alt={title} />
         </div>
       )}
     />
     <StyledText>
-      <StyledTitle route={link} size={CustomLinkSize.BIG}>
+      <StyledTitle route={route} asRoute={asRoute} size={CustomLinkSize.BIG}>
         {title}
       </StyledTitle>
-      <StyledFirstText>{firstText}</StyledFirstText>
-      <StyledSecondText>{secondText}</StyledSecondText>
+      <StyledSubtitle>{firstText}</StyledSubtitle>
     </StyledText>
   </StyledCard>
 );

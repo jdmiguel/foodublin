@@ -4,10 +4,19 @@ import styled from 'styled-components';
 import { DefaultLayout } from '../../layouts';
 
 import Filter from '../Filter/Filter';
+
 import Title from '../core/Title/Title';
 import Card from '../core/Card/Card';
-import { FILTER_DATA } from '../../helpers/staticData';
-import { RESTAURANTS } from './__mocks__/searchpage.mocks';
+
+import { FILTER_DATA, THUMB_GENERIC_SRC } from '../../helpers/staticData';
+import { RestaurantType } from '../../helpers/types';
+
+type SearchPageProps = {
+  location: string | undefined;
+  cuisine: string | undefined;
+  total: number;
+  restaurants: RestaurantType[];
+};
 
 const StyledSearchPage = styled.div`
   margin-top: 50px;
@@ -35,30 +44,48 @@ const StyledCardsWrapper = styled.div`
   }
 `;
 
-const SearchPage: React.FC = () => (
-  <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
-    <StyledSearchPage className="grid-container">
-      <Title text="32 restaurants in Rathmines" />
-      <Filter
-        onSelect={() => console.log('on filter select')}
-        data={FILTER_DATA}
-      />
-      <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
-        {RESTAURANTS.map((restaurant) => (
-          <Card
-            className="cell small-12 medium-6 large-4"
-            key={restaurant.id}
-            imgSrc={restaurant.imgSrc}
-            imgAlt={restaurant.imgAlt}
-            link={restaurant.link}
-            title={restaurant.title}
-            firstText={restaurant.firstText}
-            secondText={restaurant.secondText}
-          />
-        ))}
-      </StyledCardsWrapper>
-    </StyledSearchPage>
-  </DefaultLayout>
-);
+const SearchPage = ({
+  total,
+  location,
+  cuisine,
+  restaurants,
+}: SearchPageProps) => {
+  const titleTotalText = total > 0 ? total : 'There are no';
+  const titleRestaurantText =
+    total === 0 || total >= 2 ? 'restaurants' : 'restaurant';
+
+  return (
+    <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
+      <StyledSearchPage className="grid-container">
+        <Title
+          text={`${titleTotalText} ${
+            cuisine || ''
+          } ${titleRestaurantText} in ${location}`}
+        />
+        <Filter
+          onSelect={() => console.log('on filter select')}
+          data={FILTER_DATA}
+        />
+        <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
+          {restaurants.map((restaurant) => (
+            <div
+              className="cell small-12 medium-6 large-4"
+              key={`${restaurant.id}-${restaurant.title}`}
+            >
+              <Card
+                key={restaurant.id}
+                imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                title={restaurant.title}
+                route="/detail/[name]"
+                asRoute={`/detail/${restaurant.link}`}
+                firstText={restaurant.firstText}
+              />
+            </div>
+          ))}
+        </StyledCardsWrapper>
+      </StyledSearchPage>
+    </DefaultLayout>
+  );
+};
 
 export default SearchPage;

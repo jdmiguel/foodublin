@@ -1,123 +1,158 @@
 import { CDN_URL_STATIC_DIRECTORY } from './utils';
 
+export const DUBLIN_ID = 91;
+export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
+
 export const LOCATIONS = [
+  {
+    id: 91,
+    name: 'Dublin',
+    path: 'dublin',
+  },
   {
     id: 162239,
     name: 'South City West',
+    path: 'south-city-west',
   },
   {
     id: 96201,
     name: 'Temple Bar',
+    path: 'temple-bar',
   },
   {
     id: 95051,
     name: 'Clondalkin',
+    path: 'clondalkin',
   },
   {
     id: 96181,
     name: 'Swords',
+    path: 'swords',
   },
   {
     id: 96191,
     name: 'Tallaght',
+    path: 'tallaght',
   },
   {
     id: 94881,
     name: 'Blanchardstown',
+    path: 'blanchardstown',
   },
   {
     id: 162240,
     name: 'South City East',
+    path: 'south-city-east',
   },
   {
     id: 95311,
     name: 'Dundrum',
+    path: 'dundrum',
   },
   {
     id: 95341,
     name: 'Finglas',
+    path: 'finglas',
   },
   {
     id: 94791,
     name: 'Ballyfermot',
+    path: 'ballyfermot',
   },
   {
     id: 96081,
     name: 'Santry',
+    path: 'santry',
   },
   {
     id: 95711,
     name: 'Lucan',
+    path: 'lucan',
   },
   {
     id: 94671,
     name: 'Artane',
+    path: 'artane',
   },
   {
     id: 95721,
     name: 'Malahide',
+    path: 'malahide',
   },
   {
     id: 95301,
     name: 'Dun Laoghaire',
+    path: 'dun-laoghaire',
   },
   {
     id: 96271,
     name: 'Walkinstown',
+    path: 'walkinstown',
   },
   {
     id: 94871,
     name: 'Blackrock',
+    path: 'blackrock',
   },
   {
     id: 95851,
-
     name: 'Palmerstown',
+    path: 'palmerstown',
   },
   {
     id: 95981,
-
     name: 'Rathmines',
+    path: 'rathmines',
   },
   {
     id: 94701,
     name: 'Balbriggan',
+    path: 'balbriggan',
   },
   {
     id: 94761,
     name: 'Ballybrack',
+    path: 'ballybrack',
   },
   {
     id: 96111,
     name: 'Smithfield',
+    path: 'smithfield',
   },
   {
     id: 95181,
     name: 'Crumlin',
+    path: 'crumlin',
   },
   {
     id: 94971,
     name: 'Castleknock',
+    path: 'castleknock',
   },
   {
     id: 95511,
     name: 'Howth',
+    path: 'howth',
   },
   {
     id: 94951,
     name: 'Cabra',
+    path: 'cabra',
   },
   {
     id: 96291,
     name: 'Whitehall',
+    path: 'whitehall',
   },
   {
     id: 95901,
     name: 'Portmarnock',
+    path: 'portmarnock',
   },
   {
     id: 95641,
     name: 'Kimmage',
+    path: 'kimmage',
   },
 ];
 
@@ -126,41 +161,49 @@ export const CUISINES = [
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/stew.svg`,
     id: 135,
     name: 'Irish',
+    path: 'irish',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/pizza.svg`,
     id: 55,
     name: 'Italian',
+    path: 'italian',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/bruschetta.svg`,
     id: 70,
     name: 'Mediterranean',
+    path: 'mediterranean',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rice.svg`,
     id: 3,
     name: 'Asian',
+    path: 'asian',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/healthy_food.svg`,
     id: 143,
     name: 'Healthy Food',
+    path: 'healthy-food',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/gulab.svg`,
     id: 148,
     name: 'Indian',
+    path: 'indian',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/taco.svg`,
     id: 73,
     name: 'Mexican',
+    path: 'mexican',
   },
   {
     iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/fries.svg`,
     id: 40,
     name: 'Fast Food',
+    path: 'fast-food',
   },
 ];
 
