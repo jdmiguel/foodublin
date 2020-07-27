@@ -12,7 +12,7 @@ type InputTypes =
 
 export type InputProps = {
   type: InputTypes;
-  withSearchIcon?: boolean;
+  hasSearchIcon?: boolean;
   className?: string;
   placeholder?: string;
   value?: string;
@@ -35,7 +35,7 @@ const StyledInputWrapper = styled.div`
   width: 100%;
   max-width: 550px;
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 20px;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
   display: flex;
   justify-content: center;
@@ -60,7 +60,7 @@ const StyledInput = styled.input`
 
 const Input: React.FC<InputProps> = ({
   type,
-  withSearchIcon,
+  hasSearchIcon,
   className,
   value,
   placeholder,
@@ -95,7 +95,7 @@ const Input: React.FC<InputProps> = ({
       data-testid={'input-wrapper'}
       className={className}
     >
-      {withSearchIcon && (
+      {hasSearchIcon && (
         <i data-testid={'input-icon'} className="material-icons">
           search
         </i>

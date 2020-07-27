@@ -44,7 +44,7 @@ describe('Component: Input', () => {
   it('should not render icon', () => {
     const INPUT_PROPS_MOCK_WITHOUT_ICON = {
       ...INPUT_PROPS_MOCK,
-      withSearchIcon: false,
+      hasSearchIcon: false,
     };
     const { getByTestId, container } = render(
       renderWithTheme(

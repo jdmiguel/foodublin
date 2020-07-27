@@ -100,7 +100,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   box-sizing: border-box;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   z-index: 2;
-  top: 50px;
+  top: 60px;
   left: 0;
   padding: 50px 10px 0;
   width: 100%;

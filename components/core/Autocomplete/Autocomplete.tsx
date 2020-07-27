@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
@@ -10,7 +10,7 @@ import { Suggestion } from '../../../helpers/types';
 export type AutocompleteProps = {
   className?: string;
   loaderSrc: string;
-  withSearchIcon?: boolean;
+  hasSearchIcon?: boolean;
   suggestions: Suggestion[];
   loading: boolean;
   fetchSuggestions: (search: string) => void;
@@ -34,7 +34,7 @@ const StyledAutocomplete = styled.div`
   }
 `;
 
-const StyledInput = styled(Input)<{ isListboxFocused: boolean }>`
+const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   transition: background-color 0.2s ease-out;
   &:hover {
@@ -44,8 +44,8 @@ const StyledInput = styled(Input)<{ isListboxFocused: boolean }>`
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
 
-  ${({ isListboxFocused }) =>
-    isListboxFocused &&
+  ${({ hasBorderBottomRadius }) =>
+    !hasBorderBottomRadius &&
     `border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;`}
 
@@ -54,13 +54,10 @@ const StyledInput = styled(Input)<{ isListboxFocused: boolean }>`
   }
 `;
 
-const StyledListboxWrapper = styled.div<{ isListboxFocused: boolean }>`
-  visibility: ${({ isListboxFocused }) =>
-    isListboxFocused ? 'visible' : 'hidden'};
-  opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
-  transform: translateY(
-    ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
-  );
+const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
+  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
+  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
+  transform: translateY(${({ isShowed }) => (isShowed ? '0' : '10px')});
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
@@ -197,9 +194,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   fetchSuggestions,
   selectSuggestion,
   loading,
-  withSearchIcon,
+  hasSearchIcon,
   className,
 }) => {
+  const blurDelay = useRef(0);
+  const isSuggestable = useRef(true);
   const [value, setValue] = useState('');
   const [focusedPlaceholder, setFocusedPlaceholder] = useState(
     PlaceholderText.BLURRED,
@@ -207,10 +206,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    if (value.length > 2 && fetchSuggestions) {
+    if (value.length > 2 && isSuggestable.current) {
       fetchSuggestions(value);
     }
-  }, [value, fetchSuggestions]);
+  }, [value]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
@@ -220,7 +219,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   };
 
   const handleInputFocus = () => {
-    if (value.length === 0) {
+    if (!value) {
       setFocusedPlaceholder(PlaceholderText.FOCUSED);
     } else if (value.length > 2) {
       setIsListboxFocused(true);
@@ -228,32 +227,37 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   };
 
   const handleInputBlur = () => {
-    value.length === 0 && setFocusedPlaceholder(PlaceholderText.BLURRED);
+    !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
 
-    setTimeout(() => {
+    blurDelay.current = setTimeout(() => {
       setIsListboxFocused(false);
     }, 100);
   };
 
   const handleSuggestionClick = (showedText: string) => {
+    isSuggestable.current = false;
+    clearTimeout(blurDelay.current);
     selectSuggestion(showedText);
     setValue(showedText);
   };
+
+  const hasBorderBottomRadius =
+    suggestions.length === 0 || (!isListboxFocused && value.length < 3);
 
   return (
     <StyledAutocomplete data-testid="autocomplete" className={className}>
       <StyledInput
         type="text"
-        isListboxFocused={isListboxFocused}
+        hasBorderBottomRadius={hasBorderBottomRadius}
         placeholder={focusedPlaceholder}
         onChange={handleChange}
         value={value}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
-        withSearchIcon={withSearchIcon}
+        hasSearchIcon={hasSearchIcon}
       />
       <StyledListboxWrapper
-        isListboxFocused={isListboxFocused}
+        isShowed={isListboxFocused && suggestions.length > 0}
         data-testid="listbox-wrapper"
       >
         <StyledCloseButton

@@ -28,5 +28,5 @@ export const AUTOCOMPLETE_PROPS_MOCK = {
   fetchSuggestions: () => {},
   selectSuggestion: () => {},
   loading: false,
-  withSearchIcon: true,
+  hasSearchIcon: true,
 };

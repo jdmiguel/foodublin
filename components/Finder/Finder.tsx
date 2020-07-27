@@ -181,7 +181,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         fetchSuggestions={fetchSuggestions}
         selectSuggestion={selectSuggestion}
         loading={isAutocompleteLoading}
-        withSearchIcon={true}
+        hasSearchIcon={true}
       />
       <StyledSpacer />
       <StyledDropdownsWrapper>
