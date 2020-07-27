@@ -128,6 +128,10 @@ const StyledSectionBlock = styled.div`
   }
 `;
 
+const StyledBlockTitle = styled(BlockTitle)`
+  margin-bottom: 15px;
+`;
+
 const StyledPhone = styled.h5`
   color: ${(props) => props.theme.palette.PRIMARY};
   font-size: 1.2rem;
@@ -188,31 +192,31 @@ const DetailPage: React.FC = () => {
             <div className="grid-x cell small-12 medium-8">
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
-                  <BlockTitle text="Cuisines" />
+                  <StyledBlockTitle text="Cuisines" />
                   <Cuisines cuisines={cuisines} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <BlockTitle text="Schedule" />
+                  <StyledBlockTitle text="Schedule" />
                   <Timmings timmings={getTimmings(timmings)} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <BlockTitle text="Rating" />
+                  <StyledBlockTitle text="Rating" />
                   <Rating value={rating} votes={votes} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <BlockTitle text="Average Cost" />
+                  <StyledBlockTitle text="Average Cost" />
                   <BlockText text={`€${average} for two people`} />
                 </StyledSectionBlock>
                 {establishmentType && (
                   <StyledSectionBlock>
-                    <BlockTitle text="Establishment type" />
+                    <StyledBlockTitle text="Establishment type" />
                     <BlockText text={establishmentType} />
                   </StyledSectionBlock>
                 )}
               </div>
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
-                  <BlockTitle text="More info" />
+                  <StyledBlockTitle text="More info" />
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
@@ -220,11 +224,11 @@ const DetailPage: React.FC = () => {
             <div className="cell small-12 medium-4">
               <StyledAddressWrapper className="paper">
                 <StyledSectionBlock>
-                  <BlockTitle text="Phone" />
+                  <StyledBlockTitle text="Phone" />
                   <StyledPhone>{phone}</StyledPhone>
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <BlockTitle text="Address" />
+                  <StyledBlockTitle text="Address" />
                   <Address
                     mapSrc={getMapSrc(name, location)}
                     address={address}

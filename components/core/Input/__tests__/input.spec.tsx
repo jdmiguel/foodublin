@@ -19,7 +19,7 @@ describe('Component: Input', () => {
       'default-className',
     );
 
-    const defaultInput = getByPlaceholderText('default-placeholder');
+    const defaultInput = getByPlaceholderText('Default placeholder');
     expect(defaultInput.getAttribute('type')).toBe('text');
     expect(defaultInput.getAttribute('value')).toBe('');
     expect(defaultInput.getAttribute('disabled')).toBeFalsy();

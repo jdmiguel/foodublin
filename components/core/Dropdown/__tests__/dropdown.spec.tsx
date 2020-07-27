@@ -26,6 +26,7 @@ describe('Component: Dropdown', () => {
     const dropdownButton = dropdown.querySelector('button');
     const listbox = dropdown.querySelector('div[role="listbox"]');
     const closeButton = listbox.querySelector('button');
+    const listboxHeading = closeButton.previousElementSibling.innerHTML;
     const firstOption = listbox.querySelector('div[role="option"]');
     const firstOptionText = firstOption.querySelector('p');
 
@@ -34,10 +35,12 @@ describe('Component: Dropdown', () => {
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
     // show options list by clicking dropdown button
+    // check if listboxHeading match with the regarding text
     fireEvent.click(dropdownButton);
 
     expect(listbox).toHaveStyleRule('opacity', '1');
     expect(listbox).toHaveStyleRule('visibility', 'visible');
+    expect(listboxHeading).toContain('Select any option');
 
     // hide options list by activating blur event
     fireEvent.blur(listbox);
@@ -71,7 +74,7 @@ describe('Component: Dropdown', () => {
     expect(firstOptionText).toHaveStyleRule('font-weight', '600');
   });
 
-  it('should change button name by clicking any option or clear button', () => {
+  it('should change button name by clicking any option or close button', () => {
     const DROPDOWN_PROPS_MOCK_CLEARABLE = {
       ...DROPDOWN_PROPS_MOCK,
       clearable: true,
@@ -117,12 +120,19 @@ describe('Component: Dropdown', () => {
       renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} />),
     );
     const dropdown = container.firstChild as HTMLDivElement;
+    const labelButton = dropdown.querySelector('div > button');
+
+    // check if close button doesn't exist
+    expect(labelButton.nextElementSibling).toBeNull();
 
     // click dropdown button, select first option of the dropdown list and click it
+    // check if close button exists
+
     fireEvent.click(dropdown.querySelector('button'));
     const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
 
+    expect(labelButton.nextElementSibling).toBeTruthy();
     expect(container.firstChild).toMatchSnapshot();
   });
 });

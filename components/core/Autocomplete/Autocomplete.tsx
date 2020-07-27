@@ -242,7 +242,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   };
 
   const hasBorderBottomRadius =
-    suggestions.length === 0 || (!isListboxFocused && value.length < 3);
+    suggestions.length === 0 ||
+    !isListboxFocused ||
+    (isListboxFocused && value.length < 3);
 
   return (
     <StyledAutocomplete data-testid="autocomplete" className={className}>

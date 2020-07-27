@@ -6,7 +6,11 @@ import React, {
   Dispatch,
 } from 'react';
 import styled from 'styled-components';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
+import BlockTitle from '../BlockTitle/BlockTitle';
+
+import useWindowMeasures from '../../hooks/useWindowMeasures';
 import { ListItemType } from '../../../helpers/types';
 
 type ListItemTypeWithIsActive = ListItemType & { isActive: boolean };
@@ -94,18 +98,18 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   visibility: ${({ isListboxFocused }) =>
     isListboxFocused ? 'visible' : 'hidden'};
   opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
-  overflow-y: auto;
-  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+  overflow: auto;
+  transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   z-index: 2;
-  top: 60px;
+  top: 0;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 20px 10px 10px;
   width: 100%;
   height: 100%;
-  max-height: 440px;
+  max-height: 100vh;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   border: 1px solid ${(props) => props.theme.palette.LIGHT_MAX};
   border-radius: 4px;
@@ -113,24 +117,24 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   border-bottom: 0;
   outline: none;
   @media only screen and (min-width: 768px) {
+    max-height: 440px;
     height: auto;
     padding: 0;
-    top: 0;
-  }
-  @media only screen and (min-width: 992px) {
+    transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     transform: translateY(
-      ${({ isListboxFocused }) => (isListboxFocused ? '0' : '10px')}
+      ${({ isListboxFocused }) => (isListboxFocused ? '0' : '20px')}
     );
   }
 `;
 
-const StyledClearButton = styled.button`
+const StyledCloseButton = styled.button`
   position: absolute;
   z-index: 1;
   top: 19px;
   right: 7px;
   cursor: pointer;
   outline: none;
+  line-height: 0;
   transition: opacity 0.2s ease-out;
   background-color: transparent;
   user-select: none;
@@ -146,11 +150,19 @@ const StyledClearButton = styled.button`
   }
 `;
 
-const StyledCloseButton = styled(StyledClearButton)`
-  display: block;
+const StyledTopContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 12px;
   @media only screen and (min-width: 768px) {
     display: none;
   }
+`;
+
+const StyledTopContentCloseButton = styled(StyledCloseButton)`
+  position: initial;
 `;
 
 const StyledListboxItem = styled.div`
@@ -220,6 +232,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     ListItemType[],
     Dispatch<ListAction>,
   ] = useReducer(listReducer, listWithIsActiveProp);
+  const { width } = useWindowMeasures();
+  const bodyLockIsAllowed = width < 768;
+
   const listRef = useRef<HTMLDivElement>(null);
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);
   const [selectedId, setSelectedId] = useState(0);
@@ -227,7 +242,18 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    isListboxFocused && listRef.current?.focus();
+    if (isListboxFocused && listRef.current) {
+      listRef.current?.focus();
+      bodyLockIsAllowed && disableBodyScroll(listRef.current);
+    } else if (!isListboxFocused && listRef.current) {
+      bodyLockIsAllowed && enableBodyScroll(listRef.current);
+    }
+  }, [isListboxFocused, bodyLockIsAllowed]);
+
+  useEffect(() => {
+    if (isListboxFocused) {
+      listRef.current?.focus();
+    }
   }, [isListboxFocused]);
 
   useEffect(() => {
@@ -274,18 +300,17 @@ const Dropdown: React.FC<DropdownProps> = ({
           <span>{currentLabelTxt}</span>
           {!selectedId && <i className="material-icons">arrow_drop_down</i>}
         </StyledLabelButton>
-        {selectedId > 0 && (
-          <StyledClearButton
+        {isClearable && selectedId > 0 && (
+          <StyledCloseButton
             type="button"
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              event.preventDefault();
+            onClick={() => {
               dispatch({ type: 'clear' });
               setSelectedId(0);
               onClear();
             }}
           >
             <i className="material-icons">close</i>
-          </StyledClearButton>
+          </StyledCloseButton>
         )}
       </StyledLabel>
       <StyledListbox
@@ -297,15 +322,18 @@ const Dropdown: React.FC<DropdownProps> = ({
         data-testid="dropdown-list"
         isListboxFocused={isListboxFocused}
       >
-        <StyledCloseButton
-          type="button"
-          onClick={(event: React.MouseEvent<HTMLElement>) => {
-            event.preventDefault();
-            setIsListboxFocused(false);
-          }}
-        >
-          <i className="material-icons">close</i>
-        </StyledCloseButton>
+        <StyledTopContent>
+          <BlockTitle text={labelTxt} />
+          <StyledTopContentCloseButton
+            type="button"
+            onClick={(event: React.MouseEvent<HTMLElement>) => {
+              event.preventDefault();
+              setIsListboxFocused(false);
+            }}
+          >
+            <i className="material-icons">close</i>
+          </StyledTopContentCloseButton>
+        </StyledTopContent>
         {initialListState.map((listItem: ListItemTypeWithIsActive) => (
           <StyledListboxItem
             key={listItem.name}

@@ -5,7 +5,7 @@ exports[`Component: Autocomplete should render 1`] = `
   width: 100%;
   max-width: 550px;
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 20px;
   background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,9 +67,9 @@ exports[`Component: Autocomplete should render 1`] = `
 .c4 {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateY( 10px );
-  -ms-transform: translateY( 10px );
-  transform: translateY( 10px );
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
   -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
   -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
@@ -245,20 +245,92 @@ exports[`Component: Autocomplete should render 1`] = `
         <a
           class="c8"
         >
-          <img
-            alt=""
-            class="c9"
-            src=""
-          />
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Manifesto"
+              class="c9"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
           <div
             class="c10"
           >
             <p
               class="c11"
-            />
+            >
+              Manifesto
+            </p>
             <p
               class="c12"
+            >
+              Rathmines
+            </p>
+          </div>
+        </a>
+      </li>
+      <li
+        class="c7"
+        role="option"
+      >
+        <a
+          class="c8"
+        >
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Dragon Inn"
+              class="c9"
+              src="http://localhost:3000/static/images/generic-thumb.png"
             />
+          </div>
+          <div
+            class="c10"
+          >
+            <p
+              class="c11"
+            >
+              Dragon Inn
+            </p>
+            <p
+              class="c12"
+            >
+              South City West
+            </p>
+          </div>
+        </a>
+      </li>
+      <li
+        class="c7"
+        role="option"
+      >
+        <a
+          class="c8"
+        >
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Casa Del Toro"
+              class="c9"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
+          <div
+            class="c10"
+          >
+            <p
+              class="c11"
+            >
+              Casa Del Toro
+            </p>
+            <p
+              class="c12"
+            >
+              Drumcondra
+            </p>
           </div>
         </a>
       </li>
