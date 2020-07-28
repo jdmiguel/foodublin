@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: AutocompleteMobile should render 1`] = `
+.c8 {
+  width: 100%;
+  border-radius: 4px;
+  padding: 0 20px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c10 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #2f3235;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c5 {
+  color: #585858;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+}
+
+.c1 {
+  position: relative;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+}
+
+.c2 {
+  width: 100%;
+  height: 55px;
+  background-color: #FFFFFF;
+  line-height: 55px;
+  padding: 0 4px 0 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c2 i {
+  font-size: 1.2rem;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: #A7A7A7;
+}
+
+.c2 span {
+  color: #A7A7A7;
+}
+
+.c3 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
+  position: fixed;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  z-index: 2;
+  max-width: 767px;
+  top: 0;
+  left: 0;
+  padding: 20px 20px 10px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  border: 1px solid #FFFFFF;
+  border-radius: 0 0 4px 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top: 0;
+}
+
+.c4 {
+  margin: 15px 0 25px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c6 {
+  font-size: 1.3rem;
+}
+
+.c7 {
+  display: block;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c7 i {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #585858;
+}
+
+.c9 {
+  border: 1px solid #D8D8D8;
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  outline: none;
+}
+
+.c9:hover {
+  background-color: #FDF3E5;
+}
+
+.c9:focus {
+  background-color: #FDF3E5;
+}
+
+.c9 input {
+  cursor: pointer;
+}
+
+.c11 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
+  position: absolute;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  z-index: 1;
+  top: 150px;
+  left: 0;
+  padding: 0 10px 173px;
+  margin-top: 15px;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+}
+
+.c12 {
+  width: 100%;
+}
+
+.c13 {
+  width: 100%;
+  border-bottom: 1px solid #E5EAED;
+  list-style: none;
+  padding: 11px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  outline: none;
+  color: #2f3235;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c13:hover {
+  background-color: #FDF3E5;
+}
+
+.c14 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c15 {
+  margin-left: 12px;
+}
+
+.c16 {
+  text-align: left;
+  color: #2f3235;
+  font-size: 1.05rem;
+}
+
+.c17 {
+  text-align: left;
+  color: #A7A7A7;
+  font-size: 0.85rem;
+}
+
+@media only screen and (min-width:768px) {
+  .c8 {
+    max-width: 550px;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c5 {
+    font-size: 1.45rem;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="autocomplete"
+>
+  <div
+    class="c1"
+    data-testid="label"
+  >
+    <button
+      class="c2"
+      type="button"
+    >
+      <i
+        class="material-icons"
+        data-testid="label-icon"
+      >
+        search
+      </i>
+      <span>
+        Search for locals...
+      </span>
+    </button>
+  </div>
+  <div
+    class="c3"
+    data-testid="modal"
+  >
+    <div
+      class="c4"
+    >
+      <h4
+        class="c5 c6"
+      >
+        Dublin restaurants
+      </h4>
+      <button
+        class="c7"
+        type="button"
+      >
+        <i
+          class="material-icons"
+        >
+          close
+        </i>
+      </button>
+    </div>
+    <div
+      class="c8 c9"
+      data-testid="input-wrapper"
+    >
+      <i
+        class="material-icons"
+        data-testid="input-icon"
+      >
+        search
+      </i>
+      <input
+        class="c10"
+        placeholder="Search for locals..."
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="c11"
+      data-testid="listbox-wrapper"
+    >
+      <ul
+        class="c12"
+        role="listbox"
+      >
+        <li
+          class="c13"
+          role="option"
+        >
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Manifesto"
+              class="c14"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
+          <div
+            class="c15"
+          >
+            <p
+              class="c16"
+            >
+              Manifesto
+            </p>
+            <p
+              class="c17"
+            >
+              Rathmines
+            </p>
+          </div>
+        </li>
+        <li
+          class="c13"
+          role="option"
+        >
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Dragon Inn"
+              class="c14"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
+          <div
+            class="c15"
+          >
+            <p
+              class="c16"
+            >
+              Dragon Inn
+            </p>
+            <p
+              class="c17"
+            >
+              South City West
+            </p>
+          </div>
+        </li>
+        <li
+          class="c13"
+          role="option"
+        >
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt="Casa Del Toro"
+              class="c14"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
+          <div
+            class="c15"
+          >
+            <p
+              class="c16"
+            >
+              Casa Del Toro
+            </p>
+            <p
+              class="c17"
+            >
+              Drumcondra
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

@@ -5,7 +5,7 @@ import React, {
   useReducer,
   Dispatch,
 } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import BlockTitle from '../BlockTitle/BlockTitle';
@@ -43,7 +43,6 @@ const StyledLabel = styled.div`
   position: relative;
   border-radius: 4px;
   background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  cursor: pointer;
 `;
 
 const StyledLabelButton = styled.button<{ clearable: boolean }>`
@@ -57,6 +56,7 @@ const StyledLabelButton = styled.button<{ clearable: boolean }>`
   border-radius: 4px;
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
   transition: background-color 0.2s ease-out;
   user-select: none;
   -webkit-user-select: none;
@@ -71,9 +71,6 @@ const StyledLabelButton = styled.button<{ clearable: boolean }>`
     }
   }
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
-  }
-  &:focus {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
 
@@ -110,7 +107,6 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   border: 1px solid ${(props) => props.theme.palette.LIGHT_MAX};
   border-radius: 4px;
   border-top: 0;
@@ -120,6 +116,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
     max-height: 440px;
     height: auto;
     padding: 0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
     transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     transform: translateY(
       ${({ isListboxFocused }) => (isListboxFocused ? '0' : '20px')}
@@ -127,42 +124,52 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   }
 `;
 
+const closeButtonCSS = css`
+  cursor: pointer;
+  line-height: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  i {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+`;
+
 const StyledCloseButton = styled.button`
+  ${closeButtonCSS}
   position: absolute;
   z-index: 1;
   top: 19px;
   right: 7px;
-  cursor: pointer;
-  outline: none;
-  line-height: 0;
   transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  i {
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
   &:hover {
     opacity: 0.5;
   }
 `;
 
-const StyledTopContent = styled.div`
+const StyledMobileHeading = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  margin-bottom: 12px;
+  margin: 10px 0 15px;
   @media only screen and (min-width: 768px) {
     display: none;
   }
 `;
 
-const StyledTopContentCloseButton = styled(StyledCloseButton)`
-  position: initial;
+const StyledMobileHeadingText = styled(BlockTitle)`
+  font-size: 1.3rem;
+`;
+
+const StyledMobileHeadingButton = styled.button`
+  ${closeButtonCSS}
+  margin-top: 4px;
+  i {
+    color: ${(props) => props.theme.palette.DARK_MEDIUM};
+    font-size: 1.5rem;
+  }
 `;
 
 const StyledListboxItem = styled.div`
@@ -172,14 +179,14 @@ const StyledListboxItem = styled.div`
   list-style: none;
   display: block;
   overflow: hidden;
-  text-decoration: none;
-  padding: 9px 11px;
   color: ${(props) => props.theme.palette.DARK_MAX};
   display: flex;
   align-items: center;
   width: 100%;
-  transition: background-color 0.2s ease-out;
+  padding: 9px 11px;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
@@ -322,9 +329,9 @@ const Dropdown: React.FC<DropdownProps> = ({
         data-testid="dropdown-list"
         isListboxFocused={isListboxFocused}
       >
-        <StyledTopContent>
-          <BlockTitle text={labelTxt} />
-          <StyledTopContentCloseButton
+        <StyledMobileHeading>
+          <StyledMobileHeadingText text={labelTxt} />
+          <StyledMobileHeadingButton
             type="button"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
               event.preventDefault();
@@ -332,8 +339,8 @@ const Dropdown: React.FC<DropdownProps> = ({
             }}
           >
             <i className="material-icons">close</i>
-          </StyledTopContentCloseButton>
-        </StyledTopContent>
+          </StyledMobileHeadingButton>
+        </StyledMobileHeading>
         {initialListState.map((listItem: ListItemTypeWithIsActive) => (
           <StyledListboxItem
             key={listItem.name}

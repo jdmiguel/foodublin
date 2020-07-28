@@ -98,7 +98,7 @@ describe('Component: Dropdown', () => {
     const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);
 
-    expect(handleSelect).toHaveBeenCalledTimes(1);
+    expect(handleSelect).toHaveBeenCalled();
     expect(dropdownButton.querySelector('span').textContent).toBe(
       'First option',
     );
@@ -127,7 +127,6 @@ describe('Component: Dropdown', () => {
 
     // click dropdown button, select first option of the dropdown list and click it
     // check if close button exists
-
     fireEvent.click(dropdown.querySelector('button'));
     const [firstOption] = getAllByRole('option');
     fireEvent.click(firstOption as HTMLDivElement);

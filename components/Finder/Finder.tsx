@@ -8,8 +8,11 @@ import {
 } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 
+import useWindowMeasures from '../hooks/useWindowMeasures';
+
 import { getRestaurants } from '../../services';
 
+import AutocompleteMobile from '../core/Autocomplete/AutocompleteMobile';
 import Autocomplete from '../core/Autocomplete/Autocomplete';
 import Dropdown from '../core/Dropdown/Dropdown';
 import Button from '../core/Button/Button';
@@ -49,9 +52,13 @@ const StyledFinder = styled.div`
   }
 `;
 
-const StyledAutocomplete = styled(Autocomplete)`
+const StyledAutocompleteMobile = styled(AutocompleteMobile)`
   width: 100%;
-  margin: 0 0 25px 0;
+  margin: 0 0 25px;
+`;
+
+const StyledAutocomplete = styled(Autocomplete)`
+  margin: 0 0 25px;
   @media only screen and (min-width: 992px) {
     margin: 0 2% 0 0;
     width: 39%;
@@ -133,6 +140,9 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
 
+  const { width } = useWindowMeasures();
+  const isMobile = width < 768;
+
   const router = useRouter();
 
   const fetchSuggestions = useCallback(
@@ -155,6 +165,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const selectSuggestion = (name: string) => {
     const path = getFormattedUrlText(name, true);
+    setIsButtonLoading(true);
 
     router
       .push('/detail/[name]', `/detail/${path}`)
@@ -175,14 +186,25 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
 
   return (
     <StyledFinder className={className}>
-      <StyledAutocomplete
-        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
-        suggestions={suggestions}
-        fetchSuggestions={fetchSuggestions}
-        selectSuggestion={selectSuggestion}
-        loading={isAutocompleteLoading}
-        hasSearchIcon={true}
-      />
+      {isMobile ? (
+        <StyledAutocompleteMobile
+          loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
+          suggestions={suggestions}
+          fetchSuggestions={fetchSuggestions}
+          selectSuggestion={selectSuggestion}
+          loading={isAutocompleteLoading}
+          hasSearchIcon={true}
+        />
+      ) : (
+        <StyledAutocomplete
+          loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
+          suggestions={suggestions}
+          fetchSuggestions={fetchSuggestions}
+          selectSuggestion={selectSuggestion}
+          loading={isAutocompleteLoading}
+          hasSearchIcon={true}
+        />
+      )}
       <StyledSpacer />
       <StyledDropdownsWrapper>
         <StyledDropdown

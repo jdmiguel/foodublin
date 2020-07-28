@@ -4,7 +4,10 @@ import { LazyImage } from 'react-lazy-images';
 
 import Input from '../Input/Input';
 
-import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
+import {
+  PlaceholderText,
+  THUMB_GENERIC_SRC,
+} from '../../../helpers/staticData';
 import { Suggestion } from '../../../helpers/types';
 
 export type AutocompleteProps = {
@@ -17,21 +20,12 @@ export type AutocompleteProps = {
   selectSuggestion: (name: string) => void;
 };
 
-enum PlaceholderText {
-  BLURRED = 'Search for locals...',
-  FOCUSED = 'Start typing to search...',
-}
-
 const StyledAutocomplete = styled.div`
   width: 100%;
   max-width: 550px;
-  height: 100%;
-  position: initial;
+  height: 55px;
+  position: relative;
   cursor: pointer;
-  @media only screen and (min-width: 768px) {
-    height: 55px;
-    position: relative;
-  }
 `;
 
 const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
@@ -40,18 +34,11 @@ const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
-  &:focus {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
-  }
 
   ${({ hasBorderBottomRadius }) =>
     !hasBorderBottomRadius &&
     `border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;`}
-
-  input {
-    cursor: pointer;
-  }
 `;
 
 const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
@@ -63,11 +50,12 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   box-sizing: border-box;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
   z-index: 2;
-  top: 0;
+  top: 55px;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 400px;
   overflow: auto;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   border: 1px solid ${(props) => props.theme.palette.LIGHT_MAX};
@@ -75,39 +63,6 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   border-top: 0;
-  outline: none;
-  @media only screen and (min-width: 768px) {
-    top: 55px;
-    height: auto;
-    padding: 0;
-    max-height: 440px;
-  }
-`;
-
-const StyledCloseButton = styled.button`
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
-  cursor: pointer;
-  outline: none;
-  transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  i {
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  &:hover {
-    opacity: 0.5;
-  }
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
 `;
 
 const StyledLoader = styled.div`
@@ -132,24 +87,19 @@ const StyledLoader = styled.div`
 
 const StyledListbox = styled.ul`
   width: 100%;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const StyledListboxItem = styled.li`
   width: 100%;
   border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
   list-style: none;
-`;
-
-const StyledLink = styled.a`
-  display: block;
-  overflow: hidden;
-  text-decoration: none;
-  padding: 6px 11px;
-  color: ${(props) => props.theme.palette.DARK_MAX};
   display: flex;
-  font-weight: 400;
-  width: 100%;
+  padding: 11px;
+  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
   transition: background-color 0.2s ease-out;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
@@ -179,11 +129,13 @@ const StyledTextWrapper = styled.div`
 `;
 
 const StyledFirstText = styled.p`
+  text-align: left;
   color: ${(props) => props.theme.palette.DARK_MAX};
   font-size: 1.05rem;
 `;
 
 const StyledSecondText = styled.p`
+  text-align: left;
   color: ${(props) => props.theme.palette.DARK_SOFT};
   font-size: 0.85rem;
 `;
@@ -228,17 +180,16 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleInputBlur = () => {
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
-
     blurDelay.current = setTimeout(() => {
       setIsListboxFocused(false);
     }, 100);
   };
 
   const handleSuggestionClick = (showedText: string) => {
-    isSuggestable.current = false;
     clearTimeout(blurDelay.current);
-    selectSuggestion(showedText);
     setValue(showedText);
+    isSuggestable.current = false;
+    selectSuggestion(showedText);
   };
 
   const hasBorderBottomRadius =
@@ -262,14 +213,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         isShowed={isListboxFocused && suggestions.length > 0}
         data-testid="listbox-wrapper"
       >
-        <StyledCloseButton
-          type="button"
-          onClick={() => {
-            setIsListboxFocused(false);
-          }}
-        >
-          <i className="material-icons">close</i>
-        </StyledCloseButton>
         {loading ? (
           <StyledLoader>
             <img src={loaderSrc} alt="loader" />
@@ -279,30 +222,32 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           <StyledListbox role="listbox">
             {suggestions.map(
               ({ id, imgSrc, firstText, secondText }: Suggestion) => (
-                <StyledListboxItem key={id} role="option">
-                  <StyledLink onClick={() => handleSuggestionClick(firstText)}>
-                    <StyledImage
-                      src={imgSrc}
-                      alt={firstText}
-                      placeholder={({ imageProps, ref }) => (
-                        <div ref={ref} className="LazyImage-Placeholder">
-                          <StyledGenericThumb
-                            src={THUMB_GENERIC_SRC}
-                            alt={imageProps.alt}
-                          />
-                        </div>
-                      )}
-                      actual={({ imageProps }) => (
-                        <div className="LazyImage-Actual">
-                          <img {...imageProps} alt={firstText} />
-                        </div>
-                      )}
-                    />
-                    <StyledTextWrapper>
-                      <StyledFirstText>{firstText}</StyledFirstText>
-                      <StyledSecondText>{secondText}</StyledSecondText>
-                    </StyledTextWrapper>
-                  </StyledLink>
+                <StyledListboxItem
+                  key={id}
+                  role="option"
+                  onClick={() => handleSuggestionClick(firstText)}
+                >
+                  <StyledImage
+                    src={imgSrc}
+                    alt={firstText}
+                    placeholder={({ imageProps, ref }) => (
+                      <div ref={ref} className="LazyImage-Placeholder">
+                        <StyledGenericThumb
+                          src={THUMB_GENERIC_SRC}
+                          alt={imageProps.alt}
+                        />
+                      </div>
+                    )}
+                    actual={({ imageProps }) => (
+                      <div className="LazyImage-Actual">
+                        <img {...imageProps} alt={firstText} />
+                      </div>
+                    )}
+                  />
+                  <StyledTextWrapper>
+                    <StyledFirstText>{firstText}</StyledFirstText>
+                    <StyledSecondText>{secondText}</StyledSecondText>
+                  </StyledTextWrapper>
                 </StyledListboxItem>
               ),
             )}

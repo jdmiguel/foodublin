@@ -3,7 +3,6 @@
 exports[`Component: Finder should render 1`] = `
 .c3 {
   width: 100%;
-  max-width: 550px;
   border-radius: 4px;
   padding: 0 20px;
   background: #FFFFFF;
@@ -36,13 +35,22 @@ exports[`Component: Finder should render 1`] = `
   outline: none;
   color: #2f3235;
   background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c21 {
+  color: #585858;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .c1 {
   width: 100%;
   max-width: 550px;
-  height: 100%;
-  position: initial;
+  height: 55px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -54,14 +62,6 @@ exports[`Component: Finder should render 1`] = `
 
 .c4:hover {
   background-color: #FDF3E5;
-}
-
-.c4:focus {
-  background-color: #FDF3E5;
-}
-
-.c4 input {
-  cursor: pointer;
 }
 
 .c6 {
@@ -77,11 +77,12 @@ exports[`Component: Finder should render 1`] = `
   box-sizing: border-box;
   background: #FFFFFF;
   z-index: 2;
-  top: 0;
+  top: 55px;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 400px;
   overflow: auto;
   box-shadow: 0 2px 2px rgba(0,0,0,0.35);
   border: 1px solid #FFFFFF;
@@ -89,71 +90,35 @@ exports[`Component: Finder should render 1`] = `
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   border-top: 0;
-  outline: none;
 }
 
 .c7 {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
-  cursor: pointer;
-  outline: none;
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
-
-.c7 i {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.c7:hover {
-  opacity: 0.5;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .c8 {
   width: 100%;
-}
-
-.c9 {
-  width: 100%;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
-}
-
-.c10 {
-  display: block;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 6px 11px;
-  color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-weight: 400;
-  width: 100%;
+  padding: 11px;
+  background-color: #FFFFFF;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
 }
 
-.c10:hover {
+.c8:hover {
   background-color: #FDF3E5;
 }
 
-.c11 {
+.c9 {
   width: 30px;
   height: 30px;
   border: solid #FFFFFF 1px;
@@ -163,41 +128,36 @@ exports[`Component: Finder should render 1`] = `
   box-shadow: 1px 2px 5px #888;
 }
 
-.c12 {
+.c10 {
   margin-left: 12px;
 }
 
-.c13 {
+.c11 {
+  text-align: left;
   color: #2f3235;
   font-size: 1.05rem;
 }
 
-.c14 {
+.c12 {
+  text-align: left;
   color: #A7A7A7;
   font-size: 0.85rem;
 }
 
-.c23 {
-  color: #585858;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.c17 {
+.c15 {
   width: 100%;
   max-width: 550px;
   height: 100%;
   position: initial;
 }
 
-.c19 {
+.c17 {
   position: relative;
   border-radius: 4px;
   background-color: #FFFFFF;
-  cursor: pointer;
 }
 
-.c20 {
+.c18 {
   width: 100%;
   height: 55px;
   background-color: #FFFFFF;
@@ -214,6 +174,7 @@ exports[`Component: Finder should render 1`] = `
   border-radius: 4px;
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   -webkit-user-select: none;
@@ -225,22 +186,18 @@ exports[`Component: Finder should render 1`] = `
   -moz-user-select: none;
 }
 
-.c20 i:first-of-type {
+.c18 i:first-of-type {
   font-size: 1rem;
   margin-left: 5px;
   margin-right: 10px;
   color: #D48C24;
 }
 
-.c20:hover {
+.c18:hover {
   background-color: #FDF3E5;
 }
 
-.c20:focus {
-  background-color: #FDF3E5;
-}
-
-.c20 i:last-of-type {
+.c18 i:last-of-type {
   position: absolute;
   z-index: 1;
   top: 14px;
@@ -248,7 +205,7 @@ exports[`Component: Finder should render 1`] = `
   font-size: 1.7rem;
 }
 
-.c21 {
+.c19 {
   visibility: hidden;
   opacity: 0;
   overflow: auto;
@@ -264,7 +221,6 @@ exports[`Component: Finder should render 1`] = `
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
   border: 1px solid #FFFFFF;
   border-radius: 4px;
   border-top: 0;
@@ -272,7 +228,7 @@ exports[`Component: Finder should render 1`] = `
   outline: none;
 }
 
-.c22 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -286,49 +242,39 @@ exports[`Component: Finder should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   padding: 0 10px;
-  margin-bottom: 12px;
+  margin: 10px 0 15px;
+}
+
+.c22 {
+  font-size: 1.3rem;
+}
+
+.c23 {
+  cursor: pointer;
+  line-height: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 4px;
+}
+
+.c23 i {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.c23 i {
+  color: #585858;
+  font-size: 1.5rem;
 }
 
 .c24 {
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
-  cursor: pointer;
-  outline: none;
-  line-height: 0;
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  position: initial;
-}
-
-.c24 i {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.c24:hover {
-  opacity: 0.5;
-}
-
-.c25 {
   width: 100%;
   height: 55px;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
   display: block;
   overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 9px 11px;
   color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
@@ -339,36 +285,37 @@ exports[`Component: Finder should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
+  padding: 9px 11px;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.c25:hover {
+.c24:hover {
   background-color: #FDF3E5;
 }
 
-.c25:focus {
+.c24:focus {
   background-color: #FDF3E5;
 }
 
-.c27 {
+.c26 {
   width: 18px;
   margin-right: 12px;
 }
 
-.c26 {
+.c25 {
   color: #2f3235;
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.c28 {
+.c27 {
   width: 100%;
   height: 55px;
 }
 
-.c30 {
+.c29 {
   width: 100%;
   height: 100%;
   -webkit-letter-spacing: 0.5px;
@@ -399,12 +346,12 @@ exports[`Component: Finder should render 1`] = `
   align-items: center;
 }
 
-.c30 i {
+.c29 i {
   margin-right: 6px;
   font-size: 1.3em;
 }
 
-.c30:hover {
+.c29:hover {
   background-color: #EC7E00;
 }
 
@@ -428,11 +375,10 @@ exports[`Component: Finder should render 1`] = `
 }
 
 .c2 {
-  width: 100%;
-  margin: 0 0 25px 0;
+  margin: 0 0 25px;
 }
 
-.c15 {
+.c13 {
   background-color: #A7A7A7;
   width: 100%;
   height: 1px;
@@ -440,7 +386,7 @@ exports[`Component: Finder should render 1`] = `
   max-width: 550px;
 }
 
-.c16 {
+.c14 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -456,64 +402,49 @@ exports[`Component: Finder should render 1`] = `
   margin-bottom: 22px;
 }
 
-.c16:first-child {
+.c14:first-child {
   margin-right: 2%;
 }
 
-.c18 {
+.c16 {
   width: 100%;
 }
 
-.c18:first-of-type {
+.c16:first-of-type {
   margin-right: 2%;
   margin-bottom: 15px;
 }
 
-.c29 {
+.c28 {
   width: 100%;
   margin-bottom: 10px;
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
-    height: 55px;
-    position: relative;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c6 {
-    top: 55px;
-    height: auto;
-    padding: 0;
-    max-height: 440px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c7 {
-    display: none;
+  .c3 {
+    max-width: 550px;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c23 {
+  .c21 {
     font-size: 1.45rem;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c17 {
+  .c15 {
     height: 55px;
     position: relative;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c21 {
+  .c19 {
     max-height: 440px;
     height: auto;
     padding: 0;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.35);
     -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
     -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
     transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
@@ -524,7 +455,7 @@ exports[`Component: Finder should render 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c22 {
+  .c20 {
     display: none;
   }
 }
@@ -582,7 +513,7 @@ exports[`Component: Finder should render 1`] = `
 }
 
 @media only screen and (min-width:992px) {
-  .c15 {
+  .c13 {
     width: 1px;
     height: 90%;
     margin: 0 2% 0 0;
@@ -590,7 +521,7 @@ exports[`Component: Finder should render 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c16 {
+  .c14 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -598,7 +529,7 @@ exports[`Component: Finder should render 1`] = `
 }
 
 @media only screen and (min-width:992px) {
-  .c16 {
+  .c14 {
     width: 47%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
@@ -607,37 +538,37 @@ exports[`Component: Finder should render 1`] = `
     margin-bottom: 0;
   }
 
-  .c16:first-child {
+  .c14:first-child {
     margin-right: 0;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c18 {
+  .c16 {
     max-width: 270px;
   }
 
-  .c18:first-of-type {
+  .c16:first-of-type {
     margin-bottom: 0;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c18 {
+  .c16 {
     margin-right: 2%;
     width: 48%;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c29 {
+  .c28 {
     width: 300px;
     margin-bottom: 0;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c29 {
+  .c28 {
     width: 10%;
   }
 }
@@ -670,66 +601,52 @@ exports[`Component: Finder should render 1`] = `
       class="c6"
       data-testid="listbox-wrapper"
     >
-      <button
-        class="c7"
-        type="button"
-      >
-        <i
-          class="material-icons"
-        >
-          close
-        </i>
-      </button>
       <ul
-        class="c8"
+        class="c7"
         role="listbox"
       >
         <li
-          class="c9"
+          class="c8"
           role="option"
         >
-          <a
+          <div
+            class="LazyImage-Placeholder"
+          >
+            <img
+              alt=""
+              class="c9"
+              src="http://localhost:3000/static/images/generic-thumb.png"
+            />
+          </div>
+          <div
             class="c10"
           >
-            <div
-              class="LazyImage-Placeholder"
-            >
-              <img
-                alt=""
-                class="c11"
-                src="http://localhost:3000/static/images/generic-thumb.png"
-              />
-            </div>
-            <div
+            <p
+              class="c11"
+            />
+            <p
               class="c12"
-            >
-              <p
-                class="c13"
-              />
-              <p
-                class="c14"
-              />
-            </div>
-          </a>
+            />
+          </div>
         </li>
       </ul>
     </div>
   </div>
   <span
-    class="c15"
+    class="c13"
   />
   <div
-    class="c16"
+    class="c14"
   >
     <div
-      class="c17 c18"
+      class="c15 c16"
       data-testid="dropdown"
     >
       <div
-        class="c19"
+        class="c17"
       >
         <button
-          class="c20"
+          class="c18"
           type="button"
         >
           <i
@@ -749,21 +666,21 @@ exports[`Component: Finder should render 1`] = `
         </button>
       </div>
       <div
-        class="c21"
+        class="c19"
         data-testid="dropdown-list"
         role="listbox"
         tabindex="0"
       >
         <div
-          class="c22"
+          class="c20"
         >
           <h4
-            class="c23"
+            class="c21 c22"
           >
             Select any location
           </h4>
           <button
-            class="sc-fzoLag c24"
+            class="c23"
             type="button"
           >
             <i
@@ -774,301 +691,301 @@ exports[`Component: Finder should render 1`] = `
           </button>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Dublin
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             South City West
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Temple Bar
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Clondalkin
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Swords
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Tallaght
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Blanchardstown
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             South City East
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Dundrum
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Finglas
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Ballyfermot
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Santry
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Lucan
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Artane
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Malahide
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Dun Laoghaire
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Walkinstown
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Blackrock
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Palmerstown
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Rathmines
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Balbriggan
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Ballybrack
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Smithfield
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Crumlin
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Castleknock
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Howth
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Cabra
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Whitehall
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Portmarnock
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <p
-            class="c26"
+            class="c25"
           >
             Kimmage
           </p>
@@ -1076,14 +993,14 @@ exports[`Component: Finder should render 1`] = `
       </div>
     </div>
     <div
-      class="c17 c18"
+      class="c15 c16"
       data-testid="dropdown"
     >
       <div
-        class="c19"
+        class="c17"
       >
         <button
-          class="c20"
+          class="c18"
           type="button"
         >
           <i
@@ -1103,21 +1020,21 @@ exports[`Component: Finder should render 1`] = `
         </button>
       </div>
       <div
-        class="c21"
+        class="c19"
         data-testid="dropdown-list"
         role="listbox"
         tabindex="0"
       >
         <div
-          class="c22"
+          class="c20"
         >
           <h4
-            class="c23"
+            class="c21 c22"
           >
             Select any cuisine
           </h4>
           <button
-            class="sc-fzoLag c24"
+            class="c23"
             type="button"
           >
             <i
@@ -1128,121 +1045,121 @@ exports[`Component: Finder should render 1`] = `
           </button>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Irish"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/stew.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Irish
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Italian"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/pizza.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Italian
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Mediterranean"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/bruschetta.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Mediterranean
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Asian"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/rice.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Asian
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Healthy Food"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/healthy_food.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Healthy Food
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Indian"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/gulab.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Indian
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Mexican"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/taco.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Mexican
           </p>
         </div>
         <div
-          class="c25"
+          class="c24"
           role="option"
         >
           <img
             alt="Fast Food"
-            class="c27"
+            class="c26"
             src="http://localhost:3000/static/images/fries.svg"
           />
           <p
-            class="c26"
+            class="c25"
           >
             Fast Food
           </p>
@@ -1251,10 +1168,10 @@ exports[`Component: Finder should render 1`] = `
     </div>
   </div>
   <div
-    class="c28 c29"
+    class="c27 c28"
   >
     <button
-      class="c30"
+      class="c29"
       type="button"
     >
       Search
