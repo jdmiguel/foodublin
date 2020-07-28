@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: Dropdown should render 1`] = `
+.c5 {
+  color: #585858;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .c0 {
   width: 100%;
   max-width: 550px;
@@ -12,7 +18,6 @@ exports[`Component: Dropdown should render 1`] = `
   position: relative;
   border-radius: 4px;
   background-color: #FFFFFF;
-  cursor: pointer;
 }
 
 .c2 {
@@ -32,6 +37,7 @@ exports[`Component: Dropdown should render 1`] = `
   border-radius: 4px;
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   -webkit-user-select: none;
@@ -54,10 +60,6 @@ exports[`Component: Dropdown should render 1`] = `
   background-color: #FDF3E5;
 }
 
-.c2:focus {
-  background-color: #FDF3E5;
-}
-
 .c2 i:last-of-type {
   position: absolute;
   z-index: 1;
@@ -69,23 +71,19 @@ exports[`Component: Dropdown should render 1`] = `
 .c3 {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateY( 10px );
-  -ms-transform: translateY( 10px );
-  transform: translateY( 10px );
-  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  overflow: auto;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: #FFFFFF;
   z-index: 2;
-  overflow: auto;
   top: 0;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 20px 10px 10px;
   width: 100%;
   height: 100%;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  max-height: 100vh;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
   border-top: 0;
@@ -94,44 +92,52 @@ exports[`Component: Dropdown should render 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 10px;
+  margin: 10px 0 15px;
+}
+
+.c6 {
+  font-size: 1.3rem;
+}
+
+.c7 {
   cursor: pointer;
-  outline: none;
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
+  line-height: 0;
   background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  display: block;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 4px;
 }
 
-.c4 i {
+.c7 i {
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.c4:hover {
-  opacity: 0.5;
+.c7 i {
+  color: #585858;
+  font-size: 1.5rem;
 }
 
-.c5 {
+.c8 {
   width: 100%;
   height: 55px;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
   display: block;
   overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 9px 11px;
   color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
@@ -142,23 +148,30 @@ exports[`Component: Dropdown should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
+  padding: 9px 11px;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.c5:hover {
+.c8:hover {
   background-color: #FDF3E5;
 }
 
-.c5:focus {
+.c8:focus {
   background-color: #FDF3E5;
 }
 
-.c6 {
+.c9 {
   color: #2f3235;
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+@media only screen and (min-width:992px) {
+  .c5 {
+    font-size: 1.45rem;
+  }
 }
 
 @media only screen and (min-width:768px) {
@@ -170,9 +183,16 @@ exports[`Component: Dropdown should render 1`] = `
 
 @media only screen and (min-width:768px) {
   .c3 {
+    max-height: 440px;
     height: auto;
     padding: 0;
-    max-height: 440px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+    -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+    -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+    transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+    -webkit-transform: translateY( 20px );
+    -ms-transform: translateY( 20px );
+    transform: translateY( 20px );
   }
 }
 
@@ -215,62 +235,71 @@ exports[`Component: Dropdown should render 1`] = `
     role="listbox"
     tabindex="0"
   >
-    <button
-      class="sc-AxhUy c4"
-      type="button"
-    >
-      <i
-        class="material-icons"
-      >
-        close
-      </i>
-    </button>
     <div
-      class="c5"
+      class="c4"
+    >
+      <h4
+        class="c5 c6"
+      >
+        Select any option
+      </h4>
+      <button
+        class="c7"
+        type="button"
+      >
+        <i
+          class="material-icons"
+        >
+          close
+        </i>
+      </button>
+    </div>
+    <div
+      class="c8"
       role="option"
     >
       <p
-        class="c6"
+        class="c9"
       >
         First option
       </p>
     </div>
     <div
-      class="c5"
+      class="c8"
       role="option"
     >
       <p
-        class="c6"
+        class="c9"
       >
         Second option
       </p>
     </div>
     <div
-      class="c5"
+      class="c8"
       role="option"
     >
       <p
-        class="c6"
+        class="c9"
       >
         Third option
       </p>
     </div>
     <div
-      class="c5"
+      class="c8"
       role="option"
     >
       <p
-        class="c6"
+        class="c9"
       >
         Fourth option
       </p>
     </div>
     <div
-      class="c5"
+      class="c8"
       role="option"
     >
       <p
-        class="c6"
+        class="c9"
       >
         Fifth option
       </p>
@@ -280,6 +309,12 @@ exports[`Component: Dropdown should render 1`] = `
 `;
 
 exports[`Component: Dropdown should render with clearable option 1`] = `
+.c6 {
+  color: #585858;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .c0 {
   width: 100%;
   max-width: 550px;
@@ -291,7 +326,6 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   position: relative;
   border-radius: 4px;
   background-color: #FFFFFF;
-  cursor: pointer;
 }
 
 .c2 {
@@ -311,6 +345,7 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   border-radius: 4px;
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   -webkit-user-select: none;
@@ -334,30 +369,22 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   background-color: #FDF3E5;
 }
 
-.c2:focus {
-  background-color: #FDF3E5;
-}
-
 .c4 {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateY( 10px );
-  -ms-transform: translateY( 10px );
-  transform: translateY( 10px );
-  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  overflow: auto;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
   background-color: #FFFFFF;
   z-index: 2;
-  overflow: auto;
   top: 0;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 20px 10px 10px;
   width: 100%;
   height: 100%;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+  max-height: 100vh;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
   border-top: 0;
@@ -366,27 +393,22 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 }
 
 .c3 {
+  cursor: pointer;
+  line-height: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   position: absolute;
   z-index: 1;
   top: 19px;
   right: 7px;
-  cursor: pointer;
-  outline: none;
   -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
 }
 
 .c3 i {
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .c3:hover {
@@ -394,44 +416,52 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 }
 
 .c5 {
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 10px;
+  margin: 10px 0 15px;
+}
+
+.c7 {
+  font-size: 1.3rem;
+}
+
+.c8 {
   cursor: pointer;
-  outline: none;
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
+  line-height: 0;
   background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  display: block;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 4px;
 }
 
-.c5 i {
+.c8 i {
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.c5:hover {
-  opacity: 0.5;
+.c8 i {
+  color: #585858;
+  font-size: 1.5rem;
 }
 
-.c6 {
+.c9 {
   width: 100%;
   height: 55px;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
   display: block;
   overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 9px 11px;
   color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
@@ -442,29 +472,36 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
+  padding: 9px 11px;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.c6:hover {
+.c9:hover {
   background-color: #FDF3E5;
 }
 
-.c6:focus {
+.c9:focus {
   background-color: #FDF3E5;
 }
 
-.c8 {
+.c11 {
   color: #2f3235;
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.c7 {
+.c10 {
   color: #2f3235;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+@media only screen and (min-width:992px) {
+  .c6 {
+    font-size: 1.45rem;
+  }
 }
 
 @media only screen and (min-width:768px) {
@@ -476,9 +513,16 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 
 @media only screen and (min-width:768px) {
   .c4 {
+    max-height: 440px;
     height: auto;
     padding: 0;
-    max-height: 440px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.35);
+    -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
+    -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+    transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+    -webkit-transform: translateY( 20px );
+    -ms-transform: translateY( 20px );
+    transform: translateY( 20px );
   }
 }
 
@@ -530,62 +574,71 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
     role="listbox"
     tabindex="0"
   >
-    <button
-      class="c5"
-      type="button"
-    >
-      <i
-        class="material-icons"
-      >
-        close
-      </i>
-    </button>
     <div
-      class="c6"
+      class="c5"
+    >
+      <h4
+        class="c6 c7"
+      >
+        Select any option
+      </h4>
+      <button
+        class="c8"
+        type="button"
+      >
+        <i
+          class="material-icons"
+        >
+          close
+        </i>
+      </button>
+    </div>
+    <div
+      class="c9"
       role="option"
     >
       <p
-        class="c7"
+        class="c10"
       >
         First option
       </p>
     </div>
     <div
-      class="c6"
+      class="c9"
       role="option"
     >
       <p
-        class="c8"
+        class="c11"
       >
         Second option
       </p>
     </div>
     <div
-      class="c6"
+      class="c9"
       role="option"
     >
       <p
-        class="c8"
+        class="c11"
       >
         Third option
       </p>
     </div>
     <div
-      class="c6"
+      class="c9"
       role="option"
     >
       <p
-        class="c8"
+        class="c11"
       >
         Fourth option
       </p>
     </div>
     <div
-      class="c6"
+      class="c9"
       role="option"
     >
       <p
-        class="c8"
+        class="c11"
       >
         Fifth option
       </p>

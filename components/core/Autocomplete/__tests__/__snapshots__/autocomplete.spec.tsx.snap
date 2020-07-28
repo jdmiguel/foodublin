@@ -3,9 +3,8 @@
 exports[`Component: Autocomplete should render 1`] = `
 .c1 {
   width: 100%;
-  max-width: 550px;
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 20px;
   background: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
@@ -36,13 +35,16 @@ exports[`Component: Autocomplete should render 1`] = `
   outline: none;
   color: #2f3235;
   background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .c0 {
   width: 100%;
   max-width: 550px;
-  height: 100%;
-  position: initial;
+  height: 55px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -56,20 +58,12 @@ exports[`Component: Autocomplete should render 1`] = `
   background-color: #FDF3E5;
 }
 
-.c2:focus {
-  background-color: #FDF3E5;
-}
-
-.c2 input {
-  cursor: pointer;
-}
-
 .c4 {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateY( 10px );
-  -ms-transform: translateY( 10px );
-  transform: translateY( 10px );
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
   -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
   -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
   transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
@@ -77,11 +71,12 @@ exports[`Component: Autocomplete should render 1`] = `
   box-sizing: border-box;
   background: #FFFFFF;
   z-index: 2;
-  top: 0;
+  top: 55px;
   left: 0;
-  padding: 50px 10px 0;
+  padding: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 400px;
   overflow: auto;
   box-shadow: 0 2px 2px rgba(0,0,0,0.35);
   border: 1px solid #FFFFFF;
@@ -89,71 +84,35 @@ exports[`Component: Autocomplete should render 1`] = `
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   border-top: 0;
-  outline: none;
 }
 
 .c5 {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 19px;
-  right: 7px;
-  cursor: pointer;
-  outline: none;
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  background-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
-
-.c5 i {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.c5:hover {
-  opacity: 0.5;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .c6 {
   width: 100%;
-}
-
-.c7 {
-  width: 100%;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
-}
-
-.c8 {
-  display: block;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 6px 11px;
-  color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-weight: 400;
-  width: 100%;
+  padding: 11px;
+  background-color: #FFFFFF;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
 }
 
-.c8:hover {
+.c6:hover {
   background-color: #FDF3E5;
 }
 
-.c9 {
+.c7 {
   width: 30px;
   height: 30px;
   border: solid #FFFFFF 1px;
@@ -163,39 +122,25 @@ exports[`Component: Autocomplete should render 1`] = `
   box-shadow: 1px 2px 5px #888;
 }
 
-.c10 {
+.c8 {
   margin-left: 12px;
 }
 
-.c11 {
+.c9 {
+  text-align: left;
   color: #2f3235;
   font-size: 1.05rem;
 }
 
-.c12 {
+.c10 {
+  text-align: left;
   color: #A7A7A7;
   font-size: 0.85rem;
 }
 
 @media only screen and (min-width:768px) {
-  .c0 {
-    height: 55px;
-    position: relative;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c4 {
-    top: 55px;
-    height: auto;
-    padding: 0;
-    max-height: 440px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c5 {
-    display: none;
+  .c1 {
+    max-width: 550px;
   }
 }
 
@@ -224,43 +169,93 @@ exports[`Component: Autocomplete should render 1`] = `
     class="c4"
     data-testid="listbox-wrapper"
   >
-    <button
-      class="c5"
-      type="button"
-    >
-      <i
-        class="material-icons"
-      >
-        close
-      </i>
-    </button>
     <ul
-      class="c6"
+      class="c5"
       role="listbox"
     >
       <li
-        class="c7"
+        class="c6"
         role="option"
       >
-        <a
-          class="c8"
+        <div
+          class="LazyImage-Placeholder"
         >
           <img
-            alt=""
-            class="c9"
-            src=""
+            alt="Manifesto"
+            class="c7"
+            src="http://localhost:3000/static/images/generic-thumb.png"
           />
-          <div
+        </div>
+        <div
+          class="c8"
+        >
+          <p
+            class="c9"
+          >
+            Manifesto
+          </p>
+          <p
             class="c10"
           >
-            <p
-              class="c11"
-            />
-            <p
-              class="c12"
-            />
-          </div>
-        </a>
+            Rathmines
+          </p>
+        </div>
+      </li>
+      <li
+        class="c6"
+        role="option"
+      >
+        <div
+          class="LazyImage-Placeholder"
+        >
+          <img
+            alt="Dragon Inn"
+            class="c7"
+            src="http://localhost:3000/static/images/generic-thumb.png"
+          />
+        </div>
+        <div
+          class="c8"
+        >
+          <p
+            class="c9"
+          >
+            Dragon Inn
+          </p>
+          <p
+            class="c10"
+          >
+            South City West
+          </p>
+        </div>
+      </li>
+      <li
+        class="c6"
+        role="option"
+      >
+        <div
+          class="LazyImage-Placeholder"
+        >
+          <img
+            alt="Casa Del Toro"
+            class="c7"
+            src="http://localhost:3000/static/images/generic-thumb.png"
+          />
+        </div>
+        <div
+          class="c8"
+        >
+          <p
+            class="c9"
+          >
+            Casa Del Toro
+          </p>
+          <p
+            class="c10"
+          >
+            Drumcondra
+          </p>
+        </div>
       </li>
     </ul>
   </div>

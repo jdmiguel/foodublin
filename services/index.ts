@@ -24,6 +24,7 @@ export const getRestaurants = async (
   locationId: number,
   locationType: LocationType,
   cuisineId: number,
+  search = '',
   start = 0,
 ): Promise<any> => {
   try {
@@ -34,6 +35,7 @@ export const getRestaurants = async (
         'content-type': 'application/json',
       },
       params: {
+        q: search,
         entity_id: locationId,
         entity_type: locationType,
         cuisines: cuisineId,

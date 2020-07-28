@@ -14,7 +14,7 @@ stories.add('Input', () => (
   <Input
     type="text"
     placeholder={text('placeholder text', INPUT_PROPS_MOCK.placeholder)}
-    withSearchIcon={boolean('icon', true)}
+    hasSearchIcon={boolean('icon', true)}
     onChange={action('input: on change event')}
     onFocus={action('input: on focus event')}
     onBlur={action('input: on blur event')}

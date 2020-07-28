@@ -1,8 +1,8 @@
 export const INPUT_PROPS_MOCK = {
   type: 'text',
-  withSearchIcon: true,
+  hasSearchIcon: true,
   className: 'default-className',
-  placeholder: 'default-placeholder',
+  placeholder: 'Default placeholder',
   value: '',
   disabled: false,
   readOnly: false,

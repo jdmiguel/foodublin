@@ -6,7 +6,6 @@ export const GlobalStyles = createGlobalStyle`
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
-    overflow-y: scroll;
     min-height: 100vh;
     text-size-adjust: 100%;
     -moz-osx-font-smoothing: grayscale;
@@ -14,7 +13,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #F3F3F3;
     font-family: 'Baloo Chettan 2', sans-serif;
     font-size: 16px;
-    overflow: auto;
   }
   *, *:before, *:after {
    box-sizing: inherit;

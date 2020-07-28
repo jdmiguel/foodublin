@@ -19,7 +19,7 @@ describe('Component: Input', () => {
       'default-className',
     );
 
-    const defaultInput = getByPlaceholderText('default-placeholder');
+    const defaultInput = getByPlaceholderText('Default placeholder');
     expect(defaultInput.getAttribute('type')).toBe('text');
     expect(defaultInput.getAttribute('value')).toBe('');
     expect(defaultInput.getAttribute('disabled')).toBeFalsy();
@@ -44,7 +44,7 @@ describe('Component: Input', () => {
   it('should not render icon', () => {
     const INPUT_PROPS_MOCK_WITHOUT_ICON = {
       ...INPUT_PROPS_MOCK,
-      withSearchIcon: false,
+      hasSearchIcon: false,
     };
     const { getByTestId, container } = render(
       renderWithTheme(

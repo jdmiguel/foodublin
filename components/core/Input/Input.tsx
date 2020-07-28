@@ -12,7 +12,7 @@ type InputTypes =
 
 export type InputProps = {
   type: InputTypes;
-  withSearchIcon?: boolean;
+  hasSearchIcon?: boolean;
   className?: string;
   placeholder?: string;
   value?: string;
@@ -33,9 +33,8 @@ export type InputProps = {
 
 const StyledInputWrapper = styled.div`
   width: 100%;
-  max-width: 550px;
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 20px;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
   display: flex;
   justify-content: center;
@@ -44,6 +43,9 @@ const StyledInputWrapper = styled.div`
     font-size: 1.2rem;
     color: ${(props) => props.theme.palette.DARK_SOFT};
     margin-right: 10px;
+  }
+  @media only screen and (min-width: 768px) {
+    max-width: 550px;
   }
 `;
 
@@ -56,11 +58,14 @@ const StyledInput = styled.input`
   outline: none;
   color: ${(props) => props.theme.palette.DARK_MAX};
   background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const Input: React.FC<InputProps> = ({
   type,
-  withSearchIcon,
+  hasSearchIcon,
   className,
   value,
   placeholder,
@@ -84,6 +89,11 @@ const Input: React.FC<InputProps> = ({
     setCurrentValue(value);
   }, [value]);
 
+  const handleClick = () => {
+    inputRef.current?.focus();
+    onClick && onClick();
+  };
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(event.target.value);
     onChange && onChange(event);
@@ -91,11 +101,11 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <StyledInputWrapper
-      onClick={() => onClick && onClick()}
+      onClick={handleClick}
       data-testid={'input-wrapper'}
       className={className}
     >
-      {withSearchIcon && (
+      {hasSearchIcon && (
         <i data-testid={'input-icon'} className="material-icons">
           search
         </i>
