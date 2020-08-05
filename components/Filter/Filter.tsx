@@ -28,12 +28,15 @@ const StyledFilterItem = styled.button<{ isActive: boolean }>`
   font-size: 0.9rem;
   color: ${(props) => props.theme.palette.DARK_MEDIUM};
   outline: none;
-  cursor: pointer;
+  cursor: ${({ isActive }) => `${isActive ? 'default' : 'pointer'}`};
   display: flex;
   justify-content: center;
+  transition: background-color 0.2s ease-out;
   background-color: ${({ theme, isActive }) =>
     `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MIN}`};
-
+  &:hover {
+    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+  }
   @media only screen and (min-width: 400px) {
     width: 180px;
   }
