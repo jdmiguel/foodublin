@@ -18,7 +18,13 @@ exports[`Component: Filter should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
   background-color: #E5EAED;
+}
+
+.c0:hover {
+  background-color: #FDF3E5;
 }
 
 .c1 {
