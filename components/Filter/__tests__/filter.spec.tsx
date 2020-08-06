@@ -10,15 +10,15 @@ import { FILTER_DATA } from '../../../helpers/staticData';
 describe('Component: Filter', () => {
   it('should render', () => {
     const { container } = render(
-      renderWithTheme(<Filter onSelect={() => {}} data={FILTER_DATA} />),
+      renderWithTheme(<Filter onClick={() => {}} data={FILTER_DATA} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();
   });
   it('should active filter and call function on click any filter', () => {
-    const handleSelect = jest.fn();
+    const handleClick = jest.fn();
     const { container } = render(
-      renderWithTheme(<Filter onSelect={handleSelect} data={FILTER_DATA} />),
+      renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />),
     );
     const filter = container.firstChild as HTMLDivElement;
     const firstFilterItem = filter.querySelector('button');
@@ -26,7 +26,7 @@ describe('Component: Filter', () => {
     const thirdFilterItem = filter.querySelector('button:nth-of-type(3)');
     const fourthFilterItem = filter.querySelector('button:nth-of-type(4)');
 
-    // check background color of first filterItem and rest filterItems
+    // check if background color of filterItems are the expected ones
     expect(firstFilterItem).toHaveStyleRule('background-color', '#E5EAED');
     expect(secondFilterItem).toHaveStyleRule('background-color', '#E5EAED');
     expect(thirdFilterItem).toHaveStyleRule('background-color', '#E5EAED');
@@ -34,11 +34,22 @@ describe('Component: Filter', () => {
 
     fireEvent.click(firstFilterItem);
 
-    //  check background color of first filterItem and rest filterItems and call callback
+    // check if background color of firstFilterItem has changed and callback
+    // function has been called
     expect(firstFilterItem).toHaveStyleRule('background-color', '#FDF3E5');
     expect(secondFilterItem).toHaveStyleRule('background-color', '#E5EAED');
     expect(thirdFilterItem).toHaveStyleRule('background-color', '#E5EAED');
     expect(fourthFilterItem).toHaveStyleRule('background-color', '#E5EAED');
-    expect(handleSelect).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalled();
+
+    fireEvent.click(firstFilterItem);
+
+    // check if background color of firstFilterItem has changed to his defaul
+    // value and callback function has been called again
+    expect(firstFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(secondFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(thirdFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(fourthFilterItem).toHaveStyleRule('background-color', '#E5EAED');
+    expect(handleClick).toHaveBeenCalled();
   });
 });

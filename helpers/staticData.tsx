@@ -2,6 +2,7 @@ import { CDN_URL_STATIC_DIRECTORY } from './utils';
 
 export const DUBLIN_ID = 91;
 export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
+export const MAX_RESTAURANT_DISPLAYED = 20;
 
 export enum PlaceholderText {
   BLURRED = 'Search for locals...',
@@ -283,13 +284,13 @@ export const DEFAULT_RATING_STAR_LIST = [
   { id: 5, type: 'star_outline' },
 ];
 
-enum FilterSort {
-  COST = 'COST',
-  RANK = 'RANK',
+export enum FilterSort {
+  COST = 'cost',
+  RANK = 'rating',
 }
-enum FilterOrder {
-  ASC = 'ASC',
-  DESC = 'DESC',
+export enum FilterOrder {
+  ASC = 'asc',
+  DESC = 'desc',
 }
 
 export const FILTER_DATA = [

@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState, Dispatch } from 'react';
 import { NextPage, NextPageContext } from 'next';
 
 import SearchPage from '../../../components/SearchPage/SearchPage';
 
-import { getRestaurants } from '../../../services';
+import { getRestaurantsData } from '../../../services';
 
 import { LOCATIONS, CUISINES, DUBLIN_ID } from '../../../helpers/staticData';
 import { ListItemType, RestaurantType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
+// TO DO
+// Add Loader feature
+// Add remove filter by clicking active filter
+
 type SearchProps = {
+  locationId: number;
   locationName: string;
+  cuisineId: number;
   cuisineName: string;
   total: number;
   restaurants: RestaurantType[];
@@ -23,24 +29,63 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
-const getValues = (path: string, searchType: ListItemType[]): any => {
+const getValues = (path: string, searchType: ListItemType[]): any[] => {
   const value = searchType.find((item) => item.path === path);
 
   return [value?.id, value?.name];
 };
 
+const getFormattedRestaurant = (restaurant: any) => ({
+  id: restaurant.id,
+  imgSrc: restaurant.thumb,
+  title: restaurant.name,
+  link: getFormattedUrlText(restaurant.name, true),
+  firstText: restaurant.location.locality,
+});
+
+const getRestaurants = (restaurants: any) => (formattedFuntion: any) =>
+  restaurants.map((item: any) => formattedFuntion(item.restaurant));
+
 const Search: NextPage<SearchProps> = ({
+  locationId,
+  cuisineId,
   locationName,
   cuisineName,
   total,
   restaurants,
 }) => {
+  const [currentRestaurants, setCurrentRestaurants]: [
+    RestaurantType[],
+    Dispatch<RestaurantType[]>,
+  ] = useState(restaurants);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFilter = async (sort: string, order: string) => {
+    setIsLoading(true);
+
+    const response = await getRestaurantsData(
+      locationId,
+      locationId === DUBLIN_ID ? 'city' : 'subzone',
+      cuisineId,
+      '',
+      sort,
+      order,
+    );
+    const restaurants = getRestaurants(response.restaurants);
+    const formattedRestaurants = restaurants(getFormattedRestaurant);
+
+    setCurrentRestaurants(formattedRestaurants);
+    setIsLoading(false);
+  };
+
   return (
     <SearchPage
       total={total}
       location={locationName}
       cuisine={cuisineName}
-      restaurants={restaurants}
+      restaurants={currentRestaurants}
+      onClickFilter={handleFilter}
+      isLoading={isLoading}
     />
   );
 };
@@ -51,21 +96,23 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 
-  const response = await getRestaurants(
+  const response = await getRestaurantsData(
     locationId,
     locationId === DUBLIN_ID ? 'city' : 'subzone',
     cuisineId,
   );
   const total = response.results_found;
-  const restaurants = response.restaurants.map((restaurant: any) => ({
-    id: restaurant.restaurant.id,
-    imgSrc: restaurant.restaurant.thumb,
-    title: restaurant.restaurant.name,
-    link: getFormattedUrlText(restaurant.restaurant.name, true),
-    firstText: restaurant.restaurant.location.locality,
-  }));
+  const restaurants = getRestaurants(response.restaurants);
+  const formattedRestaurants = restaurants(getFormattedRestaurant);
 
-  return { locationName, cuisineName, total, restaurants };
+  return {
+    locationId,
+    locationName,
+    cuisineId,
+    cuisineName,
+    total,
+    restaurants: formattedRestaurants,
+  };
 };
 
 export default Search;

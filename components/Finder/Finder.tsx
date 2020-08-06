@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Dispatch } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -7,10 +7,11 @@ import {
   getFormattedUrlText,
 } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
+import { Suggestion } from '../../helpers/types';
 
 import useWindowMeasures from '../hooks/useWindowMeasures';
 
-import { getRestaurants } from '../../services';
+import { getRestaurantsData } from '../../services';
 
 import AutocompleteMobile from '../core/Autocomplete/AutocompleteMobile';
 import Autocomplete from '../core/Autocomplete/Autocomplete';
@@ -134,7 +135,10 @@ const StyledButton = styled(Button)`
 `;
 
 const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTIONS);
+  const [suggestions, setSuggestions]: [
+    Suggestion[],
+    Dispatch<Suggestion[]>,
+  ] = useState(DEFAULT_SUGGESTIONS);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
@@ -149,7 +153,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     async (search: string) => {
       setIsAutocompleteLoading(true);
 
-      const response = await getRestaurants(DUBLIN_ID, 'city', 0, search);
+      const response = await getRestaurantsData(DUBLIN_ID, 'city', 0, search);
       const restaurants = response.restaurants.map((restaurant: any) => ({
         id: restaurant.restaurant.id,
         imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
