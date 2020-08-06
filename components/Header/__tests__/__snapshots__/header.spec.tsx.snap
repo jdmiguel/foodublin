@@ -544,6 +544,10 @@ exports[`Component: Header should render extended Header 1`] = `
   background-color: #EC7E00;
 }
 
+.c35:focus {
+  background-color: #EC7E00;
+}
+
 .c6 {
   width: 85%;
   display: -webkit-box;

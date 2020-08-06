@@ -23,7 +23,6 @@ export const SUGGESTIONS_MOCK = [
 ];
 
 export const AUTOCOMPLETE_PROPS_MOCK = {
-  loaderSrc: 'loader.svg',
   suggestions: SUGGESTIONS_MOCK,
   fetchSuggestions: () => {},
   selectSuggestion: () => {},

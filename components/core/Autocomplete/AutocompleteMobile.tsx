@@ -4,17 +4,18 @@ import { LazyImage } from 'react-lazy-images';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import Input from '../Input/Input';
+import Loader, { Mode } from '../Loader/Loader';
 import BlockTitle from '../BlockTitle/BlockTitle';
 
 import {
   PlaceholderText,
   THUMB_GENERIC_SRC,
+  DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
 import { Suggestion } from '../../../helpers/types';
 
 export type AutocompleteMobileProps = {
   className?: string;
-  loaderSrc: string;
   hasSearchIcon?: boolean;
   suggestions: Suggestion[];
   loading: boolean;
@@ -140,7 +141,7 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   border-radius: 4px;
 `;
 
-const StyledLoader = styled.div`
+const StyledLoader = styled(Loader)`
   width: 100%;
   height: 100%;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
@@ -151,12 +152,6 @@ const StyledLoader = styled.div`
   align-items: center;
   @media only screen and (min-width: 992px) {
     min-height: 200px;
-  }
-  img {
-    margin-bottom: 8px;
-  }
-  p {
-    font-size: 0.85rem;
   }
 `;
 
@@ -217,7 +212,6 @@ const StyledSecondText = styled.p`
 `;
 
 export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
-  loaderSrc,
   suggestions,
   fetchSuggestions,
   selectSuggestion,
@@ -321,10 +315,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
             ref={listboxWrapperRef}
           >
             {loading ? (
-              <StyledLoader>
-                <img src={loaderSrc} alt="loader" />
-                <p>Coming right up...</p>
-              </StyledLoader>
+              <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
             ) : (
               <StyledListbox role="listbox">
                 {suggestions.map(
