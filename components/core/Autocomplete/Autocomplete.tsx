@@ -3,16 +3,17 @@ import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import Input from '../Input/Input';
+import Loader, { Mode } from '../Loader/Loader';
 
 import {
   PlaceholderText,
   THUMB_GENERIC_SRC,
+  DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
 import { Suggestion } from '../../../helpers/types';
 
 export type AutocompleteProps = {
   className?: string;
-  loaderSrc: string;
   hasSearchIcon?: boolean;
   suggestions: Suggestion[];
   loading: boolean;
@@ -65,23 +66,12 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   border-top: 0;
 `;
 
-const StyledLoader = styled.div`
+const StyledLoader = styled(Loader)`
   width: 100%;
   height: 100%;
   background: ${(props) => props.theme.palette.LIGHT_MAX};
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   @media only screen and (min-width: 992px) {
     min-height: 200px;
-  }
-  img {
-    margin-bottom: 8px;
-  }
-  p {
-    font-size: 0.85rem;
   }
 `;
 
@@ -141,7 +131,6 @@ const StyledSecondText = styled.p`
 `;
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
-  loaderSrc,
   suggestions,
   fetchSuggestions,
   selectSuggestion,
@@ -214,10 +203,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         data-testid="listbox-wrapper"
       >
         {loading ? (
-          <StyledLoader>
-            <img src={loaderSrc} alt="loader" />
-            <p>Coming right up...</p>
-          </StyledLoader>
+          <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
         ) : (
           <StyledListbox role="listbox">
             {suggestions.map(

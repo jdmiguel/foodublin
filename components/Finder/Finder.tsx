@@ -201,7 +201,6 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         />
       ) : (
         <StyledAutocomplete
-          loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
           suggestions={suggestions}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
