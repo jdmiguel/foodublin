@@ -112,12 +112,8 @@ const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
     sort: string,
     order: string,
   ) => {
-    dispatch(isActive ? { type: 'clear' } : { type: 'select', id });
-    if (isActive) {
-      onClick('', '');
-    } else {
-      onClick(sort, order);
-    }
+    dispatch(!isActive ? { type: 'select', id } : { type: 'clear' });
+    onClick(!isActive ? sort : '', !isActive ? order : '');
   };
 
   return (
