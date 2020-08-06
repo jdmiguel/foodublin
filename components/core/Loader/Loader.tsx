@@ -28,22 +28,30 @@ const StyledLoader = styled.div`
   align-items: center;
 `;
 
-const StyledLoaderImage = styled.div`
-  border: 2px solid ${(props) => props.theme.palette.PRIMARY};
-  border-top: 2px solid ${(props) => props.theme.palette.PRIMARY_LIGHT};
+const StyledLoaderImage = styled.div<{ mode: Mode.LIGHT | Mode.DARK }>`
+  border: 2px solid
+    ${({ theme, mode }) =>
+      mode === Mode.LIGHT
+        ? theme.palette.PRIMARY_MEDIUM
+        : theme.palette.PRIMARY};
+  border-top: 2px solid
+    ${({ theme, mode }) =>
+      mode === Mode.LIGHT
+        ? theme.palette.LIGHT_MAX
+        : theme.palette.PRIMARY_LIGHT};
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  margin-bottom: 8px;
   ${animation};
 `;
 const StyledLoaderText = styled.p`
+  margin-top: 8px;
   font-size: 0.85rem;
 `;
 
-const Loader: React.FC<LoaderProps> = ({ className, text }) => (
+const Loader: React.FC<LoaderProps> = ({ className, text, mode }) => (
   <StyledLoader className={className}>
-    <StyledLoaderImage />
+    <StyledLoaderImage mode={mode} />
     {text && <StyledLoaderText>{text}</StyledLoaderText>}
   </StyledLoader>
 );

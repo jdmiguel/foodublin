@@ -225,11 +225,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
           onClear={() => setCurrentCuisinePath('any-food')}
         />
       </StyledDropdownsWrapper>
-      <StyledButton
-        loading={isButtonLoading}
-        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
-        onClick={handleButtonClick}
-      >
+      <StyledButton loading={isButtonLoading} onClick={handleButtonClick}>
         Search
       </StyledButton>
     </StyledFinder>
