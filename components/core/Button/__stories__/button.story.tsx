@@ -13,7 +13,6 @@ const stories = storiesOf('Button', module);
 stories.add('Button', () => (
   <Button
     loading={boolean('loading', false)}
-    loaderSrc={BUTTON_MOCK.loaderSrc}
     onClick={action('button: on click event')}
     fullWidth={false}
   >

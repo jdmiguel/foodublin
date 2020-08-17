@@ -4,6 +4,8 @@ export const DUBLIN_ID = 91;
 export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
 export const MAX_RESTAURANT_DISPLAYED = 20;
 
+export const DEFAULT_TEXT_LOADING = 'Coming right up...';
+
 export enum PlaceholderText {
   BLURRED = 'Search for locals...',
   FOCUSED = 'Start typing to search...',

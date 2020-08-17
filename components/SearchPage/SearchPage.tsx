@@ -7,10 +7,14 @@ import Filter from '../Filter/Filter';
 
 import Title from '../core/Title/Title';
 import Card from '../core/Card/Card';
+import Loader, { Mode } from '../core/Loader/Loader';
 
-import { FILTER_DATA, THUMB_GENERIC_SRC } from '../../helpers/staticData';
+import {
+  FILTER_DATA,
+  THUMB_GENERIC_SRC,
+  DEFAULT_TEXT_LOADING,
+} from '../../helpers/staticData';
 import { RestaurantType } from '../../helpers/types';
-import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
 
 type SearchPageProps = {
   location: string | undefined;
@@ -59,7 +63,7 @@ const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
   display: flex;
   justify-content: center;
   visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '0.9' : '0')};
+  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
   background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   @media only screen and (min-width: 992px) {
@@ -67,18 +71,9 @@ const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
   }
 `;
 
-const StyledLoader = styled.div`
+const StyledLoader = styled(Loader)`
   position: fixed;
   top: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  img {
-    margin-bottom: 8px;
-  }
-  p {
-    font-size: 0.85rem;
-  }
 `;
 
 const SearchPage = ({
@@ -97,13 +92,7 @@ const SearchPage = ({
     <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
       <StyledSearchPage className="grid-container">
         <StyledLoaderWrapper isShowed={isLoading}>
-          <StyledLoader>
-            <img
-              src={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
-              alt="loader"
-            />
-            <p>Coming right up...</p>
-          </StyledLoader>
+          <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
         </StyledLoaderWrapper>
         <Title
           text={`${titleTotalText} ${

@@ -30,11 +30,7 @@ it('should render with HTML nodes', () => {
 
 it('should render with loader', () => {
   const { container } = render(
-    renderWithTheme(
-      <Button loading={true} loaderSrc={BUTTON_MOCK.loaderSrc}>
-        {BUTTON_MOCK.text}
-      </Button>,
-    ),
+    renderWithTheme(<Button loading={true}>{BUTTON_MOCK.text}</Button>),
   );
 
   expect(container.firstChild).toMatchSnapshot();

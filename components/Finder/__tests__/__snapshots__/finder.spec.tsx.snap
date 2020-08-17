@@ -355,6 +355,10 @@ exports[`Component: Finder should render 1`] = `
   background-color: #EC7E00;
 }
 
+.c29:focus {
+  background-color: #EC7E00;
+}
+
 .c0 {
   width: 85%;
   display: -webkit-box;

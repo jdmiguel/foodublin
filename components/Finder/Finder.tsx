@@ -2,10 +2,7 @@ import React, { useState, useCallback, Dispatch } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import {
-  CDN_URL_STATIC_DIRECTORY,
-  getFormattedUrlText,
-} from '../../helpers/utils';
+import { getFormattedUrlText } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 import { Suggestion } from '../../helpers/types';
 
@@ -192,7 +189,6 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     <StyledFinder className={className}>
       {isMobile ? (
         <StyledAutocompleteMobile
-          loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
           suggestions={suggestions}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
@@ -201,7 +197,6 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         />
       ) : (
         <StyledAutocomplete
-          loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/loader.svg`}
           suggestions={suggestions}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
@@ -226,11 +221,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
           onClear={() => setCurrentCuisinePath('any-food')}
         />
       </StyledDropdownsWrapper>
-      <StyledButton
-        loading={isButtonLoading}
-        loaderSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_loader.svg`}
-        onClick={handleButtonClick}
-      >
+      <StyledButton loading={isButtonLoading} onClick={handleButtonClick}>
         Search
       </StyledButton>
     </StyledFinder>

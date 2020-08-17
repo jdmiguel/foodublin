@@ -1,12 +1,13 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import Loader, { Mode } from '../Loader/Loader';
+
 type ButtonProps = {
   className?: string;
   children: ReactNode | string;
   onClick?: () => void;
   loading?: boolean;
-  loaderSrc?: string;
   fullWidth?: boolean;
 };
 
@@ -38,6 +39,9 @@ const StyledButton = styled.button<{ fullWidth: boolean }>`
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY};
   }
+  &:focus {
+    background-color: ${(props) => props.theme.palette.PRIMARY};
+  }
 `;
 
 const Button: React.FC<ButtonProps> = ({
@@ -45,7 +49,6 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
   loading,
-  loaderSrc,
   fullWidth = true,
 }) => (
   <StyledButtonWrapper className={className} fullWidth={fullWidth}>
@@ -56,7 +59,7 @@ const Button: React.FC<ButtonProps> = ({
       }}
       fullWidth={fullWidth}
     >
-      {loading ? <img src={loaderSrc && loaderSrc} alt="loader" /> : children}
+      {loading ? <Loader mode={Mode.LIGHT} /> : children}
     </StyledButton>
   </StyledButtonWrapper>
 );

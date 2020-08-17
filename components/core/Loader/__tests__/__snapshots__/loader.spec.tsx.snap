@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Loader should render as dark mode 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    mode="dark"
+  />
+</div>
+`;
+
+exports[`Component: Loader should render as dark mode and with default text 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+.c2 {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #2f3235;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    mode="dark"
+  />
+  <p
+    class="c2"
+    mode="dark"
+  >
+    Default text
+  </p>
+</div>
+`;
+
+exports[`Component: Loader should render as light mode 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 2px solid #FDF3E5;
+  border-top: 2px solid #FBA52B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    mode="light"
+  />
+</div>
+`;
+
+exports[`Component: Loader should render as light mode and with default text 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 2px solid #FDF3E5;
+  border-top: 2px solid #FBA52B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+.c2 {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #FFFFFF;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    mode="light"
+  />
+  <p
+    class="c2"
+    mode="light"
+  >
+    Default text
+  </p>
+</div>
+`;
