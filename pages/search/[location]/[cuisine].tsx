@@ -11,18 +11,15 @@ import { getRestaurantsData } from '../../../services';
 import {
   LOCATIONS,
   CUISINES,
-  DUBLIN_ID,
   MAX_RESTAURANT_DISPLAYED,
   MAX_RESTAURANT_RETRIEVED,
   SCROLL_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
-import {
-  ListItemType,
-  RestaurantType,
-  LocationType,
-} from '../../../helpers/types';
+import { ListItemType, RestaurantType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
+
+type LocationType = 'subzone' | 'city';
 
 type SearchProps = {
   locationId: number;
@@ -60,7 +57,6 @@ const getRestaurants = (restaurants: RestaurantType[]) => (
 
 const handleGetRestaurantsData = async (
   locationId: number,
-  locationName: LocationType,
   cuisineId: number,
   start = 0,
   order = '',
@@ -68,7 +64,6 @@ const handleGetRestaurantsData = async (
 ) => {
   const response = await getRestaurantsData(
     locationId,
-    locationName,
     cuisineId,
     start,
     order,
@@ -112,7 +107,6 @@ const Search: NextPage<SearchProps> = ({
 
     const restaurantsData = await handleGetRestaurantsData(
       locationId,
-      locationName,
       cuisineId,
       0,
       currentSort.current,
@@ -142,7 +136,6 @@ const Search: NextPage<SearchProps> = ({
 
         const restaurantsData = await handleGetRestaurantsData(
           locationId,
-          locationName,
           cuisineId,
           (loadedRestaurants.current += MAX_RESTAURANT_DISPLAYED),
           currentSort.current,
@@ -182,11 +175,7 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 
-  const restaurantsData = await handleGetRestaurantsData(
-    locationId,
-    locationId === DUBLIN_ID ? 'city' : 'subzone',
-    cuisineId,
-  );
+  const restaurantsData = await handleGetRestaurantsData(locationId, cuisineId);
 
   return {
     locationId,

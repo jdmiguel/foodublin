@@ -1,8 +1,10 @@
 import axios, { AxiosError } from 'axios';
 
-import { BASE_URL, MAX_RESTAURANT_DISPLAYED } from '../helpers/staticData';
-
-import { LocationType } from '../helpers/types';
+import {
+  DUBLIN_ID,
+  BASE_URL,
+  MAX_RESTAURANT_DISPLAYED,
+} from '../helpers/staticData';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -22,12 +24,12 @@ const handleApiError = (error: AxiosError) => {
 
 export const getRestaurantsData = async (
   locationId: number | undefined,
-  locationType: LocationType,
   cuisineId: number | undefined,
   start = 0,
   sort = '',
   order = '',
   search = '',
+  locationType = locationId === DUBLIN_ID ? 'city' : 'subzone',
 ): Promise<any> => {
   const paramsRequest = {
     entity_id: locationId,
