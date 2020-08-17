@@ -150,7 +150,15 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     async (search: string) => {
       setIsAutocompleteLoading(true);
 
-      const response = await getRestaurantsData(DUBLIN_ID, 'city', 0, search);
+      const response = await getRestaurantsData(
+        DUBLIN_ID,
+        'city',
+        0,
+        0,
+        '',
+        '',
+        search,
+      );
       const restaurants = response.restaurants.map((restaurant: any) => ({
         id: restaurant.restaurant.id,
         imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,

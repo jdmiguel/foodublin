@@ -1,21 +1,32 @@
-import React, { useState, Dispatch } from 'react';
+import React, { useRef, useState, useEffect, Dispatch } from 'react';
 import { NextPage, NextPageContext } from 'next';
 
 import SearchPage from '../../../components/SearchPage/SearchPage';
 
+import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
+import useScrollPosY from '../../../components/hooks/useScrollPosY';
+
 import { getRestaurantsData } from '../../../services';
 
-import { LOCATIONS, CUISINES, DUBLIN_ID } from '../../../helpers/staticData';
-import { ListItemType, RestaurantType } from '../../../helpers/types';
+import {
+  LOCATIONS,
+  CUISINES,
+  DUBLIN_ID,
+  MAX_RESTAURANT_DISPLAYED,
+  MAX_RESTAURANT_RETRIEVED,
+  SCROLL_FACTOR,
+  SCROLL_DELAY,
+} from '../../../helpers/staticData';
+import {
+  ListItemType,
+  RestaurantType,
+  LocationType,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
-
-// TO DO
-// Add Loader feature
-// Add remove filter by clicking active filter
 
 type SearchProps = {
   locationId: number;
-  locationName: string;
+  locationName: LocationType;
   cuisineId: number;
   cuisineName: string;
   total: number;
@@ -43,8 +54,33 @@ const getFormattedRestaurant = (restaurant: any) => ({
   firstText: restaurant.location.locality,
 });
 
-const getRestaurants = (restaurants: any) => (formattedFuntion: any) =>
-  restaurants.map((item: any) => formattedFuntion(item.restaurant));
+const getRestaurants = (restaurants: RestaurantType[]) => (
+  formattedFuntion: any,
+) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
+
+const handleGetRestaurantsData = async (
+  locationId: number,
+  locationName: LocationType,
+  cuisineId: number,
+  start = 0,
+  order = '',
+  sort = '',
+) => {
+  const response = await getRestaurantsData(
+    locationId,
+    locationName,
+    cuisineId,
+    start,
+    order,
+    sort,
+  );
+  const restaurants = getRestaurants(response.restaurants);
+
+  return {
+    total: response.results_found,
+    formattedRestaurants: restaurants(getFormattedRestaurant),
+  };
+};
 
 const Search: NextPage<SearchProps> = ({
   locationId,
@@ -54,32 +90,82 @@ const Search: NextPage<SearchProps> = ({
   total,
   restaurants,
 }) => {
+  const searchRef = useRef<HTMLDivElement>(null);
+  const loadedRestaurants = useRef(0);
+  const currentSort = useRef('');
+  const currentOrder = useRef('');
+
   const [currentRestaurants, setCurrentRestaurants]: [
     RestaurantType[],
     Dispatch<RestaurantType[]>,
   ] = useState(restaurants);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { width } = useWindowMeasures();
+  const isMobile = width < 768;
+
   const handleFilter = async (sort: string, order: string) => {
+    loadedRestaurants.current = 0;
     setIsLoading(true);
+    currentSort.current = sort;
+    currentOrder.current = order;
 
-    const response = await getRestaurantsData(
+    const restaurantsData = await handleGetRestaurantsData(
       locationId,
-      locationId === DUBLIN_ID ? 'city' : 'subzone',
+      locationName,
       cuisineId,
-      '',
-      sort,
-      order,
+      0,
+      currentSort.current,
+      currentOrder.current,
     );
-    const restaurants = getRestaurants(response.restaurants);
-    const formattedRestaurants = restaurants(getFormattedRestaurant);
 
-    setCurrentRestaurants(formattedRestaurants);
-    setIsLoading(false);
+    setCurrentRestaurants(restaurantsData.formattedRestaurants);
   };
+
+  useScrollPosY(
+    async ({ posY }) => {
+      const osffsetScrollDown =
+        loadedRestaurants.current *
+        (MAX_RESTAURANT_RETRIEVED * (isMobile ? SCROLL_FACTOR : 1));
+      const scrollDownLimit =
+        posY >
+        ((searchRef.current?.clientHeight as number) + osffsetScrollDown) /
+          SCROLL_FACTOR;
+      const currentTotal =
+        total > MAX_RESTAURANT_RETRIEVED
+          ? MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED
+          : total;
+      const isRetrievingDataAllowed = loadedRestaurants.current < currentTotal;
+
+      if (scrollDownLimit && !isLoading && isRetrievingDataAllowed) {
+        setIsLoading(true);
+
+        const restaurantsData = await handleGetRestaurantsData(
+          locationId,
+          locationName,
+          cuisineId,
+          (loadedRestaurants.current += MAX_RESTAURANT_DISPLAYED),
+          currentSort.current,
+          currentOrder.current,
+        );
+
+        setCurrentRestaurants([
+          ...currentRestaurants,
+          ...restaurantsData.formattedRestaurants,
+        ]);
+      }
+    },
+    [isLoading],
+    SCROLL_DELAY,
+  );
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [currentRestaurants]);
 
   return (
     <SearchPage
+      ref={searchRef}
       total={total}
       location={locationName}
       cuisine={cuisineName}
@@ -96,22 +182,19 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 
-  const response = await getRestaurantsData(
+  const restaurantsData = await handleGetRestaurantsData(
     locationId,
     locationId === DUBLIN_ID ? 'city' : 'subzone',
     cuisineId,
   );
-  const total = response.results_found;
-  const restaurants = getRestaurants(response.restaurants);
-  const formattedRestaurants = restaurants(getFormattedRestaurant);
 
   return {
     locationId,
     locationName,
     cuisineId,
     cuisineName,
-    total,
-    restaurants: formattedRestaurants,
+    total: restaurantsData.total,
+    restaurants: restaurantsData.formattedRestaurants,
   };
 };
 

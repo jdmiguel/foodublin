@@ -35,3 +35,5 @@ export type RestaurantType = {
   link: string;
   firstText: string;
 };
+
+export type LocationType = 'subzone' | 'city';

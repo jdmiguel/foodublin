@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 import { BASE_URL, MAX_RESTAURANT_DISPLAYED } from '../helpers/staticData';
 
-type LocationType = 'subzone' | 'city';
+import { LocationType } from '../helpers/types';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -24,20 +24,20 @@ export const getRestaurantsData = async (
   locationId: number | undefined,
   locationType: LocationType,
   cuisineId: number | undefined,
-  search = '',
+  start = 0,
   sort = '',
   order = '',
-  start = 0,
+  search = '',
 ): Promise<any> => {
   const paramsRequest = {
     entity_id: locationId,
     entity_type: locationType,
     cuisines: cuisineId,
-    count: MAX_RESTAURANT_DISPLAYED,
-    q: search,
     start,
     sort,
     order,
+    q: search,
+    count: MAX_RESTAURANT_DISPLAYED,
   };
 
   const currentParamsRequest = Object.entries(paramsRequest).reduce(
