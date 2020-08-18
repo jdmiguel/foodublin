@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -23,6 +23,7 @@ type SearchPageProps = {
   restaurants: RestaurantType[];
   onClickFilter: (sort: string, order: string) => void;
   isLoading: boolean;
+  showWarning: boolean;
 };
 
 const StyledSearchPage = styled.div`
@@ -37,9 +38,9 @@ const StyledSearchPage = styled.div`
   }
 `;
 
-const StyledCardsWrapper = styled.div`
+const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
   margin-top: 20px;
-  margin-bottom: 35px;
+  margin-bottom: ${({ warningShowed }) => (warningShowed ? '35px' : '60px')};
   display: flex;
   justify-content: center;
   position: initial;
@@ -76,50 +77,102 @@ const StyledLoader = styled(Loader)`
   top: 50vh;
 `;
 
-const SearchPage = ({
-  total,
-  location,
-  cuisine,
-  restaurants,
-  onClickFilter,
-  isLoading,
-}: SearchPageProps) => {
-  const titleTotalText = total > 0 ? total : 'There are no';
-  const titleRestaurantText =
-    total === 0 || total >= 2 ? 'restaurants' : 'restaurant';
+const StyledWarning = styled.div`
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-align: center;
+  color: ${(props) => props.theme.palette.SECONDARY};
+  @media only screen and (min-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 70px;
+  }
+  @media only screen and (min-width: 992px) {
+    flex-direction: row;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    font-size: 1.3rem;
+  }
+`;
 
-  return (
-    <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
-      <StyledSearchPage className="grid-container">
-        <StyledLoaderWrapper isShowed={isLoading}>
-          <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
-        </StyledLoaderWrapper>
-        <Title
-          text={`${titleTotalText} ${
-            cuisine || ''
-          } ${titleRestaurantText} in ${location}`}
-        />
-        <Filter onClick={onClickFilter} data={FILTER_DATA} />
-        <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
-          {restaurants.map((restaurant) => (
-            <div
-              className="cell small-12 medium-6 large-4"
-              key={`${restaurant.id}-${restaurant.title}`}
-            >
-              <Card
-                key={restaurant.id}
-                imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                title={restaurant.title}
-                route="/detail/[name]"
-                asRoute={`/detail/${restaurant.link}`}
-                firstText={restaurant.firstText}
-              />
-            </div>
-          ))}
-        </StyledCardsWrapper>
-      </StyledSearchPage>
-    </DefaultLayout>
-  );
-};
+const StyledWarningIcon = styled.i`
+  font-size: 1.7rem;
+  margin: 0 0 7px 0;
+  @media only screen and (min-width: 992px) {
+    margin: 0 5px 0 0;
+  }
+`;
+
+const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
+  (
+    {
+      total,
+      location,
+      cuisine,
+      restaurants,
+      onClickFilter,
+      isLoading,
+      showWarning,
+    },
+    forwardedRef,
+  ) => {
+    const titleTotalText = total > 0 ? total : 'There are no';
+    const titleRestaurantText =
+      total === 0 || total >= 2 ? 'restaurants' : 'restaurant';
+
+    return (
+      <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
+        <StyledSearchPage ref={forwardedRef} className="grid-container">
+          <StyledLoaderWrapper isShowed={isLoading}>
+            <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
+          </StyledLoaderWrapper>
+          <Title
+            text={`${titleTotalText} ${
+              cuisine || ''
+            } ${titleRestaurantText} in ${location}`}
+          />
+          <Filter onClick={onClickFilter} data={FILTER_DATA} />
+          <StyledCardsWrapper
+            className="grid-x grid-margin-x grid-margin-y"
+            warningShowed={showWarning}
+          >
+            {restaurants.map((restaurant) => (
+              <div
+                className="cell small-12 medium-6 large-4"
+                key={`${restaurant.id}-${restaurant.title}`}
+              >
+                <Card
+                  key={restaurant.id}
+                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                  title={restaurant.title}
+                  route="/detail/[name]"
+                  asRoute={`/detail/${restaurant.link}`}
+                  firstText={restaurant.firstText}
+                />
+              </div>
+            ))}
+          </StyledCardsWrapper>
+          {showWarning && (
+            <StyledWarning>
+              <StyledWarningIcon className="material-icons">
+                warning
+              </StyledWarningIcon>
+              You have reached the limit of 100 results because of Zomato API
+              restrinctions
+            </StyledWarning>
+          )}
+        </StyledSearchPage>
+      </DefaultLayout>
+    );
+  },
+);
+
+SearchPage.displayName = 'SearchPage';
 
 export default SearchPage;

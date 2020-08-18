@@ -28,6 +28,22 @@ export type ListItemType = {
   path: string;
 };
 
+export enum EntityType {
+  CITY = 'city',
+  SUBZONE = 'subzone',
+}
+
+export type RestaurantsRequestParamsType = {
+  entity_id: number | undefined;
+  cuisines: number | undefined;
+  entity_type: EntityType.CITY | EntityType.SUBZONE;
+  start?: number;
+  sort?: string;
+  order?: string;
+  q?: string;
+  count?: number;
+};
+
 export type RestaurantType = {
   id: string;
   imgSrc: string;
