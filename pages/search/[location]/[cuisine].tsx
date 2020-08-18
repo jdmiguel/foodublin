@@ -63,9 +63,9 @@ const getRestaurants = (restaurants: RestaurantType[]) => (
 const handleGetRestaurantsData = async (
   locationId: number,
   cuisineId: number,
-  start = 0,
-  order = '',
-  sort = '',
+  start?: number,
+  order?: string,
+  sort?: string,
 ) => {
   const response = await getRestaurantsData({
     entity_id: locationId,
@@ -80,7 +80,7 @@ const handleGetRestaurantsData = async (
 
   return {
     total: response.results_found,
-    formattedRestaurants: restaurants(getFormattedRestaurant),
+    restaurants: restaurants(getFormattedRestaurant),
   };
 };
 
@@ -93,9 +93,9 @@ const Search: NextPage<SearchProps> = ({
   restaurants,
 }) => {
   const searchRef = useRef<HTMLDivElement>(null);
-  const loadedRestaurants = useRef(0);
-  const currentSort = useRef('');
-  const currentOrder = useRef('');
+  const loadedRestaurantsRef = useRef(0);
+  const sortRef = useRef('');
+  const orderRef = useRef('');
 
   const [currentRestaurants, setCurrentRestaurants]: [
     RestaurantType[],
@@ -106,38 +106,51 @@ const Search: NextPage<SearchProps> = ({
   const { width } = useWindowMeasures();
   const isMobile = width < 768;
 
-  const handleFilter = async (sort: string, order: string) => {
-    setIsLoading(true);
+  const maxRestaurantStarter =
+    MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
+  const currentTotal =
+    total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
+  const showWarning =
+    currentTotal >= MAX_RESTAURANT_RETRIEVED &&
+    loadedRestaurantsRef.current >= maxRestaurantStarter;
 
-    loadedRestaurants.current = 0;
-    currentSort.current = sort;
-    currentOrder.current = order;
+  const handleFilter = async (sort: string, order: string) => {
+    loadedRestaurantsRef.current = 0;
+    setIsLoading(true);
 
     const restaurantsData = await handleGetRestaurantsData(
       locationId,
       cuisineId,
       0,
-      currentSort.current,
-      currentOrder.current,
+      sort,
+      order,
     );
 
-    setCurrentRestaurants(restaurantsData.formattedRestaurants);
+    sortRef.current = sort;
+    orderRef.current = order;
+
+    setCurrentRestaurants(restaurantsData.restaurants);
   };
 
   useScrollPosY(
     async ({ posY }) => {
-      const osffsetScrollDown =
-        loadedRestaurants.current *
+      const { current: loaderRestaurants } = loadedRestaurantsRef;
+
+      const initialFactor =
+        loaderRestaurants <= MAX_RESTAURANT_DISPLAYED
+          ? 0
+          : loaderRestaurants - MAX_RESTAURANT_DISPLAYED;
+      const offsetScrollDown =
+        initialFactor *
         (MAX_RESTAURANT_RETRIEVED * (isMobile ? SCROLL_FACTOR : 1));
       const scrollDownLimit =
         posY >
-        ((searchRef.current?.clientHeight as number) + osffsetScrollDown) /
+        ((searchRef.current?.clientHeight as number) + offsetScrollDown) /
           SCROLL_FACTOR;
-      const currentTotal =
-        total > MAX_RESTAURANT_RETRIEVED
-          ? MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED
-          : total;
-      const isRetrievingDataAllowed = loadedRestaurants.current < currentTotal;
+
+      const isRetrievingDataAllowed =
+        loaderRestaurants < currentTotal &&
+        loaderRestaurants <= maxRestaurantStarter;
 
       if (scrollDownLimit && !isLoading && isRetrievingDataAllowed) {
         setIsLoading(true);
@@ -145,14 +158,14 @@ const Search: NextPage<SearchProps> = ({
         const restaurantsData = await handleGetRestaurantsData(
           locationId,
           cuisineId,
-          (loadedRestaurants.current += MAX_RESTAURANT_DISPLAYED),
-          currentSort.current,
-          currentOrder.current,
+          loaderRestaurants,
+          sortRef.current,
+          orderRef.current,
         );
 
         setCurrentRestaurants([
           ...currentRestaurants,
-          ...restaurantsData.formattedRestaurants,
+          ...restaurantsData.restaurants,
         ]);
       }
     },
@@ -161,6 +174,7 @@ const Search: NextPage<SearchProps> = ({
   );
 
   useEffect(() => {
+    loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
     setIsLoading(false);
   }, [currentRestaurants]);
 
@@ -173,6 +187,7 @@ const Search: NextPage<SearchProps> = ({
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
       isLoading={isLoading}
+      showWarning={showWarning}
     />
   );
 };
@@ -191,7 +206,7 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
     cuisineId,
     cuisineName,
     total: restaurantsData.total,
-    restaurants: restaurantsData.formattedRestaurants,
+    restaurants: restaurantsData.restaurants,
   };
 };
 
