@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Logo from '../core/Logo/Logo';
 import Finder from '../Finder/Finder';
@@ -13,116 +13,77 @@ type HeaderProps = {
   isExtended: boolean;
 };
 
-const StyledHeader = styled.header<{ isExtended: boolean }>`
+const StyledHeader = styled.header<{ bgImg: string | undefined }>`
   width: 100%;
   display: flex;
   justify-content: center;
-  ${({ isExtended, theme }) =>
-    !isExtended &&
-    `border-bottom: 1px solid ${theme.palette.LIGHT_SOFT}; background-color: ${theme.palette.SECONDARY};`};
-`;
-
-// Extended Header styles
-
-const StyledExtendedHeaderContent = styled.div<{ bgImg: string | undefined }>`
-  background-size: cover;
-  background-image: url(${(props) => props.bgImg && props.bgImg});
+  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  background-image: url(${({ bgImg }) => bgImg && bgImg});
   background-color: ${(props) => props.theme.palette.DARK_SOFT};
+  background-size: cover;
+  background-position: center;
   display: flex;
-  width: 100%;
-  height: 550px;
-  margin: 0;
 `;
 
-const StyledOverlay = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.85) 40%
-  );
+const StyledOverlay = styled.div<{ isExtended: boolean }>`
   width: 100%;
-  height: 100%;
-  margin: 0;
+  height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
+  background: rgba(0, 0, 0, 0.8);
+`;
+
+const headerContentCSS = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media only screen and (min-width: 768px) {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.8) 48%
-    );
-  }
-  @media only screen and (min-width: 992px) {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.8) 52%
-    );
-  }
 `;
 
-const StyledExtendedHeaderLogo = styled(Logo)`
-  width: 225px;
-  margin: 15px 0 25px;
-  @media only screen and (min-width: 768px) {
-    width: 270px;
-  }
-  @media only screen and (min-width: 992px) {
-    width: 300px;
-    margin: 0 0 30px;
-  }
-`;
-
-const StyledExtendedHeaderClaim = styled.h2`
-  font-size: 1.25rem;
-  text-align: center;
-  font-weight: 400;
-  color: ${(props) => props.theme.palette.LIGHT_MAX};
-  margin-bottom: 35px;
-  @media only screen and (min-width: 350px) {
-    font-size: 1.45rem;
-  }
-  @media only screen and (min-width: 768px) {
-    font-size: 2rem;
-  }
-  @media only screen and (min-width: 992px) {
-    font-size: 2.5rem;
-  }
-`;
-
-// Header styles
-
-const StyledHeaderContent = styled.div`
-  width: 100%;
-  max-width: 1100px;
-  height: 80px;
+const basicHeaderContentCSS = css`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 1140px;
   @media only screen and (min-width: 1200px) {
     justify-content: space-between;
   }
 `;
 
-const StyledHeaderLogo = styled(Logo)`
-  width: 190px;
+const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
+  width: 100%;
+  height: 100%;
+  ${({ isExtended }) =>
+    isExtended ? headerContentCSS : basicHeaderContentCSS};
+  margin: ${({ isExtended }) => (isExtended ? '15px 0 25px' : '0 auto')};
+`;
+
+const StyledHeaderLogo = styled(Logo)<{ isExtended: boolean }>`
+  width: ${({ isExtended }) => (isExtended ? '225px' : '190px')};
+  margin: ${({ isExtended }) => isExtended && '15px 0 25px'};
+  @media only screen and (min-width: 768px) {
+    width: ${({ isExtended }) => isExtended && '270px'};
+  }
   @media only screen and (min-width: 992px) {
-    width: 220px;
+    width: ${({ isExtended }) => (isExtended ? '300px' : '200px')};
+    margin: ${({ isExtended }) => isExtended && '0 0 30px'};
   }
 `;
 
-const StyledHeaderClaim = styled.h2`
-  font-size: 1.3rem;
+const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
+  font-size: ${({ isExtended }) => (isExtended ? '1.25rem' : '1.3rem')};
+  text-align: center;
   font-weight: 400;
-  color: ${(props) => props.theme.palette.LIGHT_MIN};
-  display: none;
+  color: ${(props) => props.theme.palette.DARK_SOFT};
+  margin-bottom: ${({ isExtended }) => isExtended && '35px'};
+  display: ${({ isExtended }) => !isExtended && 'none'};
+  @media only screen and (min-width: 350px) {
+    font-size: ${({ isExtended }) => isExtended && '1.45rem'};
+  }
   @media only screen and (min-width: 768px) {
-    display: block;
+    display: ${({ isExtended }) => !isExtended && 'block'};
+    font-size: ${({ isExtended }) => isExtended && '2rem'};
   }
   @media only screen and (min-width: 992px) {
-    font-size: 1.5rem;
+    font-size: ${({ isExtended }) => (isExtended ? '2.5rem' : '1.6rem')};
   }
 `;
 
@@ -146,30 +107,25 @@ const StyledCustomLinkText = styled.span`
 `;
 
 const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
-  <StyledHeader data-testid="header" isExtended={isExtended}>
-    {isExtended ? (
-      <StyledExtendedHeaderContent bgImg={bgImgSrc}>
-        <StyledOverlay>
-          <StyledExtendedHeaderLogo
-            logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
-          />
-          <StyledExtendedHeaderClaim>{claimTxt}</StyledExtendedHeaderClaim>
-          <Finder />
-        </StyledOverlay>
-      </StyledExtendedHeaderContent>
-    ) : (
-      <StyledHeaderContent>
+  <StyledHeader data-testid="header" bgImg={bgImgSrc}>
+    <StyledOverlay isExtended={isExtended}>
+      <StyledHeaderContent isExtended={isExtended}>
         <StyledHeaderLogo
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/primary_logo.svg`}
-          isLink={true}
+          isExtended={isExtended}
+          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
         />
-        <StyledHeaderClaim>{claimTxt}</StyledHeaderClaim>
-        <StyledCustomLink route="/" size={CustomLinkSize.BIG}>
-          <i className="material-icons">bookmarks</i>
-          <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
-        </StyledCustomLink>
+        <StyledHeaderClaim isExtended={isExtended}>
+          {claimTxt}
+        </StyledHeaderClaim>
+        {isExtended && <Finder />}
+        {!isExtended && (
+          <StyledCustomLink route="/" size={CustomLinkSize.BIG}>
+            <i className="material-icons">bookmarks</i>
+            <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
+          </StyledCustomLink>
+        )}
       </StyledHeaderContent>
-    )}
+    </StyledOverlay>
   </StyledHeader>
 );
 

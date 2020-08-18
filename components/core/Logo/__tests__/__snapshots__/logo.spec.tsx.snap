@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Logo should render as a Link 1`] = `
+exports[`Component: Logo should render as simple H1 1`] = `
 .c0 {
   margin-bottom: 5px;
 }
@@ -29,20 +29,4 @@ exports[`Component: Logo should render as a Link 1`] = `
     />
   </h1>
 </a>
-`;
-
-exports[`Component: Logo should render as simple H1 1`] = `
-.c0 {
-  max-width: 300px;
-}
-
-<h1
-  data-testid="logo"
->
-  <img
-    alt="FooDublin Logo"
-    class="c0"
-    src="http://localhost:3003/public/images/light_logo.svg"
-  />
-</h1>
 `;

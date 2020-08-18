@@ -33,7 +33,7 @@ const StyledSearchPage = styled.div`
     margin-bottom: 35px;
   }
   @media only screen and (min-width: 1024px) {
-    margin-top: 75px;
+    margin-top: 60px;
     padding: 0 30px;
   }
 `;
