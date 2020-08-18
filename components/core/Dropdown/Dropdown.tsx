@@ -42,13 +42,13 @@ const StyledDropdown = styled.div`
 const StyledLabel = styled.div`
   position: relative;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
+  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
 `;
 
 const StyledLabelButton = styled.button<{ clearable: boolean }>`
   width: 100%;
   height: 55px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
+  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
   line-height: 55px;
   padding: 0 4px 0 8px;
   display: flex;
@@ -99,7 +99,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
+  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
   z-index: 2;
   top: 0;
   left: 0;
@@ -107,7 +107,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MAX};
+  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
   border-radius: 4px;
   border-top: 0;
   border-bottom: 0;

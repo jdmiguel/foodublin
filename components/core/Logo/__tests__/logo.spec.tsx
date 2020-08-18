@@ -22,17 +22,4 @@ describe('Component: Logo', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
-
-  it('should render as a Link', () => {
-    const { container } = render(
-      renderWithTheme(
-        <Logo
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/public/images/${logoLightSrc}`}
-          isLink={true}
-        />,
-      ),
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
 });

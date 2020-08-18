@@ -5,7 +5,6 @@ import styled from 'styled-components';
 type LogoProps = {
   className?: string;
   logoSrc: string;
-  isLink?: boolean;
 };
 
 const StyledLink = styled.a`
@@ -25,16 +24,10 @@ const getContentLogo = (className: string | undefined, logoSrc: string) => (
   </h1>
 );
 
-const Logo: React.FC<LogoProps> = ({ className, logoSrc, isLink = false }) => (
-  <>
-    {isLink ? (
-      <Link href="/" passHref>
-        <StyledLink>{getContentLogo(className, logoSrc)}</StyledLink>
-      </Link>
-    ) : (
-      getContentLogo(className, logoSrc)
-    )}
-  </>
+const Logo: React.FC<LogoProps> = ({ className, logoSrc }) => (
+  <Link href="/" passHref>
+    <StyledLink>{getContentLogo(className, logoSrc)}</StyledLink>
+  </Link>
 );
 
 export default Logo;

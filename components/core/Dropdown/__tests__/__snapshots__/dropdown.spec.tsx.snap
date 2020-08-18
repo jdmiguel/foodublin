@@ -17,13 +17,13 @@ exports[`Component: Dropdown should render 1`] = `
 .c1 {
   position: relative;
   border-radius: 4px;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
 }
 
 .c2 {
   width: 100%;
   height: 55px;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
   line-height: 55px;
   padding: 0 4px 0 8px;
   display: -webkit-box;
@@ -76,7 +76,7 @@ exports[`Component: Dropdown should render 1`] = `
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
   z-index: 2;
   top: 0;
   left: 0;
@@ -84,7 +84,7 @@ exports[`Component: Dropdown should render 1`] = `
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #F3F3F3;
   border-radius: 4px;
   border-top: 0;
   border-bottom: 0;
@@ -325,13 +325,13 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 .c1 {
   position: relative;
   border-radius: 4px;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
 }
 
 .c2 {
   width: 100%;
   height: 55px;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
   line-height: 55px;
   padding: 0 4px 0 8px;
   display: -webkit-box;
@@ -377,7 +377,7 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: #F3F3F3;
   z-index: 2;
   top: 0;
   left: 0;
@@ -385,7 +385,7 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #F3F3F3;
   border-radius: 4px;
   border-top: 0;
   border-bottom: 0;
