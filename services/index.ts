@@ -1,10 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
-import {
-  DUBLIN_ID,
-  BASE_URL,
-  MAX_RESTAURANT_DISPLAYED,
-} from '../helpers/staticData';
+import { BASE_URL } from '../helpers/staticData';
+import { RestaurantsRequestParamsType } from '../helpers/types';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -23,26 +20,9 @@ const handleApiError = (error: AxiosError) => {
 };
 
 export const getRestaurantsData = async (
-  locationId: number | undefined,
-  cuisineId: number | undefined,
-  start = 0,
-  sort = '',
-  order = '',
-  search = '',
-  locationType = locationId === DUBLIN_ID ? 'city' : 'subzone',
+  params: RestaurantsRequestParamsType,
 ): Promise<any> => {
-  const paramsRequest = {
-    entity_id: locationId,
-    entity_type: locationType,
-    cuisines: cuisineId,
-    start,
-    sort,
-    order,
-    q: search,
-    count: MAX_RESTAURANT_DISPLAYED,
-  };
-
-  const currentParamsRequest = Object.entries(paramsRequest).reduce(
+  const currentParams = Object.entries(params).reduce(
     (acc: any, next: any[]) => {
       const [key, value] = next;
       if (value) {
@@ -60,7 +40,7 @@ export const getRestaurantsData = async (
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
         'content-type': 'application/json',
       },
-      params: currentParamsRequest,
+      params: currentParams,
     });
 
     return { ...response.data };

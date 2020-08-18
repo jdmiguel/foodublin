@@ -9,6 +9,7 @@ import useScrollPosY from '../../../components/hooks/useScrollPosY';
 import { getRestaurantsData } from '../../../services';
 
 import {
+  DUBLIN_ID,
   LOCATIONS,
   CUISINES,
   MAX_RESTAURANT_DISPLAYED,
@@ -16,7 +17,11 @@ import {
   SCROLL_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
-import { ListItemType, RestaurantType } from '../../../helpers/types';
+import {
+  ListItemType,
+  RestaurantType,
+  EntityType,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 type LocationType = 'subzone' | 'city';
@@ -62,13 +67,15 @@ const handleGetRestaurantsData = async (
   order = '',
   sort = '',
 ) => {
-  const response = await getRestaurantsData(
-    locationId,
-    cuisineId,
+  const response = await getRestaurantsData({
+    entity_id: locationId,
+    entity_type:
+      locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
+    cuisines: cuisineId,
     start,
     order,
     sort,
-  );
+  });
   const restaurants = getRestaurants(response.restaurants);
 
   return {
@@ -100,8 +107,9 @@ const Search: NextPage<SearchProps> = ({
   const isMobile = width < 768;
 
   const handleFilter = async (sort: string, order: string) => {
-    loadedRestaurants.current = 0;
     setIsLoading(true);
+
+    loadedRestaurants.current = 0;
     currentSort.current = sort;
     currentOrder.current = order;
 

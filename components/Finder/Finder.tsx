@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { getFormattedUrlText } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { Suggestion } from '../../helpers/types';
+import { Suggestion, EntityType } from '../../helpers/types';
 
 import useWindowMeasures from '../hooks/useWindowMeasures';
 
@@ -150,15 +150,12 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     async (search: string) => {
       setIsAutocompleteLoading(true);
 
-      const response = await getRestaurantsData(
-        DUBLIN_ID,
-        'city',
-        0,
-        0,
-        '',
-        '',
-        search,
-      );
+      const response = await getRestaurantsData({
+        entity_id: DUBLIN_ID,
+        entity_type: EntityType.CITY,
+        cuisines: 0,
+        q: search,
+      });
       const restaurants = response.restaurants.map((restaurant: any) => ({
         id: restaurant.restaurant.id,
         imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
