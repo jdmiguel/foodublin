@@ -64,3 +64,7 @@ export type RestaurantDataType = {
   phone: string;
   address: string;
 };
+
+export type RestaurantsState = {
+  relatedRestaurants: CardType[];
+};

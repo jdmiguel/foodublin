@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -18,6 +19,7 @@ import RelatedRestaurants from './RelatedRestaurants';
 import { RELATED_RESTAURANTS } from './__mocks__/detailpage.mocks';
 
 import { RestaurantDataType } from '../../helpers/types';
+//import { RestaurantDataType, RestaurantsState } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
@@ -165,6 +167,12 @@ const DetailPage: React.FC<DetailPageProps> = ({
   },
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  /*const relatedRestaurants = useSelector(
+    (state: RestaurantsState) => state.relatedRestaurants,
+  );
+
+  console.log('relatedRestaurants: ', relatedRestaurants);*/
 
   return (
     <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>

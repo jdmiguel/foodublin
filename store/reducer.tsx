@@ -1,12 +1,8 @@
 import * as actionTypes from './actionTypes';
 
-import { CardType } from '../helpers/types';
+import { RestaurantsState } from '../helpers/types';
 
-type InitialState = {
-  relatedRestaurants: CardType[];
-};
-
-const initialState: InitialState = {
+const initialState: RestaurantsState = {
   relatedRestaurants: [],
 };
 
@@ -14,6 +10,7 @@ const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionTypes.SET_RELATED_RESTAURANTS:
       return {
+        ...state,
         relatedRestaurants: action.relatedRestaurants,
       };
     default:

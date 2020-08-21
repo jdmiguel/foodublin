@@ -1,4 +1,5 @@
 import React, { useState, useCallback, Dispatch } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -9,7 +10,7 @@ import Button from '../core/Button/Button';
 
 import useWindowMeasures from '../hooks/useWindowMeasures';
 
-import { getFormattedUrlText, getRelatedIndexArray } from '../../helpers/utils';
+import { getFormattedUrlText, getRandomListNumbers } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 import { Suggestion, EntityType } from '../../helpers/types';
 import {
@@ -20,6 +21,8 @@ import {
 } from '../../helpers/staticData';
 
 import { getRestaurantsData } from '../../services';
+
+import { setRelatedRestaurants } from '../../store/actions';
 
 type FinderProps = {
   className?: string;
@@ -145,6 +148,8 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const router = useRouter();
 
+  const dispatch = useDispatch();
+
   const fetchSuggestions = useCallback(
     async (search: string) => {
       setIsAutocompleteLoading(true);
@@ -174,13 +179,25 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       const currentSuggestionIndex = suggestions.findIndex(
         (suggestion) => suggestion.id === id,
       );
-      const getRelatedRestaurantsArray = getRelatedIndexArray(
+      const indexList = getRandomListNumbers(
+        3,
         currentSuggestionIndex,
         0,
         suggestions.length,
       );
+      const matchedSuggestions = indexList.map((index) => suggestions[index]);
 
-      console.log('getRelatedRestaurantsArray: ', getRelatedRestaurantsArray);
+      const relatedRestaurants = matchedSuggestions.map(
+        (matchedSuggestions) => ({
+          imgSrc: matchedSuggestions.imgSrc,
+          title: matchedSuggestions.firstText,
+          route: '/detail/[id]/[name]',
+          asRoute: `/detail/${id}/${path}`,
+          firstText: matchedSuggestions.secondText,
+        }),
+      );
+
+      dispatch(setRelatedRestaurants(relatedRestaurants));
 
       setIsButtonLoading(true);
       router
