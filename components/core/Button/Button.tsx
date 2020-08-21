@@ -1,4 +1,4 @@
-import React, { ReactNode, memo } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Loader, { Mode } from '../Loader/Loader';
@@ -64,9 +64,4 @@ const Button: React.FC<ButtonProps> = ({
   </StyledButtonWrapper>
 );
 
-const isLoadingPropChanged = (
-  prevProps: ButtonProps,
-  nextProps: ButtonProps,
-): boolean => !!prevProps.loading === nextProps.loading;
-
-export default memo(Button, isLoadingPropChanged);
+export default Button;
