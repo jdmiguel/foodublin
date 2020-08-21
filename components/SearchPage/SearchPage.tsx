@@ -14,6 +14,7 @@ import {
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../helpers/staticData';
+import { getFormattedUrlText } from '../../helpers/utils';
 import { RestaurantType } from '../../helpers/types';
 
 type SearchPageProps = {
@@ -151,8 +152,11 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                   key={restaurant.id}
                   imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                   title={restaurant.title}
-                  route="/detail/[name]"
-                  asRoute={`/detail/${restaurant.link}`}
+                  route="/detail/[id]/[name]"
+                  asRoute={`/detail/${restaurant.id}/${getFormattedUrlText(
+                    restaurant.title,
+                    true,
+                  )}`}
                   firstText={restaurant.firstText}
                 />
               </div>

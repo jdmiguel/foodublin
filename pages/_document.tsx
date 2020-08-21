@@ -65,6 +65,16 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
+            rel="preload"
+            as="image"
+            href={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
+          />
+          <link
+            rel="preload"
+            as="image"
+            href={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
+          />
+          <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />

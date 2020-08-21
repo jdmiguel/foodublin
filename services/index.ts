@@ -48,3 +48,22 @@ export const getRestaurantsData = async (
     return handleApiError(error);
   }
 };
+
+export const getRestaurantData = async (res_id: number): Promise<any> => {
+  try {
+    const response = await axios(`${BASE_URL}restaurant`, {
+      method: 'GET',
+      headers: {
+        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'content-type': 'application/json',
+      },
+      params: {
+        res_id,
+      },
+    });
+
+    return { ...response.data };
+  } catch (error) {
+    return handleApiError(error);
+  }
+};

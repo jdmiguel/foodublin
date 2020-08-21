@@ -20,7 +20,7 @@ export type AutocompleteMobileProps = {
   suggestions: Suggestion[];
   loading: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (name: string) => void;
+  selectSuggestion: (id: number, name: string) => void;
 };
 
 const StyledAutocompleteMobile = styled.div`
@@ -266,12 +266,12 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
   };
 
-  const handleSuggestionClick = (showedText: string) => {
+  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);
     isSuggestable.current = false;
-    selectSuggestion(showedText);
+    selectSuggestion(restaurantId, showedText);
   };
 
   const handleCloseModal = () => {
@@ -323,7 +323,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
                     <StyledListboxItem
                       key={id}
                       role="option"
-                      onClick={() => handleSuggestionClick(firstText)}
+                      onClick={() => handleSuggestionClick(id, firstText)}
                     >
                       <StyledImage
                         src={imgSrc}

@@ -51,3 +51,18 @@ export type RestaurantType = {
   link: string;
   firstText: string;
 };
+
+export type RestaurantDataType = {
+  imgSrc: string;
+  name: string;
+  location: string;
+  cuisines: string;
+  timings: string;
+  rating: number;
+  votes: number;
+  average: string;
+  establishment: string;
+  highlights: string[];
+  phone: string;
+  address: string;
+};

@@ -18,7 +18,7 @@ export type AutocompleteProps = {
   suggestions: Suggestion[];
   loading: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (name: string) => void;
+  selectSuggestion: (id: number, name: string) => void;
 };
 
 const StyledAutocomplete = styled.div`
@@ -174,11 +174,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }, 100);
   };
 
-  const handleSuggestionClick = (showedText: string) => {
+  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
     clearTimeout(blurDelay.current);
     setValue(showedText);
     isSuggestable.current = false;
-    selectSuggestion(showedText);
+    selectSuggestion(restaurantId, showedText);
   };
 
   const hasBorderBottomRadius =
@@ -211,7 +211,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                 <StyledListboxItem
                   key={id}
                   role="option"
-                  onClick={() => handleSuggestionClick(firstText)}
+                  onClick={() => handleSuggestionClick(id, firstText)}
                 >
                   <StyledImage
                     src={imgSrc}

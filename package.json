@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "@types/body-scroll-lock": "^2.6.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
@@ -41,6 +42,8 @@
     "react-dom": "16.13.1",
     "react-lazy-images": "^1.1.0",
     "react-modal": "^3.11.2",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
@@ -63,6 +66,7 @@
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/react-modal": "^3.10.6",
+    "@types/react-redux": "^7.1.9",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/eslint-plugin-tslint": "^3.5.0",
