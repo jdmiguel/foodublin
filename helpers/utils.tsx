@@ -27,9 +27,31 @@ export const CDN_URL_STATIC_DIRECTORY = `${BASE_CDN_URL}${
 
 type ComposableStringFunction = (text: string) => string;
 
+const TOTAL_RELATED_RESTAURANTS = 3;
+
 export const compose = (...fns: ComposableStringFunction[]) => (
   value: string,
 ) => fns.reduce((acc, fn) => fn(acc), value);
+
+export const getRandomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min;
+
+export const getRelatedIndexArray = (
+  banned: number,
+  min: number,
+  max: number,
+) => {
+  const indexArray: number[] = [];
+
+  while (indexArray.length < TOTAL_RELATED_RESTAURANTS) {
+    const random = getRandomInt(min, max);
+    if (random !== banned && !indexArray.includes(random)) {
+      indexArray.push(random);
+    }
+  }
+
+  return indexArray;
+};
 
 // DETAIL PAGE UTILS
 

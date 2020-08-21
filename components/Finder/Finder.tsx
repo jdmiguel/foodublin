@@ -1,23 +1,17 @@
 import React, { useState, useCallback, Dispatch } from 'react';
-import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-
-import { setCurrentRestaurantId } from '../../store/actions';
-
-import { getFormattedUrlText } from '../../helpers/utils';
-import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { Suggestion, EntityType } from '../../helpers/types';
-
-import useWindowMeasures from '../hooks/useWindowMeasures';
-
-import { getRestaurantsData } from '../../services';
 
 import AutocompleteMobile from '../core/Autocomplete/AutocompleteMobile';
 import Autocomplete from '../core/Autocomplete/Autocomplete';
 import Dropdown from '../core/Dropdown/Dropdown';
 import Button from '../core/Button/Button';
 
+import useWindowMeasures from '../hooks/useWindowMeasures';
+
+import { getFormattedUrlText, getRelatedIndexArray } from '../../helpers/utils';
+import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
+import { Suggestion, EntityType } from '../../helpers/types';
 import {
   DUBLIN_ID,
   DEFAULT_SUGGESTIONS,
@@ -25,9 +19,10 @@ import {
   CUISINES,
 } from '../../helpers/staticData';
 
+import { getRestaurantsData } from '../../services';
+
 type FinderProps = {
   className?: string;
-  handleSetCurrentRestaurantId: (id: number) => void;
 };
 
 const StyledFinder = styled.div`
@@ -135,10 +130,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Finder: React.FC<FinderProps> = ({
-  className,
-  handleSetCurrentRestaurantId,
-}) => {
+const Finder: React.FC<FinderProps> = ({ className }) => {
   const [suggestions, setSuggestions]: [
     Suggestion[],
     Dispatch<Suggestion[]>,
@@ -176,16 +168,27 @@ const Finder: React.FC<FinderProps> = ({
     [setIsAutocompleteLoading, setSuggestions],
   );
 
-  const selectSuggestion = (id: number, name: string) => {
-    const path = getFormattedUrlText(name, true);
-    setIsButtonLoading(true);
+  const selectSuggestion = useCallback(
+    (id: number, name: string) => {
+      const path = getFormattedUrlText(name, true);
+      const currentSuggestionIndex = suggestions.findIndex(
+        (suggestion) => suggestion.id === id,
+      );
+      const getRelatedRestaurantsArray = getRelatedIndexArray(
+        currentSuggestionIndex,
+        0,
+        suggestions.length,
+      );
 
-    handleSetCurrentRestaurantId(id);
+      console.log('getRelatedRestaurantsArray: ', getRelatedRestaurantsArray);
 
-    router
-      .push('/detail/[id]/[name]', `/detail/${id}/${path}`)
-      .then(() => window.scrollTo(0, 0));
-  };
+      setIsButtonLoading(true);
+      router
+        .push('/detail/[id]/[name]', `/detail/${id}/${path}`)
+        .then(() => window.scrollTo(0, 0));
+    },
+    [suggestions],
+  );
 
   const handleButtonClick = () => {
     if (!isButtonLoading) {
@@ -242,9 +245,4 @@ const Finder: React.FC<FinderProps> = ({
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  handleSetCurrentRestaurantId: (id: number) =>
-    dispatch(setCurrentRestaurantId(id)),
-});
-
-export default connect(null, mapDispatchToProps)(Finder);
+export default Finder;

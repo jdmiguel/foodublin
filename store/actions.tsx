@@ -1,6 +1,8 @@
 import * as actionTypes from './actionTypes';
 
-export const setCurrentRestaurantId = (id: number) => ({
-  type: actionTypes.SET_CURRENT_RESTAURANT_ID,
-  id,
+import { CardType } from '../helpers/types';
+
+export const setRelatedRestaurants = (relatedRestaurants: CardType[]) => ({
+  type: actionTypes.SET_RELATED_RESTAURANTS,
+  relatedRestaurants,
 });

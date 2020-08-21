@@ -2,12 +2,12 @@ import React from 'react';
 
 import Card from '../core/Card/Card';
 
-import { CardProps } from '../../helpers/types';
+import { RestaurantType } from '../../helpers/types';
 
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 
 type RelatedRestaurantsProps = {
-  restaurants: CardProps[];
+  restaurants: RestaurantType[];
 };
 
 const RelatedRestaurants = ({ restaurants }: RelatedRestaurantsProps) => (

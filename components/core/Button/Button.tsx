@@ -50,22 +50,19 @@ const Button: React.FC<ButtonProps> = ({
   children,
   loading,
   fullWidth = true,
-}) => {
-  console.log('button');
-  return (
-    <StyledButtonWrapper className={className} fullWidth={fullWidth}>
-      <StyledButton
-        type="button"
-        onClick={() => {
-          onClick && onClick();
-        }}
-        fullWidth={fullWidth}
-      >
-        {loading ? <Loader mode={Mode.LIGHT} /> : children}
-      </StyledButton>
-    </StyledButtonWrapper>
-  );
-};
+}) => (
+  <StyledButtonWrapper className={className} fullWidth={fullWidth}>
+    <StyledButton
+      type="button"
+      onClick={() => {
+        onClick && onClick();
+      }}
+      fullWidth={fullWidth}
+    >
+      {loading ? <Loader mode={Mode.LIGHT} /> : children}
+    </StyledButton>
+  </StyledButtonWrapper>
+);
 
 const isLoadingPropChanged = (
   prevProps: ButtonProps,

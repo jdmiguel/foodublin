@@ -5,14 +5,12 @@ export type Suggestion = {
   secondText: string;
 };
 
-export type CardProps = {
-  id: string;
+export type CardType = {
   imgSrc: string;
-  imgAlt: string;
-  link: string;
   title: string;
+  route: string;
+  asRoute: string;
   firstText: string;
-  secondText: string;
 };
 
 export type Timming = {

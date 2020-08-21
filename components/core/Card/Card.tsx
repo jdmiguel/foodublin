@@ -3,15 +3,8 @@ import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import CustomLink, { CustomLinkSize } from '../CustomLink/CustomLink';
+import { CardType } from '../../../helpers/types';
 import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
-
-type CardProps = {
-  imgSrc: string;
-  title: string;
-  route: string;
-  asRoute: string;
-  firstText: string;
-};
 
 const CardTextCSS = css`
   text-overflow: ellipsis;
@@ -81,7 +74,7 @@ const StyledSubtitle = styled.p`
   }
 `;
 
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardType> = ({
   imgSrc,
   title,
   firstText,
