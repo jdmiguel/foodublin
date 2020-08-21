@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo } from 'react';
 import styled from 'styled-components';
 
 import Loader, { Mode } from '../Loader/Loader';
@@ -50,18 +50,26 @@ const Button: React.FC<ButtonProps> = ({
   children,
   loading,
   fullWidth = true,
-}) => (
-  <StyledButtonWrapper className={className} fullWidth={fullWidth}>
-    <StyledButton
-      type="button"
-      onClick={() => {
-        onClick && onClick();
-      }}
-      fullWidth={fullWidth}
-    >
-      {loading ? <Loader mode={Mode.LIGHT} /> : children}
-    </StyledButton>
-  </StyledButtonWrapper>
-);
+}) => {
+  console.log('button');
+  return (
+    <StyledButtonWrapper className={className} fullWidth={fullWidth}>
+      <StyledButton
+        type="button"
+        onClick={() => {
+          onClick && onClick();
+        }}
+        fullWidth={fullWidth}
+      >
+        {loading ? <Loader mode={Mode.LIGHT} /> : children}
+      </StyledButton>
+    </StyledButtonWrapper>
+  );
+};
 
-export default Button;
+const isLoadingPropChanged = (
+  prevProps: ButtonProps,
+  nextProps: ButtonProps,
+): boolean => !!prevProps.loading === nextProps.loading;
+
+export default memo(Button, isLoadingPropChanged);
