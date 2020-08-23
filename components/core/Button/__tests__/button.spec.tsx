@@ -44,5 +44,5 @@ it('should call function on click', () => {
 
   fireEvent.click(getByText('Default button'));
 
-  expect(handleClick).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalled();
 });

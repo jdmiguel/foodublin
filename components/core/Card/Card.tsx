@@ -80,6 +80,7 @@ const Card: React.FC<CardType> = ({
   firstText,
   route,
   asRoute,
+  onClick,
 }) => (
   <StyledCard className="paper">
     <StyledImage
@@ -97,7 +98,12 @@ const Card: React.FC<CardType> = ({
       )}
     />
     <StyledText>
-      <StyledTitle route={route} asRoute={asRoute} size={CustomLinkSize.BIG}>
+      <StyledTitle
+        route={route}
+        asRoute={asRoute}
+        size={CustomLinkSize.BIG}
+        onClick={onClick}
+      >
         {title}
       </StyledTitle>
       <StyledSubtitle>{firstText}</StyledSubtitle>

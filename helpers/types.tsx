@@ -11,6 +11,7 @@ export type CardType = {
   route: string;
   asRoute: string;
   firstText: string;
+  onClick: () => void;
 };
 
 export type Timming = {
@@ -65,6 +66,6 @@ export type RestaurantDataType = {
   address: string;
 };
 
-export type RestaurantsState = {
-  relatedRestaurants: CardType[];
+export type FavoriteState = {
+  favorites: CardType[];
 };

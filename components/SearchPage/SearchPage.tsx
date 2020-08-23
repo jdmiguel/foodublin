@@ -23,6 +23,7 @@ type SearchPageProps = {
   total: number;
   restaurants: RestaurantType[];
   onClickFilter: (sort: string, order: string) => void;
+  onClickCard: () => void;
   isLoading: boolean;
   showWarning: boolean;
 };
@@ -118,6 +119,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
       cuisine,
       restaurants,
       onClickFilter,
+      onClickCard,
       isLoading,
       showWarning,
     },
@@ -158,6 +160,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                     true,
                   )}`}
                   firstText={restaurant.firstText}
+                  onClick={onClickCard}
                 />
               </div>
             ))}
