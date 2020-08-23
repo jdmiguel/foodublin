@@ -13,16 +13,15 @@ import Timmings from './Timings';
 import Cuisines from './Cuisines';
 import Highlights from './Highlights';
 import Address from './Address';
-import RelatedRestaurants from './RelatedRestaurants';
 
-import {
-  FOURTH_DETAIL,
-  RELATED_RESTAURANTS,
-} from './__mocks__/detailpage.mocks';
-
+import { RestaurantDataType } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
+
+type DetailPageProps = {
+  data: RestaurantDataType;
+};
 
 const JumbotronTextCSS = css`
   color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
@@ -142,28 +141,22 @@ const StyledAddressWrapper = styled.div`
   padding: 15px;
 `;
 
-const StyledRelatedRestaurants = styled.div`
-  margin-top: 50px;
-`;
-
-const {
-  imgSrc,
-  rating,
-  votes,
-  name,
-  location,
-  average,
-  establishment,
-  timmings,
-  cuisines,
-  highlights,
-  phone,
-  address,
-} = FOURTH_DETAIL;
-
-const [establishmentType] = establishment;
-
-const DetailPage: React.FC = () => {
+const DetailPage: React.FC<DetailPageProps> = ({
+  data: {
+    imgSrc,
+    name,
+    location,
+    cuisines,
+    timings,
+    rating,
+    votes,
+    average,
+    establishment,
+    highlights,
+    phone,
+    address,
+  },
+}) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
@@ -197,7 +190,7 @@ const DetailPage: React.FC = () => {
                 </StyledSectionBlock>
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Schedule" />
-                  <Timmings timmings={getTimmings(timmings)} />
+                  <Timmings timmings={getTimmings(timings)} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Rating" />
@@ -207,10 +200,10 @@ const DetailPage: React.FC = () => {
                   <StyledBlockTitle text="Average Cost" />
                   <BlockText text={`€${average} for two people`} />
                 </StyledSectionBlock>
-                {establishmentType && (
+                {establishment && (
                   <StyledSectionBlock>
                     <StyledBlockTitle text="Establishment type" />
-                    <BlockText text={establishmentType} />
+                    <BlockText text={establishment} />
                   </StyledSectionBlock>
                 )}
               </div>
@@ -238,12 +231,6 @@ const DetailPage: React.FC = () => {
             </div>
           </div>
         </StyledInformation>
-        <StyledRelatedRestaurants>
-          <Title text="Related restaurants" />
-          <div className="grid-x grid-margin-x grid-margin-y">
-            <RelatedRestaurants restaurants={RELATED_RESTAURANTS} />
-          </div>
-        </StyledRelatedRestaurants>
       </StyledDetailPage>
     </DefaultLayout>
   );

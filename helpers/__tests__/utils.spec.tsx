@@ -25,7 +25,7 @@ describe('compose', () => {
 
 describe('getTimmings', () => {
   it('should be equal to mocked timmings', () => {
-    const expectedTimmings = [
+    const expectedTimings = [
       {
         id: '11:30 AM to 9 PM (Mon-Fri)',
         day: 'Mon-Fri',
@@ -43,7 +43,7 @@ describe('getTimmings', () => {
       },
     ];
 
-    expect(getTimmings(FIRST_DETAIL.timmings)).toEqual(expectedTimmings);
+    expect(getTimmings(FIRST_DETAIL.timings)).toEqual(expectedTimings);
   });
 });
 

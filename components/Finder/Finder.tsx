@@ -2,25 +2,24 @@ import React, { useState, useCallback, Dispatch } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import { getFormattedUrlText } from '../../helpers/utils';
-import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { Suggestion, EntityType } from '../../helpers/types';
-
-import useWindowMeasures from '../hooks/useWindowMeasures';
-
-import { getRestaurantsData } from '../../services';
-
 import AutocompleteMobile from '../core/Autocomplete/AutocompleteMobile';
 import Autocomplete from '../core/Autocomplete/Autocomplete';
 import Dropdown from '../core/Dropdown/Dropdown';
 import Button from '../core/Button/Button';
 
+import useWindowMeasures from '../hooks/useWindowMeasures';
+
+import { getFormattedUrlText } from '../../helpers/utils';
+import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
+import { Suggestion, EntityType } from '../../helpers/types';
 import {
   DUBLIN_ID,
   DEFAULT_SUGGESTIONS,
   LOCATIONS,
   CUISINES,
 } from '../../helpers/staticData';
+
+import { getRestaurantsData } from '../../services';
 
 type FinderProps = {
   className?: string;
@@ -169,14 +168,17 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     [setIsAutocompleteLoading, setSuggestions],
   );
 
-  const selectSuggestion = (name: string) => {
-    const path = getFormattedUrlText(name, true);
-    setIsButtonLoading(true);
+  const selectSuggestion = useCallback(
+    (id: number, name: string) => {
+      const path = getFormattedUrlText(name, true);
 
-    router
-      .push('/detail/[name]', `/detail/${path}`)
-      .then(() => window.scrollTo(0, 0));
-  };
+      setIsButtonLoading(true);
+      router
+        .push('/detail/[id]/[name]', `/detail/${id}/${path}`)
+        .then(() => window.scrollTo(0, 0));
+    },
+    [suggestions],
+  );
 
   const handleButtonClick = () => {
     if (!isButtonLoading) {

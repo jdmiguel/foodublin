@@ -31,6 +31,27 @@ export const compose = (...fns: ComposableStringFunction[]) => (
   value: string,
 ) => fns.reduce((acc, fn) => fn(acc), value);
 
+export const getRandomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min;
+
+export const getRandomListNumbers = (
+  length: number,
+  excludedValue: number,
+  minRandomValue: number,
+  maxRandomValue: number,
+) => {
+  const indexArray: number[] = [];
+
+  while (indexArray.length < length) {
+    const random = getRandomInt(minRandomValue, maxRandomValue);
+    if (random !== excludedValue && !indexArray.includes(random)) {
+      indexArray.push(random);
+    }
+  }
+
+  return indexArray;
+};
+
 // DETAIL PAGE UTILS
 
 export const getTimmings = (timmingsStr: string) =>

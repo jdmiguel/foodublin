@@ -186,6 +186,7 @@ const Search: NextPage<SearchProps> = ({
       cuisine={cuisineName}
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
+      onClickCard={() => setIsLoading(true)}
       isLoading={isLoading}
       showWarning={showWarning}
     />

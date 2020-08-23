@@ -5,14 +5,13 @@ export type Suggestion = {
   secondText: string;
 };
 
-export type CardProps = {
-  id: string;
+export type CardType = {
   imgSrc: string;
-  imgAlt: string;
-  link: string;
   title: string;
+  route: string;
+  asRoute: string;
   firstText: string;
-  secondText: string;
+  onClick: () => void;
 };
 
 export type Timming = {
@@ -50,4 +49,23 @@ export type RestaurantType = {
   title: string;
   link: string;
   firstText: string;
+};
+
+export type RestaurantDataType = {
+  imgSrc: string;
+  name: string;
+  location: string;
+  cuisines: string;
+  timings: string;
+  rating: number;
+  votes: number;
+  average: string;
+  establishment: string;
+  highlights: string[];
+  phone: string;
+  address: string;
+};
+
+export type FavoriteState = {
+  favorites: CardType[];
 };

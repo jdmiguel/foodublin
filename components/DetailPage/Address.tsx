@@ -15,7 +15,7 @@ const StyledAddressMapWrapper = styled.div`
 `;
 
 const StyledIframe = styled.iframe`
-  width: 100%;
+  width: 99.8%;
 `;
 
 const StyledAddress = styled.div`
