@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
 
@@ -7,7 +7,7 @@ import Filter from '../Filter/Filter';
 
 import Title from '../core/Title/Title';
 import Card from '../core/Card/Card';
-import Loader, { Mode } from '../core/Loader/Loader';
+import Loader, { LoaderType } from '../core/Loader/Loader';
 
 import {
   FILTER_DATA,
@@ -25,6 +25,7 @@ type SearchPageProps = {
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: () => void;
   isLoading: boolean;
+  isLoadingByScroll: boolean;
   showWarning: boolean;
 };
 
@@ -56,13 +57,22 @@ const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
   }
 `;
 
-const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
+const LoaderCSS = css`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
+`;
+
+const StyledLineLoaderWrapper = styled.div<{ isShowed: boolean }>`
+  ${LoaderCSS}
+  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
+`;
+
+const StyledCircleLoaderWrapper = styled.div<{ isShowed: boolean }>`
+  ${LoaderCSS}
   display: flex;
   justify-content: center;
   visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
@@ -74,8 +84,8 @@ const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
   }
 `;
 
-const StyledLoader = styled(Loader)`
-  position: fixed;
+const StyledCircleLoader = styled(Loader)`
+  position: absolute;
   top: 50vh;
 `;
 
@@ -121,6 +131,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
       onClickFilter,
       onClickCard,
       isLoading,
+      isLoadingByScroll,
       showWarning,
     },
     forwardedRef,
@@ -132,9 +143,15 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
     return (
       <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
-          <StyledLoaderWrapper isShowed={isLoading}>
-            <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
-          </StyledLoaderWrapper>
+          {isLoadingByScroll ? (
+            <StyledLineLoaderWrapper isShowed={isLoading}>
+              <Loader type={LoaderType.LINE} />
+            </StyledLineLoaderWrapper>
+          ) : (
+            <StyledCircleLoaderWrapper isShowed={isLoading}>
+              <StyledCircleLoader text={DEFAULT_TEXT_LOADING} />
+            </StyledCircleLoaderWrapper>
+          )}
           <Title
             text={`${titleTotalText} ${
               cuisine || ''

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Loader, { Mode } from '../Loader/Loader';
+import Loader, { LoaderMode } from '../Loader/Loader';
 
 type ButtonProps = {
   className?: string;
@@ -59,7 +59,7 @@ const Button: React.FC<ButtonProps> = ({
       }}
       fullWidth={fullWidth}
     >
-      {loading ? <Loader mode={Mode.LIGHT} /> : children}
+      {loading ? <Loader mode={LoaderMode.LIGHT} /> : children}
     </StyledButton>
   </StyledButtonWrapper>
 );

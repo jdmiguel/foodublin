@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Loader should render as dark mode 1`] = `
+exports[`Component: Loader should render as circle type and dark mode 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -39,7 +39,46 @@ exports[`Component: Loader should render as dark mode 1`] = `
 </div>
 `;
 
-exports[`Component: Loader should render as dark mode and with default text 1`] = `
+exports[`Component: Loader should render as circle type and light mode 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 2px solid #FDF3E5;
+  border-top: 2px solid #FBA52B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    mode="light"
+  />
+</div>
+`;
+
+exports[`Component: Loader should render as circle type, dark mode and with default text 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -90,46 +129,7 @@ exports[`Component: Loader should render as dark mode and with default text 1`] 
 </div>
 `;
 
-exports[`Component: Loader should render as light mode 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 {
-  border: 2px solid #FDF3E5;
-  border-top: 2px solid #FBA52B;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  -webkit-animation: fEWCgj 0.8s linear infinite;
-  animation: fEWCgj 0.8s linear infinite;
-}
-
-<div
-  class="c0"
->
-  <div
-    class="c1"
-    mode="light"
-  />
-</div>
-`;
-
-exports[`Component: Loader should render as light mode and with default text 1`] = `
+exports[`Component: Loader should render as circle type, light mode and with default text 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,5 +177,28 @@ exports[`Component: Loader should render as light mode and with default text 1`]
   >
     Default text
   </p>
+</div>
+`;
+
+exports[`Component: Loader should render as line type 1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c1 {
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: #EC7E00;
+  -webkit-animation: kDpYdX 1s ease-in-out infinite forwards;
+  animation: kDpYdX 1s ease-in-out infinite forwards;
+}
+
+<div
+  class="c0"
+>
+  <span
+    class="c1"
+  />
 </div>
 `;

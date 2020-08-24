@@ -24,11 +24,14 @@ import {
 } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
-type LocationType = 'subzone' | 'city';
+export enum LocationType {
+  CITY = 'city',
+  SUBZONE = 'subzone',
+}
 
 type SearchProps = {
   locationId: number;
-  locationName: LocationType;
+  locationName: LocationType.CITY | LocationType.SUBZONE;
   cuisineId: number;
   cuisineName: string;
   total: number;
@@ -102,6 +105,7 @@ const Search: NextPage<SearchProps> = ({
     Dispatch<RestaurantType[]>,
   ] = useState(restaurants);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
 
   const { width } = useWindowMeasures();
   const isMobile = width < 768;
@@ -154,6 +158,7 @@ const Search: NextPage<SearchProps> = ({
 
       if (scrollDownLimit && !isLoading && isRetrievingDataAllowed) {
         setIsLoading(true);
+        setIsLoadingByScroll(true);
 
         const restaurantsData = await handleGetRestaurantsData(
           locationId,
@@ -176,6 +181,7 @@ const Search: NextPage<SearchProps> = ({
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
     setIsLoading(false);
+    setIsLoadingByScroll(false);
   }, [currentRestaurants]);
 
   return (
@@ -188,6 +194,7 @@ const Search: NextPage<SearchProps> = ({
       onClickFilter={handleFilter}
       onClickCard={() => setIsLoading(true)}
       isLoading={isLoading}
+      isLoadingByScroll={isLoadingByScroll}
       showWarning={showWarning}
     />
   );

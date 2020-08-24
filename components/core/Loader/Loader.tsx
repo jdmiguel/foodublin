@@ -1,61 +1,109 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
-export enum Mode {
-  LIGHT = 'light',
-  DARK = 'dark',
+export enum LoaderType {
+  CIRCLE = 'circle',
+  LINE = 'line',
 }
 
+export enum LoaderMode {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+type LoaderProps = {
+  className?: string;
+  text?: string;
+  type?: LoaderType.CIRCLE | LoaderType.LINE;
+  mode?: LoaderMode.DARK | LoaderMode.LIGHT;
+};
+
+// Circle loader
 const rotate = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `;
 
-const animation = css`
+const rotateAnimation = css`
   animation: ${rotate} 0.8s linear infinite;
 `;
 
-type LoaderProps = {
-  className?: string;
-  text?: string;
-  mode: Mode.LIGHT | Mode.DARK;
-};
-
-const StyledLoader = styled.div`
+const StyledCircleLoader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const StyledLoaderImage = styled.div<{ mode: Mode.LIGHT | Mode.DARK }>`
+const StyledCircleLoaderImage = styled.div<{
+  mode: LoaderMode.DARK | LoaderMode.LIGHT;
+}>`
   border: 2px solid
     ${({ theme, mode }) =>
-      mode === Mode.LIGHT
-        ? theme.palette.PRIMARY_LIGHT
-        : theme.palette.PRIMARY};
+      mode === LoaderMode.DARK
+        ? theme.palette.PRIMARY
+        : theme.palette.PRIMARY_LIGHT};
   border-top: 2px solid
     ${({ theme, mode }) =>
-      mode === Mode.LIGHT
-        ? theme.palette.PRIMARY_MEDIUM
-        : theme.palette.LIGHT_SOFT};
+      mode === LoaderMode.DARK
+        ? theme.palette.LIGHT_SOFT
+        : theme.palette.PRIMARY_MEDIUM};
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  ${animation};
+  ${rotateAnimation};
 `;
-const StyledLoaderText = styled.p<{ mode: Mode.LIGHT | Mode.DARK }>`
+
+const StyledCircleLoaderText = styled.p<{
+  mode: LoaderMode.DARK | LoaderMode.LIGHT;
+}>`
   margin-top: 8px;
   font-size: 0.85rem;
   color: ${({ theme, mode }) =>
-    mode === Mode.LIGHT ? theme.palette.LIGHT_MAX : theme.palette.DARK_MAX};
+    mode === LoaderMode.DARK
+      ? theme.palette.DARK_MAX
+      : theme.palette.LIGHT_MAX};
 `;
 
-const Loader: React.FC<LoaderProps> = ({ className, text, mode }) => (
-  <StyledLoader className={className}>
-    <StyledLoaderImage mode={mode} />
-    {text && <StyledLoaderText mode={mode}>{text}</StyledLoaderText>}
-  </StyledLoader>
-);
+// Line loader
+const move = keyframes`
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+`;
+
+const moveAnimation = css`
+  animation: ${move} 1s ease-in-out infinite forwards;
+`;
+
+const StyledLineLoader = styled.div`
+  width: 100%;
+`;
+
+const StyledLineLoaderShape = styled.span`
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: ${(props) => props.theme.palette.PRIMARY};
+  ${moveAnimation};
+`;
+
+const Loader: React.FC<LoaderProps> = ({
+  className,
+  text,
+  type = LoaderType.CIRCLE,
+  mode = LoaderMode.DARK,
+}) =>
+  type === LoaderType.CIRCLE ? (
+    <StyledCircleLoader className={className}>
+      <StyledCircleLoaderImage mode={mode} />
+      {text && (
+        <StyledCircleLoaderText mode={mode}>{text}</StyledCircleLoaderText>
+      )}
+    </StyledCircleLoader>
+  ) : (
+    <StyledLineLoader className={className}>
+      <StyledLineLoaderShape />
+    </StyledLineLoader>
+  );
 
 export default Loader;

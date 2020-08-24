@@ -4,7 +4,7 @@ import { LazyImage } from 'react-lazy-images';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import Input from '../Input/Input';
-import Loader, { Mode } from '../Loader/Loader';
+import Loader from '../Loader/Loader';
 import BlockTitle from '../BlockTitle/BlockTitle';
 
 import {
@@ -315,7 +315,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
             ref={listboxWrapperRef}
           >
             {loading ? (
-              <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
+              <StyledLoader text={DEFAULT_TEXT_LOADING} />
             ) : (
               <StyledListbox role="listbox">
                 {suggestions.map(
