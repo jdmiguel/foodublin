@@ -11,4 +11,16 @@ describe('Component: Footer', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('should render with veil', () => {
+    const { container } = render(renderWithTheme(<Footer showVeil={true} />));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render the extended version', () => {
+    const { container } = render(renderWithTheme(<Footer isExtended={true} />));
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });

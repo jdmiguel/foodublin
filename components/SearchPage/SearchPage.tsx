@@ -43,7 +43,7 @@ const StyledSearchPage = styled.div`
 
 const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
   margin-top: 20px;
-  margin-bottom: ${({ warningShowed }) => (warningShowed ? '35px' : '60px')};
+  margin-bottom: ${({ warningShowed }) => (warningShowed ? '35px' : '40px')};
   display: flex;
   justify-content: center;
   position: initial;
@@ -141,7 +141,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
       total === 0 || total >= 2 ? 'restaurants' : 'restaurant';
 
     return (
-      <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
+      <DefaultLayout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
           {isLoadingByScroll ? (
             <StyledLineLoaderWrapper isShowed={isLoading}>

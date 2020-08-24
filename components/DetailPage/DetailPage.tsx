@@ -160,7 +160,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <DefaultLayout isExtendedHeader={false} isExtendedFooter={true}>
+    <DefaultLayout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
         <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
           <StyledOverlay>
