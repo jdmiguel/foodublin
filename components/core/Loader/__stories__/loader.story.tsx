@@ -3,26 +3,31 @@ import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 
-import Loader, { Mode } from '../Loader';
+import Loader, { LoaderMode, LoaderType } from '../Loader';
 
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 
 const stories = storiesOf('Loader', module);
 
-const StyledLoaderWrapper = styled.div`
+const StyledCircleLoaderWrapper = styled.div`
   display: flex;
 `;
 
-const modeOptions = {
-  light: Mode.LIGHT,
-  dark: Mode.DARK,
-};
+const StyledLineLoaderWrapper = styled.div`
+  display: flex;
+`;
 
-stories.add('Loader', () => (
-  <StyledLoaderWrapper>
+stories.add('Circle Loader', () => (
+  <StyledCircleLoaderWrapper>
     <Loader
       text={text('button text', LOADER_TEXT_MOCKS)}
-      mode={select('mode', modeOptions, modeOptions.dark)}
+      mode={select('mode', LoaderMode, LoaderMode.DARK)}
     />
-  </StyledLoaderWrapper>
+  </StyledCircleLoaderWrapper>
+));
+
+stories.add('Line Loader', () => (
+  <StyledLineLoaderWrapper>
+    <Loader type={LoaderType.LINE} />
+  </StyledLineLoaderWrapper>
 ));

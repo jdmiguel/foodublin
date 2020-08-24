@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import Input from '../Input/Input';
-import Loader, { Mode } from '../Loader/Loader';
+import Loader from '../Loader/Loader';
 
 import {
   PlaceholderText,
@@ -203,7 +203,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         data-testid="listbox-wrapper"
       >
         {loading ? (
-          <StyledLoader text={DEFAULT_TEXT_LOADING} mode={Mode.DARK} />
+          <StyledLoader text={DEFAULT_TEXT_LOADING} />
         ) : (
           <StyledListbox role="listbox">
             {suggestions.map(

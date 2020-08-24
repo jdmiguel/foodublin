@@ -1,36 +1,50 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Loader, { Mode } from '../Loader';
+import Loader, { LoaderMode, LoaderType } from '../Loader';
 
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Loader', () => {
-  it('should render as dark mode', () => {
-    const { container } = render(renderWithTheme(<Loader mode={Mode.DARK} />));
+  it('should render as circle type and dark mode', () => {
+    const { container } = render(renderWithTheme(<Loader />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should render as light mode', () => {
-    const { container } = render(renderWithTheme(<Loader mode={Mode.LIGHT} />));
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('should render as dark mode and with default text', () => {
+  it('should render as circle type and light mode', () => {
     const { container } = render(
-      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} mode={Mode.DARK} />),
+      renderWithTheme(<Loader mode={LoaderMode.LIGHT} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should render as light mode and with default text', () => {
+  it('should render as circle type, dark mode and with default text', () => {
     const { container } = render(
-      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} mode={Mode.LIGHT} />),
+      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} />),
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render as circle type, light mode and with default text', () => {
+    const { container } = render(
+      renderWithTheme(
+        <Loader text={LOADER_TEXT_MOCKS} mode={LoaderMode.LIGHT} />,
+      ),
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render as line type', () => {
+    const { container } = render(
+      renderWithTheme(
+        <Loader text={LOADER_TEXT_MOCKS} type={LoaderType.LINE} />,
+      ),
     );
 
     expect(container.firstChild).toMatchSnapshot();
