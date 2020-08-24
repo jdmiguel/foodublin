@@ -15,6 +15,8 @@ import {
   MAX_RESTAURANT_DISPLAYED,
   MAX_RESTAURANT_RETRIEVED,
   SCROLL_FACTOR,
+  SCROLL_OFFSET_MOBILE_FACTOR,
+  SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
 import {
@@ -146,7 +148,10 @@ const Search: NextPage<SearchProps> = ({
           : loaderRestaurants - MAX_RESTAURANT_DISPLAYED;
       const offsetScrollDown =
         initialFactor *
-        (MAX_RESTAURANT_RETRIEVED * (isMobile ? SCROLL_FACTOR : 1));
+        (MAX_RESTAURANT_RETRIEVED *
+          (isMobile
+            ? SCROLL_OFFSET_MOBILE_FACTOR
+            : SCROLL_OFFSET_DESKTOP_FACTOR));
       const scrollDownLimit =
         posY >
         ((searchRef.current?.clientHeight as number) + offsetScrollDown) /

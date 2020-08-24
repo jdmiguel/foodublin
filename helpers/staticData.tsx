@@ -2,12 +2,16 @@ import { CDN_URL_STATIC_DIRECTORY } from './utils';
 
 export const DUBLIN_ID = 91;
 export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
-export const MAX_RESTAURANT_DISPLAYED = 20;
-export const MAX_RESTAURANT_RETRIEVED = 100;
-export const SCROLL_FACTOR = 4;
-export const SCROLL_DELAY = 4;
 
 export const DEFAULT_TEXT_LOADING = 'Coming right up...';
+
+export const MAX_RESTAURANT_DISPLAYED = 20;
+export const MAX_RESTAURANT_RETRIEVED = 100;
+
+export const SCROLL_FACTOR = 4;
+export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
+export const SCROLL_OFFSET_DESKTOP_FACTOR = 1.2;
+export const SCROLL_DELAY = 4;
 
 export enum PlaceholderText {
   BLURRED = 'Search for locals...',
