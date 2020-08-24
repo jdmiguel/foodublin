@@ -116,7 +116,7 @@ const Search: NextPage<SearchProps> = ({
     total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
   const showWarning =
     currentTotal >= MAX_RESTAURANT_RETRIEVED &&
-    loadedRestaurantsRef.current >= maxRestaurantStarter;
+    loadedRestaurantsRef.current > maxRestaurantStarter;
 
   const handleFilter = async (sort: string, order: string) => {
     loadedRestaurantsRef.current = 0;
