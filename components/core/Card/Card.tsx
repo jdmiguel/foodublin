@@ -26,7 +26,7 @@ const CardImageCSS = css`
 const StyledCard = styled.div`
   width: 100%;
   height: 100px;
-  max-width: 485px;
+  max-width: 600px;
   display: flex;
   overflow: hidden;
 `;

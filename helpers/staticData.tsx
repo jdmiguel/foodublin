@@ -9,6 +9,7 @@ export const MAX_RESTAURANT_DISPLAYED = 20;
 export const MAX_RESTAURANT_RETRIEVED = 100;
 
 export const SCROLL_FACTOR = 4;
+export const SCROLL_INITIAL_MOBILE_FACTOR = 10;
 export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
 export const SCROLL_OFFSET_DESKTOP_FACTOR = 1.2;
 export const SCROLL_DELAY = 4;
