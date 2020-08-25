@@ -175,7 +175,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       setIsButtonLoading(true);
       router
         .push('/detail/[id]/[name]', `/detail/${id}/${path}`)
-        .then(() => window.scrollTo(0, 0));
+        .then(() => window.scroll(0, 0));
     },
     [suggestions],
   );

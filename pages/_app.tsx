@@ -11,11 +11,8 @@ import '../helpers/Grid/Grid.scss';
 import { GlobalStyles } from '../helpers/GlobalStylesHelper';
 import { theme } from '../helpers/Theme';
 
-Router.events.on('routeChangeComplete', (url: string) => {
-  (window as any).dataLayer.push({
-    url,
-    event: 'Pageview',
-  });
+Router.events.on('routeChangeComplete', () => {
+  window.scroll(0, 0);
 });
 
 const store = configureStore({
@@ -23,11 +20,6 @@ const store = configureStore({
 });
 
 export default class MyApp extends App {
-  async componentDidMount() {
-    // @ts-ignore
-    await import('picturefill');
-  }
-
   render() {
     const {
       Component,
