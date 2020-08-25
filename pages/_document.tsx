@@ -4,7 +4,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -49,7 +49,7 @@ export default class MyDocument extends Document {
           <link
             rel="preload"
             as="image"
-            href={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
+            href={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
           />
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -71,3 +71,5 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+export default MyDocument;
