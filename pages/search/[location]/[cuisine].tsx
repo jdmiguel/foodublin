@@ -15,6 +15,9 @@ import {
   MAX_RESTAURANT_DISPLAYED,
   MAX_RESTAURANT_RETRIEVED,
   SCROLL_FACTOR,
+  SCROLL_INITIAL_MOBILE_FACTOR,
+  SCROLL_OFFSET_MOBILE_FACTOR,
+  SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
 import {
@@ -108,7 +111,7 @@ const Search: NextPage<SearchProps> = ({
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
 
   const { width } = useWindowMeasures();
-  const isMobile = width < 768;
+  const isMobile = width < 640;
 
   const maxRestaurantStarter =
     MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
@@ -116,7 +119,7 @@ const Search: NextPage<SearchProps> = ({
     total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
   const showWarning =
     currentTotal >= MAX_RESTAURANT_RETRIEVED &&
-    loadedRestaurantsRef.current >= maxRestaurantStarter;
+    loadedRestaurantsRef.current > maxRestaurantStarter;
 
   const handleFilter = async (sort: string, order: string) => {
     loadedRestaurantsRef.current = 0;
@@ -142,11 +145,16 @@ const Search: NextPage<SearchProps> = ({
 
       const initialFactor =
         loaderRestaurants <= MAX_RESTAURANT_DISPLAYED
-          ? 0
+          ? isMobile
+            ? SCROLL_INITIAL_MOBILE_FACTOR
+            : 0
           : loaderRestaurants - MAX_RESTAURANT_DISPLAYED;
       const offsetScrollDown =
         initialFactor *
-        (MAX_RESTAURANT_RETRIEVED * (isMobile ? SCROLL_FACTOR : 1));
+        (MAX_RESTAURANT_RETRIEVED *
+          (isMobile
+            ? SCROLL_OFFSET_MOBILE_FACTOR
+            : SCROLL_OFFSET_DESKTOP_FACTOR));
       const scrollDownLimit =
         posY >
         ((searchRef.current?.clientHeight as number) + offsetScrollDown) /

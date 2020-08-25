@@ -12,9 +12,7 @@ module.exports = withSass(
       EXAMPLE_API_ENDPOINT: process.env.EXAMPLE_API_ENDPOINT,
       BASE_URL: process.env.BASE_URL,
       BASE_CDN_URL: process.env.BASE_CDN_URL,
-      DFP_NETWORK_ID: process.env.DFP_NETWORK_ID,
       ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME,
-      GOOGLE_TAG_MANAGER: process.env.GOOGLE_TAG_MANAGER,
       LOG_LEVEL: process.env.LOG_LEVEL,
       STORYBOOK_BASE_CDN_URL_STATIC_DIRECTORY:
         process.env.STORYBOOK_BASE_CDN_URL_STATIC_DIRECTORY,

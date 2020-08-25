@@ -8,8 +8,9 @@ import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
 
 type MainLayoutProps = {
   children: ReactNode;
-  isExtendedHeader: boolean;
-  isExtendedFooter: boolean;
+  isExtendedHeader?: boolean;
+  isExtendedFooter?: boolean;
+  showFooterVeil?: boolean;
 };
 
 const StyledMainLayout = styled.div`
@@ -30,8 +31,9 @@ const StyledMain = styled.main`
 
 const MainLayout = ({
   children,
-  isExtendedHeader,
-  isExtendedFooter,
+  isExtendedHeader = false,
+  isExtendedFooter = false,
+  showFooterVeil = false,
 }: MainLayoutProps) => (
   <StyledMainLayout>
     <Header
@@ -40,7 +42,7 @@ const MainLayout = ({
       isExtended={isExtendedHeader}
     />
     <StyledMain>{children}</StyledMain>
-    <Footer isExtended={isExtendedFooter} />
+    <Footer showVeil={showFooterVeil} isExtended={isExtendedFooter} />
   </StyledMainLayout>
 );
 

@@ -183,7 +183,7 @@ exports[`Component: Header should render Header 1`] = `
           <img
             alt="FooDublin Logo"
             class="c5"
-            src="http://localhost:3000/static/images/light_logo.svg"
+            src="http://localhost:3000/static/images/logo.svg"
           />
         </h1>
       </a>
@@ -916,7 +916,7 @@ exports[`Component: Header should render extended Header 1`] = `
           <img
             alt="FooDublin Logo"
             class="c5"
-            src="http://localhost:3000/static/images/light_logo.svg"
+            src="http://localhost:3000/static/images/logo.svg"
           />
         </h1>
       </a>

@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../core/CustomLink/CustomLink';
 
 type FooterProps = {
-  isExtended: boolean;
+  showVeil?: boolean;
+  isExtended?: boolean;
 };
 
 const StyledFooterWrapper = styled.footer`
@@ -36,6 +37,25 @@ const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
   margin-top: 7px;
   @media only screen and (min-width: 540px) {
     margin-top: 0;
+  }
+`;
+
+const fade = keyframes`
+  0% { opacity: 0 }
+  100% { opacity: 0.6 }
+`;
+
+const fadeAnimation = css`
+  animation: ${fade} 0.15s linear;
+`;
+
+const StyledFooterVeil = styled.div`
+  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  opacity: 0.6;
+  height: 170px;
+  ${fadeAnimation};
+  @media only screen and (min-width: 768px) {
+    height: 150px;
   }
 `;
 
@@ -86,8 +106,12 @@ const breadrumbsData = [
   { text: 'Restaurant', route: '/detail/elefant-castle' },
 ];
 
-const Footer: React.FC<FooterProps> = ({ isExtended }) => (
+const Footer: React.FC<FooterProps> = ({
+  showVeil = false,
+  isExtended = false,
+}) => (
   <StyledFooterWrapper>
+    {showVeil && <StyledFooterVeil />}
     {isExtended && (
       <StyledNavFooterWrapper>
         <StyledNavFooter className="grid-container">

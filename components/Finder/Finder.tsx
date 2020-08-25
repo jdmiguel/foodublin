@@ -173,9 +173,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       const path = getFormattedUrlText(name, true);
 
       setIsButtonLoading(true);
-      router
-        .push('/detail/[id]/[name]', `/detail/${id}/${path}`)
-        .then(() => window.scrollTo(0, 0));
+      router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
     },
     [suggestions],
   );
@@ -183,12 +181,10 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
   const handleButtonClick = () => {
     if (!isButtonLoading) {
       setIsButtonLoading(true);
-      router
-        .push(
-          '/search/[location]/[cuisine]',
-          `/search/${currentLocationPath}/${currentCuisinePath}`,
-        )
-        .then(() => window.scrollTo(0, 0));
+      router.push(
+        '/search/[location]/[cuisine]',
+        `/search/${currentLocationPath}/${currentCuisinePath}`,
+      );
     }
   };
 

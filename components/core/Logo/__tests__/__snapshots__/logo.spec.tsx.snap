@@ -25,7 +25,7 @@ exports[`Component: Logo should render as simple H1 1`] = `
     <img
       alt="FooDublin Logo"
       class="c1"
-      src="http://localhost:3003/public/images/light_logo.svg"
+      src="http://localhost:3003/public/images/logo.svg"
     />
   </h1>
 </a>

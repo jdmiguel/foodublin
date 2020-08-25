@@ -9,8 +9,6 @@ export const {
     EXAMPLE_API_ENDPOINT,
     BASE_URL,
     BASE_CDN_URL,
-    DFP_NETWORK_ID,
-    GOOGLE_TAG_MANAGER,
     ENVIRONMENT_NAME,
   },
 } = getConfig();

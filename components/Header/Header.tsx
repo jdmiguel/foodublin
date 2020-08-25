@@ -112,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
       <StyledHeaderContent isExtended={isExtended}>
         <StyledHeaderLogo
           isExtended={isExtended}
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/light_logo.svg`}
+          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
         />
         <StyledHeaderClaim isExtended={isExtended}>
           {claimTxt}
