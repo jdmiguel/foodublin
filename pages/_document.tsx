@@ -37,8 +37,14 @@ class MyDocument extends Document {
       <html lang="en">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="msapplication-TileColor" content="#D48C24" />
+          <meta name="theme-color" content="#D48C24" />
           <link
             href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,500,600,800&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
           <link
@@ -51,17 +57,11 @@ class MyDocument extends Document {
             as="image"
             href={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
           />
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-          />
+
           <link
             rel="icon"
-            href={`${CDN_URL_STATIC_DIRECTORY}/favicons/favicon.ico`}
+            href={`${CDN_URL_STATIC_DIRECTORY}/images/favicon.ico`}
           />
-
-          <meta name="msapplication-TileColor" content="#ffffff" />
-          <meta name="theme-color" content="#ffffff" />
         </Head>
         <body>
           <Main />
