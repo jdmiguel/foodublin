@@ -36,7 +36,8 @@ const HomePage: React.FC = () => (
             imgSrc={restaurant.imgSrc}
             imgAlt={restaurant.name}
             title={restaurant.name}
-            linkUrl={restaurant.link}
+            route="/detail/[id]/[name]"
+            asRoute={`/detail/${restaurant.id}/${restaurant.path}`}
             description={restaurant.description}
           />
         ))}

@@ -8,6 +8,8 @@ export const DEFAULT_TEXT_LOADING = 'Coming right up...';
 export const MAX_RESTAURANT_DISPLAYED = 20;
 export const MAX_RESTAURANT_RETRIEVED = 100;
 
+export const MAX_SMALL_DEVICE_WIDTH = 640;
+
 export const SCROLL_FACTOR = 4;
 export const SCROLL_INITIAL_MOBILE_FACTOR = 10;
 export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
@@ -235,51 +237,51 @@ export const CUISINES = [
 export const HIGHLIGHTED_RESTAURANTS = [
   {
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
-    id: 1,
+    id: 9100233,
+    path: 'cleaver-east',
     name: 'Cleaver East Restaurant',
     description:
       'Situated in the heart of Ireland’s capital city, on East Essex Street in the popular Temple Bar area, Cleaver East Restaurant offers the finest Irish and European cuisine.',
-    link: 'https://theclarence.ie/cleaver-east/',
   },
   {
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
-    id: 2,
+    id: 16518539,
+    path: 'tapas-de-lola',
     name: 'Tapas de Lola',
     description:
       'This restaurant is a love letter to all things Spanish and flavorful. Its owners make regular pilgrimages to Spain for inspiration and pack it all into a lively menu of small plates.',
-    link: 'http://lastapasdelola.com/',
   },
   {
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
-    id: 3,
+    id: 16517305,
+    path: 'ely-wine',
     name: 'Ely Wine Bar',
     description:
       'Eric and his wife Michelle are the founders of this clubby place where you can eat and drink well both downstairs in the cozy basement and upstairs in an elegant dining room.',
-    link: 'http://www.elywinebar.ie/',
   },
   {
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/locks.jpg`,
-    id: 4,
-    name: 'Locks',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/oxmantown.jpg`,
+    id: 16520229,
+    path: 'oxmantown',
+    name: 'Oxmantown',
     description:
-      'Locks is a beautiful restaurant with a clever young team in the kitchen. Seasonal menus include dishes like violet artichoke teamed with burrata, broad beans, and fennel.',
-    link: 'https://www.locksrestaurant.ie/',
+      'In this small place, the art of a brilliant sandwich means every element is taken seriously, like the breakfast sandwich that comes with butcher Jack McCarthy’s black pudding.',
   },
   {
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
-    id: 5,
+    id: 9100702,
+    path: 'chapter-one',
     name: 'Chapter One',
     description:
       'Dublin writers are more closely associated with booze rather than food, but Chapter One is a Michelin-starred restaurant in the basement of the Dublin Writers Museum.',
-    link: 'https://www.chapteronerestaurant.com/',
   },
   {
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
-    id: 6,
+    id: 9101166,
+    path: 'rosa-madre',
     name: 'Rosa Madre',
     description:
       'In the menu-hawking clamor of Temple Bar you might long for a quieter restaurant where you won’t feel like a tourist on a conveyor belt. If so, Rosa Madre is your place.',
-    link: 'http://www.rosamadre.ie/',
   },
 ];
 
