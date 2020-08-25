@@ -14,6 +14,7 @@ import {
   CUISINES,
   MAX_RESTAURANT_DISPLAYED,
   MAX_RESTAURANT_RETRIEVED,
+  MAX_SMALL_DEVICE_WIDTH,
   SCROLL_FACTOR,
   SCROLL_INITIAL_MOBILE_FACTOR,
   SCROLL_OFFSET_MOBILE_FACTOR,
@@ -111,7 +112,7 @@ const Search: NextPage<SearchProps> = ({
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
 
   const { width } = useWindowMeasures();
-  const isMobile = width < 640;
+  const isMobile = width < MAX_SMALL_DEVICE_WIDTH;
 
   const maxRestaurantStarter =
     MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;

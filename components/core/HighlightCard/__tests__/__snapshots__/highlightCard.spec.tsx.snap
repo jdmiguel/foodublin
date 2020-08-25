@@ -96,7 +96,7 @@ exports[`should render 1`] = `
   >
     <a
       class="c2 c3"
-      href="https://theclarence.ie/cleaver-east/"
+      href="/"
     >
       Title mocked
     </a>

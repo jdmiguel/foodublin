@@ -12,7 +12,8 @@ type HighlightCardProps = {
   imgSrc: string;
   imgAlt: string;
   title: string;
-  linkUrl: string;
+  route: string;
+  asRoute: string;
   description: string;
 };
 
@@ -49,8 +50,9 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   imgSrc,
   imgAlt,
   title,
+  route,
+  asRoute,
   description,
-  linkUrl,
 }) => (
   <StyledHighlightCard className={`${className} paper`}>
     <LazyImage
@@ -69,8 +71,8 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
     />
     <StyledText>
       <StyledCustomLink
-        route={linkUrl}
-        isExternal={true}
+        route={route}
+        asRoute={asRoute}
         size={CustomLinkSize.BIG}
       >
         {title}
