@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
+
+import { rotateAnimation, moveAnimation } from '../../../helpers/animations';
 
 export enum LoaderType {
   CIRCLE = 'circle',
@@ -19,15 +21,6 @@ type LoaderProps = {
 };
 
 // Circle loader
-const rotate = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-const rotateAnimation = css`
-  animation: ${rotate} 0.8s linear infinite;
-`;
-
 const StyledCircleLoader = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,15 +59,6 @@ const StyledCircleLoaderText = styled.p<{
 `;
 
 // Line loader
-const move = keyframes`
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
-`;
-
-const moveAnimation = css`
-  animation: ${move} 1s ease-in-out infinite forwards;
-`;
-
 const StyledLineLoader = styled.div`
   width: 100%;
 `;

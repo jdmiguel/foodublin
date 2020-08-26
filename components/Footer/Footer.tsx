@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
+
+import { fadeAnimation } from '../../helpers/animations';
 
 import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../core/CustomLink/CustomLink';
@@ -38,15 +40,6 @@ const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
   @media only screen and (min-width: 540px) {
     margin-top: 0;
   }
-`;
-
-const fade = keyframes`
-  0% { opacity: 0 }
-  100% { opacity: 0.6 }
-`;
-
-const fadeAnimation = css`
-  animation: ${fade} 0.15s linear;
 `;
 
 const StyledFooterVeil = styled.div`

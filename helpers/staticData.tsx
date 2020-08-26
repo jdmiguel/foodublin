@@ -16,6 +16,8 @@ export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
 export const SCROLL_OFFSET_DESKTOP_FACTOR = 1.2;
 export const SCROLL_DELAY = 4;
 
+export const SHOWING_SCROLLUP_BUTTON_HEIGHT = 900;
+
 export enum PlaceholderText {
   BLURRED = 'Search for locals...',
   FOCUSED = 'Start typing to search...',
