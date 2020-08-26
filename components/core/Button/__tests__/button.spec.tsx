@@ -15,6 +15,14 @@ it('should render with a simple text', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+it('should render full width', () => {
+  const { container } = render(
+    renderWithTheme(<Button fullWidth={true}>{BUTTON_MOCK.text}</Button>),
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 it('should render with HTML nodes', () => {
   const { container } = render(
     renderWithTheme(
@@ -31,6 +39,19 @@ it('should render with HTML nodes', () => {
 it('should render with loader', () => {
   const { container } = render(
     renderWithTheme(<Button loading={true}>{BUTTON_MOCK.text}</Button>),
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+it('should render as floating', () => {
+  const { container } = render(
+    renderWithTheme(
+      <Button isFloating={true}>
+        <i className="material-icons">{BUTTON_MOCK.icon}</i>
+        {BUTTON_MOCK.text}
+      </Button>,
+    ),
   );
 
   expect(container.firstChild).toMatchSnapshot();

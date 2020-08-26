@@ -1,5 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render as floating 1`] = `
+.c0 {
+  width: 100%;
+  height: 55px;
+}
+
+.c1 {
+  width: 100%;
+  height: 50px;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+  cursor: pointer;
+  outline: none;
+  background-color: #FBA52B;
+  color: #FFFFFF;
+  font-weight: 600;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 i {
+  font-size: 1.3em;
+}
+
+.c1:hover {
+  background-color: #EC7E00;
+}
+
+.c1:focus {
+  background-color: #EC7E00;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+    type="button"
+  >
+    <i
+      class="material-icons"
+    >
+      label
+    </i>
+    Default button
+  </button>
+</div>
+`;
+
+exports[`should render full width 1`] = `
+.c0 {
+  width: 100%;
+  height: 55px;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background-color: #FBA52B;
+  color: #FFFFFF;
+  font-weight: 600;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 i {
+  margin-right: 6px;
+  font-size: 1.3em;
+}
+
+.c1:hover {
+  background-color: #EC7E00;
+}
+
+.c1:focus {
+  background-color: #EC7E00;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+    type="button"
+  >
+    Default button
+  </button>
+</div>
+`;
+
 exports[`should render with HTML nodes 1`] = `
 .c0 {
   width: 100%;
