@@ -13,11 +13,13 @@ import Timmings from './Timings';
 import Cuisines from './Cuisines';
 import Highlights from './Highlights';
 import Address from './Address';
+import RelatedRestaurants from './RelatedRestaurants';
 
 import { RestaurantDataType } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
-
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
+
+import { RELATED_RESTAURANTS } from './__mocks__/detailpage.mocks';
 
 type DetailPageProps = {
   data: RestaurantDataType;
@@ -141,6 +143,10 @@ const StyledAddressWrapper = styled.div`
   padding: 15px;
 `;
 
+const StyledRelatedRestaurants = styled.div`
+  margin-top: 50px;
+`;
+
 const DetailPage: React.FC<DetailPageProps> = ({
   data: {
     imgSrc,
@@ -231,6 +237,12 @@ const DetailPage: React.FC<DetailPageProps> = ({
             </div>
           </div>
         </StyledInformation>
+        <StyledRelatedRestaurants>
+          <Title text="Related restaurants" />
+          <div className="grid-x grid-margin-x grid-margin-y">
+            <RelatedRestaurants restaurants={RELATED_RESTAURANTS} />
+          </div>
+        </StyledRelatedRestaurants>
       </StyledDetailPage>
     </DefaultLayout>
   );
