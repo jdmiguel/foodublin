@@ -4,12 +4,12 @@ import Head from 'next/head';
 
 import DetailPage from '../../../components/DetailPage/DetailPage';
 
-import { RestaurantDataType } from '../../../helpers/types';
+import { RestaurantDetail } from '../../../helpers/types';
 
 import { getRestaurantData } from '../../../services';
 
 type DetailProps = {
-  data: RestaurantDataType;
+  data: RestaurantDetail;
 };
 
 type CustomNextPageContext = NextPageContext & {
@@ -32,7 +32,7 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
 
   const restaurantData = await getRestaurantData(id);
 
-  const filteredData: RestaurantDataType = {
+  const filteredData: RestaurantDetail = {
     imgSrc: restaurantData.featured_image,
     name: restaurantData.name,
     location: restaurantData.location.locality,

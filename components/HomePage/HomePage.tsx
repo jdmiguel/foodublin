@@ -5,7 +5,7 @@ import { DefaultLayout } from '../../layouts';
 
 import { HIGHLIGHTED_RESTAURANTS } from '../../helpers/staticData';
 import Title from '../core/Title/Title';
-import HighlightCard from '../core/HighlightCard/HighlightCard';
+import Card, { CardType } from '../core/Card/Card';
 
 const StyledHighlights = styled.div`
   margin-top: 50px;
@@ -30,16 +30,17 @@ const HomePage: React.FC = () => (
       <Title text="Featured restaurants" />
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
         {HIGHLIGHTED_RESTAURANTS.map((restaurant) => (
-          <HighlightCard
-            key={restaurant.id}
-            className="cell small-12 medium-6 large-4"
-            imgSrc={restaurant.imgSrc}
-            imgAlt={restaurant.name}
-            title={restaurant.name}
-            route="/detail/[id]/[name]"
-            asRoute={`/detail/${restaurant.id}/${restaurant.path}`}
-            description={restaurant.description}
-          />
+          <div key={restaurant.id} className="cell small-12 medium-6 large-4">
+            <Card
+              id={restaurant.id}
+              imgSrc={restaurant.imgSrc}
+              title={restaurant.name}
+              route="/detail/[id]/[name]"
+              asRoute={`/detail/${restaurant.id}/${restaurant.path}`}
+              content={restaurant.description}
+              type={CardType.HIGHLIGHT}
+            />
+          </div>
         ))}
       </StyledHighlightWrapper>
     </StyledHighlights>

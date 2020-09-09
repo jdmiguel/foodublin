@@ -15,14 +15,14 @@ import Highlights from './Highlights';
 import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
-import { RestaurantDataType } from '../../helpers/types';
+import { RestaurantDetail } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
 
 import { RELATED_RESTAURANTS } from './__mocks__/detailpage.mocks';
 
 type DetailPageProps = {
-  data: RestaurantDataType;
+  data: RestaurantDetail;
 };
 
 const JumbotronTextCSS = css`

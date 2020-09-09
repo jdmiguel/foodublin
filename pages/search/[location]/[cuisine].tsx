@@ -21,11 +21,7 @@ import {
   SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
-import {
-  ListItemType,
-  RestaurantType,
-  EntityType,
-} from '../../../helpers/types';
+import { ListItemType, Restaurant, EntityType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 export enum LocationType {
@@ -39,7 +35,7 @@ type SearchProps = {
   cuisineId: number;
   cuisineName: string;
   total: number;
-  restaurants: RestaurantType[];
+  restaurants: Restaurant[];
 };
 
 type CustomNextPageContext = NextPageContext & {
@@ -59,13 +55,16 @@ const getFormattedRestaurant = (restaurant: any) => ({
   id: restaurant.id,
   imgSrc: restaurant.thumb,
   title: restaurant.name,
-  link: getFormattedUrlText(restaurant.name, true),
-  firstText: restaurant.location.locality,
+  content: restaurant.location.locality,
+  route: '/detail/[id]/[name]',
+  asRoute: `/detail/${restaurant.id}/${getFormattedUrlText(
+    restaurant.name,
+    true,
+  )}`,
 });
 
-const getRestaurants = (restaurants: RestaurantType[]) => (
-  formattedFuntion: any,
-) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
+const getRestaurants = (restaurants: Restaurant[]) => (formattedFuntion: any) =>
+  restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
 const handleGetRestaurantsData = async (
   locationId: number,
@@ -105,8 +104,8 @@ const Search: NextPage<SearchProps> = ({
   const orderRef = useRef('');
 
   const [currentRestaurants, setCurrentRestaurants]: [
-    RestaurantType[],
-    Dispatch<RestaurantType[]>,
+    Restaurant[],
+    Dispatch<Restaurant[]>,
   ] = useState(restaurants);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);

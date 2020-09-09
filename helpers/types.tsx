@@ -1,18 +1,4 @@
-export type Suggestion = {
-  id: number;
-  imgSrc: string;
-  firstText: string;
-  secondText: string;
-};
-
-export type CardType = {
-  imgSrc: string;
-  title: string;
-  route: string;
-  asRoute: string;
-  firstText: string;
-  onClick: () => void;
-};
+import { ReactNode } from 'react';
 
 export type Timming = {
   id: string;
@@ -43,15 +29,16 @@ export type RestaurantsRequestParamsType = {
   count?: number;
 };
 
-export type RestaurantType = {
+export type Restaurant = {
   id: string;
   imgSrc: string;
   title: string;
-  link: string;
-  firstText: string;
+  content: ReactNode | string;
+  route: string;
+  asRoute: string;
 };
 
-export type RestaurantDataType = {
+export type RestaurantDetail = {
   imgSrc: string;
   name: string;
   location: string;
@@ -64,8 +51,4 @@ export type RestaurantDataType = {
   highlights: string[];
   phone: string;
   address: string;
-};
-
-export type FavoriteState = {
-  favorites: CardType[];
 };

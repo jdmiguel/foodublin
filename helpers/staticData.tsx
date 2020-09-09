@@ -23,12 +23,14 @@ export enum PlaceholderText {
   FOCUSED = 'Start typing to search...',
 }
 
-export const DEFAULT_SUGGESTIONS = [
+export const DEFAULT_SUGGESTION = [
   {
-    id: 0,
+    id: '0',
     imgSrc: '',
-    firstText: '',
-    secondText: '',
+    title: '',
+    content: '',
+    route: '',
+    asRoute: '',
   },
 ];
 
@@ -238,48 +240,48 @@ export const CUISINES = [
 
 export const HIGHLIGHTED_RESTAURANTS = [
   {
+    id: '9100233',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
-    id: 9100233,
     path: 'cleaver-east',
     name: 'Cleaver East Restaurant',
     description:
       'Situated in the heart of Ireland’s capital city, on East Essex Street in the popular Temple Bar area, Cleaver East Restaurant offers the finest Irish and European cuisine.',
   },
   {
+    id: '16518539',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
-    id: 16518539,
     path: 'tapas-de-lola',
     name: 'Tapas de Lola',
     description:
       'This restaurant is a love letter to all things Spanish and flavorful. Its owners make regular pilgrimages to Spain for inspiration and pack it all into a lively menu of small plates.',
   },
   {
+    id: '16517305',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
-    id: 16517305,
     path: 'ely-wine',
     name: 'Ely Wine Bar',
     description:
       'Eric and his wife Michelle are the founders of this clubby place where you can eat and drink well both downstairs in the cozy basement and upstairs in an elegant dining room.',
   },
   {
+    id: '16520229',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/oxmantown.jpg`,
-    id: 16520229,
     path: 'oxmantown',
     name: 'Oxmantown',
     description:
       'In this small place, the art of a brilliant sandwich means every element is taken seriously, like the breakfast sandwich that comes with butcher Jack McCarthy’s black pudding.',
   },
   {
+    id: '9100702',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
-    id: 9100702,
     path: 'chapter-one',
     name: 'Chapter One',
     description:
       'Dublin writers are more closely associated with booze rather than food, but Chapter One is a Michelin-starred restaurant in the basement of the Dublin Writers Museum.',
   },
   {
+    id: '9101166',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
-    id: 9101166,
     path: 'rosa-madre',
     name: 'Rosa Madre',
     description:

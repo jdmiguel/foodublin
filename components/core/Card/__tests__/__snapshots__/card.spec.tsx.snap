@@ -1,52 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render 1`] = `
-.c3 {
-  font-size: 1.3rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  color: #FBA52B;
-}
-
-.c3 i {
-  font-size: 0.8em;
-  margin-right: 6px;
-}
-
+exports[`should render highlight card 1`] = `
 .c0 {
   width: 100%;
-  height: 100px;
-  max-width: 600px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  max-width: 350px;
   overflow: hidden;
 }
 
 .c1 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 15px 15px 25px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+}
+
+.c2 {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 18px;
+  border: 1px solid #F3F3F3;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #FBA52B;
+  margin-bottom: 6px;
+}
+
+.c5 {
+  font-size: 0.92rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+  color: #585858;
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+  }
+
+  .c1:hover {
+    background-color: #FDF3E5;
+  }
+
+  .c1:hover h4 {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c3 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+}
+
+<div
+  class="c0 paper"
+  type="highlight"
+>
+  <a
+    class="c1"
+    href="/"
+    type="highlight"
+  >
+    <div
+      class="LazyImage-Placeholder"
+    >
+      <img
+        alt="Default title"
+        class="c2"
+        src="http://localhost:3000/static/images/highlight-generic.png"
+        type="highlight"
+      />
+    </div>
+    <div
+      class="c3"
+      type="highlight"
+    >
+      <h4
+        class="c4"
+        type="highlight"
+      >
+        Default title
+      </h4>
+      <p
+        class="c5"
+        type="highlight"
+      >
+        Default content
+      </p>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`should render standart card 1`] = `
+.c0 {
+  width: 100%;
+  height: 100px;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+  background-color: #FFFFFF;
+}
+
+.c2 {
   max-width: 100px;
   height: 100%;
   min-width: 80px;
 }
 
-.c4 {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 92%;
-  display: block;
-}
-
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,24 +176,38 @@ exports[`should render 1`] = `
   margin-left: 14px;
 }
 
+.c4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #FBA52B;
+}
+
 .c5 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   width: 92%;
   font-size: 1rem;
-  line-height: 1rem;
+  line-height: 1.1rem;
   font-weight: 500;
   color: #585858;
 }
 
-@media only screen and (min-width:540px) {
-  .c3 {
-    -webkit-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
+@media only screen and (min-width:768px) {
+  .c1 {
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
   }
 
-  .c3:hover {
+  .c1:hover {
+    background-color: #FDF3E5;
+  }
+
+  .c1:hover h4 {
     color: #EC7E00;
   }
 }
@@ -90,14 +217,14 @@ exports[`should render 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
+  .c2 {
     width: 100px;
     min-width: 100px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c2 {
+  .c3 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     padding: 10px 0;
@@ -106,44 +233,201 @@ exports[`should render 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c2 {
+  .c3 {
     margin-left: 20px;
   }
 }
 
-@media only screen and (min-width:1200px) {
-  .c5 {
-    font-size: 1.1rem;
-    line-height: 1.1rem;
+@media only screen and (min-width:768px) {
+  .c4 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
   }
 }
 
 <div
   class="c0 paper"
+  type="standart"
 >
-  <div
-    class="LazyImage-Placeholder"
+  <a
+    class="c1"
+    href="/"
+    type="standart"
   >
-    <img
-      alt="Default title"
-      class="c1"
-      src="http://localhost:3000/static/images/generic-thumb.png"
-    />
-  </div>
-  <div
-    class="c2"
+    <div
+      class="LazyImage-Placeholder"
+    >
+      <img
+        alt="Default title"
+        class="c2"
+        src="http://localhost:3000/static/images/generic-thumb.png"
+        type="standart"
+      />
+    </div>
+    <div
+      class="c3"
+      type="standart"
+    >
+      <h4
+        class="c4"
+        type="standart"
+      >
+        Default title
+      </h4>
+      <p
+        class="c5"
+        type="standart"
+      >
+        Default content
+      </p>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`should render suggestion card 1`] = `
+.c0 {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.c2 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 5px 0;
+  width: 65%;
+  margin-left: 14px;
+}
+
+.c4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #FBA52B;
+}
+
+.c5 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 0.92rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+  color: #585858;
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+  }
+
+  .c1:hover {
+    background-color: #FDF3E5;
+  }
+
+  .c1:hover h4 {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c3 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 10px 0;
+    margin-left: 16px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c3 {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+}
+
+<div
+  class="c0"
+  type="suggestion"
+>
+  <a
+    class="c1"
+    href="/"
+    type="suggestion"
   >
-    <a
-      class="c3 c4"
-      href="/"
+    <div
+      class="LazyImage-Placeholder"
     >
-      Default title
-    </a>
-    <p
-      class="c5"
+      <img
+        alt="Default title"
+        class="c2"
+        src="http://localhost:3000/static/images/generic-thumb.png"
+        type="suggestion"
+      />
+    </div>
+    <div
+      class="c3"
+      type="suggestion"
     >
-      Default firstText
-    </p>
-  </div>
+      <h4
+        class="c4"
+        type="suggestion"
+      >
+        Default title
+      </h4>
+      <p
+        class="c5"
+        type="suggestion"
+      >
+        Default content
+      </p>
+    </div>
+  </a>
 </div>
 `;

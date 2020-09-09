@@ -2,28 +2,25 @@ import React from 'react';
 
 import Card from '../core/Card/Card';
 
-import { CardProps } from '../../helpers/types';
+import { Restaurant } from '../../helpers/types';
 
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 
 type RelatedRestaurantsProps = {
-  restaurants: CardProps[];
+  restaurants: Restaurant[];
 };
 
 const RelatedRestaurants = ({ restaurants }: RelatedRestaurantsProps) => (
   <>
     {restaurants.map((restaurant) => (
-      <div
-        className="cell small-12 medium-6 large-4"
-        key={`${restaurant.id}-${restaurant.title}`}
-      >
+      <div className="cell small-12 medium-6 large-4" key={restaurant.title}>
         <Card
-          key={restaurant.id}
+          id={restaurant.id}
           imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
           title={restaurant.title}
-          route="/detail/[name]"
-          asRoute={`/detail/${restaurant.link}`}
-          firstText={restaurant.firstText}
+          content={restaurant.content}
+          route={restaurant.route}
+          asRoute={restaurant.asRoute}
         />
       </div>
     ))}

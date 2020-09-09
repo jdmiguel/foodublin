@@ -1,26 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import { LazyImage } from 'react-lazy-images';
+import styled from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import Input from '../Input/Input';
+import Card, { CardType } from '../Card/Card';
 import Loader from '../Loader/Loader';
 import BlockTitle from '../BlockTitle/BlockTitle';
 
 import {
   PlaceholderText,
-  THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
-import { Suggestion } from '../../../helpers/types';
+import { Restaurant } from '../../../helpers/types';
 
 export type AutocompleteMobileProps = {
   className?: string;
   hasSearchIcon?: boolean;
-  suggestions: Suggestion[];
+  suggestions: Restaurant[];
   loading: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: number, name: string) => void;
+  selectSuggestion: (id: string, name: string) => void;
 };
 
 const StyledAutocompleteMobile = styled.div`
@@ -163,7 +162,6 @@ const StyledListboxItem = styled.li`
   width: 100%;
   border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
   list-style: none;
-  padding: 11px;
   overflow: hidden;
   background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
   display: flex;
@@ -175,40 +173,6 @@ const StyledListboxItem = styled.li`
   &:hover {
     background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
   }
-`;
-
-const ImageCSS = css`
-  width: 30px;
-  height: 30px;
-  border: solid ${(props) => props.theme.palette.LIGHT_MAX} 1px;
-  display: inline-block;
-  border-radius: 4px;
-  -webkit-appearance: button-bevel;
-  box-shadow: 1px 2px 5px #888;
-`;
-
-const StyledImage = styled(LazyImage)`
-  ${ImageCSS}
-`;
-
-const StyledGenericThumb = styled.img`
-  ${ImageCSS}
-`;
-
-const StyledTextWrapper = styled.div`
-  margin-left: 12px;
-`;
-
-const StyledFirstText = styled.p`
-  text-align: left;
-  color: ${(props) => props.theme.palette.DARK_MAX};
-  font-size: 1.05rem;
-`;
-
-const StyledSecondText = styled.p`
-  text-align: left;
-  color: ${(props) => props.theme.palette.DARK_SOFT};
-  font-size: 0.85rem;
 `;
 
 export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
@@ -266,7 +230,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
   };
 
-  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
+  const handleRestaurantClick = (restaurantId: string, showedText: string) => {
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);
@@ -319,33 +283,25 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
             ) : (
               <StyledListbox role="listbox">
                 {suggestions.map(
-                  ({ id, imgSrc, firstText, secondText }: Suggestion) => (
-                    <StyledListboxItem
-                      key={id}
-                      role="option"
-                      onClick={() => handleSuggestionClick(id, firstText)}
-                    >
-                      <StyledImage
-                        src={imgSrc}
-                        alt={firstText}
-                        placeholder={({ imageProps, ref }) => (
-                          <div ref={ref} className="LazyImage-Placeholder">
-                            <StyledGenericThumb
-                              src={THUMB_GENERIC_SRC}
-                              alt={imageProps.alt}
-                            />
-                          </div>
-                        )}
-                        actual={({ imageProps }) => (
-                          <div className="LazyImage-Actual">
-                            <img {...imageProps} alt={firstText} />
-                          </div>
-                        )}
+                  ({
+                    id,
+                    imgSrc,
+                    title,
+                    content,
+                    route,
+                    asRoute,
+                  }: Restaurant) => (
+                    <StyledListboxItem key={id} role="option">
+                      <Card
+                        id={id}
+                        imgSrc={imgSrc}
+                        title={title}
+                        content={content}
+                        route={route}
+                        asRoute={asRoute}
+                        onClick={() => handleRestaurantClick(id, title)}
+                        type={CardType.SUGGESTION}
                       />
-                      <StyledTextWrapper>
-                        <StyledFirstText>{firstText}</StyledFirstText>
-                        <StyledSecondText>{secondText}</StyledSecondText>
-                      </StyledTextWrapper>
                     </StyledListboxItem>
                   ),
                 )}

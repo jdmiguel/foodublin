@@ -14,14 +14,13 @@ import {
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../helpers/staticData';
-import { getFormattedUrlText } from '../../helpers/utils';
-import { RestaurantType } from '../../helpers/types';
+import { Restaurant } from '../../helpers/types';
 
 type SearchPageProps = {
   location: string | undefined;
   cuisine: string | undefined;
   total: number;
-  restaurants: RestaurantType[];
+  restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: () => void;
   isLoading: boolean;
@@ -168,15 +167,12 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                 key={`${restaurant.id}-${restaurant.title}`}
               >
                 <Card
-                  key={restaurant.id}
+                  id={restaurant.id}
                   imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                   title={restaurant.title}
-                  route="/detail/[id]/[name]"
-                  asRoute={`/detail/${restaurant.id}/${getFormattedUrlText(
-                    restaurant.title,
-                    true,
-                  )}`}
-                  firstText={restaurant.firstText}
+                  content={restaurant.content}
+                  route={restaurant.route}
+                  asRoute={restaurant.asRoute}
                   onClick={onClickCard}
                 />
               </div>

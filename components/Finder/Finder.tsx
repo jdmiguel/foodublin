@@ -1,4 +1,5 @@
-import React, { useState, useCallback, Dispatch } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -9,12 +10,14 @@ import Button from '../core/Button/Button';
 
 import useWindowMeasures from '../hooks/useWindowMeasures';
 
-import { getFormattedUrlText } from '../../helpers/utils';
+import { setRelatedRestaurants } from '../../store/actions';
+
+import { getFormattedUrlText, getRandomListNumbers } from '../../helpers/utils';
 import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { Suggestion, EntityType } from '../../helpers/types';
+import { EntityType, Restaurant } from '../../helpers/types';
 import {
   DUBLIN_ID,
-  DEFAULT_SUGGESTIONS,
+  DEFAULT_SUGGESTION,
   LOCATIONS,
   CUISINES,
 } from '../../helpers/staticData';
@@ -131,14 +134,13 @@ const StyledButton = styled(Button)`
 `;
 
 const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions]: [
-    Suggestion[],
-    Dispatch<Suggestion[]>,
-  ] = useState(DEFAULT_SUGGESTIONS);
+  const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTION);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
+
+  const dispatch = useDispatch();
 
   const { width } = useWindowMeasures();
   const isMobile = width < 768;
@@ -158,8 +160,13 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       const restaurants = response.restaurants.map((restaurant: any) => ({
         id: restaurant.restaurant.id,
         imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-        firstText: restaurant.restaurant.name,
-        secondText: restaurant.restaurant.location.locality,
+        title: restaurant.restaurant.name,
+        content: restaurant.restaurant.location.locality,
+        route: '/detail/[id]/[name]',
+        asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
+          restaurant.restaurant.name,
+          true,
+        )}`,
       }));
 
       setSuggestions(restaurants);
@@ -169,8 +176,29 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
   );
 
   const selectSuggestion = useCallback(
-    (id: number, name: string) => {
+    (id: string, name: string) => {
       const path = getFormattedUrlText(name, true);
+
+      const currentSuggestionIndex = suggestions.findIndex(
+        (suggestion) => suggestion.id === id,
+      );
+      const getRelatedRestaurantsIndexList = getRandomListNumbers(
+        currentSuggestionIndex,
+        0,
+        suggestions.length,
+      );
+
+      const currentRelatedRestaurants: Restaurant[] = getRelatedRestaurantsIndexList.map(
+        (relatedRestaurantsIndex) => ({
+          ...suggestions[relatedRestaurantsIndex],
+          route: '/detail/[id]/[name]',
+          asRoute: `/detail/${id}/${path}`,
+        }),
+      );
+
+      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+
+      // console.log('getRelatedRestaurantsArray: ', getRelatedRestaurantsArray);
 
       setIsButtonLoading(true);
       router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);

@@ -33,14 +33,13 @@ export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min;
 
 export const getRandomListNumbers = (
-  length: number,
   excludedValue: number,
   minRandomValue: number,
   maxRandomValue: number,
 ) => {
   const indexArray: number[] = [];
 
-  while (indexArray.length < length) {
+  while (indexArray.length < 3) {
     const random = getRandomInt(minRandomValue, maxRandomValue);
     if (random !== excludedValue && !indexArray.includes(random)) {
       indexArray.push(random);
