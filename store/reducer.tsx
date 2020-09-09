@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 
 import { Restaurant } from '../helpers/types';
 
-type InitialState = {
+export type InitialState = {
   favorites: Restaurant[];
   relatedRestaurants: Restaurant[];
 };

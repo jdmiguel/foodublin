@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -7,19 +8,19 @@ import Title from '../core/Title/Title';
 import Button from '../core/Button/Button';
 import BlockTitle from '../core/BlockTitle/BlockTitle';
 import BlockText from '../core/BlockText/BlockText';
-
 import Rating from '../core/Rating/Rating';
+
 import Timmings from './Timings';
 import Cuisines from './Cuisines';
 import Highlights from './Highlights';
 import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
+import { InitialState } from '../../store/reducer';
+
 import { RestaurantDetail } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
-
-import { RELATED_RESTAURANTS } from './__mocks__/detailpage.mocks';
 
 type DetailPageProps = {
   data: RestaurantDetail;
@@ -164,6 +165,9 @@ const DetailPage: React.FC<DetailPageProps> = ({
   },
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const relatedRestaurants = useSelector(
+    (state: InitialState) => state.relatedRestaurants,
+  );
 
   return (
     <DefaultLayout isExtendedFooter={true}>
@@ -237,12 +241,14 @@ const DetailPage: React.FC<DetailPageProps> = ({
             </div>
           </div>
         </StyledInformation>
-        <StyledRelatedRestaurants>
-          <Title text="Related restaurants" />
-          <div className="grid-x grid-margin-x grid-margin-y">
-            <RelatedRestaurants restaurants={RELATED_RESTAURANTS} />
-          </div>
-        </StyledRelatedRestaurants>
+        {relatedRestaurants.length > 0 && (
+          <StyledRelatedRestaurants>
+            <Title text="Related restaurants" />
+            <div className="grid-x grid-margin-x grid-margin-y">
+              <RelatedRestaurants restaurants={relatedRestaurants} />
+            </div>
+          </StyledRelatedRestaurants>
+        )}
       </StyledDetailPage>
     </DefaultLayout>
   );
