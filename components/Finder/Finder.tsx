@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Dispatch } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
@@ -17,7 +17,7 @@ import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
 import { EntityType, Restaurant } from '../../helpers/types';
 import {
   DUBLIN_ID,
-  DEFAULT_SUGGESTION,
+  DEFAULT_SUGGESTIONS,
   LOCATIONS,
   CUISINES,
 } from '../../helpers/staticData';
@@ -134,7 +134,10 @@ const StyledButton = styled(Button)`
 `;
 
 const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTION);
+  const [suggestions, setSuggestions]: [
+    Restaurant[],
+    Dispatch<any[]>,
+  ] = useState(DEFAULT_SUGGESTIONS);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
@@ -179,26 +182,26 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     (id: string, name: string) => {
       const path = getFormattedUrlText(name, true);
 
-      const currentSuggestionIndex = suggestions.findIndex(
-        (suggestion) => suggestion.id === id,
-      );
-      const getRelatedRestaurantsIndexList = getRandomListNumbers(
-        currentSuggestionIndex,
-        0,
-        suggestions.length,
-      );
+      if (suggestions.length > 3) {
+        const currentSuggestionIndex = suggestions.findIndex(
+          (suggestion) => suggestion.id === id,
+        );
+        const getRelatedRestaurantsIndexList = getRandomListNumbers(
+          currentSuggestionIndex,
+          0,
+          suggestions.length,
+        );
 
-      const currentRelatedRestaurants: Restaurant[] = getRelatedRestaurantsIndexList.map(
-        (relatedRestaurantsIndex) => ({
-          ...suggestions[relatedRestaurantsIndex],
-          route: '/detail/[id]/[name]',
-          asRoute: `/detail/${id}/${path}`,
-        }),
-      );
+        const currentRelatedRestaurants: Restaurant[] = getRelatedRestaurantsIndexList.map(
+          (relatedRestaurantsIndex) => ({
+            ...suggestions[relatedRestaurantsIndex],
+            route: '/detail/[id]/[name]',
+            asRoute: `/detail/${id}/${path}`,
+          }),
+        );
 
-      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
-
-      // console.log('getRelatedRestaurantsArray: ', getRelatedRestaurantsArray);
+        dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+      }
 
       setIsButtonLoading(true);
       router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);

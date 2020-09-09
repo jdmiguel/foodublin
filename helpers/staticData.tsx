@@ -23,7 +23,7 @@ export enum PlaceholderText {
   FOCUSED = 'Start typing to search...',
 }
 
-export const DEFAULT_SUGGESTION = [
+export const DEFAULT_SUGGESTIONS = [
   {
     id: '0',
     imgSrc: '',
