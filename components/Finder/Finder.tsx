@@ -20,6 +20,7 @@ import {
   DEFAULT_SUGGESTIONS,
   LOCATIONS,
   CUISINES,
+  MIN_RESTAURANTS_LIST,
 } from '../../helpers/staticData';
 
 import { getRestaurantsData } from '../../services';
@@ -182,7 +183,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     (id: string, name: string) => {
       const path = getFormattedUrlText(name, true);
 
-      if (suggestions.length > 3) {
+      if (suggestions.length > MIN_RESTAURANTS_LIST) {
         const currentSuggestionIndex = suggestions.findIndex(
           (suggestion) => suggestion.id === id,
         );
