@@ -21,7 +21,13 @@ const reducer = (state = initialState, action: any) => {
       };
     case actionTypes.SET_RELATED_RESTAURANTS:
       return {
+        ...state,
         relatedRestaurants: action.relatedRestaurants,
+      };
+    case actionTypes.CLEAR_RELATED_RESTAURANTS:
+      return {
+        ...state,
+        relatedRestaurants: [],
       };
     default:
       return state;

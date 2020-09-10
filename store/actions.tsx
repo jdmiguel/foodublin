@@ -11,3 +11,7 @@ export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
   type: actionTypes.SET_RELATED_RESTAURANTS,
   relatedRestaurants,
 });
+
+export const clearRelatedRestaurants = () => ({
+  type: actionTypes.CLEAR_RELATED_RESTAURANTS,
+});

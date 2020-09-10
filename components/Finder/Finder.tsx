@@ -194,11 +194,7 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
         );
 
         const currentRelatedRestaurants: Restaurant[] = getRelatedRestaurantsIndexList.map(
-          (relatedRestaurantsIndex) => ({
-            ...suggestions[relatedRestaurantsIndex],
-            route: '/detail/[id]/[name]',
-            asRoute: `/detail/${id}/${path}`,
-          }),
+          (relatedRestaurantsIndex) => suggestions[relatedRestaurantsIndex],
         );
 
         dispatch(setRelatedRestaurants(currentRelatedRestaurants));

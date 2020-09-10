@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -17,6 +17,7 @@ import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
 import { InitialState } from '../../store/reducer';
+import { clearRelatedRestaurants } from '../../store/actions';
 
 import { RestaurantDetail } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
@@ -169,6 +170,8 @@ const DetailPage: React.FC<DetailPageProps> = ({
     (state: InitialState) => state.relatedRestaurants,
   );
 
+  const dispatch = useDispatch();
+
   return (
     <DefaultLayout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
@@ -245,7 +248,12 @@ const DetailPage: React.FC<DetailPageProps> = ({
           <StyledRelatedRestaurants>
             <Title text="Related restaurants" />
             <div className="grid-x grid-margin-x grid-margin-y">
-              <RelatedRestaurants restaurants={relatedRestaurants} />
+              <RelatedRestaurants
+                restaurants={relatedRestaurants}
+                onClickRelatedRestaurant={() =>
+                  dispatch(clearRelatedRestaurants())
+                }
+              />
             </div>
           </StyledRelatedRestaurants>
         )}
