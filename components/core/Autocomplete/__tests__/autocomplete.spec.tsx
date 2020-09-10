@@ -59,10 +59,10 @@ describe('Component: Autocomplete', () => {
     // hide suggestions list by activating blur event
     fireEvent.blur(input);
 
-    /*await waitFor(() => {
+    await waitFor(() => {
       expect(listboxWrapper).toHaveStyleRule('opacity', '0');
       expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
-    });*/
+    });
 
     // show suggestions list by activating focus event
     fireEvent.focus(input);

@@ -164,7 +164,12 @@ const Card: React.FC<Card> = ({
     className={type === CardType.SUGGESTION ? '' : 'paper'}
     type={type}
   >
-    <Link href={route} as={asRoute} passHref={true}>
+    <Link
+      href={route}
+      as={asRoute}
+      passHref={true}
+      prefetch={process.env.NODE_ENV !== 'test'}
+    >
       <StyledLink onClick={onClick && onClick} type={type}>
         <StyledImage
           src={imgSrc}
