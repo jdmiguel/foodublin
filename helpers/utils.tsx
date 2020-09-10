@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 
-import { Timming } from './types';
+import { Timming, Restaurant } from './types';
 
 export const {
   publicRuntimeConfig: {
@@ -90,4 +90,24 @@ export const getMapSrc = (name: string, location: string) => {
   const urlLocation = getFormattedUrlText(location);
 
   return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
+};
+
+// RELATED RESTAURANTS
+
+export const getCurrentRelatedRestaurants = (
+  restaurants: Restaurant[],
+  currentRestaurantId: string,
+) => {
+  const currentSuggestionIndex = restaurants.findIndex(
+    (restaurants) => restaurants.id === currentRestaurantId,
+  );
+  const getRelatedRestaurantsIndexList = getRandomListNumbers(
+    currentSuggestionIndex,
+    0,
+    restaurants.length,
+  );
+
+  return getRelatedRestaurantsIndexList.map(
+    (relatedRestaurantsIndex) => restaurants[relatedRestaurantsIndex],
+  );
 };

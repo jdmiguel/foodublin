@@ -11,10 +11,12 @@ import {
   HIGHLIGHTED_RESTAURANTS,
   DEFAULT_TEXT_LOADING,
 } from '../../helpers/staticData';
+import { Restaurant } from '../../helpers/types';
 
 type HomePageProps = {
   isLoading: boolean;
-  onClickHighlightCard: () => void;
+  highlights: Restaurant[];
+  onClickHighlightCard: (id: string) => void;
 };
 
 const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
@@ -73,12 +75,12 @@ const HomePage: React.FC<HomePageProps> = ({
             <Card
               id={restaurant.id}
               imgSrc={restaurant.imgSrc}
-              title={restaurant.name}
-              route="/detail/[id]/[name]"
-              asRoute={`/detail/${restaurant.id}/${restaurant.path}`}
-              content={restaurant.description}
+              title={restaurant.title}
+              content={restaurant.content}
+              route={restaurant.route}
+              asRoute={restaurant.asRoute}
               type={CardType.HIGHLIGHT}
-              onClick={onClickHighlightCard}
+              onClick={() => onClickHighlightCard(restaurant.id)}
             />
           </div>
         ))}

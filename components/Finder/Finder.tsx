@@ -12,16 +12,19 @@ import useWindowMeasures from '../hooks/useWindowMeasures';
 
 import { setRelatedRestaurants } from '../../store/actions';
 
-import { getFormattedUrlText, getRandomListNumbers } from '../../helpers/utils';
-import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { EntityType, Restaurant } from '../../helpers/types';
 import {
   DUBLIN_ID,
   DEFAULT_SUGGESTIONS,
   LOCATIONS,
   CUISINES,
+  THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
 } from '../../helpers/staticData';
+import {
+  getFormattedUrlText,
+  getCurrentRelatedRestaurants,
+} from '../../helpers/utils';
+import { EntityType, Restaurant } from '../../helpers/types';
 
 import { getRestaurantsData } from '../../services';
 
@@ -184,17 +187,9 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
       const path = getFormattedUrlText(name, true);
 
       if (suggestions.length > MIN_RESTAURANTS_LIST) {
-        const currentSuggestionIndex = suggestions.findIndex(
-          (suggestion) => suggestion.id === id,
-        );
-        const getRelatedRestaurantsIndexList = getRandomListNumbers(
-          currentSuggestionIndex,
-          0,
-          suggestions.length,
-        );
-
-        const currentRelatedRestaurants: Restaurant[] = getRelatedRestaurantsIndexList.map(
-          (relatedRestaurantsIndex) => suggestions[relatedRestaurantsIndex],
+        const currentRelatedRestaurants = getCurrentRelatedRestaurants(
+          suggestions,
+          id,
         );
 
         dispatch(setRelatedRestaurants(currentRelatedRestaurants));

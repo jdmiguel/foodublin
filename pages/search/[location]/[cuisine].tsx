@@ -70,8 +70,8 @@ const handleGetRestaurantsData = async (
   locationId: number,
   cuisineId: number,
   start?: number,
-  order?: string,
   sort?: string,
+  order?: string,
 ) => {
   const response = await getRestaurantsData({
     entity_id: locationId,
@@ -79,8 +79,8 @@ const handleGetRestaurantsData = async (
       locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
     cuisines: cuisineId,
     start,
-    order,
     sort,
+    order,
   });
   const restaurants = getRestaurants(response.restaurants);
 
