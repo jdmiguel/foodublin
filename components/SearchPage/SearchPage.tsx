@@ -22,7 +22,7 @@ type SearchPageProps = {
   total: number;
   restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;
-  onClickCard: () => void;
+  onClickCard: (id: string) => void;
   isLoading: boolean;
   isLoadingByScroll: boolean;
   showWarning: boolean;
@@ -173,7 +173,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                   content={restaurant.content}
                   route={restaurant.route}
                   asRoute={restaurant.asRoute}
-                  onClick={onClickCard}
+                  onClick={() => onClickCard(restaurant.id)}
                 />
               </div>
             ))}
