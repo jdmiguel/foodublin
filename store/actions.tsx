@@ -1,8 +1,17 @@
 import * as actionTypes from './actionTypes';
 
-import { CardType } from '../helpers/types';
+import { Restaurant } from '../helpers/types';
 
-export const setFavourite = (favorite: CardType[]) => ({
+export const setFavourite = (favorite: Restaurant[]) => ({
   type: actionTypes.SET_FAVORITE,
   favorite,
+});
+
+export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
+  type: actionTypes.SET_RELATED_RESTAURANTS,
+  relatedRestaurants,
+});
+
+export const clearRelatedRestaurants = () => ({
+  type: actionTypes.CLEAR_RELATED_RESTAURANTS,
 });

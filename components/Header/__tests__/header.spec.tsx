@@ -1,23 +1,33 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
+
+import reducer from '../../../store/reducer';
 
 import Header from '../Header';
 
 import { HEADER_TEXT_MOCKS } from '../__mocks__/header.mocks';
+import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 import { renderWithTheme } from '../../../helpers/Theme';
 
-const CDN_URL_STATIC_DIRECTORY = 'http://localhost:3003';
 const { bgImgSrc, claimTxt } = HEADER_TEXT_MOCKS;
 
 describe('Component: Header', () => {
   it('should render extended Header', () => {
+    const mockStore = configureStore();
+    const store = mockStore({
+      reducer,
+    });
     const { container } = render(
       renderWithTheme(
-        <Header
-          bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/${bgImgSrc}`}
-          claimTxt={claimTxt}
-          isExtended={true}
-        />,
+        <Provider store={store}>
+          <Header
+            bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/${bgImgSrc}`}
+            claimTxt={claimTxt}
+            isExtended={true}
+          />
+        </Provider>,
       ),
     );
 

@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 
-import { Timming } from './types';
+import { Timming, Restaurant } from './types';
 
 export const {
   publicRuntimeConfig: {
@@ -33,14 +33,13 @@ export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min;
 
 export const getRandomListNumbers = (
-  length: number,
   excludedValue: number,
   minRandomValue: number,
   maxRandomValue: number,
 ) => {
   const indexArray: number[] = [];
 
-  while (indexArray.length < length) {
+  while (indexArray.length < 3) {
     const random = getRandomInt(minRandomValue, maxRandomValue);
     if (random !== excludedValue && !indexArray.includes(random)) {
       indexArray.push(random);
@@ -91,4 +90,24 @@ export const getMapSrc = (name: string, location: string) => {
   const urlLocation = getFormattedUrlText(location);
 
   return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
+};
+
+// RELATED RESTAURANTS
+
+export const getCurrentRelatedRestaurants = (
+  restaurants: Restaurant[],
+  currentRestaurantId: string,
+) => {
+  const currentSuggestionIndex = restaurants.findIndex(
+    (restaurants) => restaurants.id === currentRestaurantId,
+  );
+  const getRelatedRestaurantsIndexList = getRandomListNumbers(
+    currentSuggestionIndex,
+    0,
+    restaurants.length,
+  );
+
+  return getRelatedRestaurantsIndexList.map(
+    (relatedRestaurantsIndex) => restaurants[relatedRestaurantsIndex],
+  );
 };

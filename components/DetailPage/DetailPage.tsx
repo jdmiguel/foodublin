@@ -1,27 +1,60 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
 
+import Loader from '../core/Loader/Loader';
 import Title from '../core/Title/Title';
 import Button from '../core/Button/Button';
 import BlockTitle from '../core/BlockTitle/BlockTitle';
 import BlockText from '../core/BlockText/BlockText';
-
 import Rating from '../core/Rating/Rating';
+
 import Timmings from './Timings';
 import Cuisines from './Cuisines';
 import Highlights from './Highlights';
 import Address from './Address';
+import RelatedRestaurants from './RelatedRestaurants';
 
-import { RestaurantDataType } from '../../helpers/types';
+import { InitialState } from '../../store/reducer';
+import { clearRelatedRestaurants } from '../../store/actions';
+
+import { RestaurantDetail } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
-
-import { DETAIL_GENERIC_SRC } from '../../helpers/staticData';
+import {
+  DETAIL_GENERIC_SRC,
+  DEFAULT_TEXT_LOADING,
+} from '../../helpers/staticData';
 
 type DetailPageProps = {
-  data: RestaurantDataType;
+  isLoading: boolean;
+  onClickRelatedRestaurant: () => void;
+  data: RestaurantDetail;
 };
+
+const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
+  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
+  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+  @media only screen and (min-width: 992px) {
+    min-height: 200px;
+  }
+`;
+
+const StyledLoader = styled(Loader)`
+  position: absolute;
+  top: 50vh;
+`;
 
 const JumbotronTextCSS = css`
   color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
@@ -141,7 +174,13 @@ const StyledAddressWrapper = styled.div`
   padding: 15px;
 `;
 
+const StyledRelatedRestaurants = styled.div`
+  margin-top: 50px;
+`;
+
 const DetailPage: React.FC<DetailPageProps> = ({
+  isLoading,
+  onClickRelatedRestaurant,
   data: {
     imgSrc,
     name,
@@ -158,10 +197,23 @@ const DetailPage: React.FC<DetailPageProps> = ({
   },
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const relatedRestaurants = useSelector(
+    (state: InitialState) => state.relatedRestaurants,
+  );
+
+  const dispatch = useDispatch();
+
+  const handleClickRelatedRestaurant = () => {
+    dispatch(clearRelatedRestaurants());
+    onClickRelatedRestaurant();
+  };
 
   return (
     <DefaultLayout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
+        <StyledLoaderWrapper isShowed={isLoading}>
+          <StyledLoader text={DEFAULT_TEXT_LOADING} />
+        </StyledLoaderWrapper>
         <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
           <StyledOverlay>
             <StyledName>{name}</StyledName>
@@ -231,6 +283,17 @@ const DetailPage: React.FC<DetailPageProps> = ({
             </div>
           </div>
         </StyledInformation>
+        {relatedRestaurants.length > 0 && (
+          <StyledRelatedRestaurants>
+            <Title text="Related restaurants" />
+            <div className="grid-x grid-margin-x grid-margin-y">
+              <RelatedRestaurants
+                restaurants={relatedRestaurants}
+                onClickRelatedRestaurant={handleClickRelatedRestaurant}
+              />
+            </div>
+          </StyledRelatedRestaurants>
+        )}
       </StyledDetailPage>
     </DefaultLayout>
   );

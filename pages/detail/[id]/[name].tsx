@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 
 import DetailPage from '../../../components/DetailPage/DetailPage';
 
-import { RestaurantDataType } from '../../../helpers/types';
+import { RestaurantDetail } from '../../../helpers/types';
 
 import { getRestaurantData } from '../../../services';
 
 type DetailProps = {
-  data: RestaurantDataType;
+  data: RestaurantDetail;
+  id: number;
 };
 
 type CustomNextPageContext = NextPageContext & {
@@ -18,21 +19,33 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
-const Detail: NextPage<DetailProps> = ({ data }) => (
-  <>
-    <Head>
-      <link rel="preload" as="image" href={data.imgSrc} />
-    </Head>
-    <DetailPage data={data} />
-  </>
-);
+const Detail: NextPage<DetailProps> = ({ data, id }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [id]);
+
+  return (
+    <>
+      <Head>
+        <link rel="preload" as="image" href={data.imgSrc} />
+      </Head>
+      <DetailPage
+        data={data}
+        isLoading={isLoading}
+        onClickRelatedRestaurant={() => setIsLoading(true)}
+      />
+    </>
+  );
+};
 
 Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const { id } = query;
 
   const restaurantData = await getRestaurantData(id);
 
-  const filteredData: RestaurantDataType = {
+  const filteredData: RestaurantDetail = {
     imgSrc: restaurantData.featured_image,
     name: restaurantData.name,
     location: restaurantData.location.locality,
@@ -49,6 +62,7 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
 
   return {
     data: filteredData,
+    id,
   };
 };
 

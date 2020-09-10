@@ -40,7 +40,7 @@ exports[`Component: Header should render Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(http://localhost:3003/images/food.jpg);
+  background-image: url(http://localhost:3000/static/images/food.jpg);
   background-color: #A7A7A7;
   background-size: cover;
   background-position: center;
@@ -260,7 +260,76 @@ exports[`Component: Header should render extended Header 1`] = `
   -webkit-tap-highlight-color: transparent;
 }
 
-.c28 {
+.c16 {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.c17 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.c18 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 5px 0;
+  width: 65%;
+  margin-left: 14px;
+}
+
+.c20 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #FBA52B;
+}
+
+.c21 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 0.92rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+  color: #585858;
+}
+
+.c30 {
   color: #585858;
   font-size: 1.2rem;
   font-weight: 500;
@@ -325,7 +394,6 @@ exports[`Component: Header should render extended Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 11px;
   background-color: #F3F3F3;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
@@ -338,46 +406,20 @@ exports[`Component: Header should render extended Header 1`] = `
   background-color: #FDF3E5;
 }
 
-.c16 {
-  width: 30px;
-  height: 30px;
-  border: solid #FFFFFF 1px;
-  display: inline-block;
-  border-radius: 4px;
-  -webkit-appearance: button-bevel;
-  box-shadow: 1px 2px 5px #888;
-}
-
-.c17 {
-  margin-left: 12px;
-}
-
-.c18 {
-  text-align: left;
-  color: #2f3235;
-  font-size: 1.05rem;
-}
-
-.c19 {
-  text-align: left;
-  color: #A7A7A7;
-  font-size: 0.85rem;
-}
-
-.c22 {
+.c24 {
   width: 100%;
   max-width: 550px;
   height: 100%;
   position: initial;
 }
 
-.c24 {
+.c26 {
   position: relative;
   border-radius: 4px;
   background-color: #F3F3F3;
 }
 
-.c25 {
+.c27 {
   width: 100%;
   height: 55px;
   background-color: #F3F3F3;
@@ -406,18 +448,18 @@ exports[`Component: Header should render extended Header 1`] = `
   -moz-user-select: none;
 }
 
-.c25 i:first-of-type {
+.c27 i:first-of-type {
   font-size: 1rem;
   margin-left: 5px;
   margin-right: 10px;
   color: #D48C24;
 }
 
-.c25:hover {
+.c27:hover {
   background-color: #FDF3E5;
 }
 
-.c25 i:last-of-type {
+.c27 i:last-of-type {
   position: absolute;
   z-index: 1;
   top: 14px;
@@ -425,7 +467,7 @@ exports[`Component: Header should render extended Header 1`] = `
   font-size: 1.7rem;
 }
 
-.c26 {
+.c28 {
   visibility: hidden;
   opacity: 0;
   overflow: auto;
@@ -448,7 +490,7 @@ exports[`Component: Header should render extended Header 1`] = `
   outline: none;
 }
 
-.c27 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -465,11 +507,11 @@ exports[`Component: Header should render extended Header 1`] = `
   margin: 10px 0 15px;
 }
 
-.c29 {
+.c31 {
   font-size: 1.3rem;
 }
 
-.c30 {
+.c32 {
   cursor: pointer;
   line-height: 0;
   background-color: transparent;
@@ -478,17 +520,17 @@ exports[`Component: Header should render extended Header 1`] = `
   margin-top: 4px;
 }
 
-.c30 i {
+.c32 i {
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.c30 i {
+.c32 i {
   color: #585858;
   font-size: 1.5rem;
 }
 
-.c31 {
+.c33 {
   width: 100%;
   height: 55px;
   border-bottom: 1px solid #E5EAED;
@@ -511,31 +553,31 @@ exports[`Component: Header should render extended Header 1`] = `
   -webkit-tap-highlight-color: transparent;
 }
 
-.c31:hover {
+.c33:hover {
   background-color: #FDF3E5;
 }
 
-.c31:focus {
+.c33:focus {
   background-color: #FDF3E5;
 }
 
-.c33 {
+.c35 {
   width: 18px;
   margin-right: 12px;
 }
 
-.c32 {
+.c34 {
   color: #2f3235;
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.c34 {
+.c36 {
   width: 100%;
   height: 55px;
 }
 
-.c36 {
+.c38 {
   width: 100%;
   height: 100%;
   -webkit-letter-spacing: 0.5px;
@@ -566,16 +608,16 @@ exports[`Component: Header should render extended Header 1`] = `
   align-items: center;
 }
 
-.c36 i {
+.c38 i {
   margin-right: 6px;
   font-size: 1.3em;
 }
 
-.c36:hover {
+.c38:hover {
   background-color: #EC7E00;
 }
 
-.c36:focus {
+.c38:focus {
   background-color: #EC7E00;
 }
 
@@ -602,7 +644,7 @@ exports[`Component: Header should render extended Header 1`] = `
   margin: 0 0 25px;
 }
 
-.c20 {
+.c22 {
   background-color: #A7A7A7;
   width: 100%;
   height: 1px;
@@ -610,7 +652,7 @@ exports[`Component: Header should render extended Header 1`] = `
   max-width: 550px;
 }
 
-.c21 {
+.c23 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -626,20 +668,20 @@ exports[`Component: Header should render extended Header 1`] = `
   margin-bottom: 22px;
 }
 
-.c21:first-child {
+.c23:first-child {
   margin-right: 2%;
 }
 
-.c23 {
+.c25 {
   width: 100%;
 }
 
-.c23:first-of-type {
+.c25:first-of-type {
   margin-right: 2%;
   margin-bottom: 15px;
 }
 
-.c35 {
+.c37 {
   width: 100%;
   margin-bottom: 10px;
 }
@@ -655,7 +697,7 @@ exports[`Component: Header should render extended Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(http://localhost:3003/images/food.jpg);
+  background-image: url(http://localhost:3000/static/images/food.jpg);
   background-color: #A7A7A7;
   background-size: cover;
   background-position: center;
@@ -717,21 +759,58 @@ exports[`Component: Header should render extended Header 1`] = `
   }
 }
 
+@media only screen and (min-width:768px) {
+  .c17 {
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+  }
+
+  .c17:hover {
+    background-color: #FDF3E5;
+  }
+
+  .c17:hover h4 {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c19 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 10px 0;
+    margin-left: 16px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c19 {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c20 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+}
+
 @media only screen and (min-width:992px) {
-  .c28 {
+  .c30 {
     font-size: 1.45rem;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c22 {
+  .c24 {
     height: 55px;
     position: relative;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c26 {
+  .c28 {
     max-height: 440px;
     height: auto;
     padding: 0;
@@ -746,7 +825,7 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c27 {
+  .c29 {
     display: none;
   }
 }
@@ -804,7 +883,7 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 @media only screen and (min-width:992px) {
-  .c20 {
+  .c22 {
     width: 1px;
     height: 90%;
     margin: 0 2% 0 0;
@@ -812,7 +891,7 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c21 {
+  .c23 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -820,7 +899,7 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 @media only screen and (min-width:992px) {
-  .c21 {
+  .c23 {
     width: 47%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
@@ -829,37 +908,37 @@ exports[`Component: Header should render extended Header 1`] = `
     margin-bottom: 0;
   }
 
-  .c21:first-child {
+  .c23:first-child {
     margin-right: 0;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c23 {
+  .c25 {
     max-width: 270px;
   }
 
-  .c23:first-of-type {
+  .c25:first-of-type {
     margin-bottom: 0;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c23 {
+  .c25 {
     margin-right: 2%;
     width: 48%;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c35 {
+  .c37 {
     width: 300px;
     margin-bottom: 0;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c35 {
+  .c37 {
     width: 10%;
   }
 }
@@ -962,43 +1041,58 @@ exports[`Component: Header should render extended Header 1`] = `
                 role="option"
               >
                 <div
-                  class="LazyImage-Placeholder"
+                  class="c16"
+                  type="suggestion"
                 >
-                  <img
-                    alt=""
-                    class="c16"
-                    src="http://localhost:3000/static/images/generic-thumb.png"
-                  />
-                </div>
-                <div
-                  class="c17"
-                >
-                  <p
-                    class="c18"
-                  />
-                  <p
-                    class="c19"
-                  />
+                  <a
+                    class="c17"
+                    href=""
+                    type="suggestion"
+                  >
+                    <div
+                      class="LazyImage-Placeholder"
+                    >
+                      <img
+                        alt=""
+                        class="c18"
+                        src="http://localhost:3000/static/images/generic-thumb.png"
+                        type="suggestion"
+                      />
+                    </div>
+                    <div
+                      class="c19"
+                      type="suggestion"
+                    >
+                      <h4
+                        class="c20"
+                        type="suggestion"
+                      />
+                      <p
+                        class="c21"
+                        type="suggestion"
+                      />
+                    </div>
+                  </a>
                 </div>
               </li>
             </ul>
           </div>
         </div>
         <span
-          class="c20"
+          class="c22"
         />
         <div
-          class="c21"
+          class="c23"
         >
           <div
-            class="c22 c23"
+            class="c24 c25"
             data-testid="dropdown"
           >
             <div
-              class="c24"
+              class="c26"
             >
               <button
-                class="c25"
+                class="c27"
                 type="button"
               >
                 <i
@@ -1018,21 +1112,21 @@ exports[`Component: Header should render extended Header 1`] = `
               </button>
             </div>
             <div
-              class="c26"
+              class="c28"
               data-testid="dropdown-list"
               role="listbox"
               tabindex="0"
             >
               <div
-                class="c27"
+                class="c29"
               >
                 <h4
-                  class="c28 c29"
+                  class="c30 c31"
                 >
                   Select any location
                 </h4>
                 <button
-                  class="c30"
+                  class="c32"
                   type="button"
                 >
                   <i
@@ -1043,301 +1137,301 @@ exports[`Component: Header should render extended Header 1`] = `
                 </button>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Dublin
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   South City West
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Temple Bar
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Clondalkin
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Swords
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Tallaght
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Blanchardstown
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   South City East
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Dundrum
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Finglas
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Ballyfermot
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Santry
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Lucan
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Artane
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Malahide
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Dun Laoghaire
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Walkinstown
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Blackrock
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Palmerstown
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Rathmines
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Balbriggan
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Ballybrack
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Smithfield
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Crumlin
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Castleknock
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Howth
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Cabra
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Whitehall
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Portmarnock
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Kimmage
                 </p>
@@ -1345,14 +1439,14 @@ exports[`Component: Header should render extended Header 1`] = `
             </div>
           </div>
           <div
-            class="c22 c23"
+            class="c24 c25"
             data-testid="dropdown"
           >
             <div
-              class="c24"
+              class="c26"
             >
               <button
-                class="c25"
+                class="c27"
                 type="button"
               >
                 <i
@@ -1372,21 +1466,21 @@ exports[`Component: Header should render extended Header 1`] = `
               </button>
             </div>
             <div
-              class="c26"
+              class="c28"
               data-testid="dropdown-list"
               role="listbox"
               tabindex="0"
             >
               <div
-                class="c27"
+                class="c29"
               >
                 <h4
-                  class="c28 c29"
+                  class="c30 c31"
                 >
                   Select any cuisine
                 </h4>
                 <button
-                  class="c30"
+                  class="c32"
                   type="button"
                 >
                   <i
@@ -1397,121 +1491,121 @@ exports[`Component: Header should render extended Header 1`] = `
                 </button>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Irish"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/stew.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Irish
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Italian"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/pizza.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Italian
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Mediterranean"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/bruschetta.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Mediterranean
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Asian"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/rice.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Asian
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Healthy Food"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/healthy_food.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Healthy Food
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Indian"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/gulab.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Indian
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Mexican"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/taco.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Mexican
                 </p>
               </div>
               <div
-                class="c31"
+                class="c33"
                 role="option"
               >
                 <img
                   alt="Fast Food"
-                  class="c33"
+                  class="c35"
                   src="http://localhost:3000/static/images/fries.svg"
                 />
                 <p
-                  class="c32"
+                  class="c34"
                 >
                   Fast Food
                 </p>
@@ -1520,10 +1614,10 @@ exports[`Component: Header should render extended Header 1`] = `
           </div>
         </div>
         <div
-          class="c34 c35"
+          class="c36 c37"
         >
           <button
-            class="c36"
+            class="c38"
             type="button"
           >
             Search

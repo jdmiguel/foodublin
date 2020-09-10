@@ -66,15 +66,9 @@ describe('Component: AutocompleteMobile', () => {
     expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
   });
 
-  it('should show/hide suggestions list', async () => {
-    const handleSelectSuggestion = jest.fn();
+  it('should show/hide suggestions list', () => {
     const { getByTestId, getByPlaceholderText } = render(
-      renderWithTheme(
-        <AutocompleteMobile
-          {...AUTOCOMPLETE_PROPS_MOCK}
-          selectSuggestion={handleSelectSuggestion}
-        />,
-      ),
+      renderWithTheme(<AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK} />),
     );
     const closeButton = getByTestId('modal').querySelector('button');
     const listboxWrapper = getByTestId('listbox-wrapper');
@@ -98,12 +92,5 @@ describe('Component: AutocompleteMobile', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
-
-    // show suggestions list by activating focus event and call callback function by clicking any suggestion
-    fireEvent.focus(input);
-    const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0];
-    fireEvent.click(firstSuggestionLink);
-
-    expect(handleSelectSuggestion).toHaveBeenCalled();
   });
 });

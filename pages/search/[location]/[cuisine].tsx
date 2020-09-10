@@ -1,10 +1,16 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
+import { useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 
 import SearchPage from '../../../components/SearchPage/SearchPage';
 
 import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
 import useScrollPosY from '../../../components/hooks/useScrollPosY';
+
+import { setRelatedRestaurants } from '../../../store/actions';
+
+import { MIN_RESTAURANTS_LIST } from '../../../helpers/staticData';
+import { getCurrentRelatedRestaurants } from '../../../helpers/utils';
 
 import { getRestaurantsData } from '../../../services';
 
@@ -21,11 +27,7 @@ import {
   SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
-import {
-  ListItemType,
-  RestaurantType,
-  EntityType,
-} from '../../../helpers/types';
+import { ListItemType, Restaurant, EntityType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 export enum LocationType {
@@ -39,7 +41,7 @@ type SearchProps = {
   cuisineId: number;
   cuisineName: string;
   total: number;
-  restaurants: RestaurantType[];
+  restaurants: Restaurant[];
 };
 
 type CustomNextPageContext = NextPageContext & {
@@ -59,20 +61,23 @@ const getFormattedRestaurant = (restaurant: any) => ({
   id: restaurant.id,
   imgSrc: restaurant.thumb,
   title: restaurant.name,
-  link: getFormattedUrlText(restaurant.name, true),
-  firstText: restaurant.location.locality,
+  content: restaurant.location.locality,
+  route: '/detail/[id]/[name]',
+  asRoute: `/detail/${restaurant.id}/${getFormattedUrlText(
+    restaurant.name,
+    true,
+  )}`,
 });
 
-const getRestaurants = (restaurants: RestaurantType[]) => (
-  formattedFuntion: any,
-) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
+const getRestaurants = (restaurants: Restaurant[]) => (formattedFuntion: any) =>
+  restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
 const handleGetRestaurantsData = async (
   locationId: number,
   cuisineId: number,
   start?: number,
-  order?: string,
   sort?: string,
+  order?: string,
 ) => {
   const response = await getRestaurantsData({
     entity_id: locationId,
@@ -80,8 +85,8 @@ const handleGetRestaurantsData = async (
       locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
     cuisines: cuisineId,
     start,
-    order,
     sort,
+    order,
   });
   const restaurants = getRestaurants(response.restaurants);
 
@@ -105,11 +110,13 @@ const Search: NextPage<SearchProps> = ({
   const orderRef = useRef('');
 
   const [currentRestaurants, setCurrentRestaurants]: [
-    RestaurantType[],
-    Dispatch<RestaurantType[]>,
+    Restaurant[],
+    Dispatch<Restaurant[]>,
   ] = useState(restaurants);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
+
+  const dispatch = useDispatch();
 
   const { width } = useWindowMeasures();
   const isMobile = width < MAX_SMALL_DEVICE_WIDTH;
@@ -193,6 +200,19 @@ const Search: NextPage<SearchProps> = ({
     setIsLoadingByScroll(false);
   }, [currentRestaurants]);
 
+  const handleClickCard = (id: string) => {
+    setIsLoading(true);
+
+    if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
+      const currentRelatedRestaurants = getCurrentRelatedRestaurants(
+        currentRestaurants,
+        id,
+      );
+
+      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+    }
+  };
+
   return (
     <SearchPage
       ref={searchRef}
@@ -201,7 +221,7 @@ const Search: NextPage<SearchProps> = ({
       cuisine={cuisineName}
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
-      onClickCard={() => setIsLoading(true)}
+      onClickCard={handleClickCard}
       isLoading={isLoading}
       isLoadingByScroll={isLoadingByScroll}
       showWarning={showWarning}

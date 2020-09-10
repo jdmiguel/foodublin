@@ -40,6 +40,75 @@ exports[`Component: Autocomplete should render 1`] = `
   -webkit-tap-highlight-color: transparent;
 }
 
+.c7 {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.c8 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.c9 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #888;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 5px 0;
+  width: 65%;
+  margin-left: 14px;
+}
+
+.c11 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #FBA52B;
+}
+
+.c12 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 0.92rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+  color: #585858;
+}
+
 .c0 {
   width: 100%;
   max-width: 550px;
@@ -99,7 +168,6 @@ exports[`Component: Autocomplete should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 11px;
   background-color: #F3F3F3;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
@@ -112,35 +180,46 @@ exports[`Component: Autocomplete should render 1`] = `
   background-color: #FDF3E5;
 }
 
-.c7 {
-  width: 30px;
-  height: 30px;
-  border: solid #FFFFFF 1px;
-  display: inline-block;
-  border-radius: 4px;
-  -webkit-appearance: button-bevel;
-  box-shadow: 1px 2px 5px #888;
-}
-
-.c8 {
-  margin-left: 12px;
-}
-
-.c9 {
-  text-align: left;
-  color: #2f3235;
-  font-size: 1.05rem;
-}
-
-.c10 {
-  text-align: left;
-  color: #A7A7A7;
-  font-size: 0.85rem;
-}
-
 @media only screen and (min-width:768px) {
   .c1 {
     max-width: 550px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c8 {
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+  }
+
+  .c8:hover {
+    background-color: #FDF3E5;
+  }
+
+  .c8:hover h4 {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c10 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 10px 0;
+    margin-left: 16px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c10 {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c11 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
   }
 }
 
@@ -178,55 +257,42 @@ exports[`Component: Autocomplete should render 1`] = `
         role="option"
       >
         <div
-          class="LazyImage-Placeholder"
+          class="c7"
+          type="suggestion"
         >
-          <img
-            alt="Manifesto"
-            class="c7"
-            src="http://localhost:3000/static/images/generic-thumb.png"
-          />
-        </div>
-        <div
-          class="c8"
-        >
-          <p
-            class="c9"
+          <a
+            class="c8"
+            href="/"
+            type="suggestion"
           >
-            Manifesto
-          </p>
-          <p
-            class="c10"
-          >
-            Rathmines
-          </p>
-        </div>
-      </li>
-      <li
-        class="c6"
-        role="option"
-      >
-        <div
-          class="LazyImage-Placeholder"
-        >
-          <img
-            alt="Dragon Inn"
-            class="c7"
-            src="http://localhost:3000/static/images/generic-thumb.png"
-          />
-        </div>
-        <div
-          class="c8"
-        >
-          <p
-            class="c9"
-          >
-            Dragon Inn
-          </p>
-          <p
-            class="c10"
-          >
-            South City West
-          </p>
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Manifesto"
+                class="c9"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c10"
+              type="suggestion"
+            >
+              <h4
+                class="c11"
+                type="suggestion"
+              >
+                Manifesto
+              </h4>
+              <p
+                class="c12"
+                type="suggestion"
+              >
+                Rathmines
+              </p>
+            </div>
+          </a>
         </div>
       </li>
       <li
@@ -234,27 +300,85 @@ exports[`Component: Autocomplete should render 1`] = `
         role="option"
       >
         <div
-          class="LazyImage-Placeholder"
+          class="c7"
+          type="suggestion"
         >
-          <img
-            alt="Casa Del Toro"
-            class="c7"
-            src="http://localhost:3000/static/images/generic-thumb.png"
-          />
+          <a
+            class="c8"
+            href="/"
+            type="suggestion"
+          >
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Dragon Inn"
+                class="c9"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c10"
+              type="suggestion"
+            >
+              <h4
+                class="c11"
+                type="suggestion"
+              >
+                Dragon Inn
+              </h4>
+              <p
+                class="c12"
+                type="suggestion"
+              >
+                South City West
+              </p>
+            </div>
+          </a>
         </div>
+      </li>
+      <li
+        class="c6"
+        role="option"
+      >
         <div
-          class="c8"
+          class="c7"
+          type="suggestion"
         >
-          <p
-            class="c9"
+          <a
+            class="c8"
+            href="/"
+            type="suggestion"
           >
-            Casa Del Toro
-          </p>
-          <p
-            class="c10"
-          >
-            Drumcondra
-          </p>
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Casa Del Toro"
+                class="c9"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c10"
+              type="suggestion"
+            >
+              <h4
+                class="c11"
+                type="suggestion"
+              >
+                Casa Del Toro
+              </h4>
+              <p
+                class="c12"
+                type="suggestion"
+              >
+                Drumcondra
+              </p>
+            </div>
+          </a>
         </div>
       </li>
     </ul>

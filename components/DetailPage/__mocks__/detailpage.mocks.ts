@@ -93,3 +93,30 @@ export const FOURTH_DETAIL = {
     'Fullbar',
   ],
 };
+
+export const RELATED_RESTAURANTS = [
+  {
+    id: '234',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
+    title: 'Elephant & Castle',
+    content: 'Temple Bar',
+    route: '/detail/[id]/[name]',
+    asRoute: '/detail/234/elephant-castle',
+  },
+  {
+    id: '5474',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-2.webp`,
+    title: 'Abrecadabra',
+    content: 'Rathmines',
+    route: '/detail/[id]/[name]',
+    asRoute: '/detail/234/elephant-castle',
+  },
+  {
+    id: '8963',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-3.webp`,
+    title: 'Brothers in law',
+    content: 'Blackrock',
+    route: '/detail/[id]/[name]',
+    asRoute: '/detail/234/elephant-castle',
+  },
+];

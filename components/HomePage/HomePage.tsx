@@ -3,9 +3,44 @@ import styled from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
 
-import { HIGHLIGHTED_RESTAURANTS } from '../../helpers/staticData';
+import Loader from '../core/Loader/Loader';
 import Title from '../core/Title/Title';
-import HighlightCard from '../core/HighlightCard/HighlightCard';
+import Card, { CardType } from '../core/Card/Card';
+
+import {
+  HIGHLIGHTED_RESTAURANTS,
+  DEFAULT_TEXT_LOADING,
+} from '../../helpers/staticData';
+import { Restaurant } from '../../helpers/types';
+
+type HomePageProps = {
+  isLoading: boolean;
+  highlights: Restaurant[];
+  onClickHighlightCard: (id: string) => void;
+};
+
+const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
+  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
+  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+  @media only screen and (min-width: 992px) {
+    min-height: 200px;
+  }
+`;
+
+const StyledLoader = styled(Loader)`
+  position: absolute;
+  top: 50vh;
+`;
 
 const StyledHighlights = styled.div`
   margin-top: 50px;
@@ -24,22 +59,30 @@ const StyledHighlightWrapper = styled.div`
   }
 `;
 
-const HomePage: React.FC = () => (
+const HomePage: React.FC<HomePageProps> = ({
+  isLoading,
+  onClickHighlightCard,
+}) => (
   <DefaultLayout isExtendedHeader={true} isExtendedFooter={true}>
+    <StyledLoaderWrapper isShowed={isLoading}>
+      <StyledLoader text={DEFAULT_TEXT_LOADING} />
+    </StyledLoaderWrapper>
     <StyledHighlights className="grid-container">
       <Title text="Featured restaurants" />
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
         {HIGHLIGHTED_RESTAURANTS.map((restaurant) => (
-          <HighlightCard
-            key={restaurant.id}
-            className="cell small-12 medium-6 large-4"
-            imgSrc={restaurant.imgSrc}
-            imgAlt={restaurant.name}
-            title={restaurant.name}
-            route="/detail/[id]/[name]"
-            asRoute={`/detail/${restaurant.id}/${restaurant.path}`}
-            description={restaurant.description}
-          />
+          <div key={restaurant.id} className="cell small-12 medium-6 large-4">
+            <Card
+              id={restaurant.id}
+              imgSrc={restaurant.imgSrc}
+              title={restaurant.title}
+              content={restaurant.content}
+              route={restaurant.route}
+              asRoute={restaurant.asRoute}
+              type={CardType.HIGHLIGHT}
+              onClick={() => onClickHighlightCard(restaurant.id)}
+            />
+          </div>
         ))}
       </StyledHighlightWrapper>
     </StyledHighlights>

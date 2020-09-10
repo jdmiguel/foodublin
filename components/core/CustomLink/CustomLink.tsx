@@ -36,7 +36,7 @@ const StyledContent = styled.a<{ size: CustomLinkSize }>`
   }
 `;
 
-const CustomLink = ({
+const CustomLink: React.FC<CustomLinkProps> = ({
   className,
   children,
   route,
@@ -44,7 +44,7 @@ const CustomLink = ({
   size = CustomLinkSize.SMALL,
   isExternal,
   onClick,
-}: CustomLinkProps) => (
+}) => (
   <>
     {isExternal ? (
       <StyledContent className={className} href={route} size={size}>
