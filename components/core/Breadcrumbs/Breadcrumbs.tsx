@@ -3,14 +3,10 @@ import styled, { css } from 'styled-components';
 
 import CustomLink from '../CustomLink/CustomLink';
 
-type BreadcrumbData = {
-  text: string;
-  route: string;
-};
+import { BreadcrumbsData } from '../../../helpers/types';
 
 type BreadcrumbsProps = {
-  className?: string;
-  breadcrumbsData: BreadcrumbData[];
+  breadcrumbsData: BreadcrumbsData[];
 };
 
 const lastBreadcrumbCSS = css`
@@ -46,7 +42,11 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
       const isLast = itemIndex === items.length - 1;
       return (
         <StyledBreadcrumb key={breadcrumbData.text} isLast={isLast}>
-          <StyledLink route={breadcrumbData.route} isLast={isLast}>
+          <StyledLink
+            route={breadcrumbData.route}
+            asRoute={breadcrumbData.asRoute}
+            isLast={isLast}
+          >
             {breadcrumbData.text}
           </StyledLink>
           {itemIndex < items.length - 1 && <StyledArrow>{'>'}</StyledArrow>}

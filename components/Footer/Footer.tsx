@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-
-import { fadeAnimation } from '../../helpers/animations';
 
 import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../core/CustomLink/CustomLink';
+
+import { InitialState } from '../../store/reducer';
+
+import { fadeAnimation } from '../../helpers/animations';
 
 type FooterProps = {
   showVeil?: boolean;
@@ -90,51 +93,46 @@ const StyledText = styled.p<{ addSeparation: boolean }>`
   margin-right: ${({ addSeparation }) => addSeparation && '3px'};
 `;
 
-const breadrumbsData = [
-  { text: 'Home', route: '/' },
-  {
-    text: 'Search Restaurants',
-    route: '/search/rathmines/fast-food',
-  },
-  { text: 'Restaurant', route: '/detail/elefant-castle' },
-];
-
 const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
-}) => (
-  <StyledFooterWrapper>
-    {showVeil && <StyledFooterVeil />}
-    {isExtended && (
-      <StyledNavFooterWrapper>
-        <StyledNavFooter className="grid-container">
-          <Breadcrumbs breadcrumbsData={breadrumbsData} />
-          <StyledCustomLink breadcrumbsSteps={breadrumbsData.length} route="/">
-            <i className="material-icons">bookmarks</i>FAVORITES
-          </StyledCustomLink>
-        </StyledNavFooter>
-      </StyledNavFooterWrapper>
-    )}
-    <StyledRightsFooter>
-      <StyledBlock>
-        <CustomLink
-          route="https://github.com/jdmiguel/foodublin"
-          isExternal={true}
-        >
-          GITHUB
-        </CustomLink>
-      </StyledBlock>
-      <StyledBlock>
-        <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
-      </StyledBlock>
-      <StyledBlock>
-        <StyledText addSeparation={true}>BY</StyledText>
-        <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
-          JDMIGUEL
-        </CustomLink>
-      </StyledBlock>
-    </StyledRightsFooter>
-  </StyledFooterWrapper>
-);
+}) => {
+  const breadcrumbs = useSelector((state: InitialState) => state.breadcrumbs);
+
+  return (
+    <StyledFooterWrapper>
+      {showVeil && <StyledFooterVeil />}
+      {isExtended && (
+        <StyledNavFooterWrapper>
+          <StyledNavFooter className="grid-container">
+            <Breadcrumbs breadcrumbsData={breadcrumbs} />
+            <StyledCustomLink breadcrumbsSteps={breadcrumbs.length} route="/">
+              <i className="material-icons">bookmarks</i>FAVORITES
+            </StyledCustomLink>
+          </StyledNavFooter>
+        </StyledNavFooterWrapper>
+      )}
+      <StyledRightsFooter>
+        <StyledBlock>
+          <CustomLink
+            route="https://github.com/jdmiguel/foodublin"
+            isExternal={true}
+          >
+            GITHUB
+          </CustomLink>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledText addSeparation={true}>BY</StyledText>
+          <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
+            JDMIGUEL
+          </CustomLink>
+        </StyledBlock>
+      </StyledRightsFooter>
+    </StyledFooterWrapper>
+  );
+};
 
 export default Footer;
