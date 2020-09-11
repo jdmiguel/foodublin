@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-import { Restaurant } from '../helpers/types';
+import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
 export const setFavourite = (favorite: Restaurant[]) => ({
   type: actionTypes.SET_FAVORITE,
@@ -14,4 +14,9 @@ export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
 
 export const clearRelatedRestaurants = () => ({
   type: actionTypes.CLEAR_RELATED_RESTAURANTS,
+});
+
+export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
+  type: actionTypes.ADD_BREADCRUMBS,
+  breadcrumbs,
 });

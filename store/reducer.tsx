@@ -31,6 +31,11 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         relatedRestaurants: [],
       };
+    case actionTypes.ADD_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: [...state.breadcrumbs, action.breadcrumbs],
+      };
     default:
       return state;
   }

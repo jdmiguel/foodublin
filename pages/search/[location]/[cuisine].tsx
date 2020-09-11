@@ -7,7 +7,7 @@ import SearchPage from '../../../components/SearchPage/SearchPage';
 import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
 import useScrollPosY from '../../../components/hooks/useScrollPosY';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { setRelatedRestaurants, addBreadcrumbs } from '../../../store/actions';
 
 import { MIN_RESTAURANTS_LIST } from '../../../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../../../helpers/utils';
@@ -193,6 +193,19 @@ const Search: NextPage<SearchProps> = ({
     [isLoading],
     SCROLL_DELAY,
   );
+
+  const searchBreadcrumbs = {
+    text: `${cuisineName || 'Any food'} in ${locationName}`,
+    route: '/search/[location]/[cuisine]',
+    asRoute: `/search/${getFormattedUrlText(
+      locationName,
+      true,
+    )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
+  };
+
+  useEffect(() => {
+    dispatch(addBreadcrumbs(searchBreadcrumbs));
+  }, []);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
