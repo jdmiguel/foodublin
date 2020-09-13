@@ -8,6 +8,7 @@ import DetailPage from '../../../components/DetailPage/DetailPage';
 import { InitialState } from '../../../store/reducer';
 import {
   clearRelatedRestaurants,
+  deleteLastBreadcrumbs,
   addBreadcrumbs,
 } from '../../../store/actions';
 
@@ -35,11 +36,6 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   );
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [id]);
-
   const { name, imgSrc } = data;
   const detailBreadcrumbs = {
     text: name,
@@ -47,14 +43,16 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
   };
 
-  useEffect(() => {
-    dispatch(addBreadcrumbs(detailBreadcrumbs));
-  }, []);
-
   const handleClickRelatedRestaurant = () => {
     setIsLoading(true);
+    dispatch(deleteLastBreadcrumbs());
     dispatch(clearRelatedRestaurants());
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+    dispatch(addBreadcrumbs(detailBreadcrumbs));
+  }, [id]);
 
   return (
     <>
