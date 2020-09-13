@@ -156,7 +156,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
               cuisine || ''
             } ${titleRestaurantText} in ${location}`}
           />
-          <Filter onClick={onClickFilter} data={FILTER_DATA} />
+          {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
           <StyledCardsWrapper
             className="grid-x grid-margin-x grid-margin-y"
             warningShowed={showWarning}
