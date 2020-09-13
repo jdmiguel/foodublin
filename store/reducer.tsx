@@ -36,6 +36,11 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         breadcrumbs: [...state.breadcrumbs, action.breadcrumbs],
       };
+    case actionTypes.DELETE_LAST_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: state.breadcrumbs.slice(0, state.breadcrumbs.length - 1),
+      };
     default:
       return state;
   }

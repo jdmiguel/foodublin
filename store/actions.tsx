@@ -20,3 +20,7 @@ export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
   type: actionTypes.ADD_BREADCRUMBS,
   breadcrumbs,
 });
+
+export const deleteLastBreadcrumbs = () => ({
+  type: actionTypes.DELETE_LAST_BREADCRUMBS,
+});

@@ -6,9 +6,13 @@ import Head from 'next/head';
 import DetailPage from '../../../components/DetailPage/DetailPage';
 
 import { InitialState } from '../../../store/reducer';
-import { clearRelatedRestaurants } from '../../../store/actions';
+import {
+  clearRelatedRestaurants,
+  addBreadcrumbs,
+} from '../../../store/actions';
 
 import { RestaurantDetail } from '../../../helpers/types';
+import { getFormattedUrlText } from '../../../helpers/utils';
 
 import { getRestaurantData } from '../../../services';
 
@@ -36,6 +40,17 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     setIsLoading(false);
   }, [id]);
 
+  const { name, imgSrc } = data;
+  const detailBreadcrumbs = {
+    text: name,
+    route: '/detail/[id]/[name]',
+    asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+  };
+
+  useEffect(() => {
+    dispatch(addBreadcrumbs(detailBreadcrumbs));
+  }, []);
+
   const handleClickRelatedRestaurant = () => {
     setIsLoading(true);
     dispatch(clearRelatedRestaurants());
@@ -44,7 +59,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   return (
     <>
       <Head>
-        <link rel="preload" as="image" href={data.imgSrc} />
+        <link rel="preload" as="image" href={imgSrc} />
       </Head>
       <DetailPage
         data={data}
