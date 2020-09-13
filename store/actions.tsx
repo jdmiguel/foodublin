@@ -24,3 +24,7 @@ export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
 export const deleteLastBreadcrumbs = () => ({
   type: actionTypes.DELETE_LAST_BREADCRUMBS,
 });
+
+export const setInitialBreadcrumbs = () => ({
+  type: actionTypes.SET_INITIAL_BREADCRUMBS,
+});

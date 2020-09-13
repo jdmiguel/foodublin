@@ -41,6 +41,11 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         breadcrumbs: state.breadcrumbs.slice(0, state.breadcrumbs.length - 1),
       };
+    case actionTypes.SET_INITIAL_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: initialState.breadcrumbs,
+      };
     default:
       return state;
   }
