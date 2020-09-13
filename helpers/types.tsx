@@ -52,3 +52,9 @@ export type RestaurantDetail = {
   phone: string;
   address: string;
 };
+
+export type BreadcrumbsData = {
+  text: string;
+  route: string;
+  asRoute: string;
+};

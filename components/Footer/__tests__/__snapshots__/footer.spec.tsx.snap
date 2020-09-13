@@ -26,6 +26,7 @@ exports[`Component: Footer should render 1`] = `
   position: absolute;
   left: 0;
   bottom: 0;
+  overflow: hidden;
 }
 
 .c1 {
@@ -62,11 +63,11 @@ exports[`Component: Footer should render 1`] = `
   margin-right: 1px;
 }
 
-.c4 {
+.c5 {
   font-weight: 300;
 }
 
-.c5 {
+.c6 {
   font-weight: 300;
   margin-right: 3px;
 }
@@ -100,6 +101,30 @@ exports[`Component: Footer should render 1`] = `
   }
 }
 
+@media only screen and (max-width:330px) {
+  .c2 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c4 {
+    font-size: 0.85rem;
+  }
+}
+
 <footer
   class="c0"
 >
@@ -110,7 +135,7 @@ exports[`Component: Footer should render 1`] = `
       class="c2"
     >
       <a
-        class="c3"
+        class="c3 c4"
         href="https://github.com/jdmiguel/foodublin"
       >
         GITHUB
@@ -120,7 +145,7 @@ exports[`Component: Footer should render 1`] = `
       class="c2"
     >
       <p
-        class="c4"
+        class="c5"
       >
         FOODUBLIN ©2020
       </p>
@@ -129,12 +154,12 @@ exports[`Component: Footer should render 1`] = `
       class="c2"
     >
       <p
-        class="c5"
+        class="c6"
       >
         BY
       </p>
       <a
-        class="c3"
+        class="c3 c4"
         href="https://jdmiguel.netlify.app/"
       >
         JDMIGUEL
@@ -145,7 +170,7 @@ exports[`Component: Footer should render 1`] = `
 `;
 
 exports[`Component: Footer should render the extended version 1`] = `
-.c5 {
+.c4 {
   font-size: 1rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -160,7 +185,7 @@ exports[`Component: Footer should render the extended version 1`] = `
   color: #FBA52B;
 }
 
-.c5 i {
+.c4 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -170,47 +195,9 @@ exports[`Component: Footer should render the extended version 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-right: 5px;
-}
-
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c6 {
-  white-space: nowrap;
-  margin-right: 5px;
-}
-
-.c9 {
-  white-space: nowrap;
-  margin-right: 5px;
-  pointer-events: none;
-  color: #A7A7A7;
-  font-weight: 400;
-}
-
-.c7 {
-  color: #A7A7A7;
-  font-weight: 600;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c0 {
@@ -218,6 +205,7 @@ exports[`Component: Footer should render the extended version 1`] = `
   position: absolute;
   left: 0;
   bottom: 0;
+  overflow: hidden;
 }
 
 .c1 {
@@ -229,13 +217,13 @@ exports[`Component: Footer should render the extended version 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -243,11 +231,7 @@ exports[`Component: Footer should render the extended version 1`] = `
   padding: 15px 10px;
 }
 
-.c10 {
-  margin-top: 7px;
-}
-
-.c11 {
+.c6 {
   background-color: #660000;
   display: -webkit-box;
   display: -webkit-flex;
@@ -260,7 +244,7 @@ exports[`Component: Footer should render the extended version 1`] = `
   padding: 20px 0;
 }
 
-.c12 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -268,73 +252,98 @@ exports[`Component: Footer should render the extended version 1`] = `
   color: #D8D8D8;
 }
 
-.c12:not(:first-of-type) {
+.c7:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c12:not(:last-of-type):after {
+.c7:not(:last-of-type):after {
   content: ' | ';
   margin-left: 3px;
 }
 
-.c12:last-of-type {
+.c7:last-of-type {
   margin-right: 1px;
 }
 
-.c13 {
+.c9 {
   font-weight: 300;
 }
 
-.c14 {
+.c10 {
   font-weight: 300;
   margin-right: 3px;
 }
 
 @media only screen and (min-width:540px) {
-  .c5 {
+  .c4 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c5:hover {
+  .c4:hover {
     color: #EC7E00;
   }
 }
 
-@media only screen and (min-width:540px) {
-  .c2 {
-    padding: 15px 20px;
+@media only screen and (min-width:600px) {
+  .c3 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
   }
 }
 
-@media only screen and (min-width:540px) {
-  .c10 {
-    margin-top: 0;
+@media only screen and (min-width:600px) {
+  .c2 {
+    padding: 15px 20px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c12:not(:first-of-type) {
+  .c7:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c12:not(:last-of-type):after {
+  .c7:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c12:last-of-type {
+  .c7:last-of-type {
     margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c7 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c9 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c10 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c8 {
+    font-size: 0.85rem;
   }
 }
 
@@ -349,50 +358,9 @@ exports[`Component: Footer should render the extended version 1`] = `
     >
       <div
         class="c3"
-      >
-        <div
-          class="c4"
-        >
-          <a
-            class="c5 c6"
-            href="/"
-          >
-            Home
-          </a>
-          <span
-            class="c7"
-          >
-            &gt;
-          </span>
-        </div>
-        <div
-          class="c4"
-        >
-          <a
-            class="c5 c6"
-            href="/search/rathmines/fast-food"
-          >
-            Search Restaurants
-          </a>
-          <span
-            class="c7"
-          >
-            &gt;
-          </span>
-        </div>
-        <div
-          class="c8"
-        >
-          <a
-            class="c5 c9"
-            href="/detail/elefant-castle"
-          >
-            Restaurant
-          </a>
-        </div>
-      </div>
+      />
       <a
-        class="c5 c10"
+        class="c4 c5"
         href="/"
       >
         <i
@@ -405,37 +373,37 @@ exports[`Component: Footer should render the extended version 1`] = `
     </div>
   </div>
   <div
-    class="c11"
+    class="c6"
   >
     <div
-      class="c12"
+      class="c7"
     >
       <a
-        class="c5"
+        class="c4 c8"
         href="https://github.com/jdmiguel/foodublin"
       >
         GITHUB
       </a>
     </div>
     <div
-      class="c12"
+      class="c7"
     >
       <p
-        class="c13"
+        class="c9"
       >
         FOODUBLIN ©2020
       </p>
     </div>
     <div
-      class="c12"
+      class="c7"
     >
       <p
-        class="c14"
+        class="c10"
       >
         BY
       </p>
       <a
-        class="c5"
+        class="c4 c8"
         href="https://jdmiguel.netlify.app/"
       >
         JDMIGUEL
@@ -471,6 +439,7 @@ exports[`Component: Footer should render with veil 1`] = `
   position: absolute;
   left: 0;
   bottom: 0;
+  overflow: hidden;
 }
 
 .c1 {
@@ -515,11 +484,11 @@ exports[`Component: Footer should render with veil 1`] = `
   margin-right: 1px;
 }
 
-.c5 {
+.c6 {
   font-weight: 300;
 }
 
-.c6 {
+.c7 {
   font-weight: 300;
   margin-right: 3px;
 }
@@ -559,6 +528,30 @@ exports[`Component: Footer should render with veil 1`] = `
   }
 }
 
+@media only screen and (max-width:330px) {
+  .c3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c7 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
+  }
+}
+
 <footer
   class="c0"
 >
@@ -572,7 +565,7 @@ exports[`Component: Footer should render with veil 1`] = `
       class="c3"
     >
       <a
-        class="c4"
+        class="c4 c5"
         href="https://github.com/jdmiguel/foodublin"
       >
         GITHUB
@@ -582,7 +575,7 @@ exports[`Component: Footer should render with veil 1`] = `
       class="c3"
     >
       <p
-        class="c5"
+        class="c6"
       >
         FOODUBLIN ©2020
       </p>
@@ -591,12 +584,12 @@ exports[`Component: Footer should render with veil 1`] = `
       class="c3"
     >
       <p
-        class="c6"
+        class="c7"
       >
         BY
       </p>
       <a
-        class="c4"
+        class="c4 c5"
         href="https://jdmiguel.netlify.app/"
       >
         JDMIGUEL

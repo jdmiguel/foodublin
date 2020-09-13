@@ -1,21 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import { fadeAnimation } from '../../helpers/animations';
+import { useSelector } from 'react-redux';
+import styled, { css } from 'styled-components';
 
 import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../core/CustomLink/CustomLink';
+
+import { InitialState } from '../../store/reducer';
+
+import { fadeAnimation } from '../../helpers/animations';
 
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
 };
 
+const smallDevicesTextCSS = css`
+  @media only screen and (max-width: 330px) {
+    font-size: 0.85rem;
+  }
+`;
+
 const StyledFooterWrapper = styled.footer`
   width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
+  overflow: hidden;
 `;
 
 const StyledNavFooterWrapper = styled.div`
@@ -24,22 +34,17 @@ const StyledNavFooterWrapper = styled.div`
 
 const StyledNavFooter = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 15px 10px;
-  @media only screen and (min-width: 540px) {
+  @media only screen and (min-width: 600px) {
     padding: 15px 20px;
-    flex-direction: row;
-    justify-content: space-between;
   }
 `;
 
-const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
-  margin-top: 7px;
-  @media only screen and (min-width: 540px) {
-    margin-top: 0;
-  }
+const StyledFavoriteLink = styled(CustomLink)`
+  ${smallDevicesTextCSS}
 `;
 
 const StyledFooterVeil = styled.div`
@@ -83,58 +88,62 @@ const StyledBlock = styled.div`
       margin-right: 3px;
     }
   }
+  ${smallDevicesTextCSS}
 `;
 
 const StyledText = styled.p<{ addSeparation: boolean }>`
   font-weight: 300;
   margin-right: ${({ addSeparation }) => addSeparation && '3px'};
+  ${smallDevicesTextCSS}
 `;
 
-const breadrumbsData = [
-  { text: 'Home', route: '/' },
-  {
-    text: 'Search Restaurants',
-    route: '/search/rathmines/fast-food',
-  },
-  { text: 'Restaurant', route: '/detail/elefant-castle' },
-];
+const StyledTextLink = styled(CustomLink)`
+  ${smallDevicesTextCSS}
+`;
 
 const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
-}) => (
-  <StyledFooterWrapper>
-    {showVeil && <StyledFooterVeil />}
-    {isExtended && (
-      <StyledNavFooterWrapper>
-        <StyledNavFooter className="grid-container">
-          <Breadcrumbs breadcrumbsData={breadrumbsData} />
-          <StyledCustomLink breadcrumbsSteps={breadrumbsData.length} route="/">
-            <i className="material-icons">bookmarks</i>FAVORITES
-          </StyledCustomLink>
-        </StyledNavFooter>
-      </StyledNavFooterWrapper>
-    )}
-    <StyledRightsFooter>
-      <StyledBlock>
-        <CustomLink
-          route="https://github.com/jdmiguel/foodublin"
-          isExternal={true}
-        >
-          GITHUB
-        </CustomLink>
-      </StyledBlock>
-      <StyledBlock>
-        <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
-      </StyledBlock>
-      <StyledBlock>
-        <StyledText addSeparation={true}>BY</StyledText>
-        <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
-          JDMIGUEL
-        </CustomLink>
-      </StyledBlock>
-    </StyledRightsFooter>
-  </StyledFooterWrapper>
-);
+}) => {
+  const breadcrumbs = useSelector((state: InitialState) => state.breadcrumbs);
+
+  return (
+    <StyledFooterWrapper>
+      {showVeil && <StyledFooterVeil />}
+      {isExtended && (
+        <StyledNavFooterWrapper>
+          <StyledNavFooter className="grid-container">
+            <Breadcrumbs breadcrumbsData={breadcrumbs || []} />
+            <StyledFavoriteLink route="/">
+              <i className="material-icons">bookmarks</i>FAVORITES
+            </StyledFavoriteLink>
+          </StyledNavFooter>
+        </StyledNavFooterWrapper>
+      )}
+      <StyledRightsFooter>
+        <StyledBlock>
+          <StyledTextLink
+            route="https://github.com/jdmiguel/foodublin"
+            isExternal={true}
+          >
+            GITHUB
+          </StyledTextLink>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledText addSeparation={true}>BY</StyledText>
+          <StyledTextLink
+            route="https://jdmiguel.netlify.app/"
+            isExternal={true}
+          >
+            JDMIGUEL
+          </StyledTextLink>
+        </StyledBlock>
+      </StyledRightsFooter>
+    </StyledFooterWrapper>
+  );
+};
 
 export default Footer;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { DefaultLayout } from '../../layouts';
@@ -17,10 +16,7 @@ import Highlights from './Highlights';
 import Address from './Address';
 import RelatedRestaurants from './RelatedRestaurants';
 
-import { InitialState } from '../../store/reducer';
-import { clearRelatedRestaurants } from '../../store/actions';
-
-import { RestaurantDetail } from '../../helpers/types';
+import { RestaurantDetail, Restaurant } from '../../helpers/types';
 import { getTimmings, getMapSrc } from '../../helpers/utils';
 import {
   DETAIL_GENERIC_SRC,
@@ -28,9 +24,10 @@ import {
 } from '../../helpers/staticData';
 
 type DetailPageProps = {
-  isLoading: boolean;
-  onClickRelatedRestaurant: () => void;
   data: RestaurantDetail;
+  isLoading: boolean;
+  relatedRestaurants: Restaurant[];
+  onClickRelatedRestaurant: () => void;
 };
 
 const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
@@ -179,8 +176,6 @@ const StyledRelatedRestaurants = styled.div`
 `;
 
 const DetailPage: React.FC<DetailPageProps> = ({
-  isLoading,
-  onClickRelatedRestaurant,
   data: {
     imgSrc,
     name,
@@ -195,18 +190,11 @@ const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
+  isLoading,
+  relatedRestaurants,
+  onClickRelatedRestaurant,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const relatedRestaurants = useSelector(
-    (state: InitialState) => state.relatedRestaurants,
-  );
-
-  const dispatch = useDispatch();
-
-  const handleClickRelatedRestaurant = () => {
-    dispatch(clearRelatedRestaurants());
-    onClickRelatedRestaurant();
-  };
 
   return (
     <DefaultLayout isExtendedFooter={true}>
@@ -289,7 +277,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
             <div className="grid-x grid-margin-x grid-margin-y">
               <RelatedRestaurants
                 restaurants={relatedRestaurants}
-                onClickRelatedRestaurant={handleClickRelatedRestaurant}
+                onClickRelatedRestaurant={onClickRelatedRestaurant}
               />
             </div>
           </StyledRelatedRestaurants>

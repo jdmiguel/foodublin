@@ -1,15 +1,17 @@
 import * as actionTypes from './actionTypes';
 
-import { Restaurant } from '../helpers/types';
+import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
 export type InitialState = {
   favorites: Restaurant[];
   relatedRestaurants: Restaurant[];
+  breadcrumbs: BreadcrumbsData[];
 };
 
 const initialState: InitialState = {
   favorites: [],
   relatedRestaurants: [],
+  breadcrumbs: [{ text: 'Home', route: '/', asRoute: '/' }],
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -28,6 +30,21 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         relatedRestaurants: [],
+      };
+    case actionTypes.ADD_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: [...state.breadcrumbs, action.breadcrumbs],
+      };
+    case actionTypes.DELETE_LAST_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: state.breadcrumbs.slice(0, state.breadcrumbs.length - 1),
+      };
+    case actionTypes.SET_INITIAL_BREADCRUMBS:
+      return {
+        ...state,
+        breadcrumbs: initialState.breadcrumbs,
       };
     default:
       return state;

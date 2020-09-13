@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 
 import SearchPage from '../../../components/SearchPage/SearchPage';
@@ -7,7 +7,12 @@ import SearchPage from '../../../components/SearchPage/SearchPage';
 import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
 import useScrollPosY from '../../../components/hooks/useScrollPosY';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { InitialState } from '../../../store/reducer';
+import {
+  setRelatedRestaurants,
+  deleteLastBreadcrumbs,
+  addBreadcrumbs,
+} from '../../../store/actions';
 
 import { MIN_RESTAURANTS_LIST } from '../../../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../../../helpers/utils';
@@ -26,6 +31,7 @@ import {
   SCROLL_OFFSET_MOBILE_FACTOR,
   SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
+  MAX_SEARCH_BREADCRUMBS,
 } from '../../../helpers/staticData';
 import { ListItemType, Restaurant, EntityType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
@@ -116,6 +122,7 @@ const Search: NextPage<SearchProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
 
+  const breadcrumbs = useSelector((state: InitialState) => state.breadcrumbs);
   const dispatch = useDispatch();
 
   const { width } = useWindowMeasures();
@@ -193,6 +200,23 @@ const Search: NextPage<SearchProps> = ({
     [isLoading],
     SCROLL_DELAY,
   );
+
+  const searchBreadcrumbs = {
+    text: `${cuisineName || 'Any food'} in ${locationName}`,
+    route: '/search/[location]/[cuisine]',
+    asRoute: `/search/${getFormattedUrlText(
+      locationName,
+      true,
+    )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
+  };
+
+  useEffect(() => {
+    dispatch(
+      breadcrumbs.length > MAX_SEARCH_BREADCRUMBS
+        ? deleteLastBreadcrumbs()
+        : addBreadcrumbs(searchBreadcrumbs),
+    );
+  }, []);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;

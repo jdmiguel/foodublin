@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 
 import DetailPage from '../../../components/DetailPage/DetailPage';
 
+import { InitialState } from '../../../store/reducer';
+import {
+  clearRelatedRestaurants,
+  deleteLastBreadcrumbs,
+  addBreadcrumbs,
+} from '../../../store/actions';
+
 import { RestaurantDetail } from '../../../helpers/types';
+import { getFormattedUrlText } from '../../../helpers/utils';
 
 import { getRestaurantData } from '../../../services';
 
@@ -22,19 +31,39 @@ type CustomNextPageContext = NextPageContext & {
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  const relatedRestaurants = useSelector(
+    (state: InitialState) => state.relatedRestaurants,
+  );
+
+  const dispatch = useDispatch();
+  const { name, imgSrc } = data;
+  const detailBreadcrumbs = {
+    text: name,
+    route: '/detail/[id]/[name]',
+    asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+  };
+
+  const handleClickRelatedRestaurant = () => {
+    setIsLoading(true);
+    dispatch(deleteLastBreadcrumbs());
+    dispatch(clearRelatedRestaurants());
+  };
+
   useEffect(() => {
     setIsLoading(false);
+    dispatch(addBreadcrumbs(detailBreadcrumbs));
   }, [id]);
 
   return (
     <>
       <Head>
-        <link rel="preload" as="image" href={data.imgSrc} />
+        <link rel="preload" as="image" href={imgSrc} />
       </Head>
       <DetailPage
         data={data}
         isLoading={isLoading}
-        onClickRelatedRestaurant={() => setIsLoading(true)}
+        relatedRestaurants={relatedRestaurants}
+        onClickRelatedRestaurant={handleClickRelatedRestaurant}
       />
     </>
   );

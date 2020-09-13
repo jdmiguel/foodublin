@@ -26,6 +26,9 @@ exports[`Component: Breadcrumbs should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c1 {
@@ -80,6 +83,32 @@ exports[`Component: Breadcrumbs should render 1`] = `
   }
 }
 
+@media only screen and (min-width:600px) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c4 {
+    font-size: 0.85rem;
+  }
+}
+
 <div
   class="c0"
 >
@@ -88,7 +117,7 @@ exports[`Component: Breadcrumbs should render 1`] = `
   >
     <a
       class="c2 c3"
-      href="/first-link"
+      href="/"
     >
       First step
     </a>
@@ -103,7 +132,7 @@ exports[`Component: Breadcrumbs should render 1`] = `
   >
     <a
       class="c2 c3"
-      href="/second-link"
+      href="/"
     >
       Second step
     </a>
@@ -118,7 +147,7 @@ exports[`Component: Breadcrumbs should render 1`] = `
   >
     <a
       class="c2 c6"
-      href="/third-link"
+      href="/"
     >
       Third step
     </a>
