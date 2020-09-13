@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../core/CustomLink/CustomLink';
@@ -14,11 +14,18 @@ type FooterProps = {
   isExtended?: boolean;
 };
 
+const smallDevicesTextCSS = css`
+  @media only screen and (max-width: 330px) {
+    font-size: 0.85rem;
+  }
+`;
+
 const StyledFooterWrapper = styled.footer`
   width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
+  overflow: hidden;
 `;
 
 const StyledNavFooterWrapper = styled.div`
@@ -27,22 +34,17 @@ const StyledNavFooterWrapper = styled.div`
 
 const StyledNavFooter = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 15px 10px;
-  @media only screen and (min-width: 540px) {
+  @media only screen and (min-width: 600px) {
     padding: 15px 20px;
-    flex-direction: row;
-    justify-content: space-between;
   }
 `;
 
-const StyledCustomLink = styled(CustomLink)<{ breadcrumbsSteps: number }>`
-  margin-top: 7px;
-  @media only screen and (min-width: 540px) {
-    margin-top: 0;
-  }
+const StyledFavoriteLink = styled(CustomLink)`
+  ${smallDevicesTextCSS}
 `;
 
 const StyledFooterVeil = styled.div`
@@ -86,11 +88,17 @@ const StyledBlock = styled.div`
       margin-right: 3px;
     }
   }
+  ${smallDevicesTextCSS}
 `;
 
 const StyledText = styled.p<{ addSeparation: boolean }>`
   font-weight: 300;
   margin-right: ${({ addSeparation }) => addSeparation && '3px'};
+  ${smallDevicesTextCSS}
+`;
+
+const StyledTextLink = styled(CustomLink)`
+  ${smallDevicesTextCSS}
 `;
 
 const Footer: React.FC<FooterProps> = ({
@@ -106,29 +114,32 @@ const Footer: React.FC<FooterProps> = ({
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">
             <Breadcrumbs breadcrumbsData={breadcrumbs} />
-            <StyledCustomLink breadcrumbsSteps={breadcrumbs.length} route="/">
+            <StyledFavoriteLink route="/">
               <i className="material-icons">bookmarks</i>FAVORITES
-            </StyledCustomLink>
+            </StyledFavoriteLink>
           </StyledNavFooter>
         </StyledNavFooterWrapper>
       )}
       <StyledRightsFooter>
         <StyledBlock>
-          <CustomLink
+          <StyledTextLink
             route="https://github.com/jdmiguel/foodublin"
             isExternal={true}
           >
             GITHUB
-          </CustomLink>
+          </StyledTextLink>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={true}>BY</StyledText>
-          <CustomLink route="https://jdmiguel.netlify.app/" isExternal={true}>
+          <StyledTextLink
+            route="https://jdmiguel.netlify.app/"
+            isExternal={true}
+          >
             JDMIGUEL
-          </CustomLink>
+          </StyledTextLink>
         </StyledBlock>
       </StyledRightsFooter>
     </StyledFooterWrapper>

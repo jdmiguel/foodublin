@@ -15,8 +15,18 @@ const lastBreadcrumbCSS = css`
   font-weight: 400;
 `;
 
+const smallDevicesTextCSS = css`
+  @media only screen and (max-width: 330px) {
+    font-size: 0.85rem;
+  }
+`;
+
 const StyledBreadcrumbsWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledBreadcrumb = styled.div<{ isLast: boolean }>`
@@ -29,11 +39,13 @@ const StyledLink = styled(CustomLink)<{ isLast: boolean }>`
   white-space: nowrap;
   margin-right: 5px;
   ${({ isLast }) => isLast && lastBreadcrumbCSS};
+  ${smallDevicesTextCSS}
 `;
 
 const StyledArrow = styled.span`
   color: ${(props) => props.theme.palette.DARK_SOFT};
   font-weight: 600;
+  ${smallDevicesTextCSS}
 `;
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
