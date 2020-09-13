@@ -26,6 +26,9 @@ exports[`Component: Breadcrumbs should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c1 {
@@ -77,6 +80,32 @@ exports[`Component: Breadcrumbs should render 1`] = `
 
   .c2:hover {
     color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c4 {
+    font-size: 0.85rem;
   }
 }
 
