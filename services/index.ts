@@ -19,7 +19,7 @@ const handleApiError = (error: AxiosError) => {
   }
 };
 
-export const getRestaurantsData = async (
+export const getRestaurants = async (
   params: RestaurantsRequestParamsType,
 ): Promise<any> => {
   const currentParams = Object.entries(params).reduce(
@@ -43,13 +43,13 @@ export const getRestaurantsData = async (
       params: currentParams,
     });
 
-    return { ...response.data };
+    return { data: response.data, status: response.status };
   } catch (error) {
     return handleApiError(error);
   }
 };
 
-export const getRestaurantData = async (res_id: number): Promise<any> => {
+export const getRestaurant = async (res_id: number): Promise<any> => {
   try {
     const response = await axios(`${BASE_URL}restaurant`, {
       method: 'GET',
@@ -62,7 +62,7 @@ export const getRestaurantData = async (res_id: number): Promise<any> => {
       },
     });
 
-    return { ...response.data };
+    return { data: response.data, status: response.status };
   } catch (error) {
     return handleApiError(error);
   }

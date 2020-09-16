@@ -26,7 +26,7 @@ import {
 } from '../../helpers/utils';
 import { EntityType, Restaurant } from '../../helpers/types';
 
-import { getRestaurantsData } from '../../services';
+import { getRestaurants } from '../../services';
 
 type FinderProps = {
   className?: string;
@@ -158,26 +158,29 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     async (search: string) => {
       setIsAutocompleteLoading(true);
 
-      const response = await getRestaurantsData({
+      const { data, status } = await getRestaurants({
         entity_id: DUBLIN_ID,
         entity_type: EntityType.CITY,
         cuisines: 0,
         q: search,
       });
-      const restaurants = response.restaurants.map((restaurant: any) => ({
-        id: restaurant.restaurant.id,
-        imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-        title: restaurant.restaurant.name,
-        content: restaurant.restaurant.location.locality,
-        route: '/detail/[id]/[name]',
-        asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
-          restaurant.restaurant.name,
-          true,
-        )}`,
-      }));
 
-      setSuggestions(restaurants);
-      setIsAutocompleteLoading(false);
+      if (status === 200) {
+        const restaurants = data.restaurants.map((restaurant: any) => ({
+          id: restaurant.restaurant.id,
+          imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+          title: restaurant.restaurant.name,
+          content: restaurant.restaurant.location.locality,
+          route: '/detail/[id]/[name]',
+          asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
+            restaurant.restaurant.name,
+            true,
+          )}`,
+        }));
+
+        setSuggestions(restaurants);
+        setIsAutocompleteLoading(false);
+      }
     },
     [setIsAutocompleteLoading, setSuggestions],
   );
