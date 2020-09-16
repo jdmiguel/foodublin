@@ -43,7 +43,7 @@ describe('Component: Autocomplete', () => {
     expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
   });
 
-  it('should show/hide suggestions list', async () => {
+  it('should show/hide suggestions list', () => {
     const { getByTestId, getByPlaceholderText } = render(
       renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />),
     );
@@ -58,11 +58,6 @@ describe('Component: Autocomplete', () => {
 
     // hide suggestions list by activating blur event
     fireEvent.blur(input);
-
-    await waitFor(() => {
-      expect(listboxWrapper).toHaveStyleRule('opacity', '0');
-      expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
-    });
 
     // show suggestions list by activating focus event
     fireEvent.focus(input);

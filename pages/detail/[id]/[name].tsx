@@ -46,12 +46,14 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   const handleClickRelatedRestaurant = () => {
     setIsLoading(true);
     dispatch(deleteLastBreadcrumbs());
-    dispatch(clearRelatedRestaurants());
   };
 
   useEffect(() => {
     setIsLoading(false);
     dispatch(addBreadcrumbs(detailBreadcrumbs));
+    return () => {
+      dispatch(clearRelatedRestaurants());
+    };
   }, [id]);
 
   return (
