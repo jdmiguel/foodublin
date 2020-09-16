@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, Dispatch } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 
+import ErrorPage from '../../../components/ErrorPage/ErrorPage';
 import SearchPage from '../../../components/SearchPage/SearchPage';
 
 import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
@@ -17,7 +18,7 @@ import {
 import { MIN_RESTAURANTS_LIST } from '../../../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../../../helpers/utils';
 
-import { getRestaurantsData } from '../../../services';
+import { getRestaurants } from '../../../services';
 
 import {
   DUBLIN_ID,
@@ -46,8 +47,8 @@ type SearchProps = {
   locationName: LocationType.CITY | LocationType.SUBZONE;
   cuisineId: number;
   cuisineName: string;
+  restaurants: Restaurant[] | undefined;
   total: number;
-  restaurants: Restaurant[];
 };
 
 type CustomNextPageContext = NextPageContext & {
@@ -75,8 +76,9 @@ const getFormattedRestaurant = (restaurant: any) => ({
   )}`,
 });
 
-const getRestaurants = (restaurants: Restaurant[]) => (formattedFuntion: any) =>
-  restaurants.map((item: any) => formattedFuntion(item.restaurant));
+const selectRestaurants = (restaurants: Restaurant[]) => (
+  formattedFuntion: any,
+) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
 const handleGetRestaurantsData = async (
   locationId: number,
@@ -85,7 +87,7 @@ const handleGetRestaurantsData = async (
   sort?: string,
   order?: string,
 ) => {
-  const response = await getRestaurantsData({
+  const { data, status } = await getRestaurants({
     entity_id: locationId,
     entity_type:
       locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
@@ -94,11 +96,18 @@ const handleGetRestaurantsData = async (
     sort,
     order,
   });
-  const restaurants = getRestaurants(response.restaurants);
+  if (status === 200) {
+    const restaurants = selectRestaurants(data.restaurants);
+
+    return {
+      restaurants: restaurants(getFormattedRestaurant),
+      total: data.results_found,
+    };
+  }
 
   return {
-    total: response.results_found,
-    restaurants: restaurants(getFormattedRestaurant),
+    restaurants: undefined,
+    total: 0,
   };
 };
 
@@ -107,9 +116,12 @@ const Search: NextPage<SearchProps> = ({
   cuisineId,
   locationName,
   cuisineName,
-  total,
   restaurants,
+  total,
 }) => {
+  if (restaurants === undefined) {
+    return <ErrorPage />;
+  }
   const searchRef = useRef<HTMLDivElement>(null);
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
@@ -121,6 +133,7 @@ const Search: NextPage<SearchProps> = ({
   ] = useState(restaurants);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
+  const [onError, setOnError] = useState(false);
 
   const breadcrumbs = useSelector((state: InitialState) => state.breadcrumbs);
   const dispatch = useDispatch();
@@ -148,10 +161,14 @@ const Search: NextPage<SearchProps> = ({
       order,
     );
 
-    sortRef.current = sort;
-    orderRef.current = order;
+    if (restaurantsData.restaurants) {
+      sortRef.current = sort;
+      orderRef.current = order;
 
-    setCurrentRestaurants(restaurantsData.restaurants);
+      setCurrentRestaurants(restaurantsData.restaurants);
+    } else {
+      setOnError(true);
+    }
   };
 
   useScrollPosY(
@@ -191,10 +208,14 @@ const Search: NextPage<SearchProps> = ({
           orderRef.current,
         );
 
-        setCurrentRestaurants([
-          ...currentRestaurants,
-          ...restaurantsData.restaurants,
-        ]);
+        if (restaurantsData.restaurants) {
+          setCurrentRestaurants([
+            ...currentRestaurants,
+            ...restaurantsData.restaurants,
+          ]);
+        } else {
+          setOnError(true);
+        }
       }
     },
     [isLoading],
@@ -236,6 +257,10 @@ const Search: NextPage<SearchProps> = ({
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }
   };
+
+  if (onError) {
+    return <ErrorPage />;
+  }
 
   return (
     <SearchPage
