@@ -30,6 +30,16 @@ type CustomNextPageContext = NextPageContext & {
 };
 
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      if (data === undefined) {
+        dispatch(deleteLastBreadcrumbs());
+      }
+    };
+  }, []);
+
   if (data === undefined) {
     return <ErrorPage />;
   }
@@ -40,7 +50,6 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     (state: InitialState) => state.relatedRestaurants,
   );
 
-  const dispatch = useDispatch();
   const { name, imgSrc } = data;
   const detailBreadcrumbs = {
     text: name,
