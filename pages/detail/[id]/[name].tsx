@@ -38,7 +38,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
         dispatch(deleteLastBreadcrumbs());
       }
     };
-  }, []);
+  }, [data]);
 
   if (data === undefined) {
     return <ErrorPage />;

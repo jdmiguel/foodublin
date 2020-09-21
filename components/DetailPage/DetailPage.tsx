@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { LazyImage } from 'react-lazy-images';
 
 import { DefaultLayout } from '../../layouts';
 
@@ -87,9 +88,9 @@ const StyledJumbotron = styled.div<{ bgImg: string }>`
 const StyledOverlay = styled.div`
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.6) 100%
   );
   width: 100%;
   height: 100%;
@@ -196,29 +197,51 @@ const DetailPage: React.FC<DetailPageProps> = ({
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const getOverlay = () => (
+    <StyledOverlay>
+      <StyledName>{name}</StyledName>
+      <StyledLocation>{location}</StyledLocation>
+      <StyledButton
+        onClick={() => {
+          'handle favorite';
+          setIsFavorite((favorite) => !favorite);
+        }}
+      >
+        <i className="material-icons">{`${
+          isFavorite ? 'favorite_border' : 'favorite'
+        }`}</i>
+        {`${isFavorite ? 'unsaved' : 'saved'}`}
+      </StyledButton>
+    </StyledOverlay>
+  );
+
+  const getStyledJumbotron = (ref: any, imgSrc: string) => (
+    <StyledJumbotron ref={ref} bgImg={imgSrc}>
+      {getOverlay()}
+    </StyledJumbotron>
+  );
+
+  const getJumbotron = (imgSrc: string) => {
+    if (imgSrc) {
+      return (
+        <LazyImage
+          src={imgSrc}
+          placeholder={({ ref }) => getStyledJumbotron(ref, DETAIL_GENERIC_SRC)}
+          actual={({ imageProps }) => getStyledJumbotron(null, imageProps.src)}
+        />
+      );
+    }
+
+    return getStyledJumbotron(null, DETAIL_GENERIC_SRC);
+  };
+
   return (
     <DefaultLayout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
         <StyledLoaderWrapper isShowed={isLoading}>
           <StyledLoader text={DEFAULT_TEXT_LOADING} />
         </StyledLoaderWrapper>
-        <StyledJumbotron bgImg={imgSrc || DETAIL_GENERIC_SRC}>
-          <StyledOverlay>
-            <StyledName>{name}</StyledName>
-            <StyledLocation>{location}</StyledLocation>
-            <StyledButton
-              onClick={() => {
-                'handle favorite';
-                setIsFavorite((favorite) => !favorite);
-              }}
-            >
-              <i className="material-icons">{`${
-                isFavorite ? 'favorite_border' : 'favorite'
-              }`}</i>
-              {`${isFavorite ? 'unsaved' : 'saved'}`}
-            </StyledButton>
-          </StyledOverlay>
-        </StyledJumbotron>
+        {getJumbotron(imgSrc)}
         <StyledInformation>
           <Title text="Relevant information" />
           <div className="grid-x">
