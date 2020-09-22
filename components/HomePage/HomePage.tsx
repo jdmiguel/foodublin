@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../../layouts';
+import Layout from '../../layouts/Layout';
 
 import Loader from '../core/Loader/Loader';
 import Title from '../core/Title/Title';

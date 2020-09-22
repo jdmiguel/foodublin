@@ -8,7 +8,7 @@ import reducer from '../../store/reducer';
 
 import { theme } from '../../helpers/Theme';
 
-import { DefaultLayout } from '../index';
+import Layout from '../Layout';
 
 test('default layout can be passed a child', () => {
   const mockStore = configureStore();
@@ -18,11 +18,11 @@ test('default layout can be passed a child', () => {
   const { getByText } = render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <DefaultLayout isExtendedHeader={false} isExtendedFooter={false}>
+        <Layout isExtendedHeader={false} isExtendedFooter={false}>
           <div>
             <h1>Hello World</h1>
           </div>
-        </DefaultLayout>
+        </Layout>
       </ThemeProvider>
     </Provider>,
   );

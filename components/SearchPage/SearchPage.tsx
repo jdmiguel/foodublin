@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import Layout from '../../layouts';
+import Layout from '../../layouts/Layout';
 
 import Filter from '../Filter/Filter';
 
