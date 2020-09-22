@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BlockText from '../core/BlockText/BlockText';
+import BlockText from '../../core/BlockText/BlockText';
 
 type HighLightsProps = {
   highlights: string[];

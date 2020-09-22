@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import Logo from '../../components/core/Logo/Logo';
-import Finder from '../../components/Finder/Finder';
+import Finder from '../../components/ui/Finder/Finder';
 import CustomLink, {
   CustomLinkSize,
 } from '../../components/core/CustomLink/CustomLink';

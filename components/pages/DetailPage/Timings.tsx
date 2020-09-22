@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Timming } from '../../helpers/types';
+import { Timming } from '../../../helpers/types';
 
 type TimingsProps = {
   timmings: Timming[];

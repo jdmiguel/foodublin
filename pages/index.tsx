@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import HomePage from '../components/HomePage/HomePage';
+import HomePage from '../components/pages/HomePage/HomePage';
 
 import { setRelatedRestaurants, setInitialBreadcrumbs } from '../store/actions';
 

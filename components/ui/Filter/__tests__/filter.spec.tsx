@@ -4,8 +4,8 @@ import 'jest-styled-components';
 
 import Filter from '../Filter';
 
-import { renderWithTheme } from '../../../helpers/Theme';
-import { FILTER_DATA } from '../../../helpers/staticData';
+import { renderWithTheme } from '../../../../helpers/Theme';
+import { FILTER_DATA } from '../../../../helpers/staticData';
 
 describe('Component: Filter', () => {
   it('should render', () => {

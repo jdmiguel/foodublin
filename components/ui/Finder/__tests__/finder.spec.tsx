@@ -4,11 +4,11 @@ import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import reducer from '../../../store/reducer';
+import reducer from '../../../../store/reducer';
 
 import Finder from '../Finder';
 
-import { renderWithTheme } from '../../../helpers/Theme';
+import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Finder', () => {
   it('should render', () => {

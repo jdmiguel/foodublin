@@ -1,21 +1,21 @@
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import Layout from '../../layouts/Layout';
+import Layout from '../../../layouts/Layout';
 
-import Filter from '../Filter/Filter';
+import Filter from '../../ui/Filter/Filter';
 
-import Title from '../core/Title/Title';
-import Card from '../core/Card/Card';
-import Loader, { LoaderType } from '../core/Loader/Loader';
+import Title from '../../core/Title/Title';
+import Card from '../../core/Card/Card';
+import Loader, { LoaderType } from '../../core/Loader/Loader';
 
 import {
   FILTER_DATA,
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
-} from '../../helpers/staticData';
-import { Restaurant } from '../../helpers/types';
-import { getTitleText } from '../../helpers/utils';
+} from '../../../helpers/staticData';
+import { Restaurant } from '../../../helpers/types';
+import { getTitleText } from '../../../helpers/utils';
 
 type SearchPageProps = {
   location: string | undefined;

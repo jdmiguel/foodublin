@@ -1,7 +1,7 @@
 import React, { useReducer, Dispatch } from 'react';
 import styled from 'styled-components';
 
-import { FilterSort, FilterOrder } from '../../helpers/staticData';
+import { FilterSort, FilterOrder } from '../../../helpers/staticData';
 
 type FilterData = {
   primaryText: string;

@@ -11,7 +11,7 @@ import {
   SECOND_DETAIL,
   THIRD_DETAIL,
   FOURTH_DETAIL,
-} from '../../components/DetailPage/__mocks__/detailpage.mocks';
+} from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
 import { LOCATIONS } from '../staticData';
 
 describe('compose', () => {

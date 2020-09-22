@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import FavoritesPage from '../components/FavoritesPage/FavoritesPage';
+import FavoritesPage from '../components/pages/FavoritesPage/FavoritesPage';
 
 import { InitialState } from '../store/reducer';
 

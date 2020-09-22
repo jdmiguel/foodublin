@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../../layouts/Layout';
+import Layout from '../../../layouts/Layout';
 
-import Title from '../core/Title/Title';
-import Card from '../core/Card/Card';
+import Title from '../../core/Title/Title';
+import Card from '../../core/Card/Card';
 
-import { THUMB_GENERIC_SRC } from '../../helpers/staticData';
-import { Restaurant } from '../../helpers/types';
-import { getTitleText } from '../../helpers/utils';
+import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
+import { Restaurant } from '../../../helpers/types';
+import { getTitleText } from '../../../helpers/utils';
 
 type FavoritesPageProps = {
   total: number;
