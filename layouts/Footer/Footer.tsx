@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 
-import Breadcrumbs from '../core/Breadcrumbs/Breadcrumbs';
-import CustomLink from '../core/CustomLink/CustomLink';
+import Breadcrumbs from '../../components/core/Breadcrumbs/Breadcrumbs';
+import CustomLink from '../../components/core/CustomLink/CustomLink';
 
 import { InitialState } from '../../store/reducer';
 
