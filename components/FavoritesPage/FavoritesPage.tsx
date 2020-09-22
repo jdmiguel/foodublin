@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { DefaultLayout } from '../../layouts';
+import Layout from '../../layouts';
 
 import Title from '../core/Title/Title';
 import Card from '../core/Card/Card';
@@ -50,7 +50,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   const { totalText, restaurantText } = getTitleText(total);
 
   return (
-    <DefaultLayout isExtendedFooter={true}>
+    <Layout isExtendedFooter={true}>
       <StyledFavoritesPage className="grid-container">
         <Title text={`${totalText} ${restaurantText} saved as Favorites`} />
         <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
@@ -71,7 +71,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
           ))}
         </StyledCardsWrapper>
       </StyledFavoritesPage>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

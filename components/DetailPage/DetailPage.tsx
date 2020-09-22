@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import { DefaultLayout } from '../../layouts';
+import Layout from '../../layouts';
 
 import Loader from '../core/Loader/Loader';
 import Title from '../core/Title/Title';
@@ -229,7 +229,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
   };
 
   return (
-    <DefaultLayout isExtendedFooter={true}>
+    <Layout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
         <StyledLoaderWrapper isShowed={isLoading}>
           <StyledLoader text={DEFAULT_TEXT_LOADING} />
@@ -299,7 +299,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
           </StyledRelatedRestaurants>
         )}
       </StyledDetailPage>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

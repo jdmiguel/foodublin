@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { DefaultLayout } from '../../layouts';
+import Layout from '../../layouts';
 
 import Loader from '../core/Loader/Loader';
 import Title from '../core/Title/Title';
@@ -63,7 +63,7 @@ const HomePage: React.FC<HomePageProps> = ({
   isLoading,
   onClickHighlightCard,
 }) => (
-  <DefaultLayout isExtendedHeader={true} isExtendedFooter={true}>
+  <Layout isExtendedHeader={true} isExtendedFooter={true}>
     <StyledLoaderWrapper isShowed={isLoading}>
       <StyledLoader text={DEFAULT_TEXT_LOADING} />
     </StyledLoaderWrapper>
@@ -86,7 +86,7 @@ const HomePage: React.FC<HomePageProps> = ({
         ))}
       </StyledHighlightWrapper>
     </StyledHighlights>
-  </DefaultLayout>
+  </Layout>
 );
 
 export default HomePage;

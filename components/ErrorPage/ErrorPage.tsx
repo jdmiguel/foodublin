@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import { DefaultLayout } from '../../layouts';
+import Layout from '../../layouts';
 
 import BlockTitle from '../core/BlockTitle/BlockTitle';
 import Button from '../core/Button/Button';
@@ -29,14 +29,14 @@ const ErrorPage: React.FC = () => {
   const router = useRouter();
 
   return (
-    <DefaultLayout>
+    <Layout>
       <StyledErrorPage className="grid-container">
         <StyledText text="Sorry but something was wrong..." />
         <Button fullWidth={false} onClick={() => router.push('/')}>
           <i className="material-icons">home</i>Back to home
         </Button>
       </StyledErrorPage>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

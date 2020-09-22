@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import { DefaultLayout } from '../../layouts';
+import Layout from '../../layouts';
 
 import Filter from '../Filter/Filter';
 
@@ -139,7 +139,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
     const { totalText, restaurantText } = getTitleText(total);
 
     return (
-      <DefaultLayout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
+      <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
           {isLoadingByScroll ? (
             <StyledLineLoaderWrapper isShowed={isLoading}>
@@ -187,7 +187,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
             </StyledWarning>
           )}
         </StyledSearchPage>
-      </DefaultLayout>
+      </Layout>
     );
   },
 );
