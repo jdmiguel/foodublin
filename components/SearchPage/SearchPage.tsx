@@ -15,6 +15,7 @@ import {
   DEFAULT_TEXT_LOADING,
 } from '../../helpers/staticData';
 import { Restaurant } from '../../helpers/types';
+import { getTitleText } from '../../helpers/utils';
 
 type SearchPageProps = {
   location: string | undefined;
@@ -135,9 +136,7 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
     },
     forwardedRef,
   ) => {
-    const titleTotalText = total > 0 ? total : 'There are no';
-    const titleRestaurantText =
-      total === 0 || total >= 2 ? 'restaurants' : 'restaurant';
+    const { totalText, restaurantText } = getTitleText(total);
 
     return (
       <DefaultLayout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
@@ -152,9 +151,9 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
             </StyledCircleLoaderWrapper>
           )}
           <Title
-            text={`${titleTotalText} ${
+            text={`${totalText} ${
               cuisine || ''
-            } ${titleRestaurantText} in ${location}`}
+            } ${restaurantText} in ${location}`}
           />
           {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
           <StyledCardsWrapper

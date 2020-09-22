@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 
+import { HIGHLIGHTED_RESTAURANTS } from '../helpers/staticData';
 import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
 export type InitialState = {
@@ -9,7 +10,7 @@ export type InitialState = {
 };
 
 const initialState: InitialState = {
-  favorites: [],
+  favorites: HIGHLIGHTED_RESTAURANTS,
   relatedRestaurants: [],
   breadcrumbs: [{ text: 'Home', route: '/', asRoute: '/' }],
 };
