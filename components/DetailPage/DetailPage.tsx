@@ -86,56 +86,49 @@ const StyledJumbotron = styled.div<{ bgImg: string }>`
 `;
 
 const StyledOverlay = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 50px 10px;
-  @media only screen and (min-width: 640px) {
-    padding: 70px 20px;
-  }
+  padding: 20px;
 `;
 
 const StyledName = styled.h2`
   ${JumbotronTextCSS}
   font-size: 1.7rem;
+  line-height: 1.5rem;
   font-weight: 600;
-  margin: 10px 0;
   @media only screen and (min-width: 640px) {
-    font-size: 2.8rem;
-    margin: 15px 0 25px;
+    line-height: 2.3rem;
+    font-size: 2.6rem;
   }
   @media only screen and (min-width: 992px) {
-    font-size: 3.2rem;
-    margin: 20px 0 30px;
+    line-height: 2.5rem;
+    font-size: 3rem;
   }
 `;
 
-const StyledLocation = styled.h2`
+const StyledLocation = styled.h3`
   ${JumbotronTextCSS}
   font-size: 1.3rem;
-  margin-bottom: 20px;
+  line-height: 1.3rem;
   @media only screen and (min-width: 640px) {
+    line-height: 2rem;
     font-size: 2rem;
-    margin-bottom: 30px;
   }
   @media only screen and (min-width: 992px) {
+    line-height: 2rem;
     font-size: 2.6rem;
-    margin-bottom: 40px;
   }
 `;
 
 const StyledButton = styled(Button)`
   max-width: 140px;
+  margin-top: 30px;
   @media only screen and (max-width: 639px) {
     max-width: 127px;
     height: 45px;
