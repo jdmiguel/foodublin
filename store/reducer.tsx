@@ -18,7 +18,7 @@ const initialState: InitialState = {
   breadcrumbs: [DEFAULT_BREADCRUMB],
 };
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state = initialState, action: actionTypes.Actions) => {
   switch (action.type) {
     case actionTypes.SET_FAVORITE:
       return {
