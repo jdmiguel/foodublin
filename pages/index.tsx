@@ -18,8 +18,6 @@ const index = () => {
 
   const dispatch = useDispatch();
 
-  useBreadcrumbs(DEFAULT_BREADCRUMB);
-
   const handleClickHightlightCard = (id: string) => {
     setIsLoading(true);
 
@@ -29,6 +27,8 @@ const index = () => {
     );
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
   };
+
+  useBreadcrumbs(DEFAULT_BREADCRUMB);
 
   return (
     <HomePage

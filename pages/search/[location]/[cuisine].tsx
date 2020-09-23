@@ -222,18 +222,6 @@ const Search: NextPage<SearchProps> = ({
     SCROLL_DELAY,
   );
 
-  const searchBreadcrumbs = {
-    text: `${cuisineName || 'Any food'} in ${locationName}`,
-    route: '/search/[location]/[cuisine]',
-    asRoute: `/search/${getFormattedUrlText(
-      locationName,
-      true,
-    )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
-    type: BreadcrumbsType.SEARCH,
-  };
-
-  useBreadcrumbs(searchBreadcrumbs);
-
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
     setIsLoading(false);
@@ -252,6 +240,17 @@ const Search: NextPage<SearchProps> = ({
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }
   };
+
+  const searchBreadcrumbs = {
+    text: `${cuisineName || 'Any food'} in ${locationName}`,
+    route: '/search/[location]/[cuisine]',
+    asRoute: `/search/${getFormattedUrlText(
+      locationName,
+      true,
+    )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
+    type: BreadcrumbsType.SEARCH,
+  };
+  useBreadcrumbs(searchBreadcrumbs);
 
   if (onError) {
     return <ErrorPage />;

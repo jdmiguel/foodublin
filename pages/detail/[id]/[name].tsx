@@ -43,21 +43,20 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     setIsLoading(true);
   };
 
-  const detailBreadcrumbs = {
-    text: name,
-    route: '/detail/[id]/[name]',
-    asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
-    type: BreadcrumbsType.DETAIL,
-  };
-
-  useBreadcrumbs(detailBreadcrumbs);
-
   useEffect(() => {
     setIsLoading(false);
     return () => {
       dispatch(clearRelatedRestaurants());
     };
   }, [id]);
+
+  const detailBreadcrumbs = {
+    text: name,
+    route: '/detail/[id]/[name]',
+    asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+    type: BreadcrumbsType.DETAIL,
+  };
+  useBreadcrumbs(detailBreadcrumbs);
 
   return (
     <>
