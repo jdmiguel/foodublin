@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">
             <Breadcrumbs breadcrumbsData={breadcrumbs || []} />
-            <StyledFavoriteLink route="/">
+            <StyledFavoriteLink route="/favorites">
               <i className="material-icons">bookmarks</i>FAVORITES
             </StyledFavoriteLink>
           </StyledNavFooter>

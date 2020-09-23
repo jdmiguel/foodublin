@@ -1,4 +1,5 @@
 import { CDN_URL_STATIC_DIRECTORY } from './utils';
+import { BreadcrumbsType } from './types';
 
 export const DUBLIN_ID = 91;
 export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
@@ -353,3 +354,10 @@ export const FILTER_DATA = [
     id: 4,
   },
 ];
+
+export const DEFAULT_BREADCRUMB = {
+  text: 'Home',
+  route: '/',
+  asRoute: '/',
+  type: BreadcrumbsType.HOME,
+};

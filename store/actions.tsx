@@ -21,10 +21,11 @@ export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
   breadcrumbs,
 });
 
-export const deleteLastBreadcrumbs = () => ({
-  type: actionTypes.DELETE_LAST_BREADCRUMBS,
-});
-
-export const setInitialBreadcrumbs = () => ({
-  type: actionTypes.SET_INITIAL_BREADCRUMBS,
+export const replaceBreadcrumbs = (
+  index: number,
+  breadcrumbs: BreadcrumbsData,
+) => ({
+  type: actionTypes.REPLACE_BREADCRUMBS,
+  index,
+  breadcrumbs,
 });

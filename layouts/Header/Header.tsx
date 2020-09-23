@@ -121,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
         </StyledHeaderClaim>
         {isExtended && <Finder />}
         {!isExtended && (
-          <StyledCustomLink route="/" size={CustomLinkSize.BIG}>
+          <StyledCustomLink route="/favorites" size={CustomLinkSize.BIG}>
             <i className="material-icons">bookmarks</i>
             <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
           </StyledCustomLink>

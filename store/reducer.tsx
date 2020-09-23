@@ -1,6 +1,9 @@
 import * as actionTypes from './actionTypes';
 
-import { HIGHLIGHTED_RESTAURANTS } from '../helpers/staticData';
+import {
+  HIGHLIGHTED_RESTAURANTS,
+  DEFAULT_BREADCRUMB,
+} from '../helpers/staticData';
 import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
 export type InitialState = {
@@ -12,7 +15,7 @@ export type InitialState = {
 const initialState: InitialState = {
   favorites: HIGHLIGHTED_RESTAURANTS,
   relatedRestaurants: [],
-  breadcrumbs: [{ text: 'Home', route: '/', asRoute: '/' }],
+  breadcrumbs: [DEFAULT_BREADCRUMB],
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -30,22 +33,20 @@ const reducer = (state = initialState, action: any) => {
     case actionTypes.CLEAR_RELATED_RESTAURANTS:
       return {
         ...state,
-        relatedRestaurants: [],
+        relatedRestaurants: initialState.relatedRestaurants,
       };
     case actionTypes.ADD_BREADCRUMBS:
       return {
         ...state,
         breadcrumbs: [...state.breadcrumbs, action.breadcrumbs],
       };
-    case actionTypes.DELETE_LAST_BREADCRUMBS:
+    case actionTypes.REPLACE_BREADCRUMBS:
       return {
         ...state,
-        breadcrumbs: state.breadcrumbs.slice(0, state.breadcrumbs.length - 1),
-      };
-    case actionTypes.SET_INITIAL_BREADCRUMBS:
-      return {
-        ...state,
-        breadcrumbs: initialState.breadcrumbs,
+        breadcrumbs: [
+          ...state.breadcrumbs.slice(0, action.index),
+          action.breadcrumbs,
+        ],
       };
     default:
       return state;

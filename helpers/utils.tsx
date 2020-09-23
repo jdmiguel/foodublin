@@ -116,5 +116,5 @@ export const getCurrentRelatedRestaurants = (
 
 export const getTitleText = (total: number) => ({
   totalText: total > 0 ? total : 'There are no',
-  restaurantText: `restaurant${(total === 0 || total >= 2) && 's'}`,
+  restaurantText: `restaurant${total === 0 || total >= 2 ? 's' : ''}`,
 });

@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import HomePage from '../components/pages/HomePage/HomePage';
 
-import { setRelatedRestaurants, setInitialBreadcrumbs } from '../store/actions';
+import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
 
-import { HIGHLIGHTED_RESTAURANTS } from '../helpers/staticData';
+import { setRelatedRestaurants } from '../store/actions';
+
+import {
+  DEFAULT_BREADCRUMB,
+  HIGHLIGHTED_RESTAURANTS,
+} from '../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../helpers/utils';
 
 const index = () => {
@@ -13,9 +18,7 @@ const index = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setInitialBreadcrumbs());
-  }, []);
+  useBreadcrumbs(DEFAULT_BREADCRUMB);
 
   const handleClickHightlightCard = (id: string) => {
     setIsLoading(true);

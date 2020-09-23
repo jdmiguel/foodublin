@@ -53,8 +53,20 @@ export type RestaurantDetail = {
   address: string;
 };
 
+export enum BreadcrumbsType {
+  HOME = 'home',
+  SEARCH = 'search',
+  DETAIL = 'detail',
+  FAVORITES = 'favorite',
+}
+
 export type BreadcrumbsData = {
   text: string;
   route: string;
   asRoute: string;
+  type:
+    | BreadcrumbsType.HOME
+    | BreadcrumbsType.SEARCH
+    | BreadcrumbsType.DETAIL
+    | BreadcrumbsType.FAVORITES;
 };

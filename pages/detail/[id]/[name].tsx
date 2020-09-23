@@ -6,14 +6,12 @@ import Head from 'next/head';
 import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
 import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 
-import { InitialState } from '../../../store/reducer';
-import {
-  clearRelatedRestaurants,
-  deleteLastBreadcrumbs,
-  addBreadcrumbs,
-} from '../../../store/actions';
+import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
 
-import { RestaurantDetail } from '../../../helpers/types';
+import { InitialState } from '../../../store/reducer';
+import { clearRelatedRestaurants } from '../../../store/actions';
+
+import { RestaurantDetail, BreadcrumbsType } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 import { getRestaurant } from '../../../services';
@@ -30,41 +28,32 @@ type CustomNextPageContext = NextPageContext & {
 };
 
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    return () => {
-      if (data === undefined) {
-        dispatch(deleteLastBreadcrumbs());
-      }
-    };
-  }, [data]);
-
   if (data === undefined) {
     return <ErrorPage />;
   }
 
+  const { name, imgSrc } = data;
+
+  const { relatedRestaurants } = useSelector((state: InitialState) => state);
+  const dispatch = useDispatch();
+
   const [isLoading, setIsLoading] = useState(false);
 
-  const relatedRestaurants = useSelector(
-    (state: InitialState) => state.relatedRestaurants,
-  );
+  const handleClickRelatedRestaurant = () => {
+    setIsLoading(true);
+  };
 
-  const { name, imgSrc } = data;
   const detailBreadcrumbs = {
     text: name,
     route: '/detail/[id]/[name]',
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+    type: BreadcrumbsType.DETAIL,
   };
 
-  const handleClickRelatedRestaurant = () => {
-    setIsLoading(true);
-    dispatch(deleteLastBreadcrumbs());
-  };
+  useBreadcrumbs(detailBreadcrumbs);
 
   useEffect(() => {
     setIsLoading(false);
-    dispatch(addBreadcrumbs(detailBreadcrumbs));
     return () => {
       dispatch(clearRelatedRestaurants());
     };
