@@ -80,9 +80,14 @@ export type BreadcrumbsData = {
 };
 
 // Actions
-type SetFavoriteAction = {
-  type: 'SET_FAVORITE';
+type AddFavoriteAction = {
+  type: 'ADD_FAVORITE';
   favorite: Restaurant;
+};
+
+type DeleteFavoriteAction = {
+  type: 'DELETE_FAVORITE';
+  id: string;
 };
 
 type SetRelatedRestaurantsAction = {
@@ -106,7 +111,8 @@ type ReplaceBreadcrumbsAction = {
 };
 
 export type Actions =
-  | SetFavoriteAction
+  | AddFavoriteAction
+  | DeleteFavoriteAction
   | SetRelatedRestaurantsAction
   | ClearRelatedRestaurantsAction
   | AddBreadcrumbsAction

@@ -9,7 +9,11 @@ import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
 
 import { InitialState } from '../../../store/reducer';
-import { clearRelatedRestaurants, setFavourite } from '../../../store/actions';
+import {
+  clearRelatedRestaurants,
+  addFavorite,
+  deleteFavorite,
+} from '../../../store/actions';
 
 import {
   RestaurantDetail,
@@ -32,10 +36,10 @@ type CustomNextPageContext = NextPageContext & {
 };
 
 const getRefinedRestaurant = (
-  id: number,
+  id: string,
   restaurant: RestaurantDetail,
 ): Restaurant => ({
-  id: `${id}`,
+  id,
   imgSrc: restaurant.imgSrc,
   title: restaurant.name,
   content: restaurant.location,
@@ -48,6 +52,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     return <ErrorPage />;
   }
 
+  const stringifiedId = `${id}`;
   const { name, imgSrc } = data;
 
   const { relatedRestaurants } = useSelector((state: InitialState) => state);
@@ -62,9 +67,11 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     };
   }, [id]);
 
-  const handleSaveButton = () => {
-    const favorite = getRefinedRestaurant(id, data);
-    dispatch(setFavourite(favorite));
+  const handleSaveButton = (action: string) => {
+    const favorite = getRefinedRestaurant(stringifiedId, data);
+    dispatch(
+      action === 'save' ? addFavorite(favorite) : deleteFavorite(stringifiedId),
+    );
   };
 
   const handleClickRelatedRestaurant = () => {

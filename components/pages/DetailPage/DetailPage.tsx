@@ -30,7 +30,7 @@ type DetailPageProps = {
   data: RestaurantDetail;
   isLoading: boolean;
   relatedRestaurants: Restaurant[];
-  onClickSaveButton: () => void;
+  onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: () => void;
 };
 
@@ -173,7 +173,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
 
   const clickSaveButton = () => {
     setIsFavorite((favorite) => !favorite);
-    onClickSaveButton();
+    onClickSaveButton(isFavorite ? 'unsave' : 'save');
   };
 
   const getOverlay = () => (

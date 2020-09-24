@@ -1,8 +1,13 @@
 import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
-export const setFavourite = (favorite: Restaurant) => ({
-  type: 'SET_FAVORITE',
+export const addFavorite = (favorite: Restaurant) => ({
+  type: 'ADD_FAVORITE',
   favorite,
+});
+
+export const deleteFavorite = (id: string) => ({
+  type: 'DELETE_FAVORITE',
+  id,
 });
 
 export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({

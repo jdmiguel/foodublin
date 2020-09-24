@@ -15,10 +15,17 @@ const initialState: InitialState = {
 
 const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case 'SET_FAVORITE':
+    case 'ADD_FAVORITE':
       return {
         ...state,
         favorites: [...state.favorites, action.favorite],
+      };
+    case 'DELETE_FAVORITE':
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (favorite) => favorite.id !== action.id,
+        ),
       };
     case 'SET_RELATED_RESTAURANTS':
       return {
