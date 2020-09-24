@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import FavoritesPage from '../components/pages/FavoritesPage/FavoritesPage';
@@ -10,6 +10,8 @@ import { InitialState } from '../store/reducer';
 import { BreadcrumbsType } from '../helpers/types';
 
 const Favorites = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { favorites } = useSelector((state: InitialState) => state);
 
   const favoritesBreadcrumbs = {
@@ -20,7 +22,14 @@ const Favorites = () => {
   };
   useBreadcrumbs(favoritesBreadcrumbs);
 
-  return <FavoritesPage total={favorites.length} restaurants={favorites} />;
+  return (
+    <FavoritesPage
+      isLoading={isLoading}
+      total={favorites.length}
+      restaurants={favorites}
+      clickRestaurant={() => setIsLoading(true)}
+    />
+  );
 };
 
 export default Favorites;

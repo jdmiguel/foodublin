@@ -1,17 +1,23 @@
 import { ReactNode } from 'react';
 
-// Restaurant data
-export type Timming = {
-  id: string;
-  day: string;
-  schedule: string;
-};
+// Core / ui components
+export enum LoaderType {
+  CIRCLE = 'circle',
+  LINE = 'line',
+}
 
 export type ListItem = {
   iconSrc?: string;
   id: number;
   name: string;
   path: string;
+};
+
+// Restaurant data
+export type Timming = {
+  id: string;
+  day: string;
+  schedule: string;
 };
 
 export enum EntityType {

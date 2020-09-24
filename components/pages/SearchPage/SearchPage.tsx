@@ -1,20 +1,21 @@
 import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import Layout from '../../../layouts/Layout';
 
 import Filter from '../../ui/Filter/Filter';
+import FullLoader from '../../ui/FullLoader/FullLoader';
 
+import Loader from '../../core/Loader/Loader';
 import Title from '../../core/Title/Title';
 import Card from '../../core/Card/Card';
-import Loader, { LoaderType } from '../../core/Loader/Loader';
 
 import {
   FILTER_DATA,
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
-import { Restaurant } from '../../../helpers/types';
+import { Restaurant, LoaderType } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
 
 type SearchPageProps = {
@@ -55,38 +56,6 @@ const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
     justify-content: flex-start;
     margin-top: 35px;
   }
-`;
-
-const LoaderCSS = css`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-`;
-
-const StyledLineLoaderWrapper = styled.div<{ isShowed: boolean }>`
-  ${LoaderCSS}
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-`;
-
-const StyledCircleLoaderWrapper = styled.div<{ isShowed: boolean }>`
-  ${LoaderCSS}
-  display: flex;
-  justify-content: center;
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-  @media only screen and (min-width: 992px) {
-    min-height: 200px;
-  }
-`;
-
-const StyledCircleLoader = styled(Loader)`
-  position: absolute;
-  top: 50vh;
 `;
 
 const StyledWarning = styled.div`
@@ -141,15 +110,15 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
     return (
       <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
-          {isLoadingByScroll ? (
-            <StyledLineLoaderWrapper isShowed={isLoading}>
-              <Loader type={LoaderType.LINE} />
-            </StyledLineLoaderWrapper>
-          ) : (
-            <StyledCircleLoaderWrapper isShowed={isLoading}>
-              <StyledCircleLoader text={DEFAULT_TEXT_LOADING} />
-            </StyledCircleLoaderWrapper>
-          )}
+          <FullLoader
+            isShowed={isLoading}
+            type={isLoadingByScroll ? LoaderType.LINE : LoaderType.CIRCLE}
+          >
+            <Loader
+              text={isLoadingByScroll ? '' : DEFAULT_TEXT_LOADING}
+              type={isLoadingByScroll ? LoaderType.LINE : LoaderType.CIRCLE}
+            />
+          </FullLoader>
           <Title
             text={`${totalText} ${
               cuisine || ''

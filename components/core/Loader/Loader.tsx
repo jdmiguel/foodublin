@@ -1,12 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { LoaderType } from '../../../helpers/types';
 import { rotateAnimation, moveAnimation } from '../../../helpers/animations';
-
-export enum LoaderType {
-  CIRCLE = 'circle',
-  LINE = 'line',
-}
 
 export enum LoaderMode {
   DARK = 'dark',

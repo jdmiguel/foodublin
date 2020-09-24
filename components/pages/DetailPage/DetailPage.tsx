@@ -4,6 +4,8 @@ import { LazyImage } from 'react-lazy-images';
 
 import Layout from '../../../layouts/Layout';
 
+import FullLoader from '../../ui/FullLoader/FullLoader';
+
 import Loader from '../../core/Loader/Loader';
 import Title from '../../core/Title/Title';
 import Button from '../../core/Button/Button';
@@ -30,29 +32,6 @@ type DetailPageProps = {
   relatedRestaurants: Restaurant[];
   onClickRelatedRestaurant: () => void;
 };
-
-const StyledLoaderWrapper = styled.div<{ isShowed: boolean }>`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-  @media only screen and (min-width: 992px) {
-    min-height: 200px;
-  }
-`;
-
-const StyledLoader = styled(Loader)`
-  position: absolute;
-  top: 50vh;
-`;
 
 const JumbotronTextCSS = css`
   color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
@@ -231,9 +210,9 @@ const DetailPage: React.FC<DetailPageProps> = ({
   return (
     <Layout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
-        <StyledLoaderWrapper isShowed={isLoading}>
-          <StyledLoader text={DEFAULT_TEXT_LOADING} />
-        </StyledLoaderWrapper>
+        <FullLoader isShowed={isLoading}>
+          <Loader text={DEFAULT_TEXT_LOADING} />
+        </FullLoader>
         {getJumbotron(imgSrc)}
         <StyledInformation>
           <Title text="Relevant information" />

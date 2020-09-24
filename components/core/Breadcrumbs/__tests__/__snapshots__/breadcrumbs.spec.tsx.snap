@@ -56,12 +56,12 @@ exports[`Component: Breadcrumbs should render 1`] = `
 
 .c3 {
   white-space: nowrap;
-  margin-right: 5px;
+  margin: 0 5px 3px 0;
 }
 
 .c6 {
   white-space: nowrap;
-  margin-right: 5px;
+  margin: 0 5px 3px 0;
   pointer-events: none;
   color: #A7A7A7;
   font-weight: 400;
@@ -70,6 +70,7 @@ exports[`Component: Breadcrumbs should render 1`] = `
 .c4 {
   color: #A7A7A7;
   font-weight: 600;
+  margin-bottom: 3px;
 }
 
 @media only screen and (min-width:540px) {
@@ -97,15 +98,33 @@ exports[`Component: Breadcrumbs should render 1`] = `
   }
 }
 
+@media only screen and (min-width:600px) {
+  .c3 {
+    margin: 0 5px 0;
+  }
+}
+
 @media only screen and (max-width:330px) {
   .c6 {
     font-size: 0.85rem;
   }
 }
 
+@media only screen and (min-width:600px) {
+  .c6 {
+    margin: 0 5px 0;
+  }
+}
+
 @media only screen and (max-width:330px) {
   .c4 {
     font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c4 {
+    margin-bottom: 0;
   }
 }
 

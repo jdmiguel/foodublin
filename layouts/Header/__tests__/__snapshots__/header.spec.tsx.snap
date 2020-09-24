@@ -194,7 +194,7 @@ exports[`Component: Header should render Header 1`] = `
       </h2>
       <a
         class="c7 c8"
-        href="/"
+        href="/favorites"
       >
         <i
           class="material-icons"

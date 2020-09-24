@@ -361,7 +361,7 @@ exports[`Component: Footer should render the extended version 1`] = `
       />
       <a
         class="c4 c5"
-        href="/"
+        href="/favorites"
       >
         <i
           class="material-icons"

@@ -3,16 +3,24 @@ import styled from 'styled-components';
 
 import Layout from '../../../layouts/Layout';
 
+import FullLoader from '../../ui/FullLoader/FullLoader';
+
+import Loader from '../../core/Loader/Loader';
 import Title from '../../core/Title/Title';
 import Card from '../../core/Card/Card';
 
-import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
+import {
+  DEFAULT_TEXT_LOADING,
+  THUMB_GENERIC_SRC,
+} from '../../../helpers/staticData';
 import { Restaurant } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
 
 type FavoritesPageProps = {
+  isLoading: boolean;
   total: number;
   restaurants: Restaurant[];
+  clickRestaurant: () => void;
 };
 
 const StyledFavoritesPage = styled.div`
@@ -44,13 +52,18 @@ const StyledCardsWrapper = styled.div`
 `;
 
 const FavoritesPage: React.FC<FavoritesPageProps> = ({
+  isLoading,
   total,
   restaurants,
+  clickRestaurant,
 }) => {
   const { totalText, restaurantText } = getTitleText(total);
 
   return (
     <Layout isExtendedFooter={true}>
+      <FullLoader isShowed={isLoading}>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
       <StyledFavoritesPage className="grid-container">
         <Title text={`${totalText} ${restaurantText} saved as Favorites`} />
         <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
@@ -66,6 +79,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
                 content={restaurant.content}
                 route={restaurant.route}
                 asRoute={restaurant.asRoute}
+                onClick={clickRestaurant}
               />
             </div>
           ))}

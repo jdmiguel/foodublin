@@ -18,7 +18,7 @@ const index = () => {
 
   const dispatch = useDispatch();
 
-  const handleClickHightlightCard = (id: string) => {
+  const handleClickHighlight = (id: string) => {
     setIsLoading(true);
 
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
@@ -33,7 +33,7 @@ const index = () => {
   return (
     <HomePage
       isLoading={isLoading}
-      onClickHighlightCard={handleClickHightlightCard}
+      clickHighlight={handleClickHighlight}
       highlights={HIGHLIGHTED_RESTAURANTS}
     />
   );
