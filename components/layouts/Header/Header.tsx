@@ -1,13 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Logo from '../../components/core/Logo/Logo';
-import Finder from '../../components/ui/Finder/Finder';
-import CustomLink, {
-  CustomLinkSize,
-} from '../../components/core/CustomLink/CustomLink';
+import Logo from '../../core/Logo/Logo';
+import Finder from '../../ui/Finder/Finder';
+import CustomLink, { CustomLinkSize } from '../../core/CustomLink/CustomLink';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
+import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 
 type HeaderProps = {
   claimTxt: string;

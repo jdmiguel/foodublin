@@ -3,11 +3,11 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
 
-import reducer from '../../../store/reducer';
+import reducer from '../../../../store/reducer';
 
 import Footer from '../Footer';
 
-import { renderWithTheme } from '../../../helpers/Theme';
+import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Footer', () => {
   it('should render', () => {

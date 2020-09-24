@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import Layout from '../../../layouts/Layout';
+import Layout from '../../layouts/Layout';
 
 import FullLoader from '../../ui/FullLoader/FullLoader';
 

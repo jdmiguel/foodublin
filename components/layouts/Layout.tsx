@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import Button from '../components/core/Button/Button';
-import useScrollPosY from '../components/hooks/useScrollPosY';
+import Button from '../core/Button/Button';
+import useScrollPosY from '../hooks/useScrollPosY';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
+import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
 import {
   SCROLL_DELAY,
   SHOWING_SCROLLUP_BUTTON_HEIGHT,
-} from '../helpers/staticData';
-import { fadeAnimation } from '../helpers/animations';
+} from '../../helpers/staticData';
+import { fadeAnimation } from '../../helpers/animations';
 
 type LayoutProps = {
   children: ReactNode;
