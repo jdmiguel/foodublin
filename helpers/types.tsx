@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 
+// Restaurant data
 export type Timming = {
   id: string;
   day: string;
   schedule: string;
 };
 
-export type ListItemType = {
+export type ListItem = {
   iconSrc?: string;
   id: number;
   name: string;
@@ -18,7 +19,7 @@ export enum EntityType {
   SUBZONE = 'subzone',
 }
 
-export type RestaurantsRequestParamsType = {
+export type RestaurantsRequestParams = {
   entity_id: number | undefined;
   cuisines: number | undefined;
   entity_type: EntityType.CITY | EntityType.SUBZONE;
@@ -53,6 +54,7 @@ export type RestaurantDetail = {
   address: string;
 };
 
+// Breadcrumbs
 export enum BreadcrumbsType {
   HOME = 'home',
   SEARCH = 'search',
@@ -70,3 +72,36 @@ export type BreadcrumbsData = {
     | BreadcrumbsType.DETAIL
     | BreadcrumbsType.FAVORITES;
 };
+
+// Actions
+type SetFavoriteAction = {
+  type: 'SET_FAVORITE';
+  favorite: Restaurant;
+};
+
+type SetRelatedRestaurantsAction = {
+  type: 'SET_RELATED_RESTAURANTS';
+  relatedRestaurants: Restaurant[];
+};
+
+type ClearRelatedRestaurantsAction = {
+  type: 'CLEAR_RELATED_RESTAURANTS';
+};
+
+type AddBreadcrumbsAction = {
+  type: 'ADD_BREADCRUMBS';
+  breadcrumbs: BreadcrumbsData;
+};
+
+type ReplaceBreadcrumbsAction = {
+  type: 'REPLACE_BREADCRUMBS';
+  index: number;
+  breadcrumbs: BreadcrumbsData;
+};
+
+export type Actions =
+  | SetFavoriteAction
+  | SetRelatedRestaurantsAction
+  | ClearRelatedRestaurantsAction
+  | AddBreadcrumbsAction
+  | ReplaceBreadcrumbsAction;

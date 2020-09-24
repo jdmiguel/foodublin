@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 import { BASE_URL } from '../helpers/staticData';
-import { RestaurantsRequestParamsType } from '../helpers/types';
+import { RestaurantsRequestParams } from '../helpers/types';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -20,7 +20,7 @@ const handleApiError = (error: AxiosError) => {
 };
 
 export const getRestaurants = async (
-  params: RestaurantsRequestParamsType,
+  params: RestaurantsRequestParams,
 ): Promise<any> => {
   const currentParams = Object.entries(params).reduce(
     (acc: any, next: any[]) => {

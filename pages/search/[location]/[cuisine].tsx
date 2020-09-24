@@ -28,7 +28,7 @@ import {
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
 import {
-  ListItemType,
+  ListItem,
   Restaurant,
   EntityType,
   BreadcrumbsType,
@@ -59,7 +59,7 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
-const getValues = (path: string, searchType: ListItemType[]): any[] => {
+const getValues = (path: string, searchType: ListItem[]): any[] => {
   const value = searchType.find((item) => item.path === path);
 
   return [value?.id, value?.name];
