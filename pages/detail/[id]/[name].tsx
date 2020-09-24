@@ -9,9 +9,13 @@ import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
 
 import { InitialState } from '../../../store/reducer';
-import { clearRelatedRestaurants } from '../../../store/actions';
+import { clearRelatedRestaurants, setFavourite } from '../../../store/actions';
 
-import { RestaurantDetail, BreadcrumbsType } from '../../../helpers/types';
+import {
+  RestaurantDetail,
+  Restaurant,
+  BreadcrumbsType,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 import { getRestaurant } from '../../../services';
@@ -27,6 +31,18 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
+const getRefinedRestaurant = (
+  id: number,
+  restaurant: RestaurantDetail,
+): Restaurant => ({
+  id: `${id}`,
+  imgSrc: restaurant.imgSrc,
+  title: restaurant.name,
+  content: restaurant.location,
+  route: '/detail/[id]/[name]',
+  asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
+});
+
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
   if (data === undefined) {
     return <ErrorPage />;
@@ -39,16 +55,21 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClickRelatedRestaurant = () => {
-    setIsLoading(true);
-  };
-
   useEffect(() => {
     setIsLoading(false);
     return () => {
       dispatch(clearRelatedRestaurants());
     };
   }, [id]);
+
+  const handleSaveButton = () => {
+    const favorite = getRefinedRestaurant(id, data);
+    dispatch(setFavourite(favorite));
+  };
+
+  const handleClickRelatedRestaurant = () => {
+    setIsLoading(true);
+  };
 
   const detailBreadcrumbs = {
     text: name,
@@ -67,6 +88,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
         data={data}
         isLoading={isLoading}
         relatedRestaurants={relatedRestaurants}
+        onClickSaveButton={handleSaveButton}
         onClickRelatedRestaurant={handleClickRelatedRestaurant}
       />
     </>

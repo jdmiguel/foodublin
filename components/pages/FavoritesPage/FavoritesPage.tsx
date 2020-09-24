@@ -65,7 +65,9 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
         <Loader text={DEFAULT_TEXT_LOADING} />
       </FullLoader>
       <StyledFavoritesPage className="grid-container">
-        <Title text={`${totalText} ${restaurantText} saved as Favorites`} />
+        <Title
+          text={`${totalText} ${restaurantText} saved in your favorites`}
+        />
         <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
           {restaurants.map((restaurant) => (
             <div

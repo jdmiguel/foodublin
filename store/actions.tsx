@@ -1,6 +1,6 @@
 import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
-export const setFavourite = (favorite: Restaurant[]) => ({
+export const setFavourite = (favorite: Restaurant) => ({
   type: 'SET_FAVORITE',
   favorite,
 });

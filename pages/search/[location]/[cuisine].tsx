@@ -65,7 +65,7 @@ const getValues = (path: string, searchType: ListItem[]): any[] => {
   return [value?.id, value?.name];
 };
 
-const getFormattedRestaurant = (restaurant: any) => ({
+const getRefinedRestaurant = (restaurant: any): Restaurant => ({
   id: restaurant.id,
   imgSrc: restaurant.thumb,
   title: restaurant.name,
@@ -101,7 +101,7 @@ const handleGetRestaurantsData = async (
     const restaurants = selectRestaurants(data.restaurants);
 
     return {
-      restaurants: restaurants(getFormattedRestaurant),
+      restaurants: restaurants(getRefinedRestaurant),
       total: data.results_found,
     };
   }

@@ -30,6 +30,7 @@ type DetailPageProps = {
   data: RestaurantDetail;
   isLoading: boolean;
   relatedRestaurants: Restaurant[];
+  onClickSaveButton: () => void;
   onClickRelatedRestaurant: () => void;
 };
 
@@ -165,24 +166,25 @@ const DetailPage: React.FC<DetailPageProps> = ({
   },
   isLoading,
   relatedRestaurants,
+  onClickSaveButton,
   onClickRelatedRestaurant,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const clickSaveButton = () => {
+    setIsFavorite((favorite) => !favorite);
+    onClickSaveButton();
+  };
 
   const getOverlay = () => (
     <StyledOverlay>
       <StyledName>{name}</StyledName>
       <StyledLocation>{location}</StyledLocation>
-      <StyledButton
-        onClick={() => {
-          'handle favorite';
-          setIsFavorite((favorite) => !favorite);
-        }}
-      >
+      <StyledButton onClick={clickSaveButton}>
         <i className="material-icons">{`${
-          isFavorite ? 'favorite_border' : 'favorite'
+          isFavorite ? 'favorite' : 'favorite_border'
         }`}</i>
-        {`${isFavorite ? 'unsaved' : 'saved'}`}
+        {`${isFavorite ? 'saved' : 'unsaved'}`}
       </StyledButton>
     </StyledOverlay>
   );

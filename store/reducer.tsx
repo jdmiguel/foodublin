@@ -1,7 +1,4 @@
-import {
-  HIGHLIGHTED_RESTAURANTS,
-  DEFAULT_BREADCRUMB,
-} from '../helpers/staticData';
+import { DEFAULT_BREADCRUMB } from '../helpers/staticData';
 import { Restaurant, BreadcrumbsData, Actions } from '../helpers/types';
 
 export type InitialState = {
@@ -11,7 +8,7 @@ export type InitialState = {
 };
 
 const initialState: InitialState = {
-  favorites: HIGHLIGHTED_RESTAURANTS,
+  favorites: [],
   relatedRestaurants: [],
   breadcrumbs: [DEFAULT_BREADCRUMB],
 };
