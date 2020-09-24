@@ -55,8 +55,13 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   const stringifiedId = `${id}`;
   const { name, imgSrc } = data;
 
-  const { relatedRestaurants } = useSelector((state: InitialState) => state);
+  const { favorites, relatedRestaurants } = useSelector(
+    (state: InitialState) => state,
+  );
   const dispatch = useDispatch();
+  const isFavorite = favorites.some(
+    (favorite) => favorite.id === stringifiedId,
+  );
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -94,6 +99,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
       <DetailPage
         data={data}
         isLoading={isLoading}
+        isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
         onClickRelatedRestaurant={handleClickRelatedRestaurant}

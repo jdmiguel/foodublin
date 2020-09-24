@@ -29,6 +29,7 @@ import {
 type DetailPageProps = {
   data: RestaurantDetail;
   isLoading: boolean;
+  isFavorite: boolean;
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: () => void;
@@ -165,14 +166,15 @@ const DetailPage: React.FC<DetailPageProps> = ({
     address,
   },
   isLoading,
+  isFavorite,
   relatedRestaurants,
   onClickSaveButton,
   onClickRelatedRestaurant,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isSaved, setIsSaved] = useState(isFavorite);
 
   const clickSaveButton = () => {
-    setIsFavorite((favorite) => !favorite);
+    setIsSaved((isSaved) => !isSaved);
     onClickSaveButton(isFavorite ? 'unsave' : 'save');
   };
 
