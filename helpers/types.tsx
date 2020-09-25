@@ -1,5 +1,11 @@
 import { ReactNode } from 'react';
 
+export type InitialAppState = {
+  favorites: Restaurant[];
+  relatedRestaurants: Restaurant[];
+  breadcrumbs: BreadcrumbsData[];
+};
+
 // Core / ui components
 export enum LoaderType {
   CIRCLE = 'circle',

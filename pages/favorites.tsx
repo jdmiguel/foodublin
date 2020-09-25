@@ -5,15 +5,12 @@ import FavoritesPage from '../components/pages/FavoritesPage/FavoritesPage';
 
 import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
 
-import { InitialState } from '../store/reducer';
-
-import { BreadcrumbsType } from '../helpers/types';
+import { InitialAppState, BreadcrumbsType } from '../helpers/types';
 
 const Favorites = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const { favorites } = useSelector((state: InitialState) => state);
-
+  const { favorites } = useSelector((state: InitialAppState) => state);
   const favoritesBreadcrumbs = {
     text: 'Favorites',
     route: '/favorites',

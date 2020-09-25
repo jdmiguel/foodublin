@@ -1,19 +1,6 @@
-import { DEFAULT_BREADCRUMB } from '../helpers/staticData';
-import { Restaurant, BreadcrumbsData, Actions } from '../helpers/types';
+import { InitialAppState, Actions } from '../helpers/types';
 
-export type InitialState = {
-  favorites: Restaurant[];
-  relatedRestaurants: Restaurant[];
-  breadcrumbs: BreadcrumbsData[];
-};
-
-const initialState: InitialState = {
-  favorites: [],
-  relatedRestaurants: [],
-  breadcrumbs: [DEFAULT_BREADCRUMB],
-};
-
-const reducer = (state = initialState, action: Actions) => {
+const appReducer = (state: InitialAppState, action: Actions) => {
   switch (action.type) {
     case 'ADD_FAVORITE':
       return {
@@ -35,7 +22,7 @@ const reducer = (state = initialState, action: Actions) => {
     case 'CLEAR_RELATED_RESTAURANTS':
       return {
         ...state,
-        relatedRestaurants: initialState.relatedRestaurants,
+        relatedRestaurants: [],
       };
     case 'ADD_BREADCRUMBS':
       return {
@@ -55,4 +42,4 @@ const reducer = (state = initialState, action: Actions) => {
   }
 };
 
-export default reducer;
+export default appReducer;

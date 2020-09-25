@@ -5,8 +5,7 @@ import styled, { css } from 'styled-components';
 import Breadcrumbs from '../../core/Breadcrumbs/Breadcrumbs';
 import CustomLink from '../../core/CustomLink/CustomLink';
 
-import { InitialState } from '../../../store/reducer';
-
+import { InitialAppState } from '../../../helpers/types';
 import { fadeAnimation } from '../../../helpers/animations';
 
 type FooterProps = {
@@ -105,7 +104,7 @@ const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
 }) => {
-  const breadcrumbs = useSelector((state: InitialState) => state.breadcrumbs);
+  const { breadcrumbs } = useSelector((state: InitialAppState) => state);
 
   return (
     <StyledFooterWrapper>

@@ -8,7 +8,6 @@ import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 
 import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
 
-import { InitialState } from '../../../store/reducer';
 import {
   clearRelatedRestaurants,
   addFavorite,
@@ -16,6 +15,7 @@ import {
 } from '../../../store/actions';
 
 import {
+  InitialAppState,
   RestaurantDetail,
   Restaurant,
   BreadcrumbsType,
@@ -52,18 +52,17 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     return <ErrorPage />;
   }
 
-  const stringifiedId = `${id}`;
-  const { name, imgSrc } = data;
+  const [isLoading, setIsLoading] = useState(false);
 
   const { favorites, relatedRestaurants } = useSelector(
-    (state: InitialState) => state,
+    (state: InitialAppState) => state,
   );
   const dispatch = useDispatch();
+
+  const stringifiedId = `${id}`;
   const isFavorite = favorites.some(
     (favorite) => favorite.id === stringifiedId,
   );
-
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(false);
@@ -83,6 +82,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     setIsLoading(true);
   };
 
+  const { name, imgSrc } = data;
   const detailBreadcrumbs = {
     text: name,
     route: '/detail/[id]/[name]',
