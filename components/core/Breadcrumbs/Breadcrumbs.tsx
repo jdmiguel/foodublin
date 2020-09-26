@@ -37,15 +37,22 @@ const StyledBreadcrumb = styled.div<{ isLast: boolean }>`
 
 const StyledLink = styled(CustomLink)<{ isLast: boolean }>`
   white-space: nowrap;
-  margin-right: 5px;
+  margin: 0 5px 3px 0;
   ${({ isLast }) => isLast && lastBreadcrumbCSS};
   ${smallDevicesTextCSS}
+  @media only screen and (min-width: 600px) {
+    margin: 0 5px 0;
+  }
 `;
 
 const StyledArrow = styled.span`
   color: ${(props) => props.theme.palette.DARK_SOFT};
   font-weight: 600;
+  margin-bottom: 3px;
   ${smallDevicesTextCSS}
+  @media only screen and (min-width: 600px) {
+    margin-bottom: 0;
+  }
 `;
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (

@@ -11,15 +11,15 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import BlockTitle from '../BlockTitle/BlockTitle';
 
 import useWindowMeasures from '../../hooks/useWindowMeasures';
-import { ListItemType } from '../../../helpers/types';
+import { ListItem } from '../../../helpers/types';
 
-type ListItemTypeWithIsActive = ListItemType & { isActive: boolean };
+type ListItemWithIsActive = ListItem & { isActive: boolean };
 
 type DropdownProps = {
   className?: string;
   icon?: string;
   labelTxt: string;
-  list: ListItemType[];
+  list: ListItem[];
   onSelect: (path: string) => void;
   onClear: () => void;
   onFocus?: (event: React.FocusEvent) => void;
@@ -206,15 +206,15 @@ const StyledListboxItemText = styled.p<{ isActive: boolean }>`
   font-weight: ${({ isActive }) => (!isActive ? 400 : 600)};
 `;
 
-const listReducer = (list: ListItemType[], action: ListAction) => {
+const listReducer = (list: ListItem[], action: ListAction) => {
   switch (action.type) {
     case 'select':
-      return list.map((listItem: ListItemType) => ({
+      return list.map((listItem: ListItem) => ({
         ...listItem,
         isActive: action.id === listItem.id,
       }));
     case 'clear':
-      return list.map((listItem: ListItemType) => ({
+      return list.map((listItem: ListItem) => ({
         ...listItem,
         isActive: false,
       }));
@@ -236,7 +236,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     isActive: false,
   }));
   const [initialListState, dispatch]: [
-    ListItemType[],
+    ListItem[],
     Dispatch<ListAction>,
   ] = useReducer(listReducer, listWithIsActiveProp);
   const { width } = useWindowMeasures();
@@ -341,7 +341,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             <i className="material-icons">close</i>
           </StyledMobileHeadingButton>
         </StyledMobileHeading>
-        {initialListState.map((listItem: ListItemTypeWithIsActive) => (
+        {initialListState.map((listItem: ListItemWithIsActive) => (
           <StyledListboxItem
             key={listItem.name}
             role="option"

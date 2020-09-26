@@ -1,54 +1,45 @@
-import * as actionTypes from './actionTypes';
+import { InitialAppState, Actions } from '../helpers/types';
 
-import { Restaurant, BreadcrumbsData } from '../helpers/types';
-
-export type InitialState = {
-  favorites: Restaurant[];
-  relatedRestaurants: Restaurant[];
-  breadcrumbs: BreadcrumbsData[];
-};
-
-const initialState: InitialState = {
-  favorites: [],
-  relatedRestaurants: [],
-  breadcrumbs: [{ text: 'Home', route: '/', asRoute: '/' }],
-};
-
-const reducer = (state = initialState, action: any) => {
+const appReducer = (state: InitialAppState, action: Actions) => {
   switch (action.type) {
-    case actionTypes.SET_FAVORITE:
+    case 'ADD_FAVORITE':
       return {
         ...state,
         favorites: [...state.favorites, action.favorite],
       };
-    case actionTypes.SET_RELATED_RESTAURANTS:
+    case 'DELETE_FAVORITE':
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (favorite) => favorite.id !== action.id,
+        ),
+      };
+    case 'SET_RELATED_RESTAURANTS':
       return {
         ...state,
         relatedRestaurants: action.relatedRestaurants,
       };
-    case actionTypes.CLEAR_RELATED_RESTAURANTS:
+    case 'CLEAR_RELATED_RESTAURANTS':
       return {
         ...state,
         relatedRestaurants: [],
       };
-    case actionTypes.ADD_BREADCRUMBS:
+    case 'ADD_BREADCRUMBS':
       return {
         ...state,
         breadcrumbs: [...state.breadcrumbs, action.breadcrumbs],
       };
-    case actionTypes.DELETE_LAST_BREADCRUMBS:
+    case 'REPLACE_BREADCRUMBS':
       return {
         ...state,
-        breadcrumbs: state.breadcrumbs.slice(0, state.breadcrumbs.length - 1),
-      };
-    case actionTypes.SET_INITIAL_BREADCRUMBS:
-      return {
-        ...state,
-        breadcrumbs: initialState.breadcrumbs,
+        breadcrumbs: [
+          ...state.breadcrumbs.slice(0, action.index),
+          action.breadcrumbs,
+        ],
       };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default appReducer;

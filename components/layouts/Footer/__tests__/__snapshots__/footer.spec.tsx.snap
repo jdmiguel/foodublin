@@ -1,0 +1,600 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Footer should render 1`] = `
+.c3 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+}
+
+.c3 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
+.c0 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.c1 {
+  background-color: #660000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #D8D8D8;
+}
+
+.c2:not(:first-of-type) {
+  margin-left: 5px;
+}
+
+.c2:not(:last-of-type):after {
+  content: ' | ';
+  margin-left: 3px;
+}
+
+.c2:last-of-type {
+  margin-right: 1px;
+}
+
+.c5 {
+  font-weight: 300;
+}
+
+.c6 {
+  font-weight: 300;
+  margin-right: 3px;
+}
+
+@media only screen and (min-width:540px) {
+  .c3 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c3:hover {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c2:not(:first-of-type) {
+    margin-left: 7px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c2:not(:last-of-type):after {
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c2:last-of-type {
+    margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c2 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c4 {
+    font-size: 0.85rem;
+  }
+}
+
+<footer
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <a
+        class="c3 c4"
+        href="https://github.com/jdmiguel/foodublin"
+      >
+        GITHUB
+      </a>
+    </div>
+    <div
+      class="c2"
+    >
+      <p
+        class="c5"
+      >
+        FOODUBLIN ©2020
+      </p>
+    </div>
+    <div
+      class="c2"
+    >
+      <p
+        class="c6"
+      >
+        BY
+      </p>
+      <a
+        class="c3 c4"
+        href="https://jdmiguel.netlify.app/"
+      >
+        JDMIGUEL
+      </a>
+    </div>
+  </div>
+</footer>
+`;
+
+exports[`Component: Footer should render the extended version 1`] = `
+.c4 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+}
+
+.c4 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.c1 {
+  border-top: 1px solid #D8D8D8;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.c6 {
+  background-color: #660000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #D8D8D8;
+}
+
+.c7:not(:first-of-type) {
+  margin-left: 5px;
+}
+
+.c7:not(:last-of-type):after {
+  content: ' | ';
+  margin-left: 3px;
+}
+
+.c7:last-of-type {
+  margin-right: 1px;
+}
+
+.c9 {
+  font-weight: 300;
+}
+
+.c10 {
+  font-weight: 300;
+  margin-right: 3px;
+}
+
+@media only screen and (min-width:540px) {
+  .c4 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c4:hover {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c3 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c2 {
+    padding: 15px 20px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c7:not(:first-of-type) {
+    margin-left: 7px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c7:not(:last-of-type):after {
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c7:last-of-type {
+    margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c7 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c9 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c10 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c8 {
+    font-size: 0.85rem;
+  }
+}
+
+<footer
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 grid-container"
+    >
+      <div
+        class="c3"
+      />
+      <a
+        class="c4 c5"
+        href="/favorites"
+      >
+        <i
+          class="material-icons"
+        >
+          bookmarks
+        </i>
+        FAVORITES
+      </a>
+    </div>
+  </div>
+  <div
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      <a
+        class="c4 c8"
+        href="https://github.com/jdmiguel/foodublin"
+      >
+        GITHUB
+      </a>
+    </div>
+    <div
+      class="c7"
+    >
+      <p
+        class="c9"
+      >
+        FOODUBLIN ©2020
+      </p>
+    </div>
+    <div
+      class="c7"
+    >
+      <p
+        class="c10"
+      >
+        BY
+      </p>
+      <a
+        class="c4 c8"
+        href="https://jdmiguel.netlify.app/"
+      >
+        JDMIGUEL
+      </a>
+    </div>
+  </div>
+</footer>
+`;
+
+exports[`Component: Footer should render with veil 1`] = `
+.c4 {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+}
+
+.c4 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
+.c0 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.c1 {
+  background-color: #F3F3F3;
+  height: 170px;
+  opacity: 0.6;
+  -webkit-animation: hikGge 0.15s linear;
+  animation: hikGge 0.15s linear;
+}
+
+.c2 {
+  background-color: #660000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #D8D8D8;
+}
+
+.c3:not(:first-of-type) {
+  margin-left: 5px;
+}
+
+.c3:not(:last-of-type):after {
+  content: ' | ';
+  margin-left: 3px;
+}
+
+.c3:last-of-type {
+  margin-right: 1px;
+}
+
+.c6 {
+  font-weight: 300;
+}
+
+.c7 {
+  font-weight: 300;
+  margin-right: 3px;
+}
+
+@media only screen and (min-width:540px) {
+  .c4 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c4:hover {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    height: 150px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c3:not(:first-of-type) {
+    margin-left: 7px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c3:not(:last-of-type):after {
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .c3:last-of-type {
+    margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c6 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c7 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c5 {
+    font-size: 0.85rem;
+  }
+}
+
+<footer
+  class="c0"
+>
+  <div
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <a
+        class="c4 c5"
+        href="https://github.com/jdmiguel/foodublin"
+      >
+        GITHUB
+      </a>
+    </div>
+    <div
+      class="c3"
+    >
+      <p
+        class="c6"
+      >
+        FOODUBLIN ©2020
+      </p>
+    </div>
+    <div
+      class="c3"
+    >
+      <p
+        class="c7"
+      >
+        BY
+      </p>
+      <a
+        class="c4 c5"
+        href="https://jdmiguel.netlify.app/"
+      >
+        JDMIGUEL
+      </a>
+    </div>
+  </div>
+</footer>
+`;

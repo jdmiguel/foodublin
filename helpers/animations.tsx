@@ -1,8 +1,8 @@
 import { keyframes, css } from 'styled-components';
 
-const fade = keyframes`
+const fade = (endValue: number) => keyframes`
   0% { opacity: 0 }
-  100% { opacity: 0.6 }
+  100% { opacity: ${endValue} }
 `;
 
 const rotate = keyframes`
@@ -15,8 +15,8 @@ const move = keyframes`
   100% { transform: translateX(0); }
 `;
 
-export const fadeAnimation = css`
-  animation: ${fade} 0.15s linear;
+export const fadeAnimation = css<{ endValue: number }>`
+  animation: ${({ endValue }) => fade(endValue)} 0.15s linear;
 `;
 
 export const rotateAnimation = css`

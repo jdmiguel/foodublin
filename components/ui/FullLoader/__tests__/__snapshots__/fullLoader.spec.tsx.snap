@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Loader should render as circle type and be hidden 1`] = `
+.c0 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #F3F3F3;
+  -webkit-animation: eTXFzq 0.15s linear;
+  animation: eTXFzq 0.15s linear;
+}
+
+.c1 {
+  position: absolute;
+  top: 50vh;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    min-height: 200px;
+  }
+}
+
+<div
+  class="c0"
+  type="circle"
+>
+  <div
+    class="c1"
+    type="circle"
+  >
+    <div
+      class="c2"
+    >
+      <div
+        class="c3"
+        mode="dark"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Loader should render as circle type and be showed 1`] = `
+.c0 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  visibility: visible;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #F3F3F3;
+  -webkit-animation: eTXFzq 0.15s linear;
+  animation: eTXFzq 0.15s linear;
+}
+
+.c1 {
+  position: absolute;
+  top: 50vh;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    min-height: 200px;
+  }
+}
+
+<div
+  class="c0"
+  type="circle"
+>
+  <div
+    class="c1"
+    type="circle"
+  >
+    <div
+      class="c2"
+    >
+      <div
+        class="c3"
+        mode="dark"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Loader should render as line type and be hidden 1`] = `
+.c0 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+<div
+  class="c0"
+  type="line"
+>
+  <div
+    class=""
+    type="line"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+        mode="dark"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Loader should render as line type and be showed 1`] = `
+.c0 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  visibility: visible;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  border: 2px solid #EC7E00;
+  border-top: 2px solid #D8D8D8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: fEWCgj 0.8s linear infinite;
+  animation: fEWCgj 0.8s linear infinite;
+}
+
+<div
+  class="c0"
+  type="line"
+>
+  <div
+    class=""
+    type="line"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+        mode="dark"
+      />
+    </div>
+  </div>
+</div>
+`;

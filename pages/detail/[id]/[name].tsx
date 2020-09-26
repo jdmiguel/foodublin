@@ -3,17 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 
-import ErrorPage from '../../../components/ErrorPage/ErrorPage';
-import DetailPage from '../../../components/DetailPage/DetailPage';
+import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
+import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 
-import { InitialState } from '../../../store/reducer';
+import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
+
 import {
   clearRelatedRestaurants,
-  deleteLastBreadcrumbs,
-  addBreadcrumbs,
+  addFavorite,
+  deleteFavorite,
 } from '../../../store/actions';
 
-import { RestaurantDetail } from '../../../helpers/types';
+import {
+  InitialAppState,
+  RestaurantDetail,
+  Restaurant,
+  BreadcrumbsType,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
 import { getRestaurant } from '../../../services';
@@ -29,46 +35,61 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
+const getRefinedRestaurant = (
+  id: string,
+  restaurant: RestaurantDetail,
+): Restaurant => ({
+  id,
+  imgSrc: restaurant.thumbSrc,
+  title: restaurant.name,
+  content: restaurant.location,
+  route: '/detail/[id]/[name]',
+  asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
+});
+
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    return () => {
-      if (data === undefined) {
-        dispatch(deleteLastBreadcrumbs());
-      }
-    };
-  }, [data]);
-
   if (data === undefined) {
     return <ErrorPage />;
   }
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const relatedRestaurants = useSelector(
-    (state: InitialState) => state.relatedRestaurants,
+  const { favorites, relatedRestaurants } = useSelector(
+    (state: InitialAppState) => state,
   );
+  const dispatch = useDispatch();
+
+  const stringifiedId = `${id}`;
+  const isFavorite = favorites.some(
+    (favorite) => favorite.id === stringifiedId,
+  );
+
+  useEffect(() => {
+    setIsLoading(false);
+    return () => {
+      dispatch(clearRelatedRestaurants());
+    };
+  }, [id]);
+
+  const handleSaveButton = (action: string) => {
+    const favorite = getRefinedRestaurant(stringifiedId, data);
+    dispatch(
+      action === 'save' ? addFavorite(favorite) : deleteFavorite(stringifiedId),
+    );
+  };
+
+  const handleClickRelatedRestaurant = () => {
+    setIsLoading(true);
+  };
 
   const { name, imgSrc } = data;
   const detailBreadcrumbs = {
     text: name,
     route: '/detail/[id]/[name]',
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+    type: BreadcrumbsType.DETAIL,
   };
-
-  const handleClickRelatedRestaurant = () => {
-    setIsLoading(true);
-    dispatch(deleteLastBreadcrumbs());
-  };
-
-  useEffect(() => {
-    setIsLoading(false);
-    dispatch(addBreadcrumbs(detailBreadcrumbs));
-    return () => {
-      dispatch(clearRelatedRestaurants());
-    };
-  }, [id]);
+  useBreadcrumbs(detailBreadcrumbs);
 
   return (
     <>
@@ -78,7 +99,9 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
       <DetailPage
         data={data}
         isLoading={isLoading}
+        isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
+        onClickSaveButton={handleSaveButton}
         onClickRelatedRestaurant={handleClickRelatedRestaurant}
       />
     </>
@@ -93,6 +116,7 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
   if (status === 200) {
     const filteredData: RestaurantDetail = {
       imgSrc: data.featured_image,
+      thumbSrc: data.thumb,
       name: data.name,
       location: data.location.locality,
       cuisines: data.cuisines,

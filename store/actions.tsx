@@ -1,30 +1,34 @@
-import * as actionTypes from './actionTypes';
-
 import { Restaurant, BreadcrumbsData } from '../helpers/types';
 
-export const setFavourite = (favorite: Restaurant[]) => ({
-  type: actionTypes.SET_FAVORITE,
+export const addFavorite = (favorite: Restaurant) => ({
+  type: 'ADD_FAVORITE',
   favorite,
 });
 
+export const deleteFavorite = (id: string) => ({
+  type: 'DELETE_FAVORITE',
+  id,
+});
+
 export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
-  type: actionTypes.SET_RELATED_RESTAURANTS,
+  type: 'SET_RELATED_RESTAURANTS',
   relatedRestaurants,
 });
 
 export const clearRelatedRestaurants = () => ({
-  type: actionTypes.CLEAR_RELATED_RESTAURANTS,
+  type: 'CLEAR_RELATED_RESTAURANTS',
 });
 
 export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
-  type: actionTypes.ADD_BREADCRUMBS,
+  type: 'ADD_BREADCRUMBS',
   breadcrumbs,
 });
 
-export const deleteLastBreadcrumbs = () => ({
-  type: actionTypes.DELETE_LAST_BREADCRUMBS,
-});
-
-export const setInitialBreadcrumbs = () => ({
-  type: actionTypes.SET_INITIAL_BREADCRUMBS,
+export const replaceBreadcrumbs = (
+  index: number,
+  breadcrumbs: BreadcrumbsData,
+) => ({
+  type: 'REPLACE_BREADCRUMBS',
+  index,
+  breadcrumbs,
 });
