@@ -53,6 +53,7 @@ export type Restaurant = {
 
 export type RestaurantDetail = {
   imgSrc: string;
+  thumbSrc: string;
   name: string;
   location: string;
   cuisines: string;

@@ -40,7 +40,7 @@ const getRefinedRestaurant = (
   restaurant: RestaurantDetail,
 ): Restaurant => ({
   id,
-  imgSrc: restaurant.imgSrc,
+  imgSrc: restaurant.thumbSrc,
   title: restaurant.name,
   content: restaurant.location,
   route: '/detail/[id]/[name]',
@@ -116,6 +116,7 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
   if (status === 200) {
     const filteredData: RestaurantDetail = {
       imgSrc: data.featured_image,
+      thumbSrc: data.thumb,
       name: data.name,
       location: data.location.locality,
       cuisines: data.cuisines,
