@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-import Logo from '../../core/Logo/Logo';
+import Logo, { LogoSize } from '../../core/Logo/Logo';
 import CustomLink, { CustomLinkSize } from '../../core/CustomLink/CustomLink';
 
 import Finder from '../../ui/Finder/Finder';
@@ -58,18 +58,6 @@ const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   margin: ${({ isExtended }) => (isExtended ? '15px 0 25px' : '0 auto')};
 `;
 
-const StyledHeaderLogo = styled(Logo)<{ isExtended: boolean }>`
-  width: ${({ isExtended }) => (isExtended ? '225px' : '190px')};
-  margin: ${({ isExtended }) => isExtended && '15px 0 25px'};
-  @media only screen and (min-width: 768px) {
-    width: ${({ isExtended }) => isExtended && '270px'};
-  }
-  @media only screen and (min-width: 992px) {
-    width: ${({ isExtended }) => (isExtended ? '300px' : '200px')};
-    margin: ${({ isExtended }) => isExtended && '0 0 30px'};
-  }
-`;
-
 const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
   font-size: ${({ isExtended }) => (isExtended ? '1.25rem' : '1.3rem')};
   text-align: center;
@@ -112,10 +100,14 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
   <StyledHeader data-testid="header" bgImg={bgImgSrc}>
     <StyledOverlay isExtended={isExtended}>
       <StyledHeaderContent isExtended={isExtended}>
-        <StyledHeaderLogo
-          isExtended={isExtended}
-          logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
-        />
+        <Link href="/">
+          <a>
+            <Logo
+              size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
+              logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
+            />
+          </a>
+        </Link>
         <StyledHeaderClaim isExtended={isExtended}>
           {claimTxt}
         </StyledHeaderClaim>

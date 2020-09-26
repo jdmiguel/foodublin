@@ -14,7 +14,7 @@ stories.add('Dropdown', () => (
   <Dropdown
     {...DROPDOWN_PROPS_MOCK}
     labelTxt={text('label text', DROPDOWN_PROPS_MOCK.labelTxt)}
-    icon={select('Icon', ICON_OPTIONS, DROPDOWN_PROPS_MOCK.icon)}
+    icon={select('icon', ICON_OPTIONS, DROPDOWN_PROPS_MOCK.icon)}
     onFocus={action('dropdown: on focus event')}
     onBlur={action('dropdown: on blur event')}
     onSelect={action('dropdown: on select option')}
