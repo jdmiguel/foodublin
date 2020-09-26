@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 import CustomLink from '../CustomLink/CustomLink';
@@ -35,7 +36,7 @@ const StyledBreadcrumb = styled.div<{ isLast: boolean }>`
   margin-right: ${({ isLast }) => !isLast && '5px'};
 `;
 
-const StyledLink = styled(CustomLink)<{ isLast: boolean }>`
+const StyledCustomLink = styled(CustomLink)<{ isLast: boolean }>`
   white-space: nowrap;
   margin: 0 5px 3px 0;
   ${({ isLast }) => isLast && lastBreadcrumbCSS};
@@ -61,13 +62,11 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
       const isLast = itemIndex === items.length - 1;
       return (
         <StyledBreadcrumb key={breadcrumbData.text} isLast={isLast}>
-          <StyledLink
-            route={breadcrumbData.route}
-            asRoute={breadcrumbData.asRoute}
-            isLast={isLast}
-          >
-            {breadcrumbData.text}
-          </StyledLink>
+          <Link href={breadcrumbData.route} as={breadcrumbData.asRoute}>
+            <StyledCustomLink isLast={isLast}>
+              {breadcrumbData.text}
+            </StyledCustomLink>
+          </Link>
           {itemIndex < items.length - 1 && <StyledArrow>{'>'}</StyledArrow>}
         </StyledBreadcrumb>
       );

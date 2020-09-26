@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 
 export enum CustomLinkSize {
   BIG = 'big',
@@ -10,14 +9,12 @@ export enum CustomLinkSize {
 type CustomLinkProps = {
   className?: string;
   size?: CustomLinkSize;
-  route: string;
-  asRoute?: string;
+  route?: string;
   children: ReactNode | string;
-  isExternal?: boolean;
   onClick?: () => void;
 };
 
-const StyledContent = styled.a<{ size: CustomLinkSize }>`
+const StyledCustomLink = styled.a<{ size: CustomLinkSize }>`
   font-size: ${({ size }) => (size === 'big' ? '1.3rem' : '1rem')};
   display: flex;
   align-items: center;
@@ -36,32 +33,23 @@ const StyledContent = styled.a<{ size: CustomLinkSize }>`
   }
 `;
 
-const CustomLink: React.FC<CustomLinkProps> = ({
-  className,
-  children,
-  route,
-  asRoute,
-  size = CustomLinkSize.SMALL,
-  isExternal,
-  onClick,
-}) => (
-  <>
-    {isExternal ? (
-      <StyledContent className={className} href={route} size={size}>
-        {children}
-      </StyledContent>
-    ) : (
-      <Link href={route} as={asRoute} passHref={true}>
-        <StyledContent
-          className={className}
-          size={size}
-          onClick={onClick && onClick}
-        >
-          {children}
-        </StyledContent>
-      </Link>
-    )}
-  </>
+const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
+  (
+    { className, children, size = CustomLinkSize.SMALL, route, onClick },
+    forwardedRef,
+  ) => (
+    <StyledCustomLink
+      ref={forwardedRef}
+      className={className}
+      href={route && route}
+      size={size}
+      onClick={onClick && onClick}
+    >
+      {children}
+    </StyledCustomLink>
+  ),
 );
+
+CustomLink.displayName = 'CustomLink';
 
 export default CustomLink;

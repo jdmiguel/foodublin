@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 import Breadcrumbs from '../../core/Breadcrumbs/Breadcrumbs';
@@ -42,7 +43,7 @@ const StyledNavFooter = styled.div`
   }
 `;
 
-const StyledFavoriteLink = styled(CustomLink)`
+const StyledCustomLink = styled(CustomLink)`
   ${smallDevicesTextCSS}
 `;
 
@@ -96,10 +97,6 @@ const StyledText = styled.p<{ addSeparation: boolean }>`
   ${smallDevicesTextCSS}
 `;
 
-const StyledTextLink = styled(CustomLink)`
-  ${smallDevicesTextCSS}
-`;
-
 const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
@@ -113,32 +110,28 @@ const Footer: React.FC<FooterProps> = ({
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">
             <Breadcrumbs breadcrumbsData={breadcrumbs || []} />
-            <StyledFavoriteLink route="/favorites">
-              <i className="material-icons">bookmarks</i>FAVORITES
-            </StyledFavoriteLink>
+            <Link href="/favorites">
+              <StyledCustomLink>
+                <i className="material-icons">bookmarks</i>FAVORITES
+              </StyledCustomLink>
+            </Link>
           </StyledNavFooter>
         </StyledNavFooterWrapper>
       )}
       <StyledRightsFooter>
         <StyledBlock>
-          <StyledTextLink
-            route="https://github.com/jdmiguel/foodublin"
-            isExternal={true}
-          >
+          <StyledCustomLink route="https://github.com/jdmiguel/foodublin">
             GITHUB
-          </StyledTextLink>
+          </StyledCustomLink>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={true}>BY</StyledText>
-          <StyledTextLink
-            route="https://jdmiguel.netlify.app/"
-            isExternal={true}
-          >
+          <StyledCustomLink route="https://jdmiguel.netlify.app/">
             JDMIGUEL
-          </StyledTextLink>
+          </StyledCustomLink>
         </StyledBlock>
       </StyledRightsFooter>
     </StyledFooterWrapper>

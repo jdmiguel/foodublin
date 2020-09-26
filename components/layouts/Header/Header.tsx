@@ -1,9 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 import Logo from '../../core/Logo/Logo';
-import Finder from '../../ui/Finder/Finder';
 import CustomLink, { CustomLinkSize } from '../../core/CustomLink/CustomLink';
+
+import Finder from '../../ui/Finder/Finder';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 
@@ -119,10 +121,12 @@ const Header: React.FC<HeaderProps> = ({ bgImgSrc, claimTxt, isExtended }) => (
         </StyledHeaderClaim>
         {isExtended && <Finder />}
         {!isExtended && (
-          <StyledCustomLink route="/favorites" size={CustomLinkSize.BIG}>
-            <i className="material-icons">bookmarks</i>
-            <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
-          </StyledCustomLink>
+          <Link href="/favorites">
+            <StyledCustomLink size={CustomLinkSize.BIG}>
+              <i className="material-icons">bookmarks</i>
+              <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
+            </StyledCustomLink>
+          </Link>
         )}
       </StyledHeaderContent>
     </StyledOverlay>
