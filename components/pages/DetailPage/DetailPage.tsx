@@ -214,12 +214,13 @@ const DetailPage: React.FC<DetailPageProps> = ({
     return getStyledJumbotron(null, DETAIL_GENERIC_SRC);
   };
 
-  return (
+  return isLoading ? (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ) : (
     <Layout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
-        <FullLoader isShowed={isLoading}>
-          <Loader text={DEFAULT_TEXT_LOADING} />
-        </FullLoader>
         {getJumbotron(imgSrc)}
         <StyledInformation>
           <Title text="Relevant information" />

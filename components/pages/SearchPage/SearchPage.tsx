@@ -107,17 +107,15 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
   ) => {
     const { totalText, restaurantText } = getTitleText(total);
 
-    return (
+    return isLoading ? (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ) : (
       <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
-          <FullLoader
-            isShowed={isLoading}
-            type={isLoadingByScroll ? LoaderType.LINE : LoaderType.CIRCLE}
-          >
-            <Loader
-              text={isLoadingByScroll ? '' : DEFAULT_TEXT_LOADING}
-              type={isLoadingByScroll ? LoaderType.LINE : LoaderType.CIRCLE}
-            />
+          <FullLoader isShowed={isLoadingByScroll} type={LoaderType.LINE}>
+            <Loader type={LoaderType.LINE} />
           </FullLoader>
           <Title
             text={`${totalText} ${

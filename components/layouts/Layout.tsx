@@ -36,7 +36,10 @@ const StyledMain = styled.main`
   }
 `;
 
-const ScrollUpButton = styled(Button)<{ scrollUpButtonIsShowed: boolean }>`
+const ScrollUpButton = styled(Button)<{
+  scrollUpButtonIsShowed: boolean;
+  endValue: number;
+}>`
   position: fixed;
   bottom: 1%;
   right: 4%;
@@ -83,6 +86,7 @@ const Layout = ({
         isFloating={true}
         onClick={handleScrollUp}
         scrollUpButtonIsShowed={scrollUpButtonIsShowed}
+        endValue={1}
       >
         <i className="material-icons">arrow_upward</i>
       </ScrollUpButton>

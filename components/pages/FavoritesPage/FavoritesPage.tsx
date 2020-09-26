@@ -59,11 +59,12 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
 }) => {
   const { totalText, restaurantText } = getTitleText(total);
 
-  return (
+  return isLoading ? (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ) : (
     <Layout isExtendedFooter={true}>
-      <FullLoader isShowed={isLoading}>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
       <StyledFavoritesPage className="grid-container">
         <Title
           text={`${totalText} ${restaurantText} saved in your favorites`}

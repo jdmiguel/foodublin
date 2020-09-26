@@ -48,8 +48,8 @@ const StyledFavoriteLink = styled(CustomLink)`
 
 const StyledFooterVeil = styled.div`
   background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  opacity: 0.6;
   height: 170px;
+  opacity: 0.6;
   ${fadeAnimation};
   @media only screen and (min-width: 768px) {
     height: 150px;
@@ -108,7 +108,7 @@ const Footer: React.FC<FooterProps> = ({
 
   return (
     <StyledFooterWrapper>
-      {showVeil && <StyledFooterVeil />}
+      {showVeil && <StyledFooterVeil endValue={0.6} />}
       {isExtended && (
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">

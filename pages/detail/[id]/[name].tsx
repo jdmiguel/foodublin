@@ -52,7 +52,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     return <ErrorPage />;
   }
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { favorites, relatedRestaurants } = useSelector(
     (state: InitialAppState) => state,

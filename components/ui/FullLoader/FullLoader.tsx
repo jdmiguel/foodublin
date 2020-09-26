@@ -2,19 +2,19 @@ import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { LoaderType } from '../../../helpers/types';
+import { fadeAnimation } from '../../../helpers/animations';
 
 type FullLoaderProps = {
-  isShowed: boolean;
+  isShowed?: boolean;
   children: ReactNode;
   type?: LoaderType.CIRCLE | LoaderType.LINE;
 };
 
-const FullCircleLoaderWrapperCSS = css<{ isShowed: boolean }>`
+const FullCircleLoaderWrapperCSS = css`
   display: flex;
   justify-content: center;
-  opacity: ${({ isShowed }) => (isShowed ? '0.94' : '0')};
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+  ${fadeAnimation};
   @media only screen and (min-width: 992px) {
     min-height: 200px;
   }
@@ -43,7 +43,7 @@ const StyledFullLoader = styled.div<{
     top: 50vh;`}
 `;
 const FullLoader: React.FC<FullLoaderProps> = ({
-  isShowed,
+  isShowed = true,
   children,
   type = LoaderType.CIRCLE,
 }) => (
