@@ -444,8 +444,8 @@ exports[`Component: Footer should render with veil 1`] = `
 
 .c1 {
   background-color: #F3F3F3;
-  opacity: 0.6;
   height: 170px;
+  opacity: 0.6;
   -webkit-animation: hikGge 0.15s linear;
   animation: hikGge 0.15s linear;
 }

@@ -17,11 +17,9 @@ exports[`Component: Loader should render as circle type and be hidden 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  opacity: 0;
   background: #F3F3F3;
-  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  -webkit-animation: eTXFzq 0.15s linear;
+  animation: eTXFzq 0.15s linear;
 }
 
 .c1 {
@@ -100,11 +98,9 @@ exports[`Component: Loader should render as circle type and be showed 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  opacity: 0.94;
   background: #F3F3F3;
-  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
+  -webkit-animation: eTXFzq 0.15s linear;
+  animation: eTXFzq 0.15s linear;
 }
 
 .c1 {
