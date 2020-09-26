@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 
-import Loader, { LoaderMode, LoaderType } from '../Loader';
+import Loader, { LoaderMode } from '../Loader';
+
+import { LoaderType } from '../../../../helpers/types';
 
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 
