@@ -43,12 +43,8 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 .c14 {
   width: 100%;
   max-width: 600px;
-  overflow: hidden;
-}
-
-.c15 {
-  width: 100%;
   height: 100%;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +57,7 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   cursor: pointer;
 }
 
-.c16 {
+.c15 {
   width: 30px;
   height: 30px;
   border: solid #FFFFFF 1px;
@@ -71,7 +67,7 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   box-shadow: 1px 2px 5px #888;
 }
 
-.c17 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -88,7 +84,7 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   margin-left: 14px;
 }
 
-.c18 {
+.c17 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -98,7 +94,7 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   color: #FBA52B;
 }
 
-.c19 {
+.c18 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -287,22 +283,22 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c15 {
+  .c14 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
 
-  .c15:hover {
+  .c14:hover {
     background-color: #FDF3E5;
   }
 
-  .c15:hover h4 {
+  .c14:hover h4 {
     color: #EC7E00;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c17 {
+  .c16 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     padding: 10px 0;
@@ -311,13 +307,13 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c17 {
+  .c16 {
     margin-left: 20px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c18 {
+  .c17 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
@@ -404,130 +400,115 @@ exports[`Component: AutocompleteMobile should render 1`] = `
           class="c13"
           role="option"
         >
-          <div
+          <a
             class="c14"
+            data-testid="card"
             type="suggestion"
           >
-            <a
-              class="c15"
-              href="/"
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Manifesto"
+                class="c15"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c16"
               type="suggestion"
             >
-              <div
-                class="LazyImage-Placeholder"
-              >
-                <img
-                  alt="Manifesto"
-                  class="c16"
-                  src="http://localhost:3000/static/images/generic-thumb.png"
-                  type="suggestion"
-                />
-              </div>
-              <div
+              <h4
                 class="c17"
                 type="suggestion"
               >
-                <h4
-                  class="c18"
-                  type="suggestion"
-                >
-                  Manifesto
-                </h4>
-                <p
-                  class="c19"
-                  type="suggestion"
-                >
-                  Rathmines
-                </p>
-              </div>
-            </a>
-          </div>
+                Manifesto
+              </h4>
+              <p
+                class="c18"
+                type="suggestion"
+              >
+                Rathmines
+              </p>
+            </div>
+          </a>
         </li>
         <li
           class="c13"
           role="option"
         >
-          <div
+          <a
             class="c14"
+            data-testid="card"
             type="suggestion"
           >
-            <a
-              class="c15"
-              href="/"
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Dragon Inn"
+                class="c15"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c16"
               type="suggestion"
             >
-              <div
-                class="LazyImage-Placeholder"
-              >
-                <img
-                  alt="Dragon Inn"
-                  class="c16"
-                  src="http://localhost:3000/static/images/generic-thumb.png"
-                  type="suggestion"
-                />
-              </div>
-              <div
+              <h4
                 class="c17"
                 type="suggestion"
               >
-                <h4
-                  class="c18"
-                  type="suggestion"
-                >
-                  Dragon Inn
-                </h4>
-                <p
-                  class="c19"
-                  type="suggestion"
-                >
-                  South City West
-                </p>
-              </div>
-            </a>
-          </div>
+                Dragon Inn
+              </h4>
+              <p
+                class="c18"
+                type="suggestion"
+              >
+                South City West
+              </p>
+            </div>
+          </a>
         </li>
         <li
           class="c13"
           role="option"
         >
-          <div
+          <a
             class="c14"
+            data-testid="card"
             type="suggestion"
           >
-            <a
-              class="c15"
-              href="/"
+            <div
+              class="LazyImage-Placeholder"
+            >
+              <img
+                alt="Casa Del Toro"
+                class="c15"
+                src="http://localhost:3000/static/images/generic-thumb.png"
+                type="suggestion"
+              />
+            </div>
+            <div
+              class="c16"
               type="suggestion"
             >
-              <div
-                class="LazyImage-Placeholder"
-              >
-                <img
-                  alt="Casa Del Toro"
-                  class="c16"
-                  src="http://localhost:3000/static/images/generic-thumb.png"
-                  type="suggestion"
-                />
-              </div>
-              <div
+              <h4
                 class="c17"
                 type="suggestion"
               >
-                <h4
-                  class="c18"
-                  type="suggestion"
-                >
-                  Casa Del Toro
-                </h4>
-                <p
-                  class="c19"
-                  type="suggestion"
-                >
-                  Drumcondra
-                </p>
-              </div>
-            </a>
-          </div>
+                Casa Del Toro
+              </h4>
+              <p
+                class="c18"
+                type="suggestion"
+              >
+                Drumcondra
+              </p>
+            </div>
+          </a>
         </li>
       </ul>
     </div>

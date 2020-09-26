@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
@@ -230,7 +231,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
   };
 
-  const handleRestaurantClick = (restaurantId: string, showedText: string) => {
+  const handleSuggestionClick = (restaurantId: string, showedText: string) => {
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);
@@ -292,16 +293,15 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
                     asRoute,
                   }: Restaurant) => (
                     <StyledListboxItem key={id} role="option">
-                      <Card
-                        id={id}
-                        imgSrc={imgSrc}
-                        title={title}
-                        content={content}
-                        route={route}
-                        asRoute={asRoute}
-                        onClick={() => handleRestaurantClick(id, title)}
-                        type={CardType.SUGGESTION}
-                      />
+                      <Link href={route} as={asRoute}>
+                        <Card
+                          imgSrc={imgSrc}
+                          title={title}
+                          content={content}
+                          onClick={() => handleSuggestionClick(id, title)}
+                          type={CardType.SUGGESTION}
+                        />
+                      </Link>
                     </StyledListboxItem>
                   ),
                 )}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import Input from '../Input/Input';
@@ -173,16 +174,15 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             {suggestions.map(
               ({ id, imgSrc, title, content, route, asRoute }: Restaurant) => (
                 <StyledListboxItem key={id} role="option">
-                  <Card
-                    id={id}
-                    imgSrc={imgSrc}
-                    title={title}
-                    content={content}
-                    route={route}
-                    asRoute={asRoute}
-                    onClick={() => handleSuggestionClick(id, title)}
-                    type={CardType.SUGGESTION}
-                  />
+                  <Link href={route} as={asRoute}>
+                    <Card
+                      imgSrc={imgSrc}
+                      title={title}
+                      content={content}
+                      onClick={() => handleSuggestionClick(id, title)}
+                      type={CardType.SUGGESTION}
+                    />
+                  </Link>
                 </StyledListboxItem>
               ),
             )}

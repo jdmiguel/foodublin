@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import Layout from '../../layouts/Layout';
@@ -48,16 +49,15 @@ const HomePage: React.FC<HomePageProps> = ({ isLoading, clickHighlight }) => (
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
         {HIGHLIGHTED_RESTAURANTS.map((restaurant) => (
           <div key={restaurant.id} className="cell small-12 medium-6 large-4">
-            <Card
-              id={restaurant.id}
-              imgSrc={restaurant.imgSrc}
-              title={restaurant.title}
-              content={restaurant.content}
-              route={restaurant.route}
-              asRoute={restaurant.asRoute}
-              type={CardType.HIGHLIGHT}
-              onClick={() => clickHighlight(restaurant.id)}
-            />
+            <Link href={restaurant.route} as={restaurant.asRoute}>
+              <Card
+                imgSrc={restaurant.imgSrc}
+                title={restaurant.title}
+                content={restaurant.content}
+                type={CardType.HIGHLIGHT}
+                onClick={() => clickHighlight(restaurant.id)}
+              />
+            </Link>
           </div>
         ))}
       </StyledHighlightWrapper>

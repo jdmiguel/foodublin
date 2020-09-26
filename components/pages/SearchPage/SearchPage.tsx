@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import Layout from '../../layouts/Layout';
@@ -132,15 +133,14 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                 className="cell small-12 medium-6 large-4"
                 key={`${restaurant.id}-${restaurant.title}`}
               >
-                <Card
-                  id={restaurant.id}
-                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                  title={restaurant.title}
-                  content={restaurant.content}
-                  route={restaurant.route}
-                  asRoute={restaurant.asRoute}
-                  onClick={() => onClickCard(restaurant.id)}
-                />
+                <Link href={restaurant.route} as={restaurant.asRoute}>
+                  <Card
+                    imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                    title={restaurant.title}
+                    content={restaurant.content}
+                    onClick={() => onClickCard(restaurant.id)}
+                  />
+                </Link>
               </div>
             ))}
           </StyledCardsWrapper>

@@ -1,9 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import { Restaurant } from '../../../helpers/types';
 import {
   THUMB_GENERIC_SRC,
   HIGHLIGHT_GENERIC_SRC,
@@ -15,7 +13,13 @@ export enum CardType {
   HIGHLIGHT = 'highlight',
 }
 
-type Card = Restaurant & { type?: CardType; onClick?: () => void };
+type CardProps = {
+  imgSrc: string;
+  title: string;
+  content: ReactNode | string;
+  type?: CardType;
+  onClick?: () => void;
+};
 
 const CardTextCSS = css`
   text-overflow: ellipsis;
@@ -54,16 +58,12 @@ const HighlightCardImageCss = css`
   border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
 `;
 
-const StyledCard = styled.div<{ type: CardType }>`
+const StyledCard = styled.a<{ type: CardType }>`
   width: 100%;
-  height: ${({ type }) => type === CardType.STANDART && '100px'};
   max-width: ${({ type }) => (type === CardType.HIGHLIGHT ? '350px' : '600px')};
-  overflow: hidden;
-`;
-
-const StyledLink = styled.a<{ type: CardType }>`
-  width: 100%;
   height: 100%;
+  min-height: ${({ type }) => type === CardType.STANDART && '100px'};
+  overflow: hidden;
   display: flex;
   flex-direction: ${({ type }) => type === CardType.HIGHLIGHT && 'column'};
   align-items: ${({ type }) => type === CardType.SUGGESTION && 'center'};
@@ -151,51 +151,49 @@ const StyledContent = styled.p<{ type: CardType }>`
   color: ${(props) => props.theme.palette.DARK_MEDIUM};
 `;
 
-const Card: React.FC<Card> = ({
-  imgSrc,
-  title,
-  route,
-  asRoute,
-  content,
-  onClick,
-  type = CardType.STANDART,
-}) => (
-  <StyledCard
-    className={type === CardType.SUGGESTION ? '' : 'paper'}
-    type={type}
-  >
-    <Link href={route} as={asRoute} passHref={true}>
-      <StyledLink onClick={onClick && onClick} type={type}>
-        <StyledImage
-          src={imgSrc}
-          alt={title}
-          type={type}
-          placeholder={({ imageProps, ref }) => (
-            <div ref={ref} className="LazyImage-Placeholder">
-              <StyledGenericThumb
-                src={
-                  type === CardType.HIGHLIGHT
-                    ? HIGHLIGHT_GENERIC_SRC
-                    : THUMB_GENERIC_SRC
-                }
-                alt={imageProps.alt}
-                type={type}
-              />
-            </div>
-          )}
-          actual={({ imageProps }) => (
-            <div className="LazyImage-Actual">
-              <img {...imageProps} alt={title} />
-            </div>
-          )}
-        />
-        <StyledText type={type}>
-          <StyledTitle type={type}>{title}</StyledTitle>
-          <StyledContent type={type}>{content}</StyledContent>
-        </StyledText>
-      </StyledLink>
-    </Link>
-  </StyledCard>
+const Card = forwardRef<HTMLAnchorElement, CardProps>(
+  (
+    { imgSrc, title, content, onClick, type = CardType.STANDART },
+    forwardedRef,
+  ) => (
+    <StyledCard
+      ref={forwardedRef}
+      className={type === CardType.SUGGESTION ? '' : 'paper'}
+      onClick={onClick && onClick}
+      type={type}
+      data-testid="card"
+    >
+      <StyledImage
+        src={imgSrc}
+        alt={title}
+        type={type}
+        placeholder={({ imageProps, ref }) => (
+          <div ref={ref} className="LazyImage-Placeholder">
+            <StyledGenericThumb
+              src={
+                type === CardType.HIGHLIGHT
+                  ? HIGHLIGHT_GENERIC_SRC
+                  : THUMB_GENERIC_SRC
+              }
+              alt={imageProps.alt}
+              type={type}
+            />
+          </div>
+        )}
+        actual={({ imageProps }) => (
+          <div className="LazyImage-Actual">
+            <img {...imageProps} alt={title} />
+          </div>
+        )}
+      />
+      <StyledText type={type}>
+        <StyledTitle type={type}>{title}</StyledTitle>
+        <StyledContent type={type}>{content}</StyledContent>
+      </StyledText>
+    </StyledCard>
+  ),
 );
+
+Card.displayName = 'Card';
 
 export default Card;

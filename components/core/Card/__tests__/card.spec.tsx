@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Card, { CardType } from '../Card';
 
@@ -47,4 +47,21 @@ it('should render highlight card', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+it('should call function on click', () => {
+  const handleClick = jest.fn();
+  const { getByTestId } = render(
+    renderWithTheme(
+      <Card
+        {...CARD_PROPS_MOCKS}
+        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`}
+        onClick={handleClick}
+      />,
+    ),
+  );
+
+  fireEvent.click(getByTestId('card'));
+
+  expect(handleClick).toHaveBeenCalled();
 });

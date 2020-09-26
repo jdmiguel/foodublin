@@ -4,12 +4,8 @@ exports[`should render highlight card 1`] = `
 .c0 {
   width: 100%;
   max-width: 350px;
-  overflow: hidden;
-}
-
-.c1 {
-  width: 100%;
   height: 100%;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +18,7 @@ exports[`should render highlight card 1`] = `
   background-color: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   width: 100%;
   max-width: 350px;
   margin-bottom: 18px;
@@ -32,7 +28,7 @@ exports[`should render highlight card 1`] = `
   border: 1px solid #F3F3F3;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,14 +42,14 @@ exports[`should render highlight card 1`] = `
   justify-content: space-around;
 }
 
-.c4 {
+.c3 {
   font-size: 1.3rem;
   font-weight: 600;
   color: #FBA52B;
   margin-bottom: 6px;
 }
 
-.c5 {
+.c4 {
   font-size: 0.92rem;
   line-height: 1.1rem;
   font-weight: 500;
@@ -61,22 +57,22 @@ exports[`should render highlight card 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
+  .c0 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
 
-  .c1:hover {
+  .c0:hover {
     background-color: #FDF3E5;
   }
 
-  .c1:hover h4 {
+  .c0:hover h4 {
     color: #EC7E00;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c3 {
+  .c2 {
     font-size: 1.3rem;
     line-height: 1.3rem;
   }
@@ -87,63 +83,54 @@ exports[`should render highlight card 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c4 {
+  .c3 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 }
 
-<div
+<a
   class="c0 paper"
+  data-testid="card"
   type="highlight"
 >
-  <a
-    class="c1"
-    href="/"
+  <div
+    class="LazyImage-Placeholder"
+  >
+    <img
+      alt="Default title"
+      class="c1"
+      src="http://localhost:3000/static/images/highlight-generic.png"
+      type="highlight"
+    />
+  </div>
+  <div
+    class="c2"
     type="highlight"
   >
-    <div
-      class="LazyImage-Placeholder"
-    >
-      <img
-        alt="Default title"
-        class="c2"
-        src="http://localhost:3000/static/images/highlight-generic.png"
-        type="highlight"
-      />
-    </div>
-    <div
+    <h4
       class="c3"
       type="highlight"
     >
-      <h4
-        class="c4"
-        type="highlight"
-      >
-        Default title
-      </h4>
-      <p
-        class="c5"
-        type="highlight"
-      >
-        Default content
-      </p>
-    </div>
-  </a>
-</div>
+      Default title
+    </h4>
+    <p
+      class="c4"
+      type="highlight"
+    >
+      Default content
+    </p>
+  </div>
+</a>
 `;
 
 exports[`should render standart card 1`] = `
 .c0 {
   width: 100%;
-  height: 100px;
   max-width: 600px;
-  overflow: hidden;
-}
-
-.c1 {
-  width: 100%;
   height: 100%;
+  min-height: 100px;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -153,13 +140,13 @@ exports[`should render standart card 1`] = `
   background-color: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   max-width: 100px;
   height: 100%;
   min-width: 80px;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,7 +163,7 @@ exports[`should render standart card 1`] = `
   margin-left: 14px;
 }
 
-.c4 {
+.c3 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -186,7 +173,7 @@ exports[`should render standart card 1`] = `
   color: #FBA52B;
 }
 
-.c5 {
+.c4 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -198,16 +185,16 @@ exports[`should render standart card 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
+  .c0 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
 
-  .c1:hover {
+  .c0:hover {
     background-color: #FDF3E5;
   }
 
-  .c1:hover h4 {
+  .c0:hover h4 {
     color: #EC7E00;
   }
 }
@@ -217,14 +204,14 @@ exports[`should render standart card 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c2 {
+  .c1 {
     width: 100px;
     min-width: 100px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c3 {
+  .c2 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     padding: 10px 0;
@@ -233,68 +220,59 @@ exports[`should render standart card 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c3 {
+  .c2 {
     margin-left: 20px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c4 {
+  .c3 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 }
 
-<div
+<a
   class="c0 paper"
+  data-testid="card"
   type="standart"
 >
-  <a
-    class="c1"
-    href="/"
+  <div
+    class="LazyImage-Placeholder"
+  >
+    <img
+      alt="Default title"
+      class="c1"
+      src="http://localhost:3000/static/images/generic-thumb.png"
+      type="standart"
+    />
+  </div>
+  <div
+    class="c2"
     type="standart"
   >
-    <div
-      class="LazyImage-Placeholder"
-    >
-      <img
-        alt="Default title"
-        class="c2"
-        src="http://localhost:3000/static/images/generic-thumb.png"
-        type="standart"
-      />
-    </div>
-    <div
+    <h4
       class="c3"
       type="standart"
     >
-      <h4
-        class="c4"
-        type="standart"
-      >
-        Default title
-      </h4>
-      <p
-        class="c5"
-        type="standart"
-      >
-        Default content
-      </p>
-    </div>
-  </a>
-</div>
+      Default title
+    </h4>
+    <p
+      class="c4"
+      type="standart"
+    >
+      Default content
+    </p>
+  </div>
+</a>
 `;
 
 exports[`should render suggestion card 1`] = `
 .c0 {
   width: 100%;
   max-width: 600px;
-  overflow: hidden;
-}
-
-.c1 {
-  width: 100%;
   height: 100%;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -307,7 +285,7 @@ exports[`should render suggestion card 1`] = `
   cursor: pointer;
 }
 
-.c2 {
+.c1 {
   width: 30px;
   height: 30px;
   border: solid #FFFFFF 1px;
@@ -317,7 +295,7 @@ exports[`should render suggestion card 1`] = `
   box-shadow: 1px 2px 5px #888;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -334,7 +312,7 @@ exports[`should render suggestion card 1`] = `
   margin-left: 14px;
 }
 
-.c4 {
+.c3 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -344,7 +322,7 @@ exports[`should render suggestion card 1`] = `
   color: #FBA52B;
 }
 
-.c5 {
+.c4 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -356,22 +334,22 @@ exports[`should render suggestion card 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
+  .c0 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
 
-  .c1:hover {
+  .c0:hover {
     background-color: #FDF3E5;
   }
 
-  .c1:hover h4 {
+  .c0:hover h4 {
     color: #EC7E00;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c3 {
+  .c2 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     padding: 10px 0;
@@ -380,54 +358,49 @@ exports[`should render suggestion card 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c3 {
+  .c2 {
     margin-left: 20px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c4 {
+  .c3 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 }
 
-<div
+<a
   class="c0"
+  data-testid="card"
   type="suggestion"
 >
-  <a
-    class="c1"
-    href="/"
+  <div
+    class="LazyImage-Placeholder"
+  >
+    <img
+      alt="Default title"
+      class="c1"
+      src="http://localhost:3000/static/images/generic-thumb.png"
+      type="suggestion"
+    />
+  </div>
+  <div
+    class="c2"
     type="suggestion"
   >
-    <div
-      class="LazyImage-Placeholder"
-    >
-      <img
-        alt="Default title"
-        class="c2"
-        src="http://localhost:3000/static/images/generic-thumb.png"
-        type="suggestion"
-      />
-    </div>
-    <div
+    <h4
       class="c3"
       type="suggestion"
     >
-      <h4
-        class="c4"
-        type="suggestion"
-      >
-        Default title
-      </h4>
-      <p
-        class="c5"
-        type="suggestion"
-      >
-        Default content
-      </p>
-    </div>
-  </a>
-</div>
+      Default title
+    </h4>
+    <p
+      class="c4"
+      type="suggestion"
+    >
+      Default content
+    </p>
+  </div>
+</a>
 `;
