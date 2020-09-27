@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
@@ -178,20 +178,17 @@ const DetailPage: React.FC<DetailPageProps> = ({
     onClickSaveButton(isFavorite ? 'unsave' : 'save');
   };
 
-  const getOverlay = useCallback(
-    () => (
-      <StyledOverlay>
-        <StyledName>{name}</StyledName>
-        <StyledLocation>{location}</StyledLocation>
-        <StyledButton onClick={clickSaveButton}>
-          <i className="material-icons">{`${
-            isSaved ? 'favorite' : 'favorite_border'
-          }`}</i>
-          {`${isSaved ? 'saved' : 'unsaved'}`}
-        </StyledButton>
-      </StyledOverlay>
-    ),
-    [isSaved],
+  const getOverlay = () => (
+    <StyledOverlay>
+      <StyledName>{name}</StyledName>
+      <StyledLocation>{location}</StyledLocation>
+      <StyledButton onClick={clickSaveButton}>
+        <i className="material-icons">{`${
+          isSaved ? 'favorite' : 'favorite_border'
+        }`}</i>
+        {`${isSaved ? 'saved' : 'unsaved'}`}
+      </StyledButton>
+    </StyledOverlay>
   );
 
   const getStyledJumbotron = (ref: any, imgSrc: string) => (

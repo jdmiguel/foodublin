@@ -21,7 +21,7 @@ const Favorites = () => {
     asRoute: '/favorites',
     type: BreadcrumbsType.FAVORITES,
   };
-  useBreadcrumbs(favoritesBreadcrumbs);
+  useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
 
   return (
     <FavoritesPage

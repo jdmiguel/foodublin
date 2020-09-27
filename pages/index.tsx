@@ -28,7 +28,7 @@ const index = () => {
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
   };
 
-  useBreadcrumbs(DEFAULT_BREADCRUMB);
+  useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
 
   return (
     <HomePage

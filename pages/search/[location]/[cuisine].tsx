@@ -253,7 +253,7 @@ const Search: NextPage<SearchProps> = ({
     )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
     type: BreadcrumbsType.SEARCH,
   };
-  useBreadcrumbs(searchBreadcrumbs);
+  useBreadcrumbs(searchBreadcrumbs, 'search');
 
   if (onError) {
     return <ErrorPage />;
