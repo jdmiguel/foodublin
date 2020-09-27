@@ -135,6 +135,7 @@ const Search: NextPage<SearchProps> = ({
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -145,9 +146,6 @@ const Search: NextPage<SearchProps> = ({
     MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
   const currentTotal =
     total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
-  const showWarning =
-    currentTotal >= MAX_RESTAURANT_RETRIEVED &&
-    loadedRestaurantsRef.current > maxRestaurantStarter;
 
   const handleFilter = async (sort: string, order: string) => {
     loadedRestaurantsRef.current = 0;
@@ -197,7 +195,7 @@ const Search: NextPage<SearchProps> = ({
         loaderRestaurants < currentTotal &&
         loaderRestaurants <= maxRestaurantStarter;
 
-      if (scrollDownLimit && !isLoading && isRetrievingDataAllowed) {
+      if (scrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
         setIsLoadingByScroll(true);
 
         const restaurantsData = await handleGetRestaurantsData(
@@ -209,6 +207,7 @@ const Search: NextPage<SearchProps> = ({
         );
 
         if (restaurantsData.restaurants) {
+          setIsLoadingByScroll(false);
           setCurrentRestaurants([
             ...currentRestaurants,
             ...restaurantsData.restaurants,
@@ -228,7 +227,12 @@ const Search: NextPage<SearchProps> = ({
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
-    setIsLoadingByScroll(false);
+    if (
+      currentTotal >= MAX_RESTAURANT_RETRIEVED &&
+      loadedRestaurantsRef.current > maxRestaurantStarter
+    ) {
+      setShowWarning(true);
+    }
   }, [currentRestaurants]);
 
   const handleClickCard = (id: string) => {
