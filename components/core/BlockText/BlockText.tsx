@@ -7,7 +7,7 @@ type BlockTextProps = {
 };
 
 const StyledBlockText = styled.p`
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   line-height: 1.2rem;
 `;
 

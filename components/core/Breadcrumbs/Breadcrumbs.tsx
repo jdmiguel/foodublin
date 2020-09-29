@@ -12,7 +12,7 @@ type BreadcrumbsProps = {
 
 const lastBreadcrumbCSS = css`
   pointer-events: none;
-  color: ${(props) => props.theme.palette.DARK_SOFT};
+  color: ${({ theme }) => theme.palette.DARK_SOFT};
   font-weight: 400;
 `;
 
@@ -47,7 +47,7 @@ const StyledCustomLink = styled(CustomLink)<{ isLast: boolean }>`
 `;
 
 const StyledArrow = styled.span`
-  color: ${(props) => props.theme.palette.DARK_SOFT};
+  color: ${({ theme }) => theme.palette.DARK_SOFT};
   font-weight: 600;
   margin-bottom: 3px;
   ${smallDevicesTextCSS}

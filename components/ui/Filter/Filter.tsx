@@ -26,9 +26,9 @@ const StyledFilterItem = styled.button<{ isActive: boolean }>`
   width: 144px;
   padding: 15px 8px;
   margin: 0 8px 15px;
-  border: 1px solid ${(props) => props.theme.palette.DARK_MIN};
+  border: 1px solid ${({ theme }) => theme.palette.DARK_MIN};
   font-size: 0.9rem;
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   outline: none;
   cursor: pointer;
   display: flex;
@@ -37,7 +37,7 @@ const StyledFilterItem = styled.button<{ isActive: boolean }>`
   background-color: ${({ theme, isActive }) =>
     `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MIN}`};
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
   @media only screen and (min-width: 400px) {
     width: 180px;

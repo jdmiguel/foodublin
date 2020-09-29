@@ -30,10 +30,10 @@ const StyledAutocomplete = styled.div`
 `;
 
 const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   transition: background-color 0.2s ease-out;
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 
   ${({ hasBorderBottomRadius }) =>
@@ -49,7 +49,7 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   z-index: 2;
   top: 55px;
   left: 0;
@@ -59,7 +59,7 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   max-height: 400px;
   overflow: auto;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   border-radius: 0 0 4px 4px;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -69,7 +69,7 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
 const StyledLoader = styled(Loader)`
   width: 100%;
   height: 100%;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   @media only screen and (min-width: 992px) {
     min-height: 200px;
   }
@@ -82,16 +82,16 @@ const StyledListbox = styled.ul`
 
 const StyledListboxItem = styled.li`
   width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_MIN};
   list-style: none;
   display: flex;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   transition: background-color 0.2s ease-out;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 `;
 

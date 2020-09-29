@@ -42,13 +42,13 @@ const StyledDropdown = styled.div`
 const StyledLabel = styled.div`
   position: relative;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
 `;
 
 const StyledLabelButton = styled.button<{ clearable: boolean }>`
   width: 100%;
   height: 55px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   line-height: 55px;
   padding: 0 4px 0 8px;
   display: flex;
@@ -67,11 +67,11 @@ const StyledLabelButton = styled.button<{ clearable: boolean }>`
       font-size: 1rem;
       margin-left: 5px;
       margin-right: 10px;
-      color: ${(props) => props.theme.palette.PRIMARY_DARK};
+      color: ${({ theme }) => theme.palette.PRIMARY_DARK};
     }
   }
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 
   ${(props) => {
@@ -99,7 +99,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   z-index: 2;
   top: 0;
   left: 0;
@@ -107,7 +107,7 @@ const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
   width: 100%;
   height: 100%;
   max-height: 100vh;
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   border-radius: 4px;
   border-top: 0;
   border-bottom: 0;
@@ -167,7 +167,7 @@ const StyledMobileHeadingButton = styled.button`
   ${closeButtonCSS}
   margin-top: 4px;
   i {
-    color: ${(props) => props.theme.palette.DARK_MEDIUM};
+    color: ${({ theme }) => theme.palette.DARK_MEDIUM};
     font-size: 1.5rem;
   }
 `;
@@ -175,11 +175,11 @@ const StyledMobileHeadingButton = styled.button`
 const StyledListboxItem = styled.div`
   width: 100%;
   height: 55px;
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_MIN};
   list-style: none;
   display: block;
   overflow: hidden;
-  color: ${(props) => props.theme.palette.DARK_MAX};
+  color: ${({ theme }) => theme.palette.DARK_MAX};
   display: flex;
   align-items: center;
   width: 100%;
@@ -188,10 +188,10 @@ const StyledListboxItem = styled.div`
   outline: none;
   -webkit-tap-highlight-color: transparent;
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
   &:focus {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 `;
 
@@ -201,7 +201,7 @@ const StyledListboxItemIcon = styled.img`
 `;
 
 const StyledListboxItemText = styled.p<{ isActive: boolean }>`
-  color: ${(props) => props.theme.palette.DARK_MAX};
+  color: ${({ theme }) => theme.palette.DARK_MAX};
   font-size: 0.9rem;
   font-weight: ${({ isActive }) => (!isActive ? 400 : 600)};
 `;

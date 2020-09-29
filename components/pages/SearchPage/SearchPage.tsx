@@ -69,7 +69,7 @@ const StyledWarning = styled.div`
   justify-content: center;
   font-size: 1.1rem;
   text-align: center;
-  color: ${(props) => props.theme.palette.SECONDARY};
+  color: ${({ theme }) => theme.palette.SECONDARY};
   @media only screen and (min-width: 768px) {
     font-size: 1.2rem;
     margin-bottom: 70px;

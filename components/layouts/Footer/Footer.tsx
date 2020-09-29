@@ -29,7 +29,7 @@ const StyledFooterWrapper = styled.footer`
 `;
 
 const StyledNavFooterWrapper = styled.div`
-  border-top: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  border-top: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
 `;
 
 const StyledNavFooter = styled.div`
@@ -48,7 +48,7 @@ const StyledCustomLink = styled(CustomLink)`
 `;
 
 const StyledFooterVeil = styled.div`
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   height: 170px;
   opacity: 0.6;
   ${fadeAnimation};
@@ -58,7 +58,7 @@ const StyledFooterVeil = styled.div`
 `;
 
 const StyledRightsFooter = styled.div`
-  background-color: ${(props) => props.theme.palette.SECONDARY};
+  background-color: ${({ theme }) => theme.palette.SECONDARY};
   display: flex;
   justify-content: center;
   padding: 20px 0;
@@ -66,7 +66,7 @@ const StyledRightsFooter = styled.div`
 
 const StyledBlock = styled.div`
   display: flex;
-  color: ${(props) => props.theme.palette.LIGHT_SOFT};
+  color: ${({ theme }) => theme.palette.LIGHT_SOFT};
   &:not(:first-of-type) {
     margin-left: 5px;
     @media only screen and (min-width: 375px) {

@@ -34,8 +34,8 @@ const StyledButton = styled.button<{ fullWidth: boolean; isFloating: boolean }>`
     '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)'};
   cursor: pointer;
   outline: none;
-  background-color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
-  color: ${(props) => props.theme.palette.LIGHT_MAX};
+  background-color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
+  color: ${({ theme }) => theme.palette.LIGHT_MAX};
   font-weight: 600;
   transition: background-color 0.2s ease-out;
   display: flex;
@@ -46,10 +46,10 @@ const StyledButton = styled.button<{ fullWidth: boolean; isFloating: boolean }>`
     font-size: 1.3em;
   }
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY};
+    background-color: ${({ theme }) => theme.palette.PRIMARY};
   }
   &:focus {
-    background-color: ${(props) => props.theme.palette.PRIMARY};
+    background-color: ${({ theme }) => theme.palette.PRIMARY};
   }
 `;
 

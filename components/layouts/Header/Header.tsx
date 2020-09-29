@@ -19,9 +19,9 @@ const StyledHeader = styled.header<{ bgImg: string | undefined }>`
   width: 100%;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
   background-image: url(${({ bgImg }) => bgImg && bgImg});
-  background-color: ${(props) => props.theme.palette.DARK_SOFT};
+  background-color: ${({ theme }) => theme.palette.DARK_SOFT};
   background-size: cover;
   background-position: center;
   display: flex;
@@ -62,7 +62,7 @@ const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
   font-size: ${({ isExtended }) => (isExtended ? '1.25rem' : '1.3rem')};
   text-align: center;
   font-weight: 400;
-  color: ${(props) => props.theme.palette.DARK_SOFT};
+  color: ${({ theme }) => theme.palette.DARK_SOFT};
   margin-bottom: ${({ isExtended }) => isExtended && '35px'};
   display: ${({ isExtended }) => !isExtended && 'none'};
   @media only screen and (min-width: 350px) {
@@ -79,10 +79,10 @@ const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
 
 const StyledCustomLink = styled(CustomLink)`
   @media only screen and (max-width: 539px) {
-    color: ${(props) => props.theme.palette.LIGHT_MAX};
+    color: ${({ theme }) => theme.palette.LIGHT_MAX};
     padding: 10px;
     border-radius: 50%;
-    background-color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
     i {
       margin-right: 0;
     }

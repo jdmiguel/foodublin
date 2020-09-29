@@ -20,7 +20,7 @@ const StyledHighlight = styled.div`
 `;
 
 const StyledHighlightIcon = styled.i`
-  color: ${(props) => props.theme.palette.DARK_MIN};
+  color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-right: 5px;
 `;
 

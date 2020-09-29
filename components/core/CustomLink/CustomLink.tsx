@@ -20,7 +20,7 @@ const StyledCustomLink = styled.a<{ size: CustomLinkSize }>`
   align-items: center;
   font-weight: 600;
   cursor: pointer;
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+  color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
   i {
     font-size: 0.8em;
     margin-right: ${({ size }) => (size === 'big' ? '6px' : '4px')};
@@ -28,7 +28,7 @@ const StyledCustomLink = styled.a<{ size: CustomLinkSize }>`
   @media only screen and (min-width: 540px) {
     transition: color 0.2s ease-out;
     &:hover {
-      color: ${(props) => props.theme.palette.PRIMARY};
+      color: ${({ theme }) => theme.palette.PRIMARY};
     }
   }
 `;

@@ -20,11 +20,11 @@ const StyledRankStarsWrapper = styled.div`
 
 const StyledRankStar = styled.i`
   font-size: 1.5rem;
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
 `;
 
 const StyledText = styled.p`
-  color: ${(props) => props.theme.palette.DARK_MIN};
+  color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-left: 10px;
 `;
 

@@ -35,13 +35,13 @@ const StyledInputWrapper = styled.div`
   width: 100%;
   border-radius: 4px;
   padding: 0 20px;
-  background: ${(props) => props.theme.palette.LIGHT_MAX};
+  background: ${({ theme }) => theme.palette.LIGHT_MAX};
   display: flex;
   justify-content: center;
   align-items: center;
   i {
     font-size: 1.2rem;
-    color: ${(props) => props.theme.palette.DARK_SOFT};
+    color: ${({ theme }) => theme.palette.DARK_SOFT};
     margin-right: 10px;
   }
   @media only screen and (min-width: 768px) {
@@ -56,7 +56,7 @@ const StyledInput = styled.input`
   line-height: 20px;
   border: none;
   outline: none;
-  color: ${(props) => props.theme.palette.DARK_MAX};
+  color: ${({ theme }) => theme.palette.DARK_MAX};
   background: transparent;
   cursor: pointer;
   outline: none;

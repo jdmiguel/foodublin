@@ -10,8 +10,8 @@ const StyledCuisinesWrapper = styled.div`
 `;
 
 const StyledCuisine = styled.p`
-  background-color: ${(props) => props.theme.palette.DARK_MIN};
-  color: ${(props) => props.theme.palette.LIGHT_MAX};
+  background-color: ${({ theme }) => theme.palette.DARK_MIN};
+  color: ${({ theme }) => theme.palette.LIGHT_MAX};
   font-weight: 500;
   border-radius: 15px;
   padding: 5px 10px;

@@ -63,7 +63,7 @@ const StyledLineLoaderShape = styled.span`
   display: block;
   width: 100%;
   height: 7px;
-  background: ${(props) => props.theme.palette.PRIMARY};
+  background: ${({ theme }) => theme.palette.PRIMARY};
   ${moveAnimation};
 `;
 

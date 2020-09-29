@@ -36,7 +36,7 @@ type DetailPageProps = {
 };
 
 const JumbotronTextCSS = css`
-  color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   text-align: center;
   line-height: 1.5rem;
 `;
@@ -55,7 +55,7 @@ const StyledDetailPage = styled.div`
 const StyledJumbotron = styled.div<{ bgImg: string }>`
   background-size: cover;
   background-image: url(${({ bgImg }) => bgImg});
-  background-color: ${(props) => props.theme.palette.DARK_SOFT};
+  background-color: ${({ theme }) => theme.palette.DARK_SOFT};
   background-position: center;
   display: flex;
   width: 100%;
@@ -137,7 +137,7 @@ const StyledBlockTitle = styled(BlockTitle)`
 `;
 
 const StyledPhone = styled.h5`
-  color: ${(props) => props.theme.palette.PRIMARY};
+  color: ${({ theme }) => theme.palette.PRIMARY};
   font-size: 1.2rem;
   line-height: 0;
 `;

@@ -9,8 +9,8 @@ type AddressProps = {
 };
 
 const StyledAddressMapWrapper = styled.div`
-  background-color: ${(props) => props.theme.palette.LIGHT_MIN};
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MIN};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
   margin-bottom: 15px;
 `;
 
@@ -24,7 +24,7 @@ const StyledAddress = styled.div`
 
 const StyledAddressIcon = styled.i`
   font-size: 1rem;
-  color: ${(props) => props.theme.palette.DARK_MIN};
+  color: ${({ theme }) => theme.palette.DARK_MIN};
   margin: 1px 5px 0 0;
 `;
 

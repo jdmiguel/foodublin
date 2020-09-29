@@ -73,7 +73,7 @@ const StyledAutocomplete = styled(Autocomplete)`
 `;
 
 const StyledSpacer = styled.span`
-  background-color: ${(props) => props.theme.palette.DARK_SOFT};
+  background-color: ${({ theme }) => theme.palette.DARK_SOFT};
   width: 100%;
   height: 1px;
   margin: 0 0 25px 0;

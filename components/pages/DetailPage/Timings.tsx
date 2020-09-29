@@ -15,13 +15,13 @@ const StyledTimming = styled.div`
 const StyledTimmingDay = styled.p`
   font-size: 1.1rem;
   font-weight: 500;
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   margin-right: 5px;
 `;
 
 const StyledTimmingSchedule = styled.p`
   font-size: 0.9rem;
-  color: ${(props) => props.theme.palette.DARK_MIN};
+  color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;
 `;
 

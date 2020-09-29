@@ -32,13 +32,13 @@ const StyledAutocompleteMobile = styled.div`
 const StyledLabel = styled.div`
   position: relative;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
 `;
 
 const StyledLabelButton = styled.button`
   width: 100%;
   height: 55px;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   line-height: 55px;
   padding: 0 4px 0 8px;
   display: flex;
@@ -51,10 +51,10 @@ const StyledLabelButton = styled.button`
     font-size: 1.2rem;
     margin-left: 5px;
     margin-right: 10px;
-    color: ${(props) => props.theme.palette.DARK_SOFT};
+    color: ${({ theme }) => theme.palette.DARK_SOFT};
   }
   span {
-    color: ${(props) => props.theme.palette.DARK_SOFT};
+    color: ${({ theme }) => theme.palette.DARK_SOFT};
   }
 `;
 
@@ -64,7 +64,7 @@ const StyledModal = styled.div<{ isShowed: boolean }>`
   transition: opacity 0.2s ease 0s;
   position: fixed;
   box-sizing: border-box;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   z-index: 2;
   max-width: 767px;
   top: 0;
@@ -73,7 +73,7 @@ const StyledModal = styled.div<{ isShowed: boolean }>`
   width: 100%;
   height: 100%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   border-radius: 0 0 4px 4px;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -100,20 +100,20 @@ const StyleHeadingButton = styled.button`
   i {
     font-size: 1.5rem;
     font-weight: 600;
-    color: ${(props) => props.theme.palette.DARK_MEDIUM};
+    color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   }
 `;
 
 const StyledInput = styled(Input)`
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   transition: background-color 0.2s ease-out;
   outline: none;
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
   &:focus {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 
   input {
@@ -127,7 +127,7 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   z-index: 1;
   top: 150px;
   left: 0;
@@ -137,14 +137,14 @@ const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   height: 100%;
   max-height: 100vh;
   overflow: auto;
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   border-radius: 4px;
 `;
 
 const StyledLoader = styled(Loader)`
   width: 100%;
   height: 100%;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -161,18 +161,18 @@ const StyledListbox = styled.ul`
 
 const StyledListboxItem = styled.li`
   width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_MIN};
   list-style: none;
   overflow: hidden;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   display: flex;
   transition: background-color 0.2s ease-out;
   outline: none;
-  color: ${(props) => props.theme.palette.DARK_MAX};
+  color: ${({ theme }) => theme.palette.DARK_MAX};
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
   }
 `;
 

@@ -41,7 +41,7 @@ const StandartCardImageCSS = css`
 const SuggestionCardImageCSS = css`
   width: 30px;
   height: 30px;
-  border: solid ${(props) => props.theme.palette.LIGHT_MAX} 1px;
+  border: solid ${({ theme }) => theme.palette.LIGHT_MAX} 1px;
   display: inline-block;
   border-radius: 4px;
   -webkit-appearance: button-bevel;
@@ -55,7 +55,7 @@ const HighlightCardImageCss = css`
   width: 100%;
   max-width: 350px;
   margin-bottom: 18px;
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
 `;
 
 const StyledCard = styled.a<{ type: CardType }>`
@@ -84,9 +84,9 @@ const StyledCard = styled.a<{ type: CardType }>`
   @media only screen and (min-width: 768px) {
     transition: background-color 0.2s ease-out;
     &:hover {
-      background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
+      background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
       h4 {
-        color: ${(props) => props.theme.palette.PRIMARY};
+        color: ${({ theme }) => theme.palette.PRIMARY};
       }
     }
   }
@@ -136,7 +136,7 @@ const StyledTitle = styled.h4<{ type: CardType }>`
   font-size: ${({ type }) =>
     type === CardType.SUGGESTION ? '1.05rem' : '1.3rem'};
   font-weight: 600;
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
+  color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
   margin-bottom: ${({ type }) => type === CardType.HIGHLIGHT && '6px'};
   @media only screen and (min-width: 768px) {
     transition: color 0.2s ease-out;
@@ -148,7 +148,7 @@ const StyledContent = styled.p<{ type: CardType }>`
   font-size: ${({ type }) => (type === CardType.STANDART ? '1rem' : '0.92rem')};
   line-height: 1.1rem;
   font-weight: 500;
-  color: ${(props) => props.theme.palette.DARK_MEDIUM};
+  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
 `;
 
 const Card = forwardRef<HTMLAnchorElement, CardProps>(
