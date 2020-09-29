@@ -6,7 +6,7 @@ import Head from 'next/head';
 import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
 import DetailPage from '../../../components/pages/DetailPage/DetailPage';
 
-import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
 
 import {
   clearRelatedRestaurants,

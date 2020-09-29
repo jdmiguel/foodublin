@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import FavoritesPage from '../components/pages/FavoritesPage/FavoritesPage';
 
-import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { InitialAppState, BreadcrumbsType } from '../helpers/types';
 

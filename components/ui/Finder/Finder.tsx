@@ -8,7 +8,7 @@ import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
 import { Dropdown } from '../../core/Dropdown/Dropdown';
 import { Button } from '../../core/Button/Button';
 
-import useWindowMeasures from '../../hooks/useWindowMeasures';
+import { useWindowMeasures } from '../../hooks/useWindowMeasures';
 
 import { setRelatedRestaurants } from '../../../store/actions';
 

@@ -10,7 +10,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 
-import useWindowMeasures from '../../hooks/useWindowMeasures';
+import { useWindowMeasures } from '../../hooks/useWindowMeasures';
 import { ListItem } from '../../../helpers/types';
 
 type ListItemWithIsActive = ListItem & { isActive: boolean };

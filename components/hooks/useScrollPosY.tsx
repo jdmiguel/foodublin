@@ -4,7 +4,7 @@ type DataType = {
   posY: number;
 };
 
-const useScrollPosY = (
+export const useScrollPosY = (
   effect: (data: DataType) => void,
   deps: any[],
   delay: number,
@@ -37,5 +37,3 @@ const useScrollPosY = (
     };
   }, [effect, deps]);
 };
-
-export default useScrollPosY;

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import HomePage from '../components/pages/HomePage/HomePage';
 
-import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../store/actions';
 

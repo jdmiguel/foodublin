@@ -5,9 +5,9 @@ import { NextPage, NextPageContext } from 'next';
 import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
 import SearchPage from '../../../components/pages/SearchPage/SearchPage';
 
-import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
+import { useWindowMeasures } from '../../../components/hooks/useWindowMeasures';
 import useScrollPosY from '../../../components/hooks/useScrollPosY';
-import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../../../store/actions';
 

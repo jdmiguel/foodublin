@@ -5,7 +5,7 @@ import { addBreadcrumbs, replaceBreadcrumbs } from '../../store/actions';
 
 import { InitialAppState, BreadcrumbsData } from '../../helpers/types';
 
-const useBreadcrumbs = (
+export const useBreadcrumbs = (
   currentBreadcrumbs: BreadcrumbsData,
   pageId: string,
 ) => {
@@ -23,5 +23,3 @@ const useBreadcrumbs = (
     );
   }, [pageId]);
 };
-
-export default useBreadcrumbs;

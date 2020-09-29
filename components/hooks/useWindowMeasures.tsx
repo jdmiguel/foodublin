@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useWindowMeasures = () => {
+export const useWindowMeasures = () => {
   const [windowMeasures, setWindowMeasures] = useState({
     width: 0,
     height: 0,
@@ -30,5 +30,3 @@ const useWindowMeasures = () => {
 
   return windowMeasures;
 };
-
-export default useWindowMeasures;
