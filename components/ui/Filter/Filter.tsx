@@ -96,7 +96,7 @@ const dataReducer = (data: FilterData[], action: DataAction) => {
   }
 };
 
-const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
+export const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
   const dataWithIsActiveProp = data.map((dataItem) => ({
     ...dataItem,
     isActive: false,
@@ -139,5 +139,3 @@ const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
     </div>
   );
 };
-
-export default Filter;

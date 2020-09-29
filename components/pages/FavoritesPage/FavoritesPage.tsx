@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Layout } from '../../layouts/Layout';
 
-import FullLoader from '../../ui/FullLoader/FullLoader';
+import { FullLoader }  from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';

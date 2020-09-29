@@ -34,7 +34,7 @@ const index = () => {
     <HomePage
       isLoading={isLoading}
       clickHighlight={handleClickHighlight}
-      highlights={HIGHLIGHTED_RESTAURANTS}
+      Highlights={HIGHLIGHTED_RESTAURANTS}
     />
   );
 };

@@ -125,7 +125,7 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
       votes: data.user_rating.votes,
       average: data.average_cost_for_two,
       establishment: data.establishment[0],
-      highlights: data.highlights,
+      Highlights: data.Highlights,
       phone: data.phone_numbers,
       address: data.location.address,
     };

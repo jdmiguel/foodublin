@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import { Layout } from '../../layouts/Layout';
 
-import Filter from '../../ui/Filter/Filter';
-import FullLoader from '../../ui/FullLoader/FullLoader';
+import { Filter } from '../../ui/Filter/Filter';
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';

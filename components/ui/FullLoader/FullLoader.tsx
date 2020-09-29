@@ -42,7 +42,8 @@ const StyledFullLoader = styled.div<{
     `position: absolute;
     top: 50vh;`}
 `;
-const FullLoader: React.FC<FullLoaderProps> = ({
+
+export const FullLoader: React.FC<FullLoaderProps> = ({
   isShowed = true,
   children,
   type = LoaderType.CIRCLE,
@@ -51,5 +52,3 @@ const FullLoader: React.FC<FullLoaderProps> = ({
     <StyledFullLoader type={type}>{children}</StyledFullLoader>
   </StyledFullLoaderWrapper>
 );
-
-export default FullLoader;

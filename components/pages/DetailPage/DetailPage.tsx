@@ -4,7 +4,7 @@ import { LazyImage } from 'react-lazy-images';
 
 import { Layout } from '../../layouts/Layout';
 
-import FullLoader from '../../ui/FullLoader/FullLoader';
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
@@ -15,7 +15,7 @@ import { Rating } from '../../core/Rating/Rating';
 
 import { Timmings } from './Timings';
 import { Cuisines } from './Cuisines';
-import { HighLights } from './Highlights';
+import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
 
@@ -161,7 +161,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     votes,
     average,
     establishment,
-    highlights,
+    Highlights,
     phone,
     address,
   },
@@ -250,7 +250,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="More info" />
-                  <Highlights highlights={highlights} />
+                  <Highlights Highlights={Highlights} />
                 </StyledSectionBlock>
               </div>
             </div>

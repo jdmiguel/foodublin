@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { Loader }, { LoaderMode } from '../Loader/Loader';
+import { Loader , LoaderMode } from '../Loader/Loader';
 
 type ButtonProps = {
   className?: string;

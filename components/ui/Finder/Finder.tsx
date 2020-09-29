@@ -137,7 +137,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Finder: React.FC<FinderProps> = ({ className }) => {
+export const Finder: React.FC<FinderProps> = ({ className }) => {
   const [suggestions, setSuggestions]: [
     Restaurant[],
     Dispatch<any[]>,
@@ -256,5 +256,3 @@ const Finder: React.FC<FinderProps> = ({ className }) => {
     </StyledFinder>
   );
 };
-
-export default Finder;
