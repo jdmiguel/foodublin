@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 import { BUTTON_MOCK } from '../__mocks__/button.mocks';
 

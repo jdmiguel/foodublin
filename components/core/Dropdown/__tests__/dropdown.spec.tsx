@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import 'jest-styled-components';
 
-import Dropdown from '../Dropdown';
+import { Dropdown } from '../Dropdown';
 
 import { DROPDOWN_PROPS_MOCK } from '../__mocks__/dropdown.mocks';
 

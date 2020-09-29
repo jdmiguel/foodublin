@@ -67,7 +67,7 @@ const StyledLineLoaderShape = styled.span`
   ${moveAnimation};
 `;
 
-const Loader: React.FC<LoaderProps> = ({
+export const Loader: React.FC<LoaderProps> = ({
   className,
   text,
   type = LoaderType.CIRCLE,
@@ -85,5 +85,3 @@ const Loader: React.FC<LoaderProps> = ({
       <StyledLineLoaderShape />
     </StyledLineLoader>
   );
-
-export default Loader;

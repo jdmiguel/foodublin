@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import FullLoader from '../FullLoader';
 
-import Loader from '../../../core/Loader/Loader';
+import { Loader } from '../../../core/Loader/Loader';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { LoaderType } from '../../../../helpers/types';

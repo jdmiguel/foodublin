@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import Input from '../Input/Input';
-import Card, { CardType } from '../Card/Card';
-import Loader from '../Loader/Loader';
+import { Input } from '../Input/Input';
+import { Card }, { CardType } from '../Card/Card';
+import { Loader } from '../Loader/Loader';
 
 import {
   PlaceholderText,
@@ -192,5 +192,3 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     </StyledAutocomplete>
   );
 };
-
-export default Autocomplete;

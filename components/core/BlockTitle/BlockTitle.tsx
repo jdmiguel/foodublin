@@ -16,8 +16,6 @@ const StyledBlockTitle = styled.h4`
   }
 `;
 
-const BlockTitle: React.FC<BlockTitleProps> = ({ className, text }) => (
+export const BlockTitle: React.FC<BlockTitleProps> = ({ className, text }) => (
   <StyledBlockTitle className={className}>{text}</StyledBlockTitle>
 );
-
-export default BlockTitle;

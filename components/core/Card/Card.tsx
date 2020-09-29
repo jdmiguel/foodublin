@@ -151,7 +151,7 @@ const StyledContent = styled.p<{ type: CardType }>`
   color: ${({ theme }) => theme.palette.DARK_MEDIUM};
 `;
 
-const Card = forwardRef<HTMLAnchorElement, CardProps>(
+export const Card = forwardRef<HTMLAnchorElement, CardProps>(
   (
     { imgSrc, title, content, onClick, type = CardType.STANDART },
     forwardedRef,
@@ -195,5 +195,3 @@ const Card = forwardRef<HTMLAnchorElement, CardProps>(
 );
 
 Card.displayName = 'Card';
-
-export default Card;

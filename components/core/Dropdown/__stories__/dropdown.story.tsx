@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { text, select } from '@storybook/addon-knobs';
 
-import Dropdown from '../Dropdown';
+import { Dropdown } from '../Dropdown';
 
 import { DROPDOWN_PROPS_MOCK, ICON_OPTIONS } from '../__mocks__/dropdown.mocks';
 

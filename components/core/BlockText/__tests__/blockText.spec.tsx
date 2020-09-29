@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import BlockText from '../BlockText';
+import { BlockText } from '../BlockText';
 
 import { BLOCK_TEXT_MOCK } from '../__mocks__/blockText.mocks';
 

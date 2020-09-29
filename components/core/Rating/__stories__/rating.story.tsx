@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { select } from '@storybook/addon-knobs';
 
-import Rating from '../Rating';
+import { Rating } from '../Rating';
 
 import {
   RATING_VALUE_MOCK,

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { text } from '@storybook/addon-knobs';
 
-import Card, { CardType } from '../Card';
+import { Card }, { CardType } from '../Card';
 
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
 

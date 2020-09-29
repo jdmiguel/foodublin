@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 
-import Loader, { LoaderMode } from '../Loader';
+import { Loader }, { LoaderMode } from '../Loader';
 
 import { LoaderType } from '../../../../helpers/types';
 

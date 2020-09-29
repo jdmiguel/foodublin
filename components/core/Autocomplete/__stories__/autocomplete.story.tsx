@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 
-import Autocomplete from '../Autocomplete';
-import AutocompleteMobile from '../AutocompleteMobile';
+import { Autocomplete } from '../Autocomplete';
+import { AutocompleteMobile } from '../AutocompleteMobile';
 
 import {
   AUTOCOMPLETE_PROPS_MOCK,

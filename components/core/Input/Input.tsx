@@ -63,7 +63,7 @@ const StyledInput = styled.input`
   -webkit-tap-highlight-color: transparent;
 `;
 
-const Input: React.FC<InputProps> = ({
+export const Input: React.FC<InputProps> = ({
   type,
   hasSearchIcon,
   className,
@@ -134,5 +134,3 @@ const Input: React.FC<InputProps> = ({
     </StyledInputWrapper>
   );
 };
-
-export default Input;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import CustomLink from '../CustomLink';
+import { CustomLink } from '../CustomLink';
 
 import { CUSTOM_LINK_MOCK } from '../__mocks__/customLink.mocks';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Card from '../../core/Card/Card';
+import { Card } from '../../core/Card/Card';
 
 import { Restaurant } from '../../../helpers/types';
 

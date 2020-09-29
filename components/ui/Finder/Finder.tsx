@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import AutocompleteMobile from '../../core/Autocomplete/AutocompleteMobile';
-import Autocomplete from '../../core/Autocomplete/Autocomplete';
-import Dropdown from '../../core/Dropdown/Dropdown';
-import Button from '../../core/Button/Button';
+import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
+import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
+import { Dropdown } from '../../core/Dropdown/Dropdown';
+import { Button } from '../../core/Button/Button';
 
 import useWindowMeasures from '../../hooks/useWindowMeasures';
 

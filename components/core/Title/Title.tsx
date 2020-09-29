@@ -18,8 +18,6 @@ const StyledTitle = styled.h3`
   }
 `;
 
-const Title: React.FC<TitleProps> = ({ className, text }) => (
+export const Title: React.FC<TitleProps> = ({ className, text }) => (
   <StyledTitle className={className}>{text}</StyledTitle>
 );
-
-export default Title;

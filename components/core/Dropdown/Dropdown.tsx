@@ -8,7 +8,7 @@ import React, {
 import styled, { css } from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-import BlockTitle from '../BlockTitle/BlockTitle';
+import { BlockTitle } from '../BlockTitle/BlockTitle';
 
 import useWindowMeasures from '../../hooks/useWindowMeasures';
 import { ListItem } from '../../../helpers/types';
@@ -221,7 +221,7 @@ const listReducer = (list: ListItem[], action: ListAction) => {
   }
 };
 
-const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown: React.FC<DropdownProps> = ({
   className,
   icon,
   labelTxt,
@@ -364,5 +364,3 @@ const Dropdown: React.FC<DropdownProps> = ({
     </StyledDropdown>
   );
 };
-
-export default Dropdown;

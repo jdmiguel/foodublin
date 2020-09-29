@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-import Breadcrumbs from '../../core/Breadcrumbs/Breadcrumbs';
-import CustomLink from '../../core/CustomLink/CustomLink';
+import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
+import { CustomLink } from '../../core/CustomLink/CustomLink';
 
 import { InitialAppState } from '../../../helpers/types';
 import { fadeAnimation } from '../../../helpers/animations';

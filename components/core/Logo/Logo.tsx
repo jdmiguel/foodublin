@@ -27,10 +27,8 @@ const StyledImg = styled.img`
   max-width: 300px;
 `;
 
-const Logo: React.FC<LogoProps> = ({ size, logoSrc }) => (
+export const Logo: React.FC<LogoProps> = ({ size, logoSrc }) => (
   <StyledLogo data-testid="logo" size={size}>
     <StyledImg src={logoSrc} alt="FooDublin Logo" />
   </StyledLogo>
 );
-
-export default Logo;

@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import Layout from '../../layouts/Layout';
 
-import BlockTitle from '../../core/BlockTitle/BlockTitle';
-import Button from '../../core/Button/Button';
+import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
+import { Button } from '../../core/Button/Button';
 
 const StyledErrorPage = styled.div`
   display: flex;

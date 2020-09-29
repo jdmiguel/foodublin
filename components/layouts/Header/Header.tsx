@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-import Logo, { LogoSize } from '../../core/Logo/Logo';
-import CustomLink, { CustomLinkSize } from '../../core/CustomLink/CustomLink';
+import { Logo }, { LogoSize } from '../../core/Logo/Logo';
+import { CustomLink }, { CustomLinkSize } from '../../core/CustomLink/CustomLink';
 
 import Finder from '../../ui/Finder/Finder';
 

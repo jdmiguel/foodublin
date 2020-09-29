@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { text } from '@storybook/addon-knobs';
 
-import CustomLink from '../CustomLink';
+import { CustomLink } from '../CustomLink';
 
 import { CUSTOM_LINK_MOCK } from '../__mocks__/customLink.mocks';
 

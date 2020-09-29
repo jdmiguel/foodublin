@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 
-import Input, { InputProps } from '../Input';
+import { Input }, { InputProps } from '../Input';
 
 import { INPUT_PROPS_MOCK } from '../__mocks__/input.mocks';
 

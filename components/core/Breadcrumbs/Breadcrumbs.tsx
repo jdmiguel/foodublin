@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-import CustomLink from '../CustomLink/CustomLink';
+import { CustomLink } from '../CustomLink/CustomLink';
 
 import { BreadcrumbsData } from '../../../helpers/types';
 
@@ -56,7 +56,9 @@ const StyledArrow = styled.span`
   }
 `;
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
+  breadcrumbsData,
+}) => (
   <StyledBreadcrumbsWrapper>
     {breadcrumbsData.map((breadcrumbData, itemIndex, items) => {
       const isLast = itemIndex === items.length - 1;
@@ -73,5 +75,3 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData }) => (
     })}
   </StyledBreadcrumbsWrapper>
 );
-
-export default Breadcrumbs;

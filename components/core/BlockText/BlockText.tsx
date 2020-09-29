@@ -11,8 +11,6 @@ const StyledBlockText = styled.p`
   line-height: 1.2rem;
 `;
 
-const BlockText: React.FC<BlockTextProps> = ({ className, text }) => (
+export const BlockText: React.FC<BlockTextProps> = ({ className, text }) => (
   <StyledBlockText className={className}>{text}</StyledBlockText>
 );
-
-export default BlockText;

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Loader, { LoaderMode } from '../Loader/Loader';
+import { Loader }, { LoaderMode } from '../Loader/Loader';
 
 type ButtonProps = {
   className?: string;
@@ -53,7 +53,7 @@ const StyledButton = styled.button<{ fullWidth: boolean; isFloating: boolean }>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   className,
   onClick,
   children,
@@ -78,5 +78,3 @@ const Button: React.FC<ButtonProps> = ({
     </StyledButton>
   </StyledButtonWrapper>
 );
-
-export default Button;

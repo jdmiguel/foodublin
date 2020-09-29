@@ -3,10 +3,10 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-import Input from '../Input/Input';
-import Card, { CardType } from '../Card/Card';
-import Loader from '../Loader/Loader';
-import BlockTitle from '../BlockTitle/BlockTitle';
+import { Input } from '../Input/Input';
+import { Card }, { CardType } from '../Card/Card';
+import { Loader } from '../Loader/Loader';
+import { BlockTitle } from '../BlockTitle/BlockTitle';
 
 import {
   PlaceholderText,
@@ -313,5 +313,3 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     </StyledAutocompleteMobile>
   );
 };
-
-export default AutocompleteMobile;

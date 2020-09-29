@@ -28,7 +28,7 @@ const StyledText = styled.p`
   margin-left: 10px;
 `;
 
-const Rating: React.FC<RatingProps> = ({ value, votes }) => {
+export const Rating: React.FC<RatingProps> = ({ value, votes }) => {
   const roundedValue = Math.round(value);
   const ratingStartList: RatingStar[] = DEFAULT_RATING_STAR_LIST.map((star) => {
     const starType = roundedValue >= star.id ? 'star' : star.type;
@@ -46,4 +46,3 @@ const Rating: React.FC<RatingProps> = ({ value, votes }) => {
     </StyledRankStarsWrapper>
   );
 };
-export default Rating;

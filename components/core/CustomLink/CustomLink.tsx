@@ -33,7 +33,7 @@ const StyledCustomLink = styled.a<{ size: CustomLinkSize }>`
   }
 `;
 
-const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
+export const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
   (
     { className, children, size = CustomLinkSize.SMALL, route, onClick },
     forwardedRef,
@@ -51,5 +51,3 @@ const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
 );
 
 CustomLink.displayName = 'CustomLink';
-
-export default CustomLink;

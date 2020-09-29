@@ -6,12 +6,12 @@ import Layout from '../../layouts/Layout';
 
 import FullLoader from '../../ui/FullLoader/FullLoader';
 
-import Loader from '../../core/Loader/Loader';
-import Title from '../../core/Title/Title';
-import Button from '../../core/Button/Button';
-import BlockTitle from '../../core/BlockTitle/BlockTitle';
-import BlockText from '../../core/BlockText/BlockText';
-import Rating from '../../core/Rating/Rating';
+import { Loader } from '../../core/Loader/Loader';
+import { Title } from '../../core/Title/Title';
+import { Button } from '../../core/Button/Button';
+import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
+import { BlockText } from '../../core/BlockText/BlockText';
+import { Rating } from '../../core/Rating/Rating';
 
 import Timmings from './Timings';
 import Cuisines from './Cuisines';
