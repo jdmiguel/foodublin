@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { Button } from '../core/Button/Button';
-import useScrollPosY from '../hooks/useScrollPosY';
+import { useScrollPosY } from '../hooks/useScrollPosY';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../helpers/utils';
 import {
