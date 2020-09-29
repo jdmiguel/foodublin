@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import Layout from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout';
 
 import FullLoader from '../../ui/FullLoader/FullLoader';
 
@@ -13,11 +13,11 @@ import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 import { BlockText } from '../../core/BlockText/BlockText';
 import { Rating } from '../../core/Rating/Rating';
 
-import Timmings from './Timings';
-import Cuisines from './Cuisines';
-import Highlights from './Highlights';
-import Address from './Address';
-import RelatedRestaurants from './RelatedRestaurants';
+import { Timmings } from './Timings';
+import { Cuisines } from './Cuisines';
+import { HighLights } from './Highlights';
+import { Address } from './Address';
+import { RelatedRestaurants } from './RelatedRestaurants';
 
 import { RestaurantDetail, Restaurant } from '../../../helpers/types';
 import { getTimmings, getMapSrc } from '../../../helpers/utils';
@@ -150,7 +150,7 @@ const StyledRelatedRestaurants = styled.div`
   margin-top: 50px;
 `;
 
-const DetailPage: React.FC<DetailPageProps> = ({
+export const DetailPage: React.FC<DetailPageProps> = ({
   data: {
     imgSrc,
     name,
@@ -286,5 +286,3 @@ const DetailPage: React.FC<DetailPageProps> = ({
     </Layout>
   );
 };
-
-export default DetailPage;

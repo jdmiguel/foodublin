@@ -97,7 +97,7 @@ const StyledText = styled.p<{ addSeparation: boolean }>`
   ${smallDevicesTextCSS}
 `;
 
-const Footer: React.FC<FooterProps> = ({
+export const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
 }) => {
@@ -137,5 +137,3 @@ const Footer: React.FC<FooterProps> = ({
     </StyledFooterWrapper>
   );
 };
-
-export default Footer;

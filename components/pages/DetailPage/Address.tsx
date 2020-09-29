@@ -28,7 +28,7 @@ const StyledAddressIcon = styled.i`
   margin: 1px 5px 0 0;
 `;
 
-const Address = ({ mapSrc, address }: AddressProps) => (
+export const Address = ({ mapSrc, address }: AddressProps) => (
   <>
     <StyledAddressMapWrapper>
       <StyledIframe
@@ -45,5 +45,3 @@ const Address = ({ mapSrc, address }: AddressProps) => (
     </StyledAddress>
   </>
 );
-
-export default Address;

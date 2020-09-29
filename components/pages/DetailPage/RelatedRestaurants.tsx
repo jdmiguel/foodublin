@@ -12,7 +12,7 @@ type RelatedRestaurantsProps = {
   onClickRelatedRestaurant: () => void;
 };
 
-const RelatedRestaurants = ({
+export const RelatedRestaurants = ({
   restaurants,
   onClickRelatedRestaurant,
 }: RelatedRestaurantsProps) => (
@@ -31,5 +31,3 @@ const RelatedRestaurants = ({
     ))}
   </>
 );
-
-export default RelatedRestaurants;

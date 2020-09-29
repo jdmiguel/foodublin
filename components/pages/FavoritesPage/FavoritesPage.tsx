@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import Layout from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout';
 
 import FullLoader from '../../ui/FullLoader/FullLoader';
 
@@ -52,7 +52,7 @@ const StyledCardsWrapper = styled.div`
   }
 `;
 
-const FavoritesPage: React.FC<FavoritesPageProps> = ({
+export const FavoritesPage: React.FC<FavoritesPageProps> = ({
   isLoading,
   total,
   restaurants,
@@ -93,5 +93,3 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
 };
 
 FavoritesPage.displayName = 'FavoritesPage';
-
-export default FavoritesPage;

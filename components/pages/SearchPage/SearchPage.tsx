@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import Layout from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout';
 
 import Filter from '../../ui/Filter/Filter';
 import FullLoader from '../../ui/FullLoader/FullLoader';
@@ -91,7 +91,7 @@ const StyledWarningIcon = styled.i`
   }
 `;
 
-const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
+export const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
   (
     {
       total,
@@ -160,5 +160,3 @@ const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
 );
 
 SearchPage.displayName = 'SearchPage';
-
-export default SearchPage;

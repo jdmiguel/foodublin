@@ -8,7 +8,7 @@ import reducer from '../../../store/reducer';
 
 import { theme } from '../../../helpers/Theme';
 
-import Layout from '../Layout';
+import { Layout } from '../Layout';
 
 test('default layout can be passed a child', () => {
   const mockStore = configureStore();

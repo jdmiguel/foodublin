@@ -25,7 +25,7 @@ const StyledTimmingSchedule = styled.p`
   margin-bottom: 1px;
 `;
 
-const Timmings = ({ timmings }: TimingsProps) => (
+export const Timmings = ({ timmings }: TimingsProps) => (
   <>
     {timmings.map((timming) => (
       <StyledTimming key={timming.id}>
@@ -35,5 +35,3 @@ const Timmings = ({ timmings }: TimingsProps) => (
     ))}
   </>
 );
-
-export default Timmings;

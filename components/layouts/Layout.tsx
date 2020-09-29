@@ -1,8 +1,8 @@
 import React, { useState, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+import { Header } from './Header/Header';
+import { Footer } from './Footer/Footer';
 import { Button } from '../core/Button/Button';
 import { useScrollPosY } from '../hooks/useScrollPosY';
 
@@ -48,7 +48,7 @@ const ScrollUpButton = styled(Button)<{
   ${fadeAnimation};
 `;
 
-const Layout = ({
+export const Layout = ({
   children,
   isExtendedHeader = false,
   isExtendedFooter = false,
@@ -93,5 +93,3 @@ const Layout = ({
     </StyledLayout>
   );
 };
-
-export default Layout;

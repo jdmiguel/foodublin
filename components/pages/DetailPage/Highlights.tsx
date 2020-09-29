@@ -24,7 +24,7 @@ const StyledHighlightIcon = styled.i`
   margin-right: 5px;
 `;
 
-const HighLights = ({ highlights }: HighLightsProps) => (
+export const HighLights = ({ highlights }: HighLightsProps) => (
   <StyledHighlightsWrapper>
     {highlights.map((highlight) => (
       <StyledHighlight key={highlight}>
@@ -36,5 +36,3 @@ const HighLights = ({ highlights }: HighLightsProps) => (
     ))}
   </StyledHighlightsWrapper>
 );
-
-export default HighLights;

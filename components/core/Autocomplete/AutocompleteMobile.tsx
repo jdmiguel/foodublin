@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import { Input } from '../Input/Input';
-import { Card }, { CardType } from '../Card/Card';
+import { Card, CardType } from '../Card/Card';
 import { Loader } from '../Loader/Loader';
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 

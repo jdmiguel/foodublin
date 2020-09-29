@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 
-import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
-import DetailPage from '../../../components/pages/DetailPage/DetailPage';
+import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
+import { DetailPage } from '../../../components/pages/DetailPage/DetailPage';
 
 import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
 

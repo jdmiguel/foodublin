@@ -22,12 +22,10 @@ const StyledCuisine = styled.p`
   }
 `;
 
-const Cuisines = ({ cuisines }: CuisinesProps) => (
+export const Cuisines = ({ cuisines }: CuisinesProps) => (
   <StyledCuisinesWrapper>
     {cuisines.split(',').map((cuisine) => (
       <StyledCuisine key={cuisine}>{cuisine}</StyledCuisine>
     ))}
   </StyledCuisinesWrapper>
 );
-
-export default Cuisines;

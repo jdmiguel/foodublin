@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { Card }, { CardType } from '../Card';
+import { Card, CardType } from '../Card';
 
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
 
