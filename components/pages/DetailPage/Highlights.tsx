@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { BlockText } from '../../core/BlockText/BlockText';
 
 type HighlightsProps = {
-  Highlights: string[];
+  highlightsData: string[];
 };
 
 const StyledHighlightsWrapper = styled.div`
@@ -24,9 +24,9 @@ const StyledHighlightIcon = styled.i`
   margin-right: 5px;
 `;
 
-export const Highlights = ({ Highlights }: HighlightsProps) => (
+export const Highlights = ({ highlightsData }: HighlightsProps) => (
   <StyledHighlightsWrapper>
-    {Highlights.map((highlight) => (
+    {highlightsData.map((highlight) => (
       <StyledHighlight key={highlight}>
         <StyledHighlightIcon className="material-icons">
           check_circle

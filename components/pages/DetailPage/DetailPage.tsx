@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import { Layout } from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout/Layout';
 
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
@@ -161,7 +161,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     votes,
     average,
     establishment,
-    Highlights,
+    Highlights: highlights,
     phone,
     address,
   },
@@ -250,7 +250,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="More info" />
-                  <Highlights Highlights={Highlights} />
+                  <Highlights highlightsData={highlights} />
                 </StyledSectionBlock>
               </div>
             </div>

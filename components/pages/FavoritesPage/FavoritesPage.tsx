@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { Layout } from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout/Layout';
 
-import { FullLoader }  from '../../ui/FullLoader/FullLoader';
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
