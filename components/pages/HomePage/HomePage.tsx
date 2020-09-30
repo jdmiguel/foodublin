@@ -8,13 +8,13 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
-import { Card, CardType } from '../../core/Card/Card';
+import { Card } from '../../core/Card/Card';
 
 import {
   HIGHLIGHTED_RESTAURANTS,
   DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
-import { Restaurant } from '../../../helpers/types';
+import { Restaurant, CardType } from '../../../helpers/types';
 
 type HomePageProps = {
   isLoading: boolean;

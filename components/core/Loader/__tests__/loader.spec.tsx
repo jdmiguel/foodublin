@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Loader , LoaderMode } from '../Loader';
+import { Loader } from '../Loader';
 
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { LoaderType } from '../../../../helpers/types';
+import { LoaderType, LoaderMode } from '../../../../helpers/types';
 
 describe('Component: Loader', () => {
   it('should render as circle type and dark mode', () => {

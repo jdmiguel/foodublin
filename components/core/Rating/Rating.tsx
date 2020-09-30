@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import { StyledRankStarsWrapper, StyledRankStar, StyledText } from './styles';
 
 import { DEFAULT_RATING_STAR_LIST } from '../../../helpers/staticData';
 
@@ -12,21 +13,6 @@ type RatingProps = {
   value: number;
   votes: number;
 };
-
-const StyledRankStarsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledRankStar = styled.i`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
-`;
-
-const StyledText = styled.p`
-  color: ${({ theme }) => theme.palette.DARK_MIN};
-  margin-left: 10px;
-`;
 
 export const Rating: React.FC<RatingProps> = ({ value, votes }) => {
   const roundedValue = Math.round(value);

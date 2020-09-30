@@ -2,12 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-import { Logo, LogoSize } from '../../core/Logo/Logo';
-import { CustomLink, CustomLinkSize } from '../../core/CustomLink/CustomLink';
+import { Logo } from '../../core/Logo/Logo';
+import { CustomLink } from '../../core/CustomLink/CustomLink';
 
-import { Finder }  from '../../ui/Finder/Finder';
+import { Finder } from '../../ui/Finder/Finder';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
+import { CustomLinkSize, LogoSize } from '../../../helpers/types';
 
 type HeaderProps = {
   claimTxt: string;

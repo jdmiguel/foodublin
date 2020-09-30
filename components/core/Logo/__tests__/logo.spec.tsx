@@ -1,11 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Logo, LogoSize } from '../Logo';
+import { Logo } from '../Logo';
 
 import { LOGO_SRC_MOCK } from '../__mocks__/logo.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
+import { LogoSize } from '../../../../helpers/types';
 
 describe('Component: Logo', () => {
   it('should render as big version', () => {
