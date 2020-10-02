@@ -34,9 +34,6 @@ const HighlightCardImageCss = css`
   width: 100%;
   max-width: 350px;
   margin-bottom: 18px;
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 18px;
   border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
 `;
 
