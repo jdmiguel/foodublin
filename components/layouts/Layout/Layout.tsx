@@ -1,17 +1,17 @@
 import React, { useState, ReactNode } from 'react';
-import styled from 'styled-components';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-import { Button } from '../../core/Button/Button';
+
 import { useScrollPosY } from '../../hooks/useScrollPosY';
+
+import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
 
 import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 import {
   SCROLL_DELAY,
   SHOWING_SCROLLUP_BUTTON_HEIGHT,
 } from '../../../helpers/staticData';
-import { fadeAnimation } from '../../../helpers/animations';
 
 type LayoutProps = {
   children: ReactNode;
@@ -19,34 +19,6 @@ type LayoutProps = {
   isExtendedFooter?: boolean;
   showFooterVeil?: boolean;
 };
-
-const StyledLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-`;
-
-const StyledMain = styled.main`
-  margin-bottom: 120px;
-  padding: 0 10px;
-  @media only screen and (min-width: 768px) {
-    padding: 0 20px;
-    margin-bottom: 80px;
-  }
-`;
-
-const ScrollUpButton = styled(Button)<{
-  scrollUpButtonIsShowed: boolean;
-  endValue: number;
-}>`
-  position: fixed;
-  bottom: 1%;
-  right: 4%;
-  z-index: 1;
-  display: ${({ scrollUpButtonIsShowed }) => !scrollUpButtonIsShowed && 'none'};
-  ${fadeAnimation};
-`;
 
 export const Layout = ({
   children,
@@ -81,7 +53,7 @@ export const Layout = ({
       />
       <StyledMain>{children}</StyledMain>
       <Footer showVeil={showFooterVeil} isExtended={isExtendedFooter} />
-      <ScrollUpButton
+      <StyledScrollUpButton
         fullWidth={false}
         isFloating={true}
         onClick={handleScrollUp}
@@ -89,7 +61,7 @@ export const Layout = ({
         endValue={1}
       >
         <i className="material-icons">arrow_upward</i>
-      </ScrollUpButton>
+      </StyledScrollUpButton>
     </StyledLayout>
   );
 };

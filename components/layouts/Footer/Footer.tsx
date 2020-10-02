@@ -1,101 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import styled, { css } from 'styled-components';
 
 import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
-import { CustomLink } from '../../core/CustomLink/CustomLink';
+
+import {
+  StyledFooterWrapper,
+  StyledFooterVeil,
+  StyledNavFooterWrapper,
+  StyledNavFooter,
+  StyledCustomLink,
+  StyledRightsFooter,
+  StyledBlock,
+  StyledText,
+} from './styles';
 
 import { InitialAppState } from '../../../helpers/types';
-import { fadeAnimation } from '../../../helpers/animations';
 
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
 };
-
-const smallDevicesTextCSS = css`
-  @media only screen and (max-width: 330px) {
-    font-size: 0.85rem;
-  }
-`;
-
-const StyledFooterWrapper = styled.footer`
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  overflow: hidden;
-`;
-
-const StyledNavFooterWrapper = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
-`;
-
-const StyledNavFooter = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 10px;
-  @media only screen and (min-width: 600px) {
-    padding: 15px 20px;
-  }
-`;
-
-const StyledCustomLink = styled(CustomLink)`
-  ${smallDevicesTextCSS}
-`;
-
-const StyledFooterVeil = styled.div`
-  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  height: 170px;
-  opacity: 0.6;
-  ${fadeAnimation};
-  @media only screen and (min-width: 768px) {
-    height: 150px;
-  }
-`;
-
-const StyledRightsFooter = styled.div`
-  background-color: ${({ theme }) => theme.palette.SECONDARY};
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-`;
-
-const StyledBlock = styled.div`
-  display: flex;
-  color: ${({ theme }) => theme.palette.LIGHT_SOFT};
-  &:not(:first-of-type) {
-    margin-left: 5px;
-    @media only screen and (min-width: 375px) {
-      margin-left: 7px;
-    }
-  }
-  &:not(:last-of-type) {
-    &:after {
-      content: ' | ';
-      margin-left: 3px;
-      @media only screen and (min-width: 375px) {
-        margin-left: 5px;
-      }
-    }
-  }
-  &:last-of-type {
-    margin-right: 1px;
-    @media only screen and (min-width: 375px) {
-      margin-right: 3px;
-    }
-  }
-  ${smallDevicesTextCSS}
-`;
-
-const StyledText = styled.p<{ addSeparation: boolean }>`
-  font-weight: 300;
-  margin-right: ${({ addSeparation }) => addSeparation && '3px'};
-  ${smallDevicesTextCSS}
-`;
 
 export const Footer: React.FC<FooterProps> = ({
   showVeil = false,
