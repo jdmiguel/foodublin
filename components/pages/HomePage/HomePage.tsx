@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import styled from 'styled-components';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
@@ -9,6 +8,8 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
+
+import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
 import {
   HIGHLIGHTED_RESTAURANTS,
@@ -21,23 +22,6 @@ type HomePageProps = {
   Highlights: Restaurant[];
   clickHighlight: (id: string) => void;
 };
-
-const StyledHighlights = styled.div`
-  margin-top: 50px;
-  margin-bottom: 60px;
-  @media only screen and (min-width: 1024px) {
-    margin-top: 75px;
-    padding: 0 30px;
-  }
-`;
-
-const StyledHighlightWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  @media only screen and (min-width: 1200px) {
-    justify-content: space-between;
-  }
-`;
 
 export const HomePage: React.FC<HomePageProps> = ({
   isLoading,
