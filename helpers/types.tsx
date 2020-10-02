@@ -85,7 +85,7 @@ export type RestaurantDetail = {
   votes: number;
   average: string;
   establishment: string;
-  Highlights: string[];
+  highlights: string[];
   phone: string;
   address: string;
 };

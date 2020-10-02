@@ -1,29 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import {
+  StyledTimming,
+  StyledTimmingDay,
+  StyledTimmingSchedule,
+} from './styles';
 
 import { Timming } from '../../../helpers/types';
 
 type TimingsProps = {
   timmings: Timming[];
 };
-
-const StyledTimming = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
-
-const StyledTimmingDay = styled.p`
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
-  margin-right: 5px;
-`;
-
-const StyledTimmingSchedule = styled.p`
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.palette.DARK_MIN};
-  margin-bottom: 1px;
-`;
 
 export const Timmings = ({ timmings }: TimingsProps) => (
   <>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
 import { Layout } from '../../layouts/Layout/Layout';
@@ -8,8 +7,7 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
-import { Button } from '../../core/Button/Button';
-import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
+
 import { BlockText } from '../../core/BlockText/BlockText';
 import { Rating } from '../../core/Rating/Rating';
 
@@ -18,6 +16,21 @@ import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
+
+import {
+  StyledOverlay,
+  StyledName,
+  StyledLocation,
+  StyledButton,
+  StyledJumbotron,
+  StyledDetailPage,
+  StyledInformation,
+  StyledSectionBlock,
+  StyledBlockTitle,
+  StyledAddressWrapper,
+  StyledPhone,
+  StyledRelatedRestaurants,
+} from './styles';
 
 import { RestaurantDetail, Restaurant } from '../../../helpers/types';
 import { getTimmings, getMapSrc } from '../../../helpers/utils';
@@ -35,121 +48,6 @@ type DetailPageProps = {
   onClickRelatedRestaurant: () => void;
 };
 
-const JumbotronTextCSS = css`
-  color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  text-align: center;
-  line-height: 1.5rem;
-`;
-
-const StyledDetailPage = styled.div`
-  margin: 50px auto 70px;
-  @media only screen and (min-width: 428px) {
-    margin: 50px auto;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin: 75px auto 60px;
-    padding: 0 30px;
-  }
-`;
-
-const StyledJumbotron = styled.div<{ bgImg: string }>`
-  background-size: cover;
-  background-image: url(${({ bgImg }) => bgImg});
-  background-color: ${({ theme }) => theme.palette.DARK_SOFT};
-  background-position: center;
-  display: flex;
-  width: 100%;
-  height: 250px;
-  margin: 0;
-  @media only screen and (min-width: 640px) {
-    height: 300px;
-  }
-`;
-
-const StyledOverlay = styled.div`
-  background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 20px;
-`;
-
-const StyledName = styled.h2`
-  ${JumbotronTextCSS}
-  font-size: 1.7rem;
-  line-height: 1.5rem;
-  font-weight: 600;
-  @media only screen and (min-width: 640px) {
-    line-height: 2.3rem;
-    font-size: 2.6rem;
-  }
-  @media only screen and (min-width: 992px) {
-    line-height: 2.5rem;
-    font-size: 3rem;
-  }
-`;
-
-const StyledLocation = styled.h3`
-  ${JumbotronTextCSS}
-  font-size: 1.3rem;
-  line-height: 1.3rem;
-  @media only screen and (min-width: 640px) {
-    line-height: 2rem;
-    font-size: 2rem;
-  }
-  @media only screen and (min-width: 992px) {
-    line-height: 2rem;
-    font-size: 2.6rem;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  max-width: 140px;
-  margin-top: 30px;
-  @media only screen and (max-width: 639px) {
-    max-width: 127px;
-    height: 45px;
-  }
-`;
-
-const StyledInformation = styled.div`
-  margin: 50px 0;
-`;
-
-const StyledSectionBlock = styled.div`
-  &:not(:last-of-type) {
-    margin-bottom: 30px;
-  }
-  &:last-of-type {
-    margin-bottom: 30px;
-    @media only screen and (min-width: 640px) {
-      margin-bottom: 0;
-    }
-  }
-`;
-
-const StyledBlockTitle = styled(BlockTitle)`
-  margin-bottom: 15px;
-`;
-
-const StyledPhone = styled.h5`
-  color: ${({ theme }) => theme.palette.PRIMARY};
-  font-size: 1.2rem;
-  line-height: 0;
-`;
-
-const StyledAddressWrapper = styled.div`
-  padding: 15px;
-`;
-
-const StyledRelatedRestaurants = styled.div`
-  margin-top: 50px;
-`;
-
 export const DetailPage: React.FC<DetailPageProps> = ({
   data: {
     imgSrc,
@@ -161,7 +59,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     votes,
     average,
     establishment,
-    Highlights: highlights,
+    highlights,
     phone,
     address,
   },
@@ -172,6 +70,8 @@ export const DetailPage: React.FC<DetailPageProps> = ({
   onClickRelatedRestaurant,
 }) => {
   const [isSaved, setIsSaved] = useState(isFavorite);
+
+  const cuisinesList = cuisines.split(',');
 
   const clickSaveButton = () => {
     setIsSaved((isSaved) => !isSaved);
@@ -226,7 +126,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Cuisines" />
-                  <Cuisines cuisines={cuisines} />
+                  <Cuisines cuisines={cuisinesList} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Schedule" />
@@ -250,7 +150,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="More info" />
-                  <Highlights highlightsData={highlights} />
+                  <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
             </div>

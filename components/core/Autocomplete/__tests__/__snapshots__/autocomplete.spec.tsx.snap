@@ -1,45 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: Autocomplete should render 1`] = `
-.c1 {
-  width: 100%;
-  border-radius: 4px;
-  padding: 0 20px;
-  background: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 i {
-  font-size: 1.2rem;
-  color: #A7A7A7;
-  margin-right: 10px;
-}
-
-.c3 {
-  width: 100%;
-  height: 55px;
-  padding: 10px 0;
-  line-height: 20px;
-  border: none;
-  outline: none;
-  color: #2f3235;
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
 .c7 {
   width: 100%;
   max-width: 600px;
@@ -103,6 +64,45 @@ exports[`Component: Autocomplete should render 1`] = `
   line-height: 1.1rem;
   font-weight: 500;
   color: #585858;
+}
+
+.c1 {
+  width: 100%;
+  border-radius: 4px;
+  padding: 0 20px;
+  background: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 i {
+  font-size: 1.2rem;
+  color: #A7A7A7;
+  margin-right: 10px;
+}
+
+.c3 {
+  width: 100%;
+  height: 55px;
+  padding: 10px 0;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #2f3235;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .c0 {
@@ -177,12 +177,6 @@ exports[`Component: Autocomplete should render 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c1 {
-    max-width: 550px;
-  }
-}
-
-@media only screen and (min-width:768px) {
   .c7 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
@@ -216,6 +210,12 @@ exports[`Component: Autocomplete should render 1`] = `
   .c10 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    max-width: 550px;
   }
 }
 
