@@ -12,7 +12,6 @@ const CardTextCSS = css`
 
 const StandartCardImageCSS = css`
   max-width: 100px;
-  height: 100%;
   min-width: 80px;
   @media only screen and (min-width: 768px) {
     width: 100px;
