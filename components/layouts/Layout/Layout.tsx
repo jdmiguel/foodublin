@@ -3,7 +3,7 @@ import React, { useState, ReactNode } from 'react';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
-import { useScrollPosY } from '../../hooks/useScrollPosY';
+import { useScroll } from '../../hooks/useScroll';
 
 import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
 
@@ -28,9 +28,9 @@ export const Layout = ({
 }: LayoutProps) => {
   const [scrollUpButtonIsShowed, setScrollUpButtonIsShowed] = useState(false);
 
-  useScrollPosY(
-    ({ posY }) => {
-      setScrollUpButtonIsShowed(posY > SHOWING_SCROLLUP_BUTTON_HEIGHT);
+  useScroll(
+    ({ scrollTop }) => {
+      setScrollUpButtonIsShowed(scrollTop > SHOWING_SCROLLUP_BUTTON_HEIGHT);
     },
     [],
     SCROLL_DELAY,

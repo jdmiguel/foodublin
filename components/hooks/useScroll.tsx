@@ -1,10 +1,12 @@
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 type DataType = {
-  posY: number;
+  scrollTop: number;
+  scrollHeight: number;
+  clientHeight: number;
 };
 
-export const useScrollPosY = (
+export const useScroll = (
   effect: (data: DataType) => void,
   deps: any[],
   delay: number,
@@ -13,7 +15,11 @@ export const useScrollPosY = (
     let throttleTimeout: number | null = null;
 
     const callBack = () => {
-      effect({ posY: window.scrollY });
+      effect({
+        scrollTop: document.documentElement.scrollTop,
+        scrollHeight: document.documentElement.scrollHeight,
+        clientHeight: document.documentElement.clientHeight,
+      });
       throttleTimeout = null;
     };
 

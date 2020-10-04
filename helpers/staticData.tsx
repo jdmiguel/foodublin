@@ -10,11 +10,9 @@ export const MAX_RESTAURANT_DISPLAYED = 20;
 export const MAX_RESTAURANT_RETRIEVED = 100;
 
 export const MAX_SMALL_DEVICE_WIDTH = 640;
+export const MIN_BIG_DEVICE_HEIGHT = 1050;
 
-export const SCROLL_FACTOR = 4;
-export const SCROLL_INITIAL_MOBILE_FACTOR = 10;
-export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
-export const SCROLL_OFFSET_DESKTOP_FACTOR = 1.2;
+export const SCROLL_FACTOR = 1.3;
 export const SCROLL_DELAY = 4;
 
 export const SHOWING_SCROLLUP_BUTTON_HEIGHT = 900;
