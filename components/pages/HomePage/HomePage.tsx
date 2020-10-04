@@ -11,19 +11,19 @@ import { Card } from '../../core/Card/Card';
 
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
-import {
-  HIGHLIGHTED_RESTAURANTS,
-  DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
+import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
 import { Restaurant, CardType } from '../../../helpers/types';
+
+type HighlightRestaurant = Restaurant & { featuredSrc: string };
 
 type HomePageProps = {
   isLoading: boolean;
-  Highlights: Restaurant[];
+  highlights: HighlightRestaurant[];
   clickHighlight: (id: string) => void;
 };
 
 export const HomePage: React.FC<HomePageProps> = ({
+  highlights,
   isLoading,
   clickHighlight,
 }) => {
@@ -39,11 +39,11 @@ export const HomePage: React.FC<HomePageProps> = ({
       <StyledHighlights className="grid-container">
         <Title text="Featured restaurants" />
         <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
-          {HIGHLIGHTED_RESTAURANTS.map((restaurant) => (
+          {highlights.map((restaurant) => (
             <div key={restaurant.id} className="cell small-12 medium-6 large-4">
               <Link href={restaurant.route} as={restaurant.asRoute}>
                 <Card
-                  imgSrc={restaurant.imgSrc}
+                  imgSrc={restaurant.featuredSrc}
                   title={restaurant.title}
                   content={restaurant.content}
                   type={CardType.HIGHLIGHT}
