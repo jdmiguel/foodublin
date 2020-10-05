@@ -184,6 +184,8 @@ const Search: NextPage<SearchProps> = ({
           ...restaurantsData.restaurants,
         ]);
       }
+      setIsLoadingByScroll(false);
+      setIsLoading(false);
     } else {
       setOnError(true);
     }
@@ -202,21 +204,20 @@ const Search: NextPage<SearchProps> = ({
         handleRestaurants(LoadType.SCROLL);
       }
     },
-    [isLoading],
+    [],
     SCROLL_DELAY,
   );
 
   useEffect(() => {
     if (height >= MIN_BIG_DEVICE_HEIGHT) {
-      setIsLoading(true);
       handleRestaurants(LoadType.DEFAULT);
+    }
+    if (height && height < MIN_BIG_DEVICE_HEIGHT) {
+      setIsLoading(false);
     }
   }, [height]);
 
   useEffect(() => {
-    setIsLoadingByScroll(false);
-    setIsLoading(false);
-
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
 
     if (
@@ -230,6 +231,7 @@ const Search: NextPage<SearchProps> = ({
   const handleFilter = (sort: string, order: string) => {
     sortRef.current = sort;
     orderRef.current = order;
+
     handleRestaurants(LoadType.FILTER);
   };
 
