@@ -135,7 +135,7 @@ const Search: NextPage<SearchProps> = ({
     Restaurant[],
     Dispatch<Restaurant[]>,
   ] = useState(restaurants);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
@@ -184,9 +184,6 @@ const Search: NextPage<SearchProps> = ({
           ...restaurantsData.restaurants,
         ]);
       }
-
-      setIsLoadingByScroll(false);
-      setIsLoading(false);
     } else {
       setOnError(true);
     }
@@ -217,7 +214,11 @@ const Search: NextPage<SearchProps> = ({
   }, [height]);
 
   useEffect(() => {
+    setIsLoadingByScroll(false);
+    setIsLoading(false);
+
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
+
     if (
       currentTotal >= MAX_RESTAURANT_RETRIEVED &&
       loadedRestaurantsRef.current > maxRestaurantStarter
