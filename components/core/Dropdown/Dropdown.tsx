@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-import { useWindowMeasures } from '../../hooks/useWindowMeasures';
+import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
 
 import {
   StyledDropdown,
@@ -73,7 +73,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     ListItem[],
     Dispatch<ListAction>,
   ] = useReducer(listReducer, listWithIsActiveProp);
-  const { width } = useWindowMeasures();
+  const { width } = useWindowMeasurement();
   const bodyLockIsAllowed = width < 768;
 
   const listRef = useRef<HTMLDivElement>(null);

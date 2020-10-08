@@ -2,7 +2,7 @@ import React, { useState, useCallback, Dispatch } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
-import { useWindowMeasures } from '../../hooks/useWindowMeasures';
+import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
 
 import {
   StyledFinder,
@@ -48,7 +48,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const dispatch = useDispatch();
 
-  const { width } = useWindowMeasures();
+  const { width } = useWindowMeasurement();
   const isMobile = width < 768;
 
   const router = useRouter();
