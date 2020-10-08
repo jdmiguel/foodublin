@@ -130,6 +130,7 @@ const Search: NextPage<SearchProps> = ({
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
+  const scrollDelayRef = useRef(SCROLL_DELAY);
 
   const [currentRestaurants, setCurrentRestaurants]: [
     Restaurant[],
@@ -184,6 +185,7 @@ const Search: NextPage<SearchProps> = ({
           ...restaurantsData.restaurants,
         ]);
       }
+
       setIsLoadingByScroll(false);
       setIsLoading(false);
     } else {
@@ -204,8 +206,8 @@ const Search: NextPage<SearchProps> = ({
         handleRestaurants(LoadType.SCROLL);
       }
     },
-    [],
-    SCROLL_DELAY,
+    [isLoadingByScroll],
+    scrollDelayRef.current,
   );
 
   useEffect(() => {
@@ -236,6 +238,7 @@ const Search: NextPage<SearchProps> = ({
   };
 
   const handleClickCard = (id: string) => {
+    scrollDelayRef.current = 0;
     setIsLoading(true);
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {

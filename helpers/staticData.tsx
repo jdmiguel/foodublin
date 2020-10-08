@@ -13,7 +13,7 @@ export const MAX_SMALL_DEVICE_WIDTH = 640;
 export const MIN_BIG_DEVICE_HEIGHT = 1050;
 
 export const SCROLL_FACTOR = 1.3;
-export const SCROLL_DELAY = 4;
+export const SCROLL_DELAY = 100;
 
 export const SHOWING_SCROLLUP_BUTTON_HEIGHT = 900;
 

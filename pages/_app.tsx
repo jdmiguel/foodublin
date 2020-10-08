@@ -37,14 +37,15 @@ store.subscribe(
   }, 1000),
 );
 
+const handleRouteChange = () => {
+  console.log('handleRouteChange');
+  window.scrollTo(0, 0);
+};
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      window.scrollTo(0, 0);
-    };
-
     router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
