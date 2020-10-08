@@ -1,20 +1,20 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useWindowMeasures = () => {
-  const [windowMeasures, setWindowMeasures] = useState({
+export const useWindowMeasurement = () => {
+  const [windowMeasurement, setWindowMeasurement] = useState({
     width: 0,
     height: 0,
   });
 
   const onResize = useCallback((event: any) => {
-    setWindowMeasures({
+    setWindowMeasurement({
       width: event.currentTarget.innerWidth,
       height: event.currentTarget.innerHeight,
     });
   }, []);
 
   useEffect(() => {
-    setWindowMeasures({
+    setWindowMeasurement({
       width: window.innerWidth,
       height: window.innerHeight,
     });
@@ -28,7 +28,5 @@ const useWindowMeasures = () => {
     };
   }, [onResize]);
 
-  return windowMeasures;
+  return windowMeasurement;
 };
-
-export default useWindowMeasures;

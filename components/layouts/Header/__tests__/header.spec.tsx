@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 
 import reducer from '../../../../store/reducer';
 
-import Header from '../Header';
+import { Header } from '../Header';
 
 import { HEADER_TEXT_MOCKS } from '../__mocks__/header.mocks';
 import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';

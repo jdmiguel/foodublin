@@ -1,13 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import Link from 'next/link';
 
-import Layout from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout/Layout';
 
-import FullLoader from '../../ui/FullLoader/FullLoader';
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
-import Loader from '../../core/Loader/Loader';
-import Title from '../../core/Title/Title';
-import Card from '../../core/Card/Card';
+import { Loader } from '../../core/Loader/Loader';
+import { Title } from '../../core/Title/Title';
+import { Card } from '../../core/Card/Card';
+
+import { StyledFavoritesPage, StyledCardsWrapper } from './styles';
 
 import {
   DEFAULT_TEXT_LOADING,
@@ -23,35 +25,7 @@ type FavoritesPageProps = {
   clickRestaurant: () => void;
 };
 
-const StyledFavoritesPage = styled.div`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  @media only screen and (min-width: 428px) {
-    margin-bottom: 35px;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin-top: 60px;
-    padding: 0 30px;
-  }
-`;
-
-const StyledCardsWrapper = styled.div`
-  margin-top: 20px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
-  position: initial;
-  @media only screen and (min-width: 640px) {
-    justify-content: space-between;
-  }
-  @media only screen and (min-width: 768px) {
-    position: relative;
-    justify-content: flex-start;
-    margin-top: 35px;
-  }
-`;
-
-const FavoritesPage: React.FC<FavoritesPageProps> = ({
+export const FavoritesPage: React.FC<FavoritesPageProps> = ({
   isLoading,
   total,
   restaurants,
@@ -75,15 +49,14 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
               className="cell small-12 medium-6 large-4"
               key={`${restaurant.id}-${restaurant.title}`}
             >
-              <Card
-                id={restaurant.id}
-                imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                title={restaurant.title}
-                content={restaurant.content}
-                route={restaurant.route}
-                asRoute={restaurant.asRoute}
-                onClick={clickRestaurant}
-              />
+              <Link href={restaurant.route} as={restaurant.asRoute}>
+                <Card
+                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                  title={restaurant.title}
+                  content={restaurant.content}
+                  onClick={clickRestaurant}
+                />
+              </Link>
             </div>
           ))}
         </StyledCardsWrapper>
@@ -93,5 +66,3 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
 };
 
 FavoritesPage.displayName = 'FavoritesPage';
-
-export default FavoritesPage;

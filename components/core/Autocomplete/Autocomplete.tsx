@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import Link from 'next/link';
 
-import Input from '../Input/Input';
-import Card, { CardType } from '../Card/Card';
-import Loader from '../Loader/Loader';
+import { Card } from '../Card/Card';
+
+import {
+  StyledAutocomplete,
+  StyledInput,
+  StyledListboxWrapper,
+  StyledLoader,
+  StyledListbox,
+  StyledListboxItem,
+} from './styles/autocomplete';
 
 import {
   PlaceholderText,
   DEFAULT_TEXT_LOADING,
 } from '../../../helpers/staticData';
-import { Restaurant } from '../../../helpers/types';
+import { Restaurant, CardType } from '../../../helpers/types';
 
 export type AutocompleteProps = {
   className?: string;
@@ -19,80 +26,6 @@ export type AutocompleteProps = {
   fetchSuggestions: (search: string) => void;
   selectSuggestion: (id: string, name: string) => void;
 };
-
-const StyledAutocomplete = styled.div`
-  width: 100%;
-  max-width: 550px;
-  height: 55px;
-  position: relative;
-  cursor: pointer;
-`;
-
-const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  transition: background-color 0.2s ease-out;
-  &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
-  }
-
-  ${({ hasBorderBottomRadius }) =>
-    !hasBorderBottomRadius &&
-    `border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;`}
-`;
-
-const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
-  transform: translateY(${({ isShowed }) => (isShowed ? '0' : '10px')});
-  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-  position: absolute;
-  box-sizing: border-box;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  z-index: 2;
-  top: 55px;
-  left: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  overflow: auto;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  border-radius: 0 0 4px 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top: 0;
-`;
-
-const StyledLoader = styled(Loader)`
-  width: 100%;
-  height: 100%;
-  background: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  @media only screen and (min-width: 992px) {
-    min-height: 200px;
-  }
-`;
-
-const StyledListbox = styled.ul`
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
-`;
-
-const StyledListboxItem = styled.li`
-  width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.palette.LIGHT_MIN};
-  list-style: none;
-  display: flex;
-  background-color: ${(props) => props.theme.palette.LIGHT_MEDIUM};
-  transition: background-color 0.2s ease-out;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => props.theme.palette.PRIMARY_LIGHT};
-  }
-`;
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
   suggestions,
@@ -173,16 +106,15 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             {suggestions.map(
               ({ id, imgSrc, title, content, route, asRoute }: Restaurant) => (
                 <StyledListboxItem key={id} role="option">
-                  <Card
-                    id={id}
-                    imgSrc={imgSrc}
-                    title={title}
-                    content={content}
-                    route={route}
-                    asRoute={asRoute}
-                    onClick={() => handleSuggestionClick(id, title)}
-                    type={CardType.SUGGESTION}
-                  />
+                  <Link href={route} as={asRoute}>
+                    <Card
+                      imgSrc={imgSrc}
+                      title={title}
+                      content={content}
+                      onClick={() => handleSuggestionClick(id, title)}
+                      type={CardType.SUGGESTION}
+                    />
+                  </Link>
                 </StyledListboxItem>
               ),
             )}
@@ -192,5 +124,3 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     </StyledAutocomplete>
   );
 };
-
-export default Autocomplete;

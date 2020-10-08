@@ -1,67 +1,32 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
+import React, { ReactNode, forwardRef } from 'react';
 
-export enum CustomLinkSize {
-  BIG = 'big',
-  SMALL = 'small',
-}
+import { StyledCustomLink } from './styles';
+
+import { CustomLinkSize } from '../../../helpers/types';
 
 type CustomLinkProps = {
   className?: string;
   size?: CustomLinkSize;
-  route: string;
-  asRoute?: string;
+  route?: string;
   children: ReactNode | string;
-  isExternal?: boolean;
   onClick?: () => void;
 };
 
-const StyledContent = styled.a<{ size: CustomLinkSize }>`
-  font-size: ${({ size }) => (size === 'big' ? '1.3rem' : '1rem')};
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  color: ${(props) => props.theme.palette.PRIMARY_MEDIUM};
-  i {
-    font-size: 0.8em;
-    margin-right: ${({ size }) => (size === 'big' ? '6px' : '4px')};
-  }
-  @media only screen and (min-width: 540px) {
-    transition: color 0.2s ease-out;
-    &:hover {
-      color: ${(props) => props.theme.palette.PRIMARY};
-    }
-  }
-`;
-
-const CustomLink: React.FC<CustomLinkProps> = ({
-  className,
-  children,
-  route,
-  asRoute,
-  size = CustomLinkSize.SMALL,
-  isExternal,
-  onClick,
-}) => (
-  <>
-    {isExternal ? (
-      <StyledContent className={className} href={route} size={size}>
-        {children}
-      </StyledContent>
-    ) : (
-      <Link href={route} as={asRoute} passHref={true}>
-        <StyledContent
-          className={className}
-          size={size}
-          onClick={onClick && onClick}
-        >
-          {children}
-        </StyledContent>
-      </Link>
-    )}
-  </>
+export const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
+  (
+    { className, children, size = CustomLinkSize.SMALL, route, onClick },
+    forwardedRef,
+  ) => (
+    <StyledCustomLink
+      ref={forwardedRef}
+      className={className}
+      href={route && route}
+      size={size}
+      onClick={onClick && onClick}
+    >
+      {children}
+    </StyledCustomLink>
+  ),
 );
 
-export default CustomLink;
+CustomLink.displayName = 'CustomLink';

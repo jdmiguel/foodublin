@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Rating from '../Rating';
+import { Rating } from '../Rating';
 
 import { RATING_VALUE_MOCK } from '../__mocks__/rating.mocks';
 

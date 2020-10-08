@@ -272,8 +272,8 @@ export const GlobalStyles = createGlobalStyle`
   }  
 
 .paper{
-  background-color: ${(props) => props.theme.palette.LIGHT_MAX};
-  border: 1px solid ${(props) => props.theme.palette.LIGHT_SOFT};
+  background-color: ${({ theme }) => theme.palette.LIGHT_MAX};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
   border-radius: 4px;
 } 
 `;

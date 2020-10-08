@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import FavoritesPage from '../components/pages/FavoritesPage/FavoritesPage';
+import { FavoritesPage } from '../components/pages/FavoritesPage/FavoritesPage';
 
-import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { InitialAppState, BreadcrumbsType } from '../helpers/types';
 
@@ -21,7 +21,7 @@ const Favorites = () => {
     asRoute: '/favorites',
     type: BreadcrumbsType.FAVORITES,
   };
-  useBreadcrumbs(favoritesBreadcrumbs);
+  useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
 
   return (
     <FavoritesPage

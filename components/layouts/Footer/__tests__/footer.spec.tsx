@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 
 import reducer from '../../../../store/reducer';
 
-import Footer from '../Footer';
+import { Footer } from '../Footer';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 

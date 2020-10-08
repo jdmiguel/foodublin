@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+
+import { StyledInputWrapper, StyledInput } from './styles';
 
 type InputTypes =
   | 'text'
@@ -31,39 +32,7 @@ export type InputProps = {
   onBlur?: (event: React.FocusEvent) => void;
 };
 
-const StyledInputWrapper = styled.div`
-  width: 100%;
-  border-radius: 4px;
-  padding: 0 20px;
-  background: ${(props) => props.theme.palette.LIGHT_MAX};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  i {
-    font-size: 1.2rem;
-    color: ${(props) => props.theme.palette.DARK_SOFT};
-    margin-right: 10px;
-  }
-  @media only screen and (min-width: 768px) {
-    max-width: 550px;
-  }
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  height: 55px;
-  padding: 10px 0;
-  line-height: 20px;
-  border: none;
-  outline: none;
-  color: ${(props) => props.theme.palette.DARK_MAX};
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-`;
-
-const Input: React.FC<InputProps> = ({
+export const Input: React.FC<InputProps> = ({
   type,
   hasSearchIcon,
   className,
@@ -134,5 +103,3 @@ const Input: React.FC<InputProps> = ({
     </StyledInputWrapper>
   );
 };
-
-export default Input;

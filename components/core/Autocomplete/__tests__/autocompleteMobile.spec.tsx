@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
-import AutocompleteMobile from '../AutocompleteMobile';
+import { AutocompleteMobile } from '../AutocompleteMobile';
 
 import { AUTOCOMPLETE_PROPS_MOCK } from '../__mocks__/autocomplete.mocks';
 

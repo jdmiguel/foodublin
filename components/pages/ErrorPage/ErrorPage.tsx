@@ -1,31 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
-import Layout from '../../layouts/Layout';
+import { Layout } from '../../layouts/Layout/Layout';
 
-import BlockTitle from '../../core/BlockTitle/BlockTitle';
-import Button from '../../core/Button/Button';
+import { Button } from '../../core/Button/Button';
 
-const StyledErrorPage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto 70px;
-  @media only screen and (min-width: 428px) {
-    margin: 50px auto;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin: 75px auto 60px;
-    padding: 0 30px;
-  }
-`;
+import { StyledErrorPage, StyledText } from './styles';
 
-const StyledText = styled(BlockTitle)`
-  margin-bottom: 20px;
-`;
-
-const ErrorPage: React.FC = () => {
+export const ErrorPage: React.FC = () => {
   const router = useRouter();
 
   return (
@@ -39,5 +21,3 @@ const ErrorPage: React.FC = () => {
     </Layout>
   );
 };
-
-export default ErrorPage;

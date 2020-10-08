@@ -3,6 +3,4 @@ export const CARD_PROPS_MOCKS = {
   imgSrc: 'thumb-1.webp',
   title: 'Default title',
   content: 'Default content',
-  route: '/',
-  asRoute: '/',
 };

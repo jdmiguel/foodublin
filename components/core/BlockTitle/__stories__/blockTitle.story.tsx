@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import BlockTitle from '../BlockTitle';
+import { BlockTitle } from '../BlockTitle';
 
 import { BLOCK_TITLE_TEXT_MOCK } from '../__mocks__/blockTitle.mocks';
 

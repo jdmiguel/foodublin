@@ -1,33 +1,16 @@
 import React from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
+
+import { StyledLogo, StyledImg } from './styles';
+
+import { LogoSize } from '../../../helpers/types';
 
 type LogoProps = {
-  className?: string;
+  size: LogoSize.BIG | LogoSize.SMALL;
   logoSrc: string;
 };
 
-const StyledLink = styled.a`
-  margin-bottom: 5px;
-  @media only screen and (min-width: 540px) {
-    margin-bottom: 7px;
-  }
-`;
-
-const StyledImg = styled.img`
-  max-width: 300px;
-`;
-
-const getContentLogo = (className: string | undefined, logoSrc: string) => (
-  <h1 className={className} data-testid="logo">
+export const Logo: React.FC<LogoProps> = ({ size, logoSrc }) => (
+  <StyledLogo data-testid="logo" size={size}>
     <StyledImg src={logoSrc} alt="FooDublin Logo" />
-  </h1>
+  </StyledLogo>
 );
-
-const Logo: React.FC<LogoProps> = ({ className, logoSrc }) => (
-  <Link href="/" passHref>
-    <StyledLink>{getContentLogo(className, logoSrc)}</StyledLink>
-  </Link>
-);
-
-export default Logo;

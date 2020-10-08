@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import HomePage from '../components/pages/HomePage/HomePage';
+import { HomePage } from '../components/pages/HomePage/HomePage';
 
-import useBreadcrumbs from '../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../store/actions';
 
@@ -28,7 +28,7 @@ const index = () => {
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
   };
 
-  useBreadcrumbs(DEFAULT_BREADCRUMB);
+  useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
 
   return (
     <HomePage

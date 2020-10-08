@@ -1,12 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import Card, { CardType } from '../Card';
+import { Card } from '../Card';
 
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
+import { CardType } from '../../../../helpers/types';
 
 it('should render standart card', () => {
   const { container } = render(
@@ -47,4 +48,21 @@ it('should render highlight card', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+it('should call function on click', () => {
+  const handleClick = jest.fn();
+  const { getByTestId } = render(
+    renderWithTheme(
+      <Card
+        {...CARD_PROPS_MOCKS}
+        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`}
+        onClick={handleClick}
+      />,
+    ),
+  );
+
+  fireEvent.click(getByTestId('card'));
+
+  expect(handleClick).toHaveBeenCalled();
 });

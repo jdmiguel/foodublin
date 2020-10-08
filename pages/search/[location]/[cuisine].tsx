@@ -2,12 +2,12 @@ import React, { useRef, useState, useEffect, Dispatch } from 'react';
 import { useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 
-import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
-import SearchPage from '../../../components/pages/SearchPage/SearchPage';
+import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
+import { SearchPage } from '../../../components/pages/SearchPage/SearchPage';
 
-import useWindowMeasures from '../../../components/hooks/useWindowMeasures';
-import useScrollPosY from '../../../components/hooks/useScrollPosY';
-import useBreadcrumbs from '../../../components/hooks/useBreadcrumbs';
+import { useWindowMeasurement } from '../../../components/hooks/useWindowMeasurement';
+import { useScroll } from '../../../components/hooks/useScroll';
+import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../../../store/actions';
 
@@ -20,11 +20,8 @@ import {
   MAX_RESTAURANT_DISPLAYED,
   MIN_RESTAURANTS_LIST,
   MAX_RESTAURANT_RETRIEVED,
-  MAX_SMALL_DEVICE_WIDTH,
+  MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
-  SCROLL_INITIAL_MOBILE_FACTOR,
-  SCROLL_OFFSET_MOBILE_FACTOR,
-  SCROLL_OFFSET_DESKTOP_FACTOR,
   SCROLL_DELAY,
 } from '../../../helpers/staticData';
 import {
@@ -41,6 +38,12 @@ import {
 export enum LocationType {
   CITY = 'city',
   SUBZONE = 'subzone',
+}
+
+export enum LoadType {
+  DEFAULT = 'default',
+  SCROLL = 'scroll',
+  FILTER = 'filter',
 }
 
 type SearchProps = {
@@ -81,7 +84,7 @@ const selectRestaurants = (restaurants: Restaurant[]) => (
   formattedFuntion: any,
 ) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
-const handleGetRestaurantsData = async (
+const handleGetRestaurants = async (
   locationId: number,
   cuisineId: number,
   start?: number,
@@ -127,6 +130,7 @@ const Search: NextPage<SearchProps> = ({
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
+  const scrollDelayRef = useRef(SCROLL_DELAY);
 
   const [currentRestaurants, setCurrentRestaurants]: [
     Restaurant[],
@@ -135,103 +139,106 @@ const Search: NextPage<SearchProps> = ({
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
   const dispatch = useDispatch();
 
-  const { width } = useWindowMeasures();
-  const isMobile = width < MAX_SMALL_DEVICE_WIDTH;
+  const { height } = useWindowMeasurement();
 
   const maxRestaurantStarter =
     MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
   const currentTotal =
     total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
-  const showWarning =
-    currentTotal >= MAX_RESTAURANT_RETRIEVED &&
-    loadedRestaurantsRef.current > maxRestaurantStarter;
 
-  const handleFilter = async (sort: string, order: string) => {
-    loadedRestaurantsRef.current = 0;
-    setIsLoading(true);
+  const handleRestaurants = async (loadType: LoadType) => {
+    let start: number;
 
-    const restaurantsData = await handleGetRestaurantsData(
+    switch (loadType) {
+      case LoadType.SCROLL:
+        setIsLoadingByScroll(true);
+        start = loadedRestaurantsRef.current;
+        break;
+      case LoadType.FILTER:
+        setIsLoading(true);
+        start = 0;
+        loadedRestaurantsRef.current = 0;
+        break;
+      case LoadType.DEFAULT:
+      default:
+        setIsLoading(true);
+        start = MAX_RESTAURANT_DISPLAYED;
+        break;
+    }
+
+    const restaurantsData = await handleGetRestaurants(
       locationId,
       cuisineId,
-      0,
-      sort,
-      order,
+      start,
     );
 
     if (restaurantsData.restaurants) {
-      sortRef.current = sort;
-      orderRef.current = order;
+      if (loadType === LoadType.FILTER) {
+        setCurrentRestaurants(restaurantsData.restaurants);
+      } else {
+        setCurrentRestaurants([
+          ...currentRestaurants,
+          ...restaurantsData.restaurants,
+        ]);
+      }
 
+      setIsLoadingByScroll(false);
       setIsLoading(false);
-      setCurrentRestaurants(restaurantsData.restaurants);
     } else {
       setOnError(true);
     }
   };
 
-  useScrollPosY(
-    async ({ posY }) => {
-      const { current: loaderRestaurants } = loadedRestaurantsRef;
-
-      const initialFactor =
-        loaderRestaurants <= MAX_RESTAURANT_DISPLAYED
-          ? isMobile
-            ? SCROLL_INITIAL_MOBILE_FACTOR
-            : 0
-          : loaderRestaurants - MAX_RESTAURANT_DISPLAYED;
-      const offsetScrollDown =
-        initialFactor *
-        (MAX_RESTAURANT_RETRIEVED *
-          (isMobile
-            ? SCROLL_OFFSET_MOBILE_FACTOR
-            : SCROLL_OFFSET_DESKTOP_FACTOR));
-      const scrollDownLimit =
-        posY >
-        ((searchRef.current?.clientHeight as number) + offsetScrollDown) /
-          SCROLL_FACTOR;
-
+  useScroll(
+    async ({ scrollTop, scrollHeight, clientHeight }) => {
+      const { current: loadedRestaurants } = loadedRestaurantsRef;
+      const isScrollDownLimit =
+        scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
       const isRetrievingDataAllowed =
-        loaderRestaurants < currentTotal &&
-        loaderRestaurants <= maxRestaurantStarter;
+        loadedRestaurants < currentTotal &&
+        loadedRestaurants <= maxRestaurantStarter;
 
-      if (scrollDownLimit && !isLoading && isRetrievingDataAllowed) {
-        setIsLoadingByScroll(true);
-
-        const restaurantsData = await handleGetRestaurantsData(
-          locationId,
-          cuisineId,
-          loaderRestaurants,
-          sortRef.current,
-          orderRef.current,
-        );
-
-        if (restaurantsData.restaurants) {
-          setCurrentRestaurants([
-            ...currentRestaurants,
-            ...restaurantsData.restaurants,
-          ]);
-        } else {
-          setOnError(true);
-        }
+      if (isScrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
+        handleRestaurants(LoadType.SCROLL);
       }
     },
-    [isLoading],
-    SCROLL_DELAY,
+    [isLoadingByScroll],
+    scrollDelayRef.current,
   );
 
   useEffect(() => {
-    setIsLoading(false);
-  }, []);
+    if (height >= MIN_BIG_DEVICE_HEIGHT) {
+      handleRestaurants(LoadType.DEFAULT);
+    }
+    if (height && height < MIN_BIG_DEVICE_HEIGHT) {
+      setIsLoading(false);
+    }
+  }, [height]);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
-    setIsLoadingByScroll(false);
+
+    if (
+      currentTotal >= MAX_RESTAURANT_RETRIEVED &&
+      loadedRestaurantsRef.current > maxRestaurantStarter
+    ) {
+      setShowWarning(true);
+    }
   }, [currentRestaurants]);
 
+  const handleFilter = (sort: string, order: string) => {
+    sortRef.current = sort;
+    orderRef.current = order;
+
+    handleRestaurants(LoadType.FILTER);
+  };
+
   const handleClickCard = (id: string) => {
+    scrollDelayRef.current = 0;
     setIsLoading(true);
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
@@ -253,7 +260,7 @@ const Search: NextPage<SearchProps> = ({
     )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
     type: BreadcrumbsType.SEARCH,
   };
-  useBreadcrumbs(searchBreadcrumbs);
+  useBreadcrumbs(searchBreadcrumbs, 'search');
 
   if (onError) {
     return <ErrorPage />;
@@ -281,7 +288,7 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 
-  const restaurantsData = await handleGetRestaurantsData(locationId, cuisineId);
+  const restaurantsData = await handleGetRestaurants(locationId, cuisineId);
 
   return {
     locationId,

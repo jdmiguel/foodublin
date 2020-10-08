@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: CustomLink should render external link 1`] = `
-.c0 {
-  font-size: 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  color: #FBA52B;
-}
-
-.c0 i {
-  font-size: 0.8em;
-  margin-right: 4px;
-}
-
-@media only screen and (min-width:540px) {
-  .c0 {
-    -webkit-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
-  }
-
-  .c0:hover {
-    color: #EC7E00;
-  }
-}
-
-<a
-  class="c0"
-  href="https://theclarence.ie/cleaver-east/"
->
-  Default link
-</a>
-`;
-
 exports[`Component: CustomLink should render with HTML nodes 1`] = `
 .c0 {
   font-size: 1rem;

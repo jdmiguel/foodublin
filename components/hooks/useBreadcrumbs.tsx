@@ -5,7 +5,10 @@ import { addBreadcrumbs, replaceBreadcrumbs } from '../../store/actions';
 
 import { InitialAppState, BreadcrumbsData } from '../../helpers/types';
 
-const useBreadcrumbs = (currentBreadcrumbs: BreadcrumbsData) => {
+export const useBreadcrumbs = (
+  currentBreadcrumbs: BreadcrumbsData,
+  pageId: string,
+) => {
   const { breadcrumbs } = useSelector((state: InitialAppState) => state);
   const dispatch = useDispatch();
 
@@ -18,7 +21,5 @@ const useBreadcrumbs = (currentBreadcrumbs: BreadcrumbsData) => {
         ? addBreadcrumbs(currentBreadcrumbs)
         : replaceBreadcrumbs(index, currentBreadcrumbs),
     );
-  }, []);
+  }, [pageId]);
 };
-
-export default useBreadcrumbs;

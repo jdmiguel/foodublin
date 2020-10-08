@@ -10,12 +10,10 @@ export const MAX_RESTAURANT_DISPLAYED = 20;
 export const MAX_RESTAURANT_RETRIEVED = 100;
 
 export const MAX_SMALL_DEVICE_WIDTH = 640;
+export const MIN_BIG_DEVICE_HEIGHT = 1050;
 
-export const SCROLL_FACTOR = 4;
-export const SCROLL_INITIAL_MOBILE_FACTOR = 10;
-export const SCROLL_OFFSET_MOBILE_FACTOR = 4;
-export const SCROLL_OFFSET_DESKTOP_FACTOR = 1.2;
-export const SCROLL_DELAY = 4;
+export const SCROLL_FACTOR = 1.3;
+export const SCROLL_DELAY = 100;
 
 export const SHOWING_SCROLLUP_BUTTON_HEIGHT = 900;
 
@@ -246,7 +244,9 @@ export const CUISINES = [
 export const HIGHLIGHTED_RESTAURANTS = [
   {
     id: '9100233',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/9100233_RESTAURANT_8b0a195f5047ea1246c77911e6f18dd4.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Cleaver East Restaurant',
     content:
       'Situated in the heart of Ireland’s capital city, on East Essex Street in the popular Temple Bar area, Cleaver East Restaurant offers the finest Irish and European cuisine.',
@@ -255,7 +255,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: '16518539',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/16518539_RESTAURANT_58b43e3019e1ecb772e71660f68d9252.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Tapas de Lola',
     content:
       'This restaurant is a love letter to all things Spanish and flavorful. Its owners make regular pilgrimages to Spain for inspiration and pack it all into a lively menu of small plates.',
@@ -264,7 +266,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: '16517305',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/16517305_RESTAURANT_4edf8903aa50f49ac31d924200f8d6d6_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Ely Wine Bar',
     content:
       'Eric and his wife Michelle are the founders of this clubby place where you can eat and drink well both downstairs in the cozy basement and upstairs in an elegant dining room.',
@@ -273,7 +277,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: '16520229',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/oxmantown.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/oxmantown.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/16520229_RESTAURANT_9a34e654358a6e5c229a0908fbd852dd_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Oxmantown',
     content:
       'In this small place, the art of a brilliant sandwich means every element is taken seriously, like the breakfast sandwich that comes with butcher Jack McCarthy’s black pudding.',
@@ -282,7 +288,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: '9100702',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/9100702_RESTAURANT_03e5e7e79573629cf664fe8b037aeb4d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Chapter One',
     content:
       'Dublin writers are more closely associated with booze rather than food, but Chapter One is a Michelin-starred restaurant in the basement of the Dublin Writers Museum.',
@@ -291,7 +299,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: '9101166',
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
+    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
+    imgSrc:
+      'https://b.zmtcdn.com/data/res_imagery/9101166_RESTAURANT_9efc824ff8987879a1aff7633776c526_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Rosa Madre',
     content:
       'In the menu-hawking clamor of Temple Bar you might long for a quieter restaurant where you won’t feel like a tourist on a conveyor belt. If so, Rosa Madre is your place.',

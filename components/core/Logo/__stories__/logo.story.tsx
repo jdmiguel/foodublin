@@ -1,8 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Logo from '../Logo';
+import { select } from '@storybook/addon-knobs';
+
+import { Logo } from '../Logo';
+
+import { LogoSize } from '../../../../helpers/types';
 
 const stories = storiesOf('Logo', module);
 
-stories.add('Logo', () => <Logo logoSrc="logo.svg" />);
+stories.add('Logo', () => (
+  <Logo logoSrc="logo.svg" size={select('size', LogoSize, LogoSize.BIG)} />
+));

@@ -1,30 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import BlockText from '../../core/BlockText/BlockText';
+import { BlockText } from '../../core/BlockText/BlockText';
 
-type HighLightsProps = {
+import {
+  StyledHighlightsWrapper,
+  StyledHighlight,
+  StyledHighlightIcon,
+} from './styles';
+
+type HighlightsProps = {
   highlights: string[];
 };
 
-const StyledHighlightsWrapper = styled.div`
-  margin-top: 20px;
-`;
-
-const StyledHighlight = styled.div`
-  display: flex;
-  align-items: center;
-  &:not(:last-of-type) {
-    margin-bottom: 10px;
-  }
-`;
-
-const StyledHighlightIcon = styled.i`
-  color: ${(props) => props.theme.palette.DARK_MIN};
-  margin-right: 5px;
-`;
-
-const HighLights = ({ highlights }: HighLightsProps) => (
+export const Highlights = ({ highlights }: HighlightsProps) => (
   <StyledHighlightsWrapper>
     {highlights.map((highlight) => (
       <StyledHighlight key={highlight}>
@@ -36,5 +24,3 @@ const HighLights = ({ highlights }: HighLightsProps) => (
     ))}
   </StyledHighlightsWrapper>
 );
-
-export default HighLights;

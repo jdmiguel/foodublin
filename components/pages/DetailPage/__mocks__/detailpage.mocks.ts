@@ -14,7 +14,7 @@ export const FIRST_DETAIL = {
   rating: 4.4,
   votes: 21,
   establishment: ['Quick Bites'],
-  highlights: [
+  Highlights: [
     'Lunch',
     'Serves Alcohol',
     'Takeaway Available',
@@ -35,7 +35,7 @@ export const SECOND_DETAIL = {
   rating: 2.5,
   votes: 105,
   establishment: [''],
-  highlights: ['Takeaway Available', 'Dinner', 'Delivery', 'Lunch'],
+  Highlights: ['Takeaway Available', 'Dinner', 'Delivery', 'Lunch'],
 };
 
 export const THIRD_DETAIL = {
@@ -51,7 +51,7 @@ export const THIRD_DETAIL = {
   rating: 3.4,
   votes: 82,
   establishment: ['Casual Dining'],
-  highlights: [
+  Highlights: [
     'Credit Card',
     'Lunch',
     'Serves Alcohol',
@@ -81,7 +81,7 @@ export const FOURTH_DETAIL = {
   rating: 4.8,
   votes: 50,
   establishment: ['Casual Dining'],
-  highlights: [
+  Highlights: [
     'Credit Card',
     'Dinner',
     'Breakfast',

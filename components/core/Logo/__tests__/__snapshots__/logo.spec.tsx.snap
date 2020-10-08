@@ -1,32 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Logo should render as simple H1 1`] = `
+exports[`Component: Logo should render as big version 1`] = `
 .c0 {
-  margin-bottom: 5px;
+  width: 225px;
+  margin: 15px 0 25px;
 }
 
 .c1 {
   max-width: 300px;
 }
 
-@media only screen and (min-width:540px) {
+@media only screen and (min-width:768px) {
   .c0 {
-    margin-bottom: 7px;
+    width: 270px;
   }
 }
 
-<a
+@media only screen and (min-width:992px) {
+  .c0 {
+    width: 300px;
+    margin: 0 0 30px;
+  }
+}
+
+<h1
   class="c0"
-  href="/"
+  data-testid="logo"
 >
-  <h1
-    data-testid="logo"
-  >
-    <img
-      alt="FooDublin Logo"
-      class="c1"
-      src="http://localhost:3003/public/images/logo.svg"
-    />
-  </h1>
-</a>
+  <img
+    alt="FooDublin Logo"
+    class="c1"
+    src="http://localhost:3003/public/images/logo.svg"
+  />
+</h1>
+`;
+
+exports[`Component: Logo should render as small version 1`] = `
+.c0 {
+  width: 190px;
+}
+
+.c1 {
+  max-width: 300px;
+}
+
+@media only screen and (min-width:768px) {
+
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    width: 200px;
+  }
+}
+
+<h1
+  class="c0"
+  data-testid="logo"
+>
+  <img
+    alt="FooDublin Logo"
+    class="c1"
+    src="http://localhost:3003/public/images/logo.svg"
+  />
+</h1>
 `;
