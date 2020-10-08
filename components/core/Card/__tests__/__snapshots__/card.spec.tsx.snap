@@ -22,9 +22,6 @@ exports[`should render highlight card 1`] = `
   width: 100%;
   max-width: 350px;
   margin-bottom: 18px;
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 18px;
   border: 1px solid #F3F3F3;
 }
 
@@ -142,7 +139,6 @@ exports[`should render standart card 1`] = `
 
 .c1 {
   max-width: 100px;
-  height: 100%;
   min-width: 80px;
 }
 
