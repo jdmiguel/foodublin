@@ -38,7 +38,6 @@ store.subscribe(
 );
 
 const handleRouteChange = () => {
-  console.log('handleRouteChange');
   window.scrollTo(0, 0);
 };
 
