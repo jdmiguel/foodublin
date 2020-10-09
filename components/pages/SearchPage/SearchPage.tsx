@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import Link from 'next/link';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
@@ -31,7 +30,7 @@ type SearchPageProps = {
   total: number;
   restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;
-  onClickCard: (id: string) => void;
+  onClickCard: (id: string, route: string, asRoute: string) => void;
   isLoading: boolean;
   isLoadingByScroll: boolean;
   showWarning: boolean;
@@ -79,14 +78,18 @@ export const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
                 className="cell small-12 medium-6 large-4"
                 key={`${restaurant.id}-${restaurant.title}`}
               >
-                <Link href={restaurant.route} as={restaurant.asRoute}>
-                  <Card
-                    imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                    title={restaurant.title}
-                    content={restaurant.content}
-                    onClick={() => onClickCard(restaurant.id)}
-                  />
-                </Link>
+                <Card
+                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                  title={restaurant.title}
+                  content={restaurant.content}
+                  onClick={() =>
+                    onClickCard(
+                      restaurant.id,
+                      restaurant.route,
+                      restaurant.asRoute,
+                    )
+                  }
+                />
               </div>
             ))}
           </StyledCardsWrapper>

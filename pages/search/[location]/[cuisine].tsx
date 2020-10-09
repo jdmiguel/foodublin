@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 
@@ -143,6 +144,8 @@ const Search: NextPage<SearchProps> = ({
 
   const dispatch = useDispatch();
 
+  const router = useRouter();
+
   const { height } = useWindowMeasurement();
 
   const maxRestaurantStarter =
@@ -237,7 +240,7 @@ const Search: NextPage<SearchProps> = ({
     handleRestaurants(LoadType.FILTER);
   };
 
-  const handleClickCard = (id: string) => {
+  const handleClickCard = (id: string, route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
     setIsLoading(true);
 
@@ -249,6 +252,8 @@ const Search: NextPage<SearchProps> = ({
 
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }
+
+    router.push(route, asRoute);
   };
 
   const searchBreadcrumbs = {
