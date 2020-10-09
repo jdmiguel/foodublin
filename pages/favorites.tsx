@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
 import { FavoritesPage } from '../components/pages/FavoritesPage/FavoritesPage';
@@ -10,9 +11,17 @@ import { InitialAppState, BreadcrumbsType } from '../helpers/types';
 const Favorites = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  const router = useRouter();
+
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
+  const handleClickRestaurant = (route: string, asRoute: string) => {
+    setIsLoading(true);
+
+    router.push(route, asRoute);
+  };
 
   const { favorites } = useSelector((state: InitialAppState) => state);
   const favoritesBreadcrumbs = {
@@ -28,7 +37,7 @@ const Favorites = () => {
       isLoading={isLoading}
       total={favorites.length}
       restaurants={favorites}
-      clickRestaurant={() => setIsLoading(true)}
+      clickRestaurant={handleClickRestaurant}
     />
   );
 };
