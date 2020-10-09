@@ -40,7 +40,7 @@ describe('Component: Autocomplete', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
-    expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
+    expect(handleFetchSuggestion).toHaveBeenCalled();
   });
 
   it('should show/hide suggestions list', async () => {

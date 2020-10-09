@@ -63,12 +63,18 @@ describe('Component: AutocompleteMobile', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
-    expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
+    expect(handleFetchSuggestion).toHaveBeenCalled();
   });
 
   it('should show/hide suggestions list', () => {
+    const handleSelectSuggestion = jest.fn();
     const { getByTestId, getByPlaceholderText } = render(
-      renderWithTheme(<AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK} />),
+      renderWithTheme(
+        <AutocompleteMobile
+          {...AUTOCOMPLETE_PROPS_MOCK}
+          selectSuggestion={handleSelectSuggestion}
+        />,
+      ),
     );
     const closeButton = getByTestId('modal').querySelector('button');
     const listboxWrapper = getByTestId('listbox-wrapper');
@@ -92,5 +98,14 @@ describe('Component: AutocompleteMobile', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+
+    // show suggestions list by texting three characters and call callback function by clicking any suggestion
+    fireEvent.change(input, { target: { value: 'tre' } });
+    const firstSuggestionLink = listboxWrapper
+      .querySelectorAll('li')[0]
+      .querySelector('a');
+    fireEvent.click(firstSuggestionLink);
+
+    expect(handleSelectSuggestion).toHaveBeenCalled();
   });
 });
