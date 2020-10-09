@@ -20,11 +20,13 @@ import { InitialAppState } from '../../../helpers/types';
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
+  onClickBreadcrumb: (route: string, asRoute: string) => void;
 };
 
 export const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
+  onClickBreadcrumb,
 }) => {
   const { breadcrumbs } = useSelector((state: InitialAppState) => state);
 
@@ -34,7 +36,10 @@ export const Footer: React.FC<FooterProps> = ({
       {isExtended && (
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">
-            <Breadcrumbs breadcrumbsData={breadcrumbs || []} />
+            <Breadcrumbs
+              breadcrumbsData={breadcrumbs || []}
+              onClickBreadcrumb={onClickBreadcrumb}
+            />
             <Link href="/favorites">
               <StyledCustomLink>
                 <i className="material-icons">bookmarks</i>FAVORITES

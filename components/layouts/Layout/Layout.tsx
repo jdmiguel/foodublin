@@ -1,4 +1,5 @@
 import React, { useState, ReactNode } from 'react';
+import { useRouter } from 'next/router';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -44,6 +45,12 @@ export const Layout = ({
     });
   };
 
+  const router = useRouter();
+
+  const handleClickBreadcrumb = (route: string, asRoute: string) => {
+    router.push(route, asRoute);
+  };
+
   return (
     <StyledLayout>
       <Header
@@ -52,7 +59,11 @@ export const Layout = ({
         isExtended={isExtendedHeader}
       />
       <StyledMain>{children}</StyledMain>
-      <Footer showVeil={showFooterVeil} isExtended={isExtendedFooter} />
+      <Footer
+        showVeil={showFooterVeil}
+        isExtended={isExtendedFooter}
+        onClickBreadcrumb={handleClickBreadcrumb}
+      />
       <StyledScrollUpButton
         fullWidth={false}
         isFloating={true}
