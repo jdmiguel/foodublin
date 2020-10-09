@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
 import { HomePage } from '../components/pages/HomePage/HomePage';
@@ -18,14 +19,19 @@ const index = () => {
 
   const dispatch = useDispatch();
 
-  const handleClickHighlight = (id: string) => {
+  const router = useRouter();
+
+  const handleClickHighlight = (id: string, route: string, asRoute: string) => {
     setIsLoading(true);
 
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
       HIGHLIGHTED_RESTAURANTS,
       id,
     );
+
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+
+    router.push(route, asRoute);
   };
 
   useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
