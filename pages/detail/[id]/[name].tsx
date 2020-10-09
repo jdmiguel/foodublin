@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
@@ -59,6 +60,8 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   );
   const dispatch = useDispatch();
 
+  const router = useRouter();
+
   const stringifiedId = `${id}`;
   const isFavorite = favorites.some(
     (favorite) => favorite.id === stringifiedId,
@@ -78,8 +81,10 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     );
   };
 
-  const handleClickRelatedRestaurant = () => {
+  const handleClickRelatedRestaurant = (route: string, asRoute: string) => {
     setIsLoading(true);
+
+    router.push(route, asRoute);
   };
 
   const { name, imgSrc } = data;
