@@ -47,10 +47,6 @@ export const Layout = ({
 
   const router = useRouter();
 
-  const handleClickBreadcrumb = (route: string, asRoute: string) => {
-    router.push(route, asRoute);
-  };
-
   return (
     <StyledLayout>
       <Header
@@ -62,7 +58,12 @@ export const Layout = ({
       <Footer
         showVeil={showFooterVeil}
         isExtended={isExtendedFooter}
-        onClickBreadcrumb={handleClickBreadcrumb}
+        onClickBreadcrumb={(route: string, asRoute: string) =>
+          router.push(route, asRoute)
+        }
+        onClickFavorites={(route: string) => {
+          router.push(route);
+        }}
       />
       <StyledScrollUpButton
         fullWidth={false}

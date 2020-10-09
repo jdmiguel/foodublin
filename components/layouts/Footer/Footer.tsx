@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
 
 import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
 
@@ -21,12 +20,14 @@ type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
   onClickBreadcrumb: (route: string, asRoute: string) => void;
+  onClickFavorites: (route: string) => void;
 };
 
 export const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
   onClickBreadcrumb,
+  onClickFavorites,
 }) => {
   const { breadcrumbs } = useSelector((state: InitialAppState) => state);
 
@@ -40,11 +41,9 @@ export const Footer: React.FC<FooterProps> = ({
               breadcrumbsData={breadcrumbs || []}
               onClickBreadcrumb={onClickBreadcrumb}
             />
-            <Link href="/favorites">
-              <StyledCustomLink>
-                <i className="material-icons">bookmarks</i>FAVORITES
-              </StyledCustomLink>
-            </Link>
+            <StyledCustomLink onClick={() => onClickFavorites('/favorites')}>
+              <i className="material-icons">bookmarks</i>FAVORITES
+            </StyledCustomLink>
           </StyledNavFooter>
         </StyledNavFooterWrapper>
       )}
