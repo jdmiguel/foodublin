@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import { Card } from '../Card/Card';
@@ -142,24 +141,15 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
             ) : (
               <StyledListbox role="listbox">
                 {suggestions.map(
-                  ({
-                    id,
-                    imgSrc,
-                    title,
-                    content,
-                    route,
-                    asRoute,
-                  }: Restaurant) => (
+                  ({ id, imgSrc, title, content }: Restaurant) => (
                     <StyledListboxItem key={id} role="option">
-                      <Link href={route} as={asRoute}>
-                        <Card
-                          imgSrc={imgSrc}
-                          title={title}
-                          content={content}
-                          onClick={() => handleSuggestionClick(id, title)}
-                          type={CardType.SUGGESTION}
-                        />
-                      </Link>
+                      <Card
+                        imgSrc={imgSrc}
+                        title={title}
+                        content={content}
+                        onClick={() => handleSuggestionClick(id, title)}
+                        type={CardType.SUGGESTION}
+                      />
                     </StyledListboxItem>
                   ),
                 )}
