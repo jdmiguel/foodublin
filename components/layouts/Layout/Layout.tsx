@@ -53,6 +53,12 @@ export const Layout = ({
         bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
+        onClickLogo={(route: string) => {
+          router.push(route);
+        }}
+        onClickFavorites={(route: string) => {
+          router.push(route);
+        }}
       />
       <StyledMain>{children}</StyledMain>
       <Footer
