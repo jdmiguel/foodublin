@@ -1,6 +1,6 @@
 import { BreadcrumbsType } from './../../../../helpers/types';
 
-export const BREADCRUMBS_MOCK = [
+export const BREADCRUMBS_DATA_MOCK = [
   { text: 'First step', route: '/', asRoute: '/', type: BreadcrumbsType.HOME },
   {
     text: 'Second step',
@@ -15,3 +15,5 @@ export const BREADCRUMBS_MOCK = [
     type: BreadcrumbsType.DETAIL,
   },
 ];
+
+export const BREADCRUMBS_CALLBACK_MOCK = () => {};

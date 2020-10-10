@@ -1,4 +1,4 @@
-import React, { ReactNode, forwardRef } from 'react';
+import React, { ReactNode } from 'react';
 
 import { StyledCustomLink } from './styles';
 
@@ -12,21 +12,19 @@ type CustomLinkProps = {
   onClick?: () => void;
 };
 
-export const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
-  (
-    { className, children, size = CustomLinkSize.SMALL, route, onClick },
-    forwardedRef,
-  ) => (
-    <StyledCustomLink
-      ref={forwardedRef}
-      className={className}
-      href={route && route}
-      size={size}
-      onClick={onClick && onClick}
-    >
-      {children}
-    </StyledCustomLink>
-  ),
+export const CustomLink: React.FC<CustomLinkProps> = ({
+  className,
+  children,
+  size = CustomLinkSize.SMALL,
+  route,
+  onClick,
+}) => (
+  <StyledCustomLink
+    className={className}
+    href={route && route}
+    size={size}
+    onClick={onClick && onClick}
+  >
+    {children}
+  </StyledCustomLink>
 );
-
-CustomLink.displayName = 'CustomLink';
