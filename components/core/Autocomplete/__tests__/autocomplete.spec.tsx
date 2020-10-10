@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 
 import { Autocomplete } from '../Autocomplete';
@@ -40,12 +40,18 @@ describe('Component: Autocomplete', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
-    expect(handleFetchSuggestion).toHaveBeenCalledTimes(1);
+    expect(handleFetchSuggestion).toHaveBeenCalled();
   });
 
-  it('should show/hide suggestions list', () => {
+  it('should show/hide suggestions list', async () => {
+    const handleSelectSuggestion = jest.fn();
     const { getByTestId, getByPlaceholderText } = render(
-      renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />),
+      renderWithTheme(
+        <Autocomplete
+          {...AUTOCOMPLETE_PROPS_MOCK}
+          selectSuggestion={handleSelectSuggestion}
+        />,
+      ),
     );
     const listboxWrapper = getByTestId('listbox-wrapper');
     const input = getByPlaceholderText('Search for locals...');
@@ -59,6 +65,11 @@ describe('Component: Autocomplete', () => {
     // hide suggestions list by activating blur event
     fireEvent.blur(input);
 
+    await waitFor(() => {
+      expect(listboxWrapper).toHaveStyleRule('opacity', '0');
+      expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+    });
+
     // show suggestions list by activating focus event
     fireEvent.focus(input);
 
@@ -70,5 +81,14 @@ describe('Component: Autocomplete', () => {
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+
+    // show suggestions list by texting three characters and call callback function by clicking any suggestion
+    fireEvent.change(input, { target: { value: 'tre' } });
+    const firstSuggestionLink = listboxWrapper
+      .querySelectorAll('li')[0]
+      .querySelector('a');
+    fireEvent.click(firstSuggestionLink);
+
+    expect(handleSelectSuggestion).toHaveBeenCalled();
   });
 });

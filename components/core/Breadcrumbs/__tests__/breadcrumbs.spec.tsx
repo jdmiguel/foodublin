@@ -1,18 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import 'jest-styled-components';
 
 import { Breadcrumbs } from '../Breadcrumbs';
 
-import { BREADCRUMBS_MOCK } from '../__mocks__/breadcrumbs.mocks';
+import {
+  BREADCRUMBS_DATA_MOCK,
+  BREADCRUMBS_CALLBACK_MOCK,
+} from '../__mocks__/breadcrumbs.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Breadcrumbs', () => {
   it('should render', () => {
     const { container } = render(
-      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
+      renderWithTheme(
+        <Breadcrumbs
+          breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+          onClickBreadcrumb={BREADCRUMBS_CALLBACK_MOCK}
+        />,
+      ),
     );
 
     expect(container.firstChild).toMatchSnapshot();
@@ -20,7 +28,12 @@ describe('Component: Breadcrumbs', () => {
 
   it('should display properly the first two steps', () => {
     const { getByText } = render(
-      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
+      renderWithTheme(
+        <Breadcrumbs
+          breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+          onClickBreadcrumb={BREADCRUMBS_CALLBACK_MOCK}
+        />,
+      ),
     );
     const firstStep = getByText('First step');
     const secondStep = getByText('Second step');
@@ -33,7 +46,12 @@ describe('Component: Breadcrumbs', () => {
 
   it('should display arrows after the first two steps', () => {
     const { getByText } = render(
-      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
+      renderWithTheme(
+        <Breadcrumbs
+          breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+          onClickBreadcrumb={BREADCRUMBS_CALLBACK_MOCK}
+        />,
+      ),
     );
     const firstStep = getByText('First step');
     const secondStep = getByText('Second step');
@@ -44,7 +62,12 @@ describe('Component: Breadcrumbs', () => {
 
   it('should display properly the last step', () => {
     const { getByText } = render(
-      renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
+      renderWithTheme(
+        <Breadcrumbs
+          breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+          onClickBreadcrumb={BREADCRUMBS_CALLBACK_MOCK}
+        />,
+      ),
     );
     const lastStep = getByText('Third step');
 
@@ -56,9 +79,30 @@ describe('Component: Breadcrumbs', () => {
 
 it('should not display arrow after the last step', () => {
   const { getByText } = render(
-    renderWithTheme(<Breadcrumbs breadcrumbsData={BREADCRUMBS_MOCK} />),
+    renderWithTheme(
+      <Breadcrumbs
+        breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+        onClickBreadcrumb={BREADCRUMBS_CALLBACK_MOCK}
+      />,
+    ),
   );
   const lastStep = getByText('Third step');
 
   expect(lastStep.nextElementSibling).toBeNull();
+});
+
+it('should call function on click', () => {
+  const handleClickBreadcrumb = jest.fn();
+  const { getByText } = render(
+    renderWithTheme(
+      <Breadcrumbs
+        breadcrumbsData={BREADCRUMBS_DATA_MOCK}
+        onClickBreadcrumb={handleClickBreadcrumb}
+      />,
+    ),
+  );
+
+  fireEvent.click(getByText('First step'));
+
+  expect(handleClickBreadcrumb).toHaveBeenCalled();
 });

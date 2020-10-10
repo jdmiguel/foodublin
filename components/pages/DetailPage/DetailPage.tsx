@@ -45,7 +45,7 @@ type DetailPageProps = {
   isFavorite: boolean;
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
-  onClickRelatedRestaurant: () => void;
+  onClickRelatedRestaurant: (route: string, asRoute: string) => void;
 };
 
 export const DetailPage: React.FC<DetailPageProps> = ({

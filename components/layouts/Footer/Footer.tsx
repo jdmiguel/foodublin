@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
 
 import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
 
@@ -20,11 +19,15 @@ import { InitialAppState } from '../../../helpers/types';
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
+  onClickBreadcrumb: (route: string, asRoute: string) => void;
+  onClickFavorites: (route: string) => void;
 };
 
 export const Footer: React.FC<FooterProps> = ({
   showVeil = false,
   isExtended = false,
+  onClickBreadcrumb,
+  onClickFavorites,
 }) => {
   const { breadcrumbs } = useSelector((state: InitialAppState) => state);
 
@@ -34,12 +37,13 @@ export const Footer: React.FC<FooterProps> = ({
       {isExtended && (
         <StyledNavFooterWrapper>
           <StyledNavFooter className="grid-container">
-            <Breadcrumbs breadcrumbsData={breadcrumbs || []} />
-            <Link href="/favorites">
-              <StyledCustomLink>
-                <i className="material-icons">bookmarks</i>FAVORITES
-              </StyledCustomLink>
-            </Link>
+            <Breadcrumbs
+              breadcrumbsData={breadcrumbs || []}
+              onClickBreadcrumb={onClickBreadcrumb}
+            />
+            <StyledCustomLink onClick={() => onClickFavorites('/favorites')}>
+              <i className="material-icons">bookmarks</i>FAVORITES
+            </StyledCustomLink>
           </StyledNavFooter>
         </StyledNavFooterWrapper>
       )}

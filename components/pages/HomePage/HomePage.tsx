@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
@@ -19,7 +18,7 @@ type HighlightRestaurant = Restaurant & { featuredSrc: string };
 type HomePageProps = {
   isLoading: boolean;
   highlights: HighlightRestaurant[];
-  clickHighlight: (id: string) => void;
+  clickHighlight: (id: string, route: string, asRoute: string) => void;
 };
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -41,15 +40,19 @@ export const HomePage: React.FC<HomePageProps> = ({
         <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
           {highlights.map((restaurant) => (
             <div key={restaurant.id} className="cell small-12 medium-6 large-4">
-              <Link href={restaurant.route} as={restaurant.asRoute}>
-                <Card
-                  imgSrc={restaurant.featuredSrc}
-                  title={restaurant.title}
-                  content={restaurant.content}
-                  type={CardType.HIGHLIGHT}
-                  onClick={() => clickHighlight(restaurant.id)}
-                />
-              </Link>
+              <Card
+                imgSrc={restaurant.featuredSrc}
+                title={restaurant.title}
+                content={restaurant.content}
+                type={CardType.HIGHLIGHT}
+                onClick={() =>
+                  clickHighlight(
+                    restaurant.id,
+                    restaurant.route,
+                    restaurant.asRoute,
+                  )
+                }
+              />
             </div>
           ))}
         </StyledHighlightWrapper>

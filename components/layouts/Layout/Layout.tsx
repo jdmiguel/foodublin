@@ -1,4 +1,5 @@
 import React, { useState, ReactNode } from 'react';
+import { useRouter } from 'next/router';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -44,15 +45,32 @@ export const Layout = ({
     });
   };
 
+  const router = useRouter();
+
   return (
     <StyledLayout>
       <Header
         bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
+        onClickLogo={(route: string) => {
+          router.push(route);
+        }}
+        onClickFavorites={(route: string) => {
+          router.push(route);
+        }}
       />
       <StyledMain>{children}</StyledMain>
-      <Footer showVeil={showFooterVeil} isExtended={isExtendedFooter} />
+      <Footer
+        showVeil={showFooterVeil}
+        isExtended={isExtendedFooter}
+        onClickBreadcrumb={(route: string, asRoute: string) =>
+          router.push(route, asRoute)
+        }
+        onClickFavorites={(route: string) => {
+          router.push(route);
+        }}
+      />
       <StyledScrollUpButton
         fullWidth={false}
         isFloating={true}

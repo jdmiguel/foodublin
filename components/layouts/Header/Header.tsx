@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 
 import { Logo } from '../../core/Logo/Logo';
+import { CustomLink } from '../../core/CustomLink/CustomLink';
 
 import { Finder } from '../../ui/Finder/Finder';
 
@@ -21,35 +21,38 @@ type HeaderProps = {
   claimTxt: string;
   bgImgSrc?: string | undefined;
   isExtended: boolean;
+  onClickLogo: (route: string) => void;
+  onClickFavorites: (route: string) => void;
 };
 
 export const Header: React.FC<HeaderProps> = ({
   bgImgSrc,
   claimTxt,
   isExtended,
+  onClickLogo,
+  onClickFavorites,
 }) => (
   <StyledHeader data-testid="header" bgImg={bgImgSrc}>
     <StyledOverlay isExtended={isExtended}>
       <StyledHeaderContent isExtended={isExtended}>
-        <Link href="/">
-          <a>
-            <Logo
-              size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
-              logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
-            />
-          </a>
-        </Link>
+        <CustomLink onClick={() => onClickLogo('/')}>
+          <Logo
+            size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
+            logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
+          />
+        </CustomLink>
         <StyledHeaderClaim isExtended={isExtended}>
           {claimTxt}
         </StyledHeaderClaim>
         {isExtended && <Finder />}
         {!isExtended && (
-          <Link href="/favorites">
-            <StyledCustomLink size={CustomLinkSize.BIG}>
-              <i className="material-icons">bookmarks</i>
-              <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
-            </StyledCustomLink>
-          </Link>
+          <StyledCustomLink
+            size={CustomLinkSize.BIG}
+            onClick={() => onClickFavorites('/favorites')}
+          >
+            <i className="material-icons">bookmarks</i>
+            <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>
+          </StyledCustomLink>
         )}
       </StyledHeaderContent>
     </StyledOverlay>

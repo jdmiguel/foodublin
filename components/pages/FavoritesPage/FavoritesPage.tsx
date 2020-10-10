@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
@@ -22,7 +21,7 @@ type FavoritesPageProps = {
   isLoading: boolean;
   total: number;
   restaurants: Restaurant[];
-  clickRestaurant: () => void;
+  clickRestaurant: (route: string, asRoute: string) => void;
 };
 
 export const FavoritesPage: React.FC<FavoritesPageProps> = ({
@@ -49,14 +48,14 @@ export const FavoritesPage: React.FC<FavoritesPageProps> = ({
               className="cell small-12 medium-6 large-4"
               key={`${restaurant.id}-${restaurant.title}`}
             >
-              <Link href={restaurant.route} as={restaurant.asRoute}>
-                <Card
-                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                  title={restaurant.title}
-                  content={restaurant.content}
-                  onClick={clickRestaurant}
-                />
-              </Link>
+              <Card
+                imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                title={restaurant.title}
+                content={restaurant.content}
+                onClick={() =>
+                  clickRestaurant(restaurant.route, restaurant.asRoute)
+                }
+              />
             </div>
           ))}
         </StyledCardsWrapper>

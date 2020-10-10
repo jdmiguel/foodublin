@@ -37,9 +37,7 @@ describe('Component: CustomLink', () => {
     const handleClick = jest.fn();
     const { getByText } = render(
       renderWithTheme(
-        <CustomLink route={CUSTOM_LINK_MOCK.route} onClick={handleClick}>
-          {CUSTOM_LINK_MOCK.text}
-        </CustomLink>,
+        <CustomLink onClick={handleClick}>{CUSTOM_LINK_MOCK.text}</CustomLink>,
       ),
     );
 
