@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components';
 
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 
-export const StyledDropdown = styled.div`
+export const StyledDropdown = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
   height: 100%;
   position: initial;
+  pointer-events: ${({ disabled }) => disabled && 'none'};
   @media only screen and (min-width: 768px) {
     height: 55px;
     position: relative;

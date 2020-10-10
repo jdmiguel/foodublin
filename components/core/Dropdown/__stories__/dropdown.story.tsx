@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { text, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { text, select } from '@storybook/addon-knobs';
 
 import { Dropdown } from '../Dropdown';
 
@@ -15,6 +15,7 @@ stories.add('Dropdown', () => (
     {...DROPDOWN_PROPS_MOCK}
     labelTxt={text('label text', DROPDOWN_PROPS_MOCK.labelTxt)}
     icon={select('icon', ICON_OPTIONS, DROPDOWN_PROPS_MOCK.icon)}
+    disabled={boolean('disabled', false)}
     onFocus={action('dropdown: on focus event')}
     onBlur={action('dropdown: on blur event')}
     onSelect={action('dropdown: on select option')}

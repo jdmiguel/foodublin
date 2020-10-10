@@ -4,10 +4,11 @@ import { Input } from '../../Input/Input';
 import { Loader } from '../../Loader/Loader';
 import { BlockTitle } from '../../BlockTitle/BlockTitle';
 
-export const StyledAutocompleteMobile = styled.div`
+export const StyledAutocompleteMobile = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
   height: 100%;
+  pointer-events: ${({ disabled }) => disabled && 'none'};
 `;
 
 export const StyledLabel = styled.div`

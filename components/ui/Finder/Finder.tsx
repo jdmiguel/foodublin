@@ -120,6 +120,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
           suggestions={suggestions}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
+          disabled={isButtonLoading}
           loading={isAutocompleteLoading}
           hasSearchIcon={true}
         />
@@ -128,6 +129,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
           suggestions={suggestions}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
+          disabled={isButtonLoading}
           loading={isAutocompleteLoading}
           hasSearchIcon={true}
         />
@@ -138,6 +140,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
           icon="near_me"
           labelTxt="Select any location"
           list={LOCATIONS}
+          disabled={isButtonLoading}
           onSelect={(path: string) => setCurrentLocationPath(path)}
           onClear={() => setCurrentLocationPath('dublin')}
         />
@@ -145,6 +148,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
           icon="restaurant"
           labelTxt="Select any cuisine"
           list={CUISINES}
+          disabled={isButtonLoading}
           onSelect={(path: string) => setCurrentCuisinePath(path)}
           onClear={() => setCurrentCuisinePath('any-food')}
         />

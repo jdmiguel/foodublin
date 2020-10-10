@@ -108,4 +108,19 @@ describe('Component: AutocompleteMobile', () => {
 
     expect(handleSelectSuggestion).toHaveBeenCalled();
   });
+
+  it('should be disabled', () => {
+    const AUTOCOMPLETE_PROPS_MOCK_DISABLED = {
+      ...AUTOCOMPLETE_PROPS_MOCK,
+      disabled: true,
+    };
+    const { container } = render(
+      renderWithTheme(
+        <AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />,
+      ),
+    );
+    const autocomplete = container.firstChild as HTMLDivElement;
+
+    expect(autocomplete).toHaveStyleRule('pointer-events', 'none');
+  });
 });
