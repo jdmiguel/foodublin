@@ -25,10 +25,11 @@ import {
 import { Restaurant, CardType } from '../../../helpers/types';
 
 export type AutocompleteMobileProps = {
-  className?: string;
   hasSearchIcon?: boolean;
   suggestions: Restaurant[];
   loading: boolean;
+  className?: string;
+  disabled: boolean;
   fetchSuggestions: (search: string) => void;
   selectSuggestion: (id: string, name: string) => void;
 };
@@ -40,6 +41,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   loading,
   hasSearchIcon,
   className,
+  disabled,
 }) => {
   const listboxWrapperRef = useRef<HTMLDivElement>(null);
   const isSuggestable = useRef(true);
@@ -102,7 +104,11 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   };
 
   return (
-    <StyledAutocompleteMobile data-testid="autocomplete" className={className}>
+    <StyledAutocompleteMobile
+      data-testid="autocomplete"
+      className={className}
+      disabled={disabled}
+    >
       <>
         <StyledLabel data-testid="label">
           <StyledLabelButton

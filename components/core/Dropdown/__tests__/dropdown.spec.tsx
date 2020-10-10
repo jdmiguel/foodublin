@@ -134,4 +134,17 @@ describe('Component: Dropdown', () => {
     expect(labelButton.nextElementSibling).toBeTruthy();
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('should be disabled', () => {
+    const DROPDOWN_PROPS_MOCK_DISABLED = {
+      ...DROPDOWN_PROPS_MOCK,
+      disabled: true,
+    };
+    const { container } = render(
+      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />),
+    );
+    const dropdown = container.firstChild as HTMLDivElement;
+
+    expect(dropdown).toHaveStyleRule('pointer-events', 'none');
+  });
 });

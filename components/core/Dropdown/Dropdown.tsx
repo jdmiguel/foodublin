@@ -32,6 +32,7 @@ type DropdownProps = {
   icon?: string;
   labelTxt: string;
   list: ListItem[];
+  disabled: boolean;
   onSelect: (path: string) => void;
   onClear: () => void;
   onFocus?: (event: React.FocusEvent) => void;
@@ -56,10 +57,11 @@ const listReducer = (list: ListItem[], action: ListAction) => {
 };
 
 export const Dropdown: React.FC<DropdownProps> = ({
-  className,
   icon,
   labelTxt,
   list,
+  className,
+  disabled,
   onSelect,
   onClear,
   onFocus,
@@ -126,7 +128,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   return (
-    <StyledDropdown data-testid="dropdown" className={className}>
+    <StyledDropdown
+      data-testid="dropdown"
+      className={className}
+      disabled={disabled}
+    >
       <StyledLabel>
         <StyledLabelButton
           type="button"

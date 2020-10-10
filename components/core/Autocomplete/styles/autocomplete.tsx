@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { Input } from '../../Input/Input';
 import { Loader } from '../../Loader/Loader';
 
-export const StyledAutocomplete = styled.div`
+export const StyledAutocomplete = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
   height: 55px;
   position: relative;
   cursor: pointer;
+  pointer-events: ${({ disabled }) => disabled && 'none'};
 `;
 
 export const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`

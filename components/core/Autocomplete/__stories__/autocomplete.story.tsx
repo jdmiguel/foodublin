@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { Autocomplete } from '../Autocomplete';
 import { AutocompleteMobile } from '../AutocompleteMobile';
@@ -18,6 +18,7 @@ stories.add('Autocomplete', () => (
   <Autocomplete
     {...AUTOCOMPLETE_PROPS_MOCK}
     loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
     suggestions={SUGGESTIONS_MOCK}
     fetchSuggestions={action('autocomplete: fetch suggestions')}
   />
@@ -27,6 +28,7 @@ stories.add('AutocompleteMobile', () => (
   <AutocompleteMobile
     {...AUTOCOMPLETE_PROPS_MOCK}
     loading={boolean('loading', false)}
+    disabled={boolean('disabled', false)}
     suggestions={SUGGESTIONS_MOCK}
     fetchSuggestions={action('autocomplete: fetch suggestions')}
   />

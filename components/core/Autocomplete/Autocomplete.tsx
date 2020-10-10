@@ -18,10 +18,11 @@ import {
 import { Restaurant, CardType } from '../../../helpers/types';
 
 export type AutocompleteProps = {
-  className?: string;
   hasSearchIcon?: boolean;
   suggestions: Restaurant[];
   loading: boolean;
+  className?: string;
+  disabled: boolean;
   fetchSuggestions: (search: string) => void;
   selectSuggestion: (id: string, name: string) => void;
 };
@@ -33,6 +34,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   loading,
   hasSearchIcon,
   className,
+  disabled,
 }) => {
   const blurDelay = useRef(0);
   const isSuggestable = useRef(true);
@@ -83,7 +85,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     (isListboxFocused && value.length < 3);
 
   return (
-    <StyledAutocomplete data-testid="autocomplete" className={className}>
+    <StyledAutocomplete
+      data-testid="autocomplete"
+      className={className}
+      disabled={disabled}
+    >
       <StyledInput
         type="text"
         hasBorderBottomRadius={hasBorderBottomRadius}

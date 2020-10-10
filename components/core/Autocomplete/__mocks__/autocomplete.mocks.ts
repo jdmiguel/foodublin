@@ -34,4 +34,5 @@ export const AUTOCOMPLETE_PROPS_MOCK = {
   selectSuggestion: () => {},
   loading: false,
   hasSearchIcon: true,
+  disabled: false,
 };
