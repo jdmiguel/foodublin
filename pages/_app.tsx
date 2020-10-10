@@ -10,13 +10,30 @@ import appReducer from '../store/reducer';
 
 import { InitialAppState } from '../helpers/types';
 import { DEFAULT_BREADCRUMB } from '../helpers/staticData';
-import {
-  loadStateFromLocalStorage,
-  saveStateToLocalStorage,
-} from '../helpers/utils';
 import '../helpers/Grid/Grid.scss';
 import { GlobalStyles } from '../helpers/GlobalStylesHelper';
 import { theme } from '../helpers/Theme';
+
+const loadStateFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return undefined;
+  }
+};
+
+const saveStateToLocalStorage = (state: InitialAppState) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (error) {
+    console.log(`${error} on trying to save global state in LocalStorage`);
+  }
+};
 
 const localState = loadStateFromLocalStorage();
 

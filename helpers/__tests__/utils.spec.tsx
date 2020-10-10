@@ -1,5 +1,7 @@
 import {
   compose,
+  getRandomInt,
+  getRandomListNumbers,
   getTimmings,
   getAlphanumericText,
   getLoweredText,
@@ -20,6 +22,22 @@ describe('compose', () => {
     const formattedText = compose(getLoweredText, getAlphanumericText);
 
     expect(formattedText(THIRD_DETAIL.name)).toEqual(expectedText);
+  });
+});
+
+describe('getRandomInt', () => {
+  it('should be equal to mocked number', () => {
+    const expectedNumber = 1;
+
+    expect(getRandomInt(1, 2)).toEqual(expectedNumber);
+  });
+});
+
+describe('getRandomListNumbers', () => {
+  it('should contain a list of numbers', () => {
+    expect(getRandomListNumbers(3, 0, 4)).toContain(0);
+    expect(getRandomListNumbers(3, 0, 4)).toContain(1);
+    expect(getRandomListNumbers(3, 0, 4)).toContain(2);
   });
 });
 
