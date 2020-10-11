@@ -32,8 +32,8 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import { RestaurantDetail, Restaurant } from '../../../helpers/types';
-import { getTimmings, getMapSrc } from '../../../helpers/utils';
+import { RestaurantDetail, Restaurant, Timming } from '../../../helpers/types';
+import { getFormattedUrlText } from '../../../helpers/utils';
 import {
   DETAIL_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
@@ -46,6 +46,29 @@ type DetailPageProps = {
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: (route: string, asRoute: string) => void;
+};
+
+export const getTimmings = (timmingsStr: string) =>
+  timmingsStr.split(',').reduce((acc: Timming[], next: string) => {
+    const firstDayIndex = next.indexOf('(');
+    const lastDayIndex = next.indexOf(')');
+
+    if (next.includes('(') && next.includes(')')) {
+      acc.push({
+        id: next,
+        day: next.slice(firstDayIndex + 1, lastDayIndex),
+        schedule: next.slice(0, firstDayIndex - 1),
+      });
+    }
+
+    return acc;
+  }, []);
+
+export const getMapSrc = (name: string, location: string) => {
+  const urlName = getFormattedUrlText(name);
+  const urlLocation = getFormattedUrlText(location);
+
+  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };
 
 export const DetailPage: React.FC<DetailPageProps> = ({

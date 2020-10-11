@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 
-import { Timming, Restaurant } from './types';
+import { Restaurant } from './types';
 
 export const {
   publicRuntimeConfig: {
@@ -32,41 +32,6 @@ export const compose = (...fns: ComposableStringFunction[]) => (
 export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min;
 
-export const getRandomListNumbers = (
-  excludedValue: number,
-  minRandomValue: number,
-  maxRandomValue: number,
-) => {
-  const indexArray: number[] = [];
-
-  while (indexArray.length < 3) {
-    const random = getRandomInt(minRandomValue, maxRandomValue);
-    if (random !== excludedValue && !indexArray.includes(random)) {
-      indexArray.push(random);
-    }
-  }
-
-  return indexArray;
-};
-
-// DETAIL PAGE UTILS
-
-export const getTimmings = (timmingsStr: string) =>
-  timmingsStr.split(',').reduce((acc: Timming[], next: string) => {
-    const firstDayIndex = next.indexOf('(');
-    const lastDayIndex = next.indexOf(')');
-
-    if (next.includes('(') && next.includes(')')) {
-      acc.push({
-        id: next,
-        day: next.slice(firstDayIndex + 1, lastDayIndex),
-        schedule: next.slice(0, firstDayIndex - 1),
-      });
-    }
-
-    return acc;
-  }, []);
-
 //const checkAlphanumeric = (name: string) => !!name.match(/^[0-9a-zA-Z]+$/);
 
 export const getAlphanumericText = (text: string) =>
@@ -85,14 +50,24 @@ export const getFormattedUrlText = (text: string, isPath = false) => {
   }, '');
 };
 
-export const getMapSrc = (name: string, location: string) => {
-  const urlName = getFormattedUrlText(name);
-  const urlLocation = getFormattedUrlText(location);
-
-  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
-};
-
 // RELATED RESTAURANTS
+
+export const getRandomNumbersList = (
+  excludedValue: number,
+  minRandomValue: number,
+  maxRandomValue: number,
+) => {
+  const indexArray: number[] = [];
+
+  while (indexArray.length < 3) {
+    const random = getRandomInt(minRandomValue, maxRandomValue);
+    if (random !== excludedValue && !indexArray.includes(random)) {
+      indexArray.push(random);
+    }
+  }
+
+  return indexArray;
+};
 
 export const getCurrentRelatedRestaurants = (
   restaurants: Restaurant[],
@@ -101,7 +76,7 @@ export const getCurrentRelatedRestaurants = (
   const currentSuggestionIndex = restaurants.findIndex(
     (restaurants) => restaurants.id === currentRestaurantId,
   );
-  const getRelatedRestaurantsIndexList = getRandomListNumbers(
+  const getRelatedRestaurantsIndexList = getRandomNumbersList(
     currentSuggestionIndex,
     0,
     restaurants.length,
@@ -118,24 +93,3 @@ export const getTitleText = (total: number) => ({
   totalText: total > 0 ? total : 'There are no',
   restaurantText: `restaurant${total === 0 || total >= 2 ? 's' : ''}`,
 });
-
-export const loadStateFromLocalStorage = () => {
-  try {
-    const serializedState = localStorage.getItem('state');
-    if (serializedState === null) {
-      return undefined;
-    }
-    return JSON.parse(serializedState);
-  } catch (error) {
-    return undefined;
-  }
-};
-
-export const saveStateToLocalStorage = (state: any) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem('state', serializedState);
-  } catch (error) {
-    console.log(`${error} on trying to save global state in LocalStorage`);
-  }
-};

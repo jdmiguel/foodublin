@@ -1,6 +1,6 @@
 import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
 
-export const FIRST_DETAIL = {
+export const FIRST_DETAIL_MOCKED = {
   imgSrc:
     'https://b.zmtcdn.com/data/res_imagery/9100560_CHAIN_1db4137ab10427fd625b1fe7afc255e2_c.jpg',
   name: 'Boojum',
@@ -23,7 +23,7 @@ export const FIRST_DETAIL = {
   ],
 };
 
-export const SECOND_DETAIL = {
+export const SECOND_DETAIL_MOCKED = {
   imgSrc: '',
   name: `Lam's`,
   location: 'Ballyfermot',
@@ -38,7 +38,7 @@ export const SECOND_DETAIL = {
   Highlights: ['Takeaway Available', 'Dinner', 'Delivery', 'Lunch'],
 };
 
-export const THIRD_DETAIL = {
+export const THIRD_DETAIL_MOCKED = {
   imgSrc:
     'https://b.zmtcdn.com/data/res_imagery/16518440_CHAIN_937180d938080196899e8c908558b5e1_c.jpg',
   name: 'F.X. Buckley',
@@ -68,7 +68,7 @@ export const THIRD_DETAIL = {
   ],
 };
 
-export const FOURTH_DETAIL = {
+export const FOURTH_DETAIL_MOCKED = {
   imgSrc:
     'https://b.zmtcdn.com/data/res_imagery/9101221_RESTAURANT_a3d14f5828d263bd1ddb6c454a425f34_c.jpg',
   name: `Sophie's - The Dean Hotel`,
@@ -94,7 +94,7 @@ export const FOURTH_DETAIL = {
   ],
 };
 
-export const RELATED_RESTAURANTS = [
+export const RELATED_RESTAURANTS_MOCKED = [
   {
     id: '234',
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
@@ -109,7 +109,7 @@ export const RELATED_RESTAURANTS = [
     title: 'Abrecadabra',
     content: 'Rathmines',
     route: '/detail/[id]/[name]',
-    asRoute: '/detail/234/elephant-castle',
+    asRoute: '/detail/5474/abrecadabra',
   },
   {
     id: '8963',
@@ -117,6 +117,22 @@ export const RELATED_RESTAURANTS = [
     title: 'Brothers in law',
     content: 'Blackrock',
     route: '/detail/[id]/[name]',
-    asRoute: '/detail/234/elephant-castle',
+    asRoute: '/detail/8963/brothers-in-law',
+  },
+  {
+    id: '7458',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-4.webp`,
+    title: 'Opium',
+    content: 'South City West',
+    route: '/detail/[id]/[name]',
+    asRoute: '/detail/7458/opium',
+  },
+  {
+    id: '2475',
+    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-5.webp`,
+    title: 'Mushasi',
+    content: 'North City',
+    route: '/detail/[id]/[name]',
+    asRoute: '/detail/2475/mushasi',
   },
 ];
