@@ -32,23 +32,6 @@ export const compose = (...fns: ComposableStringFunction[]) => (
 export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min;
 
-export const getRandomListNumbers = (
-  excludedValue: number,
-  minRandomValue: number,
-  maxRandomValue: number,
-) => {
-  const indexArray: number[] = [];
-
-  while (indexArray.length < 3) {
-    const random = getRandomInt(minRandomValue, maxRandomValue);
-    if (random !== excludedValue && !indexArray.includes(random)) {
-      indexArray.push(random);
-    }
-  }
-
-  return indexArray;
-};
-
 //const checkAlphanumeric = (name: string) => !!name.match(/^[0-9a-zA-Z]+$/);
 
 export const getAlphanumericText = (text: string) =>
@@ -69,6 +52,23 @@ export const getFormattedUrlText = (text: string, isPath = false) => {
 
 // RELATED RESTAURANTS
 
+export const getRandomNumbersList = (
+  excludedValue: number,
+  minRandomValue: number,
+  maxRandomValue: number,
+) => {
+  const indexArray: number[] = [];
+
+  while (indexArray.length < 3) {
+    const random = getRandomInt(minRandomValue, maxRandomValue);
+    if (random !== excludedValue && !indexArray.includes(random)) {
+      indexArray.push(random);
+    }
+  }
+
+  return indexArray;
+};
+
 export const getCurrentRelatedRestaurants = (
   restaurants: Restaurant[],
   currentRestaurantId: string,
@@ -76,7 +76,7 @@ export const getCurrentRelatedRestaurants = (
   const currentSuggestionIndex = restaurants.findIndex(
     (restaurants) => restaurants.id === currentRestaurantId,
   );
-  const getRelatedRestaurantsIndexList = getRandomListNumbers(
+  const getRelatedRestaurantsIndexList = getRandomNumbersList(
     currentSuggestionIndex,
     0,
     restaurants.length,
