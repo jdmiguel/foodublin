@@ -1,10 +1,18 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
-import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+
 import { NextPage, NextPageContext } from 'next';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+import { useDispatch } from 'react-redux';
+
+import { Layout } from '../../../components/layouts/Layout/Layout';
 
 import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
-import { SearchPage } from '../../../components/pages/SearchPage/SearchPage';
+
+import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../../../components/core/Loader/Loader';
 
 import { useWindowMeasurement } from '../../../components/hooks/useWindowMeasurement';
 import { useScroll } from '../../../components/hooks/useScroll';
@@ -15,6 +23,7 @@ import { setRelatedRestaurants } from '../../../store/actions';
 import { getRestaurants } from '../../../services';
 
 import {
+  DEFAULT_TEXT_LOADING,
   DUBLIN_ID,
   LOCATIONS,
   CUISINES,
@@ -62,6 +71,18 @@ type CustomNextPageContext = NextPageContext & {
     cuisine: string;
   };
 };
+
+const DynamicSearchPage = dynamic(
+  () => import('../../../components/pages/SearchPage/SearchPage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
 
 const getValues = (path: string, searchType: ListItem[]): any[] => {
   const value = searchType.find((item) => item.path === path);
@@ -127,7 +148,7 @@ const Search: NextPage<SearchProps> = ({
   if (restaurants === undefined) {
     return <ErrorPage />;
   }
-  const searchRef = useRef<HTMLDivElement>(null);
+
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
@@ -268,18 +289,19 @@ const Search: NextPage<SearchProps> = ({
   }
 
   return (
-    <SearchPage
-      ref={searchRef}
-      total={total}
-      location={locationName}
-      cuisine={cuisineName}
-      restaurants={currentRestaurants}
-      onClickFilter={handleFilter}
-      onClickCard={handleClickCard}
-      isLoading={isLoadingByFilter}
-      isLoadingByScroll={isLoadingByScroll}
-      showWarning={showWarning}
-    />
+    <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
+      <DynamicSearchPage
+        total={total}
+        location={locationName}
+        cuisine={cuisineName}
+        restaurants={currentRestaurants}
+        onClickFilter={handleFilter}
+        onClickCard={handleClickCard}
+        isLoading={isLoadingByFilter}
+        isLoadingByScroll={isLoadingByScroll}
+        showWarning={showWarning}
+      />
+    </Layout>
   );
 };
 
