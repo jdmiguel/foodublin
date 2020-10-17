@@ -8,6 +8,7 @@ type CustomLinkProps = {
   className?: string;
   size?: CustomLinkSize;
   route?: string;
+  disabled?: boolean;
   children: ReactNode | string;
   onClick?: () => void;
 };
@@ -17,11 +18,13 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
   children,
   size = CustomLinkSize.SMALL,
   route,
+  disabled = false,
   onClick,
 }) => (
   <StyledCustomLink
     className={className}
     href={route && route}
+    disabled={disabled}
     size={size}
     onClick={onClick && onClick}
   >

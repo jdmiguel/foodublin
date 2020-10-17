@@ -24,7 +24,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       return (
         <StyledBreadcrumb key={breadcrumbData.text} isLast={isLast}>
           <StyledCustomLink
-            isLast={isLast}
+            disabled={isLast}
             onClick={() =>
               onClickBreadcrumb(breadcrumbData.route, breadcrumbData.asRoute)
             }

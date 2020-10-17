@@ -2,12 +2,6 @@ import styled, { css } from 'styled-components';
 
 import { CustomLink } from '../CustomLink/CustomLink';
 
-const lastBreadcrumbCSS = css`
-  pointer-events: none;
-  color: ${({ theme }) => theme.palette.DARK_SOFT};
-  font-weight: 400;
-`;
-
 const smallDevicesTextCSS = css`
   @media only screen and (max-width: 330px) {
     font-size: 0.85rem;
@@ -28,10 +22,9 @@ export const StyledBreadcrumb = styled.div<{ isLast: boolean }>`
   margin-right: ${({ isLast }) => !isLast && '5px'};
 `;
 
-export const StyledCustomLink = styled(CustomLink)<{ isLast: boolean }>`
+export const StyledCustomLink = styled(CustomLink)`
   white-space: nowrap;
   margin: 0 5px 3px 0;
-  ${({ isLast }) => isLast && lastBreadcrumbCSS};
   ${smallDevicesTextCSS}
   @media only screen and (min-width: 600px) {
     margin: 0 5px 0;
