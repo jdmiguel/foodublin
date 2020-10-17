@@ -53,13 +53,12 @@ export const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
   ) => {
     const { totalText, restaurantText } = getTitleText(total);
 
-    return isLoading ? (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ) : (
+    return (
       <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
         <StyledSearchPage ref={forwardedRef} className="grid-container">
+          <FullLoader isShowed={isLoading}>
+            <Loader text={DEFAULT_TEXT_LOADING} />
+          </FullLoader>
           <FullLoader isShowed={isLoadingByScroll} type={LoaderType.LINE}>
             <Loader type={LoaderType.LINE} />
           </FullLoader>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
@@ -15,15 +15,11 @@ import {
 import { getCurrentRelatedRestaurants } from '../helpers/utils';
 
 const index = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
 
   const router = useRouter();
 
   const handleClickHighlight = (id: string, route: string, asRoute: string) => {
-    setIsLoading(true);
-
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
       HIGHLIGHTED_RESTAURANTS,
       id,
@@ -38,7 +34,6 @@ const index = () => {
 
   return (
     <HomePage
-      isLoading={isLoading}
       clickHighlight={handleClickHighlight}
       highlights={HIGHLIGHTED_RESTAURANTS}
     />

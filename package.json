@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "start": "next start",
     "build": "next build",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "start": "next start",
     "storybook": "start-storybook -p 6006 -s ./public/images",
     "test": "NODE_ENV=test jest",
     "test:coverage": "NODE_ENV=test jest --coverage",

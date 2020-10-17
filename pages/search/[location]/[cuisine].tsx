@@ -137,7 +137,7 @@ const Search: NextPage<SearchProps> = ({
     Restaurant[],
     Dispatch<Restaurant[]>,
   ] = useState(restaurants);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
@@ -162,13 +162,12 @@ const Search: NextPage<SearchProps> = ({
         start = loadedRestaurantsRef.current;
         break;
       case LoadType.FILTER:
-        setIsLoading(true);
+        setIsLoadingByFilter(true);
         start = 0;
         loadedRestaurantsRef.current = 0;
         break;
       case LoadType.DEFAULT:
       default:
-        setIsLoading(true);
         start = MAX_RESTAURANT_DISPLAYED;
         break;
     }
@@ -177,20 +176,21 @@ const Search: NextPage<SearchProps> = ({
       locationId,
       cuisineId,
       start,
+      sortRef.current,
+      orderRef.current,
     );
 
     if (restaurantsData.restaurants) {
       if (loadType === LoadType.FILTER) {
         setCurrentRestaurants(restaurantsData.restaurants);
+        setIsLoadingByFilter(false);
       } else {
         setCurrentRestaurants([
           ...currentRestaurants,
           ...restaurantsData.restaurants,
         ]);
+        setIsLoadingByScroll(false);
       }
-
-      setIsLoadingByScroll(false);
-      setIsLoading(false);
     } else {
       setOnError(true);
     }
@@ -214,13 +214,10 @@ const Search: NextPage<SearchProps> = ({
   );
 
   useEffect(() => {
-    if (height >= MIN_BIG_DEVICE_HEIGHT) {
+    if (height >= MIN_BIG_DEVICE_HEIGHT && !isLoadingByFilter) {
       handleRestaurants(LoadType.DEFAULT);
     }
-    if (height && height < MIN_BIG_DEVICE_HEIGHT) {
-      setIsLoading(false);
-    }
-  }, [height]);
+  }, [height, isLoadingByFilter]);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
@@ -242,7 +239,6 @@ const Search: NextPage<SearchProps> = ({
 
   const handleClickCard = (id: string, route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
-    setIsLoading(true);
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
       const currentRelatedRestaurants = getCurrentRelatedRestaurants(
@@ -280,7 +276,7 @@ const Search: NextPage<SearchProps> = ({
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
       onClickCard={handleClickCard}
-      isLoading={isLoading}
+      isLoading={isLoadingByFilter}
       isLoadingByScroll={isLoadingByScroll}
       showWarning={showWarning}
     />
