@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { StyledFullLoaderWrapper, StyledFullLoader } from './styles';
+import { StyledFullLoaderWrapper } from './styles';
 
 import { LoaderType } from '../../../helpers/types';
 
@@ -16,6 +16,6 @@ export const FullLoader: React.FC<FullLoaderProps> = ({
   type = LoaderType.CIRCLE,
 }) => (
   <StyledFullLoaderWrapper isShowed={isShowed} type={type}>
-    <StyledFullLoader type={type}>{children}</StyledFullLoader>
+    {children}
   </StyledFullLoaderWrapper>
 );

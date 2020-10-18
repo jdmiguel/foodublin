@@ -3,9 +3,6 @@ import { LazyImage } from 'react-lazy-images';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
-import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
-import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 
 import { BlockText } from '../../core/BlockText/BlockText';
@@ -34,14 +31,10 @@ import {
 
 import { RestaurantDetail, Restaurant, Timming } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
-import {
-  DETAIL_GENERIC_SRC,
-  DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
+import { DETAIL_GENERIC_SRC } from '../../../helpers/staticData';
 
 type DetailPageProps = {
   data: RestaurantDetail;
-  isLoading: boolean;
   isFavorite: boolean;
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
@@ -71,7 +64,7 @@ export const getMapSrc = (name: string, location: string) => {
   return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };
 
-export const DetailPage: React.FC<DetailPageProps> = ({
+const DetailPage: React.FC<DetailPageProps> = ({
   data: {
     imgSrc,
     name,
@@ -86,7 +79,6 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
-  isLoading,
   isFavorite,
   relatedRestaurants,
   onClickSaveButton,
@@ -134,11 +126,7 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     return getStyledJumbotron(null, DETAIL_GENERIC_SRC);
   };
 
-  return isLoading ? (
-    <FullLoader>
-      <Loader text={DEFAULT_TEXT_LOADING} />
-    </FullLoader>
-  ) : (
+  return (
     <Layout isExtendedFooter={true}>
       <StyledDetailPage className="grid-container">
         {getJumbotron(imgSrc)}
@@ -209,3 +197,5 @@ export const DetailPage: React.FC<DetailPageProps> = ({
     </Layout>
   );
 };
+
+export default DetailPage;

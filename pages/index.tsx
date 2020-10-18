@@ -1,29 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
 import { useDispatch } from 'react-redux';
 
-import { HomePage } from '../components/pages/HomePage/HomePage';
+import { FullLoader } from '../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../store/actions';
 
 import {
+  DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
 } from '../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../helpers/utils';
 
-const index = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const DynamicHomePage = dynamic(
+  () => import('../components/pages/HomePage/HomePage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
 
+const index = () => {
   const dispatch = useDispatch();
 
   const router = useRouter();
 
   const handleClickHighlight = (id: string, route: string, asRoute: string) => {
-    setIsLoading(true);
-
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
       HIGHLIGHTED_RESTAURANTS,
       id,
@@ -37,8 +51,7 @@ const index = () => {
   useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
 
   return (
-    <HomePage
-      isLoading={isLoading}
+    <DynamicHomePage
       clickHighlight={handleClickHighlight}
       highlights={HIGHLIGHTED_RESTAURANTS}
     />

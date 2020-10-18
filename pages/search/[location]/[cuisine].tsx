@@ -1,10 +1,16 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
-import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import { NextPage, NextPageContext } from 'next';
 
-import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
-import { SearchPage } from '../../../components/pages/SearchPage/SearchPage';
+import { NextPage, NextPageContext } from 'next';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+import { useDispatch } from 'react-redux';
+
+import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
+
+import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../../../components/core/Loader/Loader';
 
 import { useWindowMeasurement } from '../../../components/hooks/useWindowMeasurement';
 import { useScroll } from '../../../components/hooks/useScroll';
@@ -15,6 +21,7 @@ import { setRelatedRestaurants } from '../../../store/actions';
 import { getRestaurants } from '../../../services';
 
 import {
+  DEFAULT_TEXT_LOADING,
   DUBLIN_ID,
   LOCATIONS,
   CUISINES,
@@ -62,6 +69,18 @@ type CustomNextPageContext = NextPageContext & {
     cuisine: string;
   };
 };
+
+const DynamicSearchPage = dynamic(
+  () => import('../../../components/pages/SearchPage/SearchPage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
 
 const getValues = (path: string, searchType: ListItem[]): any[] => {
   const value = searchType.find((item) => item.path === path);
@@ -127,7 +146,7 @@ const Search: NextPage<SearchProps> = ({
   if (restaurants === undefined) {
     return <ErrorPage />;
   }
-  const searchRef = useRef<HTMLDivElement>(null);
+
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
@@ -137,7 +156,7 @@ const Search: NextPage<SearchProps> = ({
     Restaurant[],
     Dispatch<Restaurant[]>,
   ] = useState(restaurants);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
@@ -162,13 +181,12 @@ const Search: NextPage<SearchProps> = ({
         start = loadedRestaurantsRef.current;
         break;
       case LoadType.FILTER:
-        setIsLoading(true);
+        setIsLoadingByFilter(true);
         start = 0;
         loadedRestaurantsRef.current = 0;
         break;
       case LoadType.DEFAULT:
       default:
-        setIsLoading(true);
         start = MAX_RESTAURANT_DISPLAYED;
         break;
     }
@@ -177,20 +195,21 @@ const Search: NextPage<SearchProps> = ({
       locationId,
       cuisineId,
       start,
+      sortRef.current,
+      orderRef.current,
     );
 
     if (restaurantsData.restaurants) {
       if (loadType === LoadType.FILTER) {
         setCurrentRestaurants(restaurantsData.restaurants);
+        setIsLoadingByFilter(false);
       } else {
         setCurrentRestaurants([
           ...currentRestaurants,
           ...restaurantsData.restaurants,
         ]);
+        setIsLoadingByScroll(false);
       }
-
-      setIsLoadingByScroll(false);
-      setIsLoading(false);
     } else {
       setOnError(true);
     }
@@ -214,13 +233,10 @@ const Search: NextPage<SearchProps> = ({
   );
 
   useEffect(() => {
-    if (height >= MIN_BIG_DEVICE_HEIGHT) {
+    if (height >= MIN_BIG_DEVICE_HEIGHT && !isLoadingByFilter) {
       handleRestaurants(LoadType.DEFAULT);
     }
-    if (height && height < MIN_BIG_DEVICE_HEIGHT) {
-      setIsLoading(false);
-    }
-  }, [height]);
+  }, [height, isLoadingByFilter]);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
@@ -242,7 +258,6 @@ const Search: NextPage<SearchProps> = ({
 
   const handleClickCard = (id: string, route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
-    setIsLoading(true);
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
       const currentRelatedRestaurants = getCurrentRelatedRestaurants(
@@ -272,22 +287,21 @@ const Search: NextPage<SearchProps> = ({
   }
 
   return (
-    <SearchPage
-      ref={searchRef}
+    <DynamicSearchPage
       total={total}
       location={locationName}
       cuisine={cuisineName}
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
       onClickCard={handleClickCard}
-      isLoading={isLoading}
+      isLoading={isLoadingByFilter}
       isLoadingByScroll={isLoadingByScroll}
       showWarning={showWarning}
     />
   );
 };
 
-Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
+export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const { location, cuisine } = query;
 
   const [locationId, locationName] = getValues(location, LOCATIONS);
@@ -296,12 +310,14 @@ Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
   const restaurantsData = await handleGetRestaurants(locationId, cuisineId);
 
   return {
-    locationId,
-    locationName,
-    cuisineId,
-    cuisineName,
-    total: restaurantsData.total,
-    restaurants: restaurantsData.restaurants,
+    props: {
+      locationId,
+      locationName,
+      cuisineId,
+      cuisineName,
+      total: restaurantsData.total,
+      restaurants: restaurantsData.restaurants,
+    },
   };
 };
 

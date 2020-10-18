@@ -1,4 +1,4 @@
-import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
+import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
 
 export const RESTAURANTS = [
   {

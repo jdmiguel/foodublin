@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
 import { useSelector } from 'react-redux';
 
-import { FavoritesPage } from '../components/pages/FavoritesPage/FavoritesPage';
+import { FullLoader } from '../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
+import { DEFAULT_TEXT_LOADING } from '../helpers/staticData';
 import { InitialAppState, BreadcrumbsType } from '../helpers/types';
 
+const DynamicFavoritesPage = dynamic(
+  () => import('../components/pages/FavoritesPage/FavoritesPage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
+
 const Favorites = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   const router = useRouter();
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  const handleClickRestaurant = (route: string, asRoute: string) => {
-    setIsLoading(true);
-
-    router.push(route, asRoute);
-  };
 
   const { favorites } = useSelector((state: InitialAppState) => state);
   const favoritesBreadcrumbs = {
@@ -33,11 +38,12 @@ const Favorites = () => {
   useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
 
   return (
-    <FavoritesPage
-      isLoading={isLoading}
+    <DynamicFavoritesPage
       total={favorites.length}
       restaurants={favorites}
-      clickRestaurant={handleClickRestaurant}
+      clickRestaurant={(route: string, asRoute: string) =>
+        router.push(route, asRoute)
+      }
     />
   );
 };

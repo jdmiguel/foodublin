@@ -20,6 +20,18 @@ describe('Component: CustomLink', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should render disabled', () => {
+    const { container } = render(
+      renderWithTheme(
+        <CustomLink route={CUSTOM_LINK_MOCK.route} disabled={true}>
+          {CUSTOM_LINK_MOCK.text}
+        </CustomLink>,
+      ),
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should render with HTML nodes', () => {
     const { container } = render(
       renderWithTheme(

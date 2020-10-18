@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
@@ -36,76 +36,70 @@ type SearchPageProps = {
   showWarning: boolean;
 };
 
-export const SearchPage = forwardRef<HTMLDivElement, SearchPageProps>(
-  (
-    {
-      total,
-      location,
-      cuisine,
-      restaurants,
-      onClickFilter,
-      onClickCard,
-      isLoading,
-      isLoadingByScroll,
-      showWarning,
-    },
-    forwardedRef,
-  ) => {
-    const { totalText, restaurantText } = getTitleText(total);
+const SearchPage: React.FC<SearchPageProps> = ({
+  total,
+  location,
+  cuisine,
+  restaurants,
+  onClickFilter,
+  onClickCard,
+  isLoading,
+  isLoadingByScroll,
+  showWarning,
+}) => {
+  const { totalText, restaurantText } = getTitleText(total);
 
-    return isLoading ? (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ) : (
-      <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
-        <StyledSearchPage ref={forwardedRef} className="grid-container">
-          <FullLoader isShowed={isLoadingByScroll} type={LoaderType.LINE}>
-            <Loader type={LoaderType.LINE} />
-          </FullLoader>
-          <Title
-            text={`${totalText} ${
-              cuisine || ''
-            } ${restaurantText} in ${location}`}
-          />
-          {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
-          <StyledCardsWrapper
-            className="grid-x grid-margin-x grid-margin-y"
-            warningShowed={showWarning}
-          >
-            {restaurants.map((restaurant) => (
-              <div
-                className="cell small-12 medium-6 large-4"
-                key={`${restaurant.id}-${restaurant.title}`}
-              >
-                <Card
-                  imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
-                  title={restaurant.title}
-                  content={restaurant.content}
-                  onClick={() =>
-                    onClickCard(
-                      restaurant.id,
-                      restaurant.route,
-                      restaurant.asRoute,
-                    )
-                  }
-                />
-              </div>
-            ))}
-          </StyledCardsWrapper>
-          {showWarning && (
-            <StyledWarning>
-              <StyledWarningIcon className="material-icons">
-                warning
-              </StyledWarningIcon>
-              You have reached the limit of 100 results because of Zomato API
-              restrinctions
-            </StyledWarning>
-          )}
-        </StyledSearchPage>
-      </Layout>
-    );
-  },
-);
+  return (
+    <Layout isExtendedFooter={true}>
+      <StyledSearchPage className="grid-container">
+        <FullLoader isShowed={isLoading}>
+          <Loader text={DEFAULT_TEXT_LOADING} />
+        </FullLoader>
+        <FullLoader isShowed={isLoadingByScroll} type={LoaderType.LINE}>
+          <Loader type={LoaderType.LINE} />
+        </FullLoader>
+        <Title
+          text={`${totalText} ${
+            cuisine || ''
+          } ${restaurantText} in ${location}`}
+        />
+        {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
+        <StyledCardsWrapper
+          className="grid-x grid-margin-x grid-margin-y"
+          warningShowed={showWarning}
+        >
+          {restaurants.map((restaurant) => (
+            <div
+              className="cell small-12 medium-6 large-4"
+              key={`${restaurant.id}-${restaurant.title}`}
+            >
+              <Card
+                imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
+                title={restaurant.title}
+                content={restaurant.content}
+                onClick={() =>
+                  onClickCard(
+                    restaurant.id,
+                    restaurant.route,
+                    restaurant.asRoute,
+                  )
+                }
+              />
+            </div>
+          ))}
+        </StyledCardsWrapper>
+        {showWarning && (
+          <StyledWarning>
+            <StyledWarningIcon className="material-icons">
+              warning
+            </StyledWarningIcon>
+            You have reached the limit of 100 results because of Zomato API
+            restrinctions
+          </StyledWarning>
+        )}
+      </StyledSearchPage>
+    </Layout>
+  );
+};
 
-SearchPage.displayName = 'SearchPage';
+export default SearchPage;

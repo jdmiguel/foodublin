@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { NextPage, NextPageContext } from 'next';
-import Head from 'next/head';
+import React, { useEffect } from 'react';
 
-import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
-import { DetailPage } from '../../../components/pages/DetailPage/DetailPage';
+import { NextPage, NextPageContext } from 'next';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
+
+import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../../../components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
 
@@ -15,6 +21,7 @@ import {
   deleteFavorite,
 } from '../../../store/actions';
 
+import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
 import {
   InitialAppState,
   RestaurantDetail,
@@ -36,6 +43,18 @@ type CustomNextPageContext = NextPageContext & {
   };
 };
 
+const DynamicDetailPage = dynamic(
+  () => import('../../../components/pages/DetailPage/DetailPage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
+
 const getRefinedRestaurant = (
   id: string,
   restaurant: RestaurantDetail,
@@ -53,8 +72,6 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     return <ErrorPage />;
   }
 
-  const [isLoading, setIsLoading] = useState(true);
-
   const { favorites, relatedRestaurants } = useSelector(
     (state: InitialAppState) => state,
   );
@@ -68,7 +85,6 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   );
 
   useEffect(() => {
-    setIsLoading(false);
     return () => {
       dispatch(clearRelatedRestaurants());
     };
@@ -79,12 +95,6 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     dispatch(
       action === 'save' ? addFavorite(favorite) : deleteFavorite(stringifiedId),
     );
-  };
-
-  const handleClickRelatedRestaurant = (route: string, asRoute: string) => {
-    setIsLoading(true);
-
-    router.push(route, asRoute);
   };
 
   const { name, imgSrc } = data;
@@ -101,19 +111,20 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
       <Head>
         <link rel="preload" as="image" href={imgSrc} />
       </Head>
-      <DetailPage
+      <DynamicDetailPage
         data={data}
-        isLoading={isLoading}
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
-        onClickRelatedRestaurant={handleClickRelatedRestaurant}
+        onClickRelatedRestaurant={(route: string, asRoute: string) =>
+          router.push(route, asRoute)
+        }
       />
     </>
   );
 };
 
-Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
+export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const { id } = query;
 
   const { data, status } = await getRestaurant(id);
@@ -136,14 +147,18 @@ Detail.getInitialProps = async ({ query }: CustomNextPageContext) => {
     };
 
     return {
-      data: filteredData,
-      id,
+      props: {
+        data: filteredData,
+        id,
+      },
     };
   }
 
   return {
-    data: undefined,
-    id,
+    props: {
+      data: undefined,
+      id,
+    },
   };
 };
 
