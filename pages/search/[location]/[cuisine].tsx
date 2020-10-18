@@ -6,8 +6,6 @@ import dynamic from 'next/dynamic';
 
 import { useDispatch } from 'react-redux';
 
-import { Layout } from '../../../components/layouts/Layout/Layout';
-
 import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
 
 import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
@@ -289,19 +287,17 @@ const Search: NextPage<SearchProps> = ({
   }
 
   return (
-    <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
-      <DynamicSearchPage
-        total={total}
-        location={locationName}
-        cuisine={cuisineName}
-        restaurants={currentRestaurants}
-        onClickFilter={handleFilter}
-        onClickCard={handleClickCard}
-        isLoading={isLoadingByFilter}
-        isLoadingByScroll={isLoadingByScroll}
-        showWarning={showWarning}
-      />
-    </Layout>
+    <DynamicSearchPage
+      total={total}
+      location={locationName}
+      cuisine={cuisineName}
+      restaurants={currentRestaurants}
+      onClickFilter={handleFilter}
+      onClickCard={handleClickCard}
+      isLoading={isLoadingByFilter}
+      isLoadingByScroll={isLoadingByScroll}
+      showWarning={showWarning}
+    />
   );
 };
 

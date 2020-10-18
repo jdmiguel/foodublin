@@ -8,6 +8,11 @@ const smallDevicesTextCSS = css`
   }
 `;
 
+export const StyledBreadcrumbsLoading = styled.p`
+  color: ${({ theme }) => theme.palette.DARK_SOFT};
+  font-weight: 400;
+`;
+
 export const StyledBreadcrumbsWrapper = styled.div`
   display: flex;
   flex-direction: column;
