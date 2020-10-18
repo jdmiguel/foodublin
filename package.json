@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "start": "next start",
+    "start": "next start -p 3001",
     "build": "next build",
     "cy:open": "cypress open",
     "cy:run": "cypress run",

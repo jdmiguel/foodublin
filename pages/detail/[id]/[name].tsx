@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -35,6 +35,12 @@ import { getRestaurant } from '../../../services';
 type DetailProps = {
   data: RestaurantDetail | undefined;
   id: number;
+};
+
+type CustomNextPageContext = NextPageContext & {
+  query: {
+    id: number;
+  };
 };
 
 const DynamicDetailPage = dynamic(
@@ -118,10 +124,10 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const { id } = query;
 
-  const { data, status } = await getRestaurant(Number(id));
+  const { data, status } = await getRestaurant(id);
 
   if (status === 200) {
     const filteredData: RestaurantDetail = {

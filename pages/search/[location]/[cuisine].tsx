@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
 
-import { NextPage, NextPageContext, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
