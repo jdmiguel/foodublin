@@ -310,12 +310,14 @@ export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const restaurantsData = await handleGetRestaurants(locationId, cuisineId);
 
   return {
-    locationId,
-    locationName,
-    cuisineId,
-    cuisineName,
-    total: restaurantsData.total,
-    restaurants: restaurantsData.restaurants,
+    props: {
+      locationId,
+      locationName,
+      cuisineId,
+      cuisineName,
+      total: restaurantsData.total,
+      restaurants: restaurantsData.restaurants,
+    },
   };
 };
 
