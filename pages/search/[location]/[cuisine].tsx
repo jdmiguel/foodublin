@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 import { useDispatch } from 'react-redux';
 
-import { ErrorPage } from '../../../components/pages/ErrorPage/ErrorPage';
+import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
 
 import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
 

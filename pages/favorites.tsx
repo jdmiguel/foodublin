@@ -4,8 +4,6 @@ import dynamic from 'next/dynamic';
 
 import { useSelector } from 'react-redux';
 
-import { Layout } from '../components/layouts/Layout/Layout';
-
 import { FullLoader } from '../components/ui/FullLoader/FullLoader';
 
 import { Loader } from '../components/core/Loader/Loader';
@@ -40,15 +38,13 @@ const Favorites = () => {
   useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
 
   return (
-    <Layout isExtendedFooter={true}>
-      <DynamicFavoritesPage
-        total={favorites.length}
-        restaurants={favorites}
-        clickRestaurant={(route: string, asRoute: string) =>
-          router.push(route, asRoute)
-        }
-      />
-    </Layout>
+    <DynamicFavoritesPage
+      total={favorites.length}
+      restaurants={favorites}
+      clickRestaurant={(route: string, asRoute: string) =>
+        router.push(route, asRoute)
+      }
+    />
   );
 };
 

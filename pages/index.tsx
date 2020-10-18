@@ -1,18 +1,36 @@
 import React from 'react';
+
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
 import { useDispatch } from 'react-redux';
 
-import { HomePage } from '../components/pages/HomePage/HomePage';
+import { FullLoader } from '../components/ui/FullLoader/FullLoader';
+
+import { Loader } from '../components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '../store/actions';
 
 import {
+  DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
 } from '../helpers/staticData';
 import { getCurrentRelatedRestaurants } from '../helpers/utils';
+
+const DynamicHomePage = dynamic(
+  () => import('../components/pages/HomePage/HomePage'),
+  {
+    // eslint-disable-next-line react/display-name
+    loading: () => (
+      <FullLoader>
+        <Loader text={DEFAULT_TEXT_LOADING} />
+      </FullLoader>
+    ),
+  },
+);
 
 const index = () => {
   const dispatch = useDispatch();
@@ -33,7 +51,7 @@ const index = () => {
   useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
 
   return (
-    <HomePage
+    <DynamicHomePage
       clickHighlight={handleClickHighlight}
       highlights={HIGHLIGHTED_RESTAURANTS}
     />

@@ -7,7 +7,7 @@ import { Button } from '../../core/Button/Button';
 
 import { StyledErrorPage, StyledText } from './styles';
 
-export const ErrorPage: React.FC = () => {
+const ErrorPage: React.FC = () => {
   const router = useRouter();
 
   return (
@@ -21,3 +21,5 @@ export const ErrorPage: React.FC = () => {
     </Layout>
   );
 };
+
+export default ErrorPage;
