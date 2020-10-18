@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
 
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, NextPageContext, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
@@ -301,7 +301,7 @@ const Search: NextPage<SearchProps> = ({
   );
 };
 
-Search.getInitialProps = async ({ query }: CustomNextPageContext) => {
+export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const { location, cuisine } = query;
 
   const [locationId, locationName] = getValues(location, LOCATIONS);
