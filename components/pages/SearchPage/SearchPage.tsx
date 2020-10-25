@@ -50,7 +50,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
   const { totalText, restaurantText } = getTitleText(total);
 
   return (
-    <Layout isExtendedFooter={true}>
+    <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
       <StyledSearchPage className="grid-container">
         <FullLoader isShowed={isLoading}>
           <Loader text={DEFAULT_TEXT_LOADING} />
