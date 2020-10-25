@@ -55,8 +55,8 @@ export enum EntityType {
 }
 
 export type RestaurantsRequestParams = {
-  entity_id: number | undefined;
-  cuisines: number | undefined;
+  entity_id: number | null;
+  cuisines: number | null;
   entity_type: EntityType.CITY | EntityType.SUBZONE;
   start?: number;
   sort?: string;

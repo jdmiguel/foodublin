@@ -108,8 +108,8 @@ const selectRestaurants = (restaurants: Restaurant[]) => (
 ) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
 const handleGetRestaurants = async (
-  locationId: number,
-  cuisineId: number,
+  locationId: number | null,
+  cuisineId: number | null,
   start?: number,
   sort?: string,
   order?: string,
