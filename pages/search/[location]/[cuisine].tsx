@@ -49,9 +49,9 @@ export enum LocationType {
 }
 
 export enum LoadType {
-  DEFAULT = 'default',
-  SCROLL = 'scroll',
+  EXTRA = 'extra',
   FILTER = 'filter',
+  SCROLL = 'scroll',
 }
 
 type SearchProps = {
@@ -59,7 +59,7 @@ type SearchProps = {
   locationName: LocationType.CITY | LocationType.SUBZONE;
   cuisineId: number;
   cuisineName: string;
-  restaurants: Restaurant[] | undefined;
+  restaurants: Restaurant[] | null;
   total: number;
 };
 
@@ -82,10 +82,13 @@ const DynamicSearchPage = dynamic(
   },
 );
 
-const getValues = (path: string, searchType: ListItem[]): any[] => {
+const getValues = (
+  path: string,
+  searchType: ListItem[],
+): [number | null, string | null] => {
   const value = searchType.find((item) => item.path === path);
 
-  return [value?.id, value?.name];
+  return [value?.id || null, value?.name || null];
 };
 
 const getRefinedRestaurant = (restaurant: any): Restaurant => ({
@@ -105,8 +108,8 @@ const selectRestaurants = (restaurants: Restaurant[]) => (
 ) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
 
 const handleGetRestaurants = async (
-  locationId: number,
-  cuisineId: number,
+  locationId: number | null,
+  cuisineId: number | null,
   start?: number,
   sort?: string,
   order?: string,
@@ -130,7 +133,7 @@ const handleGetRestaurants = async (
   }
 
   return {
-    restaurants: undefined,
+    restaurants: null,
     total: 0,
   };
 };
@@ -143,7 +146,7 @@ const Search: NextPage<SearchProps> = ({
   restaurants,
   total,
 }) => {
-  if (restaurants === undefined) {
+  if (!restaurants) {
     return <ErrorPage />;
   }
 
@@ -176,18 +179,18 @@ const Search: NextPage<SearchProps> = ({
     let start: number;
 
     switch (loadType) {
-      case LoadType.SCROLL:
+      case LoadType.EXTRA:
         setIsLoadingByScroll(true);
-        start = loadedRestaurantsRef.current;
+        start = MAX_RESTAURANT_DISPLAYED;
         break;
       case LoadType.FILTER:
         setIsLoadingByFilter(true);
         start = 0;
         loadedRestaurantsRef.current = 0;
         break;
-      case LoadType.DEFAULT:
-      default:
-        start = MAX_RESTAURANT_DISPLAYED;
+      case LoadType.SCROLL:
+        setIsLoadingByScroll(true);
+        start = loadedRestaurantsRef.current;
         break;
     }
 
@@ -234,7 +237,7 @@ const Search: NextPage<SearchProps> = ({
 
   useEffect(() => {
     if (height >= MIN_BIG_DEVICE_HEIGHT && !isLoadingByFilter) {
-      handleRestaurants(LoadType.DEFAULT);
+      handleRestaurants(LoadType.EXTRA);
     }
   }, [height, isLoadingByFilter]);
 
