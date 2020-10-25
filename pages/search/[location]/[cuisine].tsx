@@ -236,8 +236,13 @@ const Search: NextPage<SearchProps> = ({
   );
 
   useEffect(() => {
-    if (height >= MIN_BIG_DEVICE_HEIGHT && !isLoadingByFilter) {
-      handleRestaurants(LoadType.EXTRA);
+    if (height) {
+      const isHighDevice = height >= MIN_BIG_DEVICE_HEIGHT;
+      const areItemsToLoad = currentTotal > MAX_RESTAURANT_DISPLAYED;
+
+      if (isHighDevice && areItemsToLoad && !isLoadingByFilter) {
+        handleRestaurants(LoadType.EXTRA);
+      }
     }
   }, [height, isLoadingByFilter]);
 
