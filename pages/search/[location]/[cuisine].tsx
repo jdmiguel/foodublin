@@ -49,9 +49,9 @@ export enum LocationType {
 }
 
 export enum LoadType {
-  DEFAULT = 'default',
-  SCROLL = 'scroll',
+  EXTRA = 'extra',
   FILTER = 'filter',
+  SCROLL = 'scroll',
 }
 
 type SearchProps = {
@@ -179,18 +179,18 @@ const Search: NextPage<SearchProps> = ({
     let start: number;
 
     switch (loadType) {
-      case LoadType.SCROLL:
+      case LoadType.EXTRA:
         setIsLoadingByScroll(true);
-        start = loadedRestaurantsRef.current;
+        start = MAX_RESTAURANT_DISPLAYED;
         break;
       case LoadType.FILTER:
         setIsLoadingByFilter(true);
         start = 0;
         loadedRestaurantsRef.current = 0;
         break;
-      case LoadType.DEFAULT:
-      default:
-        start = MAX_RESTAURANT_DISPLAYED;
+      case LoadType.SCROLL:
+        setIsLoadingByScroll(true);
+        start = loadedRestaurantsRef.current;
         break;
     }
 
@@ -237,7 +237,7 @@ const Search: NextPage<SearchProps> = ({
 
   useEffect(() => {
     if (height >= MIN_BIG_DEVICE_HEIGHT && !isLoadingByFilter) {
-      handleRestaurants(LoadType.DEFAULT);
+      handleRestaurants(LoadType.EXTRA);
     }
   }, [height, isLoadingByFilter]);
 
