@@ -18,7 +18,6 @@ import { setRelatedRestaurants } from '../../../store/actions';
 
 import {
   DUBLIN_ID,
-  DEFAULT_SUGGESTIONS,
   LOCATIONS,
   CUISINES,
   THUMB_GENERIC_SRC,

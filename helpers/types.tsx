@@ -243,7 +243,7 @@ type AddFavoriteAction = {
 
 type DeleteFavoriteAction = {
   type: 'DELETE_FAVORITE';
-  id: string;
+  id: number;
 };
 
 type SetRelatedRestaurantsAction = {

@@ -59,7 +59,7 @@ const DynamicDetailPage = dynamic(
 );
 
 const getRefinedRestaurant = (
-  id: string,
+  id: number,
   restaurant: RestaurantDetail,
 ): Restaurant => ({
   id,
@@ -95,10 +95,7 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
 
   const router = useRouter();
 
-  const stringifiedId = `${id}`;
-  const isFavorite = favorites.some(
-    (favorite) => favorite.id === stringifiedId,
-  );
+  const isFavorite = favorites.some((favorite) => favorite.id === id);
 
   useEffect(() => {
     console.log('reviews: ', reviewsData);
@@ -108,10 +105,8 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
   }, [id]);
 
   const handleSaveButton = (action: string) => {
-    const favorite = getRefinedRestaurant(stringifiedId, data);
-    dispatch(
-      action === 'save' ? addFavorite(favorite) : deleteFavorite(stringifiedId),
-    );
+    const favorite = getRefinedRestaurant(id, data);
+    dispatch(action === 'save' ? addFavorite(favorite) : deleteFavorite(id));
   };
 
   const { name, imgSrc } = data;
@@ -121,7 +116,7 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
     type: BreadcrumbsType.DETAIL,
   };
-  useBreadcrumbs(detailBreadcrumbs, stringifiedId);
+  useBreadcrumbs(detailBreadcrumbs, id);
 
   return (
     <>

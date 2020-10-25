@@ -7,7 +7,7 @@ import { InitialAppState, BreadcrumbsData } from '../../helpers/types';
 
 export const useBreadcrumbs = (
   currentBreadcrumbs: BreadcrumbsData,
-  pageId: string,
+  pageId: number,
 ) => {
   const { breadcrumbs } = useSelector((state: InitialAppState) => state);
   const dispatch = useDispatch();
