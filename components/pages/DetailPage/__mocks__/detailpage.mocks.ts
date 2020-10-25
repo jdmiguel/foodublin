@@ -96,7 +96,7 @@ export const FOURTH_DETAIL_MOCKED = {
 
 export const RELATED_RESTAURANTS_MOCKED = [
   {
-    id: '234',
+    id: 234,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
     title: 'Elephant & Castle',
     content: 'Temple Bar',
@@ -104,7 +104,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
     asRoute: '/detail/234/elephant-castle',
   },
   {
-    id: '5474',
+    id: 5474,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-2.webp`,
     title: 'Abrecadabra',
     content: 'Rathmines',
@@ -112,7 +112,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
     asRoute: '/detail/5474/abrecadabra',
   },
   {
-    id: '8963',
+    id: 8963,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-3.webp`,
     title: 'Brothers in law',
     content: 'Blackrock',
@@ -120,19 +120,19 @@ export const RELATED_RESTAURANTS_MOCKED = [
     asRoute: '/detail/8963/brothers-in-law',
   },
   {
-    id: '7458',
+    id: 4421,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-4.webp`,
-    title: 'Opium',
-    content: 'South City West',
+    title: 'Misushi',
+    content: 'Whitehall',
     route: '/detail/[id]/[name]',
-    asRoute: '/detail/7458/opium',
+    asRoute: '/detail/4421/misushi',
   },
   {
-    id: '2475',
+    id: 2144,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-5.webp`,
-    title: 'Mushasi',
-    content: 'North City',
+    title: 'Pattaya',
+    content: 'Clondalkin',
     route: '/detail/[id]/[name]',
-    asRoute: '/detail/2475/mushasi',
+    asRoute: '/detail/2144/pattaya',
   },
 ];

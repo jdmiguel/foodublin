@@ -13,7 +13,7 @@ type HighlightRestaurant = Restaurant & { featuredSrc: string };
 
 type HomePageProps = {
   highlights: HighlightRestaurant[];
-  clickHighlight: (id: string, route: string, asRoute: string) => void;
+  clickHighlight: (id: number, route: string, asRoute: string) => void;
 };
 
 const HomePage: React.FC<HomePageProps> = ({ highlights, clickHighlight }) => (

@@ -2,7 +2,7 @@ import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
 
 export const RESTAURANTS = [
   {
-    id: '234',
+    id: 234,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
     imgAlt: 'restaurant',
     title: 'Elephant & Castle',
@@ -11,7 +11,7 @@ export const RESTAURANTS = [
     secondText: 'Mediterranean',
   },
   {
-    id: '5474',
+    id: 5474,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-2.webp`,
     imgAlt: 'restaurant',
     title: 'Abrecadabra',
@@ -20,7 +20,7 @@ export const RESTAURANTS = [
     secondText: 'Fast food',
   },
   {
-    id: '8963',
+    id: 8963,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-3.webp`,
     imgAlt: 'restaurant',
     title: 'Brothers in law of Harold Cross street',
@@ -29,7 +29,7 @@ export const RESTAURANTS = [
     secondText: 'Mexican',
   },
   {
-    id: '4421',
+    id: 4421,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-4.webp`,
     imgAlt: 'restaurant',
     title: 'Misushi',
@@ -38,12 +38,12 @@ export const RESTAURANTS = [
     secondText: 'Asian',
   },
   {
-    id: '024',
+    id: 2144,
     imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-5.webp`,
-    imgAlt: 'El Pozo',
-    title: 'Kimmagee',
+    imgAlt: 'restaurant',
+    title: 'Pattaya',
     link: '',
-    firstText: 'Kimmage',
-    secondText: 'Mediterranean',
+    firstText: 'Clondankin',
+    secondText: 'Asian',
   },
 ];

@@ -71,7 +71,7 @@ export const getRandomNumbersList = (
 
 export const getCurrentRelatedRestaurants = (
   restaurants: Restaurant[],
-  currentRestaurantId: string,
+  currentRestaurantId: number,
 ) => {
   const currentSuggestionIndex = restaurants.findIndex(
     (restaurants) => restaurants.id === currentRestaurantId,
