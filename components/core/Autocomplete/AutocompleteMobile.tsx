@@ -31,7 +31,7 @@ export type AutocompleteMobileProps = {
   className?: string;
   disabled: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: string, name: string) => void;
+  selectSuggestion: (id: number, name: string) => void;
 };
 
 export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
@@ -90,7 +90,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
   };
 
-  const handleSuggestionClick = (restaurantId: string, showedText: string) => {
+  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);

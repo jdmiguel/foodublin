@@ -24,7 +24,7 @@ export type AutocompleteProps = {
   className?: string;
   disabled: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: string, name: string) => void;
+  selectSuggestion: (id: number, name: string) => void;
 };
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -72,7 +72,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }, 100);
   };
 
-  const handleSuggestionClick = (restaurantId: string, showedText: string) => {
+  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
     clearTimeout(blurDelay.current);
     setValue(showedText);
     isSuggestable.current = false;

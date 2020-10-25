@@ -38,9 +38,9 @@ type FinderProps = {
 
 export const Finder: React.FC<FinderProps> = ({ className }) => {
   const [suggestions, setSuggestions]: [
-    Restaurant[],
+    Restaurant[] | undefined,
     Dispatch<any[]>,
-  ] = useState(DEFAULT_SUGGESTIONS);
+  ] = useState();
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
@@ -85,10 +85,13 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
   );
 
   const selectSuggestion = useCallback(
-    (id: string, name: string) => {
+    (id: number, name: string) => {
       const path = getFormattedUrlText(name, true);
 
-      if (suggestions.length > MIN_RESTAURANTS_LIST) {
+      if (
+        Array.isArray(suggestions) &&
+        suggestions.length > MIN_RESTAURANTS_LIST
+      ) {
         const currentRelatedRestaurants = getCurrentRelatedRestaurants(
           suggestions,
           id,
@@ -117,7 +120,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
     <StyledFinder className={className}>
       {isMobile ? (
         <StyledAutocompleteMobile
-          suggestions={suggestions}
+          suggestions={suggestions || []}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
           disabled={isButtonLoading}
@@ -126,7 +129,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
         />
       ) : (
         <StyledAutocomplete
-          suggestions={suggestions}
+          suggestions={suggestions || []}
           fetchSuggestions={fetchSuggestions}
           selectSuggestion={selectSuggestion}
           disabled={isButtonLoading}

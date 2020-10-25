@@ -26,17 +26,6 @@ export enum PlaceholderText {
   FOCUSED = 'Start typing to search...',
 }
 
-export const DEFAULT_SUGGESTIONS = [
-  {
-    id: '0',
-    imgSrc: '',
-    title: '',
-    content: '',
-    route: '',
-    asRoute: '',
-  },
-];
-
 export const LOCATIONS = [
   {
     id: 91,

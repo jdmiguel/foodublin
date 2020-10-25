@@ -35,6 +35,7 @@ import {
 import {
   ListItem,
   Restaurant,
+  RawRestaurant,
   EntityType,
   BreadcrumbsType,
 } from '../../../helpers/types';
@@ -91,21 +92,24 @@ const getValues = (
   return [value?.id || null, value?.name || null];
 };
 
-const getRefinedRestaurant = (restaurant: any): Restaurant => ({
-  id: restaurant.id,
-  imgSrc: restaurant.thumb,
-  title: restaurant.name,
-  content: restaurant.location.locality,
+const getRefinedRestaurant = (rawRestaurant: RawRestaurant): Restaurant => ({
+  id: rawRestaurant.restaurant.id,
+  imgSrc: rawRestaurant.restaurant.thumb,
+  title: rawRestaurant.restaurant.name,
+  content: rawRestaurant.restaurant.location.locality,
   route: '/detail/[id]/[name]',
-  asRoute: `/detail/${restaurant.id}/${getFormattedUrlText(
-    restaurant.name,
+  asRoute: `/detail/${rawRestaurant.restaurant.id}/${getFormattedUrlText(
+    rawRestaurant.restaurant.name,
     true,
   )}`,
 });
 
-const selectRestaurants = (restaurants: Restaurant[]) => (
-  formattedFuntion: any,
-) => restaurants.map((item: any) => formattedFuntion(item.restaurant));
+const selectRestaurants = (rawRestaurants: RawRestaurant[]) => (
+  formattedFuntion: (rawRestaurant: RawRestaurant) => Restaurant,
+) =>
+  rawRestaurants.map((rawRestaurant: RawRestaurant) =>
+    formattedFuntion(rawRestaurant),
+  );
 
 const handleGetRestaurants = async (
   locationId: number | null,
@@ -264,7 +268,7 @@ const Search: NextPage<SearchProps> = ({
     handleRestaurants(LoadType.FILTER);
   };
 
-  const handleClickCard = (id: string, route: string, asRoute: string) => {
+  const handleClickCard = (id: number, route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {

@@ -30,7 +30,7 @@ type SearchPageProps = {
   total: number;
   restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;
-  onClickCard: (id: string, route: string, asRoute: string) => void;
+  onClickCard: (id: number, route: string, asRoute: string) => void;
   isLoading: boolean;
   isLoadingByScroll: boolean;
   showWarning: boolean;
