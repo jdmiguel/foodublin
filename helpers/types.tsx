@@ -90,6 +90,38 @@ export type RestaurantDetail = {
   address: string;
 };
 
+export type Review = {
+  id: number;
+  userName: string;
+  userImgSrc: string;
+  rating: number;
+  date: string;
+  text: string;
+};
+
+export type RawReview = {
+  review: {
+    rating: number;
+    review_text: string;
+    id: number;
+    rating_color: string;
+    review_time_friendly: string;
+    rating_text: string;
+    timestamp: number;
+    likes: number;
+    user: {
+      name: string;
+      foodie_level: string;
+      foodie_level_num: number;
+      foodie_color: string;
+      profile_url: string;
+      profile_image: string;
+      profile_deeplink: string;
+    };
+    comments_count: number;
+  };
+};
+
 // Breadcrumbs
 
 export enum BreadcrumbsType {
