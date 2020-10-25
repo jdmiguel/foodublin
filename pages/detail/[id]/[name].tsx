@@ -33,7 +33,7 @@ import { getFormattedUrlText } from '../../../helpers/utils';
 import { getRestaurant } from '../../../services';
 
 type DetailProps = {
-  data: RestaurantDetail | undefined;
+  data: RestaurantDetail | null;
   id: number;
 };
 
@@ -68,7 +68,7 @@ const getRefinedRestaurant = (
 });
 
 const Detail: NextPage<DetailProps> = ({ data, id }) => {
-  if (data === undefined) {
+  if (!data) {
     return <ErrorPage />;
   }
 
@@ -156,7 +156,7 @@ export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
 
   return {
     props: {
-      data: undefined,
+      data: null,
       id,
     },
   };

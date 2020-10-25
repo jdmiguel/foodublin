@@ -59,7 +59,7 @@ type SearchProps = {
   locationName: LocationType.CITY | LocationType.SUBZONE;
   cuisineId: number;
   cuisineName: string;
-  restaurants: Restaurant[] | undefined;
+  restaurants: Restaurant[] | null;
   total: number;
 };
 
@@ -82,10 +82,13 @@ const DynamicSearchPage = dynamic(
   },
 );
 
-const getValues = (path: string, searchType: ListItem[]): any[] => {
+const getValues = (
+  path: string,
+  searchType: ListItem[],
+): [number | null, string | null] => {
   const value = searchType.find((item) => item.path === path);
 
-  return [value?.id, value?.name];
+  return [value?.id || null, value?.name || null];
 };
 
 const getRefinedRestaurant = (restaurant: any): Restaurant => ({
@@ -130,7 +133,7 @@ const handleGetRestaurants = async (
   }
 
   return {
-    restaurants: undefined,
+    restaurants: null,
     total: 0,
   };
 };
@@ -143,7 +146,7 @@ const Search: NextPage<SearchProps> = ({
   restaurants,
   total,
 }) => {
-  if (restaurants === undefined) {
+  if (!restaurants) {
     return <ErrorPage />;
   }
 
