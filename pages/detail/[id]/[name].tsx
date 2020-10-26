@@ -25,15 +25,18 @@ import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
 import {
   InitialAppState,
   RestaurantDetail,
+  Review,
+  RawReview,
   Restaurant,
   BreadcrumbsType,
 } from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 
-import { getRestaurant } from '../../../services';
+import { getRestaurant, getReviews } from '../../../services';
 
 type DetailProps = {
   data: RestaurantDetail | null;
+  reviewsData: Review[] | null;
   id: number;
 };
 
@@ -56,7 +59,7 @@ const DynamicDetailPage = dynamic(
 );
 
 const getRefinedRestaurant = (
-  id: string,
+  id: number,
   restaurant: RestaurantDetail,
 ): Restaurant => ({
   id,
@@ -67,7 +70,20 @@ const getRefinedRestaurant = (
   asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
 });
 
-const Detail: NextPage<DetailProps> = ({ data, id }) => {
+const getRefinedReview = (rawReview: RawReview): Review => ({
+  id: rawReview.review.id,
+  userName: rawReview.review.user.name,
+  userImgSrc: rawReview.review.user.profile_image,
+  rating: rawReview.review.rating,
+  date: rawReview.review.review_time_friendly,
+  text: rawReview.review.review_text || rawReview.review.rating_text,
+});
+
+const selectReviews = (rawReviews: RawReview[]) => (
+  formattedFuntion: (rawReview: RawReview) => Review,
+) => rawReviews.map((rawReview) => formattedFuntion(rawReview));
+
+const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
   if (!data) {
     return <ErrorPage />;
   }
@@ -79,10 +95,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
 
   const router = useRouter();
 
-  const stringifiedId = `${id}`;
-  const isFavorite = favorites.some(
-    (favorite) => favorite.id === stringifiedId,
-  );
+  const isFavorite = favorites.some((favorite) => favorite.id === id);
 
   useEffect(() => {
     return () => {
@@ -91,10 +104,8 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
   }, [id]);
 
   const handleSaveButton = (action: string) => {
-    const favorite = getRefinedRestaurant(stringifiedId, data);
-    dispatch(
-      action === 'save' ? addFavorite(favorite) : deleteFavorite(stringifiedId),
-    );
+    const favorite = getRefinedRestaurant(id, data);
+    dispatch(action === 'save' ? addFavorite(favorite) : deleteFavorite(id));
   };
 
   const { name, imgSrc } = data;
@@ -104,7 +115,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
     type: BreadcrumbsType.DETAIL,
   };
-  useBreadcrumbs(detailBreadcrumbs, stringifiedId);
+  useBreadcrumbs(detailBreadcrumbs, 'detail');
 
   return (
     <>
@@ -113,6 +124,7 @@ const Detail: NextPage<DetailProps> = ({ data, id }) => {
       </Head>
       <DynamicDetailPage
         data={data}
+        reviews={reviewsData}
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
@@ -128,9 +140,13 @@ export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
   const { id } = query;
 
   const { data, status } = await getRestaurant(id);
+  const { data: reviewsData, status: reviewsStatus } = await getReviews(id);
+
+  let filteredData: RestaurantDetail | null = null;
+  let currentReviewsData: Review[] | null = null;
 
   if (status === 200) {
-    const filteredData: RestaurantDetail = {
+    filteredData = {
       imgSrc: data.featured_image,
       thumbSrc: data.thumb,
       name: data.name,
@@ -145,18 +161,17 @@ export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
       phone: data.phone_numbers,
       address: data.location.address,
     };
+  }
 
-    return {
-      props: {
-        data: filteredData,
-        id,
-      },
-    };
+  if (reviewsStatus === 200) {
+    const reviews = selectReviews(reviewsData.user_reviews);
+    currentReviewsData = reviews(getRefinedReview);
   }
 
   return {
     props: {
-      data: null,
+      data: filteredData,
+      reviewsData: currentReviewsData,
       id,
     },
   };

@@ -67,3 +67,22 @@ export const getRestaurant = async (res_id: number): Promise<any> => {
     return handleApiError(error);
   }
 };
+
+export const getReviews = async (res_id: number): Promise<any> => {
+  try {
+    const response = await axios(`${BASE_URL}reviews`, {
+      method: 'GET',
+      headers: {
+        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'content-type': 'application/json',
+      },
+      params: {
+        res_id,
+      },
+    });
+
+    return { data: response.data, status: response.status };
+  } catch (error) {
+    return handleApiError(error);
+  }
+};

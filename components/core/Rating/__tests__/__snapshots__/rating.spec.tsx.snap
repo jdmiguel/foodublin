@@ -17,11 +17,6 @@ exports[`Component: Rating should render five stars 1`] = `
   color: #585858;
 }
 
-.c2 {
-  color: #798186;
-  margin-left: 10px;
-}
-
 <div
   class="c0"
 >
@@ -50,11 +45,6 @@ exports[`Component: Rating should render five stars 1`] = `
   >
     star
   </i>
-  <p
-    class="c2"
-  >
-    (undefined votes)
-  </p>
 </div>
 `;
 
@@ -75,11 +65,6 @@ exports[`Component: Rating should render four stars 1`] = `
   color: #585858;
 }
 
-.c2 {
-  color: #798186;
-  margin-left: 10px;
-}
-
 <div
   class="c0"
 >
@@ -108,11 +93,6 @@ exports[`Component: Rating should render four stars 1`] = `
   >
     star_outline
   </i>
-  <p
-    class="c2"
-  >
-    (undefined votes)
-  </p>
 </div>
 `;
 
@@ -133,11 +113,6 @@ exports[`Component: Rating should render one star 1`] = `
   color: #585858;
 }
 
-.c2 {
-  color: #798186;
-  margin-left: 10px;
-}
-
 <div
   class="c0"
 >
@@ -166,11 +141,6 @@ exports[`Component: Rating should render one star 1`] = `
   >
     star_outline
   </i>
-  <p
-    class="c2"
-  >
-    (undefined votes)
-  </p>
 </div>
 `;
 
@@ -191,11 +161,6 @@ exports[`Component: Rating should render three stars 1`] = `
   color: #585858;
 }
 
-.c2 {
-  color: #798186;
-  margin-left: 10px;
-}
-
 <div
   class="c0"
 >
@@ -224,11 +189,6 @@ exports[`Component: Rating should render three stars 1`] = `
   >
     star_outline
   </i>
-  <p
-    class="c2"
-  >
-    (undefined votes)
-  </p>
 </div>
 `;
 
@@ -249,11 +209,6 @@ exports[`Component: Rating should render two stars 1`] = `
   color: #585858;
 }
 
-.c2 {
-  color: #798186;
-  margin-left: 10px;
-}
-
 <div
   class="c0"
 >
@@ -282,10 +237,5 @@ exports[`Component: Rating should render two stars 1`] = `
   >
     star_outline
   </i>
-  <p
-    class="c2"
-  >
-    (undefined votes)
-  </p>
 </div>
 `;

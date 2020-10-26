@@ -13,6 +13,7 @@ import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
+import { ReviewCard } from '../../ui/ReviewCard/ReviewCard';
 
 import {
   StyledOverlay,
@@ -24,17 +25,24 @@ import {
   StyledInformation,
   StyledSectionBlock,
   StyledBlockTitle,
+  StyledReviewsWrapper,
   StyledAddressWrapper,
   StyledPhone,
   StyledRelatedRestaurants,
 } from './styles';
 
-import { RestaurantDetail, Restaurant, Timming } from '../../../helpers/types';
+import {
+  RestaurantDetail,
+  Restaurant,
+  Review,
+  Timming,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 import { DETAIL_GENERIC_SRC } from '../../../helpers/staticData';
 
 type DetailPageProps = {
   data: RestaurantDetail;
+  reviews: Review[] | null;
   isFavorite: boolean;
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
@@ -79,6 +87,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
+  reviews,
   isFavorite,
   relatedRestaurants,
   onClickSaveButton,
@@ -133,7 +142,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
         <StyledInformation>
           <Title text="Relevant information" />
           <div className="grid-x">
-            <div className="grid-x cell small-12 medium-8">
+            <div className="grid-x cell small-12 large-7">
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Cuisines" />
@@ -164,8 +173,26 @@ const DetailPage: React.FC<DetailPageProps> = ({
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
+              <div className="cell small-12">
+                <StyledSectionBlock>
+                  <StyledReviewsWrapper>
+                    <StyledBlockTitle text="Reviews" />
+                    {reviews &&
+                      reviews.map((review) => (
+                        <ReviewCard
+                          key={review.id}
+                          userImgSrc={review.userImgSrc}
+                          userName={review.userName}
+                          rating={review.rating}
+                          date={review.date}
+                          text={review.text}
+                        />
+                      ))}
+                  </StyledReviewsWrapper>
+                </StyledSectionBlock>
+              </div>
             </div>
-            <div className="cell small-12 medium-4">
+            <div className="cell small-12 large-5">
               <StyledAddressWrapper className="paper">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Phone" />

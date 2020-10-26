@@ -128,19 +128,11 @@ export const StyledButton = styled(Button)`
 `;
 
 export const StyledInformation = styled.div`
-  margin: 50px 0;
+  margin: 50px 0 0;
 `;
 
 export const StyledSectionBlock = styled.div`
-  &:not(:last-of-type) {
-    margin-bottom: 30px;
-  }
-  &:last-of-type {
-    margin-bottom: 30px;
-    @media only screen and (min-width: 640px) {
-      margin-bottom: 0;
-    }
-  }
+  margin-bottom: 30px;
 `;
 
 export const StyledBlockTitle = styled(BlockTitle)`
@@ -155,10 +147,13 @@ export const StyledPhone = styled.h5`
 
 export const StyledAddressWrapper = styled.div`
   padding: 15px;
+  top: 120px;
+  height: fit-content;
+  position: sticky;
 `;
 
 export const StyledRelatedRestaurants = styled.div`
-  margin-top: 50px;
+  margin-top: 2px;
 `;
 
 // Highlights
@@ -198,4 +193,12 @@ export const StyledTimmingSchedule = styled.p`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;
+`;
+
+// Reviews
+
+export const StyledReviewsWrapper = styled.p`
+  @media only screen and (min-width: 1024px) {
+    padding-right: 30px;
+  }
 `;
