@@ -11,7 +11,7 @@ type RatingStar = {
 
 type RatingProps = {
   value: number;
-  votes: number;
+  votes?: number;
 };
 
 export const Rating: React.FC<RatingProps> = ({ value, votes }) => {
@@ -28,7 +28,7 @@ export const Rating: React.FC<RatingProps> = ({ value, votes }) => {
           {star.type}
         </StyledRankStar>
       ))}
-      <StyledText>{`(${votes} votes)`}</StyledText>
+      {votes && <StyledText>{`(${votes} votes)`}</StyledText>}
     </StyledRankStarsWrapper>
   );
 };

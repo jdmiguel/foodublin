@@ -26,7 +26,7 @@ const SuggestionCardImageCSS = css`
   display: inline-block;
   border-radius: 4px;
   -webkit-appearance: button-bevel;
-  box-shadow: 1px 2px 5px #888;
+  box-shadow: 1px 2px 5px ${({ theme }) => theme.palette.DARK_MIN};
 `;
 
 const HighlightCardImageCss = css`

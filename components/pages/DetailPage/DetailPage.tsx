@@ -13,6 +13,7 @@ import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
+import { ReviewCard } from '../../ui/ReviewCard/ReviewCard';
 
 import {
   StyledOverlay,
@@ -29,12 +30,18 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import { RestaurantDetail, Restaurant, Timming } from '../../../helpers/types';
+import {
+  RestaurantDetail,
+  Restaurant,
+  Review,
+  Timming,
+} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 import { DETAIL_GENERIC_SRC } from '../../../helpers/staticData';
 
 type DetailPageProps = {
   data: RestaurantDetail;
+  reviews: Review[] | null;
   isFavorite: boolean;
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
@@ -79,6 +86,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
+  reviews,
   isFavorite,
   relatedRestaurants,
   onClickSaveButton,
@@ -162,6 +170,22 @@ const DetailPage: React.FC<DetailPageProps> = ({
                 <StyledSectionBlock>
                   <StyledBlockTitle text="More info" />
                   <Highlights highlights={highlights} />
+                </StyledSectionBlock>
+              </div>
+              <div className="cell small-12">
+                <StyledSectionBlock>
+                  <StyledBlockTitle text="Reviews" />
+                  {reviews &&
+                    reviews.map((review) => (
+                      <ReviewCard
+                        key={review.id}
+                        userImgSrc={review.userImgSrc}
+                        userName={review.userName}
+                        rating={review.rating}
+                        date={review.date}
+                        text={review.text}
+                      />
+                    ))}
                 </StyledSectionBlock>
               </div>
             </div>

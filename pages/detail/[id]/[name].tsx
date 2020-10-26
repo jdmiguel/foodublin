@@ -98,7 +98,6 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
   const isFavorite = favorites.some((favorite) => favorite.id === id);
 
   useEffect(() => {
-    console.log('reviews: ', reviewsData);
     return () => {
       dispatch(clearRelatedRestaurants());
     };
@@ -125,6 +124,7 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
       </Head>
       <DynamicDetailPage
         data={data}
+        reviews={reviewsData}
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}

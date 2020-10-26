@@ -132,15 +132,7 @@ export const StyledInformation = styled.div`
 `;
 
 export const StyledSectionBlock = styled.div`
-  &:not(:last-of-type) {
-    margin-bottom: 30px;
-  }
-  &:last-of-type {
-    margin-bottom: 30px;
-    @media only screen and (min-width: 640px) {
-      margin-bottom: 0;
-    }
-  }
+  margin-bottom: 30px;
 `;
 
 export const StyledBlockTitle = styled(BlockTitle)`
