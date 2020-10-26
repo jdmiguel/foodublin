@@ -116,7 +116,7 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
     type: BreadcrumbsType.DETAIL,
   };
-  useBreadcrumbs(detailBreadcrumbs, id);
+  useBreadcrumbs(detailBreadcrumbs, 'detail');
 
   return (
     <>

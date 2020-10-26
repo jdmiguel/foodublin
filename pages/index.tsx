@@ -37,7 +37,7 @@ const index = () => {
 
   const router = useRouter();
 
-  const handleClickHighlight = (id: string, route: string, asRoute: string) => {
+  const handleClickHighlight = (id: number, route: string, asRoute: string) => {
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
       HIGHLIGHTED_RESTAURANTS,
       id,
