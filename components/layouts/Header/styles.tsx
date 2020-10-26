@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 
-export const StyledHeader = styled.header<{ bgImg: string | undefined }>`
+export const StyledHeader = styled.header<{
+  bgImg: string | undefined;
+  isExtended: boolean;
+}>`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,7 +14,9 @@ export const StyledHeader = styled.header<{ bgImg: string | undefined }>`
   background-color: ${({ theme }) => theme.palette.DARK_SOFT};
   background-size: cover;
   background-position: center;
-  display: flex;
+  position: ${({ isExtended }) => !isExtended && 'sticky'};
+  top: ${({ isExtended }) => !isExtended && '0'};
+  z-index: ${({ isExtended }) => !isExtended && '1'};
 `;
 
 export const StyledOverlay = styled.div<{ isExtended: boolean }>`

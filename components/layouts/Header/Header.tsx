@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   onClickLogo,
   onClickFavorites,
 }) => (
-  <StyledHeader data-testid="header" bgImg={bgImgSrc}>
+  <StyledHeader data-testid="header" bgImg={bgImgSrc} isExtended={isExtended}>
     <StyledOverlay isExtended={isExtended}>
       <StyledHeaderContent isExtended={isExtended}>
         <CustomLink onClick={() => onClickLogo('/')}>

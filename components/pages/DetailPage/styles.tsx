@@ -147,6 +147,9 @@ export const StyledPhone = styled.h5`
 
 export const StyledAddressWrapper = styled.div`
   padding: 15px;
+  top: 120px;
+  height: fit-content;
+  position: sticky;
 `;
 
 export const StyledRelatedRestaurants = styled.div`
