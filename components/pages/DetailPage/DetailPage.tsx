@@ -25,6 +25,7 @@ import {
   StyledInformation,
   StyledSectionBlock,
   StyledBlockTitle,
+  StyledReviewsWrapper,
   StyledAddressWrapper,
   StyledPhone,
   StyledRelatedRestaurants,
@@ -141,7 +142,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
         <StyledInformation>
           <Title text="Relevant information" />
           <div className="grid-x">
-            <div className="grid-x cell small-12 medium-8">
+            <div className="grid-x cell small-12 large-7">
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Cuisines" />
@@ -174,22 +175,24 @@ const DetailPage: React.FC<DetailPageProps> = ({
               </div>
               <div className="cell small-12">
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Reviews" />
-                  {reviews &&
-                    reviews.map((review) => (
-                      <ReviewCard
-                        key={review.id}
-                        userImgSrc={review.userImgSrc}
-                        userName={review.userName}
-                        rating={review.rating}
-                        date={review.date}
-                        text={review.text}
-                      />
-                    ))}
+                  <StyledReviewsWrapper>
+                    <StyledBlockTitle text="Reviews" />
+                    {reviews &&
+                      reviews.map((review) => (
+                        <ReviewCard
+                          key={review.id}
+                          userImgSrc={review.userImgSrc}
+                          userName={review.userName}
+                          rating={review.rating}
+                          date={review.date}
+                          text={review.text}
+                        />
+                      ))}
+                  </StyledReviewsWrapper>
                 </StyledSectionBlock>
               </div>
             </div>
-            <div className="cell small-12 medium-4">
+            <div className="cell small-12 large-5">
               <StyledAddressWrapper className="paper">
                 <StyledSectionBlock>
                   <StyledBlockTitle text="Phone" />

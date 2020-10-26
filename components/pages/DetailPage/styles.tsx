@@ -128,7 +128,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const StyledInformation = styled.div`
-  margin: 50px 0;
+  margin: 50px 0 0;
 `;
 
 export const StyledSectionBlock = styled.div`
@@ -153,7 +153,7 @@ export const StyledAddressWrapper = styled.div`
 `;
 
 export const StyledRelatedRestaurants = styled.div`
-  margin-top: 50px;
+  margin-top: 2px;
 `;
 
 // Highlights
@@ -193,4 +193,12 @@ export const StyledTimmingSchedule = styled.p`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;
+`;
+
+// Reviews
+
+export const StyledReviewsWrapper = styled.p`
+  @media only screen and (min-width: 1024px) {
+    padding-right: 30px;
+  }
 `;

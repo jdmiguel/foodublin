@@ -10,7 +10,6 @@ const ReviewCardImageCSS = css`
 
 export const StyledReviewCard = styled.div`
   margin-top: 20px;
-  max-width: 750px;
   padding-bottom: 20px;
   &:not(:last-of-type) {
     border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
