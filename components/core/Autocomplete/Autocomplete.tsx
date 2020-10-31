@@ -105,7 +105,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         data-testid="listbox-wrapper"
       >
         {loading ? (
-          <StyledLoader text={DEFAULT_TEXT_LOADING} />
+          <StyledLoader
+            className="listbox-loader"
+            text={DEFAULT_TEXT_LOADING}
+          />
         ) : (
           <StyledListbox role="listbox">
             {suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
