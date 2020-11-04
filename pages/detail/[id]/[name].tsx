@@ -7,21 +7,21 @@ import dynamic from 'next/dynamic';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
+import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
 
-import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
+import { FullLoader } from '@components/ui/FullLoader/FullLoader';
 
-import { Loader } from '../../../components/core/Loader/Loader';
+import { Loader } from '@components/core/Loader/Loader';
 
-import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
 import {
   clearRelatedRestaurants,
   addFavorite,
   deleteFavorite,
-} from '../../../store/actions';
+} from '@store/actions';
 
-import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
+import { DEFAULT_TEXT_LOADING } from '@helpers/staticData';
 import {
   InitialAppState,
   RestaurantDetail,
@@ -29,10 +29,10 @@ import {
   RawReview,
   Restaurant,
   BreadcrumbsType,
-} from '../../../helpers/types';
-import { getFormattedUrlText } from '../../../helpers/utils';
+} from '@helpers/types';
+import { getFormattedUrlText } from '@helpers/utils';
 
-import { getRestaurant, getReviews } from '../../../services';
+import { getRestaurant, getReviews } from '@services/index';
 
 type DetailProps = {
   data: RestaurantDetail | null;
@@ -47,7 +47,7 @@ type CustomNextPageContext = NextPageContext & {
 };
 
 const DynamicDetailPage = dynamic(
-  () => import('../../../components/pages/DetailPage/DetailPage'),
+  () => import('@components/pages/DetailPage/DetailPage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (
