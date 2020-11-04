@@ -20,9 +20,9 @@ import {
   FILTER_DATA,
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
-import { Restaurant, LoaderType } from '../../../helpers/types';
-import { getTitleText } from '../../../helpers/utils';
+} from '@helpers/staticData';
+import { Restaurant, LoaderType } from '@helpers/types';
+import { getTitleText } from '@helpers/utils';
 
 type SearchPageProps = {
   location: string | undefined;

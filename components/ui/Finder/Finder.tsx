@@ -14,7 +14,7 @@ import {
   StyledButton,
 } from './styles';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { setRelatedRestaurants } from '@store/actions';
 
 import {
   DUBLIN_ID,
@@ -22,14 +22,14 @@ import {
   CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
-} from '../../../helpers/staticData';
+} from '@helpers/staticData';
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
-} from '../../../helpers/utils';
-import { EntityType, Restaurant } from '../../../helpers/types';
+} from '@helpers/utils';
+import { EntityType, Restaurant } from '@helpers/types';
 
-import { getRestaurants } from '../../../services';
+import { getRestaurants } from '@services/index';
 
 type FinderProps = {
   className?: string;

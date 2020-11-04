@@ -31,14 +31,9 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import {
-  RestaurantDetail,
-  Restaurant,
-  Review,
-  Timming,
-} from '../../../helpers/types';
-import { getFormattedUrlText } from '../../../helpers/utils';
-import { DETAIL_GENERIC_SRC } from '../../../helpers/staticData';
+import { RestaurantDetail, Restaurant, Review, Timming } from '@helpers/types';
+import { getFormattedUrlText } from '@helpers/utils';
+import { DETAIL_GENERIC_SRC } from '@helpers/staticData';
 
 type DetailPageProps = {
   data: RestaurantDetail;

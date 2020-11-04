@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { StyledCustomLink } from './styles';
 
-import { CustomLinkSize } from '../../../helpers/types';
+import { CustomLinkSize } from '@helpers/types';
 
 type CustomLinkProps = {
   className?: string;

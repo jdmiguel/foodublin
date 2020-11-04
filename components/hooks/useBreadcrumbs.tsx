@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addBreadcrumbs, replaceBreadcrumbs } from '../../store/actions';
+import { addBreadcrumbs, replaceBreadcrumbs } from '@store/actions';
 
-import { InitialAppState, BreadcrumbsData } from '../../helpers/types';
+import { InitialAppState, BreadcrumbsData } from '@helpers/types';
 
 export const useBreadcrumbs = (
   currentBreadcrumbs: BreadcrumbsData,

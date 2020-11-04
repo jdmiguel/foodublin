@@ -9,11 +9,8 @@ import {
   StyledContent,
 } from './styles';
 
-import {
-  THUMB_GENERIC_SRC,
-  HIGHLIGHT_GENERIC_SRC,
-} from '../../../helpers/staticData';
-import { CardType } from '../../../helpers/types';
+import { THUMB_GENERIC_SRC, HIGHLIGHT_GENERIC_SRC } from '@helpers/staticData';
+import { CardType } from '@helpers/types';
 
 type CardProps = {
   imgSrc: string;

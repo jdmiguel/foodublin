@@ -6,9 +6,9 @@ import { Layout } from '../../layouts/Layout/Layout';
 
 import { StyledFavoritesPage, StyledCardsWrapper } from './styles';
 
-import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
-import { Restaurant } from '../../../helpers/types';
-import { getTitleText } from '../../../helpers/utils';
+import { THUMB_GENERIC_SRC } from '@helpers/staticData';
+import { Restaurant } from '@helpers/types';
+import { getTitleText } from '@helpers/utils';
 
 type FavoritesPageProps = {
   total: number;

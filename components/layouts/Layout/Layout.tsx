@@ -8,11 +8,11 @@ import { useScroll } from '../../hooks/useScroll';
 
 import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
+import { CDN_URL_STATIC_DIRECTORY } from '@helpers/utils';
 import {
   SCROLL_DELAY,
   SHOWING_SCROLLUP_BUTTON_HEIGHT,
-} from '../../../helpers/staticData';
+} from '@helpers/staticData';
 
 type LayoutProps = {
   children: ReactNode;

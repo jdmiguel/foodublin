@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledLogo, StyledImg } from './styles';
 
-import { LogoSize } from '../../../helpers/types';
+import { LogoSize } from '@helpers/types';
 
 type LogoProps = {
   size: LogoSize.BIG | LogoSize.SMALL;

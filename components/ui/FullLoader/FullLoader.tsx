@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { StyledFullLoaderWrapper } from './styles';
 
-import { LoaderType } from '../../../helpers/types';
+import { LoaderType } from '@helpers/types';
 
 type FullLoaderProps = {
   isShowed?: boolean;

@@ -9,6 +9,11 @@ import { Footer } from '../Footer';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 
+const footerProps = {
+  onClickBreadcrumb: () => {},
+  onClickFavorites: () => {},
+};
+
 describe('Component: Footer', () => {
   it('should render', () => {
     const mockStore = configureStore();
@@ -18,7 +23,7 @@ describe('Component: Footer', () => {
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
-          <Footer />
+          <Footer {...footerProps} />
         </Provider>,
       ),
     );
@@ -31,10 +36,11 @@ describe('Component: Footer', () => {
     const store = mockStore({
       reducer,
     });
+    const updatedFooterProps = { ...footerProps, showVeil: true };
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
-          <Footer showVeil={true} />
+          <Footer {...updatedFooterProps} />
         </Provider>,
       ),
     );
@@ -47,10 +53,11 @@ describe('Component: Footer', () => {
     const store = mockStore({
       reducer,
     });
+    const updatedFooterProps = { ...footerProps, isExtended: true };
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
-          <Footer isExtended={true} />
+          <Footer {...updatedFooterProps} />
         </Provider>,
       ),
     );

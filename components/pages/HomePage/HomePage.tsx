@@ -7,7 +7,7 @@ import { Card } from '../../core/Card/Card';
 
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
-import { Restaurant, CardType } from '../../../helpers/types';
+import { Restaurant, CardType } from '@helpers/types';
 
 type HighlightRestaurant = Restaurant & { featuredSrc: string };
 
