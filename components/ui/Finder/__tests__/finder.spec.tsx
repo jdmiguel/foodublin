@@ -6,7 +6,7 @@ import 'jest-styled-components';
 
 import reducer from '../../../../store/reducer';
 
-import { Finder }  from '../Finder';
+import { Finder } from '../Finder';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 
