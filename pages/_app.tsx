@@ -6,13 +6,13 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { throttle } from 'lodash';
 
-import appReducer from '../store/reducer';
+import appReducer from '@store/reducer';
 
-import { InitialAppState } from '../helpers/types';
-import { DEFAULT_BREADCRUMB } from '../helpers/staticData';
-import '../helpers/Grid/Grid.scss';
-import { GlobalStyles } from '../helpers/GlobalStylesHelper';
-import { theme } from '../helpers/Theme';
+import { InitialAppState } from '@helpers/types';
+import { DEFAULT_BREADCRUMB } from '@helpers/staticData';
+import '@helpers/Grid/Grid.scss';
+import { GlobalStyles } from '@helpers/GlobalStylesHelper';
+import { theme } from '@helpers/Theme';
 
 const loadStateFromLocalStorage = () => {
   try {

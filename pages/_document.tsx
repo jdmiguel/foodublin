@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../helpers/utils';
+import { CDN_URL_STATIC_DIRECTORY } from '@helpers/utils';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {

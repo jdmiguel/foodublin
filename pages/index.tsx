@@ -5,23 +5,23 @@ import dynamic from 'next/dynamic';
 
 import { useDispatch } from 'react-redux';
 
-import { FullLoader } from '../components/ui/FullLoader/FullLoader';
+import { FullLoader } from '@components/ui/FullLoader/FullLoader';
 
-import { Loader } from '../components/core/Loader/Loader';
+import { Loader } from '@components/core/Loader/Loader';
 
-import { useBreadcrumbs } from '../components/hooks/useBreadcrumbs';
+import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
-import { setRelatedRestaurants } from '../store/actions';
+import { setRelatedRestaurants } from '@store/actions';
 
 import {
   DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
-} from '../helpers/staticData';
-import { getCurrentRelatedRestaurants } from '../helpers/utils';
+} from '@helpers/staticData';
+import { getCurrentRelatedRestaurants } from '@helpers/utils';
 
 const DynamicHomePage = dynamic(
-  () => import('../components/pages/HomePage/HomePage'),
+  () => import('@components/pages/HomePage/HomePage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (

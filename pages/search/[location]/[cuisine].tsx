@@ -6,19 +6,19 @@ import dynamic from 'next/dynamic';
 
 import { useDispatch } from 'react-redux';
 
-import ErrorPage from '../../../components/pages/ErrorPage/ErrorPage';
+import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
 
-import { FullLoader } from '../../../components/ui/FullLoader/FullLoader';
+import { FullLoader } from '@components/ui/FullLoader/FullLoader';
 
-import { Loader } from '../../../components/core/Loader/Loader';
+import { Loader } from '@components/core/Loader/Loader';
 
-import { useWindowMeasurement } from '../../../components/hooks/useWindowMeasurement';
-import { useScroll } from '../../../components/hooks/useScroll';
-import { useBreadcrumbs } from '../../../components/hooks/useBreadcrumbs';
+import { useWindowMeasurement } from '@components/hooks/useWindowMeasurement';
+import { useScroll } from '@components/hooks/useScroll';
+import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { setRelatedRestaurants } from '@store/actions';
 
-import { getRestaurants } from '../../../services';
+import { getRestaurants } from '@services/index';
 
 import {
   DEFAULT_TEXT_LOADING,
@@ -72,7 +72,7 @@ type CustomNextPageContext = NextPageContext & {
 };
 
 const DynamicSearchPage = dynamic(
-  () => import('../../../components/pages/SearchPage/SearchPage'),
+  () => import('@components/pages/SearchPage/SearchPage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (
