@@ -18,8 +18,11 @@ import {
   StyledListboxItem,
 } from './styles/autocompleteMobile';
 
-import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@helpers/staticData';
-import { Restaurant, CardType } from '@helpers/types';
+import {
+  PlaceholderText,
+  DEFAULT_TEXT_LOADING,
+} from '../../../helpers/staticData';
+import { Restaurant, CardType } from '../../../helpers/types';
 
 export type AutocompleteMobileProps = {
   hasSearchIcon?: boolean;

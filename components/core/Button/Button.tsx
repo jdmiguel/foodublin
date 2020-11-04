@@ -4,7 +4,7 @@ import { StyledButtonWrapper, StyledButton } from './styles';
 
 import { Loader } from '../Loader/Loader';
 
-import { LoaderMode } from '@helpers/types';
+import { LoaderMode } from '../../../helpers/types';
 
 type ButtonProps = {
   className?: string;

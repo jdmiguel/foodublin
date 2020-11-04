@@ -8,8 +8,8 @@ import {
   StyledArrow,
 } from './styles';
 
-import { DEFAULT_TEXT_LOADING } from '@helpers/staticData';
-import { BreadcrumbsData } from '@helpers/types';
+import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
+import { BreadcrumbsData } from '../../../helpers/types';
 
 type BreadcrumbsProps = {
   breadcrumbsData: BreadcrumbsData[];

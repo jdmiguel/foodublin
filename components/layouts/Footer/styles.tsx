@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 
-import { fadeAnimation } from '@helpers/animations';
+import { fadeAnimation } from '../../../helpers/animations';
 
 const smallDevicesTextCSS = css`
   @media only screen and (max-width: 330px) {

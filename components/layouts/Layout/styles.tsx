@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Button } from '../../core/Button/Button';
 
-import { fadeAnimation } from '@helpers/animations';
+import { fadeAnimation } from '../../../helpers/animations';
 
 export const StyledLayout = styled.div`
   display: flex;

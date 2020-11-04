@@ -14,8 +14,8 @@ import {
   StyledCustomLinkText,
 } from './styles';
 
-import { CDN_URL_STATIC_DIRECTORY } from '@helpers/utils';
-import { CustomLinkSize, LogoSize } from '@helpers/types';
+import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
+import { CustomLinkSize, LogoSize } from '../../../helpers/types';
 
 type HeaderProps = {
   claimTxt: string;
