@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { NextPage, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
@@ -13,12 +14,16 @@ import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
 import { setRelatedRestaurants } from '@store/actions';
 
+import { HighlightRestaurant } from '@helpers/types';
+
 import {
   DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
 } from '@helpers/staticData';
 import { getCurrentRelatedRestaurants } from '@helpers/utils';
+
+type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const DynamicHomePage = dynamic(
   () => import('@components/pages/HomePage/HomePage'),
@@ -32,7 +37,7 @@ const DynamicHomePage = dynamic(
   },
 );
 
-const index = () => {
+const index: NextPage<HomeProps> = ({ highlights }) => {
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -53,9 +58,19 @@ const index = () => {
   return (
     <DynamicHomePage
       clickHighlight={handleClickHighlight}
-      highlights={HIGHLIGHTED_RESTAURANTS}
+      highlights={highlights}
     />
   );
+};
+
+export const getStaticProps = async () => {
+  const highlights: HighlightRestaurant[] = HIGHLIGHTED_RESTAURANTS;
+
+  return {
+    props: {
+      highlights,
+    },
+  };
 };
 
 export default index;

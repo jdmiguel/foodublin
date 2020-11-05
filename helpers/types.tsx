@@ -74,6 +74,8 @@ export type Restaurant = {
   asRoute: string;
 };
 
+export type HighlightRestaurant = Restaurant & { featuredSrc: string };
+
 export type RawRestaurant = {
   restaurant: {
     R: {
