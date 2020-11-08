@@ -19,7 +19,7 @@ import { CustomLinkSize, LogoSize } from '../../../helpers/types';
 type HeaderProps = {
   claimTxt: string;
   bgImgSrc?: string | undefined;
-  isExtended: boolean;
+  isExtended?: boolean;
   onClickLogo: (route: string) => void;
   onClickFavorites: (route: string) => void;
 };
@@ -27,7 +27,7 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({
   bgImgSrc,
   claimTxt,
-  isExtended,
+  isExtended = false,
   onClickLogo,
   onClickFavorites,
 }) => (
