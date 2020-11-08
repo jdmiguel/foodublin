@@ -58,7 +58,7 @@ export enum LoadType {
 
 type SearchProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-type CustomNextPageContext = GetStaticPropsContext & {
+type CustomGetStaticPropsContext = GetStaticPropsContext & {
   params: {
     location: string;
     cuisine: string;
@@ -352,7 +352,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params: { location, cuisine },
-}: CustomNextPageContext) => {
+}: CustomGetStaticPropsContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 

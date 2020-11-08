@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { NextPage, NextPageContext } from 'next';
+import {
+  NextPage,
+  InferGetServerSidePropsType,
+  GetServerSidePropsContext,
+} from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -34,14 +38,10 @@ import { getFormattedUrlText } from '@helpers/utils';
 
 import { getRestaurant, getReviews } from '@services/index';
 
-type DetailProps = {
-  data: RestaurantDetail | null;
-  reviewsData: Review[] | null;
-  id: number;
-};
+type DetailProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-type CustomNextPageContext = NextPageContext & {
-  query: {
+type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
+  params: {
     id: number;
   };
 };
@@ -136,9 +136,9 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
-  const { id } = query;
-
+export const getServerSideProps = async ({
+  params: { id },
+}: CustomGetServerSidePropsContext) => {
   const { data, status } = await getRestaurant(id);
   const { data: reviewsData, status: reviewsStatus } = await getReviews(id);
 
