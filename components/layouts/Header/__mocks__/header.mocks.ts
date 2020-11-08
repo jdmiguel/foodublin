@@ -1,4 +1,6 @@
 export const HEADER_TEXT_MOCKS = {
-  bgImgSrc: 'food.jpg',
+  bgImgSrc: '/images/food.jpg',
   claimTxt: 'Mocked claim text',
+  onClickLogo: () => {},
+  onClickFavorites: () => {},
 };

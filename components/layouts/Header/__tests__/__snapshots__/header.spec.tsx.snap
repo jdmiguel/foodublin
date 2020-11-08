@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Header should render Header 1`] = `
+exports[`Component: Header should render collapsed Header 1`] = `
 .c4 {
   width: 190px;
 }
