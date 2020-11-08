@@ -43,6 +43,12 @@ export enum CustomLinkSize {
 
 // Restaurant data
 
+export type Location = {
+  id: number;
+  name: string;
+  path: string;
+};
+
 export type Timming = {
   id: string;
   day: string;
@@ -73,6 +79,8 @@ export type Restaurant = {
   route: string;
   asRoute: string;
 };
+
+export type HighlightRestaurant = Restaurant & { featuredSrc: string };
 
 export type RawRestaurant = {
   restaurant: {

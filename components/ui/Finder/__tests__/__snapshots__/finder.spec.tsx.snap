@@ -983,7 +983,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Irish"
             class="c21"
-            src="http://localhost:3000/static/images/stew.svg"
+            src="/images/stew.svg"
           />
           <p
             class="c20"
@@ -998,7 +998,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Italian"
             class="c21"
-            src="http://localhost:3000/static/images/pizza.svg"
+            src="/images/pizza.svg"
           />
           <p
             class="c20"
@@ -1013,7 +1013,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Mediterranean"
             class="c21"
-            src="http://localhost:3000/static/images/bruschetta.svg"
+            src="/images/bruschetta.svg"
           />
           <p
             class="c20"
@@ -1028,7 +1028,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Asian"
             class="c21"
-            src="http://localhost:3000/static/images/rice.svg"
+            src="/images/rice.svg"
           />
           <p
             class="c20"
@@ -1043,7 +1043,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Healthy Food"
             class="c21"
-            src="http://localhost:3000/static/images/healthy_food.svg"
+            src="/images/healthy_food.svg"
           />
           <p
             class="c20"
@@ -1058,7 +1058,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Indian"
             class="c21"
-            src="http://localhost:3000/static/images/gulab.svg"
+            src="/images/gulab.svg"
           />
           <p
             class="c20"
@@ -1073,7 +1073,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Mexican"
             class="c21"
-            src="http://localhost:3000/static/images/taco.svg"
+            src="/images/taco.svg"
           />
           <p
             class="c20"
@@ -1088,7 +1088,7 @@ exports[`Component: Finder should render 1`] = `
           <img
             alt="Fast Food"
             class="c21"
-            src="http://localhost:3000/static/images/fries.svg"
+            src="/images/fries.svg"
           />
           <p
             class="c20"

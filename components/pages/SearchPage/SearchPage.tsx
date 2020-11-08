@@ -25,8 +25,8 @@ import { Restaurant, LoaderType } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
 
 type SearchPageProps = {
-  location: string | undefined;
-  cuisine: string | undefined;
+  location: string | null;
+  cuisine: string | null;
   total: number;
   restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;

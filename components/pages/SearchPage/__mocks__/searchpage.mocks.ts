@@ -1,9 +1,7 @@
-import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
-
 export const RESTAURANTS = [
   {
     id: 234,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
+    imgSrc: '/images/thumb-1.webp',
     imgAlt: 'restaurant',
     title: 'Elephant & Castle',
     link: '',
@@ -12,7 +10,7 @@ export const RESTAURANTS = [
   },
   {
     id: 5474,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-2.webp`,
+    imgSrc: '/images/thumb-2.webp',
     imgAlt: 'restaurant',
     title: 'Abrecadabra',
     link: '',
@@ -21,7 +19,7 @@ export const RESTAURANTS = [
   },
   {
     id: 8963,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-3.webp`,
+    imgSrc: '/images/thumb-3.webp',
     imgAlt: 'restaurant',
     title: 'Brothers in law of Harold Cross street',
     link: '',
@@ -30,7 +28,7 @@ export const RESTAURANTS = [
   },
   {
     id: 4421,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-4.webp`,
+    imgSrc: '/images/thumb-4.webp',
     imgAlt: 'restaurant',
     title: 'Misushi',
     link: '',
@@ -39,7 +37,7 @@ export const RESTAURANTS = [
   },
   {
     id: 2144,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-5.webp`,
+    imgSrc: '/images/thumb-5.webp',
     imgAlt: 'restaurant',
     title: 'Pattaya',
     link: '',

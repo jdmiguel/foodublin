@@ -1,4 +1,3 @@
-import { CDN_URL_STATIC_DIRECTORY } from './utils';
 import { BreadcrumbsType } from './types';
 
 export const DUBLIN_ID = 91;
@@ -181,49 +180,49 @@ export const LOCATIONS = [
 
 export const CUISINES = [
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/stew.svg`,
+    iconSrc: '/images/stew.svg',
     id: 135,
     name: 'Irish',
     path: 'irish',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/pizza.svg`,
+    iconSrc: '/images/pizza.svg',
     id: 55,
     name: 'Italian',
     path: 'italian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/bruschetta.svg`,
+    iconSrc: '/images/bruschetta.svg',
     id: 70,
     name: 'Mediterranean',
     path: 'mediterranean',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rice.svg`,
+    iconSrc: '/images/rice.svg',
     id: 3,
     name: 'Asian',
     path: 'asian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/healthy_food.svg`,
+    iconSrc: '/images/healthy_food.svg',
     id: 143,
     name: 'Healthy Food',
     path: 'healthy-food',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/gulab.svg`,
+    iconSrc: '/images/gulab.svg',
     id: 148,
     name: 'Indian',
     path: 'indian',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/taco.svg`,
+    iconSrc: '/images/taco.svg',
     id: 73,
     name: 'Mexican',
     path: 'mexican',
   },
   {
-    iconSrc: `${CDN_URL_STATIC_DIRECTORY}/images/fries.svg`,
+    iconSrc: '/images/fries.svg',
     id: 40,
     name: 'Fast Food',
     path: 'fast-food',
@@ -233,7 +232,7 @@ export const CUISINES = [
 export const HIGHLIGHTED_RESTAURANTS = [
   {
     id: 9100233,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`,
+    featuredSrc: '/images/cleaver-east.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/9100233_RESTAURANT_8b0a195f5047ea1246c77911e6f18dd4.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Cleaver East Restaurant',
@@ -244,7 +243,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: 16518539,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/tapas-de-lola.jpg`,
+    featuredSrc: '/images/tapas-de-lola.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/16518539_RESTAURANT_58b43e3019e1ecb772e71660f68d9252.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Tapas de Lola',
@@ -255,7 +254,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: 16517305,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/ely-wine.jpg`,
+    featuredSrc: '/images/ely-wine.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/16517305_RESTAURANT_4edf8903aa50f49ac31d924200f8d6d6_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Ely Wine Bar',
@@ -266,7 +265,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: 16520229,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/oxmantown.jpg`,
+    featuredSrc: '/images/oxmantown.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/16520229_RESTAURANT_9a34e654358a6e5c229a0908fbd852dd_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Oxmantown',
@@ -277,7 +276,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: 9100702,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/chapter-one.jpg`,
+    featuredSrc: '/images/chapter-one.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/9100702_RESTAURANT_03e5e7e79573629cf664fe8b037aeb4d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Chapter One',
@@ -288,7 +287,7 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
   {
     id: 9101166,
-    featuredSrc: `${CDN_URL_STATIC_DIRECTORY}/images/rosa-madre.jpg`,
+    featuredSrc: '/images/rosa-madre.jpg',
     imgSrc:
       'https://b.zmtcdn.com/data/res_imagery/9101166_RESTAURANT_9efc824ff8987879a1aff7633776c526_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
     title: 'Rosa Madre',
@@ -299,9 +298,9 @@ export const HIGHLIGHTED_RESTAURANTS = [
   },
 ];
 
-export const HIGHLIGHT_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/highlight-generic.png`;
-export const THUMB_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/generic-thumb.png`;
-export const DETAIL_GENERIC_SRC = `${CDN_URL_STATIC_DIRECTORY}/images/generic-detail.png`;
+export const HIGHLIGHT_GENERIC_SRC = '/images/highlight-generic.png';
+export const THUMB_GENERIC_SRC = '/images/generic-thumb.png';
+export const DETAIL_GENERIC_SRC = '/images/generic-detail.png';
 export const DEFAULT_RATING_STAR_LIST = [
   { id: 1, type: 'star_outline' },
   { id: 2, type: 'star_outline' },

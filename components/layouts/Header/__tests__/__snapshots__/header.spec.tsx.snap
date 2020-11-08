@@ -60,7 +60,7 @@ exports[`Component: Header should render Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(http://localhost:3000/static/images/food.jpg);
+  background-image: url(/images/food.jpg);
   background-color: #A7A7A7;
   background-size: cover;
   background-position: center;
@@ -203,7 +203,7 @@ exports[`Component: Header should render Header 1`] = `
           <img
             alt="FooDublin Logo"
             class="c5"
-            src="http://localhost:3000/static/images/logo.svg"
+            src="/images/logo.svg"
           />
         </h1>
       </a>
@@ -648,7 +648,7 @@ exports[`Component: Header should render extended Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(http://localhost:3000/static/images/food.jpg);
+  background-image: url(/images/food.jpg);
   background-color: #A7A7A7;
   background-size: cover;
   background-position: center;
@@ -904,7 +904,7 @@ exports[`Component: Header should render extended Header 1`] = `
           <img
             alt="FooDublin Logo"
             class="c5"
-            src="http://localhost:3000/static/images/logo.svg"
+            src="/images/logo.svg"
           />
         </h1>
       </a>
@@ -1366,7 +1366,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Irish"
                   class="c28"
-                  src="http://localhost:3000/static/images/stew.svg"
+                  src="/images/stew.svg"
                 />
                 <p
                   class="c27"
@@ -1381,7 +1381,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Italian"
                   class="c28"
-                  src="http://localhost:3000/static/images/pizza.svg"
+                  src="/images/pizza.svg"
                 />
                 <p
                   class="c27"
@@ -1396,7 +1396,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Mediterranean"
                   class="c28"
-                  src="http://localhost:3000/static/images/bruschetta.svg"
+                  src="/images/bruschetta.svg"
                 />
                 <p
                   class="c27"
@@ -1411,7 +1411,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Asian"
                   class="c28"
-                  src="http://localhost:3000/static/images/rice.svg"
+                  src="/images/rice.svg"
                 />
                 <p
                   class="c27"
@@ -1426,7 +1426,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Healthy Food"
                   class="c28"
-                  src="http://localhost:3000/static/images/healthy_food.svg"
+                  src="/images/healthy_food.svg"
                 />
                 <p
                   class="c27"
@@ -1441,7 +1441,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Indian"
                   class="c28"
-                  src="http://localhost:3000/static/images/gulab.svg"
+                  src="/images/gulab.svg"
                 />
                 <p
                   class="c27"
@@ -1456,7 +1456,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Mexican"
                   class="c28"
-                  src="http://localhost:3000/static/images/taco.svg"
+                  src="/images/taco.svg"
                 />
                 <p
                   class="c27"
@@ -1471,7 +1471,7 @@ exports[`Component: Header should render extended Header 1`] = `
                 <img
                   alt="Fast Food"
                   class="c28"
-                  src="http://localhost:3000/static/images/fries.svg"
+                  src="/images/fries.svg"
                 />
                 <p
                   class="c27"

@@ -1,5 +1,3 @@
-import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
-
 export const FIRST_DETAIL_MOCKED = {
   imgSrc:
     'https://b.zmtcdn.com/data/res_imagery/9100560_CHAIN_1db4137ab10427fd625b1fe7afc255e2_c.jpg',
@@ -25,7 +23,7 @@ export const FIRST_DETAIL_MOCKED = {
 
 export const SECOND_DETAIL_MOCKED = {
   imgSrc: '',
-  name: `Lam's`,
+  name: 'Lam`s',
   location: 'Ballyfermot',
   address: '286 Ballyfermot Road, Ballyfermot, Dublin Dublin 10',
   phone: '01 6232073, 01 6203520',
@@ -71,7 +69,7 @@ export const THIRD_DETAIL_MOCKED = {
 export const FOURTH_DETAIL_MOCKED = {
   imgSrc:
     'https://b.zmtcdn.com/data/res_imagery/9101221_RESTAURANT_a3d14f5828d263bd1ddb6c454a425f34_c.jpg',
-  name: `Sophie's - The Dean Hotel`,
+  name: 'Sophie`s - The Dean Hotel',
   location: 'The Dean Hotel, City Centre South',
   address: '33 Harcourt Street, South City East, Dublin Dublin 2',
   phone: '01 6078100',
@@ -97,7 +95,7 @@ export const FOURTH_DETAIL_MOCKED = {
 export const RELATED_RESTAURANTS_MOCKED = [
   {
     id: 234,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`,
+    imgSrc: '/images/thumb-1.webp',
     title: 'Elephant & Castle',
     content: 'Temple Bar',
     route: '/detail/[id]/[name]',
@@ -105,7 +103,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
   },
   {
     id: 5474,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-2.webp`,
+    imgSrc: '/images/thumb-2.webp',
     title: 'Abrecadabra',
     content: 'Rathmines',
     route: '/detail/[id]/[name]',
@@ -113,7 +111,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
   },
   {
     id: 8963,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-3.webp`,
+    imgSrc: '/images/thumb-3.webp',
     title: 'Brothers in law',
     content: 'Blackrock',
     route: '/detail/[id]/[name]',
@@ -121,7 +119,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
   },
   {
     id: 4421,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-4.webp`,
+    imgSrc: '/images/thumb-4.webp',
     title: 'Misushi',
     content: 'Whitehall',
     route: '/detail/[id]/[name]',
@@ -129,7 +127,7 @@ export const RELATED_RESTAURANTS_MOCKED = [
   },
   {
     id: 2144,
-    imgSrc: `${CDN_URL_STATIC_DIRECTORY}/images/thumb-5.webp`,
+    imgSrc: '/images/thumb-5.webp',
     title: 'Pattaya',
     content: 'Clondalkin',
     route: '/detail/[id]/[name]',

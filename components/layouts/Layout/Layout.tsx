@@ -8,7 +8,6 @@ import { useScroll } from '../../hooks/useScroll';
 
 import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 import {
   SCROLL_DELAY,
   SHOWING_SCROLLUP_BUTTON_HEIGHT,
@@ -50,7 +49,7 @@ export const Layout = ({
   return (
     <StyledLayout>
       <Header
-        bgImgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
+        bgImgSrc="/images/food.jpg"
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
         onClickLogo={(route: string) => {

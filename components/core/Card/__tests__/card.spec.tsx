@@ -6,16 +6,12 @@ import { Card } from '../Card';
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { CDN_URL_STATIC_DIRECTORY } from '../../../../helpers/utils';
 import { CardType } from '../../../../helpers/types';
 
 it('should render standart card', () => {
   const { container } = render(
     renderWithTheme(
-      <Card
-        {...CARD_PROPS_MOCKS}
-        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`}
-      />,
+      <Card {...CARD_PROPS_MOCKS} imgSrc={'/images/thumb-1.webp'} />,
     ),
   );
 
@@ -27,7 +23,7 @@ it('should render suggestion card', () => {
     renderWithTheme(
       <Card
         {...CARD_PROPS_MOCKS}
-        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`}
+        imgSrc={'/images/thumb-1.webp'}
         type={CardType.SUGGESTION}
       />,
     ),
@@ -41,7 +37,7 @@ it('should render highlight card', () => {
     renderWithTheme(
       <Card
         {...CARD_PROPS_MOCKS}
-        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/cleaver-east.jpg`}
+        imgSrc={'/images/cleaver-east.jpg'}
         type={CardType.HIGHLIGHT}
       />,
     ),
@@ -56,7 +52,7 @@ it('should call function on click', () => {
     renderWithTheme(
       <Card
         {...CARD_PROPS_MOCKS}
-        imgSrc={`${CDN_URL_STATIC_DIRECTORY}/images/thumb-1.webp`}
+        imgSrc={'/images/thumb-1.webp'}
         onClick={handleClick}
       />,
     ),
