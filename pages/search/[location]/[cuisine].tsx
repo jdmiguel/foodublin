@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
 
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
@@ -38,6 +38,7 @@ import {
   RawRestaurant,
   EntityType,
   BreadcrumbsType,
+  Location,
 } from '../../../helpers/types';
 import {
   getFormattedUrlText,
@@ -55,17 +56,10 @@ export enum LoadType {
   SCROLL = 'scroll',
 }
 
-type SearchProps = {
-  locationId: number;
-  locationName: LocationType.CITY | LocationType.SUBZONE;
-  cuisineId: number;
-  cuisineName: string;
-  restaurants: Restaurant[] | null;
-  total: number;
-};
+type SearchProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-type CustomNextPageContext = NextPageContext & {
-  query: {
+type CustomNextPageContext = GetStaticPropsContext & {
+  params: {
     location: string;
     cuisine: string;
   };
@@ -287,7 +281,7 @@ const Search: NextPage<SearchProps> = ({
     text: `${cuisineName || 'Any food'} in ${locationName}`,
     route: '/search/[location]/[cuisine]',
     asRoute: `/search/${getFormattedUrlText(
-      locationName,
+      `${locationName || 'Dublin'}`,
       true,
     )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
     type: BreadcrumbsType.SEARCH,
@@ -313,9 +307,52 @@ const Search: NextPage<SearchProps> = ({
   );
 };
 
-export const getServerSideProps = async ({ query }: CustomNextPageContext) => {
-  const { location, cuisine } = query;
+export const getStaticPaths = async () => {
+  const locationsLength = LOCATIONS.length;
+  const cuisinesLength = CUISINES.length;
 
+  const emptyPaths = new Array(locationsLength * cuisinesLength).fill('', 0);
+
+  let locationsCounter = 0;
+  let cuisinesCounter = 0;
+
+  const getPaths = () => {
+    if (cuisinesCounter < cuisinesLength) {
+      cuisinesCounter++;
+    } else {
+      locationsCounter++;
+      cuisinesCounter = 0;
+    }
+
+    const updatedCuisineCounter = cuisinesCounter
+      ? cuisinesCounter - 1
+      : cuisinesCounter;
+
+    return {
+      params: {
+        location: LOCATIONS[locationsCounter].path,
+        cuisine: CUISINES[updatedCuisineCounter].path,
+      },
+    };
+  };
+
+  const paths = emptyPaths.map(getPaths);
+  const pathsWithoutCuisine = LOCATIONS.map((location: Location) => ({
+    params: {
+      location: location.path,
+      cuisine: 'any-food',
+    },
+  }));
+
+  return {
+    paths: [...pathsWithoutCuisine, ...paths],
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({
+  params: { location, cuisine },
+}: CustomNextPageContext) => {
   const [locationId, locationName] = getValues(location, LOCATIONS);
   const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
 

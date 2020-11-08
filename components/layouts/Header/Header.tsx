@@ -14,7 +14,6 @@ import {
   StyledCustomLinkText,
 } from './styles';
 
-import { CDN_URL_STATIC_DIRECTORY } from '../../../helpers/utils';
 import { CustomLinkSize, LogoSize } from '../../../helpers/types';
 
 type HeaderProps = {
@@ -38,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
         <CustomLink onClick={() => onClickLogo('/')}>
           <Logo
             size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
-            logoSrc={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
+            logoSrc={'/images/logo.svg'}
           />
         </CustomLink>
         <StyledHeaderClaim isExtended={isExtended}>

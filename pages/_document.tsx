@@ -2,8 +2,6 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
-import { CDN_URL_STATIC_DIRECTORY } from '@helpers/utils';
-
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
     const sheet = new ServerStyleSheet();
@@ -47,21 +45,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
-          <link
-            rel="preload"
-            as="image"
-            href={`${CDN_URL_STATIC_DIRECTORY}/images/food.jpg`}
-          />
-          <link
-            rel="preload"
-            as="image"
-            href={`${CDN_URL_STATIC_DIRECTORY}/images/logo.svg`}
-          />
+          <link rel="preload" as="image" href={'/images/food.jpg'} />
+          <link rel="preload" as="image" href={'/images/logo.svg'} />
 
-          <link
-            rel="icon"
-            href={`${CDN_URL_STATIC_DIRECTORY}/images/favicon.ico`}
-          />
+          <link rel="icon" href={'/images/favicon.ico'} />
         </Head>
         <body>
           <Main />
