@@ -75,7 +75,7 @@ exports[`Component: ReviewCard should render 1`] = `
       <img
         alt="John Hughes"
         class="c2"
-        src="http://localhost:3000/static/images/generic-thumb.png"
+        src="/images/generic-thumb.png"
       />
     </div>
     <p

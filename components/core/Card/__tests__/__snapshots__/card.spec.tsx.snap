@@ -97,7 +97,7 @@ exports[`should render highlight card 1`] = `
     <img
       alt="Default title"
       class="c1"
-      src="http://localhost:3000/static/images/highlight-generic.png"
+      src="/images/highlight-generic.png"
       type="highlight"
     />
   </div>
@@ -239,7 +239,7 @@ exports[`should render standart card 1`] = `
     <img
       alt="Default title"
       class="c1"
-      src="http://localhost:3000/static/images/generic-thumb.png"
+      src="/images/generic-thumb.png"
       type="standart"
     />
   </div>
@@ -377,7 +377,7 @@ exports[`should render suggestion card 1`] = `
     <img
       alt="Default title"
       class="c1"
-      src="http://localhost:3000/static/images/generic-thumb.png"
+      src="/images/generic-thumb.png"
       type="suggestion"
     />
   </div>

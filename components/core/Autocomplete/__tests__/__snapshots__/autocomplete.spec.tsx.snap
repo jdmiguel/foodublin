@@ -263,7 +263,7 @@ exports[`Component: Autocomplete should render 1`] = `
             <img
               alt="Manifesto"
               class="c8"
-              src="http://localhost:3000/static/images/generic-thumb.png"
+              src="/images/generic-thumb.png"
               type="suggestion"
             />
           </div>
@@ -301,7 +301,7 @@ exports[`Component: Autocomplete should render 1`] = `
             <img
               alt="Dragon Inn"
               class="c8"
-              src="http://localhost:3000/static/images/generic-thumb.png"
+              src="/images/generic-thumb.png"
               type="suggestion"
             />
           </div>
@@ -339,7 +339,7 @@ exports[`Component: Autocomplete should render 1`] = `
             <img
               alt="Casa Del Toro"
               class="c8"
-              src="http://localhost:3000/static/images/generic-thumb.png"
+              src="/images/generic-thumb.png"
               type="suggestion"
             />
           </div>

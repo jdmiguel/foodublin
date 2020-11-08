@@ -30,7 +30,7 @@ exports[`Component: Logo should render as big version 1`] = `
   <img
     alt="FooDublin Logo"
     class="c1"
-    src="http://localhost:3003/public/images/logo.svg"
+    src="/public/images/logo.svg"
   />
 </h1>
 `;
@@ -61,7 +61,7 @@ exports[`Component: Logo should render as small version 1`] = `
   <img
     alt="FooDublin Logo"
     class="c1"
-    src="http://localhost:3003/public/images/logo.svg"
+    src="/public/images/logo.svg"
   />
 </h1>
 `;
