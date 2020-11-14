@@ -1,4 +1,4 @@
-import { InitialAppState, Actions } from '../helpers/types';
+import { InitialAppState, Actions } from '@helpers/types';
 
 const appReducer = (state: InitialAppState, action: Actions) => {
   switch (action.type) {
