@@ -23,11 +23,11 @@ import {
   clearRelatedRestaurants,
   addFavorite,
   deleteFavorite,
-} from '@store/actions';
+} from '@store/redux/actions';
+import { InitialAppState } from '@store/redux/types';
 
 import { DEFAULT_TEXT_LOADING } from '@store/statics';
 import {
-  InitialAppState,
   RestaurantDetail,
   Review,
   RawReview,

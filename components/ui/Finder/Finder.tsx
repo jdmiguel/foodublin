@@ -14,7 +14,7 @@ import {
   StyledButton,
 } from './styles';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { setRelatedRestaurants } from '../../../store/redux/actions';
 
 import {
   DUBLIN_ID,

@@ -12,7 +12,7 @@ import { Loader } from '@components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
-import { setRelatedRestaurants } from '@store/actions';
+import { setRelatedRestaurants } from '@store/redux/actions';
 
 import { HighlightRestaurant } from '@helpers/types';
 

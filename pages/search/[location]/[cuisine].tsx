@@ -16,7 +16,7 @@ import { useWindowMeasurement } from '@components/hooks/useWindowMeasurement';
 import { useScroll } from '@components/hooks/useScroll';
 import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
-import { setRelatedRestaurants } from '@store/actions';
+import { setRelatedRestaurants } from '@store/redux/actions';
 
 import { getRestaurants } from '@services/index';
 
