@@ -199,7 +199,7 @@ export const StyledTimmingSchedule = styled.p`
 
 // Reviews
 
-export const StyledReviewsWrapper = styled.p`
+export const StyledReviewsWrapper = styled.div`
   @media only screen and (min-width: 1024px) {
     padding-right: 30px;
   }
