@@ -20,7 +20,7 @@ import {
   DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
-} from '@helpers/staticData';
+} from '@store/statics';
 import { getCurrentRelatedRestaurants } from '@helpers/utils';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;

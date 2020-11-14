@@ -12,7 +12,7 @@ import {
 import {
   THUMB_GENERIC_SRC,
   HIGHLIGHT_GENERIC_SRC,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 import { CardType } from '../../../helpers/types';
 
 type CardProps = {

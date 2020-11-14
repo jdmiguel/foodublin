@@ -22,7 +22,7 @@ import {
   CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,

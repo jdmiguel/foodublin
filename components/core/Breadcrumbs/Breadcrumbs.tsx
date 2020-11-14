@@ -8,7 +8,7 @@ import {
   StyledArrow,
 } from './styles';
 
-import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
+import { DEFAULT_TEXT_LOADING } from '../../../store/statics';
 import { BreadcrumbsData } from '../../../helpers/types';
 
 type BreadcrumbsProps = {

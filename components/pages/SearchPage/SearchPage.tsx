@@ -20,7 +20,7 @@ import {
   FILTER_DATA,
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 import { Restaurant, LoaderType } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
 

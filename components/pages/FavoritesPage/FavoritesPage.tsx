@@ -13,7 +13,7 @@ import {
 import {
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 import { Restaurant } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
 

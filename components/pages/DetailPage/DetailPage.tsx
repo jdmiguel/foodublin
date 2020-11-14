@@ -41,7 +41,7 @@ import { getFormattedUrlText } from '../../../helpers/utils';
 import {
   DETAIL_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 
 type DetailPageProps = {
   data: RestaurantDetail;

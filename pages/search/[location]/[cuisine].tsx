@@ -31,7 +31,7 @@ import {
   MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
   SCROLL_DELAY,
-} from '../../../helpers/staticData';
+} from '../../../store/statics';
 import {
   ListItem,
   Restaurant,

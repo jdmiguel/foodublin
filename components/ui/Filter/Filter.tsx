@@ -7,7 +7,7 @@ import {
   StyledFilterIcon,
 } from './styles';
 
-import { FilterSort, FilterOrder } from '../../../helpers/staticData';
+import { FilterSort, FilterOrder } from '../../../store/statics';
 
 type FilterData = {
   primaryText: string;

@@ -10,7 +10,7 @@ import { Loader } from '@components/core/Loader/Loader';
 
 import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
-import { DEFAULT_TEXT_LOADING } from '@helpers/staticData';
+import { DEFAULT_TEXT_LOADING } from '@store/statics';
 import { InitialAppState, BreadcrumbsType } from '@helpers/types';
 
 const DynamicFavoritesPage = dynamic(

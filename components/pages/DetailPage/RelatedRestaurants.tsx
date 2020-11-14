@@ -4,7 +4,7 @@ import { Card } from '../../core/Card/Card';
 
 import { Restaurant } from '../../../helpers/types';
 
-import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
+import { THUMB_GENERIC_SRC } from '../../../store/statics';
 
 type RelatedRestaurantsProps = {
   restaurants: Restaurant[];

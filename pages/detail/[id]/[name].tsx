@@ -25,7 +25,7 @@ import {
   deleteFavorite,
 } from '@store/actions';
 
-import { DEFAULT_TEXT_LOADING } from '@helpers/staticData';
+import { DEFAULT_TEXT_LOADING } from '@store/statics';
 import {
   InitialAppState,
   RestaurantDetail,
