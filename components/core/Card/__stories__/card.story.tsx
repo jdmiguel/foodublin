@@ -8,7 +8,7 @@ import { Card } from '../Card';
 
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
 
-import { CardType } from '../../../../helpers/types';
+import { CardType } from '../../types';
 
 const stories = storiesOf('Card', module);
 

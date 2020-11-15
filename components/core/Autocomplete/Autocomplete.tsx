@@ -12,7 +12,9 @@ import {
 } from './styles/autocomplete';
 
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '../../../store/statics';
-import { Restaurant, CardType } from '../../../helpers/types';
+
+import { Restaurant } from '../../../helpers/types';
+import { CardType } from '../types';
 
 export type AutocompleteProps = {
   hasSearchIcon?: boolean;

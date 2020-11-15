@@ -13,7 +13,8 @@ import {
   THUMB_GENERIC_SRC,
   HIGHLIGHT_GENERIC_SRC,
 } from '../../../store/statics';
-import { CardType } from '../../../helpers/types';
+
+import { CardType } from '../types';
 
 type CardProps = {
   imgSrc: string;

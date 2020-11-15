@@ -6,7 +6,7 @@ import { Logo } from '../Logo';
 import { LOGO_SRC_MOCK } from '../__mocks__/logo.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { LogoSize } from '../../../../helpers/types';
+import { LogoSize } from '../../types';
 
 describe('Component: Logo', () => {
   it('should render as big version', () => {

@@ -6,7 +6,8 @@ import { FullLoader } from '../FullLoader';
 import { Loader } from '../../../core/Loader/Loader';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { LoaderType } from '../../../../helpers/types';
+
+import { LoaderType } from '../../../core/types';
 
 describe('Component: Loader', () => {
   it('should render as circle type and be showed', () => {

@@ -33,7 +33,6 @@ import {
   SCROLL_DELAY,
 } from '../../../store/statics';
 import {
-  ListItem,
   Restaurant,
   RawRestaurant,
   EntityType,
@@ -44,6 +43,8 @@ import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
 } from '../../../helpers/utils';
+
+import { ListItem } from '../../../components/core/types';
 
 export enum LocationType {
   CITY = 'city',

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { LogoSize } from '../../../helpers/types';
+import { LogoSize } from '../types';
 
 export const StyledLogo = styled.h1<{ size: LogoSize.BIG | LogoSize.SMALL }>`
   width: ${({ size }) => (size === LogoSize.BIG ? '225px' : '190px')};

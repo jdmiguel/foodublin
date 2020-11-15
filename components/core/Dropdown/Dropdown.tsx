@@ -23,7 +23,7 @@ import {
   StyledListboxItemText,
 } from './styles';
 
-import { ListItem } from '../../../helpers/types';
+import { ListItem } from '../types';
 
 type ListItemWithIsActive = ListItem & { isActive: boolean };
 

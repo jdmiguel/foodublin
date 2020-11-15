@@ -7,7 +7,8 @@ import { Card } from '../../core/Card/Card';
 
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
-import { HighlightRestaurant, CardType } from '../../../helpers/types';
+import { CardType } from '../../core/types';
+import { HighlightRestaurant } from '../../../helpers/types';
 
 type HomePageProps = {
   highlights: HighlightRestaurant[];

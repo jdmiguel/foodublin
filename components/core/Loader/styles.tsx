@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-import { LoaderMode } from '../../../helpers/types';
 import { rotateAnimation, moveAnimation } from '../../../helpers/animations';
+
+import { LoaderMode } from '../../core/types';
 
 // Circle loader
 export const StyledCircleLoader = styled.div`

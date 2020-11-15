@@ -21,8 +21,10 @@ import {
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../../store/statics';
-import { Restaurant, LoaderType } from '../../../helpers/types';
 import { getTitleText } from '../../../helpers/utils';
+
+import { Restaurant } from '../../core/types';
+import { LoaderType } from '../../core/types';
 
 type SearchPageProps = {
   location: string | null;
