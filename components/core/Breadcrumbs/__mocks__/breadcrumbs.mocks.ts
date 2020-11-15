@@ -1,4 +1,4 @@
-import { BreadcrumbsType } from './../../../../helpers/types';
+import { BreadcrumbsType } from '../../types';
 
 export const BREADCRUMBS_DATA_MOCK = [
   { text: 'First step', route: '/', asRoute: '/', type: BreadcrumbsType.HOME },

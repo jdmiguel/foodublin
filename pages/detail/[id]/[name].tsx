@@ -32,11 +32,12 @@ import {
   Review,
   RawReview,
   Restaurant,
-  BreadcrumbsType,
 } from '@helpers/types';
 import { getFormattedUrlText } from '@helpers/utils';
 
 import { getRestaurant, getReviews } from '@services/index';
+
+import { BreadcrumbsType } from '../../../components/core/types';
 
 type DetailProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 

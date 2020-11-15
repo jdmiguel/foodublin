@@ -36,7 +36,6 @@ import {
   Restaurant,
   RawRestaurant,
   EntityType,
-  BreadcrumbsType,
   Location,
 } from '../../../helpers/types';
 import {
@@ -44,7 +43,7 @@ import {
   getCurrentRelatedRestaurants,
 } from '../../../helpers/utils';
 
-import { ListItem } from '../../../components/core/types';
+import { ListItem, BreadcrumbsType } from '../../../components/core/types';
 
 export enum LocationType {
   CITY = 'city',
