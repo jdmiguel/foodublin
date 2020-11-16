@@ -23,7 +23,7 @@ import {
 } from '../../../store/statics';
 import { getTitleText } from '../../../helpers/utils';
 
-import { Restaurant } from '../../core/types';
+import { Restaurant } from '../types';
 import { LoaderType } from '../../core/types';
 
 type SearchPageProps = {

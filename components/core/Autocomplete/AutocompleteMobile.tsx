@@ -19,7 +19,9 @@ import {
 } from './styles/autocompleteMobile';
 
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '../../../store/statics';
-import { Restaurant, CardType } from '../../../helpers/types';
+
+import { CardType } from '../types';
+import { Restaurant } from '../../pages/types';
 
 export type AutocompleteMobileProps = {
   hasSearchIcon?: boolean;

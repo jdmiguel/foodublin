@@ -14,8 +14,10 @@ import {
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../../store/statics';
-import { Restaurant } from '../../../helpers/types';
+
 import { getTitleText } from '../../../helpers/utils';
+
+import { Restaurant } from '../types';
 
 type FavoritesPageProps = {
   total: number;

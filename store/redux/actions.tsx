@@ -1,4 +1,5 @@
-import { Restaurant, BreadcrumbsData } from '@helpers/types';
+import { Restaurant } from '@components/pages/types';
+import { BreadcrumbsData } from '@components/core/types';
 
 export const addFavorite = (favorite: Restaurant) => ({
   type: 'ADD_FAVORITE',

@@ -27,9 +27,10 @@ import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
 } from '../../../helpers/utils';
-import { EntityType, Restaurant } from '../../../helpers/types';
 
 import { getRestaurants } from '../../../services';
+
+import { EntityType, Restaurant } from '../../pages/types';
 
 type FinderProps = {
   className?: string;

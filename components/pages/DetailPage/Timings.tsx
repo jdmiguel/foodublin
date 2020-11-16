@@ -6,7 +6,7 @@ import {
   StyledTimmingSchedule,
 } from './styles';
 
-import { Timming } from '../../../helpers/types';
+import { Timming } from '../types';
 
 type TimingsProps = {
   timmings: Timming[];

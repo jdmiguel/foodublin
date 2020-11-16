@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import {
   NextPage,
   InferGetServerSidePropsType,
@@ -8,15 +7,11 @@ import {
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-
 import { useSelector, useDispatch } from 'react-redux';
 
 import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
-
 import { FullLoader } from '@components/ui/FullLoader/FullLoader';
-
 import { Loader } from '@components/core/Loader/Loader';
-
 import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
 
 import {
@@ -25,19 +20,19 @@ import {
   deleteFavorite,
 } from '@store/redux/actions';
 import { InitialAppState } from '@store/redux/types';
-
 import { DEFAULT_TEXT_LOADING } from '@store/statics';
+
+import { getFormattedUrlText } from '@helpers/utils';
+
+import { getRestaurant, getReviews } from '@services/index';
+
 import {
   RestaurantDetail,
   Review,
   RawReview,
   Restaurant,
-} from '@helpers/types';
-import { getFormattedUrlText } from '@helpers/utils';
-
-import { getRestaurant, getReviews } from '@services/index';
-
-import { BreadcrumbsType } from '../../../components/core/types';
+} from '@components/pages/types';
+import { BreadcrumbsType } from '@components/core/types';
 
 type DetailProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 

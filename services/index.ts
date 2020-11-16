@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 import { BASE_URL } from '../store/statics';
-import { RestaurantsRequestParams } from '../helpers/types';
+import { RestaurantsRequestParams } from '@components/pages/types';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {

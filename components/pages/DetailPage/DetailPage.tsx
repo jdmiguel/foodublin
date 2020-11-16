@@ -4,7 +4,6 @@ import { LazyImage } from 'react-lazy-images';
 import { Layout } from '../../layouts/Layout/Layout';
 
 import { Title } from '../../core/Title/Title';
-
 import { BlockText } from '../../core/BlockText/BlockText';
 import { Rating } from '../../core/Rating/Rating';
 
@@ -31,17 +30,13 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import {
-  RestaurantDetail,
-  Restaurant,
-  Review,
-  Timming,
-} from '../../../helpers/types';
 import { getFormattedUrlText } from '../../../helpers/utils';
 import {
   DETAIL_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '../../../store/statics';
+
+import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
   data: RestaurantDetail;

@@ -13,7 +13,7 @@ import {
 
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '../../../store/statics';
 
-import { Restaurant } from '../../../helpers/types';
+import { Restaurant } from '../../pages/types';
 import { CardType } from '../types';
 
 export type AutocompleteProps = {

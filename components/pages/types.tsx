@@ -1,9 +1,5 @@
 import { ReactNode } from 'react';
 
-// Core / ui components
-
-// Restaurant data
-
 export type Location = {
   id: number;
   name: string;

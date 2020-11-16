@@ -1,24 +1,15 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
-
 import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-
 import { useDispatch } from 'react-redux';
 
 import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
-
 import { FullLoader } from '@components/ui/FullLoader/FullLoader';
-
 import { Loader } from '@components/core/Loader/Loader';
-
 import { useWindowMeasurement } from '@components/hooks/useWindowMeasurement';
 import { useScroll } from '@components/hooks/useScroll';
 import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
-
-import { setRelatedRestaurants } from '@store/redux/actions';
-
-import { getRestaurants } from '@services/index';
 
 import {
   DEFAULT_TEXT_LOADING,
@@ -31,19 +22,23 @@ import {
   MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
   SCROLL_DELAY,
-} from '../../../store/statics';
+} from '@store/statics';
+import { setRelatedRestaurants } from '@store/redux/actions';
+
+import {
+  getFormattedUrlText,
+  getCurrentRelatedRestaurants,
+} from '@helpers/utils';
+
+import { getRestaurants } from '@services/index';
+
+import { ListItem, BreadcrumbsType } from '@components/core/types';
 import {
   Restaurant,
   RawRestaurant,
   EntityType,
   Location,
-} from '../../../helpers/types';
-import {
-  getFormattedUrlText,
-  getCurrentRelatedRestaurants,
-} from '../../../helpers/utils';
-
-import { ListItem, BreadcrumbsType } from '../../../components/core/types';
+} from '@components/pages/types';
 
 export enum LocationType {
   CITY = 'city',
