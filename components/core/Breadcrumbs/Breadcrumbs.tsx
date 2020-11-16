@@ -9,7 +9,8 @@ import {
 } from './styles';
 
 import { DEFAULT_TEXT_LOADING } from '../../../store/statics';
-import { BreadcrumbsData } from '../../../helpers/types';
+
+import { BreadcrumbsData } from '../types';
 
 type BreadcrumbsProps = {
   breadcrumbsData: BreadcrumbsData[];

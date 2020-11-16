@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addBreadcrumbs, replaceBreadcrumbs } from '../../store/redux/actions';
 import { InitialAppState } from '../../store/redux/types';
 
-import { BreadcrumbsData } from '../../helpers/types';
+import { BreadcrumbsData } from '../core/types';
 
 export const useBreadcrumbs = (
   currentBreadcrumbs: BreadcrumbsData,
