@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Dispatch } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
@@ -30,17 +30,14 @@ import {
 
 import { getRestaurants } from '@/services/index';
 
-import { EntityType, Restaurant } from '../../pages/types';
+import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
 type FinderProps = {
   className?: string;
 };
 
 export const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions]: [
-    Restaurant[] | undefined,
-    Dispatch<any[]>,
-  ] = useState();
+  const [suggestions, setSuggestions] = useState<Restaurant[]>();
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
@@ -65,17 +62,19 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
       });
 
       if (status === 200) {
-        const restaurants = data.restaurants.map((restaurant: any) => ({
-          id: restaurant.restaurant.id,
-          imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-          title: restaurant.restaurant.name,
-          content: restaurant.restaurant.location.locality,
-          route: '/detail/[id]/[name]',
-          asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
-            restaurant.restaurant.name,
-            true,
-          )}`,
-        }));
+        const restaurants = data.restaurants.map(
+          (restaurant: RawRestaurant) => ({
+            id: restaurant.restaurant.id,
+            imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+            title: restaurant.restaurant.name,
+            content: restaurant.restaurant.location.locality,
+            route: '/detail/[id]/[name]',
+            asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
+              restaurant.restaurant.name,
+              true,
+            )}`,
+          }),
+        );
 
         setSuggestions(restaurants);
         setIsAutocompleteLoading(false);

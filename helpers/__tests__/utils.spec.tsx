@@ -18,6 +18,8 @@ import {
 
 import { LOCATIONS } from '../../store/statics';
 
+import { Restaurant } from '../../components/pages/types';
+
 describe('compose', () => {
   it('should be equal to mocked text', () => {
     const expectedText = 'fxbuckley';
@@ -119,17 +121,20 @@ describe('getCurrentRelatedRestaurants', () => {
       RELATED_RESTAURANTS_MOCKED[4].id,
     );
 
-    const arrayComparator = (accumulator, currentValue) => {
-      accumulator = RELATED_RESTAURANTS_MOCKED.some(
+    const restaurantsComparator = (
+      isEqual: boolean,
+      restaurant: Restaurant,
+    ) => {
+      isEqual = RELATED_RESTAURANTS_MOCKED.some(
         (relatedRestaurantMocked) =>
-          relatedRestaurantMocked.id === currentValue.id,
+          relatedRestaurantMocked.id === restaurant.id,
       );
 
-      return accumulator;
+      return isEqual;
     };
 
     const isMatchedCurrentRelatedRestaurants = currentRelatedRestaurants.reduce(
-      arrayComparator,
+      restaurantsComparator,
       false,
     );
 

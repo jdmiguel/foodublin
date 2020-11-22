@@ -11,7 +11,7 @@ import appReducer from '@/store/redux/reducer';
 import { InitialAppState } from '@/store/redux/types';
 import { DEFAULT_BREADCRUMB } from '@/store/statics';
 
-import '@helpers/Grid/Grid.scss';
+import '@/helpers/Grid/Grid.scss';
 import { GlobalStyles } from '@/helpers/GlobalStylesHelper';
 import { theme } from '@/helpers/Theme';
 
