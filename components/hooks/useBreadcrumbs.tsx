@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addBreadcrumbs, replaceBreadcrumbs } from '../../store/redux/actions';
-import { InitialAppState } from '../../store/redux/types';
+import { addBreadcrumbs, replaceBreadcrumbs } from '@/store/redux/actions';
+import { InitialAppState } from '@/store/redux/types';
 
 import { BreadcrumbsData } from '../core/types';
 

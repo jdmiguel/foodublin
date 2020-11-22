@@ -4,25 +4,25 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useDispatch } from 'react-redux';
 
-import { FullLoader } from '@components/ui/FullLoader/FullLoader';
-import { Loader } from '@components/core/Loader/Loader';
-import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
+import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
+import { Loader } from '@/components/core/Loader/Loader';
+import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 
-import { setRelatedRestaurants } from '@store/redux/actions';
+import { setRelatedRestaurants } from '@/store/redux/actions';
 import {
   DEFAULT_TEXT_LOADING,
   DEFAULT_BREADCRUMB,
   HIGHLIGHTED_RESTAURANTS,
-} from '@store/statics';
+} from '@/store/statics';
 
-import { getCurrentRelatedRestaurants } from '@helpers/utils';
+import { getCurrentRelatedRestaurants } from '@/helpers/utils';
 
-import { HighlightRestaurant } from '@components/pages/types';
+import { HighlightRestaurant } from '@/components/pages/types';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const DynamicHomePage = dynamic(
-  () => import('@components/pages/HomePage/HomePage'),
+  () => import('@/components/pages/HomePage/HomePage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (

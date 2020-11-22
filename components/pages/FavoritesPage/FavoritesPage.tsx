@@ -10,12 +10,9 @@ import {
   StyledCardsWrapper,
 } from './styles';
 
-import {
-  THUMB_GENERIC_SRC,
-  DEFAULT_TEXT_LOADING,
-} from '../../../store/statics';
+import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
-import { getTitleText } from '../../../helpers/utils';
+import { getTitleText } from '@/helpers/utils';
 
 import { Restaurant } from '../types';
 

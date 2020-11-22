@@ -12,7 +12,7 @@ import {
   StyledReviewText,
 } from './styles';
 
-import { THUMB_GENERIC_SRC } from '../../../store/statics';
+import { THUMB_GENERIC_SRC } from '@/store/statics';
 
 type ReviewCardProps = {
   userImgSrc: string;

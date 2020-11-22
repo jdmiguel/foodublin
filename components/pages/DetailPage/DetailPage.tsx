@@ -30,11 +30,8 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import { getFormattedUrlText } from '../../../helpers/utils';
-import {
-  DETAIL_GENERIC_SRC,
-  DEFAULT_TEXT_LOADING,
-} from '../../../store/statics';
+import { getFormattedUrlText } from '@/helpers/utils';
+import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
 import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 

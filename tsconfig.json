@@ -24,12 +24,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@components/*":["components/*"], 
-      "@store/*":["store/*"], 
-      "@services/*":["services/*"], 
-      "@helpers/*":["helpers/*"], 
+      "@/components/*":["./components/*"], 
+      "@/store/*":["./store/*"], 
+      "@/services/*":["./services/*"], 
+      "@/helpers/*":["./helpers/*"], 
     }
   },
   "exclude": [

@@ -1,5 +1,5 @@
-import { Restaurant } from '@components/pages/types';
-import { BreadcrumbsData } from '@components/core/types';
+import { Restaurant } from '@/components/pages/types';
+import { BreadcrumbsData } from '@/components/core/types';
 
 export type InitialAppState = {
   favorites: Restaurant[];

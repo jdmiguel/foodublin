@@ -13,6 +13,12 @@ module.exports = {
     '!helpers/polyfills.ts',
     '!helpers/GlobalStylesHelper.ts',
   ],
+  moduleNameMapper: {
+    '^@/components(.*)$': '<rootDir>/components$1',
+    '^@/store(.*)$': '<rootDir>/store$1',
+    '^@/helpers(.*)$': '<rootDir>/helpers$1',
+    '^@/services(.*)$': '<rootDir>/services$1',
+  },
   testMatch: ['**/__tests__/**/*.spec.ts?(x)'],
   testURL: 'http://localhost',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

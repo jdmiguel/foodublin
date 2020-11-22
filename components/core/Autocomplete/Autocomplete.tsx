@@ -11,7 +11,7 @@ import {
   StyledListboxItem,
 } from './styles/autocomplete';
 
-import { PlaceholderText, DEFAULT_TEXT_LOADING } from '../../../store/statics';
+import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
 import { Restaurant } from '../../pages/types';
 import { CardType } from '../types';

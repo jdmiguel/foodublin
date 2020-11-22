@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useDispatch } from 'react-redux';
 
-import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
-import { FullLoader } from '@components/ui/FullLoader/FullLoader';
-import { Loader } from '@components/core/Loader/Loader';
-import { useWindowMeasurement } from '@components/hooks/useWindowMeasurement';
-import { useScroll } from '@components/hooks/useScroll';
-import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
+import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
+import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
+import { Loader } from '@/components/core/Loader/Loader';
+import { useWindowMeasurement } from '@/components/hooks/useWindowMeasurement';
+import { useScroll } from '@/components/hooks/useScroll';
+import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 
 import {
   DEFAULT_TEXT_LOADING,
@@ -22,23 +22,23 @@ import {
   MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
   SCROLL_DELAY,
-} from '@store/statics';
-import { setRelatedRestaurants } from '@store/redux/actions';
+} from '@/store/statics';
+import { setRelatedRestaurants } from '@/store/redux/actions';
 
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
-} from '@helpers/utils';
+} from '@/helpers/utils';
 
-import { getRestaurants } from '@services/index';
+import { getRestaurants } from '@/services/index';
 
-import { ListItem, BreadcrumbsType } from '@components/core/types';
+import { ListItem, BreadcrumbsType } from '@/components/core/types';
 import {
   Restaurant,
   RawRestaurant,
   EntityType,
   Location,
-} from '@components/pages/types';
+} from '@/components/pages/types';
 
 export enum LocationType {
   CITY = 'city',
@@ -61,7 +61,7 @@ type CustomGetStaticPropsContext = GetStaticPropsContext & {
 };
 
 const DynamicSearchPage = dynamic(
-  () => import('@components/pages/SearchPage/SearchPage'),
+  () => import('@/components/pages/SearchPage/SearchPage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (

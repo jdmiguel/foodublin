@@ -1,4 +1,4 @@
-import { Restaurant } from '@components/pages/types';
+import { Restaurant } from '@/components/pages/types';
 
 // GENERAL UTILS
 

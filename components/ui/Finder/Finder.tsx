@@ -14,7 +14,7 @@ import {
   StyledButton,
 } from './styles';
 
-import { setRelatedRestaurants } from '../../../store/redux/actions';
+import { setRelatedRestaurants } from '@/store/redux/actions';
 
 import {
   DUBLIN_ID,
@@ -22,13 +22,13 @@ import {
   CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
-} from '../../../store/statics';
+} from '@/store/statics';
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
-} from '../../../helpers/utils';
+} from '@/helpers/utils';
 
-import { getRestaurants } from '../../../services';
+import { getRestaurants } from '@/services/index';
 
 import { EntityType, Restaurant } from '../../pages/types';
 

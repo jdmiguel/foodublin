@@ -8,10 +8,7 @@ import { useScroll } from '../../hooks/useScroll';
 
 import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
 
-import {
-  SCROLL_DELAY,
-  SHOWING_SCROLLUP_BUTTON_HEIGHT,
-} from '../../../store/statics';
+import { SCROLL_DELAY, SHOWING_SCROLLUP_BUTTON_HEIGHT } from '@/store/statics';
 
 type LayoutProps = {
   children: ReactNode;

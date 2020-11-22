@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fadeAnimation } from '../../../helpers/animations';
+import { fadeAnimation } from '@/helpers/animations';
 
 import { LoaderType } from '../../core/types';
 
