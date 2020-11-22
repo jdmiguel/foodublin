@@ -14,9 +14,9 @@ import {
   THIRD_DETAIL_MOCKED,
   FOURTH_DETAIL_MOCKED,
   RELATED_RESTAURANTS_MOCKED,
-} from '@/components/pages/DetailPage/__mocks__/detailpage.mocks';
+} from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
 
-import { LOCATIONS } from '@/store/statics';
+import { LOCATIONS } from '../../store/statics';
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {
