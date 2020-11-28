@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 import { BASE_URL } from '@/store/statics';
 import {
+  RestaurantsRequestParam,
   RestaurantsRequestParams,
   RawRestaurantDetail,
   RawRestaurant,
@@ -32,12 +33,11 @@ export const getRestaurants = async (
   status: number;
 }> => {
   const currentParams = Object.entries(params).reduce(
-    (acc: any, next: any[]) => {
-      const [key, value] = next;
+    (params: any, [key, value]: [string, RestaurantsRequestParam]) => {
       if (value) {
-        acc[key] = value;
+        params[key] = value;
       }
-      return acc;
+      return params;
     },
     {},
   );

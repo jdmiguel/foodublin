@@ -56,7 +56,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
     const { rawRestaurants, status } = await getRestaurants({
       entity_id: DUBLIN_ID,
       entity_type: EntityType.CITY,
-      cuisines: 0,
+      cuisines: null,
       q: search,
     });
 

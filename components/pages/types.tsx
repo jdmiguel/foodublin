@@ -17,6 +17,8 @@ export enum EntityType {
   SUBZONE = 'subzone',
 }
 
+export type RestaurantsRequestParam = number | null | string | undefined;
+
 export type RestaurantsRequestParams = {
   entity_id: number | null;
   cuisines: number | null;
