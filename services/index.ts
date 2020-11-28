@@ -1,7 +1,13 @@
 import axios, { AxiosError } from 'axios';
 
-import { BASE_URL } from '../helpers/staticData';
-import { RestaurantsRequestParams } from '../helpers/types';
+import { BASE_URL } from '@/store/statics';
+import {
+  RestaurantsRequestParam,
+  RestaurantsRequestParams,
+  RawRestaurantDetail,
+  RawRestaurant,
+  RawReview,
+} from '@/components/pages/types';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -21,14 +27,17 @@ const handleApiError = (error: AxiosError) => {
 
 export const getRestaurants = async (
   params: RestaurantsRequestParams,
-): Promise<any> => {
+): Promise<{
+  rawRestaurants: RawRestaurant[];
+  total: number;
+  status: number;
+}> => {
   const currentParams = Object.entries(params).reduce(
-    (acc: any, next: any[]) => {
-      const [key, value] = next;
+    (params: any, [key, value]: [string, RestaurantsRequestParam]) => {
       if (value) {
-        acc[key] = value;
+        params[key] = value;
       }
-      return acc;
+      return params;
     },
     {},
   );
@@ -43,13 +52,19 @@ export const getRestaurants = async (
       params: currentParams,
     });
 
-    return { data: response.data, status: response.status };
+    return {
+      rawRestaurants: response.data.restaurants,
+      total: response.data.results_found,
+      status: response.status,
+    };
   } catch (error) {
     return handleApiError(error);
   }
 };
 
-export const getRestaurant = async (res_id: number): Promise<any> => {
+export const getRestaurant = async (
+  res_id: number,
+): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
   try {
     const response = await axios(`${BASE_URL}restaurant`, {
       method: 'GET',
@@ -62,13 +77,15 @@ export const getRestaurant = async (res_id: number): Promise<any> => {
       },
     });
 
-    return { data: response.data, status: response.status };
+    return { rawRestaurantDetail: response.data, status: response.status };
   } catch (error) {
     return handleApiError(error);
   }
 };
 
-export const getReviews = async (res_id: number): Promise<any> => {
+export const getReviews = async (
+  res_id: number,
+): Promise<{ rawReviews: RawReview[]; status: number }> => {
   try {
     const response = await axios(`${BASE_URL}reviews`, {
       method: 'GET',
@@ -81,7 +98,7 @@ export const getReviews = async (res_id: number): Promise<any> => {
       },
     });
 
-    return { data: response.data, status: response.status };
+    return { rawReviews: response.data.user_reviews, status: response.status };
   } catch (error) {
     return handleApiError(error);
   }

@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
-import { StyledFavoritesPage, StyledCardsWrapper } from './styles';
+import {
+  StyledFavoritesPage,
+  StyledTitleLoading,
+  StyledCardsWrapper,
+} from './styles';
 
-import { THUMB_GENERIC_SRC } from '../../../helpers/staticData';
-import { Restaurant } from '../../../helpers/types';
-import { getTitleText } from '../../../helpers/utils';
+import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
+
+import { getTitleText } from '@/helpers/utils';
+
+import { Restaurant } from '../types';
 
 type FavoritesPageProps = {
   total: number;
@@ -21,14 +27,23 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   restaurants,
   clickRestaurant,
 }) => {
+  const [isLoading, setIsloading] = useState(true);
   const { totalText, restaurantText } = getTitleText(total);
+
+  useEffect(() => {
+    setIsloading(false);
+  }, []);
 
   return (
     <Layout isExtendedFooter={true}>
       <StyledFavoritesPage className="grid-container">
-        <Title
-          text={`${totalText} ${restaurantText} saved in your favorites`}
-        />
+        {isLoading ? (
+          <StyledTitleLoading>{DEFAULT_TEXT_LOADING}</StyledTitleLoading>
+        ) : (
+          <Title
+            text={`${totalText} ${restaurantText} saved in your favorites`}
+          />
+        )}
         <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
           {restaurants.map((restaurant) => (
             <div

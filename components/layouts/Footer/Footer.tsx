@@ -14,7 +14,7 @@ import {
   StyledText,
 } from './styles';
 
-import { InitialAppState } from '../../../helpers/types';
+import { InitialAppState } from '@/store/redux/types';
 
 type FooterProps = {
   showVeil?: boolean;

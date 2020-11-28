@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import reducer from '../../../../store/reducer';
+import reducer from '../../../../store/redux/reducer';
 
 import { theme } from '../../../../helpers/Theme';
 

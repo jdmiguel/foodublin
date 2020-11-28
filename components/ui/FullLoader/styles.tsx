@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { LoaderType } from '../../../helpers/types';
-import { fadeAnimation } from '../../../helpers/animations';
+import { fadeAnimation } from '@/helpers/animations';
+
+import { LoaderType } from '../../core/types';
 
 const FullCircleLoaderWrapperCSS = css`
   display: flex;

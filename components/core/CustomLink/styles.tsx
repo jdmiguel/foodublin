@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { CustomLinkSize } from '../../../helpers/types';
+import { CustomLinkSize } from '../types';
 
 const disabledCSS = css`
   pointer-events: none;

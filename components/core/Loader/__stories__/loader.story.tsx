@@ -5,7 +5,7 @@ import { text, select } from '@storybook/addon-knobs';
 
 import { Loader } from '../Loader';
 
-import { LoaderType, LoaderMode } from '../../../../helpers/types';
+import { LoaderType, LoaderMode } from '../../types';
 
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 

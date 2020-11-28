@@ -6,7 +6,7 @@
 const Modal = require('react-modal');
 
 const oldFn = Modal.setAppElement;
-Modal.setAppElement = element => {
+Modal.setAppElement = (element) => {
   if (element === '#__next') {
     // otherwise it will throw aria warnings.
     return oldFn(document.createElement('div'));

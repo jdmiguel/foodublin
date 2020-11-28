@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LazyImage } from 'react-lazy-images';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
 import { Title } from '../../core/Title/Title';
-
 import { BlockText } from '../../core/BlockText/BlockText';
 import { Rating } from '../../core/Rating/Rating';
 
@@ -31,14 +30,10 @@ import {
   StyledRelatedRestaurants,
 } from './styles';
 
-import {
-  RestaurantDetail,
-  Restaurant,
-  Review,
-  Timming,
-} from '../../../helpers/types';
-import { getFormattedUrlText } from '../../../helpers/utils';
-import { DETAIL_GENERIC_SRC } from '../../../helpers/staticData';
+import { getFormattedUrlText } from '@/helpers/utils';
+import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
+
+import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
   data: RestaurantDetail;
@@ -94,6 +89,11 @@ const DetailPage: React.FC<DetailPageProps> = ({
   onClickRelatedRestaurant,
 }) => {
   const [isSaved, setIsSaved] = useState(isFavorite);
+  const [isLoading, setIsloading] = useState(true);
+
+  useEffect(() => {
+    setIsloading(false);
+  }, []);
 
   const cuisinesList = cuisines.split(',');
 
@@ -106,12 +106,18 @@ const DetailPage: React.FC<DetailPageProps> = ({
     <StyledOverlay>
       <StyledName>{name}</StyledName>
       <StyledLocation>{location}</StyledLocation>
-      <StyledButton onClick={clickSaveButton}>
-        <i className="material-icons">{`${
-          isSaved ? 'favorite' : 'favorite_border'
-        }`}</i>
-        {`${isSaved ? 'saved' : 'unsaved'}`}
-      </StyledButton>
+      {isLoading ? (
+        <StyledButton onClick={clickSaveButton}>
+          {DEFAULT_TEXT_LOADING}
+        </StyledButton>
+      ) : (
+        <StyledButton onClick={clickSaveButton}>
+          <i className="material-icons">{`${
+            isSaved ? 'favorite' : 'favorite_border'
+          }`}</i>
+          {`${isSaved ? 'saved' : 'unsaved'}`}
+        </StyledButton>
+      )}
     </StyledOverlay>
   );
 

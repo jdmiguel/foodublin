@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-import { CardType } from '../../../helpers/types';
+import { CardType } from '../types';
 
 const CardTextCSS = css`
   text-overflow: ellipsis;

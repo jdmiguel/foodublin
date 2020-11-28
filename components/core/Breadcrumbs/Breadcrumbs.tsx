@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   StyledBreadcrumbsLoading,
@@ -8,8 +8,9 @@ import {
   StyledArrow,
 } from './styles';
 
-import { DEFAULT_TEXT_LOADING } from '../../../helpers/staticData';
-import { BreadcrumbsData } from '../../../helpers/types';
+import { DEFAULT_TEXT_LOADING } from '@/store/statics';
+
+import { BreadcrumbsData } from '../types';
 
 type BreadcrumbsProps = {
   breadcrumbsData: BreadcrumbsData[];

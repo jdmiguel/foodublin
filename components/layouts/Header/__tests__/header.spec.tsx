@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { render, fireEvent } from '@testing-library/react';
 
-import reducer from '../../../../store/reducer';
+import reducer from '../../../../store/redux/reducer';
 
 import { Header } from '../Header';
 

@@ -15,7 +15,10 @@ import {
   FOURTH_DETAIL_MOCKED,
   RELATED_RESTAURANTS_MOCKED,
 } from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
-import { LOCATIONS } from '../staticData';
+
+import { LOCATIONS } from '../../store/statics';
+
+import { Restaurant } from '../../components/pages/types';
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {
@@ -118,17 +121,20 @@ describe('getCurrentRelatedRestaurants', () => {
       RELATED_RESTAURANTS_MOCKED[4].id,
     );
 
-    const arrayComparator = (accumulator, currentValue) => {
-      accumulator = RELATED_RESTAURANTS_MOCKED.some(
+    const restaurantsComparator = (
+      isEqual: boolean,
+      restaurant: Restaurant,
+    ) => {
+      isEqual = RELATED_RESTAURANTS_MOCKED.some(
         (relatedRestaurantMocked) =>
-          relatedRestaurantMocked.id === currentValue.id,
+          relatedRestaurantMocked.id === restaurant.id,
       );
 
-      return accumulator;
+      return isEqual;
     };
 
     const isMatchedCurrentRelatedRestaurants = currentRelatedRestaurants.reduce(
-      arrayComparator,
+      restaurantsComparator,
       false,
     );
 

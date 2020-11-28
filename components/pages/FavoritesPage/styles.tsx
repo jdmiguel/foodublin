@@ -12,6 +12,15 @@ export const StyledFavoritesPage = styled.div`
   }
 `;
 
+export const StyledTitleLoading = styled.h3`
+  font-size: 1rem;
+  font-weight: 300;
+  color: ${({ theme }) => theme.palette.DARK_SOFT};
+  @media only screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
 export const StyledCardsWrapper = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;

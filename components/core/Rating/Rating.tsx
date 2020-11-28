@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledRankStarsWrapper, StyledRankStar, StyledText } from './styles';
 
-import { DEFAULT_RATING_STAR_LIST } from '../../../helpers/staticData';
+import { DEFAULT_RATING_STAR_LIST } from '@/store/statics';
 
 type RatingStar = {
   id: number;

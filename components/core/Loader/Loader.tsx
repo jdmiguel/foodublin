@@ -8,7 +8,7 @@ import {
   StyledLineLoaderShape,
 } from './styles';
 
-import { LoaderMode, LoaderType } from '../../../helpers/types';
+import { LoaderMode, LoaderType } from '../types';
 
 type LoaderProps = {
   className?: string;

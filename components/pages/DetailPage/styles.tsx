@@ -153,7 +153,9 @@ export const StyledAddressWrapper = styled.div`
 `;
 
 export const StyledRelatedRestaurants = styled.div`
-  margin-top: 2px;
+  @media only screen and (max-width: 1024px) {
+    margin-top: 50px;
+  }
 `;
 
 // Highlights
@@ -197,7 +199,7 @@ export const StyledTimmingSchedule = styled.p`
 
 // Reviews
 
-export const StyledReviewsWrapper = styled.p`
+export const StyledReviewsWrapper = styled.div`
   @media only screen and (min-width: 1024px) {
     padding-right: 30px;
   }

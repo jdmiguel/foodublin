@@ -14,7 +14,7 @@ import {
   StyledCustomLinkText,
 } from './styles';
 
-import { CustomLinkSize, LogoSize } from '../../../helpers/types';
+import { CustomLinkSize, LogoSize } from '../../core/types';
 
 type HeaderProps = {
   claimTxt: string;

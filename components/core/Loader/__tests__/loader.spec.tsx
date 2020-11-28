@@ -6,7 +6,8 @@ import { Loader } from '../Loader';
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { LoaderType, LoaderMode } from '../../../../helpers/types';
+
+import { LoaderType, LoaderMode } from '../../types';
 
 describe('Component: Loader', () => {
   it('should render as circle type and dark mode', () => {

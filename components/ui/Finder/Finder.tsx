@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Dispatch } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
@@ -14,7 +14,7 @@ import {
   StyledButton,
 } from './styles';
 
-import { setRelatedRestaurants } from '../../../store/actions';
+import { setRelatedRestaurants } from '@/store/redux/actions';
 
 import {
   DUBLIN_ID,
@@ -22,24 +22,22 @@ import {
   CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
-} from '../../../helpers/staticData';
+} from '@/store/statics';
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
-} from '../../../helpers/utils';
-import { EntityType, Restaurant } from '../../../helpers/types';
+} from '@/helpers/utils';
 
-import { getRestaurants } from '../../../services';
+import { getRestaurants } from '@/services/index';
+
+import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
 type FinderProps = {
   className?: string;
 };
 
 export const Finder: React.FC<FinderProps> = ({ className }) => {
-  const [suggestions, setSuggestions]: [
-    Restaurant[] | undefined,
-    Dispatch<any[]>,
-  ] = useState();
+  const [suggestions, setSuggestions] = useState<Restaurant[]>();
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
@@ -52,58 +50,53 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const router = useRouter();
 
-  const fetchSuggestions = useCallback(
-    async (search: string) => {
-      setIsAutocompleteLoading(true);
+  const fetchSuggestions = async (search: string) => {
+    setIsAutocompleteLoading(true);
 
-      const { data, status } = await getRestaurants({
-        entity_id: DUBLIN_ID,
-        entity_type: EntityType.CITY,
-        cuisines: 0,
-        q: search,
-      });
+    const { rawRestaurants, status } = await getRestaurants({
+      entity_id: DUBLIN_ID,
+      entity_type: EntityType.CITY,
+      cuisines: null,
+      q: search,
+    });
 
-      if (status === 200) {
-        const restaurants = data.restaurants.map((restaurant: any) => ({
-          id: restaurant.restaurant.id,
-          imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-          title: restaurant.restaurant.name,
-          content: restaurant.restaurant.location.locality,
+    if (status === 200) {
+      const formattedRestaurants = rawRestaurants.map(
+        (rawRestaurant: RawRestaurant) => ({
+          id: rawRestaurant.restaurant.id,
+          imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+          title: rawRestaurant.restaurant.name,
+          content: rawRestaurant.restaurant.location.locality,
           route: '/detail/[id]/[name]',
-          asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
-            restaurant.restaurant.name,
-            true,
-          )}`,
-        }));
+          asRoute: `/detail/${
+            rawRestaurant.restaurant.id
+          }/${getFormattedUrlText(rawRestaurant.restaurant.name, true)}`,
+        }),
+      );
 
-        setSuggestions(restaurants);
-        setIsAutocompleteLoading(false);
-      }
-    },
-    [setIsAutocompleteLoading, setSuggestions],
-  );
+      setSuggestions(formattedRestaurants);
+      setIsAutocompleteLoading(false);
+    }
+  };
 
-  const selectSuggestion = useCallback(
-    (id: number, name: string) => {
-      const path = getFormattedUrlText(name, true);
+  const selectSuggestion = (id: number, name: string) => {
+    const path = getFormattedUrlText(name, true);
 
-      if (
-        Array.isArray(suggestions) &&
-        suggestions.length > MIN_RESTAURANTS_LIST
-      ) {
-        const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-          suggestions,
-          id,
-        );
+    if (
+      Array.isArray(suggestions) &&
+      suggestions.length > MIN_RESTAURANTS_LIST
+    ) {
+      const currentRelatedRestaurants = getCurrentRelatedRestaurants(
+        suggestions,
+        id,
+      );
 
-        dispatch(setRelatedRestaurants(currentRelatedRestaurants));
-      }
+      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+    }
 
-      setIsButtonLoading(true);
-      router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
-    },
-    [suggestions],
-  );
+    setIsButtonLoading(true);
+    router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
+  };
 
   const handleButtonClick = () => {
     if (!isButtonLoading) {

@@ -5,7 +5,7 @@ import { ReviewCard } from '../ReviewCard';
 
 import { REVIEW_CARD_PROPS_MOCKS } from '../__mocks__/reviewCard.mocks';
 
-import { renderWithTheme } from '../../../../helpers/Theme';
+import { renderWithTheme } from '@/helpers/Theme';
 
 describe('Component: ReviewCard', () => {
   it('should render', () => {

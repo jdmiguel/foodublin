@@ -1,24 +1,15 @@
 import React, { useRef, useState, useEffect, Dispatch } from 'react';
-
 import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-
 import { useDispatch } from 'react-redux';
 
-import ErrorPage from '@components/pages/ErrorPage/ErrorPage';
-
-import { FullLoader } from '@components/ui/FullLoader/FullLoader';
-
-import { Loader } from '@components/core/Loader/Loader';
-
-import { useWindowMeasurement } from '@components/hooks/useWindowMeasurement';
-import { useScroll } from '@components/hooks/useScroll';
-import { useBreadcrumbs } from '@components/hooks/useBreadcrumbs';
-
-import { setRelatedRestaurants } from '@store/actions';
-
-import { getRestaurants } from '@services/index';
+import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
+import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
+import { Loader } from '@/components/core/Loader/Loader';
+import { useWindowMeasurement } from '@/components/hooks/useWindowMeasurement';
+import { useScroll } from '@/components/hooks/useScroll';
+import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 
 import {
   DEFAULT_TEXT_LOADING,
@@ -31,19 +22,23 @@ import {
   MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
   SCROLL_DELAY,
-} from '../../../helpers/staticData';
-import {
-  ListItem,
-  Restaurant,
-  RawRestaurant,
-  EntityType,
-  BreadcrumbsType,
-  Location,
-} from '../../../helpers/types';
+} from '@/store/statics';
+import { setRelatedRestaurants } from '@/store/redux/actions';
+
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
-} from '../../../helpers/utils';
+} from '@/helpers/utils';
+
+import { getRestaurants } from '@/services/index';
+
+import { ListItem, BreadcrumbsType } from '@/components/core/types';
+import {
+  Restaurant,
+  RawRestaurant,
+  EntityType,
+  Location,
+} from '@/components/pages/types';
 
 export enum LocationType {
   CITY = 'city',
@@ -66,7 +61,7 @@ type CustomGetStaticPropsContext = GetStaticPropsContext & {
 };
 
 const DynamicSearchPage = dynamic(
-  () => import('@components/pages/SearchPage/SearchPage'),
+  () => import('@/components/pages/SearchPage/SearchPage'),
   {
     // eslint-disable-next-line react/display-name
     loading: () => (
@@ -112,7 +107,7 @@ const handleGetRestaurants = async (
   sort?: string,
   order?: string,
 ) => {
-  const { data, status } = await getRestaurants({
+  const { rawRestaurants, total, status } = await getRestaurants({
     entity_id: locationId,
     entity_type:
       locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
@@ -122,11 +117,11 @@ const handleGetRestaurants = async (
     order,
   });
   if (status === 200) {
-    const restaurants = selectRestaurants(data.restaurants);
+    const restaurants = selectRestaurants(rawRestaurants);
 
     return {
       restaurants: restaurants(getRefinedRestaurant),
-      total: data.results_found,
+      total,
     };
   }
 
