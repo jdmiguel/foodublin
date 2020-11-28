@@ -107,7 +107,7 @@ const handleGetRestaurants = async (
   sort?: string,
   order?: string,
 ) => {
-  const { data, status } = await getRestaurants({
+  const { rawRestaurants, total, status } = await getRestaurants({
     entity_id: locationId,
     entity_type:
       locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
@@ -117,11 +117,11 @@ const handleGetRestaurants = async (
     order,
   });
   if (status === 200) {
-    const restaurants = selectRestaurants(data.restaurants);
+    const restaurants = selectRestaurants(rawRestaurants);
 
     return {
       restaurants: restaurants(getRefinedRestaurant),
-      total: data.results_found,
+      total,
     };
   }
 

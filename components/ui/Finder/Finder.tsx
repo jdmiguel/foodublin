@@ -54,7 +54,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
     async (search: string) => {
       setIsAutocompleteLoading(true);
 
-      const { data, status } = await getRestaurants({
+      const { rawRestaurants, status } = await getRestaurants({
         entity_id: DUBLIN_ID,
         entity_type: EntityType.CITY,
         cuisines: 0,
@@ -62,21 +62,20 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
       });
 
       if (status === 200) {
-        const restaurants = data.restaurants.map(
-          (restaurant: RawRestaurant) => ({
-            id: restaurant.restaurant.id,
-            imgSrc: restaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-            title: restaurant.restaurant.name,
-            content: restaurant.restaurant.location.locality,
+        const formattedRestaurants = rawRestaurants.map(
+          (rawRestaurant: RawRestaurant) => ({
+            id: rawRestaurant.restaurant.id,
+            imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+            title: rawRestaurant.restaurant.name,
+            content: rawRestaurant.restaurant.location.locality,
             route: '/detail/[id]/[name]',
-            asRoute: `/detail/${restaurant.restaurant.id}/${getFormattedUrlText(
-              restaurant.restaurant.name,
-              true,
-            )}`,
+            asRoute: `/detail/${
+              rawRestaurant.restaurant.id
+            }/${getFormattedUrlText(rawRestaurant.restaurant.name, true)}`,
           }),
         );
 
-        setSuggestions(restaurants);
+        setSuggestions(formattedRestaurants);
         setIsAutocompleteLoading(false);
       }
     },

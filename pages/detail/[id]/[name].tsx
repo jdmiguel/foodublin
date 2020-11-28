@@ -135,32 +135,32 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
 export const getServerSideProps = async ({
   params: { id },
 }: CustomGetServerSidePropsContext) => {
-  const { data, status } = await getRestaurant(id);
-  const { data: reviewsData, status: reviewsStatus } = await getReviews(id);
+  const { rawRestaurantDetail, status } = await getRestaurant(id);
+  const { rawReviews, status: reviewsStatus } = await getReviews(id);
 
   let filteredData: RestaurantDetail | null = null;
   let currentReviewsData: Review[] | null = null;
 
   if (status === 200) {
     filteredData = {
-      imgSrc: data.featured_image,
-      thumbSrc: data.thumb,
-      name: data.name,
-      location: data.location.locality,
-      cuisines: data.cuisines,
-      timings: data.timings,
-      rating: data.user_rating.aggregate_rating,
-      votes: data.user_rating.votes,
-      average: data.average_cost_for_two,
-      establishment: data.establishment[0],
-      highlights: data.highlights,
-      phone: data.phone_numbers,
-      address: data.location.address,
+      imgSrc: rawRestaurantDetail.featured_image,
+      thumbSrc: rawRestaurantDetail.thumb,
+      name: rawRestaurantDetail.name,
+      location: rawRestaurantDetail.location.locality,
+      cuisines: rawRestaurantDetail.cuisines,
+      timings: rawRestaurantDetail.timings,
+      rating: rawRestaurantDetail.user_rating.aggregate_rating,
+      votes: rawRestaurantDetail.user_rating.votes,
+      average: rawRestaurantDetail.average_cost_for_two,
+      establishment: rawRestaurantDetail.establishment[0],
+      highlights: rawRestaurantDetail.highlights,
+      phone: rawRestaurantDetail.phone_numbers,
+      address: rawRestaurantDetail.location.address,
     };
   }
 
   if (reviewsStatus === 200) {
-    const reviews = selectReviews(reviewsData.user_reviews);
+    const reviews = selectReviews(rawReviews);
     currentReviewsData = reviews(getRefinedReview);
   }
 
