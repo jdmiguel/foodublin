@@ -36,7 +36,7 @@ import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
-  data: RestaurantDetail;
+  detail: RestaurantDetail;
   reviews: Review[] | null;
   isFavorite: boolean;
   relatedRestaurants: Restaurant[];
@@ -68,7 +68,7 @@ export const getMapSrc = (name: string, location: string) => {
 };
 
 const DetailPage: React.FC<DetailPageProps> = ({
-  data: {
+  detail: {
     imgSrc,
     name,
     location,
@@ -179,12 +179,12 @@ const DetailPage: React.FC<DetailPageProps> = ({
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
-              <div className="cell small-12">
-                <StyledSectionBlock>
-                  <StyledReviewsWrapper>
-                    <StyledBlockTitle text="Reviews" />
-                    {reviews &&
-                      reviews.map((review) => (
+              {reviews && reviews.length > 0 && (
+                <div className="cell small-12">
+                  <StyledSectionBlock>
+                    <StyledReviewsWrapper>
+                      <StyledBlockTitle text="Reviews" />
+                      {reviews.map((review) => (
                         <ReviewCard
                           key={review.id}
                           userImgSrc={review.userImgSrc}
@@ -194,9 +194,10 @@ const DetailPage: React.FC<DetailPageProps> = ({
                           text={review.text}
                         />
                       ))}
-                  </StyledReviewsWrapper>
-                </StyledSectionBlock>
-              </div>
+                    </StyledReviewsWrapper>
+                  </StyledSectionBlock>
+                </div>
+              )}
             </div>
             <div className="cell small-12 large-5">
               <StyledAddressWrapper className="paper">

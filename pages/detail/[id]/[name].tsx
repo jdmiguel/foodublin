@@ -79,8 +79,8 @@ const selectReviews = (rawReviews: RawReview[]) => (
   formattedFuntion: (rawReview: RawReview) => Review,
 ) => rawReviews.map((rawReview) => formattedFuntion(rawReview));
 
-const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
-  if (!data) {
+const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
+  if (!detail) {
     return <ErrorPage />;
   }
 
@@ -100,11 +100,11 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
   }, [id]);
 
   const handleSaveButton = (action: string) => {
-    const favorite = getRefinedRestaurant(id, data);
+    const favorite = getRefinedRestaurant(id, detail);
     dispatch(action === 'save' ? addFavorite(favorite) : deleteFavorite(id));
   };
 
-  const { name, imgSrc } = data;
+  const { name, imgSrc } = detail;
   const detailBreadcrumbs = {
     text: name,
     route: '/detail/[id]/[name]',
@@ -119,8 +119,8 @@ const Detail: NextPage<DetailProps> = ({ data, reviewsData, id }) => {
         <link rel="preload" as="image" href={imgSrc} />
       </Head>
       <DynamicDetailPage
-        data={data}
-        reviews={reviewsData}
+        detail={detail}
+        reviews={reviews}
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
@@ -138,11 +138,11 @@ export const getServerSideProps = async ({
   const { rawRestaurantDetail, status } = await getRestaurant(id);
   const { rawReviews, status: reviewsStatus } = await getReviews(id);
 
-  let filteredData: RestaurantDetail | null = null;
-  let currentReviewsData: Review[] | null = null;
+  let formattedRestaurantDetail: RestaurantDetail | null = null;
+  let formattedReviews: Review[] | null = null;
 
   if (status === 200) {
-    filteredData = {
+    formattedRestaurantDetail = {
       imgSrc: rawRestaurantDetail.featured_image,
       thumbSrc: rawRestaurantDetail.thumb,
       name: rawRestaurantDetail.name,
@@ -152,7 +152,7 @@ export const getServerSideProps = async ({
       rating: rawRestaurantDetail.user_rating.aggregate_rating,
       votes: rawRestaurantDetail.user_rating.votes,
       average: rawRestaurantDetail.average_cost_for_two,
-      establishment: rawRestaurantDetail.establishment[0],
+      establishment: rawRestaurantDetail.establishment[0] || '',
       highlights: rawRestaurantDetail.highlights,
       phone: rawRestaurantDetail.phone_numbers,
       address: rawRestaurantDetail.location.address,
@@ -160,14 +160,14 @@ export const getServerSideProps = async ({
   }
 
   if (reviewsStatus === 200) {
-    const reviews = selectReviews(rawReviews);
-    currentReviewsData = reviews(getRefinedReview);
+    const currentReviews = selectReviews(rawReviews);
+    formattedReviews = currentReviews(getRefinedReview);
   }
 
   return {
     props: {
-      data: filteredData,
-      reviewsData: currentReviewsData,
+      detail: formattedRestaurantDetail,
+      reviews: formattedReviews,
       id,
     },
   };
