@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
@@ -50,59 +50,53 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const router = useRouter();
 
-  const fetchSuggestions = useCallback(
-    async (search: string) => {
-      setIsAutocompleteLoading(true);
+  const fetchSuggestions = async (search: string) => {
+    setIsAutocompleteLoading(true);
 
-      const { rawRestaurants, status } = await getRestaurants({
-        entity_id: DUBLIN_ID,
-        entity_type: EntityType.CITY,
-        cuisines: 0,
-        q: search,
-      });
+    const { rawRestaurants, status } = await getRestaurants({
+      entity_id: DUBLIN_ID,
+      entity_type: EntityType.CITY,
+      cuisines: 0,
+      q: search,
+    });
 
-      if (status === 200) {
-        const formattedRestaurants = rawRestaurants.map(
-          (rawRestaurant: RawRestaurant) => ({
-            id: rawRestaurant.restaurant.id,
-            imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-            title: rawRestaurant.restaurant.name,
-            content: rawRestaurant.restaurant.location.locality,
-            route: '/detail/[id]/[name]',
-            asRoute: `/detail/${
-              rawRestaurant.restaurant.id
-            }/${getFormattedUrlText(rawRestaurant.restaurant.name, true)}`,
-          }),
-        );
+    if (status === 200) {
+      const formattedRestaurants = rawRestaurants.map(
+        (rawRestaurant: RawRestaurant) => ({
+          id: rawRestaurant.restaurant.id,
+          imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+          title: rawRestaurant.restaurant.name,
+          content: rawRestaurant.restaurant.location.locality,
+          route: '/detail/[id]/[name]',
+          asRoute: `/detail/${
+            rawRestaurant.restaurant.id
+          }/${getFormattedUrlText(rawRestaurant.restaurant.name, true)}`,
+        }),
+      );
 
-        setSuggestions(formattedRestaurants);
-        setIsAutocompleteLoading(false);
-      }
-    },
-    [setIsAutocompleteLoading, setSuggestions],
-  );
+      setSuggestions(formattedRestaurants);
+      setIsAutocompleteLoading(false);
+    }
+  };
 
-  const selectSuggestion = useCallback(
-    (id: number, name: string) => {
-      const path = getFormattedUrlText(name, true);
+  const selectSuggestion = (id: number, name: string) => {
+    const path = getFormattedUrlText(name, true);
 
-      if (
-        Array.isArray(suggestions) &&
-        suggestions.length > MIN_RESTAURANTS_LIST
-      ) {
-        const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-          suggestions,
-          id,
-        );
+    if (
+      Array.isArray(suggestions) &&
+      suggestions.length > MIN_RESTAURANTS_LIST
+    ) {
+      const currentRelatedRestaurants = getCurrentRelatedRestaurants(
+        suggestions,
+        id,
+      );
 
-        dispatch(setRelatedRestaurants(currentRelatedRestaurants));
-      }
+      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
+    }
 
-      setIsButtonLoading(true);
-      router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
-    },
-    [suggestions],
-  );
+    setIsButtonLoading(true);
+    router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
+  };
 
   const handleButtonClick = () => {
     if (!isButtonLoading) {
