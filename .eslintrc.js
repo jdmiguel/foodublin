@@ -8,6 +8,9 @@ module.exports = {
     module: 'readonly',
     require: 'readonly',
     process: 'readonly',
+    describe: 'readonly',
+    it: 'readonly',
+    cy: 'readonly',
   },
   extends: [
     'eslint:recommended',
