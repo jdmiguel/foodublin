@@ -9,6 +9,8 @@ module.exports = {
     require: 'readonly',
     process: 'readonly',
     describe: 'readonly',
+    context: 'readonly',
+    beforeEach: 'readonly',
     it: 'readonly',
     cy: 'readonly',
   },

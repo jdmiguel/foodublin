@@ -17,7 +17,7 @@ type HomePageProps = {
 
 const HomePage: React.FC<HomePageProps> = ({ highlights, clickHighlight }) => (
   <Layout isExtendedHeader={true} isExtendedFooter={true}>
-    <StyledHighlights className="grid-container">
+    <StyledHighlights data-testid="highlights" className="grid-container">
       <Title text="Featured restaurants" />
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
         {highlights.map((restaurant) => (
