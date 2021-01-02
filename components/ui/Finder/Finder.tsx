@@ -109,7 +109,7 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
   };
 
   return (
-    <StyledFinder className={className}>
+    <StyledFinder data-testid="finder" className={className}>
       {isMobile ? (
         <StyledAutocompleteMobile
           suggestions={suggestions || []}
