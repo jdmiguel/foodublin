@@ -11,6 +11,7 @@ module.exports = {
     describe: 'readonly',
     context: 'readonly',
     beforeEach: 'readonly',
+    afterEach: 'readonly',
     it: 'readonly',
     cy: 'readonly',
   },
