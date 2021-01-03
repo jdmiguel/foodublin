@@ -30,7 +30,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   return isLoading ? (
     <StyledBreadcrumbsLoading>{DEFAULT_TEXT_LOADING}</StyledBreadcrumbsLoading>
   ) : (
-    <StyledBreadcrumbsWrapper>
+    <StyledBreadcrumbsWrapper data-testid="breadcrumbs">
       {breadcrumbsData.map((breadcrumbData, itemIndex, items) => {
         const isLast = itemIndex === items.length - 1;
         return (
