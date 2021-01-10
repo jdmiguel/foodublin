@@ -27,7 +27,9 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **install dependencies**: Execute _yarn_
 - **run local server**: Execute _yarn dev_
 - **create production files**: Execute _yarn start_
+- **run storybook**: Execute _yarn storybook_
 - **run test suites**: Execute _yarn test_
+- **run cypress suites**: Execute _cy:run_
 
 ### API
 
