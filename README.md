@@ -8,7 +8,6 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **NEXT.JS**
 - **REDUX**
 - **TYPESCRIPT**
-- **REDUX**
 - **STORYBOOK**
 - **STYLED-COMPONENTS**
 - **JEST**
