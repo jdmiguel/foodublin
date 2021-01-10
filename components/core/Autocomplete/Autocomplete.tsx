@@ -66,7 +66,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleInputBlur = () => {
     !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
-    blurDelay.current = setTimeout(() => {
+    blurDelay.current = window.setTimeout(() => {
       setIsListboxFocused(false);
     }, 100);
   };

@@ -25,7 +25,7 @@ export const useScroll = (
 
     const handleScroll = () => {
       if (delay && throttleTimeout === null) {
-        throttleTimeout = setTimeout(callBack, delay);
+        throttleTimeout = window.setTimeout(callBack, delay);
       }
     };
 
