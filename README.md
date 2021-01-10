@@ -1,4 +1,4 @@
-## Foodublin
+# Foodublin
 
 Web application to find restaurants in Dublin by filtering by name, cuisine or/and Dublin areas and get interesting details about them such as contact info, rating, and opinions. Furthermore, it allows to save restaurants as favorites.
 
