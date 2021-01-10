@@ -1,8 +1,8 @@
-### Foodublin
+## Foodublin
 
 Web application to find restaurants in Dublin by filtering by name, cuisine or/and Dublin areas and get interesting details about them such as contact info, rating, and opinions. Furthermore, it allows to save restaurants as favorites.
 
-## TECHNOLOGIES
+### TECHNOLOGIES
 
 - **REACT**
 - **NEXT.JS**
@@ -21,7 +21,7 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **HUSKY**
 - **LINTSTAGED**
 
-## SETUP
+### SETUP
 
 - **clone repo**: In your folder, open a new terminal and clone the repo
 - **install dependencies**: Execute _yarn_
@@ -29,6 +29,6 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **create production files**: Execute _yarn start_
 - **run test suites**: Execute _yarn test_
 
-## API
+### API
 
 The [ZOMATO API](https://developers.zomato.com/documentation#/) was used in this project to get restaurants information.
