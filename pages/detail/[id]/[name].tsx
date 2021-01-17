@@ -80,11 +80,16 @@ const selectReviews = (rawReviews: RawReview[]) => (
 ) => rawReviews.map((rawReview) => formattedFuntion(rawReview));
 
 const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
-  if (!detail) {
-    return <ErrorPage />;
-  }
-
   const [isNavigating, setIsNavigating] = useState(false);
+
+  if (!detail) {
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
+  }
 
   const { favorites, relatedRestaurants } = useSelector(
     (state: InitialAppState) => state,

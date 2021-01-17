@@ -139,8 +139,15 @@ const Search: NextPage<SearchProps> = ({
   restaurants,
   total,
 }) => {
+  const [isNavigating, setIsNavigating] = useState(false);
+
   if (!restaurants) {
-    return <ErrorPage />;
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
   }
 
   const loadedRestaurantsRef = useRef(0);
@@ -156,7 +163,6 @@ const Search: NextPage<SearchProps> = ({
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -285,7 +291,12 @@ const Search: NextPage<SearchProps> = ({
   useBreadcrumbs(searchBreadcrumbs, 'search');
 
   if (onError) {
-    return <ErrorPage />;
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
   }
 
   return (
