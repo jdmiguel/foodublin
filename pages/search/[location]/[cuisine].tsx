@@ -117,7 +117,7 @@ const handleGetRestaurants = async (
     order,
   });
   if (status === 200) {
-    const restaurants = selectRestaurants(rawRestaurants);
+    const restaurants = selectRestaurants(rawRestaurants) || [];
 
     return {
       restaurants: restaurants(getRefinedRestaurant),
