@@ -188,7 +188,7 @@ exports[`Component: Loader should render as line type 1`] = `
 .c1 {
   display: block;
   width: 100%;
-  height: 7px;
+  height: 5px;
   background: #EC7E00;
   -webkit-animation: kDpYdX 1s ease-in-out infinite forwards;
   animation: kDpYdX 1s ease-in-out infinite forwards;
