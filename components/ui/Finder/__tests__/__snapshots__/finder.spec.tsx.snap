@@ -532,6 +532,7 @@ exports[`Component: Finder should render 1`] = `
 
 <div
   class="c0"
+  data-testid="finder"
 >
   <div
     class="c1 c2"

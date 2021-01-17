@@ -20,7 +20,7 @@ type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
   onClickBreadcrumb: (route: string, asRoute: string) => void;
-  onClickFavorites: (route: string) => void;
+  onClickFavorites: () => void;
 };
 
 export const Footer: React.FC<FooterProps> = ({
@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({
               breadcrumbsData={breadcrumbs || []}
               onClickBreadcrumb={onClickBreadcrumb}
             />
-            <StyledCustomLink onClick={() => onClickFavorites('/favorites')}>
+            <StyledCustomLink onClick={onClickFavorites}>
               <i className="material-icons">bookmarks</i>FAVORITES
             </StyledCustomLink>
           </StyledNavFooter>

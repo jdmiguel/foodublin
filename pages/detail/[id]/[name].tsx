@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   NextPage,
   InferGetServerSidePropsType,
@@ -80,8 +80,15 @@ const selectReviews = (rawReviews: RawReview[]) => (
 ) => rawReviews.map((rawReview) => formattedFuntion(rawReview));
 
 const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
+  const [isNavigating, setIsNavigating] = useState(false);
+
   if (!detail) {
-    return <ErrorPage />;
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
   }
 
   const { favorites, relatedRestaurants } = useSelector(
@@ -127,6 +134,8 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
         onClickRelatedRestaurant={(route: string, asRoute: string) =>
           router.push(route, asRoute)
         }
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
       />
     </>
   );
