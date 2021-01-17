@@ -915,6 +915,7 @@ exports[`Component: Header should render extended Header 1`] = `
       </h2>
       <div
         class="c7"
+        data-testid="finder"
       >
         <div
           class="c8 c9"

@@ -18,7 +18,11 @@ test('default layout can be passed a child', () => {
   const { getByText } = render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Layout isExtendedHeader={false} isExtendedFooter={false}>
+        <Layout
+          isExtendedHeader={false}
+          isExtendedFooter={false}
+          onNavigate={() => {}}
+        >
           <div>
             <h1>Hello World</h1>
           </div>

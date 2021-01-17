@@ -156,6 +156,7 @@ const Search: NextPage<SearchProps> = ({
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -295,9 +296,11 @@ const Search: NextPage<SearchProps> = ({
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
       onClickCard={handleClickCard}
-      isLoading={isLoadingByFilter}
+      isLoadingByFilter={isLoadingByFilter}
       isLoadingByScroll={isLoadingByScroll}
+      isNavigating={isNavigating}
       showWarning={showWarning}
+      onNavigate={() => setIsNavigating(true)}
     />
   );
 };

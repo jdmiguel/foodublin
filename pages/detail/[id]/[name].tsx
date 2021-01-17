@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   NextPage,
   InferGetServerSidePropsType,
@@ -84,6 +84,8 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
     return <ErrorPage />;
   }
 
+  const [isNavigating, setIsNavigating] = useState(false);
+
   const { favorites, relatedRestaurants } = useSelector(
     (state: InitialAppState) => state,
   );
@@ -127,6 +129,8 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
         onClickRelatedRestaurant={(route: string, asRoute: string) =>
           router.push(route, asRoute)
         }
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
       />
     </>
   );

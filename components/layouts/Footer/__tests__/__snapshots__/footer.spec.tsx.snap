@@ -352,6 +352,7 @@ exports[`Component: Footer should render the extended version 1`] = `
     >
       <div
         class="c3"
+        data-testid="breadcrumbs"
       />
       <a
         class="c4 c5"

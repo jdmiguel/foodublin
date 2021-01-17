@@ -15,6 +15,7 @@ type LayoutProps = {
   isExtendedHeader?: boolean;
   isExtendedFooter?: boolean;
   showFooterVeil?: boolean;
+  onNavigate: (route: string) => void;
 };
 
 export const Layout = ({
@@ -22,6 +23,7 @@ export const Layout = ({
   isExtendedHeader = false,
   isExtendedFooter = false,
   showFooterVeil = false,
+  onNavigate,
 }: LayoutProps) => {
   const [scrollUpButtonIsShowed, setScrollUpButtonIsShowed] = useState(false);
 
@@ -41,6 +43,12 @@ export const Layout = ({
     });
   };
 
+  const handleNavigation = (route: string, asRoute?: string) => {
+    onNavigate(route);
+
+    router.push(route, asRoute && asRoute);
+  };
+
   const router = useRouter();
 
   return (
@@ -49,23 +57,17 @@ export const Layout = ({
         bgImgSrc="/images/food.jpg"
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
-        onClickLogo={(route: string) => {
-          router.push(route);
-        }}
-        onClickFavorites={(route: string) => {
-          router.push(route);
-        }}
+        onClickLogo={() => handleNavigation('/')}
+        onClickFavorites={() => handleNavigation('/favorites')}
       />
       <StyledMain>{children}</StyledMain>
       <Footer
         showVeil={showFooterVeil}
         isExtended={isExtendedFooter}
         onClickBreadcrumb={(route: string, asRoute: string) =>
-          router.push(route, asRoute)
+          handleNavigation(route, asRoute)
         }
-        onClickFavorites={(route: string) => {
-          router.push(route);
-        }}
+        onClickFavorites={() => handleNavigation('/favorites')}
       />
       <StyledScrollUpButton
         fullWidth={false}

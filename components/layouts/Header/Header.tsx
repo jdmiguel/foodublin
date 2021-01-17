@@ -20,8 +20,8 @@ type HeaderProps = {
   claimTxt: string;
   bgImgSrc?: string | undefined;
   isExtended?: boolean;
-  onClickLogo: (route: string) => void;
-  onClickFavorites: (route: string) => void;
+  onClickLogo: () => void;
+  onClickFavorites: () => void;
 };
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   <StyledHeader data-testid="header" bgImg={bgImgSrc} isExtended={isExtended}>
     <StyledOverlay isExtended={isExtended}>
       <StyledHeaderContent isExtended={isExtended}>
-        <CustomLink onClick={() => onClickLogo('/')}>
+        <CustomLink onClick={onClickLogo}>
           <Logo
             size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
             logoSrc={'/images/logo.svg'}
@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
         {!isExtended && (
           <StyledCustomLink
             size={CustomLinkSize.BIG}
-            onClick={() => onClickFavorites('/favorites')}
+            onClick={onClickFavorites}
           >
             <i className="material-icons">bookmarks</i>
             <StyledCustomLinkText>FAVORITES</StyledCustomLinkText>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
@@ -27,14 +27,18 @@ const DynamicFavoritesPage = dynamic(
   },
 );
 
+const favoriteRoute = '/favorites';
+
 const Favorites = () => {
+  const [isNavigating, setIsNavigating] = useState(false);
+
   const router = useRouter();
 
   const { favorites } = useSelector((state: InitialAppState) => state);
   const favoritesBreadcrumbs = {
     text: 'Favorites',
-    route: '/favorites',
-    asRoute: '/favorites',
+    route: favoriteRoute,
+    asRoute: favoriteRoute,
     type: BreadcrumbsType.FAVORITES,
   };
   useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
@@ -45,6 +49,10 @@ const Favorites = () => {
       restaurants={favorites}
       clickRestaurant={(route: string, asRoute: string) =>
         router.push(route, asRoute)
+      }
+      isNavigating={isNavigating}
+      onNavigate={(route?: string) =>
+        route !== favoriteRoute && setIsNavigating(true)
       }
     />
   );

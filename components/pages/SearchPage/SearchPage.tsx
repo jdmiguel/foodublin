@@ -33,9 +33,11 @@ type SearchPageProps = {
   restaurants: Restaurant[];
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: (id: number, route: string, asRoute: string) => void;
-  isLoading: boolean;
+  isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
+  isNavigating: boolean;
   showWarning: boolean;
+  onNavigate: () => void;
 };
 
 const SearchPage: React.FC<SearchPageProps> = ({
@@ -45,19 +47,28 @@ const SearchPage: React.FC<SearchPageProps> = ({
   restaurants,
   onClickFilter,
   onClickCard,
-  isLoading,
+  isLoadingByFilter,
   isLoadingByScroll,
   showWarning,
+  isNavigating,
+  onNavigate,
 }) => {
   const { totalText, restaurantText } = getTitleText(total);
 
   return (
-    <Layout isExtendedFooter={true} showFooterVeil={isLoadingByScroll}>
+    <Layout
+      isExtendedFooter={true}
+      showFooterVeil={isLoadingByScroll}
+      onNavigate={onNavigate}
+    >
       <StyledSearchPage className="grid-container">
-        <FullLoader isShowed={isLoading}>
+        <FullLoader isShowed={isLoadingByFilter}>
           <Loader text={DEFAULT_TEXT_LOADING} />
         </FullLoader>
-        <FullLoader isShowed={isLoadingByScroll} type={LoaderType.LINE}>
+        <FullLoader
+          isShowed={isLoadingByScroll || isNavigating}
+          type={LoaderType.LINE}
+        >
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         <Title
@@ -79,13 +90,14 @@ const SearchPage: React.FC<SearchPageProps> = ({
                 imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                 title={restaurant.title}
                 content={restaurant.content}
-                onClick={() =>
+                onClick={() => {
+                  onNavigate();
                   onClickCard(
                     restaurant.id,
                     restaurant.route,
                     restaurant.asRoute,
-                  )
-                }
+                  );
+                }}
               />
             </div>
           ))}

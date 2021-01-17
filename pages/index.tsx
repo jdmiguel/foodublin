@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
@@ -33,7 +33,10 @@ const DynamicHomePage = dynamic(
   },
 );
 
+const homeRoute = '/';
+
 const index: NextPage<HomeProps> = ({ highlights }) => {
+  const [isNavigating, setIsNavigating] = useState(false);
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -55,6 +58,10 @@ const index: NextPage<HomeProps> = ({ highlights }) => {
     <DynamicHomePage
       clickHighlight={handleClickHighlight}
       highlights={highlights}
+      isNavigating={isNavigating}
+      onNavigate={(route: string) =>
+        route !== homeRoute && setIsNavigating(true)
+      }
     />
   );
 };

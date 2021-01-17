@@ -4,6 +4,10 @@ import { Card } from '../../core/Card/Card';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
+
+import { Loader } from '../../core/Loader/Loader';
+
 import {
   StyledFavoritesPage,
   StyledTitleLoading,
@@ -14,18 +18,23 @@ import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
 import { getTitleText } from '@/helpers/utils';
 
+import { LoaderType } from '../../core/types';
 import { Restaurant } from '../types';
 
 type FavoritesPageProps = {
   total: number;
   restaurants: Restaurant[];
   clickRestaurant: (route: string, asRoute: string) => void;
+  isNavigating: boolean;
+  onNavigate: (route?: string) => void;
 };
 
 const FavoritesPage: React.FC<FavoritesPageProps> = ({
   total,
   restaurants,
   clickRestaurant,
+  isNavigating,
+  onNavigate,
 }) => {
   const [isLoading, setIsloading] = useState(true);
   const { totalText, restaurantText } = getTitleText(total);
@@ -35,8 +44,11 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   }, []);
 
   return (
-    <Layout isExtendedFooter={true}>
+    <Layout isExtendedFooter={true} onNavigate={onNavigate}>
       <StyledFavoritesPage className="grid-container">
+        <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+          <Loader type={LoaderType.LINE} />
+        </FullLoader>
         {isLoading ? (
           <StyledTitleLoading>{DEFAULT_TEXT_LOADING}</StyledTitleLoading>
         ) : (
@@ -54,9 +66,10 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
                 imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                 title={restaurant.title}
                 content={restaurant.content}
-                onClick={() =>
-                  clickRestaurant(restaurant.route, restaurant.asRoute)
-                }
+                onClick={() => {
+                  onNavigate();
+                  clickRestaurant(restaurant.route, restaurant.asRoute);
+                }}
               />
             </div>
           ))}

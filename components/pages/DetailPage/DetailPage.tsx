@@ -3,6 +3,9 @@ import { LazyImage } from 'react-lazy-images';
 
 import { Layout } from '../../layouts/Layout/Layout';
 
+import { FullLoader } from '../../ui/FullLoader/FullLoader';
+
+import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { BlockText } from '../../core/BlockText/BlockText';
 import { Rating } from '../../core/Rating/Rating';
@@ -33,6 +36,7 @@ import {
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
+import { LoaderType } from '../../core/types';
 import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
@@ -42,6 +46,8 @@ type DetailPageProps = {
   relatedRestaurants: Restaurant[];
   onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: (route: string, asRoute: string) => void;
+  isNavigating: boolean;
+  onNavigate: () => void;
 };
 
 export const getTimmings = (timmingsStr: string) =>
@@ -87,6 +93,8 @@ const DetailPage: React.FC<DetailPageProps> = ({
   relatedRestaurants,
   onClickSaveButton,
   onClickRelatedRestaurant,
+  onNavigate,
+  isNavigating,
 }) => {
   const [isSaved, setIsSaved] = useState(isFavorite);
   const [isLoading, setIsloading] = useState(true);
@@ -142,8 +150,11 @@ const DetailPage: React.FC<DetailPageProps> = ({
   };
 
   return (
-    <Layout isExtendedFooter={true}>
+    <Layout isExtendedFooter={true} onNavigate={onNavigate}>
       <StyledDetailPage className="grid-container">
+        <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+          <Loader type={LoaderType.LINE} />
+        </FullLoader>
         {getJumbotron(imgSrc)}
         <StyledInformation>
           <Title text="Relevant information" />
