@@ -22,17 +22,15 @@ import { LoaderType } from '../../core/types';
 import { Restaurant } from '../types';
 
 type FavoritesPageProps = {
-  total: number;
   restaurants: Restaurant[];
-  clickRestaurant: (route: string, asRoute: string) => void;
+  total: number;
   isNavigating: boolean;
-  onNavigate: (route?: string) => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 const FavoritesPage: React.FC<FavoritesPageProps> = ({
   total,
   restaurants,
-  clickRestaurant,
   isNavigating,
   onNavigate,
 }) => {
@@ -67,8 +65,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
                 title={restaurant.title}
                 content={restaurant.content}
                 onClick={() => {
-                  onNavigate();
-                  clickRestaurant(restaurant.route, restaurant.asRoute);
+                  onNavigate(restaurant.route, restaurant.asRoute);
                 }}
               />
             </div>

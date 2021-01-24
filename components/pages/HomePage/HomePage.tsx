@@ -15,9 +15,9 @@ import { HighlightRestaurant } from '../types';
 
 type HomePageProps = {
   highlights: HighlightRestaurant[];
-  clickHighlight: (id: number, route: string, asRoute: string) => void;
   isNavigating: boolean;
-  onNavigate: (route?: string) => void;
+  clickHighlight: (id: number, route: string, asRoute: string) => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 const HomePage: React.FC<HomePageProps> = ({
@@ -29,7 +29,7 @@ const HomePage: React.FC<HomePageProps> = ({
   <Layout
     isExtendedHeader={true}
     isExtendedFooter={true}
-    onNavigate={() => onNavigate('/')}
+    onNavigate={onNavigate}
   >
     <StyledHighlights data-testid="highlights" className="grid-container">
       <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
@@ -45,7 +45,6 @@ const HomePage: React.FC<HomePageProps> = ({
               content={restaurant.content}
               type={CardType.HIGHLIGHT}
               onClick={() => {
-                onNavigate();
                 clickHighlight(
                   restaurant.id,
                   restaurant.route,

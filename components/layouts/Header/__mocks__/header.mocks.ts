@@ -3,4 +3,5 @@ export const HEADER_TEXT_MOCKS = {
   claimTxt: 'Mocked claim text',
   onClickLogo: () => {},
   onClickFavorites: () => {},
+  onNavigationFromFinder: () => {},
 };

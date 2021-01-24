@@ -276,6 +276,7 @@ const Search: NextPage<SearchProps> = ({
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }
 
+    setIsNavigating(true);
     router.push(route, asRoute);
   };
 
@@ -311,7 +312,10 @@ const Search: NextPage<SearchProps> = ({
       isLoadingByScroll={isLoadingByScroll}
       isNavigating={isNavigating}
       showWarning={showWarning}
-      onNavigate={() => setIsNavigating(true)}
+      onNavigate={(route: string, asRoute?: string) => {
+        setIsNavigating(true);
+        router.push(route, asRoute && asRoute);
+      }}
     />
   );
 };

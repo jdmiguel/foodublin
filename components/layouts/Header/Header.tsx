@@ -20,6 +20,7 @@ type HeaderProps = {
   claimTxt: string;
   bgImgSrc?: string | undefined;
   isExtended?: boolean;
+  onNavigationFromFinder: (route: string, asRoute: string) => void;
   onClickLogo: () => void;
   onClickFavorites: () => void;
 };
@@ -30,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
   isExtended = false,
   onClickLogo,
   onClickFavorites,
+  onNavigationFromFinder,
 }) => (
   <StyledHeader data-testid="header" bgImg={bgImgSrc} isExtended={isExtended}>
     <StyledOverlay isExtended={isExtended}>
@@ -43,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
         <StyledHeaderClaim isExtended={isExtended}>
           {claimTxt}
         </StyledHeaderClaim>
-        {isExtended && <Finder />}
+        {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
         {!isExtended && (
           <StyledCustomLink
             size={CustomLinkSize.BIG}

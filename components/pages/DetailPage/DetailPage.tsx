@@ -41,13 +41,13 @@ import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
   detail: RestaurantDetail;
+  relatedRestaurants: Restaurant[];
   reviews: Review[] | null;
   isFavorite: boolean;
-  relatedRestaurants: Restaurant[];
+  isNavigating: boolean;
   onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: (route: string, asRoute: string) => void;
-  isNavigating: boolean;
-  onNavigate: () => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 export const getTimmings = (timmingsStr: string) =>

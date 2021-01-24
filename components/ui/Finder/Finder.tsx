@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
 
@@ -34,9 +33,10 @@ import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
 type FinderProps = {
   className?: string;
+  onNavigation: (route: string, asRoute: string) => void;
 };
 
-export const Finder: React.FC<FinderProps> = ({ className }) => {
+export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   const [suggestions, setSuggestions] = useState<Restaurant[]>();
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
@@ -47,8 +47,6 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const { width } = useWindowMeasurement();
   const isMobile = width < 768;
-
-  const router = useRouter();
 
   const fetchSuggestions = async (search: string) => {
     setIsAutocompleteLoading(true);
@@ -81,6 +79,8 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
 
   const selectSuggestion = (id: number, name: string) => {
     const path = getFormattedUrlText(name, true);
+    const route = '/detail/[id]/[name]';
+    const asRoute = `/detail/${id}/${path}`;
 
     if (
       Array.isArray(suggestions) &&
@@ -95,16 +95,16 @@ export const Finder: React.FC<FinderProps> = ({ className }) => {
     }
 
     setIsButtonLoading(true);
-    router.push('/detail/[id]/[name]', `/detail/${id}/${path}`);
+    onNavigation(route, asRoute);
   };
 
   const handleButtonClick = () => {
     if (!isButtonLoading) {
+      const route = '/search/[location]/[cuisine]';
+      const asRoute = `/search/${currentLocationPath}/${currentCuisinePath}`;
+
       setIsButtonLoading(true);
-      router.push(
-        '/search/[location]/[cuisine]',
-        `/search/${currentLocationPath}/${currentCuisinePath}`,
-      );
+      onNavigation(route, asRoute);
     }
   };
 
