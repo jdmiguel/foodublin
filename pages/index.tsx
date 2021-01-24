@@ -49,6 +49,7 @@ const index: NextPage<HomeProps> = ({ highlights }) => {
 
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
 
+    setIsNavigating(true);
     router.push(route, asRoute);
   };
 
@@ -59,9 +60,10 @@ const index: NextPage<HomeProps> = ({ highlights }) => {
       clickHighlight={handleClickHighlight}
       highlights={highlights}
       isNavigating={isNavigating}
-      onNavigate={(route: string) =>
-        route !== homeRoute && setIsNavigating(true)
-      }
+      onNavigate={(route: string, asRoute?: string) => {
+        route !== homeRoute && setIsNavigating(true);
+        router.push(route, asRoute && asRoute);
+      }}
     />
   );
 };

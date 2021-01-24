@@ -135,7 +135,10 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
           router.push(route, asRoute)
         }
         isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
+        onNavigate={(route: string, asRoute?: string) => {
+          setIsNavigating(true);
+          router.push(route, asRoute && asRoute);
+        }}
       />
     </>
   );

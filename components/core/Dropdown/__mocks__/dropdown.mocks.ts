@@ -38,6 +38,7 @@ export const DROPDOWN_PROPS_MOCK = {
   labelTxt: 'Select any option',
   list: LIST_MOCK,
   disabled: false,
+  isReset: false,
   onSelect: () => {},
   onClear: () => {},
 };

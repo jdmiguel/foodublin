@@ -1,5 +1,4 @@
 import React, { useState, ReactNode } from 'react';
-import { useRouter } from 'next/router';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -15,7 +14,7 @@ type LayoutProps = {
   isExtendedHeader?: boolean;
   isExtendedFooter?: boolean;
   showFooterVeil?: boolean;
-  onNavigate: (route: string) => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 export const Layout = ({
@@ -43,31 +42,24 @@ export const Layout = ({
     });
   };
 
-  const handleNavigation = (route: string, asRoute?: string) => {
-    onNavigate(route);
-
-    router.push(route, asRoute && asRoute);
-  };
-
-  const router = useRouter();
-
   return (
     <StyledLayout>
       <Header
         bgImgSrc="/images/food.jpg"
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
-        onClickLogo={() => handleNavigation('/')}
-        onClickFavorites={() => handleNavigation('/favorites')}
+        onClickLogo={() => onNavigate('/')}
+        onClickFavorites={() => onNavigate('/favorites')}
+        onNavigationFromFinder={onNavigate}
       />
       <StyledMain>{children}</StyledMain>
       <Footer
         showVeil={showFooterVeil}
         isExtended={isExtendedFooter}
         onClickBreadcrumb={(route: string, asRoute: string) =>
-          handleNavigation(route, asRoute)
+          onNavigate(route, asRoute)
         }
-        onClickFavorites={() => handleNavigation('/favorites')}
+        onClickFavorites={() => onNavigate('/favorites')}
       />
       <StyledScrollUpButton
         fullWidth={false}

@@ -47,13 +47,11 @@ const Favorites = () => {
     <DynamicFavoritesPage
       total={favorites.length}
       restaurants={favorites}
-      clickRestaurant={(route: string, asRoute: string) =>
-        router.push(route, asRoute)
-      }
       isNavigating={isNavigating}
-      onNavigate={(route?: string) =>
-        route !== favoriteRoute && setIsNavigating(true)
-      }
+      onNavigate={(route: string, asRoute?: string) => {
+        route !== favoriteRoute && setIsNavigating(true);
+        router.push(route, asRoute && asRoute);
+      }}
     />
   );
 };

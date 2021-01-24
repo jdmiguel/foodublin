@@ -27,17 +27,17 @@ import { Restaurant } from '../types';
 import { LoaderType } from '../../core/types';
 
 type SearchPageProps = {
+  restaurants: Restaurant[];
   location: string | null;
   cuisine: string | null;
   total: number;
-  restaurants: Restaurant[];
-  onClickFilter: (sort: string, order: string) => void;
-  onClickCard: (id: number, route: string, asRoute: string) => void;
   isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
   isNavigating: boolean;
   showWarning: boolean;
-  onNavigate: () => void;
+  onClickFilter: (sort: string, order: string) => void;
+  onClickCard: (id: number, route: string, asRoute: string) => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 const SearchPage: React.FC<SearchPageProps> = ({
@@ -91,7 +91,6 @@ const SearchPage: React.FC<SearchPageProps> = ({
                 title={restaurant.title}
                 content={restaurant.content}
                 onClick={() => {
-                  onNavigate();
                   onClickCard(
                     restaurant.id,
                     restaurant.route,

@@ -15,6 +15,7 @@ describe('Component: Filter', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
   it('should active filter and call function on click any filter', () => {
     const handleClick = jest.fn();
     const { container } = render(
