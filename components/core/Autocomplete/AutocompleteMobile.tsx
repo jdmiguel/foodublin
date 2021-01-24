@@ -137,7 +137,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
             hasSearchIcon={hasSearchIcon}
           />
           <StyledListboxWrapper
-            isShowed={isListboxFocused && suggestions.length > 0}
+            isShowed={isListboxFocused}
             data-testid="listbox-wrapper"
             ref={listboxWrapperRef}
           >
