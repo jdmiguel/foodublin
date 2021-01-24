@@ -40,6 +40,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   const [suggestions, setSuggestions] = useState<Restaurant[]>();
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const [isDropdownReset, setIsDropdownReset] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
 
@@ -95,6 +96,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     }
 
     setIsButtonLoading(true);
+    setIsDropdownReset(true);
     onNavigation(route, asRoute);
   };
 
@@ -136,6 +138,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           labelTxt="Select any location"
           list={LOCATIONS}
           disabled={isButtonLoading}
+          isReset={isDropdownReset}
           onSelect={(path: string) => setCurrentLocationPath(path)}
           onClear={() => setCurrentLocationPath('dublin')}
         />
@@ -144,6 +147,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           labelTxt="Select any cuisine"
           list={CUISINES}
           disabled={isButtonLoading}
+          isReset={isDropdownReset}
           onSelect={(path: string) => setCurrentCuisinePath(path)}
           onClear={() => setCurrentCuisinePath('any-food')}
         />

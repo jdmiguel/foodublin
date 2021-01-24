@@ -73,8 +73,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleSuggestionClick = (restaurantId: number, showedText: string) => {
     clearTimeout(blurDelay.current);
+
     setValue(showedText);
+    setIsListboxFocused(false);
     isSuggestable.current = false;
+
     selectSuggestion(restaurantId, showedText);
   };
 

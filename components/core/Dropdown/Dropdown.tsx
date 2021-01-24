@@ -33,6 +33,7 @@ type DropdownProps = {
   labelTxt: string;
   list: ListItem[];
   disabled: boolean;
+  isReset: boolean;
   onSelect: (path: string) => void;
   onClear: () => void;
   onFocus?: (event: React.FocusEvent) => void;
@@ -62,6 +63,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   list,
   className,
   disabled,
+  isReset,
   onSelect,
   onClear,
   onFocus,
@@ -108,6 +110,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   }, [selectedId, labelTxt]);
 
+  useEffect(() => {
+    if (isReset) {
+      handleClear();
+    }
+  }, [isReset]);
+
   const handleSelect = (name: string, id: number, path: string) => {
     setCurrentLabelTxt(name);
     setSelectedId(id);
@@ -125,6 +133,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const handleBlur = (event: React.FocusEvent) => {
     setIsListboxFocused(false);
     onBlur && onBlur(event);
+  };
+
+  const handleClear = () => {
+    dispatch({ type: 'clear' });
+    setSelectedId(0);
+    onClear();
   };
 
   return (
@@ -148,14 +162,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           {!selectedId && <i className="material-icons">arrow_drop_down</i>}
         </StyledLabelButton>
         {isClearable && selectedId > 0 && (
-          <StyledCloseButton
-            type="button"
-            onClick={() => {
-              dispatch({ type: 'clear' });
-              setSelectedId(0);
-              onClear();
-            }}
-          >
+          <StyledCloseButton type="button" onClick={handleClear}>
             <i className="material-icons">close</i>
           </StyledCloseButton>
         )}
