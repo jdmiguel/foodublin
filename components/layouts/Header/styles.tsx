@@ -21,8 +21,11 @@ export const StyledHeader = styled.header<{
 
 export const StyledOverlay = styled.div<{ isExtended: boolean }>`
   width: 100%;
-  height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
   background: rgba(0, 0, 0, 0.8);
+  height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
+  @media only screen and (min-width: 992px) {
+    height: ${({ isExtended }) => (isExtended ? '440px' : '80px')};
+  }
 `;
 
 const headerContentCSS = css`
@@ -47,7 +50,7 @@ export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   height: 100%;
   ${({ isExtended }) =>
     isExtended ? headerContentCSS : basicHeaderContentCSS};
-  margin: ${({ isExtended }) => (isExtended ? '15px 0 25px' : '0 auto')};
+  margin: ${({ isExtended }) => !isExtended && '0 auto'};
 `;
 
 export const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`

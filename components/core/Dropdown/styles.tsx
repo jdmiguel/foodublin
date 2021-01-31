@@ -135,7 +135,7 @@ export const StyledMobileHeading = styled.div`
 `;
 
 export const StyledMobileHeadingText = styled(BlockTitle)`
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 `;
 
 export const StyledMobileHeadingButton = styled.button`
@@ -177,6 +177,9 @@ export const StyledListboxItemIcon = styled.img`
 
 export const StyledListboxItemText = styled.p<{ isActive: boolean }>`
   color: ${({ theme }) => theme.palette.DARK_MAX};
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: ${({ isActive }) => (!isActive ? 400 : 600)};
+  @media only screen and (min-width: 992px) {
+    font-size: 0.9rem;
+  }
 `;
