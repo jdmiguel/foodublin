@@ -3,26 +3,31 @@ import styled, { css } from 'styled-components';
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 
 export const StyledHeader = styled.header<{
-  bgImg: string | undefined;
   isExtended: boolean;
 }>`
   width: 100%;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
-  background-image: url(${({ bgImg }) => bgImg && bgImg});
-  background-color: ${({ theme }) => theme.palette.DARK_SOFT};
-  background-size: cover;
-  background-position: center;
-  position: ${({ isExtended }) => !isExtended && 'sticky'};
+  position: ${({ isExtended }) => (isExtended ? 'relative' : 'sticky')};
   top: ${({ isExtended }) => !isExtended && '0'};
   z-index: ${({ isExtended }) => !isExtended && '1'};
+  height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
+
+  @media only screen and (min-width: 992px) {
+    height: ${({ isExtended }) => (isExtended ? '440px' : '80px')};
+  }
+
+  > div {
+    position: absolute;
+  }
 `;
 
 export const StyledOverlay = styled.div<{ isExtended: boolean }>`
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
   height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
+
   @media only screen and (min-width: 992px) {
     height: ${({ isExtended }) => (isExtended ? '440px' : '80px')};
   }

@@ -60,14 +60,15 @@ exports[`Component: Header should render collapsed Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(/images/food.jpg);
-  background-color: #A7A7A7;
-  background-size: cover;
-  background-position: center;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
+  height: 80px;
+}
+
+.c0 > div {
+  position: absolute;
 }
 
 .c1 {
@@ -140,6 +141,12 @@ exports[`Component: Header should render collapsed Header 1`] = `
 }
 
 @media only screen and (min-width:992px) {
+  .c0 {
+    height: 80px;
+  }
+}
+
+@media only screen and (min-width:992px) {
   .c1 {
     height: 80px;
   }
@@ -193,6 +200,17 @@ exports[`Component: Header should render collapsed Header 1`] = `
   class="c0"
   data-testid="header"
 >
+  <div
+    style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+  >
+    <img
+      alt="food"
+      class="headerBg"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+    />
+  </div>
   <div
     class="c1"
   >
@@ -654,10 +672,12 @@ exports[`Component: Header should render extended Header 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-bottom: 1px solid #D8D8D8;
-  background-image: url(/images/food.jpg);
-  background-color: #A7A7A7;
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  height: 550px;
+}
+
+.c0 > div {
+  position: absolute;
 }
 
 .c1 {
@@ -878,6 +898,12 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 @media only screen and (min-width:992px) {
+  .c0 {
+    height: 440px;
+  }
+}
+
+@media only screen and (min-width:992px) {
   .c1 {
     height: 440px;
   }
@@ -905,6 +931,17 @@ exports[`Component: Header should render extended Header 1`] = `
   class="c0"
   data-testid="header"
 >
+  <div
+    style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+  >
+    <img
+      alt="food"
+      class="headerBg"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+    />
+  </div>
   <div
     class="c1"
   >

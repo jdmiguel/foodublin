@@ -45,7 +45,6 @@ export const Layout = ({
   return (
     <StyledLayout>
       <Header
-        bgImgSrc="/images/food.jpg"
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
         onClickLogo={() => onNavigate('/')}

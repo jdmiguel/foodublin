@@ -276,4 +276,9 @@ export const GlobalStyles = createGlobalStyle`
   border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
   border-radius: 4px;
 } 
+
+.headerBg{
+  object-fit: cover;
+  object-position: center;
+}
 `;
