@@ -109,7 +109,7 @@ exports[`Component: Dropdown should render 1`] = `
 }
 
 .c6 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
 
 .c7 {
@@ -164,7 +164,7 @@ exports[`Component: Dropdown should render 1`] = `
 
 .c9 {
   color: #2f3235;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -199,6 +199,12 @@ exports[`Component: Dropdown should render 1`] = `
 @media only screen and (min-width:768px) {
   .c4 {
     display: none;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c9 {
+    font-size: 0.9rem;
   }
 }
 
@@ -433,7 +439,7 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 }
 
 .c7 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
 
 .c8 {
@@ -488,13 +494,13 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 
 .c11 {
   color: #2f3235;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .c10 {
   color: #2f3235;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -533,6 +539,18 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 @media only screen and (min-width:768px) {
   .c5 {
     display: none;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c11 {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c10 {
+    font-size: 0.9rem;
   }
 }
 

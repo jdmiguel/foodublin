@@ -199,7 +199,7 @@ exports[`Component: Finder should render 1`] = `
 }
 
 .c17 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
 }
 
 .c18 {
@@ -259,7 +259,7 @@ exports[`Component: Finder should render 1`] = `
 
 .c20 {
   color: #2f3235;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -414,6 +414,12 @@ exports[`Component: Finder should render 1`] = `
 @media only screen and (min-width:768px) {
   .c15 {
     display: none;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c20 {
+    font-size: 0.9rem;
   }
 }
 
