@@ -20,6 +20,8 @@ export const MIN_RESTAURANTS_LIST = 3;
 
 export const MAX_SEARCH_BREADCRUMBS = 2;
 
+export const MAX_MOBILE_WIDTH = 768;
+
 export enum PlaceholderText {
   BLURRED = 'Search for locals...',
   FOCUSED = 'Start typing to search...',

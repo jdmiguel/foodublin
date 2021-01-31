@@ -23,6 +23,8 @@ import {
   StyledListboxItemText,
 } from './styles';
 
+import { MAX_MOBILE_WIDTH } from '@/store/statics';
+
 import { ListItem } from '../types';
 
 type ListItemWithIsActive = ListItem & { isActive: boolean };
@@ -78,7 +80,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     Dispatch<ListAction>,
   ] = useReducer(listReducer, listWithIsActiveProp);
   const { width } = useWindowMeasurement();
-  const bodyLockIsAllowed = width < 768;
+  const bodyLockIsAllowed = width < MAX_MOBILE_WIDTH;
 
   const listRef = useRef<HTMLDivElement>(null);
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);

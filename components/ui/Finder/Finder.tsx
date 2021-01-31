@@ -21,6 +21,7 @@ import {
   CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
+  MAX_MOBILE_WIDTH,
 } from '@/store/statics';
 import {
   getFormattedUrlText,
@@ -47,7 +48,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   const dispatch = useDispatch();
 
   const { width } = useWindowMeasurement();
-  const isMobile = width < 768;
+  const isMobile = width < MAX_MOBILE_WIDTH;
 
   const fetchSuggestions = async (search: string) => {
     setIsAutocompleteLoading(true);
