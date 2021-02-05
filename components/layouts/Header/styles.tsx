@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 
+import { Finder } from '../../ui/Finder/Finder';
+
+import { fadeInFromPosYAnimation } from '@/helpers/animations';
+
 export const StyledHeader = styled.header<{
   bgImg: string | undefined;
   isExtended: boolean;
@@ -53,13 +57,28 @@ export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   margin: ${({ isExtended }) => !isExtended && '0 auto'};
 `;
 
-export const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
+export const StyledLogoLink = styled(CustomLink)<{
+  isExtended: boolean;
+  animationDuration: number;
+  animationDelay: number;
+}>`
+  opacity: ${({ isExtended }) => isExtended && 0};
+  ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
+`;
+
+export const StyledHeaderClaim = styled.h2<{
+  isExtended: boolean;
+  animationDuration: number;
+  animationDelay: number;
+}>`
   font-size: ${({ isExtended }) => (isExtended ? '1.25rem' : '1.3rem')};
   text-align: center;
   font-weight: 400;
   color: ${({ theme }) => theme.palette.DARK_SOFT};
   margin-bottom: ${({ isExtended }) => isExtended && '35px'};
   display: ${({ isExtended }) => !isExtended && 'none'};
+  opacity: ${({ isExtended }) => isExtended && 0};
+  ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
   @media only screen and (min-width: 350px) {
     font-size: ${({ isExtended }) => isExtended && '1.45rem'};
   }
@@ -72,7 +91,15 @@ export const StyledHeaderClaim = styled.h2<{ isExtended: boolean }>`
   }
 `;
 
-export const StyledCustomLink = styled(CustomLink)`
+export const StyledFinder = styled(Finder)<{
+  animationDuration: number;
+  animationDelay: number;
+}>`
+  opacity: 0;
+  ${fadeInFromPosYAnimation};
+`;
+
+export const StyledFavoriteLink = styled(CustomLink)`
   @media only screen and (max-width: 539px) {
     color: ${({ theme }) => theme.palette.LIGHT_MAX};
     padding: 10px;
@@ -84,7 +111,7 @@ export const StyledCustomLink = styled(CustomLink)`
   }
 `;
 
-export const StyledCustomLinkText = styled.span`
+export const StyledFavoriteLinkText = styled.span`
   display: none;
   @media only screen and (min-width: 540px) {
     display: block;

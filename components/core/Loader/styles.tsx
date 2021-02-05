@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-import { rotateAnimation, moveAnimation } from '../../../helpers/animations';
+import {
+  circleLoaderAnimation,
+  lineLoaderAnimation,
+} from '../../../helpers/animations';
 
 import { LoaderMode } from '../../core/types';
 
@@ -28,7 +31,7 @@ export const StyledCircleLoaderImage = styled.div<{
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  ${rotateAnimation};
+  ${circleLoaderAnimation};
 `;
 
 export const StyledCircleLoaderText = styled.p<{
@@ -52,5 +55,5 @@ export const StyledLineLoaderShape = styled.span`
   width: 100%;
   height: 5px;
   background: ${({ theme }) => theme.palette.PRIMARY};
-  ${moveAnimation};
+  ${lineLoaderAnimation};
 `;

@@ -66,7 +66,6 @@ export const Layout = ({
         isFloating={true}
         onClick={handleScrollUp}
         scrollUpButtonIsShowed={scrollUpButtonIsShowed}
-        endValue={1}
       >
         <i className="material-icons">arrow_upward</i>
       </StyledScrollUpButton>

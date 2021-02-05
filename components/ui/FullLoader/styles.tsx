@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fadeAnimation } from '@/helpers/animations';
+import { fadeInAnimation } from '@/helpers/animations';
 
 import { LoaderType } from '../../core/types';
 
@@ -9,7 +9,7 @@ const FullCircleLoaderWrapperCSS = css`
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  ${fadeAnimation};
+  ${fadeInAnimation};
   @media only screen and (min-width: 992px) {
     min-height: 200px;
   }
