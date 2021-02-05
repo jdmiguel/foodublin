@@ -22,8 +22,8 @@ exports[`Component: Loader should render as circle type and be hidden 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #F3F3F3;
-  -webkit-animation: eTXFzq 0.15s linear;
-  animation: eTXFzq 0.15s linear;
+  -webkit-animation: RcxFP 0.15s linear;
+  animation: RcxFP 0.15s linear;
 }
 
 .c1 {
@@ -97,8 +97,8 @@ exports[`Component: Loader should render as circle type and be showed 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #F3F3F3;
-  -webkit-animation: eTXFzq 0.15s linear;
-  animation: eTXFzq 0.15s linear;
+  -webkit-animation: RcxFP 0.15s linear;
+  animation: RcxFP 0.15s linear;
 }
 
 .c1 {

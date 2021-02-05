@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 
-import { fadeAnimation } from '../../../helpers/animations';
+import { fadeInAnimation } from '@/helpers/animations';
 
 const smallDevicesTextCSS = css`
   @media only screen and (max-width: 330px) {
@@ -41,7 +41,7 @@ export const StyledFooterVeil = styled.div`
   background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   height: 170px;
   opacity: 0.6;
-  ${fadeAnimation};
+  ${fadeInAnimation};
   @media only screen and (min-width: 768px) {
     height: 150px;
   }

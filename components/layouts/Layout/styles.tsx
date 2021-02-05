@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Button } from '../../core/Button/Button';
 
-import { fadeAnimation } from '../../../helpers/animations';
+import { fadeInAnimation } from '@/helpers/animations';
 
 export const StyledLayout = styled.div`
   display: flex;
@@ -22,12 +22,11 @@ export const StyledMain = styled.main`
 
 export const StyledScrollUpButton = styled(Button)<{
   scrollUpButtonIsShowed: boolean;
-  endValue: number;
 }>`
   position: fixed;
   bottom: 1%;
   right: 4%;
   z-index: 1;
   display: ${({ scrollUpButtonIsShowed }) => !scrollUpButtonIsShowed && 'none'};
-  ${fadeAnimation};
+  ${fadeInAnimation};
 `;
