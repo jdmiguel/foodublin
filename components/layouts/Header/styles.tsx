@@ -62,7 +62,7 @@ export const StyledLogoLink = styled(CustomLink)<{
   animationDuration: number;
   animationDelay: number;
 }>`
-  opacity: 0;
+  opacity: ${({ isExtended }) => isExtended && 0};
   ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
 `;
 
@@ -77,7 +77,7 @@ export const StyledHeaderClaim = styled.h2<{
   color: ${({ theme }) => theme.palette.DARK_SOFT};
   margin-bottom: ${({ isExtended }) => isExtended && '35px'};
   display: ${({ isExtended }) => !isExtended && 'none'};
-  opacity: 0;
+  opacity: ${({ isExtended }) => isExtended && 0};
   ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
   @media only screen and (min-width: 350px) {
     font-size: ${({ isExtended }) => isExtended && '1.45rem'};

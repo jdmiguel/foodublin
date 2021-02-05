@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
           isExtended={isExtended}
           onClick={onClickLogo}
           animationDuration={0.25}
-          animationDelay={0.25}
+          animationDelay={0.15}
         >
           <Logo
             size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
@@ -49,14 +49,14 @@ export const Header: React.FC<HeaderProps> = ({
         <StyledHeaderClaim
           isExtended={isExtended}
           animationDuration={0.35}
-          animationDelay={0.4}
+          animationDelay={0.25}
         >
           {claimTxt}
         </StyledHeaderClaim>
         {isExtended && (
           <StyledFinder
             onNavigation={onNavigationFromFinder}
-            animationDuration={0.4}
+            animationDuration={0.45}
             animationDelay={0.55}
           />
         )}
