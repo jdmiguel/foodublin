@@ -154,6 +154,10 @@ exports[`Component: Header should render collapsed Header 1`] = `
   }
 }
 
+@media only screen and (min-width:768px) {
+
+}
+
 @media only screen and (min-width:350px) {
 
 }
@@ -686,51 +690,12 @@ exports[`Component: Header should render extended Header 1`] = `
   align-items: center;
 }
 
-.c4 {
-  opacity: 0;
-  -webkit-animation-name: ilnhTV;
-  animation-name: ilnhTV;
-  -webkit-animation-duration: 0.25s;
-  animation-duration: 0.25s;
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
-}
-
 .c7 {
   font-size: 1.25rem;
   text-align: center;
   font-weight: 400;
   color: #A7A7A7;
   margin-bottom: 35px;
-  opacity: 0;
-  -webkit-animation-name: ilnhTV;
-  animation-name: ilnhTV;
-  -webkit-animation-duration: 0.35s;
-  animation-duration: 0.35s;
-  -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
-}
-
-.c9 {
-  opacity: 0;
-  -webkit-animation-name: ilnhTV;
-  animation-name: ilnhTV;
-  -webkit-animation-duration: 0.45s;
-  animation-duration: 0.45s;
-  -webkit-animation-delay: 0.55s;
-  animation-delay: 0.55s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
 }
 
 @media only screen and (min-width:768px) {
@@ -922,6 +887,22 @@ exports[`Component: Header should render extended Header 1`] = `
   }
 }
 
+@media only screen and (min-width:768px) {
+  .c4 {
+    opacity: 0;
+    -webkit-animation-name: ilnhTV;
+    animation-name: ilnhTV;
+    -webkit-animation-duration: 0.25s;
+    animation-duration: 0.25s;
+    -webkit-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
 @media only screen and (min-width:350px) {
   .c7 {
     font-size: 1.45rem;
@@ -931,12 +912,39 @@ exports[`Component: Header should render extended Header 1`] = `
 @media only screen and (min-width:768px) {
   .c7 {
     font-size: 2rem;
+    opacity: 0;
+    -webkit-animation-name: ilnhTV;
+    animation-name: ilnhTV;
+    -webkit-animation-duration: 0.35s;
+    animation-duration: 0.35s;
+    -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
 }
 
 @media only screen and (min-width:992px) {
   .c7 {
     font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c9 {
+    opacity: 0;
+    -webkit-animation-name: ilnhTV;
+    animation-name: ilnhTV;
+    -webkit-animation-duration: 0.45s;
+    animation-duration: 0.45s;
+    -webkit-animation-delay: 0.55s;
+    animation-delay: 0.55s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
 }
 

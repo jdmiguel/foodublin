@@ -62,8 +62,10 @@ export const StyledLogoLink = styled(CustomLink)<{
   animationDuration: number;
   animationDelay: number;
 }>`
-  opacity: ${({ isExtended }) => isExtended && 0};
-  ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
+  @media only screen and (min-width: 768px) {
+    opacity: ${({ isExtended }) => isExtended && 0};
+    ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
+  }
 `;
 
 export const StyledHeaderClaim = styled.h2<{
@@ -77,14 +79,14 @@ export const StyledHeaderClaim = styled.h2<{
   color: ${({ theme }) => theme.palette.DARK_SOFT};
   margin-bottom: ${({ isExtended }) => isExtended && '35px'};
   display: ${({ isExtended }) => !isExtended && 'none'};
-  opacity: ${({ isExtended }) => isExtended && 0};
-  ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
   @media only screen and (min-width: 350px) {
     font-size: ${({ isExtended }) => isExtended && '1.45rem'};
   }
   @media only screen and (min-width: 768px) {
     display: ${({ isExtended }) => !isExtended && 'block'};
     font-size: ${({ isExtended }) => isExtended && '2rem'};
+    opacity: ${({ isExtended }) => isExtended && 0};
+    ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
   }
   @media only screen and (min-width: 992px) {
     font-size: ${({ isExtended }) => (isExtended ? '2.5rem' : '1.6rem')};
@@ -95,8 +97,10 @@ export const StyledFinder = styled(Finder)<{
   animationDuration: number;
   animationDelay: number;
 }>`
-  opacity: 0;
-  ${fadeInFromPosYAnimation};
+  @media only screen and (min-width: 768px) {
+    opacity: 0;
+    ${fadeInFromPosYAnimation};
+  }
 `;
 
 export const StyledFavoriteLink = styled(CustomLink)`
