@@ -31,10 +31,10 @@ const HomePage: React.FC<HomePageProps> = ({
     isExtendedFooter={true}
     onNavigate={onNavigate}
   >
+    <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+      <Loader type={LoaderType.LINE} />
+    </FullLoader>
     <StyledHighlights data-testid="highlights" className="grid-container">
-      <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
-        <Loader type={LoaderType.LINE} />
-      </FullLoader>
       <Title text="Featured restaurants" />
       <StyledHighlightWrapper className="grid-x grid-margin-x grid-margin-y">
         {highlights.map((restaurant) => (

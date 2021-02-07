@@ -24,14 +24,14 @@ export const Loader: React.FC<LoaderProps> = ({
   mode = LoaderMode.DARK,
 }) =>
   type === LoaderType.CIRCLE ? (
-    <StyledCircleLoader className={className}>
+    <StyledCircleLoader data-testid="circle-loader" className={className}>
       <StyledCircleLoaderImage mode={mode} />
       {text && (
         <StyledCircleLoaderText mode={mode}>{text}</StyledCircleLoaderText>
       )}
     </StyledCircleLoader>
   ) : (
-    <StyledLineLoader className={className}>
+    <StyledLineLoader data-testid="line-loader" className={className}>
       <StyledLineLoaderShape />
     </StyledLineLoader>
   );

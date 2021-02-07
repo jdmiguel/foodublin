@@ -5,18 +5,107 @@ describe('HomePage', () => {
     cy.visit('/');
   });
 
-  it('Shows the header with the finder', () => {
+  it('should display the header with the finder', () => {
     cy.get('header').should('have.length', 1);
     cy.get('[data-testid="finder"]').should('have.length', 1);
   });
 
-  it('Shows the highlights title', () => {
+  describe('When clicking search button', () => {
+    beforeEach(() => {
+      cy.get('[data-testid=finder]').as('finder');
+      cy.get('[data-testid=finder]')
+        .find('button')
+        .contains('Search')
+        .as('searchButton');
+      cy.get('[data-testid=dropdown]').as('dropdown');
+    });
+
+    it('displays the line loader and changes the button to loader mode', () => {
+      cy.get('@searchButton').click();
+
+      cy.get('[data-testid=line-loader]').should('be.visible');
+      cy.get('@searchButton')
+        .should('not.contain', 'Search')
+        .get('[data-testid=circle-loader]')
+        .should('have.length', 1);
+    });
+
+    it('should navigate to search page and show the related restaurants', () => {
+      cy.get('@searchButton').click();
+
+      cy.url().should('equal', 'http://localhost:3000/search/dublin/any-food');
+    });
+
+    describe('after selecting a location', () => {
+      it('should navigate to search page with the location selected', () => {
+        cy.get('@dropdown').first().click();
+
+        cy.get('@dropdown')
+          .first()
+          .get('[role="option"]')
+          .contains('Temple Bar')
+          .click();
+
+        cy.get('@searchButton').click();
+
+        cy.url().should(
+          'equal',
+          'http://localhost:3000/search/temple-bar/any-food',
+        );
+      });
+    });
+
+    describe('after selecting a cuisine', () => {
+      it('should navigate to search page and show the related restaurants', () => {
+        cy.get('@dropdown').last().click();
+
+        cy.get('@dropdown')
+          .last()
+          .get('[role="option"]')
+          .contains('Asian')
+          .click();
+
+        cy.get('@searchButton').click();
+
+        cy.url().should('equal', 'http://localhost:3000/search/dublin/asian');
+      });
+    });
+
+    describe('after selecting a location and a cuisine', () => {
+      it('should navigate to search page and show the related restaurants', () => {
+        cy.get('@dropdown').first().click();
+
+        cy.get('@dropdown')
+          .first()
+          .get('[role="option"]')
+          .contains('Temple Bar')
+          .click();
+
+        cy.get('@dropdown').last().click();
+
+        cy.get('@dropdown')
+          .last()
+          .get('[role="option"]')
+          .contains('Asian')
+          .click();
+
+        cy.get('@searchButton').click();
+
+        cy.url().should(
+          'equal',
+          'http://localhost:3000/search/temple-bar/asian',
+        );
+      });
+    });
+  });
+
+  it('should display the highlights title', () => {
     cy.get('[data-testid="highlights"]')
       .find('h3')
       .should('have.text', 'Featured restaurants');
   });
 
-  it('Shows the highlights cards', () => {
+  it('should display the highlights cards', () => {
     cy.get('footer').scrollIntoView({ duration: 1000, easing: 'linear' });
 
     cy.get('[data-testid="card"]').should('have.length', 6);
@@ -35,7 +124,7 @@ describe('HomePage', () => {
     });
   });
 
-  it('Shows the footer with the correct Breadcrumbs', () => {
+  it('should display the footer with the correct Breadcrumbs', () => {
     cy.get('footer').should('have.length', 1);
 
     cy.get('[data-testid="breadcrumbs"]')
