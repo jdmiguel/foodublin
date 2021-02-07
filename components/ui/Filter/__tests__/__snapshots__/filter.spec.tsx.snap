@@ -23,10 +23,6 @@ exports[`Component: Filter should render 1`] = `
   background-color: #E5EAED;
 }
 
-.c0:hover {
-  background-color: #FDF3E5;
-}
-
 .c1 {
   text-transform: uppercase;
 }
@@ -73,6 +69,12 @@ exports[`Component: Filter should render 1`] = `
 @media only screen and (min-width:992px) {
   .c0 {
     padding: 20px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c0:hover {
+    background-color: #FDF3E5;
   }
 }
 

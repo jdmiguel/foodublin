@@ -27,6 +27,7 @@ exports[`Component: Footer should render 1`] = `
   left: 0;
   bottom: 0;
   overflow: hidden;
+  z-index: 1;
 }
 
 .c1 {
@@ -206,6 +207,7 @@ exports[`Component: Footer should render the extended version 1`] = `
   left: 0;
   bottom: 0;
   overflow: hidden;
+  z-index: 1;
 }
 
 .c1 {
@@ -434,6 +436,7 @@ exports[`Component: Footer should render with veil 1`] = `
   left: 0;
   bottom: 0;
   overflow: hidden;
+  z-index: 1;
 }
 
 .c1 {

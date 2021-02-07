@@ -14,9 +14,6 @@ export const StyledFilterItem = styled.button<{ isActive: boolean }>`
   transition: background-color 0.2s ease-out;
   background-color: ${({ theme, isActive }) =>
     `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MIN}`};
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
-  }
   @media only screen and (min-width: 400px) {
     width: 180px;
   }
@@ -35,6 +32,11 @@ export const StyledFilterItem = styled.button<{ isActive: boolean }>`
   }
   @media only screen and (min-width: 992px) {
     padding: 20px;
+  }
+  @media only screen and (min-width: 1200px) {
+    &:hover {
+      background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
+    }
   }
 `;
 
