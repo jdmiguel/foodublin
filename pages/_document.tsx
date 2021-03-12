@@ -34,9 +34,19 @@ class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <meta
+            name="description"
+            content="Discover the best restaurants in dublin and taste your favorite kind of food"
+          />
+          <meta
+            name="keywords"
+            content="Restaurant, Venues, Establishment, Food, Cuisines, Dublin"
+          />
+          <meta name="author" content="Jaime De Miguel Alcobendas" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="msapplication-TileColor" content="#D48C24" />
           <meta name="theme-color" content="#D48C24" />
+          <title>Foodublin - Discover the best restaurants in Dublin</title>
           <link
             href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,500,600,800&display=swap"
             rel="stylesheet"
