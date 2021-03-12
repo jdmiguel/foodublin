@@ -48,18 +48,4 @@ describe('Component: Header', () => {
 
     expect(handleClick).toHaveBeenCalled();
   });
-
-  it('should call function on favorites click', () => {
-    const handleClick = jest.fn();
-    const { getByTestId } = render(
-      renderWithTheme(
-        <Header {...HEADER_TEXT_MOCKS} onClickFavorites={handleClick} />,
-      ),
-    );
-    const favoritesLink = getByTestId('header').querySelector('a:last-of-type');
-
-    fireEvent.click(favoritesLink);
-
-    expect(handleClick).toHaveBeenCalled();
-  });
 });

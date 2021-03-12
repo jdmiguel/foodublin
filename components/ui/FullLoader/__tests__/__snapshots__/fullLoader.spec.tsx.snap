@@ -66,6 +66,7 @@ exports[`Component: Loader should render as circle type and be hidden 1`] = `
 >
   <div
     class="c1"
+    data-testid="circle-loader"
   >
     <div
       class="c2"
@@ -141,6 +142,7 @@ exports[`Component: Loader should render as circle type and be showed 1`] = `
 >
   <div
     class="c1"
+    data-testid="circle-loader"
   >
     <div
       class="c2"
@@ -195,6 +197,7 @@ exports[`Component: Loader should render as line type and be hidden 1`] = `
 >
   <div
     class="c1"
+    data-testid="circle-loader"
   >
     <div
       class="c2"
@@ -249,6 +252,7 @@ exports[`Component: Loader should render as line type and be showed 1`] = `
 >
   <div
     class="c1"
+    data-testid="circle-loader"
   >
     <div
       class="c2"

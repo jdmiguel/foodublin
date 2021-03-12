@@ -60,15 +60,6 @@ export const Header: React.FC<HeaderProps> = ({
             animationDelay={0.55}
           />
         )}
-        {!isExtended && (
-          <StyledFavoriteLink
-            size={CustomLinkSize.BIG}
-            onClick={onClickFavorites}
-          >
-            <i className="material-icons">bookmarks</i>
-            <StyledFavoriteLinkText>FAVORITES</StyledFavoriteLinkText>
-          </StyledFavoriteLink>
-        )}
       </StyledHeaderContent>
     </StyledOverlay>
   </StyledHeader>
