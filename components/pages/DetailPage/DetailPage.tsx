@@ -36,7 +36,7 @@ import {
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
-import { LoaderType } from '../../core/types';
+import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
 type DetailPageProps = {
@@ -48,6 +48,7 @@ type DetailPageProps = {
   onClickSaveButton: (action: string) => void;
   onClickRelatedRestaurant: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 export const getTimmings = (timmingsStr: string) =>
@@ -95,6 +96,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
   onClickRelatedRestaurant,
   onNavigate,
   isNavigating,
+  breadcrumbs,
 }) => {
   const [isSaved, setIsSaved] = useState(isFavorite);
   const [isLoading, setIsloading] = useState(true);
@@ -150,7 +152,11 @@ const DetailPage: React.FC<DetailPageProps> = ({
   };
 
   return (
-    <Layout isExtendedFooter={true} onNavigate={onNavigate}>
+    <Layout
+      isExtendedFooter={true}
+      onNavigate={onNavigate}
+      breadcrumbs={breadcrumbs}
+    >
       <StyledDetailPage className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />

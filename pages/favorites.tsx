@@ -41,7 +41,7 @@ const Favorites = () => {
     asRoute: favoriteRoute,
     type: BreadcrumbsType.FAVORITES,
   };
-  useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
+  const { breadcrumbs } = useBreadcrumbs(favoritesBreadcrumbs, 'favorites');
 
   return (
     <DynamicFavoritesPage
@@ -52,6 +52,7 @@ const Favorites = () => {
         route !== favoriteRoute && setIsNavigating(true);
         router.push(route, asRoute && asRoute);
       }}
+      breadcrumbs={breadcrumbs}
     />
   );
 };

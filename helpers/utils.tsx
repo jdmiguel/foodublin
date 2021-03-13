@@ -1,3 +1,6 @@
+import { createStore } from 'redux';
+
+import appReducer from '@/store/redux/reducer';
 import { Restaurant } from '@/components/pages/types';
 
 // GENERAL UTILS
@@ -72,3 +75,9 @@ export const getTitleText = (total: number) => ({
   totalText: total > 0 ? total : 'There are no',
   restaurantText: `restaurant${total === 0 || total >= 2 ? 's' : ''}`,
 });
+
+// CreateMockStore
+
+export const createTestStore = () => {
+  return createStore(appReducer);
+};

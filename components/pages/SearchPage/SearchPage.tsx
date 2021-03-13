@@ -23,8 +23,8 @@ import {
 } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 
+import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
-import { LoaderType } from '../../core/types';
 
 type SearchPageProps = {
   restaurants: Restaurant[];
@@ -38,6 +38,7 @@ type SearchPageProps = {
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: (id: number, route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 const SearchPage: React.FC<SearchPageProps> = ({
@@ -52,6 +53,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
   showWarning,
   isNavigating,
   onNavigate,
+  breadcrumbs,
 }) => {
   const { totalText, restaurantText } = getTitleText(total);
 
@@ -60,6 +62,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
       isExtendedFooter={true}
       showFooterVeil={isLoadingByScroll}
       onNavigate={onNavigate}
+      breadcrumbs={breadcrumbs}
     >
       <StyledSearchPage className="grid-container">
         <FullLoader isShowed={isLoadingByFilter}>

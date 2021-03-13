@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { CustomLink } from '../../core/CustomLink/CustomLink';
-
 import { fadeInAnimation } from '@/helpers/animations';
 
 const smallDevicesTextCSS = css`
@@ -17,25 +15,6 @@ export const StyledFooterWrapper = styled.footer`
   bottom: 0;
   overflow: hidden;
   z-index: 1;
-`;
-
-export const StyledNavFooterWrapper = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
-`;
-
-export const StyledNavFooter = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 10px;
-  @media only screen and (min-width: 600px) {
-    padding: 15px 20px;
-  }
-`;
-
-export const StyledCustomLink = styled(CustomLink)`
-  ${smallDevicesTextCSS}
 `;
 
 export const StyledFooterVeil = styled.div`
@@ -86,4 +65,28 @@ export const StyledText = styled.p<{ addSeparation: boolean }>`
   font-weight: 300;
   margin-right: ${({ addSeparation }) => addSeparation && '3px'};
   ${smallDevicesTextCSS}
+`;
+
+export const StyledFooterBarWrapper = styled.div`
+  border-top: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
+`;
+
+export const StyledFooterBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  @media only screen and (min-width: 600px) {
+    padding: 15px 30px;
+  }
+  @media only screen and (min-width: 768px) {
+    padding: 15px 35px;
+  }
+  @media only screen and (min-width: 1024px) {
+    padding: 15px 48px;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 15px 30px;
+  }
 `;

@@ -32,7 +32,7 @@ export const StyledCustomLink = styled(CustomLink)`
   margin: 0 5px 3px 0;
   ${smallDevicesTextCSS}
   @media only screen and (min-width: 600px) {
-    margin: 0 5px 0;
+    margin: 0 5px 0 0;
   }
 `;
 

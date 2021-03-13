@@ -118,7 +118,7 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
     asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
     type: BreadcrumbsType.DETAIL,
   };
-  useBreadcrumbs(detailBreadcrumbs, 'detail');
+  const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'detail');
 
   return (
     <>
@@ -139,6 +139,7 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
           setIsNavigating(true);
           router.push(route, asRoute && asRoute);
         }}
+        breadcrumbs={breadcrumbs}
       />
     </>
   );

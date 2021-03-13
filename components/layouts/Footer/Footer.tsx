@@ -1,26 +1,25 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
+import { CustomLink } from '../../core/CustomLink/CustomLink';
+
+import { FooterBar } from './FooterBar';
 
 import {
   StyledFooterWrapper,
   StyledFooterVeil,
-  StyledNavFooterWrapper,
-  StyledNavFooter,
-  StyledCustomLink,
   StyledRightsFooter,
   StyledBlock,
   StyledText,
 } from './styles';
 
-import { InitialAppState } from '@/store/redux/types';
+import { BreadcrumbsData } from '../../core/types';
 
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
   onClickBreadcrumb: (route: string, asRoute: string) => void;
   onClickFavorites: () => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 export const Footer: React.FC<FooterProps> = ({
@@ -28,41 +27,30 @@ export const Footer: React.FC<FooterProps> = ({
   isExtended = false,
   onClickBreadcrumb,
   onClickFavorites,
-}) => {
-  const { breadcrumbs } = useSelector((state: InitialAppState) => state);
-
-  return (
-    <StyledFooterWrapper>
-      {showVeil && <StyledFooterVeil endValue={0.6} />}
-      {isExtended && (
-        <StyledNavFooterWrapper>
-          <StyledNavFooter className="grid-container">
-            <Breadcrumbs
-              breadcrumbsData={breadcrumbs || []}
-              onClickBreadcrumb={onClickBreadcrumb}
-            />
-            <StyledCustomLink onClick={onClickFavorites}>
-              <i className="material-icons">bookmarks</i>FAVORITES
-            </StyledCustomLink>
-          </StyledNavFooter>
-        </StyledNavFooterWrapper>
-      )}
-      <StyledRightsFooter>
-        <StyledBlock>
-          <StyledCustomLink route="https://github.com/jdmiguel/foodublin">
-            GITHUB
-          </StyledCustomLink>
-        </StyledBlock>
-        <StyledBlock>
-          <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
-        </StyledBlock>
-        <StyledBlock>
-          <StyledText addSeparation={true}>BY</StyledText>
-          <StyledCustomLink route="https://jdmiguel.netlify.app/">
-            JDMIGUEL
-          </StyledCustomLink>
-        </StyledBlock>
-      </StyledRightsFooter>
-    </StyledFooterWrapper>
-  );
-};
+  breadcrumbs,
+}) => (
+  <StyledFooterWrapper>
+    {showVeil && <StyledFooterVeil endValue={0.6} />}
+    {isExtended && (
+      <FooterBar
+        onClickBreadcrumb={onClickBreadcrumb}
+        onClickFavorites={onClickFavorites}
+        breadcrumbs={breadcrumbs}
+      />
+    )}
+    <StyledRightsFooter>
+      <StyledBlock>
+        <CustomLink route="https://github.com/jdmiguel/foodublin">
+          GITHUB
+        </CustomLink>
+      </StyledBlock>
+      <StyledBlock>
+        <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
+      </StyledBlock>
+      <StyledBlock>
+        <StyledText addSeparation={true}>BY</StyledText>
+        <CustomLink route="https://jdmiguel.netlify.app/">JDMIGUEL</CustomLink>
+      </StyledBlock>
+    </StyledRightsFooter>
+  </StyledFooterWrapper>
+);

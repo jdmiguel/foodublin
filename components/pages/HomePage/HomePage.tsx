@@ -10,7 +10,7 @@ import { Card } from '../../core/Card/Card';
 
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
-import { LoaderType, CardType } from '../../core/types';
+import { LoaderType, CardType, BreadcrumbsData } from '../../core/types';
 import { HighlightRestaurant } from '../types';
 
 type HomePageProps = {
@@ -18,6 +18,7 @@ type HomePageProps = {
   isNavigating: boolean;
   clickHighlight: (id: number, route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 const HomePage: React.FC<HomePageProps> = ({
@@ -25,11 +26,13 @@ const HomePage: React.FC<HomePageProps> = ({
   clickHighlight,
   isNavigating,
   onNavigate,
+  breadcrumbs,
 }) => (
   <Layout
     isExtendedHeader={true}
     isExtendedFooter={true}
     onNavigate={onNavigate}
+    breadcrumbs={breadcrumbs}
   >
     <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
       <Loader type={LoaderType.LINE} />

@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: HeaderBar should render 1`] = `
+.c2 {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+}
+
+.c2 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
+.c0 {
+  background-color: #F3F3F3;
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+@media only screen and (min-width:330px) {
+  .c2 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width:540px) {
+  .c2 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c2:hover {
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c1 {
+    padding: 15px 30px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    padding: 15px 35px;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .c1 {
+    padding: 15px 48px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c1 {
+    padding: 15px 30px;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 grid-container"
+  >
+    <a
+      class="c2"
+    >
+      &lt; BACK
+    </a>
+    <a
+      class="c2"
+    >
+      <i
+        class="material-icons"
+      >
+        bookmarks
+      </i>
+      FAVORITES
+    </a>
+  </div>
+</div>
+`;

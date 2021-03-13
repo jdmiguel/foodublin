@@ -1,65 +1,31 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
-
-import reducer from '../../../../store/redux/reducer';
 
 import { Footer } from '../Footer';
 
+import { FOOTER_MOCKS } from '../__mocks__/footer.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
-
-const footerProps = {
-  onClickBreadcrumb: () => {},
-  onClickFavorites: () => {},
-};
 
 describe('Component: Footer', () => {
   it('should render', () => {
-    const mockStore = configureStore();
-    const store = mockStore({
-      reducer,
-    });
-    const { container } = render(
-      renderWithTheme(
-        <Provider store={store}>
-          <Footer {...footerProps} />
-        </Provider>,
-      ),
-    );
+    const { container } = render(renderWithTheme(<Footer {...FOOTER_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render with veil', () => {
-    const mockStore = configureStore();
-    const store = mockStore({
-      reducer,
-    });
-    const updateFooterProps = { ...footerProps, showVeil: true };
+    const updateFooterProps = { ...FOOTER_MOCKS, showVeil: true };
     const { container } = render(
-      renderWithTheme(
-        <Provider store={store}>
-          <Footer {...updateFooterProps} />
-        </Provider>,
-      ),
+      renderWithTheme(<Footer {...updateFooterProps} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should render the extended version', () => {
-    const mockStore = configureStore();
-    const store = mockStore({
-      reducer,
-    });
-    const updateFooterProps = { ...footerProps, isExtended: true };
+  it('should render extended', () => {
+    const updateFooterProps = { ...FOOTER_MOCKS, isExtended: true };
     const { container } = render(
-      renderWithTheme(
-        <Provider store={store}>
-          <Footer {...updateFooterProps} />
-        </Provider>,
-      ),
+      renderWithTheme(<Footer {...updateFooterProps} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();

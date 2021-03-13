@@ -2,7 +2,7 @@
 
 exports[`Component: CustomLink should render disabled 1`] = `
 .c0 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,6 +22,12 @@ exports[`Component: CustomLink should render disabled 1`] = `
 .c0 i {
   font-size: 0.8em;
   margin-right: 4px;
+}
+
+@media only screen and (min-width:330px) {
+  .c0 {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width:540px) {
@@ -46,7 +52,7 @@ exports[`Component: CustomLink should render disabled 1`] = `
 
 exports[`Component: CustomLink should render with HTML nodes 1`] = `
 .c0 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,6 +69,12 @@ exports[`Component: CustomLink should render with HTML nodes 1`] = `
 .c0 i {
   font-size: 0.8em;
   margin-right: 4px;
+}
+
+@media only screen and (min-width:330px) {
+  .c0 {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width:540px) {
@@ -91,7 +103,7 @@ exports[`Component: CustomLink should render with HTML nodes 1`] = `
 
 exports[`Component: CustomLink should render with a simple text 1`] = `
 .c0 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -108,6 +120,12 @@ exports[`Component: CustomLink should render with a simple text 1`] = `
 .c0 i {
   font-size: 0.8em;
   margin-right: 4px;
+}
+
+@media only screen and (min-width:330px) {
+  .c0 {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width:540px) {

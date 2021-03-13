@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Header should render collapsed Header 1`] = `
-.c4 {
+exports[`Component: Header should render collapsed 1`] = `
+.c5 {
   width: 190px;
 }
 
-.c5 {
+.c6 {
   max-width: 300px;
 }
 
-.c3 {
-  font-size: 1rem;
+.c4 {
+  font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24,32 +24,19 @@ exports[`Component: Header should render collapsed Header 1`] = `
   color: #FBA52B;
 }
 
-.c3 i {
+.c4 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
 
-.c7 {
-  font-size: 1.3rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  color: #FBA52B;
-}
-
-.c7 i {
-  font-size: 0.8em;
-  margin-right: 6px;
-}
-
 .c0 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.c1 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -64,19 +51,15 @@ exports[`Component: Header should render collapsed Header 1`] = `
   background-color: #A7A7A7;
   background-size: cover;
   background-position: center;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1;
 }
 
-.c1 {
+.c2 {
   width: 100%;
   background: rgba(0,0,0,0.8);
   height: 80px;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -95,7 +78,7 @@ exports[`Component: Header should render collapsed Header 1`] = `
   margin: 0 auto;
 }
 
-.c6 {
+.c7 {
   font-size: 1.3rem;
   text-align: center;
   font-weight: 400;
@@ -103,8 +86,28 @@ exports[`Component: Header should render collapsed Header 1`] = `
   display: none;
 }
 
+.c8 {
+  background-color: #F3F3F3;
+  border-bottom: 1px solid #D8D8D8;
+}
+
 .c9 {
-  display: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px 20px;
 }
 
 @media only screen and (min-width:768px) {
@@ -112,41 +115,36 @@ exports[`Component: Header should render collapsed Header 1`] = `
 }
 
 @media only screen and (min-width:992px) {
-  .c4 {
+  .c5 {
     width: 200px;
   }
 }
 
-@media only screen and (min-width:540px) {
-  .c3 {
-    -webkit-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
-  }
-
-  .c3:hover {
-    color: #EC7E00;
+@media only screen and (min-width:330px) {
+  .c4 {
+    font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c7 {
+  .c4 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c7:hover {
+  .c4:hover {
     color: #EC7E00;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c1 {
+  .c2 {
     height: 80px;
   }
 }
 
 @media only screen and (min-width:1200px) {
-  .c2 {
+  .c3 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
@@ -163,33 +161,38 @@ exports[`Component: Header should render collapsed Header 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c6 {
+  .c7 {
     display: block;
   }
 }
 
 @media only screen and (min-width:992px) {
-  .c6 {
+  .c7 {
     font-size: 1.6rem;
   }
 }
 
-@media only screen and (max-width:539px) {
-  .c8 {
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #FBA52B;
-  }
-
-  .c8 i {
-    margin-right: 0;
+@media only screen and (min-width:600px) {
+  .c9 {
+    padding: 15px 30px;
   }
 }
 
-@media only screen and (min-width:540px) {
+@media only screen and (min-width:768px) {
   .c9 {
-    display: block;
+    padding: 15px 35px;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .c9 {
+    padding: 15px 48px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c9 {
+    padding: 15px 30px;
   }
 }
 
@@ -203,45 +206,58 @@ exports[`Component: Header should render collapsed Header 1`] = `
     <div
       class="c2"
     >
-      <a
-        class="c3 "
+      <div
+        class="c3"
       >
-        <h1
-          class="c4"
-          data-testid="logo"
+        <a
+          class="c4 "
         >
-          <img
-            alt="FooDublin Logo"
+          <h1
             class="c5"
-            src="/images/logo.svg"
-          />
-        </h1>
-      </a>
-      <h2
-        class="c6"
-      >
-        Mocked claim text
-      </h2>
+            data-testid="logo"
+          >
+            <img
+              alt="FooDublin Logo"
+              class="c6"
+              src="/images/logo.svg"
+            />
+          </h1>
+        </a>
+        <h2
+          class="c7"
+        >
+          Mocked claim text
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c8"
+  >
+    <div
+      class="c9 grid-container"
+    >
       <a
-        class="c7 c8"
+        class="c4"
+      >
+        &lt; BACK
+      </a>
+      <a
+        class="c4"
       >
         <i
           class="material-icons"
         >
           bookmarks
         </i>
-        <span
-          class="c9"
-        >
-          FAVORITES
-        </span>
+        FAVORITES
       </a>
     </div>
   </div>
 </header>
 `;
 
-exports[`Component: Header should render extended Header 1`] = `
+exports[`Component: Header should render extended 1`] = `
 .c5 {
   width: 225px;
   margin: 15px 0 25px;
@@ -252,7 +268,7 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -711,6 +727,12 @@ exports[`Component: Header should render extended Header 1`] = `
   }
 }
 
+@media only screen and (min-width:330px) {
+  .c3 {
+    font-size: 1rem;
+  }
+}
+
 @media only screen and (min-width:540px) {
   .c3 {
     -webkit-transition: color 0.2s ease-out;
@@ -949,613 +971,617 @@ exports[`Component: Header should render extended Header 1`] = `
 }
 
 <header
-  class="c0"
+  class=""
   data-testid="header"
 >
   <div
-    class="c1"
+    class="c0"
   >
     <div
-      class="c2"
+      class="c1"
     >
-      <a
-        class="c3 c4"
-      >
-        <h1
-          class="c5"
-          data-testid="logo"
-        >
-          <img
-            alt="FooDublin Logo"
-            class="c6"
-            src="/images/logo.svg"
-          />
-        </h1>
-      </a>
-      <h2
-        class="c7"
-      >
-        Mocked claim text
-      </h2>
       <div
-        class="c8 c9"
-        data-testid="finder"
+        class="c2"
       >
+        <a
+          class="c3 c4"
+        >
+          <h1
+            class="c5"
+            data-testid="logo"
+          >
+            <img
+              alt="FooDublin Logo"
+              class="c6"
+              src="/images/logo.svg"
+            />
+          </h1>
+        </a>
+        <h2
+          class="c7"
+        >
+          Mocked claim text
+        </h2>
         <div
-          class="c10 c11"
-          data-testid="autocomplete"
+          class="c8 c9"
+          data-testid="finder"
         >
           <div
-            class="c12 c13"
-            data-testid="input-wrapper"
-          >
-            <i
-              class="material-icons"
-              data-testid="input-icon"
-            >
-              search
-            </i>
-            <input
-              class="c14"
-              placeholder="Search for locals..."
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            class="c15"
-            data-testid="listbox-wrapper"
-          >
-            <ul
-              class="c16"
-              role="listbox"
-            />
-          </div>
-        </div>
-        <span
-          class="c17"
-        />
-        <div
-          class="c18"
-        >
-          <div
-            class="c19 c20"
-            data-testid="dropdown"
+            class="c10 c11"
+            data-testid="autocomplete"
           >
             <div
-              class="c21"
+              class="c12 c13"
+              data-testid="input-wrapper"
             >
-              <button
-                class="c22"
-                type="button"
+              <i
+                class="material-icons"
+                data-testid="input-icon"
               >
-                <i
-                  class="material-icons"
-                  data-testid="label-icon"
-                >
-                  near_me
-                </i>
-                <span>
-                  Select any location
-                </span>
-                <i
-                  class="material-icons"
-                >
-                  arrow_drop_down
-                </i>
-              </button>
+                search
+              </i>
+              <input
+                class="c14"
+                placeholder="Search for locals..."
+                type="text"
+                value=""
+              />
             </div>
             <div
-              class="c23"
-              data-testid="dropdown-list"
-              role="listbox"
-              tabindex="0"
+              class="c15"
+              data-testid="listbox-wrapper"
+            >
+              <ul
+                class="c16"
+                role="listbox"
+              />
+            </div>
+          </div>
+          <span
+            class="c17"
+          />
+          <div
+            class="c18"
+          >
+            <div
+              class="c19 c20"
+              data-testid="dropdown"
             >
               <div
-                class="c24"
+                class="c21"
               >
-                <h4
-                  class="c25 c26"
-                >
-                  Select any location
-                </h4>
                 <button
-                  class="c27"
+                  class="c22"
                   type="button"
                 >
                   <i
                     class="material-icons"
+                    data-testid="label-icon"
                   >
-                    close
+                    near_me
+                  </i>
+                  <span>
+                    Select any location
+                  </span>
+                  <i
+                    class="material-icons"
+                  >
+                    arrow_drop_down
                   </i>
                 </button>
               </div>
               <div
-                class="c28"
-                role="option"
+                class="c23"
+                data-testid="dropdown-list"
+                role="listbox"
+                tabindex="0"
               >
-                <p
-                  class="c29"
+                <div
+                  class="c24"
                 >
-                  Dublin
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <h4
+                    class="c25 c26"
+                  >
+                    Select any location
+                  </h4>
+                  <button
+                    class="c27"
+                    type="button"
+                  >
+                    <i
+                      class="material-icons"
+                    >
+                      close
+                    </i>
+                  </button>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  South City West
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Dublin
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Temple Bar
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    South City West
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Clondalkin
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Temple Bar
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Swords
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Clondalkin
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Tallaght
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Swords
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Blanchardstown
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Tallaght
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  South City East
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Blanchardstown
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Dundrum
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    South City East
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Finglas
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Dundrum
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Ballyfermot
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Finglas
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Santry
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Ballyfermot
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Lucan
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Santry
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Artane
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Lucan
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Malahide
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Artane
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Dun Laoghaire
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Malahide
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Walkinstown
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Dun Laoghaire
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Blackrock
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Walkinstown
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Palmerstown
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Blackrock
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Rathmines
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Palmerstown
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Balbriggan
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Rathmines
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Ballybrack
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Balbriggan
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Smithfield
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Ballybrack
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Crumlin
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Smithfield
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Castleknock
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Crumlin
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Howth
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Castleknock
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Cabra
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Howth
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Whitehall
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Cabra
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Portmarnock
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <p
-                  class="c29"
+                  <p
+                    class="c29"
+                  >
+                    Whitehall
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Kimmage
-                </p>
+                  <p
+                    class="c29"
+                  >
+                    Portmarnock
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
+                >
+                  <p
+                    class="c29"
+                  >
+                    Kimmage
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="c19 c20"
-            data-testid="dropdown"
-          >
             <div
-              class="c21"
-            >
-              <button
-                class="c22"
-                type="button"
-              >
-                <i
-                  class="material-icons"
-                  data-testid="label-icon"
-                >
-                  restaurant
-                </i>
-                <span>
-                  Select any cuisine
-                </span>
-                <i
-                  class="material-icons"
-                >
-                  arrow_drop_down
-                </i>
-              </button>
-            </div>
-            <div
-              class="c23"
-              data-testid="dropdown-list"
-              role="listbox"
-              tabindex="0"
+              class="c19 c20"
+              data-testid="dropdown"
             >
               <div
-                class="c24"
+                class="c21"
               >
-                <h4
-                  class="c25 c26"
-                >
-                  Select any cuisine
-                </h4>
                 <button
-                  class="c27"
+                  class="c22"
                   type="button"
                 >
                   <i
                     class="material-icons"
+                    data-testid="label-icon"
                   >
-                    close
+                    restaurant
+                  </i>
+                  <span>
+                    Select any cuisine
+                  </span>
+                  <i
+                    class="material-icons"
+                  >
+                    arrow_drop_down
                   </i>
                 </button>
               </div>
               <div
-                class="c28"
-                role="option"
+                class="c23"
+                data-testid="dropdown-list"
+                role="listbox"
+                tabindex="0"
               >
-                <img
-                  alt="Irish"
-                  class="c30"
-                  src="/images/stew.svg"
-                />
-                <p
-                  class="c29"
+                <div
+                  class="c24"
                 >
-                  Irish
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Italian"
-                  class="c30"
-                  src="/images/pizza.svg"
-                />
-                <p
-                  class="c29"
+                  <h4
+                    class="c25 c26"
+                  >
+                    Select any cuisine
+                  </h4>
+                  <button
+                    class="c27"
+                    type="button"
+                  >
+                    <i
+                      class="material-icons"
+                    >
+                      close
+                    </i>
+                  </button>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Italian
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Mediterranean"
-                  class="c30"
-                  src="/images/bruschetta.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Irish"
+                    class="c30"
+                    src="/images/stew.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Irish
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Mediterranean
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Asian"
-                  class="c30"
-                  src="/images/rice.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Italian"
+                    class="c30"
+                    src="/images/pizza.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Italian
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Asian
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Healthy Food"
-                  class="c30"
-                  src="/images/healthy_food.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Mediterranean"
+                    class="c30"
+                    src="/images/bruschetta.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Mediterranean
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Healthy Food
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Indian"
-                  class="c30"
-                  src="/images/gulab.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Asian"
+                    class="c30"
+                    src="/images/rice.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Asian
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Indian
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Mexican"
-                  class="c30"
-                  src="/images/taco.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Healthy Food"
+                    class="c30"
+                    src="/images/healthy_food.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Healthy Food
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Mexican
-                </p>
-              </div>
-              <div
-                class="c28"
-                role="option"
-              >
-                <img
-                  alt="Fast Food"
-                  class="c30"
-                  src="/images/fries.svg"
-                />
-                <p
-                  class="c29"
+                  <img
+                    alt="Indian"
+                    class="c30"
+                    src="/images/gulab.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Indian
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
                 >
-                  Fast Food
-                </p>
+                  <img
+                    alt="Mexican"
+                    class="c30"
+                    src="/images/taco.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Mexican
+                  </p>
+                </div>
+                <div
+                  class="c28"
+                  role="option"
+                >
+                  <img
+                    alt="Fast Food"
+                    class="c30"
+                    src="/images/fries.svg"
+                  />
+                  <p
+                    class="c29"
+                  >
+                    Fast Food
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="c31 c32"
-        >
-          <button
-            class="c33"
-            type="button"
+          <div
+            class="c31 c32"
           >
-            Search
-          </button>
+            <button
+              class="c33"
+              type="button"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </div>
