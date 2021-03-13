@@ -12,11 +12,14 @@ import {
   StyledText,
 } from './styles';
 
+import { BreadcrumbsData } from '../../core/types';
+
 type FooterProps = {
   showVeil?: boolean;
   isExtended?: boolean;
   onClickBreadcrumb: (route: string, asRoute: string) => void;
   onClickFavorites: () => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 export const Footer: React.FC<FooterProps> = ({
@@ -24,6 +27,7 @@ export const Footer: React.FC<FooterProps> = ({
   isExtended = false,
   onClickBreadcrumb,
   onClickFavorites,
+  breadcrumbs,
 }) => (
   <StyledFooterWrapper>
     {showVeil && <StyledFooterVeil endValue={0.6} />}
@@ -31,6 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
       <FooterBar
         onClickBreadcrumb={onClickBreadcrumb}
         onClickFavorites={onClickFavorites}
+        breadcrumbs={breadcrumbs}
       />
     )}
     <StyledRightsFooter>

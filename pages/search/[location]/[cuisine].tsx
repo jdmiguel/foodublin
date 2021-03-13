@@ -289,7 +289,7 @@ const Search: NextPage<SearchProps> = ({
     )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
     type: BreadcrumbsType.SEARCH,
   };
-  useBreadcrumbs(searchBreadcrumbs, 'search');
+  const { breadcrumbs } = useBreadcrumbs(searchBreadcrumbs, 'search');
 
   if (onError) {
     return (
@@ -316,6 +316,7 @@ const Search: NextPage<SearchProps> = ({
         setIsNavigating(true);
         router.push(route, asRoute && asRoute);
       }}
+      breadcrumbs={breadcrumbs}
     />
   );
 };

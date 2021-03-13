@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { Logo } from '../../core/Logo/Logo';
 import { LogoSize } from '../../core/types';
@@ -16,16 +15,14 @@ import {
   StyledFinder,
 } from './styles';
 
-import { InitialAppState } from '@/store/redux/types';
-
 type HeaderProps = {
   claimTxt: string;
   bgImgSrc?: string | undefined;
   isExtended?: boolean;
   onNavigationFromFinder: (route: string, asRoute: string) => void;
   onClickLogo: () => void;
-  onClickBack: (route: string, asRoute: string) => void;
   onClickFavorites: () => void;
+  onClickBack: () => void;
 };
 
 export const Header: React.FC<HeaderProps> = ({
@@ -37,9 +34,6 @@ export const Header: React.FC<HeaderProps> = ({
   onClickBack,
   onClickFavorites,
 }) => {
-  const { breadcrumbs } = useSelector((state: InitialAppState) => state);
-  const backNavigation = breadcrumbs[breadcrumbs.length - 2];
-
   return (
     <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
       <StyledHeader bgImg={bgImgSrc}>
@@ -75,9 +69,7 @@ export const Header: React.FC<HeaderProps> = ({
       </StyledHeader>
       {!isExtended && (
         <HeaderBar
-          onClickBack={() =>
-            onClickBack(backNavigation.route, backNavigation.asRoute)
-          }
+          onClickBack={onClickBack}
           onClickFavorites={onClickFavorites}
         />
       )}

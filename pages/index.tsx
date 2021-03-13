@@ -53,7 +53,7 @@ const index: NextPage<HomeProps> = ({ highlights }) => {
     router.push(route, asRoute);
   };
 
-  useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
+  const { breadcrumbs } = useBreadcrumbs(DEFAULT_BREADCRUMB, 'home');
 
   return (
     <DynamicHomePage
@@ -64,6 +64,7 @@ const index: NextPage<HomeProps> = ({ highlights }) => {
         route !== homeRoute && setIsNavigating(true);
         router.push(route, asRoute && asRoute);
       }}
+      breadcrumbs={breadcrumbs}
     />
   );
 };

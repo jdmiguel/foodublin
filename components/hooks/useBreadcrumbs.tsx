@@ -23,4 +23,6 @@ export const useBreadcrumbs = (
         : replaceBreadcrumbs(index, currentBreadcrumbs),
     );
   }, [page]);
+
+  return { breadcrumbs };
 };

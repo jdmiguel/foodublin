@@ -18,7 +18,7 @@ import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 
 import { getTitleText } from '@/helpers/utils';
 
-import { LoaderType } from '../../core/types';
+import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
 
 type FavoritesPageProps = {
@@ -26,6 +26,7 @@ type FavoritesPageProps = {
   total: number;
   isNavigating: boolean;
   onNavigate: (route: string, asRoute?: string) => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 const FavoritesPage: React.FC<FavoritesPageProps> = ({
@@ -33,6 +34,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   restaurants,
   isNavigating,
   onNavigate,
+  breadcrumbs,
 }) => {
   const [isLoading, setIsloading] = useState(true);
   const { totalText, restaurantText } = getTitleText(total);
@@ -42,7 +44,11 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   }, []);
 
   return (
-    <Layout isExtendedFooter={true} onNavigate={onNavigate}>
+    <Layout
+      isExtendedFooter={true}
+      onNavigate={onNavigate}
+      breadcrumbs={breadcrumbs}
+    >
       <StyledFavoritesPage className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
