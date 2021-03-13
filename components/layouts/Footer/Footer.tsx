@@ -2,13 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
+import { CustomLink } from '../../core/CustomLink/CustomLink';
 
 import {
   StyledFooterWrapper,
   StyledFooterVeil,
   StyledNavFooterWrapper,
   StyledNavFooter,
-  StyledCustomLink,
   StyledRightsFooter,
   StyledBlock,
   StyledText,
@@ -41,26 +41,26 @@ export const Footer: React.FC<FooterProps> = ({
               breadcrumbsData={breadcrumbs || []}
               onClickBreadcrumb={onClickBreadcrumb}
             />
-            <StyledCustomLink onClick={onClickFavorites}>
+            <CustomLink onClick={onClickFavorites}>
               <i className="material-icons">bookmarks</i>FAVORITES
-            </StyledCustomLink>
+            </CustomLink>
           </StyledNavFooter>
         </StyledNavFooterWrapper>
       )}
       <StyledRightsFooter>
         <StyledBlock>
-          <StyledCustomLink route="https://github.com/jdmiguel/foodublin">
+          <CustomLink route="https://github.com/jdmiguel/foodublin">
             GITHUB
-          </StyledCustomLink>
+          </CustomLink>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
         </StyledBlock>
         <StyledBlock>
           <StyledText addSeparation={true}>BY</StyledText>
-          <StyledCustomLink route="https://jdmiguel.netlify.app/">
+          <CustomLink route="https://jdmiguel.netlify.app/">
             JDMIGUEL
-          </StyledCustomLink>
+          </CustomLink>
         </StyledBlock>
       </StyledRightsFooter>
     </StyledFooterWrapper>

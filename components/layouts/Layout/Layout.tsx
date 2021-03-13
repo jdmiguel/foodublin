@@ -50,6 +50,9 @@ export const Layout = ({
         isExtended={isExtendedHeader}
         onClickLogo={() => onNavigate('/')}
         onClickFavorites={() => onNavigate('/favorites')}
+        onClickBack={(route: string, asRoute: string) =>
+          onNavigate(route, asRoute)
+        }
         onNavigationFromFinder={onNavigate}
       />
       <StyledMain>{children}</StyledMain>

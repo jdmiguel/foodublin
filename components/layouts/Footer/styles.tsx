@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { CustomLink } from '../../core/CustomLink/CustomLink';
-
 import { fadeInAnimation } from '@/helpers/animations';
 
 const smallDevicesTextCSS = css`
@@ -32,10 +30,6 @@ export const StyledNavFooter = styled.div`
   @media only screen and (min-width: 600px) {
     padding: 15px 20px;
   }
-`;
-
-export const StyledCustomLink = styled(CustomLink)`
-  ${smallDevicesTextCSS}
 `;
 
 export const StyledFooterVeil = styled.div`

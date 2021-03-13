@@ -6,9 +6,16 @@ import { Finder } from '../../ui/Finder/Finder';
 
 import { fadeInFromPosYAnimation } from '@/helpers/animations';
 
-export const StyledHeader = styled.header<{
-  bgImg: string | undefined;
+export const StyledHeaderWrapper = styled.header<{
   isExtended: boolean;
+}>`
+  position: ${({ isExtended }) => !isExtended && 'sticky'};
+  top: ${({ isExtended }) => !isExtended && '0'};
+  z-index: ${({ isExtended }) => !isExtended && '1'};
+`;
+
+export const StyledHeader = styled.div<{
+  bgImg: string | undefined;
 }>`
   width: 100%;
   display: flex;
@@ -18,9 +25,6 @@ export const StyledHeader = styled.header<{
   background-color: ${({ theme }) => theme.palette.DARK_SOFT};
   background-size: cover;
   background-position: center;
-  position: ${({ isExtended }) => !isExtended && 'sticky'};
-  top: ${({ isExtended }) => !isExtended && '0'};
-  z-index: ${({ isExtended }) => !isExtended && '1'};
 `;
 
 export const StyledOverlay = styled.div<{ isExtended: boolean }>`
@@ -103,21 +107,27 @@ export const StyledFinder = styled(Finder)<{
   }
 `;
 
-export const StyledFavoriteLink = styled(CustomLink)`
-  @media only screen and (max-width: 539px) {
-    color: ${({ theme }) => theme.palette.LIGHT_MAX};
-    padding: 10px;
-    border-radius: 50%;
-    background-color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
-    i {
-      margin-right: 0;
-    }
-  }
+export const StyledHeaderBarWrapper = styled.div`
+  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
 `;
 
-export const StyledFavoriteLinkText = styled.span`
-  display: none;
-  @media only screen and (min-width: 540px) {
-    display: block;
+export const StyledHeaderBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  @media only screen and (min-width: 600px) {
+    padding: 15px 30px;
+  }
+  @media only screen and (min-width: 768px) {
+    padding: 15px 35px;
+  }
+  @media only screen and (min-width: 1024px) {
+    padding: 15px 48px;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 15px 30px;
   }
 `;
