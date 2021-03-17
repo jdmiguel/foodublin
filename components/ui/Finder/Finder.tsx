@@ -102,13 +102,15 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   };
 
   const handleButtonClick = () => {
-    if (!isButtonLoading) {
-      const route = '/search/[location]/[cuisine]';
-      const asRoute = `/search/${currentLocationPath}/${currentCuisinePath}`;
-
-      setIsButtonLoading(true);
-      onNavigation(route, asRoute);
+    if (isButtonLoading) {
+      return null;
     }
+
+    const route = '/search/[location]/[cuisine]';
+    const asRoute = `/search/${currentLocationPath}/${currentCuisinePath}`;
+
+    setIsButtonLoading(true);
+    onNavigation(route, asRoute);
   };
 
   return (

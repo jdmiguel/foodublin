@@ -4,10 +4,6 @@ describe('HomePage', () => {
   beforeEach(() => {
     cy.visit('/');
 
-    cy.intercept('/search', { fixture: 'search-input-restaurants.json' }).as(
-      'getRestaurants',
-    );
-
     cy.get('[data-testid=finder]').as('finder');
     cy.get('[data-testid=finder]')
       .find('button')
@@ -57,41 +53,39 @@ describe('HomePage', () => {
     it('should display the matched restaurants', () => {
       cy.get('@finder').find('input').type('col');
 
-      cy.wait('@getRestaurants');
-
       cy.get('@listBox').find('[role="option"]').eq(0).as('firstSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(1).as('secondSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(2).as('thirdSuggestion');
 
-      cy.get('@firstSuggestion').find('h4').should('have.text', 'Tutti Frutti');
+      cy.get('@firstSuggestion')
+        .find('h4')
+        .should('have.text', 'The Bank on College Green');
 
       cy.get('@firstSuggestion')
-        .find('p')
-        .should('have.text', 'Town Centre Mall, Swords');
-
-      cy.get('@firstSuggestion')
-        .find('img')
-        .should('have.attr', 'alt', 'Tutti Frutti')
-        .should(
-          'have.attr',
-          'src',
-          'https://b.zmtcdn.com/data/res_imagery/9100465_RESTAURANT_d9cb91300a2dde4403ff422884013f2c_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
-        );
-
-      cy.get('@secondSuggestion').find('h4').should('have.text', 'Cornucopia');
-
-      cy.get('@secondSuggestion')
         .find('p')
         .should('have.text', 'South City West');
 
-      cy.get('@secondSuggestion')
+      cy.get('@firstSuggestion')
         .find('img')
-        .should('have.attr', 'alt', 'Cornucopia')
+        .should('have.attr', 'alt', 'The Bank on College Green')
         .should(
           'have.attr',
           'src',
-          'https://b.zmtcdn.com/data/res_imagery/16521303_RESTAURANT_c6e5a59d49548f7ccfa17cf9d123f74a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+          'https://b.zmtcdn.com/data/res_imagery/16522174_RESTAURANT_246ce7cd6fcdb531a0806c042f032eba.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
         );
+
+      cy.get('@secondSuggestion')
+        .find('h4')
+        .should('have.text', "Coletti's Take Away");
+
+      cy.get('@secondSuggestion')
+        .find('p')
+        .should('have.text', 'Firhouse Shopping Centre, Firhouse');
+
+      cy.get('@secondSuggestion')
+        .find('img')
+        .should('have.attr', 'alt', "Coletti's Take Away")
+        .should('have.attr', 'src', '/images/generic-thumb.png');
 
       cy.get('@thirdSuggestion')
         .find('h4')
@@ -115,8 +109,6 @@ describe('HomePage', () => {
     describe('and clicking on the last suggestion', () => {
       it('should navigate to the correct detail page', () => {
         cy.get('@finder').find('input').type('col');
-
-        cy.wait('@getRestaurants');
 
         cy.get('@listBox').find('[role="option"]').eq(2).click();
 
