@@ -1,6 +1,5 @@
 import axios, { AxiosError } from 'axios';
 
-import { BASE_URL } from '@/store/statics';
 import {
   RestaurantsRequestParam,
   RestaurantsRequestParams,
@@ -43,7 +42,7 @@ export const getRestaurants = async (
   );
 
   try {
-    const response = await axios(`${BASE_URL}search`, {
+    const response = await axios(`${process.env.BASE_API}search`, {
       method: 'GET',
       headers: {
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
@@ -66,7 +65,7 @@ export const getRestaurant = async (
   res_id: number,
 ): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
   try {
-    const response = await axios(`${BASE_URL}restaurant`, {
+    const response = await axios(`${process.env.BASE_API}restaurant`, {
       method: 'GET',
       headers: {
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
@@ -87,7 +86,7 @@ export const getReviews = async (
   res_id: number,
 ): Promise<{ rawReviews: RawReview[]; status: number }> => {
   try {
-    const response = await axios(`${BASE_URL}reviews`, {
+    const response = await axios(`${process.env.BASE_API}reviews`, {
       method: 'GET',
       headers: {
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
