@@ -1,7 +1,6 @@
 import { BreadcrumbsType } from '@/components/core/types';
 
 export const DUBLIN_ID = 91;
-export const BASE_URL = 'https://developers.zomato.com/api/v2.1/';
 
 export const DEFAULT_TEXT_LOADING = 'Coming right up...';
 
