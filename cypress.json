@@ -3,6 +3,8 @@
   "testFiles": "**/*.*",
   "viewportWidth": 1280,
   "viewportHeight": 800,
+  "defaultCommandTimeout": 4000,
+  "pageLoadTimeout": 30000,
   "env": {
     "baseUrl": "http://localhost:3000",
     "codeCoverage": {
