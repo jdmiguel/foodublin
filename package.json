@@ -4,13 +4,15 @@
   "description": "Restaurants and venues finder in Dublin city",
   "private": true,
   "scripts": {
-    "dev": "BASE_API=/api/ next dev",
+    "dev": "next dev",
+    "dev:mocked": "NODE_ENV=test BASE_API=/api/ next dev",
     "start": "next start -p 3001",
     "build": "next build",
-    "cy:open": "NODE_ENV=test cypress open",
-    "cy:run": "NODE_ENV=test cypress run",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "storybook": "start-storybook -p 6006 -s ./public/images",
     "test": "NODE_ENV=test jest",
+    "test:integration": "npm-run-all --parallel dev:mocked cy:open",
     "test:coverage": "NODE_ENV=test jest --coverage",
     "test:watch": "NODE_ENV=test jest --watch",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
