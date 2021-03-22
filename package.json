@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:mocked": "NODE_ENV=test BASE_API=/api/ next dev",
+    "dev:mocked": "TESTING_INTEGRATION=enabled next dev",
     "start": "next start -p 3001",
     "build": "next build",
     "cy:open": "cypress open",
