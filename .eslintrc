@@ -11,8 +11,10 @@
     "describe": "readonly",
     "context": "readonly",
     "beforeEach": "readonly",
+    "afterEach": "readonly",
     "it": "readonly",
-    "cy": "readonly"
+    "cy": "readonly",
+    "window": "readonly"
   },
   "extends": [
     "eslint:recommended",
