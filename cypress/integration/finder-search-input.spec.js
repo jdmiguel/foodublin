@@ -8,8 +8,6 @@ describe('Finder:searchInput', () => {
 
   describe('When typing on the search input', () => {
     it('should display the matched restaurants', () => {
-      cy.wait(2000);
-
       cy.get('@finder').find('input').type('col');
 
       cy.get('@listBox').find('[role="option"]').eq(0).as('firstSuggestion');
