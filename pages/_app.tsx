@@ -15,6 +15,10 @@ import '@/helpers/Grid/Grid.scss';
 import { GlobalStyles } from '@/helpers/GlobalStylesHelper';
 import { theme } from '@/helpers/Theme';
 
+if (process.env.TESTING_INTEGRATION === 'enabled') {
+  require('mocks');
+}
+
 const loadStateFromLocalStorage = () => {
   try {
     const serializedState = localStorage.getItem('state');
