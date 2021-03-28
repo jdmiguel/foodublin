@@ -42,7 +42,7 @@ export const getRestaurants = async (
   );
 
   try {
-    const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}search`, {
+    const response = await axios(`${process.env.BASE_API}search`, {
       method: 'GET',
       headers: {
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
@@ -65,19 +65,16 @@ export const getRestaurant = async (
   res_id: number,
 ): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
   try {
-    const response = await axios(
-      `${process.env.NEXT_PUBLIC_BASE_API}restaurant`,
-      {
-        method: 'GET',
-        headers: {
-          'user-key': process.env.NEXT_PUBLIC_API_KEY,
-          'content-type': 'application/json',
-        },
-        params: {
-          res_id,
-        },
+    const response = await axios(`${process.env.BASE_API}restaurant`, {
+      method: 'GET',
+      headers: {
+        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'content-type': 'application/json',
       },
-    );
+      params: {
+        res_id,
+      },
+    });
 
     return { rawRestaurantDetail: response.data, status: response.status };
   } catch (error) {
@@ -89,7 +86,7 @@ export const getReviews = async (
   res_id: number,
 ): Promise<{ rawReviews: RawReview[]; status: number }> => {
   try {
-    const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}reviews`, {
+    const response = await axios(`${process.env.BASE_API}reviews`, {
       method: 'GET',
       headers: {
         'user-key': process.env.NEXT_PUBLIC_API_KEY,
