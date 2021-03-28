@@ -1,7 +1,10 @@
 import React from 'react';
 
+import { CustomLink } from '../../core/CustomLink/CustomLink';
 import { Logo } from '../../core/Logo/Logo';
 import { LogoSize } from '../../core/types';
+
+import { Finder } from '../../ui/Finder/Finder';
 
 import { HeaderBar } from './HeaderBar';
 
@@ -10,9 +13,7 @@ import {
   StyledHeader,
   StyledOverlay,
   StyledHeaderContent,
-  StyledLogoLink,
   StyledHeaderClaim,
-  StyledFinder,
 } from './styles';
 
 type HeaderProps = {
@@ -39,31 +40,16 @@ export const Header: React.FC<HeaderProps> = ({
       <StyledHeader bgImg={bgImgSrc}>
         <StyledOverlay isExtended={isExtended}>
           <StyledHeaderContent isExtended={isExtended}>
-            <StyledLogoLink
-              isExtended={isExtended}
-              onClick={onClickLogo}
-              animationDuration={0.25}
-              animationDelay={0.15}
-            >
+            <CustomLink onClick={onClickLogo}>
               <Logo
                 size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
                 logoSrc={'/images/logo.svg'}
               />
-            </StyledLogoLink>
-            <StyledHeaderClaim
-              isExtended={isExtended}
-              animationDuration={0.35}
-              animationDelay={0.25}
-            >
+            </CustomLink>
+            <StyledHeaderClaim isExtended={isExtended}>
               {claimTxt}
             </StyledHeaderClaim>
-            {isExtended && (
-              <StyledFinder
-                onNavigation={onNavigationFromFinder}
-                animationDuration={0.45}
-                animationDelay={0.55}
-              />
-            )}
+            {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
           </StyledHeaderContent>
         </StyledOverlay>
       </StyledHeader>

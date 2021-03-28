@@ -1,11 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { CustomLink } from '../../core/CustomLink/CustomLink';
-
-import { Finder } from '../../ui/Finder/Finder';
-
-import { fadeInFromPosYAnimation } from '@/helpers/animations';
-
 export const StyledHeaderWrapper = styled.header<{
   isExtended: boolean;
 }>`
@@ -61,21 +55,8 @@ export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   margin: ${({ isExtended }) => !isExtended && '0 auto'};
 `;
 
-export const StyledLogoLink = styled(CustomLink)<{
-  isExtended: boolean;
-  animationDuration: number;
-  animationDelay: number;
-}>`
-  @media only screen and (min-width: 768px) {
-    opacity: ${({ isExtended }) => isExtended && 0};
-    ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
-  }
-`;
-
 export const StyledHeaderClaim = styled.h2<{
   isExtended: boolean;
-  animationDuration: number;
-  animationDelay: number;
 }>`
   font-size: ${({ isExtended }) => (isExtended ? '1.25rem' : '1.3rem')};
   text-align: center;
@@ -89,21 +70,9 @@ export const StyledHeaderClaim = styled.h2<{
   @media only screen and (min-width: 768px) {
     display: ${({ isExtended }) => !isExtended && 'block'};
     font-size: ${({ isExtended }) => isExtended && '2rem'};
-    opacity: ${({ isExtended }) => isExtended && 0};
-    ${({ isExtended }) => isExtended && fadeInFromPosYAnimation};
   }
   @media only screen and (min-width: 992px) {
     font-size: ${({ isExtended }) => (isExtended ? '2.5rem' : '1.6rem')};
-  }
-`;
-
-export const StyledFinder = styled(Finder)<{
-  animationDuration: number;
-  animationDelay: number;
-}>`
-  @media only screen and (min-width: 768px) {
-    opacity: 0;
-    ${fadeInFromPosYAnimation};
   }
 `;
 
