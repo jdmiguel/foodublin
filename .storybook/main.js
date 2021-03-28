@@ -1,3 +1,4 @@
+const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
     'storybook-addon-jsx/register',
     '@storybook/addon-knobs/register',
   ],
-  webpackFinal: async config => {
+  webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       use: [
@@ -16,6 +17,11 @@ module.exports = {
         },
       ],
     });
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/store': path.resolve(__dirname, '../store'),
+      '@/components': path.resolve(__dirname, '../components'),
+    };
     config.resolve.extensions.push('.ts', '.tsx');
     config.plugins.push(new ForkTsCheckerWebpackPlugin());
     return config;
