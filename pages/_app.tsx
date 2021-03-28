@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { configureStore } from '@reduxjs/toolkit';
@@ -71,12 +72,27 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </Provider>
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="Discover the best restaurants in dublin and taste your favorite kind of food"
+        />
+        <meta
+          name="keywords"
+          content="Restaurant, Venues, Establishment, Food, Cuisines, Dublin"
+        />
+        <meta name="author" content="Jaime De Miguel Alcobendas" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Foodublin - Discover the best restaurants in Dublin</title>
+      </Head>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 };
 
