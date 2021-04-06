@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Button } from '../../core/Button/Button';
-import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
-
 // Address
 
 export const StyledAddressMapWrapper = styled.div`
@@ -118,7 +115,7 @@ export const StyledLocation = styled.h3`
   }
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButtonWrapper = styled.div`
   max-width: 140px;
   margin-top: 30px;
   @media only screen and (max-width: 639px) {
@@ -135,7 +132,7 @@ export const StyledSectionBlock = styled.div`
   margin-bottom: 30px;
 `;
 
-export const StyledBlockTitle = styled(BlockTitle)`
+export const StyledTitleWrapper = styled.div`
   margin-bottom: 15px;
 `;
 

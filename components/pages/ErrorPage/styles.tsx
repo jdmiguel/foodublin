@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
-
 export const StyledErrorPage = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,6 +14,6 @@ export const StyledErrorPage = styled.div`
   }
 `;
 
-export const StyledText = styled(BlockTitle)`
+export const StyledTextWrapper = styled.div`
   margin-bottom: 20px;
 `;

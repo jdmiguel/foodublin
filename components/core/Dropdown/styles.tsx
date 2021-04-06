@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { BlockTitle } from '../BlockTitle/BlockTitle';
-
 export const StyledDropdown = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
@@ -132,10 +130,6 @@ export const StyledMobileHeading = styled.div`
   @media only screen and (min-width: 768px) {
     display: none;
   }
-`;
-
-export const StyledMobileHeadingText = styled(BlockTitle)`
-  font-size: 1.35rem;
 `;
 
 export const StyledMobileHeadingButton = styled.button`

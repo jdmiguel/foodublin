@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-import { Input } from '../../Input/Input';
-import { Loader } from '../../Loader/Loader';
-import { BlockTitle } from '../../BlockTitle/BlockTitle';
-
 export const StyledAutocompleteMobile = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
@@ -68,10 +64,6 @@ export const StyleHeading = styled.div`
   justify-content: space-between;
 `;
 
-export const StyleHeadingText = styled(BlockTitle)`
-  font-size: 1.3rem;
-`;
-
 export const StyleHeadingButton = styled.button`
   display: block;
   transition: opacity 0.2s ease-out;
@@ -86,8 +78,9 @@ export const StyleHeadingButton = styled.button`
   }
 `;
 
-export const StyledInput = styled(Input)`
+export const StyledInputWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   transition: background-color 0.2s ease-out;
   outline: none;
@@ -123,7 +116,7 @@ export const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   border-radius: 4px;
 `;
 
-export const StyledLoader = styled(Loader)`
+export const StyledLoaderWrapper = styled.div`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};

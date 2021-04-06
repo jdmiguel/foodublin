@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-import { Input } from '../../Input/Input';
-import { Loader } from '../../Loader/Loader';
-
 export const StyledAutocomplete = styled.div<{ disabled: boolean }>`
   width: 100%;
   max-width: 550px;
@@ -12,8 +9,11 @@ export const StyledAutocomplete = styled.div<{ disabled: boolean }>`
   pointer-events: ${({ disabled }) => disabled && 'none'};
 `;
 
-export const StyledInput = styled(Input)<{ hasBorderBottomRadius: boolean }>`
+export const StyledInputWrapper = styled.div<{
+  hasBorderBottomRadius: boolean;
+}>`
   background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
+  border-radius: 4px;
   transition: background-color 0.2s ease-out;
   &:hover {
     background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
@@ -49,7 +49,11 @@ export const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
   border-top: 0;
 `;
 
-export const StyledLoader = styled(Loader)`
+export const StyledLoaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};

@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
+import { BlockTitle } from '../BlockTitle/BlockTitle';
+
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
 
 import {
@@ -16,7 +18,6 @@ import {
   StyledListbox,
   StyledCloseButton,
   StyledMobileHeading,
-  StyledMobileHeadingText,
   StyledMobileHeadingButton,
   StyledListboxItem,
   StyledListboxItemIcon,
@@ -179,7 +180,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         isListboxFocused={isListboxFocused}
       >
         <StyledMobileHeading>
-          <StyledMobileHeadingText text={labelTxt} />
+          <BlockTitle text={labelTxt} />
           <StyledMobileHeadingButton
             type="button"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
