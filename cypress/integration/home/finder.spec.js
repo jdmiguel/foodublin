@@ -69,15 +69,15 @@ describe('Finder', () => {
   describe('When typing on the search input and the request is ok', () => {
     beforeEach(() => {
       cy.get('@finder').find('input').type('col');
-    });
 
-    it('should display the matched restaurants', () => {
       cy.wait('@getRestaurants');
 
       cy.get('@listBox').find('[role="option"]').eq(0).as('firstSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(1).as('secondSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(2).as('thirdSuggestion');
+    });
 
+    it('should display the matched restaurants', () => {
       cy.get('@firstSuggestion').find('h4').should('have.text', 'Tutti Frutti');
 
       cy.get('@firstSuggestion')
@@ -129,9 +129,7 @@ describe('Finder', () => {
 
     describe('when clicking on the last suggestion', () => {
       it('should navigate to the correct detail page', () => {
-        cy.get('@finder').find('input').type('col');
-
-        cy.get('@listBox').find('[role="option"]').eq(2).click();
+        cy.get('@thirdSuggestion').click();
 
         cy.url().should(
           'equal',
@@ -145,13 +143,13 @@ describe('Finder', () => {
     beforeEach(() => {
       cy.get('@finder').find('input').type('row');
 
+      cy.wait('@getRestaurantsOnError');
+
       cy.get('[data-testid=listbox-wrapper]').find('p').as('errorTxt');
       cy.get('[data-testid=listbox-wrapper]').find('button').as('tryButton');
     });
 
-    it('should show the error text and the try again button', () => {
-      cy.wait('@getRestaurantsOnError');
-
+    it('should show the error text and the try button', () => {
       cy.get('@errorTxt').should(
         'have.text',
         'Sorry but something was wrong...',
@@ -160,7 +158,7 @@ describe('Finder', () => {
       cy.get('@tryButton').should('have.text', 'Try again');
     });
 
-    describe('when clicking on the try again button', () => {
+    describe('when clicking on the try button', () => {
       it('should remove the error items and clean the suggestions list and the search input', () => {
         cy.get('@tryButton').click();
 
