@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { Card } from '../Card/Card';
+import { BlockText } from '../BlockText/BlockText';
+import { Button } from '../Button/Button';
 
 import {
   StyledAutocomplete,
@@ -8,6 +10,8 @@ import {
   StyledListboxWrapper,
   StyledLoader,
   StyledListbox,
+  StyledErrorWrapper,
+  StyledErrorButtonWrapper,
   StyledListboxItem,
 } from './styles/autocomplete';
 
@@ -22,8 +26,10 @@ export type AutocompleteProps = {
   loading: boolean;
   className?: string;
   disabled: boolean;
+  onRequestError: boolean;
   fetchSuggestions: (search: string) => void;
   selectSuggestion: (id: number, name: string) => void;
+  clearSuggestions: () => void;
 };
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -34,6 +40,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   hasSearchIcon,
   className,
   disabled,
+  onRequestError,
+  clearSuggestions,
 }) => {
   const blurDelay = useRef(0);
   const isSuggestable = useRef(true);
@@ -81,6 +89,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     selectSuggestion(restaurantId, showedText);
   };
 
+  const handleClearSuggestion = () => {
+    setValue('');
+    clearSuggestions();
+  };
+
   const hasBorderBottomRadius =
     suggestions.length === 0 ||
     !isListboxFocused ||
@@ -113,17 +126,26 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           />
         ) : (
           <StyledListbox role="listbox">
-            {suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
-              <StyledListboxItem key={id} role="option">
-                <Card
-                  imgSrc={imgSrc}
-                  title={title}
-                  content={content}
-                  onClick={() => handleSuggestionClick(id, title)}
-                  type={CardType.SUGGESTION}
-                />
-              </StyledListboxItem>
-            ))}
+            {onRequestError ? (
+              <StyledErrorWrapper>
+                <BlockText text="Sorry but something was wrong..." />
+                <StyledErrorButtonWrapper>
+                  <Button onClick={handleClearSuggestion}>Try again</Button>
+                </StyledErrorButtonWrapper>
+              </StyledErrorWrapper>
+            ) : (
+              suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
+                <StyledListboxItem key={id} role="option">
+                  <Card
+                    imgSrc={imgSrc}
+                    title={title}
+                    content={content}
+                    onClick={() => handleSuggestionClick(id, title)}
+                    type={CardType.SUGGESTION}
+                  />
+                </StyledListboxItem>
+              ))
+            )}
           </StyledListbox>
         )}
       </StyledListboxWrapper>

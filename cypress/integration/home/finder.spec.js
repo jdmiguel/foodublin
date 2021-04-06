@@ -4,6 +4,23 @@ describe('Finder', () => {
   beforeEach(() => {
     cy.visit('/');
 
+    cy.intercept(
+      'GET',
+      'https://developers.zomato.com/api/v2.1/search?entity_id=91&entity_type=city&q=col',
+      {
+        statusCode: 200,
+        fixture: 'finderRestaurants.json',
+      },
+    ).as('getRestaurants');
+
+    cy.intercept(
+      'GET',
+      'https://developers.zomato.com/api/v2.1/search?entity_id=91&entity_type=city&q=row',
+      {
+        statusCode: 500,
+      },
+    ).as('getRestaurantsOnError');
+
     cy.get('[data-testid=finder]').as('finder');
     cy.get('[data-testid=finder]')
       .find('button')
@@ -49,43 +66,47 @@ describe('Finder', () => {
     });
   });
 
-  describe('When typing on the search input', () => {
-    it('should display the matched restaurants', () => {
+  describe('When typing on the search input and the request is ok', () => {
+    beforeEach(() => {
       cy.get('@finder').find('input').type('col');
+    });
+
+    it('should display the matched restaurants', () => {
+      cy.wait('@getRestaurants');
 
       cy.get('@listBox').find('[role="option"]').eq(0).as('firstSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(1).as('secondSuggestion');
       cy.get('@listBox').find('[role="option"]').eq(2).as('thirdSuggestion');
 
-      cy.get('@firstSuggestion')
-        .find('h4')
-        .should('have.text', 'The Bank on College Green');
+      cy.get('@firstSuggestion').find('h4').should('have.text', 'Tutti Frutti');
 
       cy.get('@firstSuggestion')
         .find('p')
-        .should('have.text', 'South City West');
+        .should('have.text', 'Town Centre Mall, Swords');
 
       cy.get('@firstSuggestion')
         .find('img')
-        .should('have.attr', 'alt', 'The Bank on College Green')
+        .should('have.attr', 'alt', 'Tutti Frutti')
         .should(
           'have.attr',
           'src',
-          'https://b.zmtcdn.com/data/res_imagery/16522174_RESTAURANT_246ce7cd6fcdb531a0806c042f032eba.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+          'https://b.zmtcdn.com/data/res_imagery/9100465_RESTAURANT_d9cb91300a2dde4403ff422884013f2c_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
         );
 
-      cy.get('@secondSuggestion')
-        .find('h4')
-        .should('have.text', "Coletti's Take Away");
+      cy.get('@secondSuggestion').find('h4').should('have.text', 'Cornucopia');
 
       cy.get('@secondSuggestion')
         .find('p')
-        .should('have.text', 'Firhouse Shopping Centre, Firhouse');
+        .should('have.text', 'South City West');
 
       cy.get('@secondSuggestion')
         .find('img')
-        .should('have.attr', 'alt', "Coletti's Take Away")
-        .should('have.attr', 'src', '/images/generic-thumb.png');
+        .should('have.attr', 'alt', 'Cornucopia')
+        .should(
+          'have.attr',
+          'src',
+          'https://b.zmtcdn.com/data/res_imagery/16521303_RESTAURANT_c6e5a59d49548f7ccfa17cf9d123f74a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+        );
 
       cy.get('@thirdSuggestion')
         .find('h4')
@@ -106,7 +127,7 @@ describe('Finder', () => {
       );
     });
 
-    describe('and clicking on the last suggestion', () => {
+    describe('when clicking on the last suggestion', () => {
       it('should navigate to the correct detail page', () => {
         cy.get('@finder').find('input').type('col');
 
@@ -116,6 +137,38 @@ describe('Finder', () => {
           'equal',
           'http://localhost:3000/detail/16519193/the-michael-collins',
         );
+      });
+    });
+  });
+
+  describe('When typing on the search input and the request fails', () => {
+    beforeEach(() => {
+      cy.get('@finder').find('input').type('row');
+
+      cy.get('[data-testid=listbox-wrapper]').find('p').as('errorTxt');
+      cy.get('[data-testid=listbox-wrapper]').find('button').as('tryButton');
+    });
+
+    it('should show the error text and the try again button', () => {
+      cy.wait('@getRestaurantsOnError');
+
+      cy.get('@errorTxt').should(
+        'have.text',
+        'Sorry but something was wrong...',
+      );
+
+      cy.get('@tryButton').should('have.text', 'Try again');
+    });
+
+    describe('when clicking on the try again button', () => {
+      it('should remove the error items and clean the suggestions list and the search input', () => {
+        cy.get('@tryButton').click();
+
+        cy.get('@errorTxt').should('have.length', 0);
+        cy.get('@tryButton').should('have.length', 0);
+
+        cy.get('@listBox').find('[role="option"]').should('have.length', 0);
+        cy.get('@finder').find('input').should('have.text', '');
       });
     });
   });
