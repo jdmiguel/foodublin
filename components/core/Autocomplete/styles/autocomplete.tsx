@@ -61,6 +61,25 @@ export const StyledLoader = styled(Loader)`
 export const StyledListbox = styled.ul`
   width: 100%;
   -webkit-tap-highlight-color: transparent;
+  @media only screen and (min-width: 992px) {
+    min-height: 200px;
+  }
+`;
+
+export const StyledErrorWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 992px) {
+    min-height: 200px;
+  }
+`;
+
+export const StyledErrorButtonWrapper = styled.div`
+  width: 150px;
+  margin-top: 20px;
 `;
 
 export const StyledListboxItem = styled.li`

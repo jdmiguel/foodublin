@@ -44,6 +44,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   const [isDropdownReset, setIsDropdownReset] = useState(false);
   const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
+  const [onRequestError, setOnRequestError] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -75,6 +76,10 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
       );
 
       setSuggestions(formattedRestaurants);
+      setOnRequestError(false);
+      setIsAutocompleteLoading(false);
+    } else {
+      setOnRequestError(true);
       setIsAutocompleteLoading(false);
     }
   };
@@ -83,7 +88,6 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     const path = getFormattedUrlText(name, true);
     const route = '/detail/[id]/[name]';
     const asRoute = `/detail/${id}/${path}`;
-
     if (
       Array.isArray(suggestions) &&
       suggestions.length > MIN_RESTAURANTS_LIST
@@ -113,6 +117,11 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     onNavigation(route, asRoute);
   };
 
+  const clearSuggestions = () => {
+    setSuggestions([]);
+    setOnRequestError(false);
+  };
+
   return (
     <StyledFinder data-testid="finder" className={className}>
       {isMobile ? (
@@ -123,6 +132,8 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           disabled={isButtonLoading}
           loading={isAutocompleteLoading}
           hasSearchIcon={true}
+          onRequestError={onRequestError}
+          clearSuggestions={clearSuggestions}
         />
       ) : (
         <StyledAutocomplete
@@ -132,6 +143,8 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           disabled={isButtonLoading}
           loading={isAutocompleteLoading}
           hasSearchIcon={true}
+          onRequestError={onRequestError}
+          clearSuggestions={clearSuggestions}
         />
       )}
       <StyledSpacer />
