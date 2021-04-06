@@ -70,6 +70,17 @@ export const StyledListbox = styled.ul`
   }
 `;
 
+export const StyledNoSuggestionsWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 992px) {
+    min-height: 200px;
+  }
+`;
+
 export const StyledErrorWrapper = styled.div`
   height: 100%;
   display: flex;

@@ -9,8 +9,6 @@ describe('Footer', () => {
 
       cy.get('[data-testid="breadcrumbs"]')
         .should('have.length', 1)
-        .find('div')
-        .should('have.length', 1)
         .should('have.text', 'Home');
     });
   });

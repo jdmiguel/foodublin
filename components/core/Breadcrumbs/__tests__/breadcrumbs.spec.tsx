@@ -44,7 +44,7 @@ describe('Component: Breadcrumbs', () => {
     expect(secondStep).toHaveStyleRule('font-weight', '600');
   });
 
-  it('should display arrows after the first two steps', () => {
+  it('should display arrows just after the first two steps', () => {
     const { getByText } = render(
       renderWithTheme(
         <Breadcrumbs
@@ -55,12 +55,14 @@ describe('Component: Breadcrumbs', () => {
     );
     const firstStep = getByText('First step');
     const secondStep = getByText('Second step');
+    const thirdStep = getByText('Third step');
 
-    expect(firstStep.nextElementSibling).toBeTruthy();
-    expect(secondStep.nextElementSibling).toBeTruthy();
+    expect(firstStep.parentElement.nextElementSibling).toBeTruthy();
+    expect(secondStep.parentElement.nextElementSibling).toBeTruthy();
+    expect(thirdStep.parentElement.nextElementSibling).toBeFalsy();
   });
 
-  it('should display properly the last step', () => {
+  it('should display the last step properly', () => {
     const { getByText } = render(
       renderWithTheme(
         <Breadcrumbs

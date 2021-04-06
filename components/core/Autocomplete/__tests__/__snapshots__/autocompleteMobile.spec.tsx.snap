@@ -1,76 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: AutocompleteMobile should render 1`] = `
-.c14 {
-  width: 100%;
-  max-width: 600px;
-  height: 100%;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 0 0 0 10px;
-  cursor: pointer;
-}
-
-.c15 {
-  width: 30px;
-  height: 30px;
-  border: solid #FFFFFF 1px;
-  display: inline-block;
-  border-radius: 4px;
-  -webkit-appearance: button-bevel;
-  box-shadow: 1px 2px 5px #798186;
-}
-
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  padding: 5px 0;
-  width: 65%;
-  margin-left: 14px;
-}
-
-.c17 {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 92%;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #FBA52B;
-}
-
-.c18 {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 92%;
-  font-size: 0.92rem;
-  line-height: 1.1rem;
-  font-weight: 500;
-  color: #585858;
-}
-
 .c8 {
   width: 100%;
   border-radius: 4px;
   padding: 0 20px;
-  background: #FFFFFF;
+  background: #F3F3F3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -91,7 +26,7 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   margin-right: 10px;
 }
 
-.c10 {
+.c9 {
   width: 100%;
   height: 55px;
   padding: 10px 0;
@@ -105,9 +40,74 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   -webkit-tap-highlight-color: transparent;
 }
 
+.c13 {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.c14 {
+  width: 30px;
+  height: 30px;
+  border: solid #FFFFFF 1px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-appearance: button-bevel;
+  box-shadow: 1px 2px 5px #798186;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 5px 0;
+  width: 65%;
+  margin-left: 14px;
+}
+
+.c16 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #FBA52B;
+}
+
+.c17 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92%;
+  font-size: 0.92rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+  color: #585858;
+}
+
 .c5 {
   color: #585858;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 500;
 }
 
@@ -190,10 +190,6 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 }
 
 .c6 {
-  font-size: 1.3rem;
-}
-
-.c7 {
   display: block;
   -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
@@ -203,33 +199,34 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   -webkit-tap-highlight-color: transparent;
 }
 
-.c7 i {
+.c6 i {
   font-size: 1.5rem;
   font-weight: 600;
   color: #585858;
 }
 
-.c9 {
+.c7 {
   border: 1px solid #D8D8D8;
+  border-radius: 4px;
   background-color: #F3F3F3;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   outline: none;
 }
 
-.c9:hover {
+.c7:hover {
   background-color: #FDF3E5;
 }
 
-.c9:focus {
+.c7:focus {
   background-color: #FDF3E5;
 }
 
-.c9 input {
+.c7 input {
   cursor: pointer;
 }
 
-.c11 {
+.c10 {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 0.2s ease 0s;
@@ -250,11 +247,11 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   border-radius: 4px;
 }
 
-.c12 {
+.c11 {
   width: 100%;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   border-bottom: 1px solid #E5EAED;
   list-style: none;
@@ -272,27 +269,33 @@ exports[`Component: AutocompleteMobile should render 1`] = `
   cursor: pointer;
 }
 
-.c13:hover {
+.c12:hover {
   background-color: #FDF3E5;
 }
 
 @media only screen and (min-width:768px) {
-  .c14 {
+  .c8 {
+    max-width: 550px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13 {
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
 
-  .c14:hover {
+  .c13:hover {
     background-color: #FDF3E5;
   }
 
-  .c14:hover h4 {
+  .c13:hover h4 {
     color: #EC7E00;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c16 {
+  .c15 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     padding: 10px 0;
@@ -301,21 +304,15 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c16 {
+  .c15 {
     margin-left: 20px;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c17 {
+  .c16 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c8 {
-    max-width: 550px;
   }
 }
 
@@ -356,12 +353,12 @@ exports[`Component: AutocompleteMobile should render 1`] = `
       class="c4"
     >
       <h4
-        class="c5 c6"
+        class="c5"
       >
         Dublin restaurants
       </h4>
       <button
-        class="c7"
+        class="c6"
         type="button"
       >
         <i
@@ -372,36 +369,40 @@ exports[`Component: AutocompleteMobile should render 1`] = `
       </button>
     </div>
     <div
-      class="c8 c9"
-      data-testid="input-wrapper"
+      class="c7"
     >
-      <i
-        class="material-icons"
-        data-testid="input-icon"
+      <div
+        class="c8"
+        data-testid="input-wrapper"
       >
-        search
-      </i>
-      <input
-        class="c10"
-        placeholder="Search for locals..."
-        type="text"
-        value=""
-      />
+        <i
+          class="material-icons"
+          data-testid="input-icon"
+        >
+          search
+        </i>
+        <input
+          class="c9"
+          placeholder="Search for locals..."
+          type="text"
+          value=""
+        />
+      </div>
     </div>
     <div
-      class="c11"
+      class="c10"
       data-testid="listbox-wrapper"
     >
       <ul
-        class="c12"
+        class="c11"
         role="listbox"
       >
         <li
-          class="c13"
+          class="c12"
           role="option"
         >
           <a
-            class="c14"
+            class="c13"
             data-testid="card"
             type="suggestion"
           >
@@ -410,23 +411,23 @@ exports[`Component: AutocompleteMobile should render 1`] = `
             >
               <img
                 alt="Manifesto"
-                class="c15"
+                class="c14"
                 src="/images/generic-thumb.png"
                 type="suggestion"
               />
             </div>
             <div
-              class="c16"
+              class="c15"
               type="suggestion"
             >
               <h4
-                class="c17"
+                class="c16"
                 type="suggestion"
               >
                 Manifesto
               </h4>
               <p
-                class="c18"
+                class="c17"
                 type="suggestion"
               >
                 Rathmines
@@ -435,11 +436,11 @@ exports[`Component: AutocompleteMobile should render 1`] = `
           </a>
         </li>
         <li
-          class="c13"
+          class="c12"
           role="option"
         >
           <a
-            class="c14"
+            class="c13"
             data-testid="card"
             type="suggestion"
           >
@@ -448,23 +449,23 @@ exports[`Component: AutocompleteMobile should render 1`] = `
             >
               <img
                 alt="Dragon Inn"
-                class="c15"
+                class="c14"
                 src="/images/generic-thumb.png"
                 type="suggestion"
               />
             </div>
             <div
-              class="c16"
+              class="c15"
               type="suggestion"
             >
               <h4
-                class="c17"
+                class="c16"
                 type="suggestion"
               >
                 Dragon Inn
               </h4>
               <p
-                class="c18"
+                class="c17"
                 type="suggestion"
               >
                 South City West
@@ -473,11 +474,11 @@ exports[`Component: AutocompleteMobile should render 1`] = `
           </a>
         </li>
         <li
-          class="c13"
+          class="c12"
           role="option"
         >
           <a
-            class="c14"
+            class="c13"
             data-testid="card"
             type="suggestion"
           >
@@ -486,23 +487,23 @@ exports[`Component: AutocompleteMobile should render 1`] = `
             >
               <img
                 alt="Casa Del Toro"
-                class="c15"
+                class="c14"
                 src="/images/generic-thumb.png"
                 type="suggestion"
               />
             </div>
             <div
-              class="c16"
+              class="c15"
               type="suggestion"
             >
               <h4
-                class="c17"
+                class="c16"
                 type="suggestion"
               >
                 Casa Del Toro
               </h4>
               <p
-                class="c18"
+                class="c17"
                 type="suggestion"
               >
                 Drumcondra

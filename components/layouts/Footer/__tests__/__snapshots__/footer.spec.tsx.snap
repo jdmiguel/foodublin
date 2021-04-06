@@ -21,7 +21,7 @@ exports[`Component: Footer should render 1`] = `
   margin-right: 4px;
 }
 
-.c6 {
+.c7 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -39,7 +39,7 @@ exports[`Component: Footer should render 1`] = `
   font-weight: 400;
 }
 
-.c6 i {
+.c7 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -65,7 +65,7 @@ exports[`Component: Footer should render 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c6 {
   white-space: nowrap;
   margin: 0 5px 3px 0;
 }
@@ -171,18 +171,18 @@ exports[`Component: Footer should render 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c6 {
+  .c7 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c6 {
+  .c7 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c6:hover {
+  .c7:hover {
     color: #EC7E00;
   }
 }
@@ -196,13 +196,13 @@ exports[`Component: Footer should render 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c7 {
+  .c6 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:600px) {
-  .c7 {
+  .c6 {
     margin: 0 5px 0 0;
   }
 }
@@ -292,12 +292,16 @@ exports[`Component: Footer should render 1`] = `
         <div
           class="c5"
         >
-          <a
-            class="c6 c7"
-            disabled=""
+          <div
+            class="c6"
           >
-            Home
-          </a>
+            <a
+              class="c7"
+              disabled=""
+            >
+              Home
+            </a>
+          </div>
         </div>
       </div>
       <a
@@ -374,7 +378,7 @@ exports[`Component: Footer should render extended 1`] = `
   margin-right: 4px;
 }
 
-.c6 {
+.c7 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -392,7 +396,7 @@ exports[`Component: Footer should render extended 1`] = `
   font-weight: 400;
 }
 
-.c6 i {
+.c7 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -418,7 +422,7 @@ exports[`Component: Footer should render extended 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c6 {
   white-space: nowrap;
   margin: 0 5px 3px 0;
 }
@@ -524,18 +528,18 @@ exports[`Component: Footer should render extended 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c6 {
+  .c7 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c6 {
+  .c7 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c6:hover {
+  .c7:hover {
     color: #EC7E00;
   }
 }
@@ -549,13 +553,13 @@ exports[`Component: Footer should render extended 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c7 {
+  .c6 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:600px) {
-  .c7 {
+  .c6 {
     margin: 0 5px 0 0;
   }
 }
@@ -645,12 +649,16 @@ exports[`Component: Footer should render extended 1`] = `
         <div
           class="c5"
         >
-          <a
-            class="c6 c7"
-            disabled=""
+          <div
+            class="c6"
           >
-            Home
-          </a>
+            <a
+              class="c7"
+              disabled=""
+            >
+              Home
+            </a>
+          </div>
         </div>
       </div>
       <a
@@ -727,7 +735,7 @@ exports[`Component: Footer should render with veil 1`] = `
   margin-right: 4px;
 }
 
-.c6 {
+.c7 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -745,7 +753,7 @@ exports[`Component: Footer should render with veil 1`] = `
   font-weight: 400;
 }
 
-.c6 i {
+.c7 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -771,7 +779,7 @@ exports[`Component: Footer should render with veil 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c6 {
   white-space: nowrap;
   margin: 0 5px 3px 0;
 }
@@ -877,18 +885,18 @@ exports[`Component: Footer should render with veil 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c6 {
+  .c7 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c6 {
+  .c7 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c6:hover {
+  .c7:hover {
     color: #EC7E00;
   }
 }
@@ -902,13 +910,13 @@ exports[`Component: Footer should render with veil 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c7 {
+  .c6 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:600px) {
-  .c7 {
+  .c6 {
     margin: 0 5px 0 0;
   }
 }
@@ -998,12 +1006,16 @@ exports[`Component: Footer should render with veil 1`] = `
         <div
           class="c5"
         >
-          <a
-            class="c6 c7"
-            disabled=""
+          <div
+            class="c6"
           >
-            Home
-          </a>
+            <a
+              class="c7"
+              disabled=""
+            >
+              Home
+            </a>
+          </div>
         </div>
       </div>
       <a

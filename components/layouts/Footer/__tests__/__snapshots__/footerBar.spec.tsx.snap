@@ -21,7 +21,7 @@ exports[`Component: FooterBar should render 1`] = `
   margin-right: 4px;
 }
 
-.c4 {
+.c5 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -39,7 +39,7 @@ exports[`Component: FooterBar should render 1`] = `
   font-weight: 400;
 }
 
-.c4 i {
+.c5 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -65,7 +65,7 @@ exports[`Component: FooterBar should render 1`] = `
   align-items: center;
 }
 
-.c5 {
+.c4 {
   white-space: nowrap;
   margin: 0 5px 3px 0;
 }
@@ -111,18 +111,18 @@ exports[`Component: FooterBar should render 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c4 {
+  .c5 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c4 {
+  .c5 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c4:hover {
+  .c5:hover {
     color: #EC7E00;
   }
 }
@@ -136,13 +136,13 @@ exports[`Component: FooterBar should render 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c5 {
+  .c4 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:600px) {
-  .c5 {
+  .c4 {
     margin: 0 5px 0 0;
   }
 }
@@ -184,12 +184,16 @@ exports[`Component: FooterBar should render 1`] = `
       <div
         class="c3"
       >
-        <a
-          class="c4 c5"
-          disabled=""
+        <div
+          class="c4"
         >
-          Home
-        </a>
+          <a
+            class="c5"
+            disabled=""
+          >
+            Home
+          </a>
+        </div>
       </div>
     </div>
     <a
