@@ -4,7 +4,7 @@ export const StyledInputWrapper = styled.div`
   width: 100%;
   border-radius: 4px;
   padding: 0 20px;
-  background: ${({ theme }) => theme.palette.LIGHT_MAX};
+  background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   display: flex;
   justify-content: center;
   align-items: center;

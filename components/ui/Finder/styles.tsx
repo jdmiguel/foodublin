@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
-import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
-import { Dropdown } from '../../core/Dropdown/Dropdown';
-import { Button } from '../../core/Button/Button';
-
 export const StyledFinder = styled.div`
   width: 85%;
   display: flex;
@@ -29,12 +24,13 @@ export const StyledFinder = styled.div`
   }
 `;
 
-export const StyledAutocompleteMobile = styled(AutocompleteMobile)`
+export const StyledAutocompleteMobileWrapper = styled.div`
   width: 100%;
   margin: 0 0 25px;
 `;
 
-export const StyledAutocomplete = styled(Autocomplete)`
+export const StyledAutocompleteWrapper = styled.div`
+  width: 100%;
   margin: 0 0 25px;
   @media only screen and (min-width: 992px) {
     margin: 0 2% 0 0;
@@ -80,7 +76,7 @@ export const StyledDropdownsWrapper = styled.div`
   }
 `;
 
-export const StyledDropdown = styled(Dropdown)`
+export const StyledDropdownWrapper = styled.div`
   width: 100%;
   &:first-of-type {
     margin-right: 2%;
@@ -98,7 +94,7 @@ export const StyledDropdown = styled(Dropdown)`
   }
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButtonWrapper = styled.div`
   width: 100%;
   margin-bottom: 10px;
   @media only screen and (min-width: 768px) {

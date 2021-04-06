@@ -3,9 +3,15 @@ import React, { useState, ReactNode } from 'react';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
+import { Button } from '../../core/Button/Button';
+
 import { useScroll } from '../../hooks/useScroll';
 
-import { StyledLayout, StyledMain, StyledScrollUpButton } from './styles';
+import {
+  StyledLayout,
+  StyledMain,
+  StyledScrollUpButtonWrapper,
+} from './styles';
 
 import { BreadcrumbsData } from '../../core/types';
 
@@ -77,14 +83,11 @@ export const Layout = ({
         }
         onClickFavorites={() => onNavigate('/favorites')}
       />
-      <StyledScrollUpButton
-        fullWidth={false}
-        isFloating={true}
-        onClick={handleScrollUp}
-        scrollUpButtonIsShowed={scrollUpButtonIsShowed}
-      >
-        <i className="material-icons">arrow_upward</i>
-      </StyledScrollUpButton>
+      <StyledScrollUpButtonWrapper isShowed={scrollUpButtonIsShowed}>
+        <Button fullWidth={false} isFloating={true} onClick={handleScrollUp}>
+          <i className="material-icons">arrow_upward</i>
+        </Button>
+      </StyledScrollUpButtonWrapper>
     </StyledLayout>
   );
 };

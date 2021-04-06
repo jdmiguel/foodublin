@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
+import { Loader } from '../Loader/Loader';
+import { Input } from '../Input/Input';
 import { Card } from '../Card/Card';
+import { BlockTitle } from '../BlockTitle/BlockTitle';
 import { BlockText } from '../BlockText/BlockText';
 import { Button } from '../Button/Button';
 
@@ -11,11 +14,10 @@ import {
   StyledLabelButton,
   StyledModal,
   StyleHeading,
-  StyleHeadingText,
   StyleHeadingButton,
-  StyledInput,
+  StyledInputWrapper,
   StyledListboxWrapper,
-  StyledLoader,
+  StyledLoaderWrapper,
   StyledListbox,
   StyledErrorWrapper,
   StyledErrorButtonWrapper,
@@ -135,27 +137,31 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
         </StyledLabel>
         <StyledModal isShowed={isModalShowed} data-testid="modal">
           <StyleHeading>
-            <StyleHeadingText text="Dublin restaurants" />
+            <BlockTitle text="Dublin restaurants" />
             <StyleHeadingButton type="button" onClick={handleCloseModal}>
               <i className="material-icons">close</i>
             </StyleHeadingButton>
           </StyleHeading>
-          <StyledInput
-            type="text"
-            placeholder={focusedPlaceholder}
-            onChange={handleChange}
-            value={value}
-            onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
-            hasSearchIcon={hasSearchIcon}
-          />
+          <StyledInputWrapper>
+            <Input
+              type="text"
+              placeholder={focusedPlaceholder}
+              onChange={handleChange}
+              value={value}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+              hasSearchIcon={hasSearchIcon}
+            />
+          </StyledInputWrapper>
           <StyledListboxWrapper
             isShowed={isListboxFocused}
             data-testid="listbox-wrapper"
             ref={listboxWrapperRef}
           >
             {loading ? (
-              <StyledLoader text={DEFAULT_TEXT_LOADING} />
+              <StyledLoaderWrapper>
+                <Loader text={DEFAULT_TEXT_LOADING} />
+              </StyledLoaderWrapper>
             ) : (
               <StyledListbox role="listbox">
                 {onRequestError ? (

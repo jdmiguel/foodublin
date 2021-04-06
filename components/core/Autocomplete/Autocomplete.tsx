@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import { Loader } from '../Loader/Loader';
+import { Input } from '../Input/Input';
 import { Card } from '../Card/Card';
 import { BlockText } from '../BlockText/BlockText';
 import { Button } from '../Button/Button';
 
 import {
   StyledAutocomplete,
-  StyledInput,
+  StyledInputWrapper,
   StyledListboxWrapper,
-  StyledLoader,
+  StyledLoaderWrapper,
   StyledListbox,
   StyledErrorWrapper,
   StyledErrorButtonWrapper,
@@ -105,25 +107,25 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       className={className}
       disabled={disabled}
     >
-      <StyledInput
-        type="text"
-        hasBorderBottomRadius={hasBorderBottomRadius}
-        placeholder={focusedPlaceholder}
-        onChange={handleChange}
-        value={value}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        hasSearchIcon={hasSearchIcon}
-      />
+      <StyledInputWrapper hasBorderBottomRadius={hasBorderBottomRadius}>
+        <Input
+          type="text"
+          placeholder={focusedPlaceholder}
+          onChange={handleChange}
+          value={value}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          hasSearchIcon={hasSearchIcon}
+        />
+      </StyledInputWrapper>
       <StyledListboxWrapper
         isShowed={isListboxFocused}
         data-testid="listbox-wrapper"
       >
         {loading ? (
-          <StyledLoader
-            className="listbox-loader"
-            text={DEFAULT_TEXT_LOADING}
-          />
+          <StyledLoaderWrapper>
+            <Loader className="listbox-loader" text={DEFAULT_TEXT_LOADING} />
+          </StyledLoaderWrapper>
         ) : (
           <StyledListbox role="listbox">
             {onRequestError ? (

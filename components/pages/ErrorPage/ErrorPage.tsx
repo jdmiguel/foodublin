@@ -7,8 +7,9 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 
 import { Loader } from '../../core/Loader/Loader';
 import { Button } from '../../core/Button/Button';
+import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 
-import { StyledErrorPage, StyledText } from './styles';
+import { StyledErrorPage, StyledTextWrapper } from './styles';
 
 import { LoaderType } from '../../core/types';
 
@@ -26,7 +27,9 @@ const ErrorPage: React.FC<ErrorPage> = ({ isNavigating, onNavigate }) => {
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
-        <StyledText text="Sorry but something was wrong..." />
+        <StyledTextWrapper>
+          <BlockTitle text="Sorry but something was wrong..." />
+        </StyledTextWrapper>
         <Button fullWidth={false} onClick={() => router.push('/')}>
           <i className="material-icons">home</i>Back to home
         </Button>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import { CustomLink } from '../CustomLink/CustomLink';
+
 import {
   StyledBreadcrumbsLoading,
   StyledBreadcrumbsWrapper,
   StyledBreadcrumb,
-  StyledCustomLink,
+  StyledCustomLinkWrapper,
   StyledArrow,
 } from './styles';
 
@@ -35,14 +37,20 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         const isLast = itemIndex === items.length - 1;
         return (
           <StyledBreadcrumb key={breadcrumbData.text} isLast={isLast}>
-            <StyledCustomLink
-              disabled={isLast}
-              onClick={() =>
-                onClickBreadcrumb(breadcrumbData.route, breadcrumbData.asRoute)
-              }
-            >
-              {breadcrumbData.text}
-            </StyledCustomLink>
+            <StyledCustomLinkWrapper>
+              <CustomLink
+                disabled={isLast}
+                onClick={() =>
+                  onClickBreadcrumb(
+                    breadcrumbData.route,
+                    breadcrumbData.asRoute,
+                  )
+                }
+              >
+                {breadcrumbData.text}
+              </CustomLink>
+            </StyledCustomLinkWrapper>
+
             {itemIndex < items.length - 1 && <StyledArrow>{'>'}</StyledArrow>}
           </StyledBreadcrumb>
         );

@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
+import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
+import { Dropdown } from '../../core/Dropdown/Dropdown';
+
+import { Button } from '../../core/Button/Button';
+
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
 
 import {
   StyledFinder,
-  StyledAutocompleteMobile,
-  StyledAutocomplete,
+  StyledAutocompleteMobileWrapper,
+  StyledAutocompleteWrapper,
   StyledDropdownsWrapper,
-  StyledDropdown,
+  StyledDropdownWrapper,
   StyledSpacer,
-  StyledButton,
+  StyledButtonWrapper,
 } from './styles';
 
 import { setRelatedRestaurants } from '@/store/redux/actions';
@@ -125,52 +131,62 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   return (
     <StyledFinder data-testid="finder" className={className}>
       {isMobile ? (
-        <StyledAutocompleteMobile
-          suggestions={suggestions || []}
-          fetchSuggestions={fetchSuggestions}
-          selectSuggestion={selectSuggestion}
-          disabled={isButtonLoading}
-          loading={isAutocompleteLoading}
-          hasSearchIcon={true}
-          onRequestError={onRequestError}
-          clearSuggestions={clearSuggestions}
-        />
+        <StyledAutocompleteMobileWrapper>
+          <AutocompleteMobile
+            suggestions={suggestions || []}
+            fetchSuggestions={fetchSuggestions}
+            selectSuggestion={selectSuggestion}
+            disabled={isButtonLoading}
+            loading={isAutocompleteLoading}
+            hasSearchIcon={true}
+            onRequestError={onRequestError}
+            clearSuggestions={clearSuggestions}
+          />
+        </StyledAutocompleteMobileWrapper>
       ) : (
-        <StyledAutocomplete
-          suggestions={suggestions || []}
-          fetchSuggestions={fetchSuggestions}
-          selectSuggestion={selectSuggestion}
-          disabled={isButtonLoading}
-          loading={isAutocompleteLoading}
-          hasSearchIcon={true}
-          onRequestError={onRequestError}
-          clearSuggestions={clearSuggestions}
-        />
+        <StyledAutocompleteWrapper>
+          <Autocomplete
+            suggestions={suggestions || []}
+            fetchSuggestions={fetchSuggestions}
+            selectSuggestion={selectSuggestion}
+            disabled={isButtonLoading}
+            loading={isAutocompleteLoading}
+            hasSearchIcon={true}
+            onRequestError={onRequestError}
+            clearSuggestions={clearSuggestions}
+          />
+        </StyledAutocompleteWrapper>
       )}
       <StyledSpacer />
       <StyledDropdownsWrapper>
-        <StyledDropdown
-          icon="near_me"
-          labelTxt="Select any location"
-          list={LOCATIONS}
-          disabled={isButtonLoading}
-          isReset={isDropdownReset}
-          onSelect={(path: string) => setCurrentLocationPath(path)}
-          onClear={() => setCurrentLocationPath('dublin')}
-        />
-        <StyledDropdown
-          icon="restaurant"
-          labelTxt="Select any cuisine"
-          list={CUISINES}
-          disabled={isButtonLoading}
-          isReset={isDropdownReset}
-          onSelect={(path: string) => setCurrentCuisinePath(path)}
-          onClear={() => setCurrentCuisinePath('any-food')}
-        />
+        <StyledDropdownWrapper>
+          <Dropdown
+            icon="near_me"
+            labelTxt="Select any location"
+            list={LOCATIONS}
+            disabled={isButtonLoading}
+            isReset={isDropdownReset}
+            onSelect={(path: string) => setCurrentLocationPath(path)}
+            onClear={() => setCurrentLocationPath('dublin')}
+          />
+        </StyledDropdownWrapper>
+        <StyledDropdownWrapper>
+          <Dropdown
+            icon="restaurant"
+            labelTxt="Select any cuisine"
+            list={CUISINES}
+            disabled={isButtonLoading}
+            isReset={isDropdownReset}
+            onSelect={(path: string) => setCurrentCuisinePath(path)}
+            onClear={() => setCurrentCuisinePath('any-food')}
+          />
+        </StyledDropdownWrapper>
       </StyledDropdownsWrapper>
-      <StyledButton loading={isButtonLoading} onClick={handleButtonClick}>
-        Search
-      </StyledButton>
+      <StyledButtonWrapper>
+        <Button loading={isButtonLoading} onClick={handleButtonClick}>
+          Search
+        </Button>
+      </StyledButtonWrapper>
     </StyledFinder>
   );
 };

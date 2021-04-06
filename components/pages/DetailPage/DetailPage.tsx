@@ -8,7 +8,9 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { BlockText } from '../../core/BlockText/BlockText';
+import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 import { Rating } from '../../core/Rating/Rating';
+import { Button } from '../../core/Button/Button';
 
 import { Timmings } from './Timings';
 import { Cuisines } from './Cuisines';
@@ -21,12 +23,12 @@ import {
   StyledOverlay,
   StyledName,
   StyledLocation,
-  StyledButton,
+  StyledButtonWrapper,
   StyledJumbotron,
   StyledDetailPage,
   StyledInformation,
   StyledSectionBlock,
-  StyledBlockTitle,
+  StyledTitleWrapper,
   StyledReviewsWrapper,
   StyledAddressWrapper,
   StyledPhone,
@@ -117,16 +119,19 @@ const DetailPage: React.FC<DetailPageProps> = ({
       <StyledName>{name}</StyledName>
       <StyledLocation>{location}</StyledLocation>
       {isLoading ? (
-        <StyledButton onClick={clickSaveButton}>
-          {DEFAULT_TEXT_LOADING}
-        </StyledButton>
+        <StyledButtonWrapper>
+          <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
+        </StyledButtonWrapper>
       ) : (
-        <StyledButton onClick={clickSaveButton}>
-          <i className="material-icons">{`${
-            isSaved ? 'favorite' : 'favorite_border'
-          }`}</i>
-          {`${isSaved ? 'saved' : 'unsaved'}`}
-        </StyledButton>
+        <StyledButtonWrapper>
+          {' '}
+          <Button onClick={clickSaveButton}>
+            <i className="material-icons">{`${
+              isSaved ? 'favorite' : 'favorite_border'
+            }`}</i>
+            {`${isSaved ? 'saved' : 'unsaved'}`}
+          </Button>
+        </StyledButtonWrapper>
       )}
     </StyledOverlay>
   );
@@ -168,31 +173,43 @@ const DetailPage: React.FC<DetailPageProps> = ({
             <div className="grid-x cell small-12 large-7">
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Cuisines" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Cuisines" />
+                  </StyledTitleWrapper>
                   <Cuisines cuisines={cuisinesList} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Schedule" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Schedule" />
+                  </StyledTitleWrapper>
                   <Timmings timmings={getTimmings(timings)} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Rating" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Rating" />
+                  </StyledTitleWrapper>
                   <Rating value={rating} votes={votes} />
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Average Cost" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Average Cost" />
+                  </StyledTitleWrapper>
                   <BlockText text={`€${average} for two people`} />
                 </StyledSectionBlock>
                 {establishment && (
                   <StyledSectionBlock>
-                    <StyledBlockTitle text="Establishment type" />
+                    <StyledTitleWrapper>
+                      <BlockTitle text="Establishment type" />
+                    </StyledTitleWrapper>
                     <BlockText text={establishment} />
                   </StyledSectionBlock>
                 )}
               </div>
               <div className="cell small-12 medium-6">
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="More info" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="More info" />
+                  </StyledTitleWrapper>
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
@@ -200,7 +217,9 @@ const DetailPage: React.FC<DetailPageProps> = ({
                 <div className="cell small-12">
                   <StyledSectionBlock>
                     <StyledReviewsWrapper>
-                      <StyledBlockTitle text="Reviews" />
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Reviews" />
+                      </StyledTitleWrapper>
                       {reviews.map((review) => (
                         <ReviewCard
                           key={review.id}
@@ -219,11 +238,15 @@ const DetailPage: React.FC<DetailPageProps> = ({
             <div className="cell small-12 large-5">
               <StyledAddressWrapper className="paper">
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Phone" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Phone" />
+                  </StyledTitleWrapper>
                   <StyledPhone>{phone}</StyledPhone>
                 </StyledSectionBlock>
                 <StyledSectionBlock>
-                  <StyledBlockTitle text="Address" />
+                  <StyledTitleWrapper>
+                    <BlockTitle text="Address" />
+                  </StyledTitleWrapper>
                   <Address
                     mapSrc={getMapSrc(name, location)}
                     address={address}
