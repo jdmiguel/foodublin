@@ -5,7 +5,7 @@ exports[`Component: Input should not render icon 1`] = `
   width: 100%;
   border-radius: 4px;
   padding: 0 20px;
-  background: #FFFFFF;
+  background: #F3F3F3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,7 +70,7 @@ exports[`Component: Input should render including icon and update value 1`] = `
   width: 100%;
   border-radius: 4px;
   padding: 0 20px;
-  background: #FFFFFF;
+  background: #F3F3F3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

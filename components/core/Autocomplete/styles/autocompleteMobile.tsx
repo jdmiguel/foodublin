@@ -134,6 +134,14 @@ export const StyledListbox = styled.ul`
   width: 100%;
 `;
 
+export const StyledNoSuggestionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`;
+
 export const StyledErrorWrapper = styled.div`
   display: flex;
   flex-direction: column;

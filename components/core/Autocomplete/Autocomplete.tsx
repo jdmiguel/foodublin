@@ -12,6 +12,7 @@ import {
   StyledListboxWrapper,
   StyledLoaderWrapper,
   StyledListbox,
+  StyledNoSuggestionsWrapper,
   StyledErrorWrapper,
   StyledErrorButtonWrapper,
   StyledListboxItem,
@@ -59,6 +60,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }
   }, [value]);
 
+  const hasBorderBottomRadius =
+    !isListboxFocused || (isListboxFocused && value.length < 3);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
 
@@ -96,10 +100,27 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     clearSuggestions();
   };
 
-  const hasBorderBottomRadius =
-    suggestions.length === 0 ||
-    !isListboxFocused ||
-    (isListboxFocused && value.length < 3);
+  const renderSuggestions = () => {
+    if (suggestions.length === 0 && value.length > 2) {
+      return (
+        <StyledNoSuggestionsWrapper>
+          <BlockText text="There are no suggestions for this search" />
+        </StyledNoSuggestionsWrapper>
+      );
+    }
+
+    return suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
+      <StyledListboxItem key={id} role="option">
+        <Card
+          imgSrc={imgSrc}
+          title={title}
+          content={content}
+          onClick={() => handleSuggestionClick(id, title)}
+          type={CardType.SUGGESTION}
+        />
+      </StyledListboxItem>
+    ));
+  };
 
   return (
     <StyledAutocomplete
@@ -136,17 +157,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                 </StyledErrorButtonWrapper>
               </StyledErrorWrapper>
             ) : (
-              suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
-                <StyledListboxItem key={id} role="option">
-                  <Card
-                    imgSrc={imgSrc}
-                    title={title}
-                    content={content}
-                    onClick={() => handleSuggestionClick(id, title)}
-                    type={CardType.SUGGESTION}
-                  />
-                </StyledListboxItem>
-              ))
+              renderSuggestions()
             )}
           </StyledListbox>
         )}
