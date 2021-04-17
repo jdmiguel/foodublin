@@ -1,15 +1,20 @@
 describe('Footer', () => {
   describe('When visiting home page', () => {
-    beforeEach(() => {
+    it('should display the correct Breadcrumbs', () => {
       cy.visit('/');
+
+      cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home');
     });
+  });
 
-    it('should display the footer with the correct Breadcrumbs', () => {
-      cy.get('footer').should('have.length', 1);
+  describe('When visiting search page', () => {
+    it('should display the correct Breadcrumbs', () => {
+      cy.visit('/search/dundrum/indian');
 
-      cy.get('[data-testid="breadcrumbs"]')
-        .should('have.length', 1)
-        .should('have.text', 'Home');
+      cy.get('[data-testid="breadcrumbs"]').should(
+        'have.text',
+        'Home>Indian in Dundrum',
+      );
     });
   });
 });

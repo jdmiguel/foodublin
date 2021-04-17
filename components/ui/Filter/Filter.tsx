@@ -64,7 +64,7 @@ export const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
   };
 
   return (
-    <div className="grid-x grid-margin-x">
+    <div data-testid="filter" className="grid-x grid-margin-x">
       {dataState.map((item) => (
         <StyledFilterItem
           isActive={item.isActive}
