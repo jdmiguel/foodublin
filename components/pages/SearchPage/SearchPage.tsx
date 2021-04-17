@@ -64,7 +64,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
       onNavigate={onNavigate}
       breadcrumbs={breadcrumbs}
     >
-      <StyledSearchPage className="grid-container">
+      <StyledSearchPage data-testid="search-page" className="grid-container">
         <FullLoader isShowed={isLoadingByFilter}>
           <Loader text={DEFAULT_TEXT_LOADING} />
         </FullLoader>
