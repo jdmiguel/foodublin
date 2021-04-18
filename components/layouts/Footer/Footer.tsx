@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
   onClickFavorites,
   breadcrumbs,
 }) => (
-  <StyledFooterWrapper>
+  <StyledFooterWrapper data-testid="footer">
     {showVeil && <StyledFooterVeil endValue={0.6} />}
     {isExtended && (
       <FooterBar
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
         breadcrumbs={breadcrumbs}
       />
     )}
-    <StyledRightsFooter>
+    <StyledRightsFooter data-testid="footer-rights">
       <StyledBlock>
         <CustomLink route="https://github.com/jdmiguel/foodublin">
           GITHUB
