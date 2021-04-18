@@ -43,7 +43,7 @@ export const StyledCuisine = styled.p`
 
 // DetailPage
 
-const JumbotronTextCSS = css`
+const HeaderTextCSS = css`
   color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   text-align: center;
   line-height: 1.5rem;
@@ -60,7 +60,7 @@ export const StyledDetailPage = styled.div`
   }
 `;
 
-export const StyledJumbotron = styled.div<{ bgImg: string }>`
+export const StyledHeader = styled.div<{ bgImg: string }>`
   background-size: cover;
   background-image: url(${({ bgImg }) => bgImg});
   background-color: ${({ theme }) => theme.palette.DARK_SOFT};
@@ -87,7 +87,7 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledName = styled.h2`
-  ${JumbotronTextCSS}
+  ${HeaderTextCSS}
   font-size: 1.7rem;
   line-height: 1.5rem;
   font-weight: 600;
@@ -102,7 +102,7 @@ export const StyledName = styled.h2`
 `;
 
 export const StyledLocation = styled.h3`
-  ${JumbotronTextCSS}
+  ${HeaderTextCSS}
   font-size: 1.3rem;
   line-height: 1.3rem;
   @media only screen and (min-width: 640px) {

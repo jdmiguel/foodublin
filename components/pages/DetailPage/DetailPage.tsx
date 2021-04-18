@@ -24,7 +24,7 @@ import {
   StyledName,
   StyledLocation,
   StyledButtonWrapper,
-  StyledJumbotron,
+  StyledHeader,
   StyledDetailPage,
   StyledInformation,
   StyledSectionBlock,
@@ -114,46 +114,42 @@ const DetailPage: React.FC<DetailPageProps> = ({
     onClickSaveButton(isFavorite ? 'unsave' : 'save');
   };
 
-  const getOverlay = () => (
-    <StyledOverlay>
-      <StyledName>{name}</StyledName>
-      <StyledLocation>{location}</StyledLocation>
-      {isLoading ? (
-        <StyledButtonWrapper>
-          <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
-        </StyledButtonWrapper>
-      ) : (
-        <StyledButtonWrapper>
-          {' '}
-          <Button onClick={clickSaveButton}>
-            <i className="material-icons">{`${
-              isSaved ? 'favorite' : 'favorite_border'
-            }`}</i>
-            {`${isSaved ? 'saved' : 'unsaved'}`}
-          </Button>
-        </StyledButtonWrapper>
-      )}
-    </StyledOverlay>
+  const getStyledHeader = (ref: any, imgSrc: string) => (
+    <StyledHeader data-testid="detail-header" ref={ref} bgImg={imgSrc}>
+      <StyledOverlay>
+        <StyledName>{name}</StyledName>
+        <StyledLocation>{location}</StyledLocation>
+        {isLoading ? (
+          <StyledButtonWrapper>
+            <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
+          </StyledButtonWrapper>
+        ) : (
+          <StyledButtonWrapper>
+            {' '}
+            <Button onClick={clickSaveButton}>
+              <i className="material-icons">{`${
+                isSaved ? 'favorite' : 'favorite_border'
+              }`}</i>
+              {`${isSaved ? 'saved' : 'unsaved'}`}
+            </Button>
+          </StyledButtonWrapper>
+        )}
+      </StyledOverlay>
+    </StyledHeader>
   );
 
-  const getStyledJumbotron = (ref: any, imgSrc: string) => (
-    <StyledJumbotron ref={ref} bgImg={imgSrc}>
-      {getOverlay()}
-    </StyledJumbotron>
-  );
-
-  const getJumbotron = (imgSrc: string) => {
+  const getHeader = (imgSrc: string) => {
     if (imgSrc) {
       return (
         <LazyImage
           src={imgSrc}
-          placeholder={({ ref }) => getStyledJumbotron(ref, DETAIL_GENERIC_SRC)}
-          actual={({ imageProps }) => getStyledJumbotron(null, imageProps.src)}
+          placeholder={({ ref }) => getStyledHeader(ref, DETAIL_GENERIC_SRC)}
+          actual={({ imageProps }) => getStyledHeader(null, imageProps.src)}
         />
       );
     }
 
-    return getStyledJumbotron(null, DETAIL_GENERIC_SRC);
+    return getStyledHeader(null, DETAIL_GENERIC_SRC);
   };
 
   return (
@@ -162,11 +158,11 @@ const DetailPage: React.FC<DetailPageProps> = ({
       onNavigate={onNavigate}
       breadcrumbs={breadcrumbs}
     >
-      <StyledDetailPage className="grid-container">
+      <StyledDetailPage data-testid="detail-page" className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
-        {getJumbotron(imgSrc)}
+        {getHeader(imgSrc)}
         <StyledInformation>
           <Title text="Relevant information" />
           <div className="grid-x">
