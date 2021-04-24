@@ -163,37 +163,37 @@ const DetailPage: React.FC<DetailPageProps> = ({
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {getHeader(imgSrc)}
-        <StyledInformation>
+        <StyledInformation data-testid="detail-info">
           <Title text="Relevant information" />
           <div className="grid-x">
             <div className="grid-x cell small-12 large-7">
               <div className="cell small-12 medium-6">
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-cuisine">
                   <StyledTitleWrapper>
                     <BlockTitle text="Cuisines" />
                   </StyledTitleWrapper>
                   <Cuisines cuisines={cuisinesList} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-schedule">
                   <StyledTitleWrapper>
                     <BlockTitle text="Schedule" />
                   </StyledTitleWrapper>
                   <Timmings timmings={getTimmings(timings)} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-rating">
                   <StyledTitleWrapper>
                     <BlockTitle text="Rating" />
                   </StyledTitleWrapper>
                   <Rating value={rating} votes={votes} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-average">
                   <StyledTitleWrapper>
                     <BlockTitle text="Average Cost" />
                   </StyledTitleWrapper>
                   <BlockText text={`€${average} for two people`} />
                 </StyledSectionBlock>
                 {establishment && (
-                  <StyledSectionBlock>
+                  <StyledSectionBlock data-testid="detail-establishment">
                     <StyledTitleWrapper>
                       <BlockTitle text="Establishment type" />
                     </StyledTitleWrapper>
@@ -202,7 +202,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
                 )}
               </div>
               <div className="cell small-12 medium-6">
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-more-info">
                   <StyledTitleWrapper>
                     <BlockTitle text="More info" />
                   </StyledTitleWrapper>
@@ -211,7 +211,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
               </div>
               {reviews && reviews.length > 0 && (
                 <div className="cell small-12">
-                  <StyledSectionBlock>
+                  <StyledSectionBlock data-testid="detail-reviews">
                     <StyledReviewsWrapper>
                       <StyledTitleWrapper>
                         <BlockTitle text="Reviews" />
@@ -232,7 +232,10 @@ const DetailPage: React.FC<DetailPageProps> = ({
               )}
             </div>
             <div className="cell small-12 large-5">
-              <StyledAddressWrapper className="paper">
+              <StyledAddressWrapper
+                data-testid="detail-address"
+                className="paper"
+              >
                 <StyledSectionBlock>
                   <StyledTitleWrapper>
                     <BlockTitle text="Phone" />
@@ -253,7 +256,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
           </div>
         </StyledInformation>
         {relatedRestaurants.length > 0 && (
-          <StyledRelatedRestaurants>
+          <StyledRelatedRestaurants data-testid="detail-related">
             <Title text="Related restaurants" />
             <div className="grid-x grid-margin-x grid-margin-y">
               <RelatedRestaurants

@@ -157,11 +157,11 @@ export const StyledRelatedRestaurants = styled.div`
 
 // Highlights
 
-export const StyledHighlightsWrapper = styled.div`
+export const StyledHighlightsWrapper = styled.ul`
   margin-top: 20px;
 `;
 
-export const StyledHighlight = styled.div`
+export const StyledHighlight = styled.li`
   display: flex;
   align-items: center;
   &:not(:last-of-type) {
@@ -176,19 +176,19 @@ export const StyledHighlightIcon = styled.i`
 
 // Timmings
 
-export const StyledTimming = styled.div`
+export const StyledTimming = styled.li`
   display: flex;
   align-items: flex-end;
 `;
 
-export const StyledTimmingDay = styled.p`
+export const StyledTimmingDay = styled.span`
   font-size: 1.1rem;
   font-weight: 500;
   color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   margin-right: 5px;
 `;
 
-export const StyledTimmingSchedule = styled.p`
+export const StyledTimmingSchedule = styled.span`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;
