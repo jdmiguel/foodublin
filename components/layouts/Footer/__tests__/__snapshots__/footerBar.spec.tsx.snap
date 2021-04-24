@@ -173,6 +173,7 @@ exports[`Component: FooterBar should render 1`] = `
 
 <div
   class="c0"
+  data-testid="footer-bar"
 >
   <div
     class="c1 grid-container"

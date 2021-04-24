@@ -92,6 +92,7 @@ exports[`Component: Filter should render 1`] = `
 
 <div
   class="grid-x grid-margin-x"
+  data-testid="filter"
 >
   <button
     class="c0 cell small-6 medium-3 large-3"
