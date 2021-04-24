@@ -19,7 +19,7 @@ export const FooterBar: React.FC<FooterBarProps> = ({
   breadcrumbs,
 }) => {
   return (
-    <StyledFooterBarWrapper>
+    <StyledFooterBarWrapper data-testid="footer-bar">
       <StyledFooterBar className="grid-container">
         <Breadcrumbs
           breadcrumbsData={breadcrumbs || []}

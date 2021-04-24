@@ -13,12 +13,12 @@ type TimingsProps = {
 };
 
 export const Timmings = ({ timmings }: TimingsProps) => (
-  <>
+  <ul>
     {timmings.map((timming) => (
       <StyledTimming key={timming.id}>
         <StyledTimmingDay>{`${timming.day} : `}</StyledTimmingDay>
         <StyledTimmingSchedule>{timming.schedule}</StyledTimmingSchedule>
       </StyledTimming>
     ))}
-  </>
+  </ul>
 );

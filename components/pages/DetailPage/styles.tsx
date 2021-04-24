@@ -43,7 +43,7 @@ export const StyledCuisine = styled.p`
 
 // DetailPage
 
-const JumbotronTextCSS = css`
+const HeaderTextCSS = css`
   color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   text-align: center;
   line-height: 1.5rem;
@@ -60,7 +60,7 @@ export const StyledDetailPage = styled.div`
   }
 `;
 
-export const StyledJumbotron = styled.div<{ bgImg: string }>`
+export const StyledHeader = styled.div<{ bgImg: string }>`
   background-size: cover;
   background-image: url(${({ bgImg }) => bgImg});
   background-color: ${({ theme }) => theme.palette.DARK_SOFT};
@@ -87,7 +87,7 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledName = styled.h2`
-  ${JumbotronTextCSS}
+  ${HeaderTextCSS}
   font-size: 1.7rem;
   line-height: 1.5rem;
   font-weight: 600;
@@ -102,7 +102,7 @@ export const StyledName = styled.h2`
 `;
 
 export const StyledLocation = styled.h3`
-  ${JumbotronTextCSS}
+  ${HeaderTextCSS}
   font-size: 1.3rem;
   line-height: 1.3rem;
   @media only screen and (min-width: 640px) {
@@ -157,11 +157,11 @@ export const StyledRelatedRestaurants = styled.div`
 
 // Highlights
 
-export const StyledHighlightsWrapper = styled.div`
+export const StyledHighlightsWrapper = styled.ul`
   margin-top: 20px;
 `;
 
-export const StyledHighlight = styled.div`
+export const StyledHighlight = styled.li`
   display: flex;
   align-items: center;
   &:not(:last-of-type) {
@@ -176,19 +176,19 @@ export const StyledHighlightIcon = styled.i`
 
 // Timmings
 
-export const StyledTimming = styled.div`
+export const StyledTimming = styled.li`
   display: flex;
   align-items: flex-end;
 `;
 
-export const StyledTimmingDay = styled.p`
+export const StyledTimmingDay = styled.span`
   font-size: 1.1rem;
   font-weight: 500;
   color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   margin-right: 5px;
 `;
 
-export const StyledTimmingSchedule = styled.p`
+export const StyledTimmingSchedule = styled.span`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;

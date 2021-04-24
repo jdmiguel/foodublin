@@ -24,7 +24,7 @@ import {
   StyledName,
   StyledLocation,
   StyledButtonWrapper,
-  StyledJumbotron,
+  StyledHeader,
   StyledDetailPage,
   StyledInformation,
   StyledSectionBlock,
@@ -114,46 +114,42 @@ const DetailPage: React.FC<DetailPageProps> = ({
     onClickSaveButton(isFavorite ? 'unsave' : 'save');
   };
 
-  const getOverlay = () => (
-    <StyledOverlay>
-      <StyledName>{name}</StyledName>
-      <StyledLocation>{location}</StyledLocation>
-      {isLoading ? (
-        <StyledButtonWrapper>
-          <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
-        </StyledButtonWrapper>
-      ) : (
-        <StyledButtonWrapper>
-          {' '}
-          <Button onClick={clickSaveButton}>
-            <i className="material-icons">{`${
-              isSaved ? 'favorite' : 'favorite_border'
-            }`}</i>
-            {`${isSaved ? 'saved' : 'unsaved'}`}
-          </Button>
-        </StyledButtonWrapper>
-      )}
-    </StyledOverlay>
+  const getStyledHeader = (ref: any, imgSrc: string) => (
+    <StyledHeader data-testid="detail-header" ref={ref} bgImg={imgSrc}>
+      <StyledOverlay>
+        <StyledName>{name}</StyledName>
+        <StyledLocation>{location}</StyledLocation>
+        {isLoading ? (
+          <StyledButtonWrapper>
+            <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
+          </StyledButtonWrapper>
+        ) : (
+          <StyledButtonWrapper>
+            {' '}
+            <Button onClick={clickSaveButton}>
+              <i className="material-icons">{`${
+                isSaved ? 'favorite' : 'favorite_border'
+              }`}</i>
+              {`${isSaved ? 'saved' : 'unsaved'}`}
+            </Button>
+          </StyledButtonWrapper>
+        )}
+      </StyledOverlay>
+    </StyledHeader>
   );
 
-  const getStyledJumbotron = (ref: any, imgSrc: string) => (
-    <StyledJumbotron ref={ref} bgImg={imgSrc}>
-      {getOverlay()}
-    </StyledJumbotron>
-  );
-
-  const getJumbotron = (imgSrc: string) => {
+  const getHeader = (imgSrc: string) => {
     if (imgSrc) {
       return (
         <LazyImage
           src={imgSrc}
-          placeholder={({ ref }) => getStyledJumbotron(ref, DETAIL_GENERIC_SRC)}
-          actual={({ imageProps }) => getStyledJumbotron(null, imageProps.src)}
+          placeholder={({ ref }) => getStyledHeader(ref, DETAIL_GENERIC_SRC)}
+          actual={({ imageProps }) => getStyledHeader(null, imageProps.src)}
         />
       );
     }
 
-    return getStyledJumbotron(null, DETAIL_GENERIC_SRC);
+    return getStyledHeader(null, DETAIL_GENERIC_SRC);
   };
 
   return (
@@ -162,42 +158,42 @@ const DetailPage: React.FC<DetailPageProps> = ({
       onNavigate={onNavigate}
       breadcrumbs={breadcrumbs}
     >
-      <StyledDetailPage className="grid-container">
+      <StyledDetailPage data-testid="detail-page" className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
-        {getJumbotron(imgSrc)}
-        <StyledInformation>
+        {getHeader(imgSrc)}
+        <StyledInformation data-testid="detail-info">
           <Title text="Relevant information" />
           <div className="grid-x">
             <div className="grid-x cell small-12 large-7">
               <div className="cell small-12 medium-6">
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-cuisine">
                   <StyledTitleWrapper>
                     <BlockTitle text="Cuisines" />
                   </StyledTitleWrapper>
                   <Cuisines cuisines={cuisinesList} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-schedule">
                   <StyledTitleWrapper>
                     <BlockTitle text="Schedule" />
                   </StyledTitleWrapper>
                   <Timmings timmings={getTimmings(timings)} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-rating">
                   <StyledTitleWrapper>
                     <BlockTitle text="Rating" />
                   </StyledTitleWrapper>
                   <Rating value={rating} votes={votes} />
                 </StyledSectionBlock>
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-average">
                   <StyledTitleWrapper>
                     <BlockTitle text="Average Cost" />
                   </StyledTitleWrapper>
                   <BlockText text={`€${average} for two people`} />
                 </StyledSectionBlock>
                 {establishment && (
-                  <StyledSectionBlock>
+                  <StyledSectionBlock data-testid="detail-establishment">
                     <StyledTitleWrapper>
                       <BlockTitle text="Establishment type" />
                     </StyledTitleWrapper>
@@ -206,7 +202,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
                 )}
               </div>
               <div className="cell small-12 medium-6">
-                <StyledSectionBlock>
+                <StyledSectionBlock data-testid="detail-more-info">
                   <StyledTitleWrapper>
                     <BlockTitle text="More info" />
                   </StyledTitleWrapper>
@@ -215,7 +211,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
               </div>
               {reviews && reviews.length > 0 && (
                 <div className="cell small-12">
-                  <StyledSectionBlock>
+                  <StyledSectionBlock data-testid="detail-reviews">
                     <StyledReviewsWrapper>
                       <StyledTitleWrapper>
                         <BlockTitle text="Reviews" />
@@ -236,7 +232,10 @@ const DetailPage: React.FC<DetailPageProps> = ({
               )}
             </div>
             <div className="cell small-12 large-5">
-              <StyledAddressWrapper className="paper">
+              <StyledAddressWrapper
+                data-testid="detail-address"
+                className="paper"
+              >
                 <StyledSectionBlock>
                   <StyledTitleWrapper>
                     <BlockTitle text="Phone" />
@@ -257,7 +256,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
           </div>
         </StyledInformation>
         {relatedRestaurants.length > 0 && (
-          <StyledRelatedRestaurants>
+          <StyledRelatedRestaurants data-testid="detail-related">
             <Title text="Related restaurants" />
             <div className="grid-x grid-margin-x grid-margin-y">
               <RelatedRestaurants

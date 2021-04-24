@@ -435,9 +435,11 @@ exports[`Component: Layout should render 1`] = `
   </main>
   <footer
     class="c12"
+    data-testid="footer"
   >
     <div
       class="c13"
+      data-testid="footer-rights"
     >
       <div
         class="c14"
@@ -1064,9 +1066,11 @@ exports[`Component: Layout should render the extended footer 1`] = `
   </main>
   <footer
     class="c12"
+    data-testid="footer"
   >
     <div
       class="c13"
+      data-testid="footer-bar"
     >
       <div
         class="c14 grid-container"
@@ -1104,6 +1108,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
     </div>
     <div
       class="c19"
+      data-testid="footer-rights"
     >
       <div
         class="c20"
@@ -2657,9 +2662,11 @@ exports[`Component: Layout should render the extended header 1`] = `
   </main>
   <footer
     class="c33"
+    data-testid="footer"
   >
     <div
       class="c34"
+      data-testid="footer-rights"
     >
       <div
         class="c35"
@@ -3167,12 +3174,14 @@ exports[`Component: Layout should render the footer veil 1`] = `
   </main>
   <footer
     class="c12"
+    data-testid="footer"
   >
     <div
       class="c13"
     />
     <div
       class="c14"
+      data-testid="footer-rights"
     >
       <div
         class="c15"

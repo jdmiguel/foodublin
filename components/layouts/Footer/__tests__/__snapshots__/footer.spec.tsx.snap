@@ -275,12 +275,14 @@ exports[`Component: Footer should render 1`] = `
 
 <footer
   class="c0"
+  data-testid="footer"
 >
   <div
     class="c1"
   />
   <div
     class="c2"
+    data-testid="footer-bar"
   >
     <div
       class="c3 grid-container"
@@ -318,6 +320,7 @@ exports[`Component: Footer should render 1`] = `
   </div>
   <div
     class="c9"
+    data-testid="footer-rights"
   >
     <div
       class="c10"
@@ -632,12 +635,14 @@ exports[`Component: Footer should render extended 1`] = `
 
 <footer
   class="c0"
+  data-testid="footer"
 >
   <div
     class="c1"
   />
   <div
     class="c2"
+    data-testid="footer-bar"
   >
     <div
       class="c3 grid-container"
@@ -675,6 +680,7 @@ exports[`Component: Footer should render extended 1`] = `
   </div>
   <div
     class="c9"
+    data-testid="footer-rights"
   >
     <div
       class="c10"
@@ -989,12 +995,14 @@ exports[`Component: Footer should render with veil 1`] = `
 
 <footer
   class="c0"
+  data-testid="footer"
 >
   <div
     class="c1"
   />
   <div
     class="c2"
+    data-testid="footer-bar"
   >
     <div
       class="c3 grid-container"
@@ -1032,6 +1040,7 @@ exports[`Component: Footer should render with veil 1`] = `
   </div>
   <div
     class="c9"
+    data-testid="footer-rights"
   >
     <div
       class="c10"
