@@ -25,7 +25,6 @@ exports[`Component: Logo should render as big version 1`] = `
 
 <h1
   class="c0"
-  data-testid="logo"
 >
   <img
     alt="FooDublin Logo"
@@ -56,7 +55,6 @@ exports[`Component: Logo should render as small version 1`] = `
 
 <h1
   class="c0"
-  data-testid="logo"
 >
   <img
     alt="FooDublin Logo"

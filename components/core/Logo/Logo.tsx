@@ -10,7 +10,7 @@ type LogoProps = {
 };
 
 export const Logo: React.FC<LogoProps> = ({ size, logoSrc }) => (
-  <StyledLogo data-testid="logo" size={size}>
+  <StyledLogo size={size}>
     <StyledImg src={logoSrc} alt="FooDublin Logo" />
   </StyledLogo>
 );

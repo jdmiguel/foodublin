@@ -7,7 +7,7 @@ import { FooterBar } from './FooterBar';
 import {
   StyledFooterWrapper,
   StyledFooterVeil,
-  StyledRightsFooter,
+  StyledFooter,
   StyledBlock,
   StyledText,
 } from './styles';
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
         breadcrumbs={breadcrumbs}
       />
     )}
-    <StyledRightsFooter data-testid="footer-rights">
+    <StyledFooter>
       <StyledBlock>
         <CustomLink route="https://github.com/jdmiguel/foodublin">
           GITHUB
@@ -51,6 +51,6 @@ export const Footer: React.FC<FooterProps> = ({
         <StyledText addSeparation={true}>BY</StyledText>
         <CustomLink route="https://jdmiguel.netlify.app/">JDMIGUEL</CustomLink>
       </StyledBlock>
-    </StyledRightsFooter>
+    </StyledFooter>
   </StyledFooterWrapper>
 );

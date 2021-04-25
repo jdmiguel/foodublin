@@ -2,6 +2,7 @@ describe('DetailPage', () => {
   beforeEach(() => {
     cy.visit('/detail/16518534/bunsen');
 
+    cy.get('[data-testid=header]').as('header');
     cy.get('[data-testid="detail-header"]').find('button').as('headerButton');
     cy.get('[data-testid="detail-cuisine"]').as('cuisines');
     cy.get('[data-testid="detail-schedule"]').as('schedules');
@@ -11,8 +12,51 @@ describe('DetailPage', () => {
     cy.get('[data-testid="detail-more-info"]').as('moreInfo');
     cy.get('[data-testid="detail-address"]').as('address');
     cy.get('[data-testid="detail-reviews"]').as('reviews');
+    cy.get('[data-testid=footer]').find('> div').last().as('footerContent');
   });
 
+  // HEADER
+  it('should display the logo and the claim', () => {
+    cy.get('@header')
+      .find('h1 > img')
+      .should('have.attr', 'alt', 'FooDublin Logo')
+      .should('have.attr', 'src', '/images/logo.svg');
+
+    cy.get('@header')
+      .find('h2')
+      .should('have.text', 'Discover the best food in Dublin');
+  });
+
+  it('should display the headerBar', () => {
+    cy.get('[data-testid=header-bar]').should('have.length', 1);
+  });
+
+  describe('when clicking on the back button of the header', () => {
+    it('should navigate to the home page', () => {
+      // Click back button
+      cy.get('[data-testid="header-bar"]').find('a').contains('BACK').click();
+
+      cy.url().should('equal', 'http://localhost:3000/');
+    });
+  });
+
+  describe('when clicking on the favorite link of the header', () => {
+    it('should navigate to the favorite page', () => {
+      // Click favorite link
+      cy.get('[data-testid="header-bar"]')
+        .find('a')
+        .contains('FAVORITES')
+        .click();
+
+      cy.url().should('equal', 'http://localhost:3000/favorites');
+    });
+  });
+
+  it('should not display the finder', () => {
+    cy.get('[data-testid=finder]').should('have.length', 0);
+  });
+
+  // REASTAURANT DETAIL
   it('should display the image, texts and button of the detail header', () => {
     cy.get('[data-testid="detail-header"]')
       .find('h2')
@@ -96,57 +140,57 @@ describe('DetailPage', () => {
   it('should display the more info details', () => {
     cy.get('@moreInfo').find('h4').should('have.text', 'More info');
 
-    cy.get('@moreInfo').find('li').eq(0).as('dinner');
-    cy.get('@dinner').find('i').should('have.text', 'check_circle');
-    cy.get('@dinner').find('p').should('have.text', 'Dinner');
-
-    cy.get('@moreInfo').find('li').eq(1).as('cash');
-    cy.get('@cash').find('i').should('have.text', 'check_circle');
-    cy.get('@cash').find('p').should('have.text', 'Cash');
-
-    cy.get('@moreInfo').find('li').eq(2).as('debit');
-    cy.get('@debit').find('i').should('have.text', 'check_circle');
-    cy.get('@debit').find('p').should('have.text', 'Debit Card');
-
-    cy.get('@moreInfo').find('li').eq(3).as('takeaway');
+    cy.get('@moreInfo').find('li').eq(0).as('takeaway');
     cy.get('@takeaway').find('i').should('have.text', 'check_circle');
     cy.get('@takeaway').find('p').should('have.text', 'Takeaway Available');
 
-    cy.get('@moreInfo').find('li').eq(4).as('alcohol');
-    cy.get('@alcohol').find('i').should('have.text', 'check_circle');
-    cy.get('@alcohol').find('p').should('have.text', 'Serves Alcohol');
+    cy.get('@moreInfo').find('li').eq(1).as('dinner');
+    cy.get('@dinner').find('i').should('have.text', 'check_circle');
+    cy.get('@dinner').find('p').should('have.text', 'Dinner');
 
-    cy.get('@moreInfo').find('li').eq(5).as('credit');
-    cy.get('@credit').find('i').should('have.text', 'check_circle');
-    cy.get('@credit').find('p').should('have.text', 'Credit Card');
+    cy.get('@moreInfo').find('li').eq(2).as('cash');
+    cy.get('@cash').find('i').should('have.text', 'check_circle');
+    cy.get('@cash').find('p').should('have.text', 'Cash');
 
-    cy.get('@moreInfo').find('li').eq(6).as('lunch');
+    cy.get('@moreInfo').find('li').eq(3).as('debit');
+    cy.get('@debit').find('i').should('have.text', 'check_circle');
+    cy.get('@debit').find('p').should('have.text', 'Debit Card');
+
+    cy.get('@moreInfo').find('li').eq(4).as('lunch');
     cy.get('@lunch').find('i').should('have.text', 'check_circle');
     cy.get('@lunch').find('p').should('have.text', 'Lunch');
 
-    cy.get('@moreInfo').find('li').eq(7).as('wifi');
-    cy.get('@wifi').find('i').should('have.text', 'check_circle');
-    cy.get('@wifi').find('p').should('have.text', 'Wifi');
+    cy.get('@moreInfo').find('li').eq(5).as('alcohol');
+    cy.get('@alcohol').find('i').should('have.text', 'check_circle');
+    cy.get('@alcohol').find('p').should('have.text', 'Serves Alcohol');
 
-    cy.get('@moreInfo').find('li').eq(8).as('cheap');
+    cy.get('@moreInfo').find('li').eq(6).as('credit');
+    cy.get('@credit').find('i').should('have.text', 'check_circle');
+    cy.get('@credit').find('p').should('have.text', 'Credit Card');
+
+    cy.get('@moreInfo').find('li').eq(7).as('cheap');
     cy.get('@cheap').find('i').should('have.text', 'check_circle');
     cy.get('@cheap').find('p').should('have.text', 'Cheap Eats');
 
-    cy.get('@moreInfo').find('li').eq(9).as('beer');
+    cy.get('@moreInfo').find('li').eq(8).as('beer');
     cy.get('@beer').find('i').should('have.text', 'check_circle');
     cy.get('@beer').find('p').should('have.text', 'Beer');
 
-    cy.get('@moreInfo').find('li').eq(10).as('indoor');
-    cy.get('@indoor').find('i').should('have.text', 'check_circle');
-    cy.get('@indoor').find('p').should('have.text', 'Indoor Seating');
+    cy.get('@moreInfo').find('li').eq(9).as('wifi');
+    cy.get('@wifi').find('i').should('have.text', 'check_circle');
+    cy.get('@wifi').find('p').should('have.text', 'Wifi');
 
-    cy.get('@moreInfo').find('li').eq(11).as('gluten');
+    cy.get('@moreInfo').find('li').eq(10).as('gluten');
     cy.get('@gluten').find('i').should('have.text', 'check_circle');
     cy.get('@gluten').find('p').should('have.text', 'Gluten Free Options');
 
-    cy.get('@moreInfo').find('li').eq(12).as('wine');
+    cy.get('@moreInfo').find('li').eq(11).as('wine');
     cy.get('@wine').find('i').should('have.text', 'check_circle');
     cy.get('@wine').find('p').should('have.text', 'Wine');
+
+    cy.get('@moreInfo').find('li').eq(12).as('indoor');
+    cy.get('@indoor').find('i').should('have.text', 'check_circle');
+    cy.get('@indoor').find('p').should('have.text', 'Indoor Seating');
   });
 
   it('should display the address details', () => {
@@ -346,5 +390,57 @@ describe('DetailPage', () => {
         'have.text',
         'I know everyone goes to Bunsen for the earthshattering burgers, but I go there more for the sweet potato fries! Must be prepared to wait for about 20 mins in average though. Happened all three times I went.',
       );
+  });
+
+  // FOOTER
+  it('should display the footer and the footer bar', () => {
+    cy.get('[data-testid="footer"]').should('have.length', 1);
+    cy.get('[data-testid="footer-bar"]').should('have.length', 1);
+  });
+
+  it('should display the correct Breadcrumbs', () => {
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Bunsen');
+  });
+
+  describe('when clicking on the first breadcrumb', () => {
+    it('should navigate to the home page', () => {
+      // Click breadcrumb link
+      cy.get('[data-testid="breadcrumbs"]').find('a').contains('Home').click();
+
+      cy.url().should('equal', 'http://localhost:3000/');
+    });
+  });
+
+  describe('when clicking on the favorite link of the footer', () => {
+    it('should navigate to the favorite page', () => {
+      // Click favorite link
+      cy.get('[data-testid="footer-bar"]')
+        .find('a')
+        .contains('FAVORITES')
+        .click();
+
+      cy.url().should('equal', 'http://localhost:3000/favorites');
+    });
+  });
+
+  it('should display the footer content text', () => {
+    cy.get('@footerContent').should(
+      'have.text',
+      'GITHUBFOODUBLIN ©2020BYJDMIGUEL',
+    );
+  });
+
+  it('should render the correct href of the github link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('GITHUB')
+      .should('have.attr', 'href', 'https://github.com/jdmiguel/foodublin');
+  });
+
+  it('should render the correct href of the jdmiguel link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('JDMIGUEL')
+      .should('have.attr', 'href', 'https://jdmiguel.netlify.app/');
   });
 });
