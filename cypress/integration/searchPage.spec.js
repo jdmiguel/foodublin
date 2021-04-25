@@ -1,4 +1,52 @@
 describe('SearchPage', () => {
+  beforeEach(() => {
+    cy.visit('/search/dundrum/indian');
+
+    cy.get('[data-testid=footer]').find('> div').last().as('footerContent');
+  });
+  // HEADER
+  it('should display the logo and the claim', () => {
+    cy.get('[data-testid=header]').as('header');
+    cy.get('@header')
+      .find('h1 > img')
+      .should('have.attr', 'alt', 'FooDublin Logo')
+      .should('have.attr', 'src', '/images/logo.svg');
+
+    cy.get('@header')
+      .find('h2')
+      .should('have.text', 'Discover the best food in Dublin');
+  });
+
+  it('should display the headerBar', () => {
+    cy.get('[data-testid=header-bar]').should('have.length', 1);
+  });
+
+  describe('when clicking on the back button of the header', () => {
+    it('should navigate to the home page', () => {
+      // Click back button
+      cy.get('[data-testid="header-bar"]').find('a').contains('BACK').click();
+
+      cy.url().should('equal', 'http://localhost:3000/');
+    });
+  });
+
+  describe('when clicking on the favorite link of the header', () => {
+    it('should navigate to the favorite page', () => {
+      // Click favorite link
+      cy.get('[data-testid="header-bar"]')
+        .find('a')
+        .contains('FAVORITES')
+        .click();
+
+      cy.url().should('equal', 'http://localhost:3000/favorites');
+    });
+  });
+
+  it('should not display the finder', () => {
+    cy.get('[data-testid=finder]').should('have.length', 0);
+  });
+
+  // RESTAURANTS SEARCH
   describe('When there are matched restaurants', () => {
     beforeEach(() => {
       cy.visit('/search/south-city-west/mediterranean');
@@ -331,5 +379,65 @@ describe('SearchPage', () => {
     it('should not display any restaurants', () => {
       cy.get('[data-testid="card"]').should('have.length', 0);
     });
+  });
+
+  // FOOTER
+  it('should display the footer and the footer bar', () => {
+    cy.get('[data-testid="footer"]').should('have.length', 1);
+    cy.get('[data-testid="footer-bar"]').should('have.length', 1);
+  });
+
+  it('should display the correct Breadcrumbs and the favorites link', () => {
+    cy.get('[data-testid="breadcrumbs"]').should(
+      'have.text',
+      'Home>Indian in Dundrum',
+    );
+
+    cy.get('[data-testid="footer-bar"]')
+      .find('a')
+      .contains('FAVORITES')
+      .should('have.length', 1);
+  });
+
+  describe('when clicking on the first breadcrumb', () => {
+    it('should navigate to the home page', () => {
+      // Click breadcrumb link
+      cy.get('[data-testid="breadcrumbs"]').find('a').contains('Home').click();
+
+      cy.url().should('equal', 'http://localhost:3000/');
+    });
+  });
+
+  describe('when clicking on the favorite link of the footer', () => {
+    it('should navigate to the favorite page', () => {
+      // Click favorite link
+      cy.get('[data-testid="footer-bar"]')
+        .find('a')
+        .contains('FAVORITES')
+        .click();
+
+      cy.url().should('equal', 'http://localhost:3000/favorites');
+    });
+  });
+
+  it('should display the footer content text', () => {
+    cy.get('@footerContent').should(
+      'have.text',
+      'GITHUBFOODUBLIN ©2020BYJDMIGUEL',
+    );
+  });
+
+  it('should render the correct href of the github link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('GITHUB')
+      .should('have.attr', 'href', 'https://github.com/jdmiguel/foodublin');
+  });
+
+  it('should render the correct href of the jdmiguel link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('JDMIGUEL')
+      .should('have.attr', 'href', 'https://jdmiguel.netlify.app/');
   });
 });

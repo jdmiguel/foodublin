@@ -27,7 +27,7 @@ export const StyledFooterVeil = styled.div`
   }
 `;
 
-export const StyledRightsFooter = styled.div`
+export const StyledFooter = styled.div`
   background-color: ${({ theme }) => theme.palette.SECONDARY};
   display: flex;
   justify-content: center;

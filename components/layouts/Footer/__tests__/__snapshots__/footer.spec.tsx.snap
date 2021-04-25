@@ -320,7 +320,6 @@ exports[`Component: Footer should render 1`] = `
   </div>
   <div
     class="c9"
-    data-testid="footer-rights"
   >
     <div
       class="c10"
@@ -680,7 +679,6 @@ exports[`Component: Footer should render extended 1`] = `
   </div>
   <div
     class="c9"
-    data-testid="footer-rights"
   >
     <div
       class="c10"
@@ -1040,7 +1038,6 @@ exports[`Component: Footer should render with veil 1`] = `
   </div>
   <div
     class="c9"
-    data-testid="footer-rights"
   >
     <div
       class="c10"

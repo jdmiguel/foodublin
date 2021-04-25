@@ -383,7 +383,6 @@ exports[`Component: Layout should render 1`] = `
           >
             <h1
               class="c6"
-              data-testid="logo"
             >
               <img
                 alt="FooDublin Logo"
@@ -402,6 +401,7 @@ exports[`Component: Layout should render 1`] = `
     </div>
     <div
       class="c9"
+      data-testid="header-bar"
     >
       <div
         class="c10 grid-container"
@@ -439,7 +439,6 @@ exports[`Component: Layout should render 1`] = `
   >
     <div
       class="c13"
-      data-testid="footer-rights"
     >
       <div
         class="c14"
@@ -1014,7 +1013,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
           >
             <h1
               class="c6"
-              data-testid="logo"
             >
               <img
                 alt="FooDublin Logo"
@@ -1033,6 +1031,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
     </div>
     <div
       class="c9"
+      data-testid="header-bar"
     >
       <div
         class="c10 grid-container"
@@ -1108,7 +1107,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
     </div>
     <div
       class="c19"
-      data-testid="footer-rights"
     >
       <div
         class="c20"
@@ -2032,7 +2030,6 @@ exports[`Component: Layout should render the extended header 1`] = `
           >
             <h1
               class="c5"
-              data-testid="logo"
             >
               <img
                 alt="FooDublin Logo"
@@ -2666,7 +2663,6 @@ exports[`Component: Layout should render the extended header 1`] = `
   >
     <div
       class="c34"
-      data-testid="footer-rights"
     >
       <div
         class="c35"
@@ -3122,7 +3118,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
           >
             <h1
               class="c6"
-              data-testid="logo"
             >
               <img
                 alt="FooDublin Logo"
@@ -3141,6 +3136,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
     </div>
     <div
       class="c9"
+      data-testid="header-bar"
     >
       <div
         class="c10 grid-container"
@@ -3181,7 +3177,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
     />
     <div
       class="c14"
-      data-testid="footer-rights"
     >
       <div
         class="c15"

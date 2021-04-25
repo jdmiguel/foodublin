@@ -210,7 +210,6 @@ exports[`Component: Header should render collapsed 1`] = `
         >
           <h1
             class="c5"
-            data-testid="logo"
           >
             <img
               alt="FooDublin Logo"
@@ -229,6 +228,7 @@ exports[`Component: Header should render collapsed 1`] = `
   </div>
   <div
     class="c8"
+    data-testid="header-bar"
   >
     <div
       class="c9 grid-container"
@@ -945,7 +945,6 @@ exports[`Component: Header should render extended 1`] = `
         >
           <h1
             class="c4"
-            data-testid="logo"
           >
             <img
               alt="FooDublin Logo"
