@@ -44,7 +44,7 @@ type FinderProps = {
 };
 
 export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
-  const [suggestions, setSuggestions] = useState<Restaurant[]>();
+  const [suggestions, setSuggestions] = useState<Restaurant[]>([]);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isDropdownReset, setIsDropdownReset] = useState(false);
@@ -94,10 +94,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     const path = getFormattedUrlText(name, true);
     const route = '/detail/[id]/[name]';
     const asRoute = `/detail/${id}/${path}`;
-    if (
-      Array.isArray(suggestions) &&
-      suggestions.length > MIN_RESTAURANTS_LIST
-    ) {
+    if (suggestions.length > MIN_RESTAURANTS_LIST) {
       const currentRelatedRestaurants = getCurrentRelatedRestaurants(
         suggestions,
         id,
