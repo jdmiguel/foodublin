@@ -140,57 +140,57 @@ describe('DetailPage', () => {
   it('should display the more info details', () => {
     cy.get('@moreInfo').find('h4').should('have.text', 'More info');
 
-    cy.get('@moreInfo').find('li').eq(0).as('takeaway');
-    cy.get('@takeaway').find('i').should('have.text', 'check_circle');
-    cy.get('@takeaway').find('p').should('have.text', 'Takeaway Available');
-
-    cy.get('@moreInfo').find('li').eq(1).as('dinner');
-    cy.get('@dinner').find('i').should('have.text', 'check_circle');
-    cy.get('@dinner').find('p').should('have.text', 'Dinner');
-
-    cy.get('@moreInfo').find('li').eq(2).as('cash');
+    cy.get('@moreInfo').find('li').eq(0).as('cash');
     cy.get('@cash').find('i').should('have.text', 'check_circle');
     cy.get('@cash').find('p').should('have.text', 'Cash');
 
-    cy.get('@moreInfo').find('li').eq(3).as('debit');
+    cy.get('@moreInfo').find('li').eq(1).as('debit');
     cy.get('@debit').find('i').should('have.text', 'check_circle');
     cy.get('@debit').find('p').should('have.text', 'Debit Card');
 
-    cy.get('@moreInfo').find('li').eq(4).as('lunch');
-    cy.get('@lunch').find('i').should('have.text', 'check_circle');
-    cy.get('@lunch').find('p').should('have.text', 'Lunch');
+    cy.get('@moreInfo').find('li').eq(2).as('takeaway');
+    cy.get('@takeaway').find('i').should('have.text', 'check_circle');
+    cy.get('@takeaway').find('p').should('have.text', 'Takeaway Available');
 
-    cy.get('@moreInfo').find('li').eq(5).as('alcohol');
-    cy.get('@alcohol').find('i').should('have.text', 'check_circle');
-    cy.get('@alcohol').find('p').should('have.text', 'Serves Alcohol');
+    cy.get('@moreInfo').find('li').eq(3).as('dinner');
+    cy.get('@dinner').find('i').should('have.text', 'check_circle');
+    cy.get('@dinner').find('p').should('have.text', 'Dinner');
 
-    cy.get('@moreInfo').find('li').eq(6).as('credit');
+    cy.get('@moreInfo').find('li').eq(4).as('credit');
     cy.get('@credit').find('i').should('have.text', 'check_circle');
     cy.get('@credit').find('p').should('have.text', 'Credit Card');
 
-    cy.get('@moreInfo').find('li').eq(7).as('cheap');
-    cy.get('@cheap').find('i').should('have.text', 'check_circle');
-    cy.get('@cheap').find('p').should('have.text', 'Cheap Eats');
+    cy.get('@moreInfo').find('li').eq(5).as('lunch');
+    cy.get('@lunch').find('i').should('have.text', 'check_circle');
+    cy.get('@lunch').find('p').should('have.text', 'Lunch');
 
-    cy.get('@moreInfo').find('li').eq(8).as('beer');
-    cy.get('@beer').find('i').should('have.text', 'check_circle');
-    cy.get('@beer').find('p').should('have.text', 'Beer');
+    cy.get('@moreInfo').find('li').eq(6).as('alcohol');
+    cy.get('@alcohol').find('i').should('have.text', 'check_circle');
+    cy.get('@alcohol').find('p').should('have.text', 'Serves Alcohol');
 
-    cy.get('@moreInfo').find('li').eq(9).as('wifi');
+    cy.get('@moreInfo').find('li').eq(7).as('wifi');
     cy.get('@wifi').find('i').should('have.text', 'check_circle');
     cy.get('@wifi').find('p').should('have.text', 'Wifi');
 
-    cy.get('@moreInfo').find('li').eq(10).as('gluten');
+    cy.get('@moreInfo').find('li').eq(8).as('cheap');
+    cy.get('@cheap').find('i').should('have.text', 'check_circle');
+    cy.get('@cheap').find('p').should('have.text', 'Cheap Eats');
+
+    cy.get('@moreInfo').find('li').eq(9).as('beer');
+    cy.get('@beer').find('i').should('have.text', 'check_circle');
+    cy.get('@beer').find('p').should('have.text', 'Beer');
+
+    cy.get('@moreInfo').find('li').eq(10).as('indoor');
+    cy.get('@indoor').find('i').should('have.text', 'check_circle');
+    cy.get('@indoor').find('p').should('have.text', 'Indoor Seating');
+
+    cy.get('@moreInfo').find('li').eq(11).as('gluten');
     cy.get('@gluten').find('i').should('have.text', 'check_circle');
     cy.get('@gluten').find('p').should('have.text', 'Gluten Free Options');
 
-    cy.get('@moreInfo').find('li').eq(11).as('wine');
+    cy.get('@moreInfo').find('li').eq(12).as('wine');
     cy.get('@wine').find('i').should('have.text', 'check_circle');
     cy.get('@wine').find('p').should('have.text', 'Wine');
-
-    cy.get('@moreInfo').find('li').eq(12).as('indoor');
-    cy.get('@indoor').find('i').should('have.text', 'check_circle');
-    cy.get('@indoor').find('p').should('have.text', 'Indoor Seating');
   });
 
   it('should display the address details', () => {
