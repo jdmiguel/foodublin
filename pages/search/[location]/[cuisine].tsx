@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Dispatch } from 'react';
+import { useRef, useState, useEffect, Dispatch } from 'react';
 import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   NextPage,
   InferGetServerSidePropsType,
@@ -8,12 +8,10 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useSelector, useDispatch } from 'react-redux';
-
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-
 import {
   clearRelatedRestaurants,
   addFavorite,
@@ -21,11 +19,8 @@ import {
 } from '@/store/redux/actions';
 import { InitialAppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { getFormattedUrlText } from '@/helpers/utils';
-
 import { getRestaurant, getReviews } from '@/services/index';
-
 import {
   RestaurantDetail,
   Review,
@@ -56,15 +51,20 @@ const DynamicDetailPage = dynamic(
 
 const getRefinedRestaurant = (
   id: number,
-  restaurant: RestaurantDetail,
-): Restaurant => ({
-  id,
-  imgSrc: restaurant.thumbSrc,
-  title: restaurant.name,
-  content: restaurant.location,
-  route: '/detail/[id]/[name]',
-  asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
-});
+  restaurant: RestaurantDetail | null,
+): Restaurant | null => {
+  if (!restaurant) {
+    return null
+  } 
+  return {
+    id,
+    imgSrc: restaurant.thumbSrc,
+    title: restaurant.name,
+    content: restaurant.location,
+    route: '/detail/[id]/[name]',
+    asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
+  }
+};
 
 const getRefinedReview = (rawReview: RawReview): Review => ({
   id: rawReview.review.id,
@@ -99,14 +99,17 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
 
   const handleSaveButton = (action: string) => {
     const favorite = getRefinedRestaurant(id, detail);
+    if(!favorite) {
+      return;
+    }
+
     dispatch(action === 'save' ? addFavorite(favorite) : deleteFavorite(id));
   };
 
-  const { name, imgSrc } = detail;
   const detailBreadcrumbs = {
-    text: name,
+    text: detail?.name || '',
     route: '/detail/[id]/[name]',
-    asRoute: `/detail/${id}/${getFormattedUrlText(name, true)}`,
+    asRoute: `/detail/${id}/${getFormattedUrlText(detail?.name || '', true)}`,
     type: BreadcrumbsType.DETAIL,
   };
   const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'detail');
@@ -123,7 +126,7 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
   return (
     <>
       <Head>
-        <link rel="preload" as="image" href={imgSrc} />
+        <link rel="preload" as="image" href={detail.imgSrc} />
       </Head>
       <DynamicDetailPage
         detail={detail}

@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-
 import { useSelector } from 'react-redux';
-
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
-
 import { Loader } from '@/components/core/Loader/Loader';
-
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { InitialAppState } from '@/store/redux/types';
-
 import { BreadcrumbsType } from '@/components/core/types';
 
 const DynamicFavoritesPage = dynamic(

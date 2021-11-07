@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -6,12 +6,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { throttle } from 'lodash';
-
 import appReducer from '@/store/redux/reducer';
-
 import { InitialAppState } from '@/store/redux/types';
 import { DEFAULT_BREADCRUMB } from '@/store/statics';
-
 import '@/helpers/Grid/Grid.scss';
 import { GlobalStyles } from '@/helpers/GlobalStylesHelper';
 import { theme } from '@/helpers/Theme';
