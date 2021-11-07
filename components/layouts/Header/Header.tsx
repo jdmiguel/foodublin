@@ -1,13 +1,8 @@
-import React from 'react';
-
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 import { Logo } from '../../core/Logo/Logo';
 import { LogoSize } from '../../core/types';
-
 import { Finder } from '../../ui/Finder/Finder';
-
 import { HeaderBar } from './HeaderBar';
-
 import {
   StyledHeaderWrapper,
   StyledHeader,

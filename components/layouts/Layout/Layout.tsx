@@ -1,20 +1,14 @@
-import React, { useState, ReactNode } from 'react';
-
+import { useState, ReactNode } from 'react';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-
 import { Button } from '../../core/Button/Button';
-
 import { useScroll } from '../../hooks/useScroll';
-
 import {
   StyledLayout,
   StyledMain,
   StyledScrollUpButtonWrapper,
 } from './styles';
-
 import { BreadcrumbsData } from '../../core/types';
-
 import {
   SCROLL_DELAY,
   SHOWING_SCROLLUP_BUTTON_HEIGHT,

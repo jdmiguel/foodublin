@@ -1,7 +1,4 @@
-import React from 'react';
-
 import { StyledLogo, StyledImg } from './styles';
-
 import { LogoSize } from '../types';
 
 type LogoProps = {

@@ -3,7 +3,13 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "jsx": "preserve",
     "allowJs": false,
@@ -16,7 +22,9 @@
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -25,11 +33,20 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*":["./components/*"], 
-      "@/store/*":["./store/*"], 
-      "@/services/*":["./services/*"], 
-      "@/helpers/*":["./helpers/*"], 
-    }
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/store/*": [
+        "./store/*"
+      ],
+      "@/services/*": [
+        "./services/*"
+      ],
+      "@/helpers/*": [
+        "./helpers/*"
+      ]
+    },
+    "incremental": true
   },
   "exclude": [
     "node_modules",
@@ -39,5 +56,9 @@
     "**/*.test.tsx",
     "**/*.story.tsx"
   ],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

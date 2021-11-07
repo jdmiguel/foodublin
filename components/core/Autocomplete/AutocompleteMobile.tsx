@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
 import { Loader } from '../Loader/Loader';
 import { Input } from '../Input/Input';
 import { Card } from '../Card/Card';
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 import { BlockText } from '../BlockText/BlockText';
 import { Button } from '../Button/Button';
-
 import {
   StyledAutocompleteMobile,
   StyledLabel,
@@ -24,9 +22,7 @@ import {
   StyledErrorButtonWrapper,
   StyledListboxItem,
 } from './styles/autocompleteMobile';
-
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { CardType } from '../types';
 import { Restaurant } from '../../pages/types';
 

@@ -1,9 +1,6 @@
-import React, { ReactNode } from 'react';
-
+import { ReactNode } from 'react';
 import { StyledButtonWrapper, StyledButton } from './styles';
-
 import { Loader } from '../Loader/Loader';
-
 import { LoaderMode } from '../types';
 
 type ButtonProps = {

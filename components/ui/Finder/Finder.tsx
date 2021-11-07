@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
 import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
 import { Dropdown } from '../../core/Dropdown/Dropdown';
-
 import { Button } from '../../core/Button/Button';
-
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
-
 import {
   StyledFinder,
   StyledAutocompleteMobileWrapper,
@@ -18,9 +14,7 @@ import {
   StyledSpacer,
   StyledButtonWrapper,
 } from './styles';
-
 import { setRelatedRestaurants } from '@/store/redux/actions';
-
 import {
   DUBLIN_ID,
   LOCATIONS,
@@ -33,9 +27,7 @@ import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
 } from '@/helpers/utils';
-
 import { getRestaurants } from '@/services/index';
-
 import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
 type FinderProps = {

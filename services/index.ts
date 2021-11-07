@@ -45,7 +45,7 @@ export const getRestaurants = async (
     const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}search`, {
       method: 'GET',
       headers: {
-        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
       params: currentParams,
@@ -70,7 +70,7 @@ export const getRestaurant = async (
       {
         method: 'GET',
         headers: {
-          'user-key': process.env.NEXT_PUBLIC_API_KEY,
+          'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
           'content-type': 'application/json',
         },
         params: {
@@ -92,7 +92,7 @@ export const getReviews = async (
     const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}reviews`, {
       method: 'GET',
       headers: {
-        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
       params: {

@@ -1,10 +1,6 @@
-import React from 'react';
-
 import { Breadcrumbs } from '../../core/Breadcrumbs/Breadcrumbs';
 import { CustomLink } from '../../core/CustomLink/CustomLink';
-
 import { StyledFooterBarWrapper, StyledFooterBar } from './styles';
-
 import { BreadcrumbsData } from '../../core/types';
 
 type FooterBarProps = {

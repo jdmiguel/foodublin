@@ -1,28 +1,21 @@
-import React from 'react';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { Filter } from '../../ui/Filter/Filter';
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
-
 import {
   StyledSearchPage,
   StyledCardsWrapper,
   StyledWarning,
   StyledWarningIcon,
 } from './styles';
-
 import {
   FILTER_DATA,
   THUMB_GENERIC_SRC,
   DEFAULT_TEXT_LOADING,
 } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
-
 import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
 

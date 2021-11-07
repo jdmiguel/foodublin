@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LazyImage } from 'react-lazy-images';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { BlockText } from '../../core/BlockText/BlockText';
 import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 import { Rating } from '../../core/Rating/Rating';
 import { Button } from '../../core/Button/Button';
-
 import { Timmings } from './Timings';
 import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
 import { ReviewCard } from '../../ui/ReviewCard/ReviewCard';
-
 import {
   StyledOverlay,
   StyledName,
@@ -34,10 +29,8 @@ import {
   StyledPhone,
   StyledRelatedRestaurants,
 } from './styles';
-
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
 
@@ -73,7 +66,7 @@ export const getMapSrc = (name: string, location: string) => {
   const urlName = getFormattedUrlText(name);
   const urlLocation = getFormattedUrlText(location);
 
-  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
+  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };
 
 const DetailPage: React.FC<DetailPageProps> = ({

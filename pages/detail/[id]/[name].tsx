@@ -82,15 +82,6 @@ const selectReviews = (rawReviews: RawReview[]) => (
 const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  if (!detail) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
-  }
-
   const { favorites, relatedRestaurants } = useSelector(
     (state: InitialAppState) => state,
   );
@@ -119,6 +110,15 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
     type: BreadcrumbsType.DETAIL,
   };
   const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'detail');
+
+  if (!detail) {
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
+  }
 
   return (
     <>

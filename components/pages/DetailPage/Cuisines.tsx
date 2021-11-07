@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledCuisinesWrapper, StyledCuisine } from './styles';
 
 type CuisinesProps = {

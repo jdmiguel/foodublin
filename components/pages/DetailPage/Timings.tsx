@@ -1,11 +1,8 @@
-import React from 'react';
-
 import {
   StyledTimming,
   StyledTimmingDay,
   StyledTimmingSchedule,
 } from './styles';
-
 import { Timming } from '../types';
 
 type TimingsProps = {

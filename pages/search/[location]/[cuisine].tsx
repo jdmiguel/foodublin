@@ -141,14 +141,6 @@ const Search: NextPage<SearchProps> = ({
 }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  if (!restaurants) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
-  }
 
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
@@ -299,6 +291,16 @@ const Search: NextPage<SearchProps> = ({
       />
     );
   }
+
+  if (!restaurants) {
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
+  }
+
 
   return (
     <DynamicSearchPage

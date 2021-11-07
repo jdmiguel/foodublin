@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
-
 import {
   StyledFavoritesPage,
   StyledTitleLoading,
   StyledCardsWrapper,
 } from './styles';
-
 import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { getTitleText } from '@/helpers/utils';
-
 import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
 
