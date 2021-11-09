@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Dispatch } from 'react';
+import { useRef, useState, useEffect, Dispatch } from 'react';
 import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
@@ -126,7 +126,7 @@ const handleGetRestaurants = async (
   }
 
   return {
-    restaurants: null,
+    restaurants: [],
     total: 0,
   };
 };
@@ -141,14 +141,6 @@ const Search: NextPage<SearchProps> = ({
 }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  if (!restaurants) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
-  }
 
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
@@ -299,6 +291,16 @@ const Search: NextPage<SearchProps> = ({
       />
     );
   }
+
+  if (!restaurants) {
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={() => setIsNavigating(true)}
+      />
+    );
+  }
+
 
   return (
     <DynamicSearchPage

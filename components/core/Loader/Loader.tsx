@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   StyledCircleLoader,
   StyledCircleLoaderImage,
@@ -7,7 +5,6 @@ import {
   StyledLineLoader,
   StyledLineLoaderShape,
 } from './styles';
-
 import { LoaderMode, LoaderType } from '../types';
 
 type LoaderProps = {

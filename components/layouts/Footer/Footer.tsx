@@ -1,9 +1,5 @@
-import React from 'react';
-
 import { CustomLink } from '../../core/CustomLink/CustomLink';
-
 import { FooterBar } from './FooterBar';
-
 import {
   StyledFooterWrapper,
   StyledFooterVeil,
@@ -11,7 +7,6 @@ import {
   StyledBlock,
   StyledText,
 } from './styles';
-
 import { BreadcrumbsData } from '../../core/types';
 
 type FooterProps = {

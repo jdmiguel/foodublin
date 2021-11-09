@@ -1,12 +1,10 @@
-import React, { useReducer, Dispatch } from 'react';
-
+import { useReducer, Dispatch } from 'react';
 import {
   StyledFilterItem,
   StyledFilterPrimaryText,
   StyledFilterSecondaryText,
   StyledFilterIcon,
 } from './styles';
-
 import { FilterSort, FilterOrder } from '@/store/statics';
 
 type FilterData = {

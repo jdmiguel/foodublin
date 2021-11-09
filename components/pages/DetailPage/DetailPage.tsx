@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LazyImage } from 'react-lazy-images';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { BlockText } from '../../core/BlockText/BlockText';
 import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 import { Rating } from '../../core/Rating/Rating';
 import { Button } from '../../core/Button/Button';
-
 import { Timmings } from './Timings';
 import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
-import { ReviewCard } from '../../ui/ReviewCard/ReviewCard';
-
 import {
   StyledOverlay,
   StyledName,
@@ -29,22 +23,18 @@ import {
   StyledInformation,
   StyledSectionBlock,
   StyledTitleWrapper,
-  StyledReviewsWrapper,
   StyledAddressWrapper,
   StyledPhone,
   StyledRelatedRestaurants,
 } from './styles';
-
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { LoaderType, BreadcrumbsData } from '../../core/types';
-import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
+import { RestaurantDetail, Restaurant, Timming } from '../types';
 
 type DetailPageProps = {
   detail: RestaurantDetail;
   relatedRestaurants: Restaurant[];
-  reviews: Review[] | null;
   isFavorite: boolean;
   isNavigating: boolean;
   onClickSaveButton: (action: string) => void;
@@ -73,7 +63,7 @@ export const getMapSrc = (name: string, location: string) => {
   const urlName = getFormattedUrlText(name);
   const urlLocation = getFormattedUrlText(location);
 
-  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
+  return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };
 
 const DetailPage: React.FC<DetailPageProps> = ({
@@ -91,7 +81,6 @@ const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
-  reviews,
   isFavorite,
   relatedRestaurants,
   onClickSaveButton,
@@ -209,27 +198,6 @@ const DetailPage: React.FC<DetailPageProps> = ({
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
-              {reviews && reviews.length > 0 && (
-                <div className="cell small-12">
-                  <StyledSectionBlock data-testid="detail-reviews">
-                    <StyledReviewsWrapper>
-                      <StyledTitleWrapper>
-                        <BlockTitle text="Reviews" />
-                      </StyledTitleWrapper>
-                      {reviews.map((review) => (
-                        <ReviewCard
-                          key={review.id}
-                          userImgSrc={review.userImgSrc}
-                          userName={review.userName}
-                          rating={review.rating}
-                          date={review.date}
-                          text={review.text}
-                        />
-                      ))}
-                    </StyledReviewsWrapper>
-                  </StyledSectionBlock>
-                </div>
-              )}
             </div>
             <div className="cell small-12 large-5">
               <StyledAddressWrapper

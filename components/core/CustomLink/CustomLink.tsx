@@ -1,7 +1,5 @@
-import React, { ReactNode } from 'react';
-
+import { ReactNode } from 'react';
 import { StyledCustomLink } from './styles';
-
 import { CustomLinkSize } from '../types';
 
 type CustomLinkProps = {

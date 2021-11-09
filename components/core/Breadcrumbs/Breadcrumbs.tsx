@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
 import { CustomLink } from '../CustomLink/CustomLink';
-
 import {
   StyledBreadcrumbsLoading,
   StyledBreadcrumbsWrapper,
@@ -9,9 +7,7 @@ import {
   StyledCustomLinkWrapper,
   StyledArrow,
 } from './styles';
-
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { BreadcrumbsData } from '../types';
 
 type BreadcrumbsProps = {

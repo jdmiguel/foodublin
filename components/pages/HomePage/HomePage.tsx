@@ -1,15 +1,9 @@
-import React from 'react';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
-
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
-
 import { LoaderType, CardType, BreadcrumbsData } from '../../core/types';
 import { HighlightRestaurant } from '../types';
 

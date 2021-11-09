@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
 import { Loader } from '../Loader/Loader';
 import { Input } from '../Input/Input';
 import { Card } from '../Card/Card';
 import { BlockText } from '../BlockText/BlockText';
 import { Button } from '../Button/Button';
-
 import {
   StyledAutocomplete,
   StyledInputWrapper,
@@ -17,9 +15,7 @@ import {
   StyledErrorButtonWrapper,
   StyledListboxItem,
 } from './styles/autocomplete';
-
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { Restaurant } from '../../pages/types';
 import { CardType } from '../types';
 

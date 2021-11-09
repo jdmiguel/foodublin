@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledBlockText } from './styles';
 
 type BlockTextProps = {

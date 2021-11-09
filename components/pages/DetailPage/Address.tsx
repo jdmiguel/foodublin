@@ -1,12 +1,9 @@
-import React from 'react';
-
 import {
   StyledAddressMapWrapper,
   StyledIframe,
   StyledAddress,
   StyledAddressIcon,
 } from './styles';
-
 import { BlockText } from '../../core/BlockText/BlockText';
 
 type AddressProps = {

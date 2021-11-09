@@ -8,6 +8,8 @@ import {
   RawReview,
 } from '@/components/pages/types';
 
+const BASE_API = 'https://developers.zomato.com/api/v2.1/'
+
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
     const { data, status } = error.response;
@@ -42,10 +44,10 @@ export const getRestaurants = async (
   );
 
   try {
-    const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}search`, {
+    const response = await axios(`${BASE_API}search`, {
       method: 'GET',
       headers: {
-        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
       params: currentParams,
@@ -66,16 +68,13 @@ export const getRestaurant = async (
 ): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
   try {
     const response = await axios(
-      `${process.env.NEXT_PUBLIC_BASE_API}restaurant`,
+      `${BASE_API}restaurant?res_id=${res_id}`,
       {
         method: 'GET',
         headers: {
-          'user-key': process.env.NEXT_PUBLIC_API_KEY,
+          'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
           'content-type': 'application/json',
-        },
-        params: {
-          res_id,
-        },
+        }
       },
     );
 
@@ -89,14 +88,11 @@ export const getReviews = async (
   res_id: number,
 ): Promise<{ rawReviews: RawReview[]; status: number }> => {
   try {
-    const response = await axios(`${process.env.NEXT_PUBLIC_BASE_API}reviews`, {
+    const response = await axios(`${BASE_API}reviews?res_id=${res_id}`, {
       method: 'GET',
       headers: {
-        'user-key': process.env.NEXT_PUBLIC_API_KEY,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
-      },
-      params: {
-        res_id,
       },
     });
 

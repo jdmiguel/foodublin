@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledBlockTitle } from './styles';
 
 type BlockTitleProps = {

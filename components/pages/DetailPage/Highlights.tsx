@@ -1,7 +1,4 @@
-import React from 'react';
-
 import { BlockText } from '../../core/BlockText/BlockText';
-
 import {
   StyledHighlightsWrapper,
   StyledHighlight,

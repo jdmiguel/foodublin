@@ -1,16 +1,10 @@
-import React from 'react';
 import { useRouter } from 'next/router';
-
 import { Layout } from '../../layouts/Layout/Layout';
-
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
-
 import { Loader } from '../../core/Loader/Loader';
 import { Button } from '../../core/Button/Button';
 import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
-
 import { StyledErrorPage, StyledTextWrapper } from './styles';
-
 import { LoaderType } from '../../core/types';
 
 type ErrorPage = {

@@ -1,7 +1,5 @@
-import React, { ReactNode } from 'react';
-
+import { ReactNode } from 'react';
 import { StyledFullLoaderWrapper } from './styles';
-
 import { LoaderType } from '../../core/types';
 
 type FullLoaderProps = {

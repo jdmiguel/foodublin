@@ -1,7 +1,4 @@
-import React from 'react';
-
 import { Rating } from '../../core/Rating/Rating';
-
 import {
   StyledReviewCard,
   StyledReviewBlock,
@@ -11,7 +8,6 @@ import {
   StyledReviewDate,
   StyledReviewText,
 } from './styles';
-
 import { THUMB_GENERIC_SRC } from '@/store/statics';
 
 type ReviewCardProps = {

@@ -1,4 +1,4 @@
-import React, {
+import {
   useState,
   useRef,
   useEffect,
@@ -6,11 +6,8 @@ import React, {
   Dispatch,
 } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
 import { BlockTitle } from '../BlockTitle/BlockTitle';
-
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
-
 import {
   StyledDropdown,
   StyledLabel,
@@ -23,9 +20,7 @@ import {
   StyledListboxItemIcon,
   StyledListboxItemText,
 } from './styles';
-
 import { MAX_MOBILE_WIDTH } from '@/store/statics';
-
 import { ListItem } from '../types';
 
 type ListItemWithIsActive = ListItem & { isActive: boolean };

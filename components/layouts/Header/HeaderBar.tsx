@@ -1,7 +1,4 @@
-import React from 'react';
-
 import { CustomLink } from '../../core/CustomLink/CustomLink';
-
 import { StyledHeaderBarWrapper, StyledHeaderBar } from './styles';
 
 type HeaderBarProps = {
