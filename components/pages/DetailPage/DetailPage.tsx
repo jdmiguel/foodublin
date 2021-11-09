@@ -13,7 +13,6 @@ import { Cuisines } from './Cuisines';
 import { Highlights } from './Highlights';
 import { Address } from './Address';
 import { RelatedRestaurants } from './RelatedRestaurants';
-import { ReviewCard } from '../../ui/ReviewCard/ReviewCard';
 import {
   StyledOverlay,
   StyledName,
@@ -24,7 +23,6 @@ import {
   StyledInformation,
   StyledSectionBlock,
   StyledTitleWrapper,
-  StyledReviewsWrapper,
   StyledAddressWrapper,
   StyledPhone,
   StyledRelatedRestaurants,
@@ -32,12 +30,11 @@ import {
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
-import { RestaurantDetail, Restaurant, Review, Timming } from '../types';
+import { RestaurantDetail, Restaurant, Timming } from '../types';
 
 type DetailPageProps = {
   detail: RestaurantDetail;
   relatedRestaurants: Restaurant[];
-  reviews: Review[] | null;
   isFavorite: boolean;
   isNavigating: boolean;
   onClickSaveButton: (action: string) => void;
@@ -84,7 +81,6 @@ const DetailPage: React.FC<DetailPageProps> = ({
     phone,
     address,
   },
-  reviews,
   isFavorite,
   relatedRestaurants,
   onClickSaveButton,
@@ -202,27 +198,6 @@ const DetailPage: React.FC<DetailPageProps> = ({
                   <Highlights highlights={highlights} />
                 </StyledSectionBlock>
               </div>
-              {reviews && reviews.length > 0 && (
-                <div className="cell small-12">
-                  <StyledSectionBlock data-testid="detail-reviews">
-                    <StyledReviewsWrapper>
-                      <StyledTitleWrapper>
-                        <BlockTitle text="Reviews" />
-                      </StyledTitleWrapper>
-                      {reviews.map((review) => (
-                        <ReviewCard
-                          key={review.id}
-                          userImgSrc={review.userImgSrc}
-                          userName={review.userName}
-                          rating={review.rating}
-                          date={review.date}
-                          text={review.text}
-                        />
-                      ))}
-                    </StyledReviewsWrapper>
-                  </StyledSectionBlock>
-                </div>
-              )}
             </div>
             <div className="cell small-12 large-5">
               <StyledAddressWrapper

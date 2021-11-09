@@ -20,11 +20,9 @@ import {
 import { InitialAppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getFormattedUrlText } from '@/helpers/utils';
-import { getRestaurant, getReviews } from '@/services/index';
+import { getRestaurant } from '@/services/index';
 import {
   RestaurantDetail,
-  Review,
-  RawReview,
   Restaurant,
 } from '@/components/pages/types';
 import { BreadcrumbsType } from '@/components/core/types';
@@ -66,20 +64,7 @@ const getRefinedRestaurant = (
   }
 };
 
-const getRefinedReview = (rawReview: RawReview): Review => ({
-  id: rawReview.review.id,
-  userName: rawReview.review.user.name,
-  userImgSrc: rawReview.review.user.profile_image,
-  rating: rawReview.review.rating,
-  date: rawReview.review.review_time_friendly,
-  text: rawReview.review.review_text || rawReview.review.rating_text,
-});
-
-const selectReviews = (rawReviews: RawReview[]) => (
-  formattedFuntion: (rawReview: RawReview) => Review,
-) => rawReviews.map((rawReview) => formattedFuntion(rawReview));
-
-const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
+const Detail: NextPage<DetailProps> = ({ detail, id }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
   const { favorites, relatedRestaurants } = useSelector(
@@ -130,7 +115,6 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
       </Head>
       <DynamicDetailPage
         detail={detail}
-        reviews={reviews}
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
@@ -151,11 +135,11 @@ const Detail: NextPage<DetailProps> = ({ detail, reviews, id }) => {
 export const getServerSideProps = async ({
   params: { id },
 }: CustomGetServerSidePropsContext) => {
+  console.log({id})
   const { rawRestaurantDetail, status } = await getRestaurant(id);
-  const { rawReviews, status: reviewsStatus } = await getReviews(id);
 
   let formattedRestaurantDetail: RestaurantDetail | null = null;
-  let formattedReviews: Review[] | null = null;
+
 
   if (status === 200) {
     formattedRestaurantDetail = {
@@ -175,15 +159,9 @@ export const getServerSideProps = async ({
     };
   }
 
-  if (reviewsStatus === 200) {
-    const currentReviews = selectReviews(rawReviews);
-    formattedReviews = currentReviews(getRefinedReview);
-  }
-
   return {
     props: {
       detail: formattedRestaurantDetail,
-      reviews: formattedReviews,
       id,
     },
   };

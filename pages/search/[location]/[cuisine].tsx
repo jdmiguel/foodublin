@@ -126,7 +126,7 @@ const handleGetRestaurants = async (
   }
 
   return {
-    restaurants: null,
+    restaurants: [],
     total: 0,
   };
 };
