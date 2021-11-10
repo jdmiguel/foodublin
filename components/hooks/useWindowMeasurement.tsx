@@ -21,6 +21,8 @@ export const useWindowMeasurement = () => {
   }, []);
 
   useEffect(() => {
+    onResize?.();
+
     window.addEventListener('resize', onResize);
 
     return () => {
