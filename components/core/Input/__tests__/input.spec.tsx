@@ -15,9 +15,7 @@ describe('Component: Input', () => {
       renderWithTheme(<Input {...(INPUT_PROPS_MOCK as InputProps)} />),
     );
 
-    expect(getByTestId('input-wrapper').getAttribute('class')).toContain(
-      'default-className',
-    );
+    expect(getByTestId('input-wrapper').getAttribute('class')).toContain('default-className');
 
     const defaultInput = getByPlaceholderText('Default placeholder');
     expect(defaultInput.getAttribute('type')).toBe('text');
@@ -47,14 +45,10 @@ describe('Component: Input', () => {
       hasSearchIcon: false,
     };
     const { getByTestId, container } = render(
-      renderWithTheme(
-        <Input {...(INPUT_PROPS_MOCK_WITHOUT_ICON as InputProps)} />,
-      ),
+      renderWithTheme(<Input {...(INPUT_PROPS_MOCK_WITHOUT_ICON as InputProps)} />),
     );
 
-    expect(
-      getByTestId('input-wrapper').getElementsByTagName('IMG'),
-    ).toHaveLength(0);
+    expect(getByTestId('input-wrapper').getElementsByTagName('IMG')).toHaveLength(0);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

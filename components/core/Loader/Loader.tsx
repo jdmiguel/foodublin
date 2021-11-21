@@ -23,9 +23,7 @@ export const Loader: React.FC<LoaderProps> = ({
   type === LoaderType.CIRCLE ? (
     <StyledCircleLoader data-testid="circle-loader" className={className}>
       <StyledCircleLoaderImage mode={mode} />
-      {text && (
-        <StyledCircleLoaderText mode={mode}>{text}</StyledCircleLoaderText>
-      )}
+      {text && <StyledCircleLoaderText mode={mode}>{text}</StyledCircleLoaderText>}
     </StyledCircleLoader>
   ) : (
     <StyledLineLoader data-testid="line-loader" className={className}>

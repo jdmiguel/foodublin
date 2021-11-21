@@ -8,7 +8,7 @@ import {
   RawReview,
 } from '@/components/pages/types';
 
-const BASE_API = 'https://developers.zomato.com/api/v2.1/'
+const BASE_API = 'https://developers.zomato.com/api/v2.1/';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -59,7 +59,7 @@ export const getRestaurants = async (
       status: response.status,
     };
   } catch (error) {
-    return handleApiError(error);
+    return handleApiError(error as AxiosError);
   }
 };
 
@@ -67,20 +67,17 @@ export const getRestaurant = async (
   res_id: number,
 ): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
   try {
-    const response = await axios(
-      `${BASE_API}restaurant?res_id=${res_id}`,
-      {
-        method: 'GET',
-        headers: {
-          'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-          'content-type': 'application/json',
-        }
+    const response = await axios(`${BASE_API}restaurant?res_id=${res_id}`, {
+      method: 'GET',
+      headers: {
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
+        'content-type': 'application/json',
       },
-    );
+    });
 
     return { rawRestaurantDetail: response.data, status: response.status };
   } catch (error) {
-    return handleApiError(error);
+    return handleApiError(error as AxiosError);
   }
 };
 
@@ -98,6 +95,6 @@ export const getReviews = async (
 
     return { rawReviews: response.data.user_reviews, status: response.status };
   } catch (error) {
-    return handleApiError(error);
+    return handleApiError(error as AxiosError);
   }
 };

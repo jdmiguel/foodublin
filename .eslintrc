@@ -1,28 +1,27 @@
 {
-  "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": { "jsx": true }
+    "ecmaVersion": 2018,
+    "ecmaFeatures": { "jsx": true },
+    "sourceType": "module"
   },
   "globals": {
-    "module": "readonly",
-    "require": "readonly",
-    "process": "readonly",
-    "describe": "readonly",
-    "context": "readonly",
-    "beforeEach": "readonly",
     "afterEach": "readonly",
-    "it": "readonly",
+    "beforeEach": "readonly",
+    "context": "readonly",
     "cy": "readonly",
+    "describe": "readonly",
+    "it": "readonly",
+    "module": "readonly",
+    "process": "readonly",
+    "require": "readonly",
     "window": "readonly"
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:react-hooks/recommended"
   ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -38,4 +37,4 @@
       "version": "detect"
     }
   }
-}
+}  

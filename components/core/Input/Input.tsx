@@ -1,14 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { StyledInputWrapper, StyledInput } from './styles';
 
-type InputTypes =
-  | 'text'
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'url';
+type InputTypes = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
 
 export type InputProps = {
   type: InputTypes;
@@ -26,9 +19,9 @@ export type InputProps = {
   minLength?: number;
   active?: boolean;
   onClick?: () => void;
-  onChange?: (event: React.ChangeEvent) => void;
-  onFocus?: (event: React.FocusEvent) => void;
-  onBlur?: (event: React.FocusEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -59,20 +52,16 @@ export const Input: React.FC<InputProps> = ({
 
   const handleClick = () => {
     inputRef.current?.focus();
-    onClick && onClick();
+    onClick?.();
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(event.target.value);
-    onChange && onChange(event);
+    onChange?.(event);
   };
 
   return (
-    <StyledInputWrapper
-      onClick={handleClick}
-      data-testid={'input-wrapper'}
-      className={className}
-    >
+    <StyledInputWrapper onClick={handleClick} data-testid={'input-wrapper'} className={className}>
       {hasSearchIcon && (
         <i data-testid={'input-icon'} className="material-icons">
           search
@@ -92,12 +81,8 @@ export const Input: React.FC<InputProps> = ({
         maxLength={maxLength}
         minLength={minLength}
         onChange={handleChange}
-        onFocus={(event: React.FocusEvent) => {
-          onFocus && onFocus(event);
-        }}
-        onBlur={(event: React.FocusEvent) => {
-          onBlur && onBlur(event);
-        }}
+        onFocus={(event: React.FocusEvent<HTMLInputElement>) => onFocus?.(event)}
+        onBlur={(event: React.FocusEvent<HTMLInputElement>) => onBlur?.(event)}
       />
     </StyledInputWrapper>
   );

@@ -43,21 +43,18 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   clearSuggestions,
 }) => {
   const blurDelay = useRef(0);
-  const isSuggestable = useRef(true);
+  const [isSuggestable, setIsSuggestable] = useState(true);
   const [value, setValue] = useState('');
-  const [focusedPlaceholder, setFocusedPlaceholder] = useState(
-    PlaceholderText.BLURRED,
-  );
+  const [focusedPlaceholder, setFocusedPlaceholder] = useState(PlaceholderText.BLURRED);
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    if (value.length > 2 && isSuggestable.current) {
+    if (value.length > 2 && isSuggestable) {
       fetchSuggestions(value);
     }
-  }, [value]);
+  }, [value, isSuggestable]);
 
-  const hasBorderBottomRadius =
-    !isListboxFocused || (isListboxFocused && value.length < 3);
+  const hasBorderBottomRadius = !isListboxFocused || (isListboxFocused && value.length < 3);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
@@ -86,7 +83,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
     setValue(showedText);
     setIsListboxFocused(false);
-    isSuggestable.current = false;
+    setIsSuggestable(false);
 
     selectSuggestion(restaurantId, showedText);
   };
@@ -119,11 +116,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   };
 
   return (
-    <StyledAutocomplete
-      data-testid="autocomplete"
-      className={className}
-      disabled={disabled}
-    >
+    <StyledAutocomplete data-testid="autocomplete" className={className} disabled={disabled}>
       <StyledInputWrapper hasBorderBottomRadius={hasBorderBottomRadius}>
         <Input
           type="text"
@@ -135,10 +128,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           hasSearchIcon={hasSearchIcon}
         />
       </StyledInputWrapper>
-      <StyledListboxWrapper
-        isShowed={isListboxFocused}
-        data-testid="listbox-wrapper"
-      >
+      <StyledListboxWrapper isShowed={isListboxFocused} data-testid="listbox-wrapper">
         {loading ? (
           <StyledLoaderWrapper>
             <Loader className="listbox-loader" text={DEFAULT_TEXT_LOADING} />

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  circleLoaderAnimation,
-  lineLoaderAnimation,
-} from '../../../helpers/animations';
+import { circleLoaderAnimation, lineLoaderAnimation } from '../../../helpers/animations';
 
 import { LoaderMode } from '../../core/types';
 
@@ -20,14 +17,10 @@ export const StyledCircleLoaderImage = styled.div<{
 }>`
   border: 2px solid
     ${({ theme, mode }) =>
-      mode === LoaderMode.DARK
-        ? theme.palette.PRIMARY
-        : theme.palette.PRIMARY_LIGHT};
+      mode === LoaderMode.DARK ? theme.palette.PRIMARY : theme.palette.PRIMARY_LIGHT};
   border-top: 2px solid
     ${({ theme, mode }) =>
-      mode === LoaderMode.DARK
-        ? theme.palette.LIGHT_SOFT
-        : theme.palette.PRIMARY_MEDIUM};
+      mode === LoaderMode.DARK ? theme.palette.LIGHT_SOFT : theme.palette.PRIMARY_MEDIUM};
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -40,9 +33,7 @@ export const StyledCircleLoaderText = styled.p<{
   margin-top: 8px;
   font-size: 0.85rem;
   color: ${({ theme, mode }) =>
-    mode === LoaderMode.DARK
-      ? theme.palette.DARK_MAX
-      : theme.palette.LIGHT_MAX};
+    mode === LoaderMode.DARK ? theme.palette.DARK_MAX : theme.palette.LIGHT_MAX};
 `;
 
 // Line loader

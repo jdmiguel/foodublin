@@ -57,8 +57,7 @@ export const StyledCard = styled.a<{ type: CardType }>`
     }
   }};
   cursor: pointer;
-  background-color: ${({ type, theme }) =>
-    type !== CardType.SUGGESTION && theme.palette.LIGHT_MAX};
+  background-color: ${({ type, theme }) => type !== CardType.SUGGESTION && theme.palette.LIGHT_MAX};
   @media only screen and (min-width: 768px) {
     transition: background-color 0.2s ease-out;
     &:hover {
@@ -93,8 +92,7 @@ export const StyledGenericThumb = styled.img<{ type: CardType }>`
 export const StyledText = styled.div<{ type: CardType }>`
   display: flex;
   flex-direction: column;
-  justify-content: ${({ type }) =>
-    type === CardType.HIGHLIGHT ? 'space-around' : 'space-evenly'};
+  justify-content: ${({ type }) => (type === CardType.HIGHLIGHT ? 'space-around' : 'space-evenly')};
   padding: ${({ type }) => type !== CardType.HIGHLIGHT && '5px 0'};
   width: ${({ type }) => type !== CardType.HIGHLIGHT && '65%'};
   margin-left: ${({ type }) => type !== CardType.HIGHLIGHT && '14px'};
@@ -111,8 +109,7 @@ export const StyledText = styled.div<{ type: CardType }>`
 
 export const StyledTitle = styled.h4<{ type: CardType }>`
   ${({ type }) => type !== CardType.HIGHLIGHT && CardTextCSS}
-  font-size: ${({ type }) =>
-    type === CardType.SUGGESTION ? '1.05rem' : '1.3rem'};
+  font-size: ${({ type }) => (type === CardType.SUGGESTION ? '1.05rem' : '1.3rem')};
   font-weight: 600;
   color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
   margin-bottom: ${({ type }) => type === CardType.HIGHLIGHT && '6px'};

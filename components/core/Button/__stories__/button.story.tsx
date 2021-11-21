@@ -21,11 +21,7 @@ stories.add('Button', () => (
 ));
 
 stories.add('Floating Button', () => (
-  <Button
-    onClick={action('button: on click event')}
-    isFloating={true}
-    fullWidth={false}
-  >
+  <Button onClick={action('button: on click event')} isFloating={true} fullWidth={false}>
     <i className="material-icons">{BUTTON_MOCK.icon}</i>
   </Button>
 ));

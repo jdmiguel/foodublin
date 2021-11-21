@@ -9,9 +9,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: BlockTitle', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<BlockTitle text={BLOCK_TITLE_TEXT_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<BlockTitle text={BLOCK_TITLE_TEXT_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

@@ -30,9 +30,11 @@ export const SUGGESTIONS_MOCK = [
 
 export const AUTOCOMPLETE_PROPS_MOCK = {
   suggestions: SUGGESTIONS_MOCK,
-  fetchSuggestions: () => {},
-  selectSuggestion: () => {},
+  onRequestError: false,
   loading: false,
   hasSearchIcon: true,
   disabled: false,
+  clearSuggestions: () => {},
+  fetchSuggestions: () => {},
+  selectSuggestion: () => {},
 };

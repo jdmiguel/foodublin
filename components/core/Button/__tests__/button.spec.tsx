@@ -8,9 +8,7 @@ import { BUTTON_MOCK } from '../__mocks__/button.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 it('should render with a simple text', () => {
-  const { container } = render(
-    renderWithTheme(<Button>{BUTTON_MOCK.text}</Button>),
-  );
+  const { container } = render(renderWithTheme(<Button>{BUTTON_MOCK.text}</Button>));
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -37,9 +35,7 @@ it('should render with HTML nodes', () => {
 });
 
 it('should render with loader', () => {
-  const { container } = render(
-    renderWithTheme(<Button loading={true}>{BUTTON_MOCK.text}</Button>),
-  );
+  const { container } = render(renderWithTheme(<Button loading={true}>{BUTTON_MOCK.text}</Button>));
 
   expect(container.firstChild).toMatchSnapshot();
 });
