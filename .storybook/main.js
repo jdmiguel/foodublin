@@ -6,7 +6,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions/register',
     'storybook-addon-jsx/register',
-    '@storybook/addon-knobs/register',
+    '@storybook/addon-knobs',
   ],
   webpackFinal: async (config) => {
     config.module.rules.push({

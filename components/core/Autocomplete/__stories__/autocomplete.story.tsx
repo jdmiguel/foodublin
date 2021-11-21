@@ -19,8 +19,11 @@ stories.add('Autocomplete', () => (
     {...AUTOCOMPLETE_PROPS_MOCK}
     loading={boolean('loading', false)}
     disabled={boolean('disabled', false)}
+    hasSearchIcon={boolean('hasSearchIcon', false)}
     suggestions={SUGGESTIONS_MOCK}
     fetchSuggestions={action('autocomplete: fetch suggestions')}
+    onRequestError={false}
+    clearSuggestions={action('autocomplete: clearSuggestions')}
   />
 ));
 
@@ -31,5 +34,7 @@ stories.add('AutocompleteMobile', () => (
     disabled={boolean('disabled', false)}
     suggestions={SUGGESTIONS_MOCK}
     fetchSuggestions={action('autocomplete: fetch suggestions')}
+    onRequestError={false}
+    clearSuggestions={action('autocomplete: clearSuggestions')}
   />
 ));
