@@ -1,5 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
 import { Filter } from '../Filter';
@@ -16,10 +20,10 @@ describe('Component: Filter', () => {
 
   it('should active filter and call function on click any filter', () => {
     const handleClick = jest.fn();
-    const { container } = render(
-      renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />),
-    );
-    const filter = container.firstChild as HTMLDivElement;
+
+    render(renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />));
+
+    const filter = screen.getByTestId('filter');
     const firstFilterItem = filter.querySelector('button');
     const secondFilterItem = filter.querySelector('button:nth-of-type(2)');
     const thirdFilterItem = filter.querySelector('button:nth-of-type(3)');

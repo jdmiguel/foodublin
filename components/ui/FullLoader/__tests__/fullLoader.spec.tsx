@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import { render } from '@testing-library/react';
 
@@ -10,7 +14,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 import { LoaderType } from '../../../core/types';
 
 describe('Component: Loader', () => {
-  it('should render as circle type and be showed', () => {
+  it('should render as circle type and be shown', () => {
     const { container } = render(
       renderWithTheme(
         <FullLoader isShowed={true}>
@@ -34,7 +38,7 @@ describe('Component: Loader', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should render as line type and be showed', () => {
+  it('should render as line type and be shown', () => {
     const { container } = render(
       renderWithTheme(
         <FullLoader isShowed={true} type={LoaderType.LINE}>
