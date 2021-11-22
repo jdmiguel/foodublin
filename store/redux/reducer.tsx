@@ -1,6 +1,6 @@
-import { InitialAppState, Actions } from './types';
+import { AppState, Actions } from './types';
 
-const appReducer = (state: InitialAppState, action: Actions) => {
+const appReducer = (state: AppState, action: Actions): AppState => {
   switch (action.type) {
     case 'ADD_FAVORITE':
       return {
@@ -10,9 +10,7 @@ const appReducer = (state: InitialAppState, action: Actions) => {
     case 'DELETE_FAVORITE':
       return {
         ...state,
-        favorites: state.favorites.filter(
-          (favorite) => favorite.id !== action.id,
-        ),
+        favorites: state.favorites.filter((favorite) => favorite.id !== action.id),
       };
     case 'SET_RELATED_RESTAURANTS':
       return {
@@ -32,10 +30,7 @@ const appReducer = (state: InitialAppState, action: Actions) => {
     case 'REPLACE_BREADCRUMBS':
       return {
         ...state,
-        breadcrumbs: [
-          ...state.breadcrumbs.slice(0, action.index),
-          action.breadcrumbs,
-        ],
+        breadcrumbs: [...state.breadcrumbs.slice(0, action.index), action.breadcrumbs],
       };
     default:
       return state;
