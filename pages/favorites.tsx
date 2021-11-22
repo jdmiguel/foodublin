@@ -6,7 +6,7 @@ import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { InitialAppState } from '@/store/redux/types';
+import { AppState } from '@/store/redux/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
 const DynamicFavoritesPage = dynamic(
@@ -28,7 +28,7 @@ const Favorites = () => {
 
   const router = useRouter();
 
-  const { favorites } = useSelector((state: InitialAppState) => state);
+  const { favorites } = useSelector((state: AppState) => state);
   const favoritesBreadcrumbs = {
     text: 'Favorites',
     route: favoriteRoute,

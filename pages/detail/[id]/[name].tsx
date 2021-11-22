@@ -1,33 +1,26 @@
 import { useState, useEffect } from 'react';
-import {
-  NextPage,
-  InferGetServerSidePropsType,
-  GetServerSidePropsContext,
-} from 'next';
+import { NextPage, GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useSelector, useDispatch } from 'react-redux';
+
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-import {
-  clearRelatedRestaurants,
-  addFavorite,
-  deleteFavorite,
-} from '@/store/redux/actions';
-import { InitialAppState } from '@/store/redux/types';
+
+import { clearRelatedRestaurants, addFavorite, deleteFavorite } from '@/store/redux/actions';
+import { AppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { getFormattedUrlText } from '@/helpers/utils';
+
+import { getFormattedUrlText, inferSSRProps } from '@/helpers/utils';
 import { getRestaurant } from '@/services/index';
-import {
-  RestaurantDetail,
-  Restaurant,
-} from '@/components/pages/types';
+
+import { RestaurantDetail, Restaurant } from '@/components/pages/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
-type DetailProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type DetailProps = inferSSRProps<typeof getServerSideProps>;
 
 type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
   params: {
@@ -35,25 +28,22 @@ type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
   };
 };
 
-const DynamicDetailPage = dynamic(
-  () => import('@/components/pages/DetailPage/DetailPage'),
-  {
-    // eslint-disable-next-line react/display-name
-    loading: () => (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ),
-  },
-);
+const DynamicDetailPage = dynamic(() => import('@/components/pages/DetailPage/DetailPage'), {
+  // eslint-disable-next-line react/display-name
+  loading: () => (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ),
+});
 
 const getRefinedRestaurant = (
   id: number,
   restaurant: RestaurantDetail | null,
 ): Restaurant | null => {
   if (!restaurant) {
-    return null
-  } 
+    return null;
+  }
   return {
     id,
     imgSrc: restaurant.thumbSrc,
@@ -61,15 +51,13 @@ const getRefinedRestaurant = (
     content: restaurant.location,
     route: '/detail/[id]/[name]',
     asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
-  }
+  };
 };
 
 const Detail: NextPage<DetailProps> = ({ detail, id }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const { favorites, relatedRestaurants } = useSelector(
-    (state: InitialAppState) => state,
-  );
+  const { favorites, relatedRestaurants } = useSelector((state: AppState) => state);
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -84,7 +72,7 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
 
   const handleSaveButton = (action: string) => {
     const favorite = getRefinedRestaurant(id, detail);
-    if(!favorite) {
+    if (!favorite) {
       return;
     }
 
@@ -100,12 +88,7 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
   const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'detail');
 
   if (!detail) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
+    return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
   }
 
   return (
@@ -118,9 +101,7 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
         isFavorite={isFavorite}
         relatedRestaurants={relatedRestaurants}
         onClickSaveButton={handleSaveButton}
-        onClickRelatedRestaurant={(route: string, asRoute: string) =>
-          router.push(route, asRoute)
-        }
+        onClickRelatedRestaurant={(route: string, asRoute: string) => router.push(route, asRoute)}
         isNavigating={isNavigating}
         onNavigate={(route: string, asRoute?: string) => {
           setIsNavigating(true);
@@ -132,14 +113,10 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
   );
 };
 
-export const getServerSideProps = async ({
-  params: { id },
-}: CustomGetServerSidePropsContext) => {
-  console.log({id})
+export const getServerSideProps = async ({ params: { id } }: CustomGetServerSidePropsContext) => {
   const { rawRestaurantDetail, status } = await getRestaurant(id);
 
   let formattedRestaurantDetail: RestaurantDetail | null = null;
-
 
   if (status === 200) {
     formattedRestaurantDetail = {

@@ -77,3 +77,19 @@ export const getTitleText = (total: number) => ({
 // CreateMockStore
 
 export const createTestStore = () => createStore(appReducer as Reducer);
+
+type GetSSRResult<TProps> = { props: TProps } | { redirect: any } | { notFound: true };
+
+type GetSSRFn<TProps> = (args: any) => Promise<GetSSRResult<TProps>>;
+
+export type inferSSRProps<TFn extends GetSSRFn<any>> = TFn extends GetSSRFn<infer TProps>
+  ? NonNullable<TProps>
+  : never;
+
+type GetStaticResult<TProps> = { props: TProps } | { redirect: any } | { notFound: true };
+
+type GetStaticFn<TProps> = (args: any) => Promise<GetStaticResult<TProps>>;
+
+export type inferStaticProps<TFn extends GetStaticFn<any>> = TFn extends GetStaticFn<infer TProps>
+  ? NonNullable<TProps>
+  : never;
