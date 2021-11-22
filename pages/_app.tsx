@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Reducer } from 'redux';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -7,7 +8,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { throttle } from 'lodash';
 import appReducer from '@/store/redux/reducer';
-import { InitialAppState } from '@/store/redux/types';
+import { AppState } from '@/store/redux/types';
 import { DEFAULT_BREADCRUMB } from '@/store/statics';
 import '@/helpers/Grid/Grid.scss';
 import { GlobalStyles } from '@/helpers/GlobalStylesHelper';
@@ -25,7 +26,7 @@ const loadStateFromLocalStorage = () => {
   }
 };
 
-const saveStateToLocalStorage = (state: InitialAppState) => {
+const saveStateToLocalStorage = (state: AppState) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
@@ -36,14 +37,14 @@ const saveStateToLocalStorage = (state: InitialAppState) => {
 
 const localState = loadStateFromLocalStorage();
 
-const defaultAppState: InitialAppState = {
+const defaultAppState: AppState = {
   favorites: [],
   relatedRestaurants: [],
   breadcrumbs: [DEFAULT_BREADCRUMB],
 };
 
 const store = configureStore({
-  reducer: appReducer,
+  reducer: appReducer as Reducer,
   preloadedState: localState || defaultAppState,
 });
 
@@ -75,10 +76,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="description"
           content="Discover the best restaurants in dublin and taste your favorite kind of food"
         />
-        <meta
-          name="keywords"
-          content="Restaurant, Venues, Establishment, Food, Cuisines, Dublin"
-        />
+        <meta name="keywords" content="Restaurant, Venues, Establishment, Food, Cuisines, Dublin" />
         <meta name="author" content="Jaime De Miguel Alcobendas" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Foodublin - Discover the best restaurants in Dublin</title>

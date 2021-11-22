@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback} from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const useWindowMeasurement = () => {
   const [windowMeasurement, setWindowMeasurement] = useState({
@@ -6,15 +6,12 @@ export const useWindowMeasurement = () => {
     height: 0,
   });
 
-  const onResize = useCallback(
-    () => {
-      setWindowMeasurement({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    },
-    [setWindowMeasurement],
-  )
+  const onResize = useCallback(() => {
+    setWindowMeasurement({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }, [setWindowMeasurement]);
 
   useEffect(() => {
     onResize?.();

@@ -5,10 +5,7 @@ import { select } from '@storybook/addon-knobs';
 
 import { Rating } from '../Rating';
 
-import {
-  RATING_VALUE_MOCK,
-  RATING_VOTES_MOCK,
-} from '../__mocks__/rating.mocks';
+import { RATING_VALUE_MOCK, RATING_VOTES_MOCK } from '../__mocks__/rating.mocks';
 
 const stories = storiesOf('Rating', module);
 

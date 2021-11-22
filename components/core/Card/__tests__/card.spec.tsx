@@ -11,9 +11,7 @@ import { CardType } from '../../types';
 
 it('should render standart card', () => {
   const { container } = render(
-    renderWithTheme(
-      <Card {...CARD_PROPS_MOCKS} imgSrc={'/images/thumb-1.webp'} />,
-    ),
+    renderWithTheme(<Card {...CARD_PROPS_MOCKS} imgSrc={'/images/thumb-1.webp'} />),
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -22,11 +20,7 @@ it('should render standart card', () => {
 it('should render suggestion card', () => {
   const { container } = render(
     renderWithTheme(
-      <Card
-        {...CARD_PROPS_MOCKS}
-        imgSrc={'/images/thumb-1.webp'}
-        type={CardType.SUGGESTION}
-      />,
+      <Card {...CARD_PROPS_MOCKS} imgSrc={'/images/thumb-1.webp'} type={CardType.SUGGESTION} />,
     ),
   );
 
@@ -36,11 +30,7 @@ it('should render suggestion card', () => {
 it('should render highlight card', () => {
   const { container } = render(
     renderWithTheme(
-      <Card
-        {...CARD_PROPS_MOCKS}
-        imgSrc={'/images/cleaver-east.jpg'}
-        type={CardType.HIGHLIGHT}
-      />,
+      <Card {...CARD_PROPS_MOCKS} imgSrc={'/images/cleaver-east.jpg'} type={CardType.HIGHLIGHT} />,
     ),
   );
 
@@ -51,11 +41,7 @@ it('should call function on click', () => {
   const handleClick = jest.fn();
   const { getByTestId } = render(
     renderWithTheme(
-      <Card
-        {...CARD_PROPS_MOCKS}
-        imgSrc={'/images/thumb-1.webp'}
-        onClick={handleClick}
-      />,
+      <Card {...CARD_PROPS_MOCKS} imgSrc={'/images/thumb-1.webp'} onClick={handleClick} />,
     ),
   );
 

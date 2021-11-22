@@ -10,9 +10,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Autocomplete', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -21,10 +19,7 @@ describe('Component: Autocomplete', () => {
     const handleFetchSuggestion = jest.fn();
     const { getByTestId, getByPlaceholderText } = render(
       renderWithTheme(
-        <Autocomplete
-          {...AUTOCOMPLETE_PROPS_MOCK}
-          fetchSuggestions={handleFetchSuggestion}
-        />,
+        <Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} fetchSuggestions={handleFetchSuggestion} />,
       ),
     );
     const listboxWrapper = getByTestId('listbox-wrapper');
@@ -47,10 +42,7 @@ describe('Component: Autocomplete', () => {
     const handleSelectSuggestion = jest.fn();
     const { getByTestId, getByPlaceholderText } = render(
       renderWithTheme(
-        <Autocomplete
-          {...AUTOCOMPLETE_PROPS_MOCK}
-          selectSuggestion={handleSelectSuggestion}
-        />,
+        <Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} selectSuggestion={handleSelectSuggestion} />,
       ),
     );
     const listboxWrapper = getByTestId('listbox-wrapper');
@@ -86,9 +78,7 @@ describe('Component: Autocomplete', () => {
     // when clicking any suggestion hide suggestions list
     // and call callback function
     fireEvent.change(input, { target: { value: 'tre' } });
-    const firstSuggestionLink = listboxWrapper
-      .querySelectorAll('li')[0]
-      .querySelector('a');
+    const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0].querySelector('a');
     fireEvent.click(firstSuggestionLink);
 
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');

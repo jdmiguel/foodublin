@@ -35,9 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
     )}
     <StyledFooter>
       <StyledBlock>
-        <CustomLink route="https://github.com/jdmiguel/foodublin">
-          GITHUB
-        </CustomLink>
+        <CustomLink route="https://github.com/jdmiguel/foodublin">GITHUB</CustomLink>
       </StyledBlock>
       <StyledBlock>
         <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>

@@ -6,10 +6,7 @@ type HeaderBarProps = {
   onClickFavorites: () => void;
 };
 
-export const HeaderBar: React.FC<HeaderBarProps> = ({
-  onClickBack,
-  onClickFavorites,
-}) => (
+export const HeaderBar: React.FC<HeaderBarProps> = ({ onClickBack, onClickFavorites }) => (
   <StyledHeaderBarWrapper data-testid="header-bar">
     <StyledHeaderBar className="grid-container">
       <CustomLink onClick={onClickBack}>{'< BACK'}</CustomLink>

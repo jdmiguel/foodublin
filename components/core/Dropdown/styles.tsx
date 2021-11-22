@@ -65,8 +65,7 @@ export const StyledLabelButton = styled.button<{ clearable: boolean }>`
 `;
 
 export const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
-  visibility: ${({ isListboxFocused }) =>
-    isListboxFocused ? 'visible' : 'hidden'};
+  visibility: ${({ isListboxFocused }) => (isListboxFocused ? 'visible' : 'hidden')};
   opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
   overflow: auto;
   transition: opacity 0.2s ease 0s;
@@ -91,9 +90,7 @@ export const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
     padding: 0;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
     transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-    transform: translateY(
-      ${({ isListboxFocused }) => (isListboxFocused ? '0' : '20px')}
-    );
+    transform: translateY(${({ isListboxFocused }) => (isListboxFocused ? '0' : '20px')});
   }
 `;
 

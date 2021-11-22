@@ -9,9 +9,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: BlockText', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<BlockText text={BLOCK_TEXT_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<BlockText text={BLOCK_TEXT_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

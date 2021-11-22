@@ -42,11 +42,7 @@ const HomePage: React.FC<HomePageProps> = ({
               content={restaurant.content}
               type={CardType.HIGHLIGHT}
               onClick={() => {
-                clickHighlight(
-                  restaurant.id,
-                  restaurant.route,
-                  restaurant.asRoute,
-                );
+                clickHighlight(restaurant.id, restaurant.route, restaurant.asRoute);
               }}
             />
           </div>

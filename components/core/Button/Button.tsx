@@ -20,11 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = true,
   isFloating = false,
 }) => (
-  <StyledButtonWrapper
-    className={className}
-    fullWidth={fullWidth}
-    isFloating={isFloating}
-  >
+  <StyledButtonWrapper className={className} fullWidth={fullWidth} isFloating={isFloating}>
     <StyledButton
       type="button"
       onClick={() => {

@@ -1,8 +1,4 @@
-import {
-  StyledTimming,
-  StyledTimmingDay,
-  StyledTimmingSchedule,
-} from './styles';
+import { StyledTimming, StyledTimmingDay, StyledTimmingSchedule } from './styles';
 import { Timming } from '../types';
 
 type TimingsProps = {

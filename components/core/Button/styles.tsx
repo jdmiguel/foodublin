@@ -4,8 +4,7 @@ export const StyledButtonWrapper = styled.div<{
   fullWidth: boolean;
   isFloating: boolean;
 }>`
-  width: ${({ fullWidth, isFloating }) =>
-    fullWidth ? '100%' : isFloating ? '50px' : '200px'};
+  width: ${({ fullWidth, isFloating }) => (fullWidth ? '100%' : isFloating ? '50px' : '200px')};
   height: 55px;
 `;
 
@@ -13,8 +12,7 @@ export const StyledButton = styled.button<{
   fullWidth: boolean;
   isFloating: boolean;
 }>`
-  width: ${({ fullWidth, isFloating }) =>
-    fullWidth ? '100%' : isFloating ? '50px' : '200px'};
+  width: ${({ fullWidth, isFloating }) => (fullWidth ? '100%' : isFloating ? '50px' : '200px')};
   height: ${({ isFloating }) => (isFloating ? '50px' : '100%')};
   letter-spacing: 0.5px;
   text-transform: uppercase;

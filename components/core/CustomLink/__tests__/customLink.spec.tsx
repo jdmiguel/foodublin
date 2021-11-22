@@ -11,9 +11,7 @@ describe('Component: CustomLink', () => {
   it('should render with a simple text', () => {
     const { container } = render(
       renderWithTheme(
-        <CustomLink route={CUSTOM_LINK_MOCK.route}>
-          {CUSTOM_LINK_MOCK.text}
-        </CustomLink>,
+        <CustomLink route={CUSTOM_LINK_MOCK.route}>{CUSTOM_LINK_MOCK.text}</CustomLink>,
       ),
     );
 
@@ -48,9 +46,7 @@ describe('Component: CustomLink', () => {
   it('should call function on click', () => {
     const handleClick = jest.fn();
     const { getByText } = render(
-      renderWithTheme(
-        <CustomLink onClick={handleClick}>{CUSTOM_LINK_MOCK.text}</CustomLink>,
-      ),
+      renderWithTheme(<CustomLink onClick={handleClick}>{CUSTOM_LINK_MOCK.text}</CustomLink>),
     );
 
     fireEvent.click(getByText('Default link'));

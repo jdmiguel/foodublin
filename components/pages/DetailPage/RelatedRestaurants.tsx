@@ -18,9 +18,7 @@ export const RelatedRestaurants = ({
           imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
           title={restaurant.title}
           content={restaurant.content}
-          onClick={() =>
-            onClickRelatedRestaurant(restaurant.route, restaurant.asRoute)
-          }
+          onClick={() => onClickRelatedRestaurant(restaurant.route, restaurant.asRoute)}
         />
       </div>
     ))}

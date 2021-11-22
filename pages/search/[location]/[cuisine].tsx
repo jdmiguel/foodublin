@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, Dispatch } from 'react';
-import { NextPage, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
+import { NextPage, GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useDispatch } from 'react-redux';
@@ -28,17 +28,13 @@ import { setRelatedRestaurants } from '@/store/redux/actions';
 import {
   getFormattedUrlText,
   getCurrentRelatedRestaurants,
+  inferStaticProps,
 } from '@/helpers/utils';
 
 import { getRestaurants } from '@/services/index';
 
 import { ListItem, BreadcrumbsType } from '@/components/core/types';
-import {
-  Restaurant,
-  RawRestaurant,
-  EntityType,
-  Location,
-} from '@/components/pages/types';
+import { Restaurant, RawRestaurant, EntityType, Location } from '@/components/pages/types';
 
 export enum LocationType {
   CITY = 'city',
@@ -51,7 +47,7 @@ export enum LoadType {
   SCROLL = 'scroll',
 }
 
-type SearchProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SearchProps = inferStaticProps<typeof getStaticProps>;
 
 type CustomGetStaticPropsContext = GetStaticPropsContext & {
   params: {
@@ -60,22 +56,16 @@ type CustomGetStaticPropsContext = GetStaticPropsContext & {
   };
 };
 
-const DynamicSearchPage = dynamic(
-  () => import('@/components/pages/SearchPage/SearchPage'),
-  {
-    // eslint-disable-next-line react/display-name
-    loading: () => (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ),
-  },
-);
+const DynamicSearchPage = dynamic(() => import('@/components/pages/SearchPage/SearchPage'), {
+  // eslint-disable-next-line react/display-name
+  loading: () => (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ),
+});
 
-const getValues = (
-  path: string,
-  searchType: ListItem[],
-): [number | null, string | null] => {
+const getValues = (path: string, searchType: ListItem[]): [number | null, string | null] => {
   const value = searchType.find((item) => item.path === path);
 
   return [value?.id || null, value?.name || null];
@@ -93,12 +83,10 @@ const getRefinedRestaurant = (rawRestaurant: RawRestaurant): Restaurant => ({
   )}`,
 });
 
-const selectRestaurants = (rawRestaurants: RawRestaurant[]) => (
-  formattedFuntion: (rawRestaurant: RawRestaurant) => Restaurant,
-) =>
-  rawRestaurants.map((rawRestaurant: RawRestaurant) =>
-    formattedFuntion(rawRestaurant),
-  );
+const selectRestaurants =
+  (rawRestaurants: RawRestaurant[]) =>
+  (formattedFuntion: (rawRestaurant: RawRestaurant) => Restaurant) =>
+    rawRestaurants.map((rawRestaurant: RawRestaurant) => formattedFuntion(rawRestaurant));
 
 const handleGetRestaurants = async (
   locationId: number | null,
@@ -109,8 +97,7 @@ const handleGetRestaurants = async (
 ) => {
   const { rawRestaurants, total, status } = await getRestaurants({
     entity_id: locationId,
-    entity_type:
-      locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
+    entity_type: locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
     cuisines: cuisineId,
     start,
     sort,
@@ -141,16 +128,13 @@ const Search: NextPage<SearchProps> = ({
 }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-
   const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
   const scrollDelayRef = useRef(SCROLL_DELAY);
 
-  const [currentRestaurants, setCurrentRestaurants]: [
-    Restaurant[],
-    Dispatch<Restaurant[]>,
-  ] = useState(restaurants);
+  const [currentRestaurants, setCurrentRestaurants]: [Restaurant[], Dispatch<Restaurant[]>] =
+    useState(restaurants);
   const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [onError, setOnError] = useState(false);
@@ -162,10 +146,8 @@ const Search: NextPage<SearchProps> = ({
 
   const { height } = useWindowMeasurement();
 
-  const maxRestaurantStarter =
-    MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
-  const currentTotal =
-    total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
+  const maxRestaurantStarter = MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
+  const currentTotal = total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
 
   const handleRestaurants = async (loadType: LoadType) => {
     let start: number;
@@ -199,10 +181,7 @@ const Search: NextPage<SearchProps> = ({
         setCurrentRestaurants(restaurantsData.restaurants);
         setIsLoadingByFilter(false);
       } else {
-        setCurrentRestaurants([
-          ...currentRestaurants,
-          ...restaurantsData.restaurants,
-        ]);
+        setCurrentRestaurants([...currentRestaurants, ...restaurantsData.restaurants]);
         setIsLoadingByScroll(false);
       }
     } else {
@@ -213,11 +192,9 @@ const Search: NextPage<SearchProps> = ({
   useScroll(
     async ({ scrollTop, scrollHeight, clientHeight }) => {
       const { current: loadedRestaurants } = loadedRestaurantsRef;
-      const isScrollDownLimit =
-        scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
+      const isScrollDownLimit = scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
       const isRetrievingDataAllowed =
-        loadedRestaurants < currentTotal &&
-        loadedRestaurants <= maxRestaurantStarter;
+        loadedRestaurants < currentTotal && loadedRestaurants <= maxRestaurantStarter;
 
       if (isScrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
         handleRestaurants(LoadType.SCROLL);
@@ -260,10 +237,7 @@ const Search: NextPage<SearchProps> = ({
     scrollDelayRef.current = 0;
 
     if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
-      const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-        currentRestaurants,
-        id,
-      );
+      const currentRelatedRestaurants = getCurrentRelatedRestaurants(currentRestaurants, id);
 
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }
@@ -284,23 +258,12 @@ const Search: NextPage<SearchProps> = ({
   const { breadcrumbs } = useBreadcrumbs(searchBreadcrumbs, 'search');
 
   if (onError) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
+    return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
   }
 
   if (!restaurants) {
-    return (
-      <ErrorPage
-        isNavigating={isNavigating}
-        onNavigate={() => setIsNavigating(true)}
-      />
-    );
+    return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
   }
-
 
   return (
     <DynamicSearchPage
@@ -340,9 +303,7 @@ export const getStaticPaths = async () => {
       cuisinesCounter = 0;
     }
 
-    const updatedCuisineCounter = cuisinesCounter
-      ? cuisinesCounter - 1
-      : cuisinesCounter;
+    const updatedCuisineCounter = cuisinesCounter ? cuisinesCounter - 1 : cuisinesCounter;
 
     return {
       params: {

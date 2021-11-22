@@ -9,9 +9,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Title', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<Title text={TITLE_TEXT_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<Title text={TITLE_TEXT_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

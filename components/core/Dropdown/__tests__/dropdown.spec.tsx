@@ -11,17 +11,13 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Dropdown', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should show/hide options list', () => {
-    const { container } = render(
-      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />),
-    );
+    const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
     const dropdown = container.firstChild as HTMLDivElement;
     const dropdownButton = dropdown.querySelector('button');
     const listbox = dropdown.querySelector('div[role="listbox"]');
@@ -81,17 +77,13 @@ describe('Component: Dropdown', () => {
     };
     const handleSelect = jest.fn();
     const { container, getAllByRole } = render(
-      renderWithTheme(
-        <Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} onSelect={handleSelect} />,
-      ),
+      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} onSelect={handleSelect} />),
     );
     const dropdown = container.firstChild as HTMLDivElement;
     const dropdownButton = dropdown.querySelector('button');
 
     // check if dropdown button name is 'Select any option'
-    expect(dropdownButton.querySelector('span').textContent).toBe(
-      'Select any option',
-    );
+    expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
 
     // click the first option of the list, call callback function and check if button name is 'First option'
     fireEvent.click(dropdownButton);
@@ -99,16 +91,12 @@ describe('Component: Dropdown', () => {
     fireEvent.click(firstOption as HTMLDivElement);
 
     expect(handleSelect).toHaveBeenCalled();
-    expect(dropdownButton.querySelector('span').textContent).toBe(
-      'First option',
-    );
+    expect(dropdownButton.querySelector('span').textContent).toBe('First option');
 
     // click clear button and check if dropdown button name is 'Select any option'
     fireEvent.click(dropdown.querySelector('button:last-of-type'));
 
-    expect(dropdownButton.querySelector('span').textContent).toBe(
-      'Select any option',
-    );
+    expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
   });
 
   it('should render with clearable option', () => {
@@ -140,9 +128,7 @@ describe('Component: Dropdown', () => {
       ...DROPDOWN_PROPS_MOCK,
       disabled: true,
     };
-    const { container } = render(
-      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />),
-    );
+    const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />));
     const dropdown = container.firstChild as HTMLDivElement;
 
     expect(dropdown).toHaveStyleRule('pointer-events', 'none');

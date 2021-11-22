@@ -17,26 +17,20 @@ describe('Component: Loader', () => {
   });
 
   it('should render as circle type and light mode', () => {
-    const { container } = render(
-      renderWithTheme(<Loader mode={LoaderMode.LIGHT} />),
-    );
+    const { container } = render(renderWithTheme(<Loader mode={LoaderMode.LIGHT} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render as circle type, dark mode and with default text', () => {
-    const { container } = render(
-      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} />),
-    );
+    const { container } = render(renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render as circle type, light mode and with default text', () => {
     const { container } = render(
-      renderWithTheme(
-        <Loader text={LOADER_TEXT_MOCKS} mode={LoaderMode.LIGHT} />,
-      ),
+      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} mode={LoaderMode.LIGHT} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();
@@ -44,9 +38,7 @@ describe('Component: Loader', () => {
 
   it('should render as line type', () => {
     const { container } = render(
-      renderWithTheme(
-        <Loader text={LOADER_TEXT_MOCKS} type={LoaderType.LINE} />,
-      ),
+      renderWithTheme(<Loader text={LOADER_TEXT_MOCKS} type={LoaderType.LINE} />),
     );
 
     expect(container.firstChild).toMatchSnapshot();

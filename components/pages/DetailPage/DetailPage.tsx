@@ -116,9 +116,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
           <StyledButtonWrapper>
             {' '}
             <Button onClick={clickSaveButton}>
-              <i className="material-icons">{`${
-                isSaved ? 'favorite' : 'favorite_border'
-              }`}</i>
+              <i className="material-icons">{`${isSaved ? 'favorite' : 'favorite_border'}`}</i>
               {`${isSaved ? 'saved' : 'unsaved'}`}
             </Button>
           </StyledButtonWrapper>
@@ -142,11 +140,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
   };
 
   return (
-    <Layout
-      isExtendedFooter={true}
-      onNavigate={onNavigate}
-      breadcrumbs={breadcrumbs}
-    >
+    <Layout isExtendedFooter={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
       <StyledDetailPage data-testid="detail-page" className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
@@ -200,10 +194,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
               </div>
             </div>
             <div className="cell small-12 large-5">
-              <StyledAddressWrapper
-                data-testid="detail-address"
-                className="paper"
-              >
+              <StyledAddressWrapper data-testid="detail-address" className="paper">
                 <StyledSectionBlock>
                   <StyledTitleWrapper>
                     <BlockTitle text="Phone" />
@@ -214,10 +205,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
                   <StyledTitleWrapper>
                     <BlockTitle text="Address" />
                   </StyledTitleWrapper>
-                  <Address
-                    mapSrc={getMapSrc(name, location)}
-                    address={address}
-                  />
+                  <Address mapSrc={getMapSrc(name, location)} address={address} />
                 </StyledSectionBlock>
               </StyledAddressWrapper>
             </div>

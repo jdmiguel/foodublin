@@ -8,6 +8,4 @@ import { BLOCK_TEXT_MOCK } from '../__mocks__/blockText.mocks';
 
 const stories = storiesOf('BlockText', module);
 
-stories.add('BlockText', () => (
-  <BlockText text={text('block text', BLOCK_TEXT_MOCK)} />
-));
+stories.add('BlockText', () => <BlockText text={text('block text', BLOCK_TEXT_MOCK)} />);

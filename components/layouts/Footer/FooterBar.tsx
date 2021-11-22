@@ -17,10 +17,7 @@ export const FooterBar: React.FC<FooterBarProps> = ({
   return (
     <StyledFooterBarWrapper data-testid="footer-bar">
       <StyledFooterBar className="grid-container">
-        <Breadcrumbs
-          breadcrumbsData={breadcrumbs || []}
-          onClickBreadcrumb={onClickBreadcrumb}
-        />
+        <Breadcrumbs breadcrumbsData={breadcrumbs || []} onClickBreadcrumb={onClickBreadcrumb} />
         <CustomLink onClick={onClickFavorites}>
           <i className="material-icons">bookmarks</i>FAVORITES
         </CustomLink>

@@ -2,15 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { addBreadcrumbs, replaceBreadcrumbs } from '@/store/redux/actions';
-import { InitialAppState } from '@/store/redux/types';
+import { AppState } from '@/store/redux/types';
 
 import { BreadcrumbsData } from '../core/types';
 
-export const useBreadcrumbs = (
-  currentBreadcrumbs: BreadcrumbsData,
-  page: string,
-) => {
-  const { breadcrumbs } = useSelector((state: InitialAppState) => state);
+export const useBreadcrumbs = (currentBreadcrumbs: BreadcrumbsData, page: string) => {
+  const { breadcrumbs } = useSelector((state: AppState) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

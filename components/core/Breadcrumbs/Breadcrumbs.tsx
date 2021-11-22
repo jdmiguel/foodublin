@@ -15,19 +15,18 @@ type BreadcrumbsProps = {
   onClickBreadcrumb: (route: string, asRoute: string) => void;
 };
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
-  breadcrumbsData,
-  onClickBreadcrumb,
-}) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbsData, onClickBreadcrumb }) => {
   const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
     setIsloading(false);
   }, []);
 
-  return isLoading ? (
-    <StyledBreadcrumbsLoading>{DEFAULT_TEXT_LOADING}</StyledBreadcrumbsLoading>
-  ) : (
+  if (isLoading) {
+    return <StyledBreadcrumbsLoading>{DEFAULT_TEXT_LOADING}</StyledBreadcrumbsLoading>;
+  }
+
+  return (
     <StyledBreadcrumbsWrapper data-testid="breadcrumbs">
       {breadcrumbsData.map((breadcrumbData, itemIndex, items) => {
         const isLast = itemIndex === items.length - 1;
@@ -36,12 +35,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             <StyledCustomLinkWrapper>
               <CustomLink
                 disabled={isLast}
-                onClick={() =>
-                  onClickBreadcrumb(
-                    breadcrumbData.route,
-                    breadcrumbData.asRoute,
-                  )
-                }
+                onClick={() => onClickBreadcrumb(breadcrumbData.route, breadcrumbData.asRoute)}
               >
                 {breadcrumbData.text}
               </CustomLink>

@@ -5,10 +5,7 @@ import 'jest-styled-components';
 
 import { Breadcrumbs } from '../Breadcrumbs';
 
-import {
-  BREADCRUMBS_DATA_MOCK,
-  BREADCRUMBS_CALLBACK_MOCK,
-} from '../__mocks__/breadcrumbs.mocks';
+import { BREADCRUMBS_DATA_MOCK, BREADCRUMBS_CALLBACK_MOCK } from '../__mocks__/breadcrumbs.mocks';
 
 import { renderWithTheme } from '../../../../helpers/Theme';
 

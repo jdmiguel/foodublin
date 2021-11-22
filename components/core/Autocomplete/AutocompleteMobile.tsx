@@ -50,14 +50,10 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   clearSuggestions,
 }) => {
   const listboxWrapperRef = useRef<HTMLDivElement>(null);
-  const isSuggestable = useRef(true);
+  const [isSuggestable, setIsSuggestable] = useState(true);
   const [value, setValue] = useState('');
-  const [focusedPlaceholder, setFocusedPlaceholder] = useState(
-    PlaceholderText.BLURRED,
-  );
-  const [labelTextShowed, setLabelTextShowed] = useState(
-    PlaceholderText.BLURRED as string,
-  );
+  const [focusedPlaceholder, setFocusedPlaceholder] = useState(PlaceholderText.BLURRED);
+  const [labelTextShowed, setLabelTextShowed] = useState(PlaceholderText.BLURRED as string);
   const [isModalShowed, setIsModalShowed] = useState(false);
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
@@ -72,14 +68,13 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   }, [isModalShowed]);
 
   useEffect(() => {
-    if (value.length > 2 && isSuggestable.current) {
+    if (value.length > 2 && isSuggestable) {
       fetchSuggestions(value);
     }
-  }, [value]);
+  }, [value, isSuggestable, fetchSuggestions]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
-
     setIsListboxFocused(currentValue.length > 2);
     setValue(currentValue);
   };
@@ -100,7 +95,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);
-    isSuggestable.current = false;
+    setIsSuggestable(false);
     selectSuggestion(restaurantId, showedText);
   };
 
@@ -137,67 +132,58 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   };
 
   return (
-    <StyledAutocompleteMobile
-      data-testid="autocomplete"
-      className={className}
-      disabled={disabled}
-    >
-      <>
-        <StyledLabel data-testid="label">
-          <StyledLabelButton
-            type="button"
-            onClick={() => setIsModalShowed(true)}
-          >
-            <i data-testid={'label-icon'} className="material-icons">
-              search
-            </i>
-            <span>{labelTextShowed}</span>
-          </StyledLabelButton>
-        </StyledLabel>
-        <StyledModal isShowed={isModalShowed} data-testid="modal">
-          <StyleHeading>
-            <BlockTitle text="Dublin restaurants" />
-            <StyleHeadingButton type="button" onClick={handleCloseModal}>
-              <i className="material-icons">close</i>
-            </StyleHeadingButton>
-          </StyleHeading>
-          <StyledInputWrapper>
-            <Input
-              type="text"
-              placeholder={focusedPlaceholder}
-              onChange={handleChange}
-              value={value}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              hasSearchIcon={hasSearchIcon}
-            />
-          </StyledInputWrapper>
-          <StyledListboxWrapper
-            isShowed={isListboxFocused}
-            data-testid="listbox-wrapper"
-            ref={listboxWrapperRef}
-          >
-            {loading ? (
-              <StyledLoaderWrapper>
-                <Loader text={DEFAULT_TEXT_LOADING} />
-              </StyledLoaderWrapper>
-            ) : (
-              <StyledListbox role="listbox">
-                {onRequestError ? (
-                  <StyledErrorWrapper>
-                    <BlockText text="Sorry but something was wrong..." />
-                    <StyledErrorButtonWrapper>
-                      <Button onClick={handleClearSuggestion}>Try again</Button>
-                    </StyledErrorButtonWrapper>
-                  </StyledErrorWrapper>
-                ) : (
-                  renderSuggestions()
-                )}
-              </StyledListbox>
-            )}
-          </StyledListboxWrapper>
-        </StyledModal>
-      </>
+    <StyledAutocompleteMobile data-testid="autocomplete" className={className} disabled={disabled}>
+      <StyledLabel data-testid="label">
+        <StyledLabelButton type="button" onClick={() => setIsModalShowed(true)}>
+          <i data-testid={'label-icon'} className="material-icons">
+            search
+          </i>
+          <span>{labelTextShowed}</span>
+        </StyledLabelButton>
+      </StyledLabel>
+      <StyledModal isShowed={isModalShowed} data-testid="modal">
+        <StyleHeading>
+          <BlockTitle text="Dublin restaurants" />
+          <StyleHeadingButton type="button" onClick={handleCloseModal}>
+            <i className="material-icons">close</i>
+          </StyleHeadingButton>
+        </StyleHeading>
+        <StyledInputWrapper>
+          <Input
+            type="text"
+            placeholder={focusedPlaceholder}
+            onChange={handleChange}
+            value={value}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            hasSearchIcon={hasSearchIcon}
+          />
+        </StyledInputWrapper>
+        <StyledListboxWrapper
+          isShowed={isListboxFocused}
+          data-testid="listbox-wrapper"
+          ref={listboxWrapperRef}
+        >
+          {loading ? (
+            <StyledLoaderWrapper>
+              <Loader text={DEFAULT_TEXT_LOADING} />
+            </StyledLoaderWrapper>
+          ) : (
+            <StyledListbox role="listbox">
+              {onRequestError ? (
+                <StyledErrorWrapper>
+                  <BlockText text="Sorry but something was wrong..." />
+                  <StyledErrorButtonWrapper>
+                    <Button onClick={handleClearSuggestion}>Try again</Button>
+                  </StyledErrorButtonWrapper>
+                </StyledErrorWrapper>
+              ) : (
+                renderSuggestions()
+              )}
+            </StyledListbox>
+          )}
+        </StyledListboxWrapper>
+      </StyledModal>
     </StyledAutocompleteMobile>
   );
 };

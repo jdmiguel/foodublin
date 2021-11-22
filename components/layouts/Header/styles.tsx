@@ -50,8 +50,7 @@ const basicHeaderContentCSS = css`
 export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   width: 100%;
   height: 100%;
-  ${({ isExtended }) =>
-    isExtended ? headerContentCSS : basicHeaderContentCSS};
+  ${({ isExtended }) => (isExtended ? headerContentCSS : basicHeaderContentCSS)};
   margin: ${({ isExtended }) => !isExtended && '0 auto'};
 `;
 

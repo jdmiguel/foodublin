@@ -101,9 +101,7 @@ describe('Component: AutocompleteMobile', () => {
 
     // show suggestions list by texting three characters and call callback function by clicking any suggestion
     fireEvent.change(input, { target: { value: 'tre' } });
-    const firstSuggestionLink = listboxWrapper
-      .querySelectorAll('li')[0]
-      .querySelector('a');
+    const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0].querySelector('a');
     fireEvent.click(firstSuggestionLink);
 
     expect(handleSelectSuggestion).toHaveBeenCalled();
@@ -115,9 +113,7 @@ describe('Component: AutocompleteMobile', () => {
       disabled: true,
     };
     const { container } = render(
-      renderWithTheme(
-        <AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />,
-      ),
+      renderWithTheme(<AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />),
     );
     const autocomplete = container.firstChild as HTMLDivElement;
 

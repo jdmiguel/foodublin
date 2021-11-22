@@ -7,27 +7,20 @@ import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 import { setRelatedRestaurants } from '@/store/redux/actions';
-import {
-  DEFAULT_TEXT_LOADING,
-  DEFAULT_BREADCRUMB,
-  HIGHLIGHTED_RESTAURANTS,
-} from '@/store/statics';
+import { DEFAULT_TEXT_LOADING, DEFAULT_BREADCRUMB, HIGHLIGHTED_RESTAURANTS } from '@/store/statics';
 import { getCurrentRelatedRestaurants } from '@/helpers/utils';
 import { HighlightRestaurant } from '@/components/pages/types';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const DynamicHomePage = dynamic(
-  () => import('@/components/pages/HomePage/HomePage'),
-  {
-    // eslint-disable-next-line react/display-name
-    loading: () => (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ),
-  },
-);
+const DynamicHomePage = dynamic(() => import('@/components/pages/HomePage/HomePage'), {
+  // eslint-disable-next-line react/display-name
+  loading: () => (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ),
+});
 
 const homeRoute = '/';
 
@@ -38,10 +31,7 @@ const Home: NextPage<HomeProps> = ({ highlights }) => {
   const router = useRouter();
 
   const handleClickHighlight = (id: number, route: string, asRoute: string) => {
-    const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-      HIGHLIGHTED_RESTAURANTS,
-      id,
-    );
+    const currentRelatedRestaurants = getCurrentRelatedRestaurants(HIGHLIGHTED_RESTAURANTS, id);
 
     dispatch(setRelatedRestaurants(currentRelatedRestaurants));
 

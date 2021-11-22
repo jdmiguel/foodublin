@@ -1,10 +1,4 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useReducer,
-  Dispatch,
-} from 'react';
+import { useState, useRef, useEffect, useReducer, Dispatch } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
@@ -22,8 +16,6 @@ import {
 } from './styles';
 import { MAX_MOBILE_WIDTH } from '@/store/statics';
 import { ListItem } from '../types';
-
-type ListItemWithIsActive = ListItem & { isActive: boolean };
 
 type DropdownProps = {
   className?: string;
@@ -71,10 +63,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
     ...listItem,
     isActive: false,
   }));
-  const [initialListState, dispatch]: [
-    ListItem[],
-    Dispatch<ListAction>,
-  ] = useReducer(listReducer, listWithIsActiveProp);
+  const [initialListState, dispatch]: [ListItem[], Dispatch<ListAction>] = useReducer(
+    listReducer,
+    listWithIsActiveProp,
+  );
   const { width } = useWindowMeasurement();
   const bodyLockIsAllowed = width < MAX_MOBILE_WIDTH;
 
@@ -140,11 +132,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   return (
-    <StyledDropdown
-      data-testid="dropdown"
-      className={className}
-      disabled={disabled}
-    >
+    <StyledDropdown data-testid="dropdown" className={className} disabled={disabled}>
       <StyledLabel>
         <StyledLabelButton
           type="button"
@@ -186,21 +174,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
             <i className="material-icons">close</i>
           </StyledMobileHeadingButton>
         </StyledMobileHeading>
-        {initialListState.map((listItem: ListItemWithIsActive) => (
+        {initialListState.map((listItem: ListItem) => (
           <StyledListboxItem
             key={listItem.name}
             role="option"
-            onClick={() =>
-              handleSelect(listItem.name, listItem.id, listItem.path)
-            }
+            onClick={() => handleSelect(listItem.name, listItem.id, listItem.path)}
           >
             {listItem.iconSrc && (
-              <StyledListboxItemIcon
-                src={listItem.iconSrc}
-                alt={listItem.name}
-              />
+              <StyledListboxItemIcon src={listItem.iconSrc} alt={listItem.name} />
             )}
-            <StyledListboxItemText isActive={listItem.isActive}>
+            <StyledListboxItemText isActive={listItem.isActive || false}>
               {listItem.name}
             </StyledListboxItemText>
           </StyledListboxItem>
