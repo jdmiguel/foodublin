@@ -9,9 +9,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: ReviewCard', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<ReviewCard {...REVIEW_CARD_PROPS_MOCKS} />),
-    );
+    const { container } = render(renderWithTheme(<ReviewCard {...REVIEW_CARD_PROPS_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

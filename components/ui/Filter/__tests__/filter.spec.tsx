@@ -9,9 +9,7 @@ import { FILTER_DATA } from '../../../../store/statics';
 
 describe('Component: Filter', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<Filter onClick={() => {}} data={FILTER_DATA} />),
-    );
+    const { container } = render(renderWithTheme(<Filter onClick={() => {}} data={FILTER_DATA} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

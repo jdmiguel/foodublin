@@ -4,17 +4,8 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
-import {
-  StyledSearchPage,
-  StyledCardsWrapper,
-  StyledWarning,
-  StyledWarningIcon,
-} from './styles';
-import {
-  FILTER_DATA,
-  THUMB_GENERIC_SRC,
-  DEFAULT_TEXT_LOADING,
-} from '@/store/statics';
+import { StyledSearchPage, StyledCardsWrapper, StyledWarning, StyledWarningIcon } from './styles';
+import { FILTER_DATA, THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
@@ -61,17 +52,10 @@ const SearchPage: React.FC<SearchPageProps> = ({
         <FullLoader isShowed={isLoadingByFilter}>
           <Loader text={DEFAULT_TEXT_LOADING} />
         </FullLoader>
-        <FullLoader
-          isShowed={isLoadingByScroll || isNavigating}
-          type={LoaderType.LINE}
-        >
+        <FullLoader isShowed={isLoadingByScroll || isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
-        <Title
-          text={`${totalText} ${
-            cuisine || ''
-          } ${restaurantText} in ${location}`}
-        />
+        <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${location}`} />
         {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
         <StyledCardsWrapper
           className="grid-x grid-margin-x grid-margin-y"
@@ -87,11 +71,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
                 title={restaurant.title}
                 content={restaurant.content}
                 onClick={() => {
-                  onClickCard(
-                    restaurant.id,
-                    restaurant.route,
-                    restaurant.asRoute,
-                  );
+                  onClickCard(restaurant.id, restaurant.route, restaurant.asRoute);
                 }}
               />
             </div>
@@ -99,11 +79,8 @@ const SearchPage: React.FC<SearchPageProps> = ({
         </StyledCardsWrapper>
         {showWarning && (
           <StyledWarning>
-            <StyledWarningIcon className="material-icons">
-              warning
-            </StyledWarningIcon>
-            You have reached the limit of 100 results because of Zomato API
-            restrinctions
+            <StyledWarningIcon className="material-icons">warning</StyledWarningIcon>
+            You have reached the limit of 100 results because of Zomato API restrinctions
           </StyledWarning>
         )}
       </StyledSearchPage>

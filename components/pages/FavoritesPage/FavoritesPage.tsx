@@ -4,11 +4,7 @@ import { Card } from '../../core/Card/Card';
 import { Layout } from '../../layouts/Layout/Layout';
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
-import {
-  StyledFavoritesPage,
-  StyledTitleLoading,
-  StyledCardsWrapper,
-} from './styles';
+import { StyledFavoritesPage, StyledTitleLoading, StyledCardsWrapper } from './styles';
 import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
@@ -37,11 +33,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   }, []);
 
   return (
-    <Layout
-      isExtendedFooter={true}
-      onNavigate={onNavigate}
-      breadcrumbs={breadcrumbs}
-    >
+    <Layout isExtendedFooter={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
       <StyledFavoritesPage className="grid-container">
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
@@ -49,9 +41,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
         {isLoading ? (
           <StyledTitleLoading>{DEFAULT_TEXT_LOADING}</StyledTitleLoading>
         ) : (
-          <Title
-            text={`${totalText} ${restaurantText} saved in your favorites`}
-          />
+          <Title text={`${totalText} ${restaurantText} saved in your favorites`} />
         )}
         <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
           {restaurants.map((restaurant) => (

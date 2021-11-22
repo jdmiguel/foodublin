@@ -25,10 +25,7 @@ export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
   breadcrumbs,
 });
 
-export const replaceBreadcrumbs = (
-  index: number,
-  breadcrumbs: BreadcrumbsData,
-) => ({
+export const replaceBreadcrumbs = (index: number, breadcrumbs: BreadcrumbsData) => ({
   type: 'REPLACE_BREADCRUMBS',
   index,
   breadcrumbs,

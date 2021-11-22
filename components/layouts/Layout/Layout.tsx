@@ -3,17 +3,9 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { Button } from '../../core/Button/Button';
 import { useScroll } from '../../hooks/useScroll';
-import {
-  StyledLayout,
-  StyledMain,
-  StyledScrollUpButtonWrapper,
-} from './styles';
+import { StyledLayout, StyledMain, StyledScrollUpButtonWrapper } from './styles';
 import { BreadcrumbsData } from '../../core/types';
-import {
-  SCROLL_DELAY,
-  SHOWING_SCROLLUP_BUTTON_HEIGHT,
-  DEFAULT_BREADCRUMB,
-} from '@/store/statics';
+import { SCROLL_DELAY, SHOWING_SCROLLUP_BUTTON_HEIGHT, DEFAULT_BREADCRUMB } from '@/store/statics';
 
 type LayoutProps = {
   children: ReactNode;
@@ -34,9 +26,7 @@ export const Layout = ({
 }: LayoutProps) => {
   const [scrollUpButtonIsShowed, setScrollUpButtonIsShowed] = useState(false);
 
-  const backNavigation = breadcrumbs
-    ? breadcrumbs[breadcrumbs.length - 2]
-    : DEFAULT_BREADCRUMB;
+  const backNavigation = breadcrumbs ? breadcrumbs[breadcrumbs.length - 2] : DEFAULT_BREADCRUMB;
 
   useScroll(
     ({ scrollTop }) => {
@@ -62,9 +52,7 @@ export const Layout = ({
         isExtended={isExtendedHeader}
         onClickLogo={() => onNavigate('/')}
         onClickFavorites={() => onNavigate('/favorites')}
-        onClickBack={() =>
-          onNavigate(backNavigation.route, backNavigation.asRoute)
-        }
+        onClickBack={() => onNavigate(backNavigation.route, backNavigation.asRoute)}
         onNavigationFromFinder={onNavigate}
       />
       <StyledMain>{children}</StyledMain>
@@ -72,9 +60,7 @@ export const Layout = ({
         showVeil={showFooterVeil}
         isExtended={isExtendedFooter}
         breadcrumbs={breadcrumbs || [DEFAULT_BREADCRUMB]}
-        onClickBreadcrumb={(route: string, asRoute: string) =>
-          onNavigate(route, asRoute)
-        }
+        onClickBreadcrumb={(route: string, asRoute: string) => onNavigate(route, asRoute)}
         onClickFavorites={() => onNavigate('/favorites')}
       />
       <StyledScrollUpButtonWrapper isShowed={scrollUpButtonIsShowed}>

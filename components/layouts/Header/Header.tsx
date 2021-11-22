@@ -41,19 +41,12 @@ export const Header: React.FC<HeaderProps> = ({
                 logoSrc={'/images/logo.svg'}
               />
             </CustomLink>
-            <StyledHeaderClaim isExtended={isExtended}>
-              {claimTxt}
-            </StyledHeaderClaim>
+            <StyledHeaderClaim isExtended={isExtended}>{claimTxt}</StyledHeaderClaim>
             {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
           </StyledHeaderContent>
         </StyledOverlay>
       </StyledHeader>
-      {!isExtended && (
-        <HeaderBar
-          onClickBack={onClickBack}
-          onClickFavorites={onClickFavorites}
-        />
-      )}
+      {!isExtended && <HeaderBar onClickBack={onClickBack} onClickFavorites={onClickFavorites} />}
     </StyledHeaderWrapper>
   );
 };

@@ -9,9 +9,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: FooterBar', () => {
   it('should render', () => {
-    const { container } = render(
-      renderWithTheme(<FooterBar {...FOOTER_BAR_MOCKS} />),
-    );
+    const { container } = render(renderWithTheme(<FooterBar {...FOOTER_BAR_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -20,10 +18,7 @@ describe('Component: FooterBar', () => {
     const handleClickBreadcrumb = jest.fn();
     const { getByText } = render(
       renderWithTheme(
-        <FooterBar
-          {...FOOTER_BAR_MOCKS}
-          onClickBreadcrumb={handleClickBreadcrumb}
-        />,
+        <FooterBar {...FOOTER_BAR_MOCKS} onClickBreadcrumb={handleClickBreadcrumb} />,
       ),
     );
 
@@ -35,12 +30,7 @@ describe('Component: FooterBar', () => {
   it('should call function on click favorites', () => {
     const handleClickFavorites = jest.fn();
     const { getByText } = render(
-      renderWithTheme(
-        <FooterBar
-          {...FOOTER_BAR_MOCKS}
-          onClickFavorites={handleClickFavorites}
-        />,
-      ),
+      renderWithTheme(<FooterBar {...FOOTER_BAR_MOCKS} onClickFavorites={handleClickFavorites} />),
     );
 
     fireEvent.click(getByText('FAVORITES'));

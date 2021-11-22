@@ -46,17 +46,10 @@ export const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
     ...dataItem,
     isActive: false,
   }));
-  const [dataState, dispatch]: [
-    FilterDataItemTypeWithIsActive[],
-    Dispatch<DataAction>,
-  ] = useReducer(dataReducer, dataWithIsActiveProp);
+  const [dataState, dispatch]: [FilterDataItemTypeWithIsActive[], Dispatch<DataAction>] =
+    useReducer(dataReducer, dataWithIsActiveProp);
 
-  const handleClick = (
-    isActive: boolean,
-    id: number,
-    sort: string,
-    order: string,
-  ) => {
+  const handleClick = (isActive: boolean, id: number, sort: string, order: string) => {
     dispatch(!isActive ? { type: 'select', id } : { type: 'clear' });
     onClick(!isActive ? sort : '', !isActive ? order : '');
   };
@@ -73,12 +66,8 @@ export const Filter: React.FC<FilterProps> = ({ onClick, data }) => {
           }}
         >
           <StyledFilterPrimaryText>{item.primaryText}</StyledFilterPrimaryText>
-          <StyledFilterSecondaryText>
-            {` ${item.secondaryText}`}
-          </StyledFilterSecondaryText>
-          <StyledFilterIcon className="material-icons">
-            {item.icon}
-          </StyledFilterIcon>
+          <StyledFilterSecondaryText>{` ${item.secondaryText}`}</StyledFilterSecondaryText>
+          <StyledFilterIcon className="material-icons">{item.icon}</StyledFilterIcon>
         </StyledFilterItem>
       ))}
     </div>

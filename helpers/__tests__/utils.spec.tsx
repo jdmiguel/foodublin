@@ -79,9 +79,7 @@ describe('getRandomNumbersList', () => {
     const numberList = getRandomNumbersList(3, 0, 3);
 
     expect(numberList).toHaveLength(3);
-    expect(numberList).toStrictEqual(
-      expect.arrayContaining(expectedNumberList),
-    );
+    expect(numberList).toStrictEqual(expect.arrayContaining(expectedNumberList));
   });
 
   it('should contain a list of numbers when it receives an array with more than 3 elements', () => {
@@ -100,10 +98,7 @@ describe('getRandomNumbersList', () => {
 describe('getCurrentRelatedRestaurants', () => {
   it('should contain a list of numbers when it receives an array with 4 elements', () => {
     const relatedRestaurantsMocked = RELATED_RESTAURANTS_MOCKED.slice(0, 4);
-    const expectedCurrentRelatedRestaurants = RELATED_RESTAURANTS_MOCKED.slice(
-      0,
-      3,
-    );
+    const expectedCurrentRelatedRestaurants = RELATED_RESTAURANTS_MOCKED.slice(0, 3);
     const currentRelatedRestaurants = getCurrentRelatedRestaurants(
       relatedRestaurantsMocked,
       relatedRestaurantsMocked[3].id,
@@ -121,13 +116,9 @@ describe('getCurrentRelatedRestaurants', () => {
       RELATED_RESTAURANTS_MOCKED[4].id,
     );
 
-    const restaurantsComparator = (
-      isEqual: boolean,
-      restaurant: Restaurant,
-    ) => {
+    const restaurantsComparator = (isEqual: boolean, restaurant: Restaurant) => {
       isEqual = RELATED_RESTAURANTS_MOCKED.some(
-        (relatedRestaurantMocked) =>
-          relatedRestaurantMocked.id === restaurant.id,
+        (relatedRestaurantMocked) => relatedRestaurantMocked.id === restaurant.id,
       );
 
       return isEqual;

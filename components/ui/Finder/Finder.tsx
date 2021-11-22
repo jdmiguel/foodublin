@@ -23,10 +23,7 @@ import {
   MIN_RESTAURANTS_LIST,
   MAX_MOBILE_WIDTH,
 } from '@/store/statics';
-import {
-  getFormattedUrlText,
-  getCurrentRelatedRestaurants,
-} from '@/helpers/utils';
+import { getFormattedUrlText, getCurrentRelatedRestaurants } from '@/helpers/utils';
 import { getRestaurants } from '@/services/index';
 import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
@@ -60,18 +57,17 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     });
 
     if (status === 200) {
-      const formattedRestaurants = rawRestaurants.map(
-        (rawRestaurant: RawRestaurant) => ({
-          id: rawRestaurant.restaurant.id,
-          imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-          title: rawRestaurant.restaurant.name,
-          content: rawRestaurant.restaurant.location.locality,
-          route: '/detail/[id]/[name]',
-          asRoute: `/detail/${
-            rawRestaurant.restaurant.id
-          }/${getFormattedUrlText(rawRestaurant.restaurant.name, true)}`,
-        }),
-      );
+      const formattedRestaurants = rawRestaurants.map((rawRestaurant: RawRestaurant) => ({
+        id: rawRestaurant.restaurant.id,
+        imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
+        title: rawRestaurant.restaurant.name,
+        content: rawRestaurant.restaurant.location.locality,
+        route: '/detail/[id]/[name]',
+        asRoute: `/detail/${rawRestaurant.restaurant.id}/${getFormattedUrlText(
+          rawRestaurant.restaurant.name,
+          true,
+        )}`,
+      }));
 
       setSuggestions(formattedRestaurants);
       setOnRequestError(false);
@@ -87,10 +83,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     const route = '/detail/[id]/[name]';
     const asRoute = `/detail/${id}/${path}`;
     if (suggestions.length > MIN_RESTAURANTS_LIST) {
-      const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-        suggestions,
-        id,
-      );
+      const currentRelatedRestaurants = getCurrentRelatedRestaurants(suggestions, id);
 
       dispatch(setRelatedRestaurants(currentRelatedRestaurants));
     }

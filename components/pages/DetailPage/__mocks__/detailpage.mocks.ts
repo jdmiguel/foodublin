@@ -5,20 +5,13 @@ export const FIRST_DETAIL_MOCKED = {
   location: 'North City',
   address: 'Millenium Walkway, Dublin Dublin 1',
   phone: '01 8729499',
-  timings:
-    '11:30 AM to 9 PM (Mon-Fri),12 Noon to 9 PM (Sat),1 PM to 6 PM (Sun)',
+  timings: '11:30 AM to 9 PM (Mon-Fri),12 Noon to 9 PM (Sat),1 PM to 6 PM (Sun)',
   cuisines: 'Mexican',
   average: '20',
   rating: 4.4,
   votes: 21,
   establishment: ['Quick Bites'],
-  Highlights: [
-    'Lunch',
-    'Serves Alcohol',
-    'Takeaway Available',
-    'Dinner',
-    'Outdoor Seating',
-  ],
+  Highlights: ['Lunch', 'Serves Alcohol', 'Takeaway Available', 'Dinner', 'Outdoor Seating'],
 };
 
 export const SECOND_DETAIL_MOCKED = {

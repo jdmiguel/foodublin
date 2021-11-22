@@ -1,9 +1,4 @@
-import {
-  StyledAddressMapWrapper,
-  StyledIframe,
-  StyledAddress,
-  StyledAddressIcon,
-} from './styles';
+import { StyledAddressMapWrapper, StyledIframe, StyledAddress, StyledAddressIcon } from './styles';
 import { BlockText } from '../../core/BlockText/BlockText';
 
 type AddressProps = {

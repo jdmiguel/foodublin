@@ -6,11 +6,7 @@ type DataType = {
   clientHeight: number;
 };
 
-export const useScroll = (
-  effect: (data: DataType) => void,
-  deps: any[],
-  delay: number,
-) => {
+export const useScroll = (effect: (data: DataType) => void, deps: any[], delay: number) => {
   useIsomorphicLayoutEffect(() => {
     let throttleTimeout: number | null = null;
 
