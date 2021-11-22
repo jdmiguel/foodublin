@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, cleanup, fireEvent } from '@testing-library/react';
-
 import { Input, InputProps } from '../Input';
-
 import { INPUT_PROPS_MOCK } from '../__mocks__/input.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Input', () => {

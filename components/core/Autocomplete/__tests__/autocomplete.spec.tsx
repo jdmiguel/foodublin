@@ -1,11 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import 'jest-styled-components';
-
 import { Autocomplete } from '../Autocomplete';
-
 import { AUTOCOMPLETE_PROPS_MOCK } from '../__mocks__/autocomplete.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Autocomplete', () => {
@@ -91,11 +90,11 @@ describe('Component: Autocomplete', () => {
       ...AUTOCOMPLETE_PROPS_MOCK,
       disabled: true,
     };
-    const { container } = render(
+
+    const { getByTestId } = render(
       renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />),
     );
-    const autocomplete = container.firstChild as HTMLDivElement;
-
+    const autocomplete = getByTestId('autocomplete');
     expect(autocomplete).toHaveStyleRule('pointer-events', 'none');
   });
 });

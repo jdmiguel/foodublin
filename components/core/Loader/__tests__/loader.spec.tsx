@@ -1,12 +1,11 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render } from '@testing-library/react';
-
 import { Loader } from '../Loader';
-
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
-
 import { LoaderType, LoaderMode } from '../../types';
 
 describe('Component: Loader', () => {

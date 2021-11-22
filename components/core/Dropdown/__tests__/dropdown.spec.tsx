@@ -1,12 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-
-import 'jest-styled-components';
-
 import { Dropdown } from '../Dropdown';
-
 import { DROPDOWN_PROPS_MOCK } from '../__mocks__/dropdown.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Dropdown', () => {
@@ -17,8 +15,8 @@ describe('Component: Dropdown', () => {
   });
 
   it('should show/hide options list', () => {
-    const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
-    const dropdown = container.firstChild as HTMLDivElement;
+    const { getByTestId } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
+    const dropdown = getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
     const listbox = dropdown.querySelector('div[role="listbox"]');
     const closeButton = listbox.querySelector('button');
@@ -76,10 +74,10 @@ describe('Component: Dropdown', () => {
       clearable: true,
     };
     const handleSelect = jest.fn();
-    const { container, getAllByRole } = render(
+    const { getByTestId, getAllByRole } = render(
       renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} onSelect={handleSelect} />),
     );
-    const dropdown = container.firstChild as HTMLDivElement;
+    const dropdown = getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
 
     // check if dropdown button name is 'Select any option'
@@ -128,8 +126,8 @@ describe('Component: Dropdown', () => {
       ...DROPDOWN_PROPS_MOCK,
       disabled: true,
     };
-    const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />));
-    const dropdown = container.firstChild as HTMLDivElement;
+    const { getByTestId } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />));
+    const dropdown = getByTestId('dropdown');
 
     expect(dropdown).toHaveStyleRule('pointer-events', 'none');
   });

@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render } from '@testing-library/react';
-
 import { Title } from '../Title';
-
 import { TITLE_TEXT_MOCK } from '../__mocks__/title.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Title', () => {

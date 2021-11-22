@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 import { Filter } from '../Filter';
 import { renderWithTheme } from '../../../../helpers/Theme';
@@ -18,9 +18,11 @@ describe('Component: Filter', () => {
   it('should active filter and call function on click any filter', () => {
     const handleClick = jest.fn();
 
-    render(renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />));
+    const { getByTestId } = render(
+      renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />),
+    );
 
-    const filter = screen.getByTestId('filter');
+    const filter = getByTestId('filter');
     const firstFilterItem = filter.querySelector('button');
     const secondFilterItem = filter.querySelector('button:nth-of-type(2)');
     const thirdFilterItem = filter.querySelector('button:nth-of-type(3)');

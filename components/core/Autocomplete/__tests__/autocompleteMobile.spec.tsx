@@ -1,11 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-import 'jest-styled-components';
-
 import { AutocompleteMobile } from '../AutocompleteMobile';
-
 import { AUTOCOMPLETE_PROPS_MOCK } from '../__mocks__/autocomplete.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: AutocompleteMobile', () => {
@@ -112,11 +111,11 @@ describe('Component: AutocompleteMobile', () => {
       ...AUTOCOMPLETE_PROPS_MOCK,
       disabled: true,
     };
-    const { container } = render(
+
+    const { getByTestId } = render(
       renderWithTheme(<AutocompleteMobile {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />),
     );
-    const autocomplete = container.firstChild as HTMLDivElement;
-
+    const autocomplete = getByTestId('autocomplete');
     expect(autocomplete).toHaveStyleRule('pointer-events', 'none');
   });
 });

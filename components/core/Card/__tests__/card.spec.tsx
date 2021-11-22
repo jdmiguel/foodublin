@@ -1,12 +1,11 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-
 import { Card } from '../Card';
-
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
-
 import { CardType } from '../../types';
 
 it('should render standart card', () => {
