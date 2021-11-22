@@ -1,11 +1,11 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
-
 import { createTestStore } from '../../../../helpers/utils';
-
 import { Header } from '../Header';
-
 import { HEADER_MOCKS } from '../__mocks__/header.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 

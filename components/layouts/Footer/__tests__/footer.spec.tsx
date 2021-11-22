@@ -1,8 +1,9 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render } from '@testing-library/react';
-
 import { Footer } from '../Footer';
-
 import { FOOTER_MOCKS } from '../__mocks__/footer.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 

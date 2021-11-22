@@ -1,8 +1,9 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-
 import { HeaderBar } from '../HeaderBar';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 const headerBarProps = {

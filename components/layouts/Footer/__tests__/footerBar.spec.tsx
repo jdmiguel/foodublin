@@ -1,9 +1,9 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
 
 import { render, fireEvent } from '@testing-library/react';
-
 import { FooterBar } from '../FooterBar';
-
 import { FOOTER_BAR_MOCKS } from '../__mocks__/footer.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 

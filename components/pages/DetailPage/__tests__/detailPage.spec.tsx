@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { getTimmings, getMapSrc } from '../DetailPage';
 import { FIRST_DETAIL_MOCKED, FOURTH_DETAIL_MOCKED } from '../__mocks__/detailpage.mocks';
 

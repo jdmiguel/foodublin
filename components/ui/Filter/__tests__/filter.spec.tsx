@@ -2,12 +2,9 @@
  * @jest-environment jsdom
  */
 
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
-
 import { Filter } from '../Filter';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { FILTER_DATA } from '../../../../store/statics';
 
