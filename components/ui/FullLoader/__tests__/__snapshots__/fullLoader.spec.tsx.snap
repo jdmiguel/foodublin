@@ -76,7 +76,7 @@ exports[`Component: Loader should render as circle type and be hidden 1`] = `
 </div>
 `;
 
-exports[`Component: Loader should render as circle type and be showed 1`] = `
+exports[`Component: Loader should render as circle type and be shown 1`] = `
 .c0 {
   width: 100%;
   height: calc(100% - 80px);
@@ -207,7 +207,7 @@ exports[`Component: Loader should render as line type and be hidden 1`] = `
 </div>
 `;
 
-exports[`Component: Loader should render as line type and be showed 1`] = `
+exports[`Component: Loader should render as line type and be shown 1`] = `
 .c0 {
   width: 100%;
   height: calc(100% - 80px);

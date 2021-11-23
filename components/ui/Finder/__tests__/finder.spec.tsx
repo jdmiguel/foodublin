@@ -1,12 +1,12 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
-
 import { createTestStore } from '../../../../helpers/utils';
-
 import { Finder } from '../Finder';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Finder', () => {

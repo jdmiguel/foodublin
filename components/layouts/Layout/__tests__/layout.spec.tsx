@@ -1,14 +1,13 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
-
 import { ThemeProvider } from 'styled-components';
-
 import { theme } from '../../../../helpers/Theme';
 import { createTestStore } from '../../../../helpers/utils';
-
 import { LAYOUT_MOCKS } from '../__mocks__/layout.mocks';
-
 import { Layout } from '../Layout';
 
 describe('Component: Layout', () => {

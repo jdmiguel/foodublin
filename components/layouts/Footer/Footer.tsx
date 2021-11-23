@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
   breadcrumbs,
 }) => (
   <StyledFooterWrapper data-testid="footer">
-    {showVeil && <StyledFooterVeil endValue={0.6} />}
+    {showVeil && <StyledFooterVeil />}
     {isExtended && (
       <FooterBar
         onClickBreadcrumb={onClickBreadcrumb}

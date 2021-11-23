@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-
 import { CustomLink } from '../CustomLink';
-
 import { CUSTOM_LINK_MOCK } from '../__mocks__/customLink.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: CustomLink', () => {

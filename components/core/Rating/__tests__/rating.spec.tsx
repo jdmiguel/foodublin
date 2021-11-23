@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render } from '@testing-library/react';
-
 import { Rating } from '../Rating';
-
 import { RATING_VALUE_MOCK } from '../__mocks__/rating.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Rating', () => {

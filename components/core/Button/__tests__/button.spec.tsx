@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render, fireEvent } from '@testing-library/react';
-
 import { Button } from '../Button';
-
 import { BUTTON_MOCK } from '../__mocks__/button.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 it('should render with a simple text', () => {

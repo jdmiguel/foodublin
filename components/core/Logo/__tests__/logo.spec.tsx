@@ -1,10 +1,10 @@
-import React from 'react';
+/**
+ * @jest-environment jsdom
+ */
+
 import { render } from '@testing-library/react';
-
 import { Logo } from '../Logo';
-
 import { LOGO_SRC_MOCK } from '../__mocks__/logo.mocks';
-
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { LogoSize } from '../../types';
 
