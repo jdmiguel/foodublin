@@ -8,7 +8,7 @@ import {
   RawReview,
 } from '@/components/pages/types';
 
-const BASE_API = 'https://developers.zomato.com/api/v2.1/';
+export const BASE_API = 'https://developers.zomato.com/api/v2.1/';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
