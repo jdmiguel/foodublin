@@ -1,11 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { text, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-
 import { Dropdown } from '../Dropdown';
-
 import { DROPDOWN_PROPS_MOCK, ICON_OPTIONS } from '../__mocks__/dropdown.mocks';
 
 const stories = storiesOf('Dropdown', module);

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 export const INPUT_PROPS_MOCK = {
   type: 'text',
   hasSearchIcon: true,

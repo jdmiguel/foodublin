@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import { CustomLinkSize } from '../types';
 
 const disabledCSS = css`

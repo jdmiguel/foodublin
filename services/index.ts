@@ -1,5 +1,4 @@
 import axios, { AxiosError } from 'axios';
-
 import {
   RestaurantsRequestParam,
   RestaurantsRequestParams,

@@ -3,6 +3,7 @@
  */
 
 import { render, fireEvent, waitFor } from '@testing-library/react';
+import 'jest-styled-components';
 import { Autocomplete } from '../Autocomplete';
 import { AUTOCOMPLETE_PROPS_MOCK } from '../__mocks__/autocomplete.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';

@@ -4,19 +4,15 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useSelector, useDispatch } from 'react-redux';
-
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-
 import { clearRelatedRestaurants, addFavorite, deleteFavorite } from '@/store/redux/actions';
 import { AppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-
 import { getFormattedUrlText, inferSSRProps } from '@/helpers/utils';
 import { getRestaurant } from '@/services/index';
-
 import { RestaurantDetail, Restaurant } from '@/components/pages/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
@@ -29,7 +25,6 @@ type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
 };
 
 const DynamicDetailPage = dynamic(() => import('@/components/pages/DetailPage/DetailPage'), {
-  // eslint-disable-next-line react/display-name
   loading: () => (
     <FullLoader>
       <Loader text={DEFAULT_TEXT_LOADING} />
@@ -68,7 +63,7 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
     return () => {
       dispatch(clearRelatedRestaurants());
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   const handleSaveButton = (action: string) => {
     const favorite = getRefinedRestaurant(id, detail);

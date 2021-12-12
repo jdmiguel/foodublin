@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useReducer, Dispatch } from 'react';
+import { useState, useRef, useEffect, useReducer, useCallback, Dispatch } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { BlockTitle } from '../BlockTitle/BlockTitle';
 import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
@@ -100,11 +100,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   }, [selectedId, labelTxt]);
 
+  const handleClear = useCallback(() => {
+    dispatch({ type: 'clear' });
+    setSelectedId(0);
+    onClear();
+  }, [onClear]);
+
   useEffect(() => {
     if (isReset) {
       handleClear();
     }
-  }, [isReset]);
+  }, [isReset, handleClear]);
 
   const handleSelect = (name: string, id: number, path: string) => {
     setCurrentLabelTxt(name);
@@ -123,12 +129,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const handleBlur = (event: React.FocusEvent) => {
     setIsListboxFocused(false);
     onBlur && onBlur(event);
-  };
-
-  const handleClear = () => {
-    dispatch({ type: 'clear' });
-    setSelectedId(0);
-    onClear();
   };
 
   return (

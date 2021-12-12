@@ -1,12 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-
 import { Autocomplete } from '../Autocomplete';
 import { AutocompleteMobile } from '../AutocompleteMobile';
-
 import { AUTOCOMPLETE_PROPS_MOCK, SUGGESTIONS_MOCK } from '../__mocks__/autocomplete.mocks';
 
 const stories = storiesOf('Autocomplete', module);

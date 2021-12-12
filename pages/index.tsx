@@ -14,7 +14,6 @@ import { HighlightRestaurant } from '@/components/pages/types';
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const DynamicHomePage = dynamic(() => import('@/components/pages/HomePage/HomePage'), {
-  // eslint-disable-next-line react/display-name
   loading: () => (
     <FullLoader>
       <Loader text={DEFAULT_TEXT_LOADING} />

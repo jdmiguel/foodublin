@@ -1,13 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-
 import { Card } from '../Card';
-
 import { CARD_PROPS_MOCKS } from '../__mocks__/card.mocks';
-
 import { CardType } from '../../types';
 
 const stories = storiesOf('Card', module);

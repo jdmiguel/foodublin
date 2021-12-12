@@ -31,10 +31,7 @@ describe('Finder', () => {
     ).as('getRestaurantsError');
 
     cy.get('[data-testid=finder]').as('finder');
-    cy.get('[data-testid=finder]')
-      .find('button')
-      .contains('Search')
-      .as('searchButton');
+    cy.get('[data-testid=finder]').find('button').contains('Search').as('searchButton');
     cy.get('[data-testid=dropdown]').first().as('locationsDropdown');
     cy.get('[data-testid=dropdown]').last().as('cuisinesDropdown');
     cy.get('[data-testid=listbox-wrapper]').last().as('listBox');
@@ -49,10 +46,7 @@ describe('Finder', () => {
     cy.get('@locationsDropdown').click();
 
     cy.wrap(LOCATIONS).each((location, index) => {
-      cy.get('@locationsDropdown')
-        .find('[role="option"]')
-        .eq(index)
-        .as('location');
+      cy.get('@locationsDropdown').find('[role="option"]').eq(index).as('location');
 
       cy.get('@location').find('p').should('have.text', location.name);
     });
@@ -62,10 +56,7 @@ describe('Finder', () => {
     cy.get('@cuisinesDropdown').click();
 
     cy.wrap(CUISINES).each((cuisine, index) => {
-      cy.get('@cuisinesDropdown')
-        .find('[role="option"]')
-        .eq(index)
-        .as('cuisine');
+      cy.get('@cuisinesDropdown').find('[role="option"]').eq(index).as('cuisine');
 
       cy.get('@cuisine').find('p').should('have.text', cuisine.name);
       cy.get('@cuisine')
@@ -88,13 +79,9 @@ describe('Finder', () => {
       });
 
       it('should display the matched restaurants', () => {
-        cy.get('@firstSuggestion')
-          .find('h4')
-          .should('have.text', 'Tutti Frutti');
+        cy.get('@firstSuggestion').find('h4').should('have.text', 'Tutti Frutti');
 
-        cy.get('@firstSuggestion')
-          .find('p')
-          .should('have.text', 'Town Centre Mall, Swords');
+        cy.get('@firstSuggestion').find('p').should('have.text', 'Town Centre Mall, Swords');
 
         cy.get('@firstSuggestion')
           .find('img')
@@ -105,13 +92,9 @@ describe('Finder', () => {
             'https://b.zmtcdn.com/data/res_imagery/9100465_RESTAURANT_d9cb91300a2dde4403ff422884013f2c_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
           );
 
-        cy.get('@secondSuggestion')
-          .find('h4')
-          .should('have.text', 'Cornucopia');
+        cy.get('@secondSuggestion').find('h4').should('have.text', 'Cornucopia');
 
-        cy.get('@secondSuggestion')
-          .find('p')
-          .should('have.text', 'South City West');
+        cy.get('@secondSuggestion').find('p').should('have.text', 'South City West');
 
         cy.get('@secondSuggestion')
           .find('img')
@@ -122,9 +105,7 @@ describe('Finder', () => {
             'https://b.zmtcdn.com/data/res_imagery/16521303_RESTAURANT_c6e5a59d49548f7ccfa17cf9d123f74a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
           );
 
-        cy.get('@thirdSuggestion')
-          .find('h4')
-          .should('have.text', 'The Michael Collins');
+        cy.get('@thirdSuggestion').find('h4').should('have.text', 'The Michael Collins');
 
         cy.get('@thirdSuggestion').find('p').should('have.text', 'Rush');
 
@@ -135,20 +116,14 @@ describe('Finder', () => {
 
         cy.get('@thirdSuggestion').click();
 
-        cy.url().should(
-          'equal',
-          'http://localhost:3000/detail/16519193/the-michael-collins',
-        );
+        cy.url().should('equal', 'http://localhost:3000/detail/16519193/the-michael-collins');
       });
 
       describe('when clicking on the last suggestion', () => {
         it('should navigate to the correct detail page', () => {
           cy.get('@thirdSuggestion').click();
 
-          cy.url().should(
-            'equal',
-            'http://localhost:3000/detail/16519193/the-michael-collins',
-          );
+          cy.url().should('equal', 'http://localhost:3000/detail/16519193/the-michael-collins');
         });
       });
     });
@@ -179,10 +154,7 @@ describe('Finder', () => {
       });
 
       it('should display the error text and the try button', () => {
-        cy.get('@errorTxt').should(
-          'have.text',
-          'Sorry but something was wrong...',
-        );
+        cy.get('@errorTxt').should('have.text', 'Sorry but something was wrong...');
 
         cy.get('@tryButton').should('have.text', 'Try again');
       });
@@ -222,17 +194,11 @@ describe('Finder', () => {
       it('should navigate to search page with the correct location path', () => {
         cy.get('@locationsDropdown').click();
 
-        cy.get('@locationsDropdown')
-          .find('[role="option"]')
-          .contains('Temple Bar')
-          .click();
+        cy.get('@locationsDropdown').find('[role="option"]').contains('Temple Bar').click();
 
         cy.get('@searchButton').click();
 
-        cy.url().should(
-          'equal',
-          'http://localhost:3000/search/temple-bar/any-food',
-        );
+        cy.url().should('equal', 'http://localhost:3000/search/temple-bar/any-food');
       });
     });
 
@@ -240,10 +206,7 @@ describe('Finder', () => {
       it('should navigate to search page with the correct cuisine path', () => {
         cy.get('@cuisinesDropdown').click();
 
-        cy.get('@cuisinesDropdown')
-          .find('[role="option"]')
-          .contains('Asian')
-          .click();
+        cy.get('@cuisinesDropdown').find('[role="option"]').contains('Asian').click();
 
         cy.get('@searchButton').click();
 
@@ -255,24 +218,15 @@ describe('Finder', () => {
       it('should navigate to search page with the correct location and cuisine paths', () => {
         cy.get('@locationsDropdown').click();
 
-        cy.get('@locationsDropdown')
-          .find('[role="option"]')
-          .contains('Temple Bar')
-          .click();
+        cy.get('@locationsDropdown').find('[role="option"]').contains('Temple Bar').click();
 
         cy.get('@cuisinesDropdown').click();
 
-        cy.get('@cuisinesDropdown')
-          .find('[role="option"]')
-          .contains('Asian')
-          .click();
+        cy.get('@cuisinesDropdown').find('[role="option"]').contains('Asian').click();
 
         cy.get('@searchButton').click();
 
-        cy.url().should(
-          'equal',
-          'http://localhost:3000/search/temple-bar/asian',
-        );
+        cy.url().should('equal', 'http://localhost:3000/search/temple-bar/asian');
       });
     });
   });

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import { fadeInAnimation } from '@/helpers/animations';
 
 const smallDevicesTextCSS = css`

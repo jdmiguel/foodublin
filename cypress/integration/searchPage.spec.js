@@ -12,9 +12,7 @@ describe('SearchPage', () => {
       .should('have.attr', 'alt', 'FooDublin Logo')
       .should('have.attr', 'src', '/images/logo.svg');
 
-    cy.get('@header')
-      .find('h2')
-      .should('have.text', 'Discover the best food in Dublin');
+    cy.get('@header').find('h2').should('have.text', 'Discover the best food in Dublin');
   });
 
   it('should display the headerBar', () => {
@@ -33,10 +31,7 @@ describe('SearchPage', () => {
   describe('when clicking on the favorite link of the header', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
-      cy.get('[data-testid="header-bar"]')
-        .find('a')
-        .contains('FAVORITES')
-        .click();
+      cy.get('[data-testid="header-bar"]').find('a').contains('FAVORITES').click();
 
       cy.url().should('equal', 'http://localhost:3000/favorites');
     });
@@ -98,13 +93,9 @@ describe('SearchPage', () => {
           'https://b.zmtcdn.com/data/res_imagery/9101223_RESTAURANT_db4d148c8e5539e1a3883882b24a8406_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
         );
 
-      cy.get('@firstRestaurant')
-        .find('h4')
-        .should('have.text', 'Coppinger Row');
+      cy.get('@firstRestaurant').find('h4').should('have.text', 'Coppinger Row');
 
-      cy.get('@firstRestaurant')
-        .find('p')
-        .should('have.text', 'South City West');
+      cy.get('@firstRestaurant').find('p').should('have.text', 'South City West');
 
       // Second restaurant
       cy.get('@secondRestaurant')
@@ -118,9 +109,7 @@ describe('SearchPage', () => {
 
       cy.get('@secondRestaurant').find('h4').should('have.text', 'Platform 61');
 
-      cy.get('@secondRestaurant')
-        .find('p')
-        .should('have.text', 'South City West');
+      cy.get('@secondRestaurant').find('p').should('have.text', 'South City West');
 
       // Third restaurant
       cy.get('@thirdRestaurant')
@@ -134,9 +123,7 @@ describe('SearchPage', () => {
 
       cy.get('@thirdRestaurant').find('h4').should('have.text', 'Il Fuoco');
 
-      cy.get('@thirdRestaurant')
-        .find('p')
-        .should('have.text', 'South City West');
+      cy.get('@thirdRestaurant').find('p').should('have.text', 'South City West');
 
       // Fourth restaurant
       cy.get('@fourthRestaurant')
@@ -146,9 +133,7 @@ describe('SearchPage', () => {
 
       cy.get('@fourthRestaurant').find('h4').should('have.text', 'Habibi');
 
-      cy.get('@fourthRestaurant')
-        .find('p')
-        .should('have.text', 'South City West');
+      cy.get('@fourthRestaurant').find('p').should('have.text', 'South City West');
 
       // Fifth restaurant
       cy.get('@fifthRestaurant')
@@ -160,9 +145,7 @@ describe('SearchPage', () => {
           'https://b.zmtcdn.com/data/res_imagery/9101608_RESTAURANT_4d287b882fa9467f89a916e2b1f63fe3.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
         );
 
-      cy.get('@fifthRestaurant')
-        .find('h4')
-        .should('have.text', 'Mykonos Taverna');
+      cy.get('@fifthRestaurant').find('h4').should('have.text', 'Mykonos Taverna');
 
       cy.get('@fifthRestaurant').find('p').should('have.text', 'Temple Bar');
 
@@ -185,40 +168,22 @@ describe('SearchPage', () => {
         cy.wait('@getFirstSortedRestaurants');
 
         // First restaurant
-        cy.get('[data-testid="card"]')
-          .eq(0)
-          .find('h4')
-          .should('have.text', 'Habibi');
+        cy.get('[data-testid="card"]').eq(0).find('h4').should('have.text', 'Habibi');
 
         // Second restaurant
-        cy.get('[data-testid="card"]')
-          .eq(1)
-          .find('h4')
-          .should('have.text', 'Coppinger Row');
+        cy.get('[data-testid="card"]').eq(1).find('h4').should('have.text', 'Coppinger Row');
 
         // Third restaurant
-        cy.get('[data-testid="card"]')
-          .eq(2)
-          .find('h4')
-          .should('have.text', 'Il Fuoco');
+        cy.get('[data-testid="card"]').eq(2).find('h4').should('have.text', 'Il Fuoco');
 
         // Fourth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(3)
-          .find('h4')
-          .should('have.text', 'Mykonos Taverna');
+        cy.get('[data-testid="card"]').eq(3).find('h4').should('have.text', 'Mykonos Taverna');
 
         // fifth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(4)
-          .find('h4')
-          .should('have.text', 'Corfu');
+        cy.get('[data-testid="card"]').eq(4).find('h4').should('have.text', 'Corfu');
 
         // Sixth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(5)
-          .find('h4')
-          .should('have.text', 'Platform 61');
+        cy.get('[data-testid="card"]').eq(5).find('h4').should('have.text', 'Platform 61');
       });
     });
 
@@ -230,40 +195,22 @@ describe('SearchPage', () => {
         cy.wait('@getSecondSortedRestaurants');
 
         // First restaurant
-        cy.get('[data-testid="card"]')
-          .eq(0)
-          .find('h4')
-          .should('have.text', 'Platform 61');
+        cy.get('[data-testid="card"]').eq(0).find('h4').should('have.text', 'Platform 61');
 
         // Second restaurant
-        cy.get('[data-testid="card"]')
-          .eq(1)
-          .find('h4')
-          .should('have.text', 'Coppinger Row');
+        cy.get('[data-testid="card"]').eq(1).find('h4').should('have.text', 'Coppinger Row');
 
         // Third restaurant
-        cy.get('[data-testid="card"]')
-          .eq(2)
-          .find('h4')
-          .should('have.text', 'Il Fuoco');
+        cy.get('[data-testid="card"]').eq(2).find('h4').should('have.text', 'Il Fuoco');
 
         // Fourth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(3)
-          .find('h4')
-          .should('have.text', 'Mykonos Taverna');
+        cy.get('[data-testid="card"]').eq(3).find('h4').should('have.text', 'Mykonos Taverna');
 
         // fifth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(4)
-          .find('h4')
-          .should('have.text', 'Corfu');
+        cy.get('[data-testid="card"]').eq(4).find('h4').should('have.text', 'Corfu');
 
         // Sixth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(5)
-          .find('h4')
-          .should('have.text', 'Habibi');
+        cy.get('[data-testid="card"]').eq(5).find('h4').should('have.text', 'Habibi');
       });
     });
 
@@ -275,40 +222,22 @@ describe('SearchPage', () => {
         cy.wait('@getThirdSortedRestaurants');
 
         // First restaurant
-        cy.get('[data-testid="card"]')
-          .eq(0)
-          .find('h4')
-          .should('have.text', 'Il Fuoco');
+        cy.get('[data-testid="card"]').eq(0).find('h4').should('have.text', 'Il Fuoco');
 
         // Second restaurant
-        cy.get('[data-testid="card"]')
-          .eq(1)
-          .find('h4')
-          .should('have.text', 'Mykonos Taverna');
+        cy.get('[data-testid="card"]').eq(1).find('h4').should('have.text', 'Mykonos Taverna');
 
         // Third restaurant
-        cy.get('[data-testid="card"]')
-          .eq(2)
-          .find('h4')
-          .should('have.text', 'Platform 61');
+        cy.get('[data-testid="card"]').eq(2).find('h4').should('have.text', 'Platform 61');
 
         // Fourth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(3)
-          .find('h4')
-          .should('have.text', 'Corfu');
+        cy.get('[data-testid="card"]').eq(3).find('h4').should('have.text', 'Corfu');
 
         // fifth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(4)
-          .find('h4')
-          .should('have.text', 'Coppinger Row');
+        cy.get('[data-testid="card"]').eq(4).find('h4').should('have.text', 'Coppinger Row');
 
         // Sixth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(5)
-          .find('h4')
-          .should('have.text', 'Habibi');
+        cy.get('[data-testid="card"]').eq(5).find('h4').should('have.text', 'Habibi');
       });
     });
 
@@ -320,40 +249,22 @@ describe('SearchPage', () => {
         cy.wait('@getFourthSortedRestaurants');
 
         // First restaurant
-        cy.get('[data-testid="card"]')
-          .eq(0)
-          .find('h4')
-          .should('have.text', 'Coppinger Row');
+        cy.get('[data-testid="card"]').eq(0).find('h4').should('have.text', 'Coppinger Row');
 
         // Second restaurant
-        cy.get('[data-testid="card"]')
-          .eq(1)
-          .find('h4')
-          .should('have.text', 'Platform 61');
+        cy.get('[data-testid="card"]').eq(1).find('h4').should('have.text', 'Platform 61');
 
         // Third restaurant
-        cy.get('[data-testid="card"]')
-          .eq(2)
-          .find('h4')
-          .should('have.text', 'Corfu');
+        cy.get('[data-testid="card"]').eq(2).find('h4').should('have.text', 'Corfu');
 
         // Fourth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(3)
-          .find('h4')
-          .should('have.text', 'Mykonos Taverna');
+        cy.get('[data-testid="card"]').eq(3).find('h4').should('have.text', 'Mykonos Taverna');
 
         // fifth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(4)
-          .find('h4')
-          .should('have.text', 'Il Fuoco');
+        cy.get('[data-testid="card"]').eq(4).find('h4').should('have.text', 'Il Fuoco');
 
         // Sixth restaurant
-        cy.get('[data-testid="card"]')
-          .eq(5)
-          .find('h4')
-          .should('have.text', 'Habibi');
+        cy.get('[data-testid="card"]').eq(5).find('h4').should('have.text', 'Habibi');
       });
     });
   });
@@ -366,10 +277,7 @@ describe('SearchPage', () => {
     it('should display the text no restaurants in the selected location', () => {
       cy.get('[data-testid="search-page"]')
         .find('h3')
-        .should(
-          'have.text',
-          'There are no Healthy Food restaurants in Clondalkin',
-        );
+        .should('have.text', 'There are no Healthy Food restaurants in Clondalkin');
     });
 
     it('should not display the filters', () => {
@@ -388,15 +296,9 @@ describe('SearchPage', () => {
   });
 
   it('should display the correct Breadcrumbs and the favorites link', () => {
-    cy.get('[data-testid="breadcrumbs"]').should(
-      'have.text',
-      'Home>Indian in Dundrum',
-    );
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Indian in Dundrum');
 
-    cy.get('[data-testid="footer-bar"]')
-      .find('a')
-      .contains('FAVORITES')
-      .should('have.length', 1);
+    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').should('have.length', 1);
   });
 
   describe('when clicking on the first breadcrumb', () => {
@@ -411,20 +313,14 @@ describe('SearchPage', () => {
   describe('when clicking on the favorite link of the footer', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
-      cy.get('[data-testid="footer-bar"]')
-        .find('a')
-        .contains('FAVORITES')
-        .click();
+      cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
 
       cy.url().should('equal', 'http://localhost:3000/favorites');
     });
   });
 
   it('should display the footer content text', () => {
-    cy.get('@footerContent').should(
-      'have.text',
-      'GITHUBFOODUBLIN ©2020BYJDMIGUEL',
-    );
+    cy.get('@footerContent').should('have.text', 'GITHUBFOODUBLIN ©2020BYJDMIGUEL');
   });
 
   it('should render the correct href of the github link', () => {

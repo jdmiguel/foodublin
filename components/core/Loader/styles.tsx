@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
 import { circleLoaderAnimation, lineLoaderAnimation } from '../../../helpers/animations';
-
 import { LoaderMode } from '../../core/types';
 
 // Circle loader

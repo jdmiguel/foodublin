@@ -12,7 +12,6 @@ import { BreadcrumbsType } from '@/components/core/types';
 const DynamicFavoritesPage = dynamic(
   () => import('@/components/pages/FavoritesPage/FavoritesPage'),
   {
-    // eslint-disable-next-line react/display-name
     loading: () => (
       <FullLoader>
         <Loader text={DEFAULT_TEXT_LOADING} />

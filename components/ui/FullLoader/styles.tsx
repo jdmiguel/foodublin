@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
-
 import { fadeInAnimation } from '@/helpers/animations';
-
 import { LoaderType } from '../../core/types';
 
 const FullCircleLoaderWrapperCSS = css`

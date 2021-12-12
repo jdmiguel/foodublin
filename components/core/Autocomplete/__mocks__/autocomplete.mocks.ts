@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 export const SUGGESTIONS_MOCK = [
   {
     id: 165204783,

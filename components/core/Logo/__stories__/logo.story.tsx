@@ -1,10 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { select } from '@storybook/addon-knobs';
-
 import { Logo } from '../Logo';
-
 import { LogoSize } from '../../types';
 
 const stories = storiesOf('Logo', module);
