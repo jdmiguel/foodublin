@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect, useRef } from 'react';
 import { Loader } from '../Loader/Loader';
 import { Input } from '../Input/Input';
