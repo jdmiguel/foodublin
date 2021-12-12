@@ -44,19 +44,12 @@ describe('Smoke tests', () => {
     // CHECK RELATED RESTAURANTS
     cy.get('[data-testid="detail-related"]').as('relatedRestaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('h3')
-      .should('have.text', 'Related restaurants');
+    cy.get('@relatedRestaurants').find('h3').should('have.text', 'Related restaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('[data-testid="card"]')
-      .should('have.length', 3);
+    cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]')
-      .find('a')
-      .contains('FAVORITES')
-      .click();
+    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -64,9 +57,7 @@ describe('Smoke tests', () => {
     cy.wait(500);
 
     // CHECK FAVORITES TITLE
-    cy.get('main')
-      .find('h3')
-      .should('have.text', '1 restaurant saved in your favorites');
+    cy.get('main').find('h3').should('have.text', '1 restaurant saved in your favorites');
 
     // CHECK FAVORITES
     cy.get('main').find('[data-testid="card"]').as('savedRestaurant');
@@ -85,10 +76,7 @@ describe('Smoke tests', () => {
     cy.get('@savedRestaurant').find('p').should('have.text', 'South City West');
 
     // CHECK BREADCRUMBS
-    cy.get('[data-testid="breadcrumbs"]').should(
-      'have.text',
-      'Home>Catch 22>Favorites',
-    );
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Catch 22>Favorites');
 
     // CLICK SECOND BREADCRUMB
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(1).find('a').click();
@@ -110,29 +98,16 @@ describe('Smoke tests', () => {
 
     cy.get('@locationsDropdown').click();
 
-    cy.get('@locationsDropdown')
-      .find('[role="option"]')
-      .contains('South City West')
-      .click();
+    cy.get('@locationsDropdown').find('[role="option"]').contains('South City West').click();
 
     cy.get('@cuisinesDropdown').click();
 
-    cy.get('@cuisinesDropdown')
-      .find('[role="option"]')
-      .contains('Mediterranean')
-      .click();
+    cy.get('@cuisinesDropdown').find('[role="option"]').contains('Mediterranean').click();
 
     // NAVIGATE TO SEARCH
-    cy.get('[data-testid=finder]')
-      .find('button')
-      .contains('Search')
-      .as('searchButton')
-      .click();
+    cy.get('[data-testid=finder]').find('button').contains('Search').as('searchButton').click();
 
-    cy.url().should(
-      'equal',
-      'http://localhost:3000/search/south-city-west/mediterranean',
-    );
+    cy.url().should('equal', 'http://localhost:3000/search/south-city-west/mediterranean');
 
     cy.wait(500);
 
@@ -152,10 +127,7 @@ describe('Smoke tests', () => {
     cy.get('@savedRestaurant').click();
 
     // NAVIGATE TO DETAIL
-    cy.url().should(
-      'equal',
-      'http://localhost:3000/detail/9101223/coppinger-row',
-    );
+    cy.url().should('equal', 'http://localhost:3000/detail/9101223/coppinger-row');
 
     cy.wait(500);
     cy.get('[data-testid="detail-header"]').find('button').as('headerButton');
@@ -173,19 +145,12 @@ describe('Smoke tests', () => {
     // CHECK RELATED RESTAURANTS
     cy.get('[data-testid="detail-related"]').as('relatedRestaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('h3')
-      .should('have.text', 'Related restaurants');
+    cy.get('@relatedRestaurants').find('h3').should('have.text', 'Related restaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('[data-testid="card"]')
-      .should('have.length', 3);
+    cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]')
-      .find('a')
-      .contains('FAVORITES')
-      .click();
+    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -193,9 +158,7 @@ describe('Smoke tests', () => {
     cy.wait(500);
 
     // CHECK FAVORITES TITLE
-    cy.get('main')
-      .find('h3')
-      .should('have.text', '1 restaurant saved in your favorites');
+    cy.get('main').find('h3').should('have.text', '1 restaurant saved in your favorites');
 
     // CHECK FAVORITES
     cy.get('main').find('[data-testid="card"]').as('savedRestaurant');
@@ -223,19 +186,13 @@ describe('Smoke tests', () => {
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(2).find('a').click();
 
     // NAVIGATE TO DETAIL
-    cy.url().should(
-      'equal',
-      'http://localhost:3000/detail/9101223/coppinger-row',
-    );
+    cy.url().should('equal', 'http://localhost:3000/detail/9101223/coppinger-row');
 
     // CLICK SECOND BREADCRUMB
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(1).find('a').click();
 
     // NAVIGATE TO SEARCH
-    cy.url().should(
-      'equal',
-      'http://localhost:3000/search/south-city-west/mediterranean',
-    );
+    cy.url().should('equal', 'http://localhost:3000/search/south-city-west/mediterranean');
 
     // CLICK FIRST BREADCRUMB
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(0).find('a').click();
@@ -249,10 +206,7 @@ describe('Smoke tests', () => {
     cy.get('[data-testid="card"]').eq(0).click();
 
     // NAVIGATE TO DETAIL
-    cy.url().should(
-      'equal',
-      'http://localhost:3000/detail/9100233/cleaver-east',
-    );
+    cy.url().should('equal', 'http://localhost:3000/detail/9100233/cleaver-east');
 
     cy.wait(500);
 
@@ -271,19 +225,12 @@ describe('Smoke tests', () => {
     // CHECK RELATED RESTAURANTS
     cy.get('[data-testid="detail-related"]').as('relatedRestaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('h3')
-      .should('have.text', 'Related restaurants');
+    cy.get('@relatedRestaurants').find('h3').should('have.text', 'Related restaurants');
 
-    cy.get('@relatedRestaurants')
-      .find('[data-testid="card"]')
-      .should('have.length', 3);
+    cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]')
-      .find('a')
-      .contains('FAVORITES')
-      .click();
+    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -291,9 +238,7 @@ describe('Smoke tests', () => {
     cy.wait(500);
 
     // CHECK FAVORITES TITLE
-    cy.get('main')
-      .find('h3')
-      .should('have.text', '1 restaurant saved in your favorites');
+    cy.get('main').find('h3').should('have.text', '1 restaurant saved in your favorites');
 
     // CHECK FAVORITES
     cy.get('main').find('[data-testid="card"]').as('savedRestaurant');
@@ -307,13 +252,9 @@ describe('Smoke tests', () => {
         'https://b.zmtcdn.com/data/res_imagery/9100233_RESTAURANT_8b0a195f5047ea1246c77911e6f18dd4.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
       );
 
-    cy.get('@savedRestaurant')
-      .find('h4')
-      .should('have.text', 'Cleaver East - The Clarence Hotel');
+    cy.get('@savedRestaurant').find('h4').should('have.text', 'Cleaver East - The Clarence Hotel');
 
-    cy.get('@savedRestaurant')
-      .find('p')
-      .should('have.text', 'The Clarence Hotel, Temple Bar');
+    cy.get('@savedRestaurant').find('p').should('have.text', 'The Clarence Hotel, Temple Bar');
 
     // CHECK BREADCRUMBS
     cy.get('[data-testid="breadcrumbs"]').should(

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 import { BreadcrumbsType } from '../../../core/types';
 
 export const FOOTER_MOCKS = {

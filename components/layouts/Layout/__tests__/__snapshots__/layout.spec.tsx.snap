@@ -2892,8 +2892,8 @@ exports[`Component: Layout should render the footer veil 1`] = `
   background-color: #F3F3F3;
   height: 170px;
   opacity: 0.6;
-  -webkit-animation: hikGge 0.15s linear;
-  animation: hikGge 0.15s linear;
+  -webkit-animation: RcxFP 0.15s linear;
+  animation: RcxFP 0.15s linear;
 }
 
 .c14 {

@@ -15,9 +15,7 @@ describe('HomePage', () => {
       .should('have.attr', 'alt', 'FooDublin Logo')
       .should('have.attr', 'src', '/images/logo.svg');
 
-    cy.get('@header')
-      .find('h2')
-      .should('have.text', 'Discover the best food in Dublin');
+    cy.get('@header').find('h2').should('have.text', 'Discover the best food in Dublin');
   });
 
   it('should not display the headerBar', () => {
@@ -30,9 +28,7 @@ describe('HomePage', () => {
 
   // HIGHLIGHTS
   it('should display the highlights title', () => {
-    cy.get('[data-testid="highlights"]')
-      .find('h3')
-      .should('have.text', 'Featured restaurants');
+    cy.get('[data-testid="highlights"]').find('h3').should('have.text', 'Featured restaurants');
   });
 
   it('should display the highlights cards', () => {
@@ -58,10 +54,7 @@ describe('HomePage', () => {
     it('should navigate to the correct detail page', () => {
       cy.get('[data-testid="card"]').eq(0).click();
 
-      cy.url().should(
-        'equal',
-        'http://localhost:3000/detail/9100233/cleaver-east',
-      );
+      cy.url().should('equal', 'http://localhost:3000/detail/9100233/cleaver-east');
     });
   });
 
@@ -78,20 +71,14 @@ describe('HomePage', () => {
   describe('when clicking on the favorite link of the footer', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
-      cy.get('[data-testid="footer-bar"]')
-        .find('a')
-        .contains('FAVORITES')
-        .click();
+      cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
 
       cy.url().should('equal', 'http://localhost:3000/favorites');
     });
   });
 
   it('should display the footer content text', () => {
-    cy.get('@footerContent').should(
-      'have.text',
-      'GITHUBFOODUBLIN ©2020BYJDMIGUEL',
-    );
+    cy.get('@footerContent').should('have.text', 'GITHUBFOODUBLIN ©2020BYJDMIGUEL');
   });
 
   it('should render the correct href of the github link', () => {
