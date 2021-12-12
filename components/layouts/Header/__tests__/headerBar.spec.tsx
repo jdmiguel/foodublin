@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-
 /**
  * @jest-environment jsdom
  */
+
+/* eslint-disable @typescript-eslint/no-empty-function */
 
 import { render, fireEvent } from '@testing-library/react';
 import { HeaderBar } from '../HeaderBar';
