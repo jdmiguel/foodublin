@@ -210,7 +210,8 @@ const Search: NextPage<SearchProps> = ({
         handleRestaurants(LoadType.EXTRA);
       }
     }
-  }, [height, isLoadingByFilter, currentTotal, handleRestaurants]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [height, isLoadingByFilter]);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
@@ -221,7 +222,8 @@ const Search: NextPage<SearchProps> = ({
     ) {
       setShowWarning(true);
     }
-  }, [currentRestaurants, currentTotal, maxRestaurantStarter]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentRestaurants]);
 
   const handleFilter = (sort: string, order: string) => {
     sortRef.current = sort;
@@ -254,11 +256,7 @@ const Search: NextPage<SearchProps> = ({
   };
   const { breadcrumbs } = useBreadcrumbs(searchBreadcrumbs, 'search');
 
-  if (onError) {
-    return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
-  }
-
-  if (!restaurants) {
+  if (onError || !restaurants) {
     return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
   }
 
