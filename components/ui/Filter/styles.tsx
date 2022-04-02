@@ -4,16 +4,17 @@ export const StyledFilterItem = styled.button<{ isActive: boolean }>`
   width: 144px;
   padding: 15px 8px;
   margin: 0 8px 15px;
-  border: 1px solid ${({ theme }) => theme.palette.DARK_MIN};
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.palette.DARK_MEDIUM};
+  border: 1px solid ${({ theme  }) => theme.palette.LIGHT_SOFT};
+  border-radius: 4px;
+  color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
   outline: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  transition: background-color 0.2s ease-out;
+  transition: all 0.2s ease-out;
   background-color: ${({ theme, isActive }) =>
-    `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MIN}`};
+    `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MEDIUM}`};
   @media only screen and (min-width: 400px) {
     width: 180px;
   }
@@ -36,12 +37,14 @@ export const StyledFilterItem = styled.button<{ isActive: boolean }>`
   @media only screen and (min-width: 1200px) {
     &:hover {
       background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
+      color: ${({ theme }) => theme.palette.PRIMARY};
     }
   }
 `;
 
 export const StyledFilterPrimaryText = styled.span`
   text-transform: uppercase;
+  font-weight: 600;
 `;
 
 export const StyledFilterSecondaryText = styled.span`

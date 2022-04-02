@@ -7,6 +7,7 @@ export const theme: DefaultTheme = {
     PRIMARY_DARK: '#D48C24',
     PRIMARY_MEDIUM: '#FBA52B',
     PRIMARY_LIGHT: '#FDF3E5',
+    SECONDARY: '#660000',
     LIGHT_MAX: '#FFFFFF',
     LIGHT_MEDIUM: '#F3F3F3',
     LIGHT_MIN: '#E5EAED',
