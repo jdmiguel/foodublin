@@ -46,7 +46,7 @@ export const getRestaurants = async (
     const response = await axios(`${BASE_API}search`, {
       method: 'GET',
       headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_ZOMATO_API_KEY}`,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
       params: currentParams,
@@ -69,7 +69,7 @@ export const getRestaurant = async (
     const response = await axios(`${BASE_API}restaurant?res_id=${res_id}`, {
       method: 'GET',
       headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_ZOMATO_API_KEY}`,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
     });
@@ -87,7 +87,7 @@ export const getReviews = async (
     const response = await axios(`${BASE_API}reviews?res_id=${res_id}`, {
       method: 'GET',
       headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_ZOMATO_API_KEY}`,
+        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
         'content-type': 'application/json',
       },
     });

@@ -15,7 +15,8 @@
     "test:integration:run": "npm-run-all --parallel dev cy:run",
     "test:coverage": "NODE_ENV=test jest --coverage",
     "test:watch": "NODE_ENV=test jest --watch",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -80,7 +81,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "fork-ts-checker-webpack-plugin": "^6.4.0",
     "foundation-sites": "^6.7.4",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest": "^27.3.1",
     "jest-styled-components": "^7.0.5",
     "jimp": "^0.16.1",
