@@ -9,10 +9,14 @@ type HeaderBarProps = {
   breadcrumbs: BreadcrumbsData[];
 };
 
-export const HeaderBar: React.FC<HeaderBarProps> = ({ onClickBreadcrumb, onClickFavorites, breadcrumbs }) => (
+export const HeaderBar: React.FC<HeaderBarProps> = ({
+  onClickBreadcrumb,
+  onClickFavorites,
+  breadcrumbs,
+}) => (
   <StyledHeaderBarWrapper data-testid="header-bar">
     <StyledHeaderBar className="grid-container">
-    <Breadcrumbs breadcrumbsData={breadcrumbs || []} onClickBreadcrumb={onClickBreadcrumb} />
+      <Breadcrumbs breadcrumbsData={breadcrumbs || []} onClickBreadcrumb={onClickBreadcrumb} />
       <CustomLink onClick={onClickFavorites}>
         <i className="material-icons">bookmarks</i>FAVORITES
       </CustomLink>

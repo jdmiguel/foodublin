@@ -11,9 +11,7 @@ type FooterProps = {
   showVeil?: boolean;
 };
 
-export const Footer: React.FC<FooterProps> = ({
-  showVeil = false
-}) => (
+export const Footer: React.FC<FooterProps> = ({ showVeil = false }) => (
   <StyledFooterWrapper data-testid="footer">
     {showVeil && <StyledFooterVeil />}
     <StyledFooter>

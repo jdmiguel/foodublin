@@ -38,4 +38,4 @@ export const StyledCorner = styled.a`
     top: 0;
     right: 0;
   }
-`
+`;

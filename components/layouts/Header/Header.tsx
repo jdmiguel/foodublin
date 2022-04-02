@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigationFromFinder,
   onClickBreadcrumb,
   onClickFavorites,
-  breadcrumbs
+  breadcrumbs,
 }) => {
   return (
     <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
@@ -51,7 +51,13 @@ export const Header: React.FC<HeaderProps> = ({
           </StyledHeaderContent>
         </StyledOverlay>
       </StyledHeader>
-      {!isExtended && <HeaderBar onClickBreadcrumb={onClickBreadcrumb} onClickFavorites={onClickFavorites} breadcrumbs={breadcrumbs}/>}
+      {!isExtended && (
+        <HeaderBar
+          onClickBreadcrumb={onClickBreadcrumb}
+          onClickFavorites={onClickFavorites}
+          breadcrumbs={breadcrumbs}
+        />
+      )}
     </StyledHeaderWrapper>
   );
 };

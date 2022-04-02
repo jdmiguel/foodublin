@@ -5,7 +5,7 @@ export const StyledFilterItem = styled.button<{ isActive: boolean }>`
   padding: 15px 8px;
   margin: 0 8px 15px;
   font-size: 0.9rem;
-  border: 1px solid ${({ theme  }) => theme.palette.LIGHT_SOFT};
+  border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
   border-radius: 4px;
   color: ${({ theme }) => theme.palette.PRIMARY_MEDIUM};
   outline: none;
