@@ -31,7 +31,7 @@ exports[`Component: Footer should render 1`] = `
 }
 
 .c1 {
-  background-color: #660000;
+  background-color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -200,7 +200,7 @@ exports[`Component: Footer should render with veil 1`] = `
 }
 
 .c2 {
-  background-color: #660000;
+  background-color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -27,7 +27,7 @@ export const StyledFooterVeil = styled.div`
 `;
 
 export const StyledFooter = styled.div`
-  background-color: ${({ theme }) => theme.palette.SECONDARY};
+  background-color: ${({ theme }) => theme.palette.DARK_MAX};
   display: flex;
   justify-content: center;
   padding: 20px 0;

@@ -1,5 +1,6 @@
 import { CustomLink } from '../../core/CustomLink/CustomLink';
 import { Logo } from '../../core/Logo/Logo';
+import { Corner } from '../../core/Corner/Corner';
 import { LogoSize } from '../../core/types';
 import { Finder } from '../../ui/Finder/Finder';
 import { HeaderBar } from './HeaderBar';
@@ -38,6 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
       <StyledHeader bgImg={bgImgSrc}>
         <StyledOverlay isExtended={isExtended}>
           <StyledHeaderContent isExtended={isExtended}>
+            {isExtended && <Corner />}
             <CustomLink onClick={onClickLogo}>
               <Logo
                 size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
