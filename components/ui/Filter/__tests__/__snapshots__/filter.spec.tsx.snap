@@ -5,9 +5,10 @@ exports[`Component: Filter should render 1`] = `
   width: 144px;
   padding: 15px 8px;
   margin: 0 8px 15px;
-  border: 1px solid #798186;
   font-size: 0.9rem;
-  color: #585858;
+  border: 1px solid #D8D8D8;
+  border-radius: 4px;
+  color: #FBA52B;
   outline: none;
   cursor: pointer;
   display: -webkit-box;
@@ -18,13 +19,14 @@ exports[`Component: Filter should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-  background-color: #E5EAED;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  background-color: #F3F3F3;
 }
 
 .c1 {
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .c2 {
@@ -75,6 +77,7 @@ exports[`Component: Filter should render 1`] = `
 @media only screen and (min-width:1200px) {
   .c0:hover {
     background-color: #FDF3E5;
+    color: #EC7E00;
   }
 }
 

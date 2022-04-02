@@ -18,16 +18,16 @@ export const StyledFooterWrapper = styled.footer`
 
 export const StyledFooterVeil = styled.div`
   background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  height: 170px;
+  height: 192px;
   opacity: 0.6;
   ${fadeInAnimation};
   @media only screen and (min-width: 768px) {
-    height: 150px;
+    height: 172px;
   }
 `;
 
 export const StyledFooter = styled.div`
-  background-color: ${({ theme }) => theme.palette.SECONDARY};
+  background-color: ${({ theme }) => theme.palette.DARK_MAX};
   display: flex;
   justify-content: center;
   padding: 20px 0;

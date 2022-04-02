@@ -16,7 +16,7 @@ describe('Component: Header', () => {
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
-          <Header {...HEADER_MOCKS} isExtended={true} />
+          <Header {...HEADER_MOCKS} isExtended />
         </Provider>,
       ),
     );

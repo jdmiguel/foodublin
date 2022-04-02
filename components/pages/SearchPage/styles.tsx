@@ -31,7 +31,7 @@ export const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
 export const StyledWarning = styled.div`
   width: 100%;
   margin-top: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 38px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,13 +41,13 @@ export const StyledWarning = styled.div`
   color: ${({ theme }) => theme.palette.SECONDARY};
   @media only screen and (min-width: 768px) {
     font-size: 1.2rem;
-    margin-bottom: 70px;
+    margin-bottom: 48px;
   }
   @media only screen and (min-width: 992px) {
     flex-direction: row;
     text-align: left;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
     font-size: 1.3rem;
   }
 `;

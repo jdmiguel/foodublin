@@ -116,10 +116,10 @@ export const StyledLocation = styled.h3`
 `;
 
 export const StyledButtonWrapper = styled.div`
-  max-width: 140px;
+  width: 140px;
   margin-top: 30px;
   @media only screen and (max-width: 639px) {
-    max-width: 127px;
+    width: 127px;
     height: 45px;
   }
 `;

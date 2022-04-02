@@ -16,6 +16,7 @@ export const theme: DefaultTheme = {
     DARK_MEDIUM: '#585858',
     DARK_MIN: '#798186',
     DARK_SOFT: '#A7A7A7',
+    BLACK: '#171819',
   },
 };
 

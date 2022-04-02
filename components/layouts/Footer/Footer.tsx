@@ -1,5 +1,4 @@
 import { CustomLink } from '../../core/CustomLink/CustomLink';
-import { FooterBar } from './FooterBar';
 import {
   StyledFooterWrapper,
   StyledFooterVeil,
@@ -7,38 +6,19 @@ import {
   StyledBlock,
   StyledText,
 } from './styles';
-import { BreadcrumbsData } from '../../core/types';
 
 type FooterProps = {
   showVeil?: boolean;
-  isExtended?: boolean;
-  onClickBreadcrumb: (route: string, asRoute: string) => void;
-  onClickFavorites: () => void;
-  breadcrumbs: BreadcrumbsData[];
 };
 
 export const Footer: React.FC<FooterProps> = ({
-  showVeil = false,
-  isExtended = false,
-  onClickBreadcrumb,
-  onClickFavorites,
-  breadcrumbs,
+  showVeil = false
 }) => (
   <StyledFooterWrapper data-testid="footer">
     {showVeil && <StyledFooterVeil />}
-    {isExtended && (
-      <FooterBar
-        onClickBreadcrumb={onClickBreadcrumb}
-        onClickFavorites={onClickFavorites}
-        breadcrumbs={breadcrumbs}
-      />
-    )}
     <StyledFooter>
       <StyledBlock>
-        <CustomLink route="https://github.com/jdmiguel/foodublin">GITHUB</CustomLink>
-      </StyledBlock>
-      <StyledBlock>
-        <StyledText addSeparation={false}>FOODUBLIN ©2020</StyledText>
+        <StyledText addSeparation={false}>FOODUBLIN ©2022</StyledText>
       </StyledBlock>
       <StyledBlock>
         <StyledText addSeparation={true}>BY</StyledText>
