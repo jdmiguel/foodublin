@@ -2,43 +2,44 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable @typescript-eslint/no-empty-function */
-
 import { render, fireEvent } from '@testing-library/react';
 import { HeaderBar } from '../HeaderBar';
 import { renderWithTheme } from '../../../../helpers/Theme';
+import { HEADER_BAR_MOCKS } from '../__mocks__/header.mocks';
 
 const headerBarProps = {
-  onClickBack: () => {},
+  onClickBreadcrumb: () => {},
   onClickFavorites: () => {},
 };
 
 describe('Component: HeaderBar', () => {
   it('should render', () => {
-    const { container } = render(renderWithTheme(<HeaderBar {...headerBarProps} />));
+    const { container } = render(renderWithTheme(<HeaderBar {...HEADER_BAR_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should call function on click back', () => {
-    const handleClickBack = jest.fn();
+  it('should call function on click breadcrumb', () => {
+    const handleClickBreadcrumb = jest.fn();
     const { getByText } = render(
-      renderWithTheme(<HeaderBar {...headerBarProps} onClickBack={handleClickBack} />),
+      renderWithTheme(
+        <HeaderBar {...HEADER_BAR_MOCKS} onClickBreadcrumb={handleClickBreadcrumb} />,
+      ),
     );
-
-    fireEvent.click(getByText('< BACK'));
-
-    expect(handleClickBack).toHaveBeenCalled();
+  
+    fireEvent.click(getByText('Home'));
+  
+    expect(handleClickBreadcrumb).toHaveBeenCalled();
   });
-
+  
   it('should call function on click favorites', () => {
     const handleClickFavorites = jest.fn();
     const { getByText } = render(
-      renderWithTheme(<HeaderBar {...headerBarProps} onClickFavorites={handleClickFavorites} />),
+      renderWithTheme(<HeaderBar {...HEADER_BAR_MOCKS} onClickFavorites={handleClickFavorites} />),
     );
-
+  
     fireEvent.click(getByText('FAVORITES'));
-
+  
     expect(handleClickFavorites).toHaveBeenCalled();
   });
 });

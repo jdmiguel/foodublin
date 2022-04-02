@@ -10,11 +10,11 @@ export const StyledLayout = styled.div`
 `;
 
 export const StyledMain = styled.main`
-  margin-bottom: 120px;
+  margin-bottom: 98px;
   padding: 0 10px;
   @media only screen and (min-width: 768px) {
     padding: 0 20px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
   }
 `;
 

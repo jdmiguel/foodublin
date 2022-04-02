@@ -19,14 +19,11 @@ type LayoutProps = {
 export const Layout = ({
   children,
   isExtendedHeader = false,
-  isExtendedFooter = false,
   showFooterVeil = false,
   onNavigate,
   breadcrumbs,
 }: LayoutProps) => {
   const [scrollUpButtonIsShowed, setScrollUpButtonIsShowed] = useState(false);
-
-  const backNavigation = breadcrumbs ? breadcrumbs[breadcrumbs.length - 2] : DEFAULT_BREADCRUMB;
 
   useScroll(
     ({ scrollTop }) => {
@@ -51,18 +48,13 @@ export const Layout = ({
         claimTxt="Discover the best food in Dublin"
         isExtended={isExtendedHeader}
         onClickLogo={() => onNavigate('/')}
-        onClickFavorites={() => onNavigate('/favorites')}
-        onClickBack={() => onNavigate(backNavigation.route, backNavigation.asRoute)}
-        onNavigationFromFinder={onNavigate}
-      />
-      <StyledMain>{children}</StyledMain>
-      <Footer
-        showVeil={showFooterVeil}
-        isExtended={isExtendedFooter}
         breadcrumbs={breadcrumbs || [DEFAULT_BREADCRUMB]}
         onClickBreadcrumb={(route: string, asRoute: string) => onNavigate(route, asRoute)}
         onClickFavorites={() => onNavigate('/favorites')}
+        onNavigationFromFinder={onNavigate}
       />
+      <StyledMain>{children}</StyledMain>
+      <Footer showVeil={showFooterVeil} />
       <StyledScrollUpButtonWrapper isShowed={scrollUpButtonIsShowed}>
         <Button fullWidth={false} isFloating={true} onClick={handleScrollUp}>
           <i className="material-icons">arrow_upward</i>

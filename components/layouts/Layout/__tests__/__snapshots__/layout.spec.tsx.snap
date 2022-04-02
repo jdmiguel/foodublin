@@ -21,6 +21,29 @@ exports[`Component: Layout should render 1`] = `
   margin-right: 4px;
 }
 
+.c14 {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  pointer-events: none;
+  color: #A7A7A7;
+  font-weight: 400;
+}
+
+.c14 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
 .c6 {
   width: 190px;
 }
@@ -29,12 +52,12 @@ exports[`Component: Layout should render 1`] = `
   max-width: 300px;
 }
 
-.c18 {
+.c22 {
   width: 50px;
   height: 55px;
 }
 
-.c19 {
+.c23 {
   width: 50px;
   height: 50px;
   -webkit-letter-spacing: 0.5px;
@@ -65,16 +88,42 @@ exports[`Component: Layout should render 1`] = `
   align-items: center;
 }
 
-.c19 i {
+.c23 i {
   font-size: 1.3em;
 }
 
-.c19:hover {
+.c23:hover {
   background-color: #EC7E00;
 }
 
-.c19:focus {
+.c23:focus {
   background-color: #EC7E00;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13 {
+  white-space: nowrap;
+  margin: 0 5px 3px 0;
 }
 
 .c1 {
@@ -158,7 +207,7 @@ exports[`Component: Layout should render 1`] = `
   padding: 15px 20px;
 }
 
-.c12 {
+.c16 {
   width: 100%;
   position: absolute;
   left: 0;
@@ -167,7 +216,7 @@ exports[`Component: Layout should render 1`] = `
   z-index: 1;
 }
 
-.c13 {
+.c17 {
   background-color: #660000;
   display: -webkit-box;
   display: -webkit-flex;
@@ -180,7 +229,7 @@ exports[`Component: Layout should render 1`] = `
   padding: 20px 0;
 }
 
-.c14 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -188,24 +237,24 @@ exports[`Component: Layout should render 1`] = `
   color: #D8D8D8;
 }
 
-.c14:not(:first-of-type) {
+.c18:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c14:not(:last-of-type):after {
+.c18:not(:last-of-type):after {
   content: ' | ';
   margin-left: 3px;
 }
 
-.c14:last-of-type {
+.c18:last-of-type {
   margin-right: 1px;
 }
 
-.c15 {
+.c19 {
   font-weight: 300;
 }
 
-.c16 {
+.c20 {
   font-weight: 300;
   margin-right: 3px;
 }
@@ -222,12 +271,12 @@ exports[`Component: Layout should render 1`] = `
   position: relative;
 }
 
-.c11 {
-  margin-bottom: 120px;
+.c15 {
+  margin-bottom: 98px;
   padding: 0 10px;
 }
 
-.c17 {
+.c21 {
   position: fixed;
   bottom: 1%;
   right: 4%;
@@ -254,6 +303,23 @@ exports[`Component: Layout should render 1`] = `
   }
 }
 
+@media only screen and (min-width:330px) {
+  .c14 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width:540px) {
+  .c14 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c14:hover {
+    color: #EC7E00;
+  }
+}
+
 @media only screen and (min-width:768px) {
 
 }
@@ -261,6 +327,26 @@ exports[`Component: Layout should render 1`] = `
 @media only screen and (min-width:992px) {
   .c6 {
     width: 200px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c11 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c13 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c13 {
+    margin: 0 5px 0 0;
   }
 }
 
@@ -320,45 +406,45 @@ exports[`Component: Layout should render 1`] = `
 }
 
 @media only screen and (min-width:375px) {
-  .c14:not(:first-of-type) {
+  .c18:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c14:not(:last-of-type):after {
+  .c18:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c14:last-of-type {
+  .c18:last-of-type {
     margin-right: 3px;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c14 {
+  .c18 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c15 {
+  .c19 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c16 {
+  .c20 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c11 {
+  .c15 {
     padding: 0 20px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
   }
 }
 
@@ -406,11 +492,25 @@ exports[`Component: Layout should render 1`] = `
       <div
         class="c10 grid-container"
       >
-        <a
-          class="c5"
+        <div
+          class="c11"
+          data-testid="breadcrumbs"
         >
-          &lt; BACK
-        </a>
+          <div
+            class="c12"
+          >
+            <div
+              class="c13"
+            >
+              <a
+                class="c14"
+                disabled=""
+              >
+                Home
+              </a>
+            </div>
+          </div>
+        </div>
         <a
           class="c5"
         >
@@ -425,7 +525,7 @@ exports[`Component: Layout should render 1`] = `
     </div>
   </header>
   <main
-    class="c11"
+    class="c15"
   >
     <div>
       <h1>
@@ -434,36 +534,26 @@ exports[`Component: Layout should render 1`] = `
     </div>
   </main>
   <footer
-    class="c12"
+    class="c16"
     data-testid="footer"
   >
     <div
-      class="c13"
+      class="c17"
     >
       <div
-        class="c14"
-      >
-        <a
-          class="c5"
-          href="https://github.com/jdmiguel/foodublin"
-        >
-          GITHUB
-        </a>
-      </div>
-      <div
-        class="c14"
+        class="c18"
       >
         <p
-          class="c15"
+          class="c19"
         >
-          FOODUBLIN ©2020
+          FOODUBLIN ©2022
         </p>
       </div>
       <div
-        class="c14"
+        class="c18"
       >
         <p
-          class="c16"
+          class="c20"
         >
           BY
         </p>
@@ -477,13 +567,13 @@ exports[`Component: Layout should render 1`] = `
     </div>
   </footer>
   <div
-    class="c17"
+    class="c21"
   >
     <div
-      class="c18"
+      class="c22"
     >
       <button
-        class="c19"
+        class="c23"
         type="button"
       >
         <i
@@ -518,7 +608,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   margin-right: 4px;
 }
 
-.c18 {
+.c14 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -536,7 +626,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   font-weight: 400;
 }
 
-.c18 i {
+.c14 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -549,12 +639,12 @@ exports[`Component: Layout should render the extended footer 1`] = `
   max-width: 300px;
 }
 
-.c24 {
+.c22 {
   width: 50px;
   height: 55px;
 }
 
-.c25 {
+.c23 {
   width: 50px;
   height: 50px;
   -webkit-letter-spacing: 0.5px;
@@ -585,16 +675,42 @@ exports[`Component: Layout should render the extended footer 1`] = `
   align-items: center;
 }
 
-.c25 i {
+.c23 i {
   font-size: 1.3em;
 }
 
-.c25:hover {
+.c23:hover {
   background-color: #EC7E00;
 }
 
-.c25:focus {
+.c23:focus {
   background-color: #EC7E00;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13 {
+  white-space: nowrap;
+  margin: 0 5px 3px 0;
 }
 
 .c1 {
@@ -678,33 +794,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   padding: 15px 20px;
 }
 
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c17 {
-  white-space: nowrap;
-  margin: 0 5px 3px 0;
-}
-
-.c12 {
   width: 100%;
   position: absolute;
   left: 0;
@@ -713,7 +803,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   z-index: 1;
 }
 
-.c19 {
+.c17 {
   background-color: #660000;
   display: -webkit-box;
   display: -webkit-flex;
@@ -726,7 +816,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   padding: 20px 0;
 }
 
-.c20 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -734,49 +824,26 @@ exports[`Component: Layout should render the extended footer 1`] = `
   color: #D8D8D8;
 }
 
-.c20:not(:first-of-type) {
+.c18:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c20:not(:last-of-type):after {
+.c18:not(:last-of-type):after {
   content: ' | ';
   margin-left: 3px;
 }
 
-.c20:last-of-type {
+.c18:last-of-type {
   margin-right: 1px;
 }
 
-.c21 {
+.c19 {
   font-weight: 300;
 }
 
-.c22 {
+.c20 {
   font-weight: 300;
   margin-right: 3px;
-}
-
-.c13 {
-  border-top: 1px solid #D8D8D8;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 15px 20px;
 }
 
 .c0 {
@@ -791,12 +858,12 @@ exports[`Component: Layout should render the extended footer 1`] = `
   position: relative;
 }
 
-.c11 {
-  margin-bottom: 120px;
+.c15 {
+  margin-bottom: 98px;
   padding: 0 10px;
 }
 
-.c23 {
+.c21 {
   position: fixed;
   bottom: 1%;
   right: 4%;
@@ -824,18 +891,18 @@ exports[`Component: Layout should render the extended footer 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c18 {
+  .c14 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c18 {
+  .c14 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c18:hover {
+  .c14:hover {
     color: #EC7E00;
   }
 }
@@ -847,6 +914,26 @@ exports[`Component: Layout should render the extended footer 1`] = `
 @media only screen and (min-width:992px) {
   .c6 {
     width: 200px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c11 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c13 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c13 {
+    margin: 0 5px 0 0;
   }
 }
 
@@ -905,41 +992,33 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
-@media only screen and (min-width:600px) {
-  .c15 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media only screen and (max-width:330px) {
-  .c17 {
-    font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .c17 {
-    margin: 0 5px 0 0;
-  }
-}
-
 @media only screen and (min-width:375px) {
-  .c20:not(:first-of-type) {
+  .c18:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c20:not(:last-of-type):after {
+  .c18:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c20:last-of-type {
+  .c18:last-of-type {
     margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c18 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c19 {
+    font-size: 0.85rem;
   }
 }
 
@@ -949,46 +1028,10 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
-@media only screen and (max-width:330px) {
-  .c21 {
-    font-size: 0.85rem;
-  }
-}
-
-@media only screen and (max-width:330px) {
-  .c22 {
-    font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .c14 {
-    padding: 15px 30px;
-  }
-}
-
 @media only screen and (min-width:768px) {
-  .c14 {
-    padding: 15px 35px;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .c14 {
-    padding: 15px 48px;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c14 {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c11 {
+  .c15 {
     padding: 0 20px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
   }
 }
 
@@ -1036,56 +1079,18 @@ exports[`Component: Layout should render the extended footer 1`] = `
       <div
         class="c10 grid-container"
       >
-        <a
-          class="c5"
-        >
-          &lt; BACK
-        </a>
-        <a
-          class="c5"
-        >
-          <i
-            class="material-icons"
-          >
-            bookmarks
-          </i>
-          FAVORITES
-        </a>
-      </div>
-    </div>
-  </header>
-  <main
-    class="c11"
-  >
-    <div>
-      <h1>
-        Hello World
-      </h1>
-    </div>
-  </main>
-  <footer
-    class="c12"
-    data-testid="footer"
-  >
-    <div
-      class="c13"
-      data-testid="footer-bar"
-    >
-      <div
-        class="c14 grid-container"
-      >
         <div
-          class="c15"
+          class="c11"
           data-testid="breadcrumbs"
         >
           <div
-            class="c16"
+            class="c12"
           >
             <div
-              class="c17"
+              class="c13"
             >
               <a
-                class="c18"
+                class="c14"
                 disabled=""
               >
                 Home
@@ -1105,33 +1110,37 @@ exports[`Component: Layout should render the extended footer 1`] = `
         </a>
       </div>
     </div>
+  </header>
+  <main
+    class="c15"
+  >
+    <div>
+      <h1>
+        Hello World
+      </h1>
+    </div>
+  </main>
+  <footer
+    class="c16"
+    data-testid="footer"
+  >
     <div
-      class="c19"
+      class="c17"
     >
       <div
-        class="c20"
-      >
-        <a
-          class="c5"
-          href="https://github.com/jdmiguel/foodublin"
-        >
-          GITHUB
-        </a>
-      </div>
-      <div
-        class="c20"
+        class="c18"
       >
         <p
-          class="c21"
+          class="c19"
         >
-          FOODUBLIN ©2020
+          FOODUBLIN ©2022
         </p>
       </div>
       <div
-        class="c20"
+        class="c18"
       >
         <p
-          class="c22"
+          class="c20"
         >
           BY
         </p>
@@ -1145,13 +1154,13 @@ exports[`Component: Layout should render the extended footer 1`] = `
     </div>
   </footer>
   <div
-    class="c23"
+    class="c21"
   >
     <div
-      class="c24"
+      class="c22"
     >
       <button
-        class="c25"
+        class="c23"
         type="button"
       >
         <i
@@ -1733,7 +1742,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 .c32 {
-  margin-bottom: 120px;
+  margin-bottom: 98px;
   padding: 0 10px;
 }
 
@@ -2005,7 +2014,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 @media only screen and (min-width:768px) {
   .c32 {
     padding: 0 20px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
   }
 }
 
@@ -2667,20 +2676,10 @@ exports[`Component: Layout should render the extended header 1`] = `
       <div
         class="c35"
       >
-        <a
-          class="c4"
-          href="https://github.com/jdmiguel/foodublin"
-        >
-          GITHUB
-        </a>
-      </div>
-      <div
-        class="c35"
-      >
         <p
           class="c36"
         >
-          FOODUBLIN ©2020
+          FOODUBLIN ©2022
         </p>
       </div>
       <div
@@ -2742,6 +2741,29 @@ exports[`Component: Layout should render the footer veil 1`] = `
   margin-right: 4px;
 }
 
+.c14 {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  pointer-events: none;
+  color: #A7A7A7;
+  font-weight: 400;
+}
+
+.c14 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
 .c6 {
   width: 190px;
 }
@@ -2750,12 +2772,12 @@ exports[`Component: Layout should render the footer veil 1`] = `
   max-width: 300px;
 }
 
-.c19 {
+.c23 {
   width: 50px;
   height: 55px;
 }
 
-.c20 {
+.c24 {
   width: 50px;
   height: 50px;
   -webkit-letter-spacing: 0.5px;
@@ -2786,16 +2808,42 @@ exports[`Component: Layout should render the footer veil 1`] = `
   align-items: center;
 }
 
-.c20 i {
+.c24 i {
   font-size: 1.3em;
 }
 
-.c20:hover {
+.c24:hover {
   background-color: #EC7E00;
 }
 
-.c20:focus {
+.c24:focus {
   background-color: #EC7E00;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13 {
+  white-space: nowrap;
+  margin: 0 5px 3px 0;
 }
 
 .c1 {
@@ -2879,7 +2927,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
   padding: 15px 20px;
 }
 
-.c12 {
+.c16 {
   width: 100%;
   position: absolute;
   left: 0;
@@ -2888,15 +2936,15 @@ exports[`Component: Layout should render the footer veil 1`] = `
   z-index: 1;
 }
 
-.c13 {
+.c17 {
   background-color: #F3F3F3;
-  height: 170px;
+  height: 192px;
   opacity: 0.6;
   -webkit-animation: RcxFP 0.15s linear;
   animation: RcxFP 0.15s linear;
 }
 
-.c14 {
+.c18 {
   background-color: #660000;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2909,7 +2957,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
   padding: 20px 0;
 }
 
-.c15 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2917,24 +2965,24 @@ exports[`Component: Layout should render the footer veil 1`] = `
   color: #D8D8D8;
 }
 
-.c15:not(:first-of-type) {
+.c19:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c15:not(:last-of-type):after {
+.c19:not(:last-of-type):after {
   content: ' | ';
   margin-left: 3px;
 }
 
-.c15:last-of-type {
+.c19:last-of-type {
   margin-right: 1px;
 }
 
-.c16 {
+.c20 {
   font-weight: 300;
 }
 
-.c17 {
+.c21 {
   font-weight: 300;
   margin-right: 3px;
 }
@@ -2951,12 +2999,12 @@ exports[`Component: Layout should render the footer veil 1`] = `
   position: relative;
 }
 
-.c11 {
-  margin-bottom: 120px;
+.c15 {
+  margin-bottom: 98px;
   padding: 0 10px;
 }
 
-.c18 {
+.c22 {
   position: fixed;
   bottom: 1%;
   right: 4%;
@@ -2983,6 +3031,23 @@ exports[`Component: Layout should render the footer veil 1`] = `
   }
 }
 
+@media only screen and (min-width:330px) {
+  .c14 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width:540px) {
+  .c14 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c14:hover {
+    color: #EC7E00;
+  }
+}
+
 @media only screen and (min-width:768px) {
 
 }
@@ -2990,6 +3055,26 @@ exports[`Component: Layout should render the footer veil 1`] = `
 @media only screen and (min-width:992px) {
   .c6 {
     width: 200px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c11 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c13 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c13 {
+    margin: 0 5px 0 0;
   }
 }
 
@@ -3049,51 +3134,51 @@ exports[`Component: Layout should render the footer veil 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c13 {
-    height: 150px;
+  .c17 {
+    height: 172px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c15:not(:first-of-type) {
+  .c19:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c15:not(:last-of-type):after {
+  .c19:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c15:last-of-type {
+  .c19:last-of-type {
     margin-right: 3px;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c15 {
+  .c19 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c16 {
+  .c20 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c17 {
+  .c21 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c11 {
+  .c15 {
     padding: 0 20px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
   }
 }
 
@@ -3141,11 +3226,25 @@ exports[`Component: Layout should render the footer veil 1`] = `
       <div
         class="c10 grid-container"
       >
-        <a
-          class="c5"
+        <div
+          class="c11"
+          data-testid="breadcrumbs"
         >
-          &lt; BACK
-        </a>
+          <div
+            class="c12"
+          >
+            <div
+              class="c13"
+            >
+              <a
+                class="c14"
+                disabled=""
+              >
+                Home
+              </a>
+            </div>
+          </div>
+        </div>
         <a
           class="c5"
         >
@@ -3160,7 +3259,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
     </div>
   </header>
   <main
-    class="c11"
+    class="c15"
   >
     <div>
       <h1>
@@ -3169,39 +3268,29 @@ exports[`Component: Layout should render the footer veil 1`] = `
     </div>
   </main>
   <footer
-    class="c12"
+    class="c16"
     data-testid="footer"
   >
     <div
-      class="c13"
+      class="c17"
     />
     <div
-      class="c14"
+      class="c18"
     >
       <div
-        class="c15"
-      >
-        <a
-          class="c5"
-          href="https://github.com/jdmiguel/foodublin"
-        >
-          GITHUB
-        </a>
-      </div>
-      <div
-        class="c15"
+        class="c19"
       >
         <p
-          class="c16"
+          class="c20"
         >
-          FOODUBLIN ©2020
+          FOODUBLIN ©2022
         </p>
       </div>
       <div
-        class="c15"
+        class="c19"
       >
         <p
-          class="c17"
+          class="c21"
         >
           BY
         </p>
@@ -3215,13 +3304,13 @@ exports[`Component: Layout should render the footer veil 1`] = `
     </div>
   </footer>
   <div
-    class="c18"
+    class="c22"
   >
     <div
-      class="c19"
+      class="c23"
     >
       <button
-        class="c20"
+        class="c24"
         type="button"
       >
         <i

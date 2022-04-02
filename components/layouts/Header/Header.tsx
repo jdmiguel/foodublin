@@ -10,6 +10,7 @@ import {
   StyledHeaderContent,
   StyledHeaderClaim,
 } from './styles';
+import { BreadcrumbsData } from '../../core/types';
 
 type HeaderProps = {
   claimTxt: string;
@@ -17,8 +18,9 @@ type HeaderProps = {
   isExtended?: boolean;
   onNavigationFromFinder: (route: string, asRoute: string) => void;
   onClickLogo: () => void;
+  onClickBreadcrumb: (route: string, asRoute: string) => void;
   onClickFavorites: () => void;
-  onClickBack: () => void;
+  breadcrumbs: BreadcrumbsData[];
 };
 
 export const Header: React.FC<HeaderProps> = ({
@@ -27,8 +29,9 @@ export const Header: React.FC<HeaderProps> = ({
   isExtended = false,
   onClickLogo,
   onNavigationFromFinder,
-  onClickBack,
+  onClickBreadcrumb,
   onClickFavorites,
+  breadcrumbs
 }) => {
   return (
     <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
@@ -46,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
           </StyledHeaderContent>
         </StyledOverlay>
       </StyledHeader>
-      {!isExtended && <HeaderBar onClickBack={onClickBack} onClickFavorites={onClickFavorites} />}
+      {!isExtended && <HeaderBar onClickBreadcrumb={onClickBreadcrumb} onClickFavorites={onClickFavorites} breadcrumbs={breadcrumbs}/>}
     </StyledHeaderWrapper>
   );
 };
