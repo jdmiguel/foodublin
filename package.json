@@ -10,7 +10,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run --browser chrome --headless",
     "storybook": "start-storybook -p 6006 -s ./public/images",
-    "build:storybook": "build-storybook",
+    "build:storybook": "build-storybook -s ./public/images",
     "test": "NODE_ENV=test jest",
     "test:integration": "npm-run-all --parallel dev cy:open",
     "test:integration:run": "npm-run-all --parallel dev cy:run",
