@@ -35,6 +35,7 @@ const headerContentCSS = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 30px;
 `;
 
 const basicHeaderContentCSS = css`
@@ -55,11 +56,9 @@ export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
 `;
 
 export const StyledCornerWrapper = styled.div`
-  opacity: 0;
-  visibility: hidden;
+  display: none;
   @media only screen and (min-width: 1200px) {
-    opacity: 1;
-    visibility: visible;
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -76,7 +75,7 @@ export const StyledHeaderClaim = styled.h2<{
   margin-bottom: ${({ isExtended }) => isExtended && '35px'};
   display: ${({ isExtended }) => !isExtended && 'none'};
   @media only screen and (min-width: 350px) {
-    font-size: ${({ isExtended }) => isExtended && '1.45rem'};
+    font-size: ${({ isExtended }) => isExtended && '1.4rem'};
   }
   @media only screen and (min-width: 768px) {
     display: ${({ isExtended }) => !isExtended && 'block'};

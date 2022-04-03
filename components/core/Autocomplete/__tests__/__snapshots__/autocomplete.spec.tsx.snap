@@ -105,9 +105,6 @@ exports[`Component: Autocomplete should render 1`] = `
 }
 
 .c0 {
-  width: 100%;
-  max-width: 550px;
-  height: 55px;
   position: relative;
   cursor: pointer;
 }
@@ -219,7 +216,7 @@ exports[`Component: Autocomplete should render 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c5 {
     min-height: 200px;
   }

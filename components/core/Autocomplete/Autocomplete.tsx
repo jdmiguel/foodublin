@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { useState, useEffect, useRef } from 'react';
 import { Loader } from '../Loader/Loader';
 import { Input } from '../Input/Input';
@@ -54,6 +52,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     if (value.length > 2 && isSuggestable) {
       fetchSuggestions(value);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, isSuggestable]);
 
   const hasBorderBottomRadius = !isListboxFocused || (isListboxFocused && value.length < 3);

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledAutocompleteMobile = styled.div<{ disabled: boolean }>`
-  width: 100%;
-  max-width: 550px;
   height: 100%;
   pointer-events: ${({ disabled }) => disabled && 'none'};
 `;

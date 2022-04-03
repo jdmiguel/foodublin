@@ -276,7 +276,7 @@ exports[`Component: Layout should render 1`] = `
 
 .c15 {
   margin-bottom: 60px;
-  padding: 0 10px;
+  padding: 0 30px;
 }
 
 .c21 {
@@ -453,12 +453,6 @@ exports[`Component: Layout should render 1`] = `
 @media only screen and (max-width:330px) {
   .c20 {
     font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c15 {
-    padding: 0 20px;
   }
 }
 
@@ -890,7 +884,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
 
 .c15 {
   margin-bottom: 60px;
-  padding: 0 10px;
+  padding: 0 30px;
 }
 
 .c21 {
@@ -1067,12 +1061,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
 @media only screen and (max-width:330px) {
   .c20 {
     font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c15 {
-    padding: 0 20px;
   }
 }
 
@@ -1425,9 +1413,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 .c12 {
-  width: 100%;
-  max-width: 550px;
-  height: 55px;
   position: relative;
   cursor: pointer;
 }
@@ -1474,13 +1459,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 .c17 {
   width: 100%;
   -webkit-tap-highlight-color: transparent;
-}
-
-.c21 {
-  width: 100%;
-  max-width: 550px;
-  height: 100%;
-  position: initial;
 }
 
 .c22 {
@@ -1639,7 +1617,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 .c10 {
-  width: 85%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1655,10 +1632,13 @@ exports[`Component: Layout should render the extended header 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: 100%;
 }
 
 .c11 {
-  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin: 0 0 25px;
 }
 
@@ -1667,10 +1647,12 @@ exports[`Component: Layout should render the extended header 1`] = `
   width: 100%;
   height: 1px;
   margin: 0 0 25px 0;
-  max-width: 550px;
 }
 
 .c19 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1687,20 +1669,18 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 .c19:first-child {
-  margin-right: 2%;
+  margin-right: 10px;
 }
 
 .c20 {
   width: 100%;
-}
-
-.c20:first-of-type {
-  margin-right: 2%;
-  margin-bottom: 15px;
+  margin: 0 10px 15px 0;
 }
 
 .c31 {
-  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin-bottom: 10px;
 }
 
@@ -1745,11 +1725,11 @@ exports[`Component: Layout should render the extended header 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0 30px;
 }
 
 .c4 {
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 
 .c9 {
@@ -1829,7 +1809,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 .c34 {
   margin-bottom: 60px;
-  padding: 0 10px;
+  padding: 0 30px;
 }
 
 .c40 {
@@ -1884,7 +1864,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c17 {
     min-height: 200px;
   }
@@ -1892,7 +1872,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 @media only screen and (min-width:768px) {
   .c21 {
-    height: 55px;
     position: relative;
   }
 }
@@ -1924,21 +1903,8 @@ exports[`Component: Layout should render the extended header 1`] = `
   }
 }
 
-@media only screen and (min-width:470px) {
-  .c10 {
-    width: 70%;
-  }
-}
-
 @media only screen and (min-width:768px) {
   .c10 {
-    width: 60%;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c10 {
-    width: 58rem;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1946,41 +1912,45 @@ exports[`Component: Layout should render the extended header 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
   }
 }
 
-@media only screen and (min-width:1250px) {
+@media only screen and (min-width:1200px) {
   .c10 {
-    width: 71rem;
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c11 {
+    -webkit-flex: 0.5;
+    -ms-flex: 0.5;
+    flex: 0.5;
+    margin: 0 10px 0 0;
   }
 }
 
 @media only screen and (min-width:992px) {
   .c11 {
-    margin: 0 2% 0 0;
-    width: 39%;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0;
   }
 }
 
-@media only screen and (min-width:1200px) {
-  .c11 {
-    width: 44%;
+@media only screen and (min-width:768px) {
+  .c18 {
+    display: none;
   }
 }
 
 @media only screen and (min-width:992px) {
   .c18 {
+    display: block;
     width: 1px;
     height: 90%;
-    margin: 0 2% 0 0;
+    margin: 0 20px 0;
   }
 }
 
@@ -1989,12 +1959,6 @@ exports[`Component: Layout should render the extended header 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c19 {
-    width: 47%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
     -ms-flex-pack: space-around;
@@ -2009,31 +1973,16 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 @media only screen and (min-width:768px) {
   .c20 {
-    max-width: 270px;
-  }
-
-  .c20:first-of-type {
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c20 {
-    margin-right: 2%;
-    width: 48%;
+    margin: 0 10px 0 0;
   }
 }
 
 @media only screen and (min-width:768px) {
   .c31 {
-    width: 300px;
+    -webkit-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
     margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c31 {
-    width: 10%;
   }
 }
 
@@ -2045,8 +1994,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 @media only screen and (min-width:1200px) {
   .c4 {
-    opacity: 1;
-    visibility: visible;
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -2055,7 +2003,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 @media only screen and (min-width:350px) {
   .c9 {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -2116,12 +2064,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 @media only screen and (max-width:330px) {
   .c39 {
     font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c34 {
-    padding: 0 20px;
   }
 }
 
@@ -2256,7 +2198,7 @@ exports[`Component: Layout should render the extended header 1`] = `
                         near_me
                       </i>
                       <span>
-                        Select any location
+                        Select location
                       </span>
                       <i
                         class="material-icons"
@@ -2277,7 +2219,7 @@ exports[`Component: Layout should render the extended header 1`] = `
                       <h4
                         class="c26"
                       >
-                        Select any location
+                        Select location
                       </h4>
                       <button
                         class="c27"
@@ -2614,7 +2556,7 @@ exports[`Component: Layout should render the extended header 1`] = `
                         restaurant
                       </i>
                       <span>
-                        Select any cuisine
+                        Select cuisine
                       </span>
                       <i
                         class="material-icons"
@@ -2635,7 +2577,7 @@ exports[`Component: Layout should render the extended header 1`] = `
                       <h4
                         class="c26"
                       >
-                        Select any cuisine
+                        Select cuisine
                       </h4>
                       <button
                         class="c27"
@@ -3151,7 +3093,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
 
 .c15 {
   margin-bottom: 60px;
-  padding: 0 10px;
+  padding: 0 30px;
 }
 
 .c22 {
@@ -3334,12 +3276,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
 @media only screen and (max-width:330px) {
   .c21 {
     font-size: 0.85rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c15 {
-    padding: 0 20px;
   }
 }
 

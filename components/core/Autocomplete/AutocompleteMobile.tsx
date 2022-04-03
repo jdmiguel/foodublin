@@ -71,7 +71,8 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     if (value.length > 2 && isSuggestable) {
       fetchSuggestions(value);
     }
-  }, [value, isSuggestable, fetchSuggestions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, isSuggestable]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
