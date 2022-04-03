@@ -177,7 +177,7 @@ exports[`Component: HeaderBar should render 1`] = `
   data-testid="header-bar"
 >
   <div
-    class="c1 grid-container"
+    class="c1"
   >
     <div
       class="c2"

@@ -3,7 +3,6 @@
 exports[`should render highlight card 1`] = `
 .c0 {
   width: 100%;
-  max-width: 350px;
   height: 100%;
   overflow: hidden;
   display: -webkit-box;
@@ -20,7 +19,6 @@ exports[`should render highlight card 1`] = `
 
 .c1 {
   width: 100%;
-  max-width: 350px;
   margin-bottom: 18px;
   border: 1px solid #F3F3F3;
 }
@@ -124,7 +122,6 @@ exports[`should render highlight card 1`] = `
 exports[`should render standart card 1`] = `
 .c0 {
   width: 100%;
-  max-width: 600px;
   height: 100%;
   min-height: 100px;
   overflow: hidden;
@@ -266,7 +263,6 @@ exports[`should render standart card 1`] = `
 exports[`should render suggestion card 1`] = `
 .c0 {
   width: 100%;
-  max-width: 600px;
   height: 100%;
   overflow: hidden;
   display: -webkit-box;

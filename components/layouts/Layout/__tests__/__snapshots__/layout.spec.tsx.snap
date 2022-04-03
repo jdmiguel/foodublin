@@ -275,7 +275,7 @@ exports[`Component: Layout should render 1`] = `
 }
 
 .c15 {
-  margin-bottom: 98px;
+  margin-bottom: 60px;
   padding: 0 10px;
 }
 
@@ -459,7 +459,6 @@ exports[`Component: Layout should render 1`] = `
 @media only screen and (min-width:768px) {
   .c15 {
     padding: 0 20px;
-    margin-bottom: 58px;
   }
 }
 
@@ -505,7 +504,7 @@ exports[`Component: Layout should render 1`] = `
       data-testid="header-bar"
     >
       <div
-        class="c10 grid-container"
+        class="c10"
       >
         <div
           class="c11"
@@ -890,7 +889,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
 }
 
 .c15 {
-  margin-bottom: 98px;
+  margin-bottom: 60px;
   padding: 0 10px;
 }
 
@@ -1074,7 +1073,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
 @media only screen and (min-width:768px) {
   .c15 {
     padding: 0 20px;
-    margin-bottom: 58px;
   }
 }
 
@@ -1120,7 +1118,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
       data-testid="header-bar"
     >
       <div
-        class="c10 grid-container"
+        class="c10"
       >
         <div
           class="c11"
@@ -1830,7 +1828,7 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 .c34 {
-  margin-bottom: 98px;
+  margin-bottom: 60px;
   padding: 0 10px;
 }
 
@@ -2124,7 +2122,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 @media only screen and (min-width:768px) {
   .c34 {
     padding: 0 20px;
-    margin-bottom: 58px;
   }
 }
 
@@ -3153,7 +3150,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
 }
 
 .c15 {
-  margin-bottom: 98px;
+  margin-bottom: 60px;
   padding: 0 10px;
 }
 
@@ -3343,7 +3340,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
 @media only screen and (min-width:768px) {
   .c15 {
     padding: 0 20px;
-    margin-bottom: 58px;
   }
 }
 
@@ -3389,7 +3385,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
       data-testid="header-bar"
     >
       <div
-        class="c10 grid-container"
+        class="c10"
       >
         <div
           class="c11"

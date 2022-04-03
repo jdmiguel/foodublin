@@ -317,7 +317,7 @@ exports[`Component: Header should render collapsed 1`] = `
     data-testid="header-bar"
   >
     <div
-      class="c9 grid-container"
+      class="c9"
     >
       <div
         class="c10"

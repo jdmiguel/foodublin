@@ -15,7 +15,7 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
   breadcrumbs,
 }) => (
   <StyledHeaderBarWrapper data-testid="header-bar">
-    <StyledHeaderBar className="grid-container">
+    <StyledHeaderBar>
       <Breadcrumbs breadcrumbsData={breadcrumbs || []} onClickBreadcrumb={onClickBreadcrumb} />
       <CustomLink onClick={onClickFavorites}>
         <i className="material-icons">bookmarks</i>FAVORITES

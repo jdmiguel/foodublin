@@ -42,7 +42,6 @@ exports[`Component: Autocomplete should render 1`] = `
 
 .c7 {
   width: 100%;
-  max-width: 600px;
   height: 100%;
   overflow: hidden;
   display: -webkit-box;
