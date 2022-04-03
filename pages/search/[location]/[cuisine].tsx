@@ -131,8 +131,8 @@ const Search: NextPage<SearchProps> = ({
     useState(restaurants);
   const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
-  const [onError, setOnError] = useState(false);
-  const [showWarning, setShowWarning] = useState(false);
+  const [isOnError, setIsOnError] = useState(false);
+  const [isWarningShown, setIsWarningShown] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -180,7 +180,7 @@ const Search: NextPage<SearchProps> = ({
           setIsLoadingByScroll(false);
         }
       } else {
-        setOnError(true);
+        setIsOnError(true);
       }
     },
     [cuisineId, currentRestaurants, locationId],
@@ -220,7 +220,7 @@ const Search: NextPage<SearchProps> = ({
       currentTotal >= MAX_RESTAURANT_RETRIEVED &&
       loadedRestaurantsRef.current > maxRestaurantStarter
     ) {
-      setShowWarning(true);
+      setIsWarningShown(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRestaurants]);
@@ -229,6 +229,7 @@ const Search: NextPage<SearchProps> = ({
     sortRef.current = sort;
     orderRef.current = order;
 
+    setIsWarningShown(false);
     handleRestaurants(LoadType.FILTER);
   };
 
@@ -256,7 +257,7 @@ const Search: NextPage<SearchProps> = ({
   };
   const { breadcrumbs } = useBreadcrumbs(searchBreadcrumbs, 'search');
 
-  if (onError || !restaurants) {
+  if (isOnError || !restaurants) {
     return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
   }
 
@@ -271,7 +272,7 @@ const Search: NextPage<SearchProps> = ({
       isLoadingByFilter={isLoadingByFilter}
       isLoadingByScroll={isLoadingByScroll}
       isNavigating={isNavigating}
-      showWarning={showWarning}
+      isWarningShown={isWarningShown}
       onNavigate={(route: string, asRoute?: string) => {
         setIsNavigating(true);
         router.push(route, asRoute && asRoute);

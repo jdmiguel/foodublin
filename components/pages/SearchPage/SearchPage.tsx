@@ -18,7 +18,7 @@ type SearchPageProps = {
   isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
   isNavigating: boolean;
-  showWarning: boolean;
+  isWarningShown: boolean;
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: (id: number, route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
@@ -34,7 +34,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
   onClickCard,
   isLoadingByFilter,
   isLoadingByScroll,
-  showWarning,
+  isWarningShown,
   isNavigating,
   onNavigate,
   breadcrumbs,
@@ -59,7 +59,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
         {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
         <StyledCardsWrapper
           className="grid-x grid-margin-x grid-margin-y"
-          warningShowed={showWarning}
+          isWarningShown={isWarningShown}
         >
           {restaurants.map((restaurant) => (
             <div
@@ -77,7 +77,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
             </div>
           ))}
         </StyledCardsWrapper>
-        {showWarning && (
+        {isWarningShown && (
           <StyledWarning>
             <StyledWarningIcon className="material-icons">warning</StyledWarningIcon>
             You have reached the limit of 100 results because of Zomato API restrinctions

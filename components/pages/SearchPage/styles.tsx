@@ -12,9 +12,9 @@ export const StyledSearchPage = styled.div`
   }
 `;
 
-export const StyledCardsWrapper = styled.div<{ warningShowed: boolean }>`
+export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
   margin-top: 20px;
-  margin-bottom: ${({ warningShowed }) => (warningShowed ? '35px' : '40px')};
+  margin-bottom: ${({ isWarningShown }) => (isWarningShown ? '35px' : '40px')};
   display: flex;
   justify-content: center;
   position: initial;
