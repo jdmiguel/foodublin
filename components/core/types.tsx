@@ -1,3 +1,5 @@
+import { FilterSort, FilterOrder } from '@/store/statics';
+
 export enum LogoSize {
   BIG = 'big',
   SMALL = 'small',
@@ -48,4 +50,14 @@ export type BreadcrumbsData = {
     | BreadcrumbsType.SEARCH
     | BreadcrumbsType.DETAIL
     | BreadcrumbsType.FAVORITES;
+};
+
+export type FilterData = {
+  isActive: boolean;
+  primaryText: string;
+  secondaryText: string;
+  icon: string;
+  sort: FilterSort.COST | FilterSort.RANK;
+  order: FilterOrder.ASC | FilterOrder.DESC;
+  id: number;
 };

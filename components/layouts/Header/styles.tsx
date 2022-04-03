@@ -25,6 +25,7 @@ export const StyledOverlay = styled.div<{ isExtended: boolean }>`
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
   height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
+  padding: 0 30px;
   @media only screen and (min-width: 992px) {
     height: ${({ isExtended }) => (isExtended ? '440px' : '80px')};
   }
@@ -35,16 +36,18 @@ const headerContentCSS = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
 `;
 
 const basicHeaderContentCSS = css`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  max-width: 1140px;
-  @media only screen and (min-width: 1200px) {
+  max-width: 1200px;
+  @media only screen and (min-width: 768px) {
     justify-content: space-between;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 0;
   }
 `;
 
@@ -89,6 +92,7 @@ export const StyledHeaderClaim = styled.h2<{
 export const StyledHeaderBarWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
+  padding: 20px 30px;
 `;
 
 export const StyledHeaderBar = styled.div`
@@ -96,17 +100,6 @@ export const StyledHeaderBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  @media only screen and (min-width: 600px) {
-    padding: 15px 30px;
-  }
-  @media only screen and (min-width: 768px) {
-    padding: 15px 35px;
-  }
-  @media only screen and (min-width: 1024px) {
-    padding: 15px 48px;
-  }
-  @media only screen and (min-width: 1200px) {
-    padding: 15px 30px;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
 `;

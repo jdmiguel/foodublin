@@ -1,23 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledSearchPage = styled.div`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  @media only screen and (min-width: 428px) {
-    margin-bottom: 35px;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin-top: 60px;
-    padding: 0 30px;
-  }
+  max-width: 1200px;
+  margin: 50px auto;
 `;
 
 export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
   margin-top: 20px;
   margin-bottom: ${({ isWarningShown }) => (isWarningShown ? '35px' : '40px')};
-  display: flex;
-  justify-content: center;
-  position: initial;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  gap: 30px;
   @media only screen and (min-width: 640px) {
     justify-content: space-between;
   }

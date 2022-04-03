@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Filter should render 1`] = `
+.c0 {
+  padding: 15px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #D8D8D8;
+  border-radius: 4px;
+  color: #FBA52B;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  background-color: #F3F3F3;
+}
+
+.c1 {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.c2 {
+  display: none;
+}
+
+.c3 {
+  font-size: 1.1rem;
+  line-height: 18px;
+  margin-left: 10px;
+  display: block;
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    width: auto;
+    margin: 0;
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c0:hover {
+    background-color: #FDF3E5;
+    color: #EC7E00;
+  }
+}
+
+@media only screen and (min-width:920px) {
+  .c2 {
+    display: block;
+  }
+}
+
+@media only screen and (min-width:920px) {
+  .c3 {
+    display: none;
+  }
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    cost
+  </span>
+  <span
+    class="c2"
+  >
+     - high to low
+  </span>
+  <i
+    class="c3 material-icons"
+  >
+    keyboard_arrow_up
+  </i>
+</button>
+`;

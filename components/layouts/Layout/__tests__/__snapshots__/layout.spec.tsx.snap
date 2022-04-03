@@ -154,6 +154,7 @@ exports[`Component: Layout should render 1`] = `
   width: 100%;
   background: rgba(0,0,0,0.8);
   height: 80px;
+  padding: 0 30px;
 }
 
 .c4 {
@@ -163,15 +164,15 @@ exports[`Component: Layout should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
-  justify-content: space-around;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -186,6 +187,7 @@ exports[`Component: Layout should render 1`] = `
 .c9 {
   background-color: #F3F3F3;
   border-bottom: 1px solid #D8D8D8;
+  padding: 20px 30px;
 }
 
 .c10 {
@@ -204,7 +206,8 @@ exports[`Component: Layout should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .c16 {
@@ -359,12 +362,18 @@ exports[`Component: Layout should render 1`] = `
   }
 }
 
-@media only screen and (min-width:1200px) {
+@media only screen and (min-width:768px) {
   .c4 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c4 {
+    padding: 0;
   }
 }
 
@@ -381,30 +390,6 @@ exports[`Component: Layout should render 1`] = `
 @media only screen and (min-width:992px) {
   .c8 {
     font-size: 1.6rem;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .c10 {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c10 {
-    padding: 15px 35px;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .c10 {
-    padding: 15px 48px;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c10 {
-    padding: 15px 30px;
   }
 }
 
@@ -762,6 +747,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   width: 100%;
   background: rgba(0,0,0,0.8);
   height: 80px;
+  padding: 0 30px;
 }
 
 .c4 {
@@ -771,15 +757,15 @@ exports[`Component: Layout should render the extended footer 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
-  justify-content: space-around;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -794,6 +780,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
 .c9 {
   background-color: #F3F3F3;
   border-bottom: 1px solid #D8D8D8;
+  padding: 20px 30px;
 }
 
 .c10 {
@@ -812,7 +799,8 @@ exports[`Component: Layout should render the extended footer 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .c16 {
@@ -967,12 +955,18 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
-@media only screen and (min-width:1200px) {
+@media only screen and (min-width:768px) {
   .c4 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c4 {
+    padding: 0;
   }
 }
 
@@ -989,30 +983,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
 @media only screen and (min-width:992px) {
   .c8 {
     font-size: 1.6rem;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .c10 {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c10 {
-    padding: 15px 35px;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .c10 {
-    padding: 15px 48px;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c10 {
-    padding: 15px 30px;
   }
 }
 
@@ -1705,6 +1675,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   width: 100%;
   background: rgba(0,0,0,0.8);
   height: 550px;
+  padding: 0 30px;
 }
 
 .c3 {
@@ -1725,7 +1696,6 @@ exports[`Component: Layout should render the extended header 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 30px;
 }
 
 .c4 {
@@ -2963,6 +2933,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
   width: 100%;
   background: rgba(0,0,0,0.8);
   height: 80px;
+  padding: 0 30px;
 }
 
 .c4 {
@@ -2972,15 +2943,15 @@ exports[`Component: Layout should render the footer veil 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
-  justify-content: space-around;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -2995,6 +2966,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
 .c9 {
   background-color: #F3F3F3;
   border-bottom: 1px solid #D8D8D8;
+  padding: 20px 30px;
 }
 
 .c10 {
@@ -3013,7 +2985,8 @@ exports[`Component: Layout should render the footer veil 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .c16 {
@@ -3176,12 +3149,18 @@ exports[`Component: Layout should render the footer veil 1`] = `
   }
 }
 
-@media only screen and (min-width:1200px) {
+@media only screen and (min-width:768px) {
   .c4 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .c4 {
+    padding: 0;
   }
 }
 
@@ -3198,30 +3177,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
 @media only screen and (min-width:992px) {
   .c8 {
     font-size: 1.6rem;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .c10 {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c10 {
-    padding: 15px 35px;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .c10 {
-    padding: 15px 48px;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c10 {
-    padding: 15px 30px;
   }
 }
 

@@ -1,11 +1,11 @@
 import { Layout } from '../../layouts/Layout/Layout';
-import { Filter } from '../../ui/Filter/Filter';
+import { Filters } from '../../ui/Filters/Filters';
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
 import { StyledSearchPage, StyledCardsWrapper, StyledWarning, StyledWarningIcon } from './styles';
-import { FILTER_DATA, THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
+import { FILTERS, THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
@@ -48,7 +48,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
       onNavigate={onNavigate}
       breadcrumbs={breadcrumbs}
     >
-      <StyledSearchPage data-testid="search-page" className="grid-container">
+      <StyledSearchPage data-testid="search-page">
         <FullLoader isShowed={isLoadingByFilter}>
           <Loader text={DEFAULT_TEXT_LOADING} />
         </FullLoader>
@@ -56,16 +56,10 @@ const SearchPage: React.FC<SearchPageProps> = ({
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${location}`} />
-        {total > 0 && <Filter onClick={onClickFilter} data={FILTER_DATA} />}
-        <StyledCardsWrapper
-          className="grid-x grid-margin-x grid-margin-y"
-          isWarningShown={isWarningShown}
-        >
+        {total > 0 && <Filters onClick={onClickFilter} data={FILTERS} />}
+        <StyledCardsWrapper isWarningShown={isWarningShown}>
           {restaurants.map((restaurant) => (
-            <div
-              className="cell small-12 medium-6 large-4"
-              key={`${restaurant.id}-${restaurant.title}`}
-            >
+            <div key={`${restaurant.id}-${restaurant.title}`}>
               <Card
                 imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                 title={restaurant.title}
