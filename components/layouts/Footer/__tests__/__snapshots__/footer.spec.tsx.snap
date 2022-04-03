@@ -51,17 +51,20 @@ exports[`Component: Footer should render 1`] = `
   color: #D8D8D8;
 }
 
+.c2:first-of-type:after {
+  content: ' | ';
+}
+
 .c2:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c2:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c2:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c3 {
@@ -90,6 +93,12 @@ exports[`Component: Footer should render 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c2:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c2:not(:first-of-type) {
     margin-left: 7px;
@@ -102,9 +111,15 @@ exports[`Component: Footer should render 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c2:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c2:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -155,6 +170,19 @@ exports[`Component: Footer should render 1`] = `
         href="https://jdmiguel.netlify.app/"
       >
         JDMIGUEL
+      </a>
+    </div>
+    <div
+      class="c2"
+    >
+      <p
+        class="c3"
+      />
+      <a
+        class="c5"
+        href="https://foodublin-design-system.netlify.app"
+      >
+        DESIGN SYSTEM
       </a>
     </div>
   </div>
@@ -220,17 +248,20 @@ exports[`Component: Footer should render with veil 1`] = `
   color: #D8D8D8;
 }
 
+.c3:first-of-type:after {
+  content: ' | ';
+}
+
 .c3:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c3:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c3:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c4 {
@@ -265,6 +296,12 @@ exports[`Component: Footer should render with veil 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c3:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c3:not(:first-of-type) {
     margin-left: 7px;
@@ -277,9 +314,15 @@ exports[`Component: Footer should render with veil 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c3:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c3:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -333,6 +376,19 @@ exports[`Component: Footer should render with veil 1`] = `
         href="https://jdmiguel.netlify.app/"
       >
         JDMIGUEL
+      </a>
+    </div>
+    <div
+      class="c3"
+    >
+      <p
+        class="c4"
+      />
+      <a
+        class="c6"
+        href="https://foodublin-design-system.netlify.app"
+      >
+        DESIGN SYSTEM
       </a>
     </div>
   </div>

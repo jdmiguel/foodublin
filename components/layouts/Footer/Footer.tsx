@@ -22,6 +22,10 @@ export const Footer: React.FC<FooterProps> = ({ showVeil = false }) => (
         <StyledText addSeparation={true}>BY</StyledText>
         <CustomLink route="https://jdmiguel.netlify.app/">JDMIGUEL</CustomLink>
       </StyledBlock>
+      <StyledBlock>
+        <StyledText addSeparation={false}></StyledText>
+        <CustomLink route="https://foodublin-design-system.netlify.app">DESIGN SYSTEM</CustomLink>
+      </StyledBlock>
     </StyledFooter>
   </StyledFooterWrapper>
 );

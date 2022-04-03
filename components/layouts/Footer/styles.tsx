@@ -36,6 +36,14 @@ export const StyledFooter = styled.div`
 export const StyledBlock = styled.div`
   display: flex;
   color: ${({ theme }) => theme.palette.LIGHT_SOFT};
+  &:first-of-type {
+    &:after {
+      content: ' | ';
+      @media only screen and (min-width: 1200px) {
+        content: '';
+      }
+    }
+  }
   &:not(:first-of-type) {
     margin-left: 5px;
     @media only screen and (min-width: 375px) {
@@ -44,17 +52,19 @@ export const StyledBlock = styled.div`
   }
   &:not(:last-of-type) {
     &:after {
-      content: ' | ';
       margin-left: 3px;
       @media only screen and (min-width: 375px) {
         margin-left: 5px;
       }
+      @media only screen and (min-width: 1200px) {
+        content: ' | ';
+      }
     }
   }
   &:last-of-type {
-    margin-right: 1px;
-    @media only screen and (min-width: 375px) {
-      margin-right: 3px;
+    display: none;
+    @media only screen and (min-width: 1200px) {
+      display: block;
     }
   }
   ${smallDevicesTextCSS}

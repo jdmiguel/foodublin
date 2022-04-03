@@ -237,17 +237,20 @@ exports[`Component: Layout should render 1`] = `
   color: #D8D8D8;
 }
 
+.c18:first-of-type:after {
+  content: ' | ';
+}
+
 .c18:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c18:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c18:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c19 {
@@ -405,6 +408,12 @@ exports[`Component: Layout should render 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c18:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c18:not(:first-of-type) {
     margin-left: 7px;
@@ -417,9 +426,15 @@ exports[`Component: Layout should render 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c18:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c18:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -562,6 +577,19 @@ exports[`Component: Layout should render 1`] = `
           href="https://jdmiguel.netlify.app/"
         >
           JDMIGUEL
+        </a>
+      </div>
+      <div
+        class="c18"
+      >
+        <p
+          class="c19"
+        />
+        <a
+          class="c5"
+          href="https://foodublin-design-system.netlify.app"
+        >
+          DESIGN SYSTEM
         </a>
       </div>
     </div>
@@ -824,17 +852,20 @@ exports[`Component: Layout should render the extended footer 1`] = `
   color: #D8D8D8;
 }
 
+.c18:first-of-type:after {
+  content: ' | ';
+}
+
 .c18:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c18:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c18:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c19 {
@@ -992,6 +1023,12 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c18:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c18:not(:first-of-type) {
     margin-left: 7px;
@@ -1004,9 +1041,15 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c18:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c18:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -1149,6 +1192,19 @@ exports[`Component: Layout should render the extended footer 1`] = `
           href="https://jdmiguel.netlify.app/"
         >
           JDMIGUEL
+        </a>
+      </div>
+      <div
+        class="c18"
+      >
+        <p
+          class="c19"
+        />
+        <a
+          class="c5"
+          href="https://foodublin-design-system.netlify.app"
+        >
+          DESIGN SYSTEM
         </a>
       </div>
     </div>
@@ -1736,17 +1792,20 @@ exports[`Component: Layout should render the extended header 1`] = `
   color: #D8D8D8;
 }
 
+.c36:first-of-type:after {
+  content: ' | ';
+}
+
 .c36:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c36:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c36:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c37 {
@@ -2014,6 +2073,12 @@ exports[`Component: Layout should render the extended header 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c36:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c36:not(:first-of-type) {
     margin-left: 7px;
@@ -2026,9 +2091,15 @@ exports[`Component: Layout should render the extended header 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c36:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c36:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -2759,6 +2830,19 @@ exports[`Component: Layout should render the extended header 1`] = `
           JDMIGUEL
         </a>
       </div>
+      <div
+        class="c36"
+      >
+        <p
+          class="c37"
+        />
+        <a
+          class="c5"
+          href="https://foodublin-design-system.netlify.app"
+        >
+          DESIGN SYSTEM
+        </a>
+      </div>
     </div>
   </footer>
   <div
@@ -3027,17 +3111,20 @@ exports[`Component: Layout should render the footer veil 1`] = `
   color: #D8D8D8;
 }
 
+.c19:first-of-type:after {
+  content: ' | ';
+}
+
 .c19:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .c19:not(:last-of-type):after {
-  content: ' | ';
   margin-left: 3px;
 }
 
 .c19:last-of-type {
-  margin-right: 1px;
+  display: none;
 }
 
 .c20 {
@@ -3201,6 +3288,12 @@ exports[`Component: Layout should render the footer veil 1`] = `
   }
 }
 
+@media only screen and (min-width:1200px) {
+  .c19:first-of-type:after {
+    content: '';
+  }
+}
+
 @media only screen and (min-width:375px) {
   .c19:not(:first-of-type) {
     margin-left: 7px;
@@ -3213,9 +3306,15 @@ exports[`Component: Layout should render the footer veil 1`] = `
   }
 }
 
-@media only screen and (min-width:375px) {
+@media only screen and (min-width:1200px) {
+  .c19:not(:last-of-type):after {
+    content: ' | ';
+  }
+}
+
+@media only screen and (min-width:1200px) {
   .c19:last-of-type {
-    margin-right: 3px;
+    display: block;
   }
 }
 
@@ -3361,6 +3460,19 @@ exports[`Component: Layout should render the footer veil 1`] = `
           href="https://jdmiguel.netlify.app/"
         >
           JDMIGUEL
+        </a>
+      </div>
+      <div
+        class="c19"
+      >
+        <p
+          class="c20"
+        />
+        <a
+          class="c5"
+          href="https://foodublin-design-system.netlify.app"
+        >
+          DESIGN SYSTEM
         </a>
       </div>
     </div>
