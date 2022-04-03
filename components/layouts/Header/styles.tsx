@@ -54,6 +54,18 @@ export const StyledHeaderContent = styled.div<{ isExtended: boolean }>`
   margin: ${({ isExtended }) => !isExtended && '0 auto'};
 `;
 
+export const StyledCornerWrapper = styled.div`
+  opacity: 0;
+  visibility: hidden;
+  @media only screen and (min-width: 1200px) {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+`;
+
 export const StyledHeaderClaim = styled.h2<{
   isExtended: boolean;
 }>`

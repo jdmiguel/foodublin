@@ -9,6 +9,7 @@ import {
   StyledHeader,
   StyledOverlay,
   StyledHeaderContent,
+  StyledCornerWrapper,
   StyledHeaderClaim,
 } from './styles';
 import { BreadcrumbsData } from '../../core/types';
@@ -39,7 +40,11 @@ export const Header: React.FC<HeaderProps> = ({
       <StyledHeader bgImg={bgImgSrc}>
         <StyledOverlay isExtended={isExtended}>
           <StyledHeaderContent isExtended={isExtended}>
-            {isExtended && <Corner />}
+            {isExtended && (
+              <StyledCornerWrapper>
+                <Corner />
+              </StyledCornerWrapper>
+            )}
             <CustomLink onClick={onClickLogo}>
               <Logo
                 size={isExtended ? LogoSize.BIG : LogoSize.SMALL}

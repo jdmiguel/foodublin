@@ -7,8 +7,6 @@ const greetAnimation = keyframes`
 `;
 
 export const StyledCorner = styled.a`
-  opacity: 0;
-  visibility: hidden;
   svg {
     border: 0;
     color: transparent;
@@ -30,12 +28,5 @@ export const StyledCorner = styled.a`
         animation: ${greetAnimation} 560ms ease-in-out;
       }
     }
-  }
-  @media only screen and (min-width: 1200px) {
-    opacity: 1;
-    visibility: visible;
-    position: fixed;
-    top: 0;
-    right: 0;
   }
 `;
