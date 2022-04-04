@@ -22,10 +22,10 @@ export const StyledInputWrapper = styled.div<{
   border-bottom-right-radius: 0;`}
 `;
 
-export const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
-  transform: translateY(${({ isShowed }) => (isShowed ? '0' : '10px')});
+export const StyledListboxWrapper = styled.div<{ isShown: boolean }>`
+  visibility: ${({ isShown }) => (isShown ? 'visible' : 'hidden')};
+  opacity: ${({ isShown }) => (isShown ? '1' : '0')};
+  transform: translateY(${({ isShown }) => (isShown ? '0' : '10px')});
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;

@@ -21,11 +21,13 @@ import {
   StyledHeader,
   StyledDetailPage,
   StyledInformation,
+  StyledInformationContent,
+  StyledInformationDetails,
   StyledSectionBlock,
   StyledTitleWrapper,
   StyledAddressWrapper,
   StyledPhone,
-  StyledRelatedRestaurants,
+  StyledRelatedRestaurantsWrapper,
 } from './styles';
 import { getFormattedUrlText } from '@/helpers/utils';
 import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
@@ -140,87 +142,79 @@ const DetailPage: React.FC<DetailPageProps> = ({
   };
 
   return (
-    <Layout isExtendedFooter={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
-      <StyledDetailPage data-testid="detail-page" className="grid-container">
-        <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+    <Layout onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
+      <StyledDetailPage data-testid="detail-page">
+        <FullLoader isShown={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {getHeader(imgSrc)}
         <StyledInformation data-testid="detail-info">
           <Title text="Relevant information" />
-          <div className="grid-x">
-            <div className="grid-x cell small-12 large-7">
-              <div className="cell small-12 medium-6">
-                <StyledSectionBlock data-testid="detail-cuisine">
+          <StyledInformationContent>
+            <StyledInformationDetails>
+              <StyledSectionBlock data-testid="detail-cuisine">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Cuisines" />
+                </StyledTitleWrapper>
+                <Cuisines cuisines={cuisinesList} />
+              </StyledSectionBlock>
+              <StyledSectionBlock data-testid="detail-schedule">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Schedule" />
+                </StyledTitleWrapper>
+                <Timmings timmings={getTimmings(timings)} />
+              </StyledSectionBlock>
+              <StyledSectionBlock data-testid="detail-rating">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Rating" />
+                </StyledTitleWrapper>
+                <Rating value={rating} votes={votes} />
+              </StyledSectionBlock>
+              <StyledSectionBlock data-testid="detail-average">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Average Cost" />
+                </StyledTitleWrapper>
+                <BlockText text={`€${average} for two people`} />
+              </StyledSectionBlock>
+              {establishment && (
+                <StyledSectionBlock data-testid="detail-establishment">
                   <StyledTitleWrapper>
-                    <BlockTitle text="Cuisines" />
+                    <BlockTitle text="Establishment type" />
                   </StyledTitleWrapper>
-                  <Cuisines cuisines={cuisinesList} />
+                  <BlockText text={establishment} />
                 </StyledSectionBlock>
-                <StyledSectionBlock data-testid="detail-schedule">
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Schedule" />
-                  </StyledTitleWrapper>
-                  <Timmings timmings={getTimmings(timings)} />
-                </StyledSectionBlock>
-                <StyledSectionBlock data-testid="detail-rating">
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Rating" />
-                  </StyledTitleWrapper>
-                  <Rating value={rating} votes={votes} />
-                </StyledSectionBlock>
-                <StyledSectionBlock data-testid="detail-average">
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Average Cost" />
-                  </StyledTitleWrapper>
-                  <BlockText text={`€${average} for two people`} />
-                </StyledSectionBlock>
-                {establishment && (
-                  <StyledSectionBlock data-testid="detail-establishment">
-                    <StyledTitleWrapper>
-                      <BlockTitle text="Establishment type" />
-                    </StyledTitleWrapper>
-                    <BlockText text={establishment} />
-                  </StyledSectionBlock>
-                )}
-              </div>
-              <div className="cell small-12 medium-6">
-                <StyledSectionBlock data-testid="detail-more-info">
-                  <StyledTitleWrapper>
-                    <BlockTitle text="More info" />
-                  </StyledTitleWrapper>
-                  <Highlights highlights={highlights} />
-                </StyledSectionBlock>
-              </div>
-            </div>
-            <div className="cell small-12 large-5">
-              <StyledAddressWrapper data-testid="detail-address" className="paper">
-                <StyledSectionBlock>
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Phone" />
-                  </StyledTitleWrapper>
-                  <StyledPhone>{phone}</StyledPhone>
-                </StyledSectionBlock>
-                <StyledSectionBlock>
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Address" />
-                  </StyledTitleWrapper>
-                  <Address mapSrc={getMapSrc(name, location)} address={address} />
-                </StyledSectionBlock>
-              </StyledAddressWrapper>
-            </div>
-          </div>
+              )}
+            </StyledInformationDetails>
+            <StyledSectionBlock data-testid="detail-more-info">
+              <StyledTitleWrapper>
+                <BlockTitle text="More info" />
+              </StyledTitleWrapper>
+              <Highlights highlights={highlights} />
+            </StyledSectionBlock>
+            <StyledAddressWrapper data-testid="detail-address" className="paper">
+              <StyledSectionBlock>
+                <StyledTitleWrapper>
+                  <BlockTitle text="Phone" />
+                </StyledTitleWrapper>
+                <StyledPhone>{phone}</StyledPhone>
+              </StyledSectionBlock>
+              <StyledSectionBlock>
+                <StyledTitleWrapper>
+                  <BlockTitle text="Address" />
+                </StyledTitleWrapper>
+                <Address mapSrc={getMapSrc(name, location)} address={address} />
+              </StyledSectionBlock>
+            </StyledAddressWrapper>
+          </StyledInformationContent>
         </StyledInformation>
         {relatedRestaurants.length > 0 && (
-          <StyledRelatedRestaurants data-testid="detail-related">
+          <StyledRelatedRestaurantsWrapper data-testid="detail-related">
             <Title text="Related restaurants" />
-            <div className="grid-x grid-margin-x grid-margin-y">
-              <RelatedRestaurants
-                restaurants={relatedRestaurants}
-                onClickRelatedRestaurant={onClickRelatedRestaurant}
-              />
-            </div>
-          </StyledRelatedRestaurants>
+            <RelatedRestaurants
+              restaurants={relatedRestaurants}
+              onClickRelatedRestaurant={onClickRelatedRestaurant}
+            />
+          </StyledRelatedRestaurantsWrapper>
         )}
       </StyledDetailPage>
     </Layout>

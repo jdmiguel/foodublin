@@ -129,7 +129,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           hasSearchIcon={hasSearchIcon}
         />
       </StyledInputWrapper>
-      <StyledListboxWrapper isShowed={isListboxFocused} data-testid="listbox-wrapper">
+      <StyledListboxWrapper isShown={isListboxFocused} data-testid="listbox-wrapper">
         {loading ? (
           <StyledLoaderWrapper>
             <Loader className="listbox-loader" text={DEFAULT_TEXT_LOADING} />

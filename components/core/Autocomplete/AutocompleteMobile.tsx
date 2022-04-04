@@ -142,7 +142,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
           <span>{labelTextShowed}</span>
         </StyledLabelButton>
       </StyledLabel>
-      <StyledModal isShowed={isModalShowed} data-testid="modal">
+      <StyledModal isShown={isModalShowed} data-testid="modal">
         <StyleHeading>
           <BlockTitle text="Dublin restaurants" />
           <StyleHeadingButton type="button" onClick={handleCloseModal}>
@@ -161,7 +161,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
           />
         </StyledInputWrapper>
         <StyledListboxWrapper
-          isShowed={isListboxFocused}
+          isShown={isListboxFocused}
           data-testid="listbox-wrapper"
           ref={listboxWrapperRef}
         >

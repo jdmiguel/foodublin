@@ -51,12 +51,9 @@ const HeaderTextCSS = css`
 
 export const StyledDetailPage = styled.div`
   margin: 50px auto 70px;
+  max-width: 1200px;
   @media only screen and (min-width: 428px) {
     margin: 50px auto;
-  }
-  @media only screen and (min-width: 1024px) {
-    margin: 75px auto 60px;
-    padding: 0 30px;
   }
 `;
 
@@ -125,8 +122,22 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledInformation = styled.div`
-  margin: 50px 0 0;
+  margin: 50px 0;
 `;
+
+export const StyledInformationContent = styled.div`
+  margin: 50px 0 0;
+  @media only screen and (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  @media only screen and (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
+export const StyledInformationDetails = styled.div``;
 
 export const StyledSectionBlock = styled.div`
   margin-bottom: 30px;
@@ -143,15 +154,28 @@ export const StyledPhone = styled.h5`
 `;
 
 export const StyledAddressWrapper = styled.div`
+  grid-column: 1 / span 4;
   padding: 15px;
   top: 120px;
   height: fit-content;
   position: sticky;
+  @media only screen and (min-width: 992px) {
+    grid-column: 3 / span 2;
+  }
+`;
+
+export const StyledRelatedRestaurantsWrapper = styled.div`
+  @media only screen and (max-width: 1024px) {
+    margin-top: 50px;
+  }
 `;
 
 export const StyledRelatedRestaurants = styled.div`
-  @media only screen and (max-width: 1024px) {
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media only screen and (min-width: 992px) {
+    flex-direction: row;
   }
 `;
 

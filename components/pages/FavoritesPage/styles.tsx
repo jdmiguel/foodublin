@@ -23,7 +23,4 @@ export const StyledCardsWrapper = styled.div`
   @media only screen and (min-width: 768px) {
     margin-top: 35px;
   }
-  @media only screen and (min-width: 992px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;

@@ -14,7 +14,7 @@ const FullCircleLoaderWrapperCSS = css`
 `;
 
 export const StyledFullLoaderWrapper = styled.div<{
-  isShowed: boolean;
+  isShown: boolean;
   type: LoaderType.CIRCLE | LoaderType.LINE;
 }>`
   width: 100%;
@@ -23,6 +23,6 @@ export const StyledFullLoaderWrapper = styled.div<{
   z-index: 1;
   left: 0;
   top: ${({ type }) => (type === LoaderType.CIRCLE ? '80px' : 0)};
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
+  visibility: ${({ isShown }) => (isShown ? 'visible' : 'hidden')};
   ${({ type }) => type === LoaderType.CIRCLE && FullCircleLoaderWrapperCSS}
 `;

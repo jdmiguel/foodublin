@@ -15,12 +15,12 @@ export const StyledMain = styled.main`
 `;
 
 export const StyledScrollUpButtonWrapper = styled.div<{
-  isShowed: boolean;
+  isShown: boolean;
 }>`
   position: fixed;
   bottom: 1%;
   right: 4%;
   z-index: 1;
-  display: ${({ isShowed }) => !isShowed && 'none'};
+  display: ${({ isShown }) => !isShown && 'none'};
   ${fadeInAnimation};
 `;

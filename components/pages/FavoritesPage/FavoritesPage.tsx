@@ -33,9 +33,9 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
   }, []);
 
   return (
-    <Layout isExtendedFooter={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
+    <Layout onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
       <StyledFavoritesPage>
-        <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+        <FullLoader isShown={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {isLoading ? (

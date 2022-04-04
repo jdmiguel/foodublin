@@ -4,7 +4,6 @@ import { BreadcrumbsType } from '../../../core/types';
 
 export const LAYOUT_MOCKS = {
   isExtendedHeader: false,
-  isExtendedFooter: false,
   onNavigate: () => {},
   breadcrumbs: [
     {

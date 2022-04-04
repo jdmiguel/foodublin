@@ -14,9 +14,6 @@ export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
   @media only screen and (min-width: 768px) {
     margin-top: 35px;
   }
-  @media only screen and (min-width: 992px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
 export const StyledWarning = styled.div`

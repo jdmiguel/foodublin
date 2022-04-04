@@ -22,13 +22,8 @@ const HomePage: React.FC<HomePageProps> = ({
   onNavigate,
   breadcrumbs,
 }) => (
-  <Layout
-    isExtendedHeader={true}
-    isExtendedFooter={true}
-    onNavigate={onNavigate}
-    breadcrumbs={breadcrumbs}
-  >
-    <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+  <Layout isExtendedHeader={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
+    <FullLoader isShown={isNavigating} type={LoaderType.LINE}>
       <Loader type={LoaderType.LINE} />
     </FullLoader>
     <StyledHighlights data-testid="highlights">

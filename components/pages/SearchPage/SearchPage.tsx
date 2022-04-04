@@ -42,17 +42,12 @@ const SearchPage: React.FC<SearchPageProps> = ({
   const { totalText, restaurantText } = getTitleText(total);
 
   return (
-    <Layout
-      isExtendedFooter={true}
-      showFooterVeil={isLoadingByScroll}
-      onNavigate={onNavigate}
-      breadcrumbs={breadcrumbs}
-    >
+    <Layout showFooterVeil={isLoadingByScroll} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
       <StyledSearchPage data-testid="search-page">
-        <FullLoader isShowed={isLoadingByFilter}>
+        <FullLoader isShown={isLoadingByFilter}>
           <Loader text={DEFAULT_TEXT_LOADING} />
         </FullLoader>
-        <FullLoader isShowed={isLoadingByScroll || isNavigating} type={LoaderType.LINE}>
+        <FullLoader isShown={isLoadingByScroll || isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${location}`} />

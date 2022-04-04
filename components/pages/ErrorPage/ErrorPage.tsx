@@ -18,7 +18,7 @@ const ErrorPage: React.FC<ErrorPage> = ({ isNavigating, onNavigate }) => {
   return (
     <Layout onNavigate={onNavigate}>
       <StyledErrorPage>
-        <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
+        <FullLoader isShown={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         <StyledTextWrapper>

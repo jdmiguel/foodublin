@@ -53,7 +53,7 @@ describe('Component: Layout', () => {
     const { container } = render(
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <Layout {...LAYOUT_MOCKS} isExtendedFooter={true}>
+          <Layout {...LAYOUT_MOCKS}>
             <div>
               <h1>Hello World</h1>
             </div>
