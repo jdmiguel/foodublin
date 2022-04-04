@@ -11,13 +11,11 @@ export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
   gap: 30px;
-  @media only screen and (min-width: 640px) {
-    justify-content: space-between;
-  }
   @media only screen and (min-width: 768px) {
-    position: relative;
-    justify-content: flex-start;
     margin-top: 35px;
+  }
+  @media only screen and (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

@@ -34,7 +34,7 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
 
   return (
     <Layout isExtendedFooter={true} onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
-      <StyledFavoritesPage className="grid-container">
+      <StyledFavoritesPage>
         <FullLoader isShowed={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
@@ -43,12 +43,9 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({
         ) : (
           <Title text={`${totalText} ${restaurantText} saved in your favorites`} />
         )}
-        <StyledCardsWrapper className="grid-x grid-margin-x grid-margin-y">
+        <StyledCardsWrapper>
           {restaurants.map((restaurant) => (
-            <div
-              className="cell small-12 medium-6 large-4"
-              key={`${restaurant.id}-${restaurant.title}`}
-            >
+            <div key={`${restaurant.id}-${restaurant.title}`}>
               <Card
                 imgSrc={restaurant.imgSrc || THUMB_GENERIC_SRC}
                 title={restaurant.title}

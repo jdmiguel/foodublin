@@ -5,6 +5,7 @@ export const StyledErrorPage = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 70px;
+  max-width: 1200px;
   @media only screen and (min-width: 428px) {
     margin: 50px auto;
   }
