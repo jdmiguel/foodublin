@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
-import { useWindowMeasurement } from '@/components/hooks/useWindowMeasurement';
+import { useWindowSize } from '@/components/hooks/useWindowSize';
 import { useScroll } from '@/components/hooks/useScroll';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 import {
@@ -138,7 +138,7 @@ const Search: NextPage<SearchProps> = ({
 
   const router = useRouter();
 
-  const { height } = useWindowMeasurement();
+  const { windowHeight } = useWindowSize();
 
   const maxRestaurantStarter = MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
   const currentTotal = total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
@@ -202,8 +202,8 @@ const Search: NextPage<SearchProps> = ({
   );
 
   useEffect(() => {
-    if (height) {
-      const isHighDevice = height >= MIN_BIG_DEVICE_HEIGHT;
+    if (windowHeight) {
+      const isHighDevice = windowHeight >= MIN_BIG_DEVICE_HEIGHT;
       const areItemsToLoad = currentTotal > MAX_RESTAURANT_DISPLAYED;
 
       if (isHighDevice && areItemsToLoad && !isLoadingByFilter) {
@@ -211,7 +211,7 @@ const Search: NextPage<SearchProps> = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [height, isLoadingByFilter]);
+  }, [windowHeight, isLoadingByFilter]);
 
   useEffect(() => {
     loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;

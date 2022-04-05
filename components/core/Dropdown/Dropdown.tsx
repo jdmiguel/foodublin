@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useReducer, useCallback, Dispatch } from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { BlockTitle } from '../BlockTitle/BlockTitle';
-import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   StyledDropdown,
   StyledLabel,
@@ -67,8 +67,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
     listReducer,
     listWithIsActiveProp,
   );
-  const { width } = useWindowMeasurement();
-  const bodyLockIsAllowed = width < MAX_MOBILE_WIDTH;
+  const { windowWidth } = useWindowSize();
+  const bodyLockIsAllowed = windowWidth < MAX_MOBILE_WIDTH;
 
   const listRef = useRef<HTMLDivElement>(null);
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);

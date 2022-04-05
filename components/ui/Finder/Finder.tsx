@@ -4,7 +4,7 @@ import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
 import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
 import { Dropdown } from '../../core/Dropdown/Dropdown';
 import { Button } from '../../core/Button/Button';
-import { useWindowMeasurement } from '../../hooks/useWindowMeasurement';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   StyledFinder,
   StyledAutocompleteMobileWrapper,
@@ -43,8 +43,8 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
 
   const dispatch = useDispatch();
 
-  const { width } = useWindowMeasurement();
-  const isMobile = width < MAX_MOBILE_WIDTH;
+  const { windowWidth } = useWindowSize();
+  const isMobile = windowWidth < MAX_MOBILE_WIDTH;
 
   const fetchSuggestions = async (search: string) => {
     setIsAutocompleteLoading(true);
