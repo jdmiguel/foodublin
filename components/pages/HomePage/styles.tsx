@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
 export const StyledHighlights = styled.div`
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin: 50px auto 60px;
+  max-width: 1200px;
   @media only screen and (min-width: 1024px) {
-    margin-top: 75px;
-    padding: 0 30px;
+    margin: 75px auto 60px;
   }
 `;
 
 export const StyledHighlightWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  @media only screen and (min-width: 1200px) {
-    justify-content: space-between;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  gap: 24px;
 `;

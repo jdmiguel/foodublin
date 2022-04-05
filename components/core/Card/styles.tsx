@@ -30,14 +30,12 @@ const SuggestionCardImageCSS = css`
 
 const HighlightCardImageCss = css`
   width: 100%;
-  max-width: 350px;
   margin-bottom: 18px;
   border: 1px solid ${({ theme }) => theme.palette.LIGHT_MEDIUM};
 `;
 
 export const StyledCard = styled.a<{ type: CardType }>`
   width: 100%;
-  max-width: ${({ type }) => (type === CardType.HIGHLIGHT ? '350px' : '600px')};
   height: 100%;
   min-height: ${({ type }) => type === CardType.STANDART && '100px'};
   overflow: hidden;

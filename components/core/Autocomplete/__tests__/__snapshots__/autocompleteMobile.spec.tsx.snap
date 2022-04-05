@@ -42,7 +42,6 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 
 .c13 {
   width: 100%;
-  max-width: 600px;
   height: 100%;
   overflow: hidden;
   display: -webkit-box;
@@ -112,8 +111,6 @@ exports[`Component: AutocompleteMobile should render 1`] = `
 }
 
 .c0 {
-  width: 100%;
-  max-width: 550px;
   height: 100%;
 }
 

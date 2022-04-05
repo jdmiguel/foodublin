@@ -4,13 +4,13 @@
 
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
-import { Filter } from '../Filter';
+import { Filters } from '../Filters';
 import { renderWithTheme } from '../../../../helpers/Theme';
-import { FILTER_DATA } from '../../../../store/statics';
+import { FILTERS } from '../../../../store/statics';
 
 describe('Component: Filter', () => {
   it('should render', () => {
-    const { container } = render(renderWithTheme(<Filter onClick={() => {}} data={FILTER_DATA} />));
+    const { container } = render(renderWithTheme(<Filters onClick={() => {}} data={FILTERS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -19,14 +19,14 @@ describe('Component: Filter', () => {
     const handleClick = jest.fn();
 
     const { getByTestId } = render(
-      renderWithTheme(<Filter onClick={handleClick} data={FILTER_DATA} />),
+      renderWithTheme(<Filters onClick={handleClick} data={FILTERS} />),
     );
 
-    const filter = getByTestId('filter');
-    const firstFilterItem = filter.querySelector('button');
-    const secondFilterItem = filter.querySelector('button:nth-of-type(2)');
-    const thirdFilterItem = filter.querySelector('button:nth-of-type(3)');
-    const fourthFilterItem = filter.querySelector('button:nth-of-type(4)');
+    const filters = getByTestId('filters');
+    const firstFilterItem = filters.querySelector('button');
+    const secondFilterItem = filters.querySelector('button:nth-of-type(2)');
+    const thirdFilterItem = filters.querySelector('button:nth-of-type(3)');
+    const fourthFilterItem = filters.querySelector('button:nth-of-type(4)');
 
     // check if background color of filterItems are the expected ones
     expect(firstFilterItem).toHaveStyleRule('background-color', '#F3F3F3');

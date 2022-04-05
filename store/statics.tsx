@@ -319,8 +319,9 @@ export enum FilterOrder {
   DESC = 'desc',
 }
 
-export const FILTER_DATA = [
+export const FILTERS = [
   {
+    isActive: false,
     primaryText: 'cost',
     secondaryText: '- high to low',
     icon: 'keyboard_arrow_up',
@@ -329,6 +330,7 @@ export const FILTER_DATA = [
     id: 1,
   },
   {
+    isActive: false,
     primaryText: 'cost',
     secondaryText: '- low to high',
     icon: 'keyboard_arrow_down',
@@ -337,6 +339,7 @@ export const FILTER_DATA = [
     id: 2,
   },
   {
+    isActive: false,
     primaryText: 'rank',
     secondaryText: '- high to low',
     icon: 'keyboard_arrow_up',
@@ -345,6 +348,7 @@ export const FILTER_DATA = [
     id: 3,
   },
   {
+    isActive: false,
     primaryText: 'rank',
     secondaryText: '- low to high',
     icon: 'keyboard_arrow_down',

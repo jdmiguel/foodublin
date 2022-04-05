@@ -10,7 +10,6 @@ import { throttle } from 'lodash';
 import appReducer from '@/store/redux/reducer';
 import { AppState } from '@/store/redux/types';
 import { DEFAULT_BREADCRUMB } from '@/store/statics';
-import '@/helpers/Grid/Grid.scss';
 import { GlobalStyles } from '@/helpers/GlobalStylesHelper';
 import { theme } from '@/helpers/Theme';
 

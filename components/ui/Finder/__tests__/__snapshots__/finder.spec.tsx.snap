@@ -96,9 +96,6 @@ exports[`Component: Finder should render 1`] = `
 }
 
 .c2 {
-  width: 100%;
-  max-width: 550px;
-  height: 55px;
   position: relative;
   cursor: pointer;
 }
@@ -145,13 +142,6 @@ exports[`Component: Finder should render 1`] = `
 .c7 {
   width: 100%;
   -webkit-tap-highlight-color: transparent;
-}
-
-.c11 {
-  width: 100%;
-  max-width: 550px;
-  height: 100%;
-  position: initial;
 }
 
 .c12 {
@@ -310,7 +300,6 @@ exports[`Component: Finder should render 1`] = `
 }
 
 .c0 {
-  width: 85%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -326,10 +315,13 @@ exports[`Component: Finder should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: 100%;
 }
 
 .c1 {
-  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin: 0 0 25px;
 }
 
@@ -338,10 +330,12 @@ exports[`Component: Finder should render 1`] = `
   width: 100%;
   height: 1px;
   margin: 0 0 25px 0;
-  max-width: 550px;
 }
 
 .c9 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -354,25 +348,24 @@ exports[`Component: Finder should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 22px;
 }
 
 .c9:first-child {
-  margin-right: 2%;
+  margin-right: 10px;
 }
 
 .c10 {
   width: 100%;
-}
-
-.c10:first-of-type {
-  margin-right: 2%;
-  margin-bottom: 15px;
+  margin: 0 10px 15px 0;
 }
 
 .c21 {
-  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin-bottom: 10px;
+  min-width: 90px;
+  width: 100%;
 }
 
 @media only screen and (min-width:768px) {
@@ -387,7 +380,7 @@ exports[`Component: Finder should render 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c7 {
     min-height: 200px;
   }
@@ -395,7 +388,6 @@ exports[`Component: Finder should render 1`] = `
 
 @media only screen and (min-width:768px) {
   .c11 {
-    height: 55px;
     position: relative;
   }
 }
@@ -427,21 +419,8 @@ exports[`Component: Finder should render 1`] = `
   }
 }
 
-@media only screen and (min-width:470px) {
-  .c0 {
-    width: 70%;
-  }
-}
-
 @media only screen and (min-width:768px) {
   .c0 {
-    width: 60%;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c0 {
-    width: 58rem;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -449,41 +428,45 @@ exports[`Component: Finder should render 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
   }
 }
 
-@media only screen and (min-width:1250px) {
+@media only screen and (min-width:1200px) {
   .c0 {
-    width: 71rem;
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    -webkit-flex: 0.5;
+    -ms-flex: 0.5;
+    flex: 0.5;
+    margin: 0 10px 0 0;
   }
 }
 
 @media only screen and (min-width:992px) {
   .c1 {
-    margin: 0 2% 0 0;
-    width: 39%;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0;
   }
 }
 
-@media only screen and (min-width:1200px) {
-  .c1 {
-    width: 44%;
+@media only screen and (min-width:768px) {
+  .c8 {
+    display: none;
   }
 }
 
 @media only screen and (min-width:992px) {
   .c8 {
+    display: block;
     width: 1px;
     height: 90%;
-    margin: 0 2% 0 0;
+    margin: 0 20px 0;
   }
 }
 
@@ -492,12 +475,6 @@ exports[`Component: Finder should render 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c9 {
-    width: 47%;
     -webkit-box-pack: space-around;
     -webkit-justify-content: space-around;
     -ms-flex-pack: space-around;
@@ -512,31 +489,16 @@ exports[`Component: Finder should render 1`] = `
 
 @media only screen and (min-width:768px) {
   .c10 {
-    max-width: 270px;
-  }
-
-  .c10:first-of-type {
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c10 {
-    margin-right: 2%;
-    width: 48%;
+    margin: 0 10px 0 0;
   }
 }
 
 @media only screen and (min-width:768px) {
   .c21 {
-    width: 300px;
+    -webkit-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
     margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c21 {
-    width: 10%;
   }
 }
 
@@ -610,7 +572,7 @@ exports[`Component: Finder should render 1`] = `
               near_me
             </i>
             <span>
-              Select any location
+              Select location
             </span>
             <i
               class="material-icons"
@@ -631,7 +593,7 @@ exports[`Component: Finder should render 1`] = `
             <h4
               class="c16"
             >
-              Select any location
+              Select location
             </h4>
             <button
               class="c17"
@@ -968,7 +930,7 @@ exports[`Component: Finder should render 1`] = `
               restaurant
             </i>
             <span>
-              Select any cuisine
+              Select cuisine
             </span>
             <i
               class="material-icons"
@@ -989,7 +951,7 @@ exports[`Component: Finder should render 1`] = `
             <h4
               class="c16"
             >
-              Select any cuisine
+              Select cuisine
             </h4>
             <button
               class="c17"

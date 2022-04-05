@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledAutocomplete = styled.div<{ disabled: boolean }>`
-  width: 100%;
-  max-width: 550px;
-  height: 55px;
   position: relative;
   cursor: pointer;
   pointer-events: ${({ disabled }) => disabled && 'none'};
@@ -25,10 +22,10 @@ export const StyledInputWrapper = styled.div<{
   border-bottom-right-radius: 0;`}
 `;
 
-export const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
-  transform: translateY(${({ isShowed }) => (isShowed ? '0' : '10px')});
+export const StyledListboxWrapper = styled.div<{ isShown: boolean }>`
+  visibility: ${({ isShown }) => (isShown ? 'visible' : 'hidden')};
+  opacity: ${({ isShown }) => (isShown ? '1' : '0')};
+  transform: translateY(${({ isShown }) => (isShown ? '0' : '10px')});
   transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;
@@ -57,7 +54,7 @@ export const StyledLoaderWrapper = styled.div`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 768px) {
     min-height: 200px;
   }
 `;
@@ -65,7 +62,7 @@ export const StyledLoaderWrapper = styled.div`
 export const StyledListbox = styled.ul`
   width: 100%;
   -webkit-tap-highlight-color: transparent;
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 768px) {
     min-height: 200px;
   }
 `;
@@ -76,7 +73,7 @@ export const StyledNoSuggestionsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 768px) {
     min-height: 200px;
   }
 `;
@@ -87,7 +84,8 @@ export const StyledErrorWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media only screen and (min-width: 992px) {
+  padding: 20px;
+  @media only screen and (min-width: 768px) {
     min-height: 200px;
   }
 `;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledAutocompleteMobile = styled.div<{ disabled: boolean }>`
-  width: 100%;
-  max-width: 550px;
   height: 100%;
   pointer-events: ${({ disabled }) => disabled && 'none'};
 `;
@@ -36,9 +34,9 @@ export const StyledLabelButton = styled.button`
   }
 `;
 
-export const StyledModal = styled.div<{ isShowed: boolean }>`
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
+export const StyledModal = styled.div<{ isShown: boolean }>`
+  visibility: ${({ isShown }) => (isShown ? 'visible' : 'hidden')};
+  opacity: ${({ isShown }) => (isShown ? '1' : '0')};
   transition: opacity 0.2s ease 0s;
   position: fixed;
   box-sizing: border-box;
@@ -96,9 +94,9 @@ export const StyledInputWrapper = styled.div`
   }
 `;
 
-export const StyledListboxWrapper = styled.div<{ isShowed: boolean }>`
-  visibility: ${({ isShowed }) => (isShowed ? 'visible' : 'hidden')};
-  opacity: ${({ isShowed }) => (isShowed ? '1' : '0')};
+export const StyledListboxWrapper = styled.div<{ isShown: boolean }>`
+  visibility: ${({ isShown }) => (isShown ? 'visible' : 'hidden')};
+  opacity: ${({ isShown }) => (isShown ? '1' : '0')};
   transition: opacity 0.2s ease 0s;
   position: absolute;
   box-sizing: border-box;

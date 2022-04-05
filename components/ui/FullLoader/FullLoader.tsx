@@ -3,17 +3,17 @@ import { StyledFullLoaderWrapper } from './styles';
 import { LoaderType } from '../../core/types';
 
 type FullLoaderProps = {
-  isShowed?: boolean;
+  isShown?: boolean;
   children: ReactNode;
   type?: LoaderType.CIRCLE | LoaderType.LINE;
 };
 
 export const FullLoader: React.FC<FullLoaderProps> = ({
-  isShowed = true,
+  isShown = true,
   children,
   type = LoaderType.CIRCLE,
 }) => (
-  <StyledFullLoaderWrapper isShowed={isShowed} type={type}>
+  <StyledFullLoaderWrapper isShown={isShown} type={type}>
     {children}
   </StyledFullLoaderWrapper>
 );

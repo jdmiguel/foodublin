@@ -10,7 +10,6 @@ import { SCROLL_DELAY, SHOWING_SCROLLUP_BUTTON_HEIGHT, DEFAULT_BREADCRUMB } from
 type LayoutProps = {
   children: ReactNode;
   isExtendedHeader?: boolean;
-  isExtendedFooter?: boolean;
   showFooterVeil?: boolean;
   onNavigate: (route: string, asRoute?: string) => void;
   breadcrumbs?: BreadcrumbsData[];
@@ -23,11 +22,11 @@ export const Layout = ({
   onNavigate,
   breadcrumbs,
 }: LayoutProps) => {
-  const [scrollUpButtonIsShowed, setScrollUpButtonIsShowed] = useState(false);
+  const [scrollUpButtonisShown, setScrollUpButtonisShown] = useState(false);
 
   useScroll(
     ({ scrollTop }) => {
-      setScrollUpButtonIsShowed(scrollTop > SHOWING_SCROLLUP_BUTTON_HEIGHT);
+      setScrollUpButtonisShown(scrollTop > SHOWING_SCROLLUP_BUTTON_HEIGHT);
     },
     [],
     SCROLL_DELAY,
@@ -55,7 +54,7 @@ export const Layout = ({
       />
       <StyledMain>{children}</StyledMain>
       <Footer showVeil={showFooterVeil} />
-      <StyledScrollUpButtonWrapper isShowed={scrollUpButtonIsShowed}>
+      <StyledScrollUpButtonWrapper isShown={scrollUpButtonisShown}>
         <Button fullWidth={false} isFloating={true} onClick={handleScrollUp}>
           <i className="material-icons">arrow_upward</i>
         </Button>

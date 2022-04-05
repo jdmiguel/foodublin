@@ -71,7 +71,8 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     if (value.length > 2 && isSuggestable) {
       fetchSuggestions(value);
     }
-  }, [value, isSuggestable, fetchSuggestions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, isSuggestable]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
@@ -141,7 +142,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
           <span>{labelTextShowed}</span>
         </StyledLabelButton>
       </StyledLabel>
-      <StyledModal isShowed={isModalShowed} data-testid="modal">
+      <StyledModal isShown={isModalShowed} data-testid="modal">
         <StyleHeading>
           <BlockTitle text="Dublin restaurants" />
           <StyleHeadingButton type="button" onClick={handleCloseModal}>
@@ -160,7 +161,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
           />
         </StyledInputWrapper>
         <StyledListboxWrapper
-          isShowed={isListboxFocused}
+          isShown={isListboxFocused}
           data-testid="listbox-wrapper"
           ref={listboxWrapperRef}
         >

@@ -73,6 +73,7 @@ exports[`Component: HeaderBar should render 1`] = `
 .c0 {
   background-color: #F3F3F3;
   border-bottom: 1px solid #D8D8D8;
+  padding: 20px 30px;
 }
 
 .c1 {
@@ -91,7 +92,8 @@ exports[`Component: HeaderBar should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width:330px) {
@@ -148,36 +150,12 @@ exports[`Component: HeaderBar should render 1`] = `
   }
 }
 
-@media only screen and (min-width:600px) {
-  .c1 {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c1 {
-    padding: 15px 35px;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .c1 {
-    padding: 15px 48px;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c1 {
-    padding: 15px 30px;
-  }
-}
-
 <div
   class="c0"
   data-testid="header-bar"
 >
   <div
-    class="c1 grid-container"
+    class="c1"
   >
     <div
       class="c2"

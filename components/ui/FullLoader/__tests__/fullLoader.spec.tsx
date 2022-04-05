@@ -12,7 +12,7 @@ describe('Component: Loader', () => {
   it('should render as circle type and be shown', () => {
     const { container } = render(
       renderWithTheme(
-        <FullLoader isShowed={true}>
+        <FullLoader isShown={true}>
           <Loader />
         </FullLoader>,
       ),
@@ -24,7 +24,7 @@ describe('Component: Loader', () => {
   it('should render as circle type and be hidden', () => {
     const { container } = render(
       renderWithTheme(
-        <FullLoader isShowed={false}>
+        <FullLoader isShown={false}>
           <Loader />
         </FullLoader>,
       ),
@@ -36,7 +36,7 @@ describe('Component: Loader', () => {
   it('should render as line type and be shown', () => {
     const { container } = render(
       renderWithTheme(
-        <FullLoader isShowed={true} type={LoaderType.LINE}>
+        <FullLoader isShown={true} type={LoaderType.LINE}>
           <Loader />
         </FullLoader>,
       ),
@@ -48,7 +48,7 @@ describe('Component: Loader', () => {
   it('should render as line type and be hidden', () => {
     const { container } = render(
       renderWithTheme(
-        <FullLoader isShowed={false} type={LoaderType.LINE}>
+        <FullLoader isShown={false} type={LoaderType.LINE}>
           <Loader />
         </FullLoader>,
       ),

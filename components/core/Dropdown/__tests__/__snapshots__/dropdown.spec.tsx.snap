@@ -7,13 +7,6 @@ exports[`Component: Dropdown should render 1`] = `
   font-weight: 500;
 }
 
-.c0 {
-  width: 100%;
-  max-width: 550px;
-  height: 100%;
-  position: initial;
-}
-
 .c1 {
   position: relative;
   border-radius: 4px;
@@ -172,7 +165,6 @@ exports[`Component: Dropdown should render 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
-    height: 55px;
     position: relative;
   }
 }
@@ -315,13 +307,6 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
   color: #585858;
   font-size: 1.35rem;
   font-weight: 500;
-}
-
-.c0 {
-  width: 100%;
-  max-width: 550px;
-  height: 100%;
-  position: initial;
 }
 
 .c1 {
@@ -504,7 +489,6 @@ exports[`Component: Dropdown should render with clearable option 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
-    height: 55px;
     position: relative;
   }
 }

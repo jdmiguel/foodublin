@@ -34,35 +34,30 @@ export const Header: React.FC<HeaderProps> = ({
   onClickBreadcrumb,
   onClickFavorites,
   breadcrumbs,
-}) => {
-  return (
-    <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
-      <StyledHeader bgImg={bgImgSrc}>
-        <StyledOverlay isExtended={isExtended}>
-          <StyledHeaderContent isExtended={isExtended}>
-            {isExtended && (
-              <StyledCornerWrapper>
-                <Corner />
-              </StyledCornerWrapper>
-            )}
-            <CustomLink onClick={onClickLogo}>
-              <Logo
-                size={isExtended ? LogoSize.BIG : LogoSize.SMALL}
-                logoSrc={'/images/logo.svg'}
-              />
-            </CustomLink>
-            <StyledHeaderClaim isExtended={isExtended}>{claimTxt}</StyledHeaderClaim>
-            {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
-          </StyledHeaderContent>
-        </StyledOverlay>
-      </StyledHeader>
-      {!isExtended && (
-        <HeaderBar
-          onClickBreadcrumb={onClickBreadcrumb}
-          onClickFavorites={onClickFavorites}
-          breadcrumbs={breadcrumbs}
-        />
-      )}
-    </StyledHeaderWrapper>
-  );
-};
+}) => (
+  <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
+    <StyledHeader bgImg={bgImgSrc}>
+      <StyledOverlay isExtended={isExtended}>
+        <StyledHeaderContent isExtended={isExtended}>
+          {isExtended && (
+            <StyledCornerWrapper>
+              <Corner />
+            </StyledCornerWrapper>
+          )}
+          <CustomLink onClick={onClickLogo}>
+            <Logo size={isExtended ? LogoSize.BIG : LogoSize.SMALL} logoSrc={'/images/logo.svg'} />
+          </CustomLink>
+          <StyledHeaderClaim isExtended={isExtended}>{claimTxt}</StyledHeaderClaim>
+          {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
+        </StyledHeaderContent>
+      </StyledOverlay>
+    </StyledHeader>
+    {!isExtended && (
+      <HeaderBar
+        onClickBreadcrumb={onClickBreadcrumb}
+        onClickFavorites={onClickFavorites}
+        breadcrumbs={breadcrumbs}
+      />
+    )}
+  </StyledHeaderWrapper>
+);

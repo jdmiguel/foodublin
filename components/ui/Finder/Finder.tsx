@@ -144,7 +144,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
         <StyledDropdownWrapper>
           <Dropdown
             icon="near_me"
-            labelTxt="Select any location"
+            labelTxt="Select location"
             list={LOCATIONS}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
@@ -155,7 +155,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
         <StyledDropdownWrapper>
           <Dropdown
             icon="restaurant"
-            labelTxt="Select any cuisine"
+            labelTxt="Select cuisine"
             list={CUISINES}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
