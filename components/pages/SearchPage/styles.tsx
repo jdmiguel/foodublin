@@ -10,7 +10,7 @@ export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
   margin-bottom: ${({ isWarningShown }) => (isWarningShown ? '35px' : '40px')};
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
-  gap: 30px;
+  gap: 24px;
   @media only screen and (min-width: 768px) {
     margin-top: 35px;
   }

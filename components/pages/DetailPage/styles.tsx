@@ -156,7 +156,7 @@ export const StyledPhone = styled.h5`
 export const StyledAddressWrapper = styled.div`
   grid-column: 1 / span 4;
   padding: 15px;
-  top: 120px;
+  top: 140px;
   height: fit-content;
   position: sticky;
   @media only screen and (min-width: 992px) {

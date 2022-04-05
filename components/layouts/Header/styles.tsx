@@ -26,7 +26,7 @@ export const StyledOverlay = styled.div<{ isExtended: boolean }>`
   background: rgba(0, 0, 0, 0.8);
   height: ${({ isExtended }) => (isExtended ? '550px' : '80px')};
   padding: 0 30px;
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 768px) {
     height: ${({ isExtended }) => (isExtended ? '440px' : '80px')};
   }
 `;

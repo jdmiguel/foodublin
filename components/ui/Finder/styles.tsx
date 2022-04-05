@@ -55,7 +55,6 @@ export const StyledDropdownsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 22px;
   &:first-child {
     margin-right: 10px;
   }
@@ -80,6 +79,8 @@ export const StyledDropdownWrapper = styled.div`
 export const StyledButtonWrapper = styled.div`
   flex: 1;
   margin-bottom: 10px;
+  min-width: 90px;
+  width: 100%;
   @media only screen and (min-width: 768px) {
     flex: 0;
     margin-bottom: 0;

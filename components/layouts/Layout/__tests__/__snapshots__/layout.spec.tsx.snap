@@ -356,7 +356,7 @@ exports[`Component: Layout should render 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c3 {
     height: 80px;
   }
@@ -949,7 +949,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c3 {
     height: 80px;
   }
@@ -1635,7 +1635,6 @@ exports[`Component: Layout should render the extended header 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 22px;
 }
 
 .c19:first-child {
@@ -1652,6 +1651,8 @@ exports[`Component: Layout should render the extended header 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-bottom: 10px;
+  min-width: 90px;
+  width: 100%;
 }
 
 .c1 {
@@ -1956,7 +1957,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c2 {
     height: 440px;
   }
@@ -3143,7 +3144,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c3 {
     height: 80px;
   }

@@ -11,5 +11,5 @@ export const StyledHighlights = styled.div`
 export const StyledHighlightWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
-  gap: 30px;
+  gap: 24px;
 `;

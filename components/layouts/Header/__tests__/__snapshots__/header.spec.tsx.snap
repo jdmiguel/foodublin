@@ -226,7 +226,7 @@ exports[`Component: Header should render collapsed 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c2 {
     height: 80px;
   }
@@ -739,7 +739,6 @@ exports[`Component: Header should render extended 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 22px;
 }
 
 .c18:first-child {
@@ -756,6 +755,8 @@ exports[`Component: Header should render extended 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-bottom: 10px;
+  min-width: 90px;
+  width: 100%;
 }
 
 .c0 {
@@ -978,7 +979,7 @@ exports[`Component: Header should render extended 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:768px) {
   .c1 {
     height: 440px;
   }
