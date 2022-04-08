@@ -3,7 +3,8 @@
  */
 
 import { Provider } from 'react-redux';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import { createTestStore } from '../../../../helpers/utils';
 import { Finder } from '../Finder';
@@ -16,7 +17,7 @@ describe('Component: Finder', () => {
     store = createTestStore();
   });
 
-  it('should render', () => {
+  it('should render correctly ', () => {
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
@@ -28,9 +29,10 @@ describe('Component: Finder', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should call function on button click', () => {
+  it('should call callback function on click', async () => {
     const handleClick = jest.fn();
-    const { getByText } = render(
+
+    render(
       renderWithTheme(
         <Provider store={store}>
           <Finder onNavigation={handleClick} />
@@ -38,7 +40,7 @@ describe('Component: Finder', () => {
       ),
     );
 
-    fireEvent.click(getByText('Search'));
+    await userEvent.click(screen.getByText('Search'));
 
     expect(handleClick).toHaveBeenCalled();
   });

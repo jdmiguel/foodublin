@@ -2,38 +2,41 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { HeaderBar } from '../HeaderBar';
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { HEADER_BAR_MOCKS } from '../__mocks__/header.mocks';
 
 describe('Component: HeaderBar', () => {
-  it('should render', () => {
+  it('should render correctly', () => {
     const { container } = render(renderWithTheme(<HeaderBar {...HEADER_BAR_MOCKS} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should call function on click breadcrumb', () => {
+  it('should call callback function on click breadcrumb', async () => {
     const handleClickBreadcrumb = jest.fn();
-    const { getByText } = render(
+
+    render(
       renderWithTheme(
         <HeaderBar {...HEADER_BAR_MOCKS} onClickBreadcrumb={handleClickBreadcrumb} />,
       ),
     );
 
-    fireEvent.click(getByText('Home'));
+    await userEvent.click(screen.getByText('Home'));
 
     expect(handleClickBreadcrumb).toHaveBeenCalled();
   });
 
-  it('should call function on click favorites', () => {
+  it('should call callback function on click favorites', async () => {
     const handleClickFavorites = jest.fn();
-    const { getByText } = render(
+
+    render(
       renderWithTheme(<HeaderBar {...HEADER_BAR_MOCKS} onClickFavorites={handleClickFavorites} />),
     );
 
-    fireEvent.click(getByText('FAVORITES'));
+    await userEvent.click(screen.getByText('FAVORITES'));
 
     expect(handleClickFavorites).toHaveBeenCalled();
   });

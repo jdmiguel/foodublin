@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Finder should render 1`] = `
+exports[`Component: Finder should render correctly  1`] = `
 .c4 {
   width: 100%;
   border-radius: 4px;

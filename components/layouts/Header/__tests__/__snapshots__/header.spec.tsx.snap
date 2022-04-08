@@ -21,7 +21,7 @@ exports[`Component: Header should render collapsed 1`] = `
   margin-right: 4px;
 }
 
-.c13 {
+.c15 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -39,7 +39,7 @@ exports[`Component: Header should render collapsed 1`] = `
   font-weight: 400;
 }
 
-.c13 i {
+.c15 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -71,11 +71,29 @@ exports[`Component: Header should render collapsed 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-right: 5px;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c12 {
   white-space: nowrap;
   margin: 0 5px 3px 0;
+}
+
+.c13 {
+  color: #A7A7A7;
+  font-weight: 600;
+  margin-bottom: 3px;
 }
 
 .c0 {
@@ -180,18 +198,18 @@ exports[`Component: Header should render collapsed 1`] = `
 }
 
 @media only screen and (min-width:330px) {
-  .c13 {
+  .c15 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c13 {
+  .c15 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c13:hover {
+  .c15:hover {
     color: #EC7E00;
   }
 }
@@ -223,6 +241,18 @@ exports[`Component: Header should render collapsed 1`] = `
 @media only screen and (min-width:600px) {
   .c12 {
     margin: 0 5px 0 0;
+  }
+}
+
+@media only screen and (max-width:330px) {
+  .c13 {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c13 {
+    margin-bottom: 0;
   }
 }
 
@@ -315,10 +345,28 @@ exports[`Component: Header should render collapsed 1`] = `
             class="c12"
           >
             <a
-              class="c13"
-              disabled=""
+              class="c4"
             >
               Home
+            </a>
+          </div>
+          <span
+            class="c13"
+          >
+            &gt;
+          </span>
+        </div>
+        <div
+          class="c14"
+        >
+          <div
+            class="c12"
+          >
+            <a
+              class="c15"
+              disabled=""
+            >
+              Fake restaurant
             </a>
           </div>
         </div>

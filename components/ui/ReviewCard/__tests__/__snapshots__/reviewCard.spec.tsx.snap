@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: ReviewCard should render 1`] = `
+exports[`Component: ReviewCard should render correctly 1`] = `
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
