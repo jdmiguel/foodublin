@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import { Filter } from '../Filter';
 import { renderWithTheme } from '../../../../helpers/Theme';
@@ -11,20 +12,19 @@ import { FILTERS } from '../../../../store/statics';
 describe('Component: Filter', () => {
   const [firstFilter] = FILTERS;
 
-  it('should render', () => {
+  it('should render correctly', () => {
     const { container } = render(renderWithTheme(<Filter onClick={() => {}} data={firstFilter} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should call function on click any filter', () => {
+  it('should call callback function on click', async () => {
     const handleClick = jest.fn();
 
-    const { getByRole } = render(
-      renderWithTheme(<Filter onClick={handleClick} data={firstFilter} />),
-    );
+    render(renderWithTheme(<Filter onClick={handleClick} data={firstFilter} />));
 
-    fireEvent.click(getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
+
     expect(handleClick).toHaveBeenCalled();
   });
 });

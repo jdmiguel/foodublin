@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Autocomplete should render 1`] = `
+exports[`Component: Autocomplete should render correctly 1`] = `
 .c2 {
   width: 100%;
   border-radius: 4px;
@@ -253,11 +253,9 @@ exports[`Component: Autocomplete should render 1`] = `
   >
     <ul
       class="c5"
-      role="listbox"
     >
       <li
         class="c6"
-        role="option"
       >
         <a
           class="c7"
@@ -295,7 +293,6 @@ exports[`Component: Autocomplete should render 1`] = `
       </li>
       <li
         class="c6"
-        role="option"
       >
         <a
           class="c7"
@@ -333,7 +330,6 @@ exports[`Component: Autocomplete should render 1`] = `
       </li>
       <li
         class="c6"
-        role="option"
       >
         <a
           class="c7"

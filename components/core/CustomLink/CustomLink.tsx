@@ -24,7 +24,7 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
     href={route && route}
     disabled={disabled}
     size={size}
-    onClick={onClick && onClick}
+    onClick={() => onClick?.()}
   >
     {children}
   </StyledCustomLink>

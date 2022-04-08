@@ -26,8 +26,6 @@ type DropdownProps = {
   isReset: boolean;
   onSelect: (path: string) => void;
   onClear: () => void;
-  onFocus?: (event: React.FocusEvent) => void;
-  onBlur?: (event: React.FocusEvent) => void;
 };
 
 type ListAction = { type: 'select'; id: number } | { type: 'clear' };
@@ -56,8 +54,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   isReset,
   onSelect,
   onClear,
-  onFocus,
-  onBlur,
 }) => {
   const listWithIsActiveProp = list.map((listItem) => ({
     ...listItem,
@@ -70,34 +66,34 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const { windowWidth } = useWindowSize();
   const bodyLockIsAllowed = windowWidth < MAX_MOBILE_WIDTH;
 
-  const listRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
   const [currentLabelTxt, setCurrentLabelTxt] = useState(labelTxt);
   const [selectedId, setSelectedId] = useState(0);
   const [isClearable, setIsClearable] = useState(false);
   const [isListboxFocused, setIsListboxFocused] = useState(false);
 
   useEffect(() => {
-    if (isListboxFocused && listRef.current) {
-      listRef.current?.focus();
-      bodyLockIsAllowed && disableBodyScroll(listRef.current);
-    } else if (!isListboxFocused && listRef.current) {
-      bodyLockIsAllowed && enableBodyScroll(listRef.current);
+    if (!listRef.current) {
+      return;
     }
-  }, [isListboxFocused, bodyLockIsAllowed]);
 
-  useEffect(() => {
     if (isListboxFocused) {
-      listRef.current?.focus();
+      listRef.current.focus();
+      bodyLockIsAllowed && disableBodyScroll(listRef.current);
+      return;
     }
-  }, [isListboxFocused]);
+
+    bodyLockIsAllowed && enableBodyScroll(listRef.current);
+  }, [isListboxFocused, bodyLockIsAllowed]);
 
   useEffect(() => {
     if (selectedId) {
       setIsClearable(true);
-    } else {
-      setIsClearable(false);
-      setCurrentLabelTxt(labelTxt);
+      return;
     }
+
+    setIsClearable(false);
+    setCurrentLabelTxt(labelTxt);
   }, [selectedId, labelTxt]);
 
   const handleClear = useCallback(() => {
@@ -119,16 +115,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     dispatch({ type: 'select', id });
     setIsListboxFocused(false);
 
-    onSelect && onSelect(path);
-  };
-
-  const handleFocus = (event: React.FocusEvent) => {
-    onFocus && onFocus(event);
-  };
-
-  const handleBlur = (event: React.FocusEvent) => {
-    setIsListboxFocused(false);
-    onBlur && onBlur(event);
+    onSelect?.(path);
   };
 
   return (
@@ -154,10 +141,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
         )}
       </StyledLabel>
       <StyledListbox
-        role="listbox"
         ref={listRef}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onBlur={() => setIsListboxFocused(false)}
         tabIndex={0}
         data-testid="dropdown-list"
         isListboxFocused={isListboxFocused}
@@ -177,7 +162,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
         {initialListState.map((listItem: ListItem) => (
           <StyledListboxItem
             key={listItem.name}
-            role="option"
             onClick={() => handleSelect(listItem.name, listItem.id, listItem.path)}
           >
             {listItem.iconSrc && (

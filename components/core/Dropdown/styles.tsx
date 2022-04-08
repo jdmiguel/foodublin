@@ -59,7 +59,7 @@ export const StyledLabelButton = styled.button<{ clearable: boolean }>`
   }}
 `;
 
-export const StyledListbox = styled.div<{ isListboxFocused: boolean }>`
+export const StyledListbox = styled.ul<{ isListboxFocused: boolean }>`
   visibility: ${({ isListboxFocused }) => (isListboxFocused ? 'visible' : 'hidden')};
   opacity: ${({ isListboxFocused }) => (isListboxFocused ? '1' : '0')};
   overflow: auto;
@@ -133,7 +133,7 @@ export const StyledMobileHeadingButton = styled.button`
   }
 `;
 
-export const StyledListboxItem = styled.div`
+export const StyledListboxItem = styled.li`
   width: 100%;
   height: 55px;
   border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_MIN};
