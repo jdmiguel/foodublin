@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Button } from '../Button';
 import { BUTTON_MOCK } from '../__mocks__/button.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
@@ -13,7 +14,7 @@ it('should render with a simple text', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-it('should render full width', () => {
+it('should render with full width style', () => {
   const { container } = render(
     renderWithTheme(<Button fullWidth={true}>{BUTTON_MOCK.text}</Button>),
   );
@@ -40,7 +41,7 @@ it('should render with loader', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-it('should render as floating', () => {
+it('should render with floating styles', () => {
   const { container } = render(
     renderWithTheme(
       <Button isFloating={true}>
@@ -53,13 +54,12 @@ it('should render as floating', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-it('should call function on click', () => {
+it('should call callback function on click', async () => {
   const handleClick = jest.fn();
-  const { getByText } = render(
-    renderWithTheme(<Button onClick={handleClick}>{BUTTON_MOCK.text}</Button>),
-  );
 
-  fireEvent.click(getByText('Default button'));
+  render(renderWithTheme(<Button onClick={handleClick}>{BUTTON_MOCK.text}</Button>));
+
+  await userEvent.click(screen.getByText('Default button'));
 
   expect(handleClick).toHaveBeenCalled();
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Finder should render 1`] = `
+exports[`Component: Finder should render correctly  1`] = `
 .c4 {
   width: 100%;
   border-radius: 4px;
@@ -540,7 +540,6 @@ exports[`Component: Finder should render 1`] = `
       >
         <ul
           class="c7"
-          role="listbox"
         />
       </div>
     </div>
@@ -581,10 +580,9 @@ exports[`Component: Finder should render 1`] = `
             </i>
           </button>
         </div>
-        <div
+        <ul
           class="c14"
           data-testid="dropdown-list"
-          role="listbox"
           tabindex="0"
         >
           <div
@@ -606,307 +604,277 @@ exports[`Component: Finder should render 1`] = `
               </i>
             </button>
           </div>
-          <div
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Dublin
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               South City West
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Temple Bar
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Clondalkin
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Swords
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Tallaght
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Blanchardstown
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               South City East
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Dundrum
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Finglas
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Ballyfermot
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Santry
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Lucan
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Artane
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Malahide
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Dun Laoghaire
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Walkinstown
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Blackrock
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Palmerstown
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Rathmines
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Balbriggan
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Ballybrack
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Smithfield
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Crumlin
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Castleknock
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Howth
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Cabra
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Whitehall
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Portmarnock
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <p
               class="c19"
             >
               Kimmage
             </p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
     <div
@@ -939,10 +907,9 @@ exports[`Component: Finder should render 1`] = `
             </i>
           </button>
         </div>
-        <div
+        <ul
           class="c14"
           data-testid="dropdown-list"
-          role="listbox"
           tabindex="0"
         >
           <div
@@ -964,9 +931,8 @@ exports[`Component: Finder should render 1`] = `
               </i>
             </button>
           </div>
-          <div
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Irish"
@@ -978,10 +944,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Irish
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Italian"
@@ -993,10 +958,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Italian
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Mediterranean"
@@ -1008,10 +972,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Mediterranean
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Asian"
@@ -1023,10 +986,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Asian
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Healthy Food"
@@ -1038,10 +1000,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Healthy Food
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Indian"
@@ -1053,10 +1014,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Indian
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Mexican"
@@ -1068,10 +1028,9 @@ exports[`Component: Finder should render 1`] = `
             >
               Mexican
             </p>
-          </div>
-          <div
+          </li>
+          <li
             class="c18"
-            role="option"
           >
             <img
               alt="Fast Food"
@@ -1083,8 +1042,8 @@ exports[`Component: Finder should render 1`] = `
             >
               Fast Food
             </p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

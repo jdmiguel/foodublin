@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Breadcrumbs should render 1`] = `
+exports[`Component: Breadcrumbs should render correctly 1`] = `
 .c3 {
   font-size: 0.85rem;
   display: -webkit-box;

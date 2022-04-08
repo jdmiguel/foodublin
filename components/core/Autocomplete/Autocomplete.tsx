@@ -42,11 +42,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   onRequestError,
   clearSuggestions,
 }) => {
-  const blurDelay = useRef(0);
   const [isSuggestable, setIsSuggestable] = useState(true);
   const [value, setValue] = useState('');
   const [focusedPlaceholder, setFocusedPlaceholder] = useState(PlaceholderText.BLURRED);
   const [isListboxFocused, setIsListboxFocused] = useState(false);
+
+  const blurDelay = useRef(0);
 
   useEffect(() => {
     if (value.length > 2 && isSuggestable) {
@@ -67,16 +68,20 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const handleInputFocus = () => {
     if (!value) {
       setFocusedPlaceholder(PlaceholderText.FOCUSED);
-    } else if (value.length > 2) {
+      return;
+    }
+
+    if (value.length > 2) {
       setIsListboxFocused(true);
     }
   };
 
   const handleInputBlur = () => {
-    !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
-    blurDelay.current = window.setTimeout(() => {
-      setIsListboxFocused(false);
-    }, 100);
+    if (!value) {
+      setFocusedPlaceholder(PlaceholderText.BLURRED);
+    }
+
+    blurDelay.current = window.setTimeout(() => setIsListboxFocused(false), 100);
   };
 
   const handleSuggestionClick = (restaurantId: number, showedText: string) => {
@@ -104,7 +109,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }
 
     return suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
-      <StyledListboxItem key={id} role="option">
+      <StyledListboxItem key={id}>
         <Card
           imgSrc={imgSrc}
           title={title}
@@ -135,7 +140,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             <Loader className="listbox-loader" text={DEFAULT_TEXT_LOADING} />
           </StyledLoaderWrapper>
         ) : (
-          <StyledListbox role="listbox">
+          <StyledListbox>
             {onRequestError ? (
               <StyledErrorWrapper>
                 <BlockText text="Sorry but something was wrong..." />

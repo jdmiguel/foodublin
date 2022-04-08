@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Title should render 1`] = `
+exports[`Component: Title should render correctly 1`] = `
 .c0 {
   font-size: 1.8rem;
   line-height: 30px;

@@ -1,55 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: CustomLink should render disabled 1`] = `
-.c0 {
-  font-size: 0.85rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  color: #FBA52B;
-  pointer-events: none;
-  color: #A7A7A7;
-  font-weight: 400;
-}
-
-.c0 i {
-  font-size: 0.8em;
-  margin-right: 4px;
-}
-
-@media only screen and (min-width:330px) {
-  .c0 {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (min-width:540px) {
-  .c0 {
-    -webkit-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
-  }
-
-  .c0:hover {
-    color: #EC7E00;
-  }
-}
-
-<a
-  class="c0"
-  disabled=""
-  href="/"
->
-  Default link
-</a>
-`;
-
 exports[`Component: CustomLink should render with HTML nodes 1`] = `
 .c0 {
   font-size: 0.85rem;
@@ -141,6 +91,56 @@ exports[`Component: CustomLink should render with a simple text 1`] = `
 
 <a
   class="c0"
+  href="/"
+>
+  Default link
+</a>
+`;
+
+exports[`Component: CustomLink should render with disabled styles 1`] = `
+.c0 {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FBA52B;
+  pointer-events: none;
+  color: #A7A7A7;
+  font-weight: 400;
+}
+
+.c0 i {
+  font-size: 0.8em;
+  margin-right: 4px;
+}
+
+@media only screen and (min-width:330px) {
+  .c0 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width:540px) {
+  .c0 {
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+  }
+
+  .c0:hover {
+    color: #EC7E00;
+  }
+}
+
+<a
+  class="c0"
+  disabled=""
   href="/"
 >
   Default link

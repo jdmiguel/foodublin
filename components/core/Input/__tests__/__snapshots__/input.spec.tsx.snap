@@ -65,7 +65,7 @@ exports[`Component: Input should not render icon 1`] = `
 </div>
 `;
 
-exports[`Component: Input should render including icon and update value 1`] = `
+exports[`Component: Input should render correctly 1`] = `
 .c0 {
   width: 100%;
   border-radius: 4px;
@@ -131,7 +131,7 @@ exports[`Component: Input should render including icon and update value 1`] = `
     placeholder="Default placeholder"
     step="1"
     type="text"
-    value="fake-value"
+    value=""
   />
 </div>
 `;

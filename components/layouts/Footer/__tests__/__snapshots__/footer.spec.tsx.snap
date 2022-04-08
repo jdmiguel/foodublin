@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Footer should render 1`] = `
+exports[`Component: Footer should render correctly 1`] = `
 .c5 {
   font-size: 0.85rem;
   display: -webkit-box;

@@ -2,41 +2,51 @@
  * @jest-environment jsdom
  */
 
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Input, InputProps } from '../Input';
 import { INPUT_PROPS_MOCK } from '../__mocks__/input.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Input', () => {
-  afterEach(cleanup);
-
-  it('should render including icon and update value', () => {
-    const { getByTestId, getByPlaceholderText, getByText, container } = render(
-      renderWithTheme(<Input {...(INPUT_PROPS_MOCK as InputProps)} />),
-    );
-
-    expect(getByTestId('input-wrapper').getAttribute('class')).toContain('default-className');
-
-    const defaultInput = getByPlaceholderText('Default placeholder');
-    expect(defaultInput.getAttribute('type')).toBe('text');
-    expect(defaultInput.getAttribute('value')).toBe('');
-    expect(defaultInput.getAttribute('disabled')).toBeFalsy();
-    expect(defaultInput.getAttribute('readOnly')).toBeFalsy();
-    expect(defaultInput.getAttribute('name')).toBe('default-input-name');
-    expect(defaultInput.getAttribute('id')).toBe('default-input-id');
-    expect(defaultInput.getAttribute('step')).toBe('1');
-    expect(defaultInput.getAttribute('autoComplete')).toBe('no');
-    expect(defaultInput.getAttribute('maxLength')).toBe('70');
-    expect(defaultInput.getAttribute('minLength')).toBe('1');
-    fireEvent.change(defaultInput, {
-      target: { value: 'fake-value' },
-    });
-    expect(defaultInput.getAttribute('value')).toBe('fake-value');
-
-    // testing if icon exits
-    expect(getByText('search').getAttribute('class')).toBe('material-icons');
+  it('should render correctly', () => {
+    const { container } = render(renderWithTheme(<Input {...(INPUT_PROPS_MOCK as InputProps)} />));
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should set the correct attributes', () => {
+    render(renderWithTheme(<Input {...(INPUT_PROPS_MOCK as InputProps)} />));
+
+    expect(screen.getByTestId('input-wrapper').getAttribute('class')).toContain(
+      'default-className',
+    );
+
+    const input = screen.getByPlaceholderText('Default placeholder');
+    expect(input.getAttribute('type')).toBe('text');
+    expect(input.getAttribute('value')).toBe('');
+    expect(input.getAttribute('disabled')).toBeFalsy();
+    expect(input.getAttribute('readOnly')).toBeFalsy();
+    expect(input.getAttribute('name')).toBe('default-input-name');
+    expect(input.getAttribute('id')).toBe('default-input-id');
+    expect(input.getAttribute('step')).toBe('1');
+    expect(input.getAttribute('autoComplete')).toBe('no');
+    expect(input.getAttribute('maxLength')).toBe('70');
+    expect(input.getAttribute('minLength')).toBe('1');
+  });
+
+  it('should set the correct value and call callback function when typing', async () => {
+    const handleChange = jest.fn();
+
+    render(
+      renderWithTheme(<Input {...(INPUT_PROPS_MOCK as InputProps)} onChange={handleChange} />),
+    );
+
+    const input = screen.getByPlaceholderText('Default placeholder');
+    await userEvent.type(input, 'tre');
+
+    expect(input.getAttribute('value')).toBe('tre');
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it('should not render icon', () => {
@@ -44,11 +54,11 @@ describe('Component: Input', () => {
       ...INPUT_PROPS_MOCK,
       hasSearchIcon: false,
     };
-    const { getByTestId, container } = render(
+    const { container } = render(
       renderWithTheme(<Input {...(INPUT_PROPS_MOCK_WITHOUT_ICON as InputProps)} />),
     );
 
-    expect(getByTestId('input-wrapper').getElementsByTagName('IMG')).toHaveLength(0);
+    expect(screen.getByTestId('input-wrapper').getElementsByTagName('IMG')).toHaveLength(0);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

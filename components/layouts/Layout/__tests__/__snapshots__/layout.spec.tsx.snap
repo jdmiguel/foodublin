@@ -2137,7 +2137,6 @@ exports[`Component: Layout should render the extended header 1`] = `
                 >
                   <ul
                     class="c17"
-                    role="listbox"
                   />
                 </div>
               </div>
@@ -2178,10 +2177,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       </i>
                     </button>
                   </div>
-                  <div
+                  <ul
                     class="c24"
                     data-testid="dropdown-list"
-                    role="listbox"
                     tabindex="0"
                   >
                     <div
@@ -2203,307 +2201,277 @@ exports[`Component: Layout should render the extended header 1`] = `
                         </i>
                       </button>
                     </div>
-                    <div
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Dublin
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         South City West
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Temple Bar
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Clondalkin
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Swords
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Tallaght
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Blanchardstown
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         South City East
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Dundrum
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Finglas
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Ballyfermot
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Santry
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Lucan
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Artane
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Malahide
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Dun Laoghaire
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Walkinstown
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Blackrock
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Palmerstown
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Rathmines
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Balbriggan
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Ballybrack
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Smithfield
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Crumlin
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Castleknock
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Howth
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Cabra
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Whitehall
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Portmarnock
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <p
                         class="c29"
                       >
                         Kimmage
                       </p>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div
@@ -2536,10 +2504,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       </i>
                     </button>
                   </div>
-                  <div
+                  <ul
                     class="c24"
                     data-testid="dropdown-list"
-                    role="listbox"
                     tabindex="0"
                   >
                     <div
@@ -2561,9 +2528,8 @@ exports[`Component: Layout should render the extended header 1`] = `
                         </i>
                       </button>
                     </div>
-                    <div
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Irish"
@@ -2575,10 +2541,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Irish
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Italian"
@@ -2590,10 +2555,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Italian
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Mediterranean"
@@ -2605,10 +2569,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Mediterranean
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Asian"
@@ -2620,10 +2583,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Asian
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Healthy Food"
@@ -2635,10 +2597,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Healthy Food
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Indian"
@@ -2650,10 +2611,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Indian
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Mexican"
@@ -2665,10 +2625,9 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Mexican
                       </p>
-                    </div>
-                    <div
+                    </li>
+                    <li
                       class="c28"
-                      role="option"
                     >
                       <img
                         alt="Fast Food"
@@ -2680,8 +2639,8 @@ exports[`Component: Layout should render the extended header 1`] = `
                       >
                         Fast Food
                       </p>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

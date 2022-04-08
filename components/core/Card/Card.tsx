@@ -27,7 +27,7 @@ export const Card: React.FC<CardProps> = ({
 }) => (
   <StyledCard
     className={type === CardType.SUGGESTION ? '' : 'paper'}
-    onClick={onClick && onClick}
+    onClick={() => onClick?.()}
     type={type}
     data-testid="card"
   >

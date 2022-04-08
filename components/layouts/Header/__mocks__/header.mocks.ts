@@ -16,6 +16,12 @@ export const HEADER_MOCKS = {
       asRoute: '/',
       type: BreadcrumbsType.HOME,
     },
+    {
+      text: 'Fake restaurant',
+      route: '/',
+      asRoute: '/',
+      type: BreadcrumbsType.DETAIL,
+    },
   ],
 };
 
@@ -28,6 +34,12 @@ export const HEADER_BAR_MOCKS = {
       route: '/',
       asRoute: '/',
       type: BreadcrumbsType.HOME,
+    },
+    {
+      text: 'Fake restaurant',
+      route: '/',
+      asRoute: '/',
+      type: BreadcrumbsType.DETAIL,
     },
   ],
 };

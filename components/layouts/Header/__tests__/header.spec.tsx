@@ -3,7 +3,8 @@
  */
 
 import { Provider } from 'react-redux';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { createTestStore } from '../../../../helpers/utils';
 import { Header } from '../Header';
 import { HEADER_MOCKS } from '../__mocks__/header.mocks';
@@ -30,15 +31,14 @@ describe('Component: Header', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should call function on click logo', () => {
-    const handleClick = jest.fn();
-    const { getByTestId } = render(
-      renderWithTheme(<Header {...HEADER_MOCKS} onClickLogo={handleClick} />),
-    );
-    const logoLink = getByTestId('header').querySelector('a:first-of-type');
+  it('should call callback function when clicking the logo', async () => {
+    const handleClickLogo = jest.fn();
 
-    fireEvent.click(logoLink);
+    render(renderWithTheme(<Header {...HEADER_MOCKS} onClickLogo={handleClickLogo} />));
+    const logoLink = screen.getByTestId('header').querySelector('a:first-of-type');
 
-    expect(handleClick).toHaveBeenCalled();
+    await userEvent.click(logoLink);
+
+    expect(handleClickLogo).toHaveBeenCalled();
   });
 });

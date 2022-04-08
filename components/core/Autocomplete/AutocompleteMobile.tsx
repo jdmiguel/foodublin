@@ -83,13 +83,18 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
   const handleInputFocus = () => {
     if (!value) {
       setFocusedPlaceholder(PlaceholderText.FOCUSED);
-    } else if (value.length > 2) {
+      return;
+    }
+
+    if (value.length > 2) {
       setIsListboxFocused(true);
     }
   };
 
   const handleInputBlur = () => {
-    !value && setFocusedPlaceholder(PlaceholderText.BLURRED);
+    if (!value) {
+      setFocusedPlaceholder(PlaceholderText.BLURRED);
+    }
   };
 
   const handleSuggestionClick = (restaurantId: number, showedText: string) => {

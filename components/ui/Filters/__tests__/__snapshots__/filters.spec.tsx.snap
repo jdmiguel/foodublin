@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Filter should render 1`] = `
+exports[`Component: Filter should render correctly 1`] = `
 .c1 {
   padding: 15px 8px;
   font-size: 0.9rem;

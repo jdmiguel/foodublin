@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render highlight card 1`] = `
+exports[`should render the highlight card 1`] = `
 .c0 {
   width: 100%;
   height: 100%;
@@ -119,7 +119,7 @@ exports[`should render highlight card 1`] = `
 </a>
 `;
 
-exports[`should render standart card 1`] = `
+exports[`should render the standart card 1`] = `
 .c0 {
   width: 100%;
   height: 100%;
@@ -260,7 +260,7 @@ exports[`should render standart card 1`] = `
 </a>
 `;
 
-exports[`should render suggestion card 1`] = `
+exports[`should render the suggestion card 1`] = `
 .c0 {
   width: 100%;
   height: 100%;

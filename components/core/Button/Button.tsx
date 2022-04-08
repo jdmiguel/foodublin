@@ -23,9 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   <StyledButtonWrapper className={className} fullWidth={fullWidth} isFloating={isFloating}>
     <StyledButton
       type="button"
-      onClick={() => {
-        onClick && onClick();
-      }}
+      onClick={() => onClick?.()}
       fullWidth={fullWidth}
       isFloating={isFloating}
     >

@@ -2,123 +2,140 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dropdown } from '../Dropdown';
 import { DROPDOWN_PROPS_MOCK } from '../__mocks__/dropdown.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Dropdown', () => {
-  it('should render', () => {
+  it('should render correctly', () => {
     const { container } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should show/hide options list', () => {
-    const { getByTestId } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
-    const dropdown = getByTestId('dropdown');
+  it('should hide the suggestions list on blur', async () => {
+    render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
+
+    const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
-    const listbox = dropdown.querySelector('div[role="listbox"]');
-    const closeButton = listbox.querySelector('button');
-    const listboxHeading = closeButton.previousElementSibling.innerHTML;
-    const firstOption = listbox.querySelector('div[role="option"]');
-    const firstOptionText = firstOption.querySelector('p');
 
-    // check if options list is not showed
-    expect(listbox).toHaveStyleRule('opacity', '0');
-    expect(listbox).toHaveStyleRule('visibility', 'hidden');
+    // show suggestions list when clicking the dropdown button
+    await userEvent.click(dropdownButton);
 
-    // show options list by clicking dropdown button
-    // check if listboxHeading match with the regarding text
-    fireEvent.click(dropdownButton);
+    const listbox = screen.queryByRole('list');
 
     expect(listbox).toHaveStyleRule('opacity', '1');
     expect(listbox).toHaveStyleRule('visibility', 'visible');
-    expect(listboxHeading).toContain('Select any option');
 
     // hide options list by activating blur event
-    fireEvent.blur(listbox);
+    listbox.blur();
 
     expect(listbox).toHaveStyleRule('opacity', '0');
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
+  });
+
+  it('should hide the suggestions list when clicking the close button', async () => {
+    render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
+
+    const dropdown = screen.getByTestId('dropdown');
+    const dropdownButton = dropdown.querySelector('button');
+
+    // show suggestions list when clicking the dropdown button
+    await userEvent.click(dropdownButton);
+
+    const listbox = screen.queryByRole('list');
+
+    const closeButton = listbox.querySelector('button');
+    // hide options list when clicking the close button
+    await userEvent.click(closeButton);
+
+    expect(listbox).toHaveStyleRule('opacity', '0');
+    expect(listbox).toHaveStyleRule('visibility', 'hidden');
+  });
+
+  it('should hide the suggestions list when clicking the first suggestion', async () => {
+    render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK} />));
+
+    const dropdown = screen.getByTestId('dropdown');
+    const dropdownButton = dropdown.querySelector('button');
+
+    // show suggestions list when clicking the dropdown button
+    await userEvent.click(dropdownButton);
 
     // show options list by clicking dropdown button
-    fireEvent.click(dropdownButton);
+    await userEvent.click(dropdownButton);
 
-    // hide options list by clicking close button
-    fireEvent.click(closeButton);
-
-    expect(listbox).toHaveStyleRule('opacity', '0');
-    expect(listbox).toHaveStyleRule('visibility', 'hidden');
-
-    // show options list and check if first option is not active
-    fireEvent.click(dropdownButton);
+    const listbox = screen.queryByRole('list');
+    const [firstOption] = screen.getAllByRole('listitem');
+    const firstOptionText = firstOption.querySelector('p');
 
     expect(firstOptionText).toHaveStyleRule('font-weight', '400');
 
     // click first option and hide options list
-    fireEvent.click(firstOption as HTMLDivElement);
+    await userEvent.click(firstOption);
 
     expect(listbox).toHaveStyleRule('opacity', '0');
     expect(listbox).toHaveStyleRule('visibility', 'hidden');
 
     // show options list and check if first option is active
-    fireEvent.click(dropdownButton);
+    await userEvent.click(dropdownButton);
 
     expect(firstOptionText).toHaveStyleRule('font-weight', '600');
   });
 
-  it('should change button name by clicking any option or close button', () => {
+  it('should change the button name when clicking any suggestion or close button', async () => {
     const DROPDOWN_PROPS_MOCK_CLEARABLE = {
       ...DROPDOWN_PROPS_MOCK,
       clearable: true,
     };
+
     const handleSelect = jest.fn();
-    const { getByTestId, getAllByRole } = render(
+
+    render(
       renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} onSelect={handleSelect} />),
     );
-    const dropdown = getByTestId('dropdown');
+    const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
 
     // check if dropdown button name is 'Select any option'
     expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
 
     // click the first option of the list, call callback function and check if button name is 'First option'
-    fireEvent.click(dropdownButton);
-    const [firstOption] = getAllByRole('option');
-    fireEvent.click(firstOption as HTMLDivElement);
+    await userEvent.click(dropdownButton);
+    const [firstOption] = screen.getAllByRole('listitem');
+    await userEvent.click(firstOption);
 
     expect(handleSelect).toHaveBeenCalled();
     expect(dropdownButton.querySelector('span').textContent).toBe('First option');
 
     // click clear button and check if dropdown button name is 'Select any option'
-    fireEvent.click(dropdown.querySelector('button:last-of-type'));
+    await userEvent.click(dropdown.querySelector('button:last-of-type'));
 
     expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
   });
 
-  it('should render with clearable option', () => {
+  it('should render with the clearable option', async () => {
     const DROPDOWN_PROPS_MOCK_CLEARABLE = {
       ...DROPDOWN_PROPS_MOCK,
       clearable: true,
     };
-    const { container, getAllByRole } = render(
-      renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} />),
-    );
-    const dropdown = container.firstChild as HTMLDivElement;
-    const labelButton = dropdown.querySelector('div > button');
 
+    render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_CLEARABLE} />));
+
+    const dropdown = screen.getByTestId('dropdown');
+    const dropdownButton = dropdown.querySelector('button');
     // check if close button doesn't exist
-    expect(labelButton.nextElementSibling).toBeNull();
+    expect(dropdownButton.nextElementSibling).toBeNull();
 
     // click dropdown button, select first option of the dropdown list and click it
     // check if close button exists
-    fireEvent.click(dropdown.querySelector('button'));
-    const [firstOption] = getAllByRole('option');
-    fireEvent.click(firstOption as HTMLDivElement);
+    await userEvent.click(dropdown.querySelector('button'));
+    const [firstOption] = screen.getAllByRole('listitem');
+    await userEvent.click(firstOption);
 
-    expect(labelButton.nextElementSibling).toBeTruthy();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(dropdownButton.nextElementSibling).toBeTruthy();
   });
 
   it('should be disabled', () => {
@@ -126,9 +143,10 @@ describe('Component: Dropdown', () => {
       ...DROPDOWN_PROPS_MOCK,
       disabled: true,
     };
-    const { getByTestId } = render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />));
-    const dropdown = getByTestId('dropdown');
 
+    render(renderWithTheme(<Dropdown {...DROPDOWN_PROPS_MOCK_DISABLED} />));
+
+    const dropdown = screen.getByTestId('dropdown');
     expect(dropdown).toHaveStyleRule('pointer-events', 'none');
   });
 });

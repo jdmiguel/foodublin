@@ -2,85 +2,97 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import 'jest-styled-components';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Autocomplete } from '../Autocomplete';
 import { AUTOCOMPLETE_PROPS_MOCK } from '../__mocks__/autocomplete.mocks';
 import { renderWithTheme } from '../../../../helpers/Theme';
 
 describe('Component: Autocomplete', () => {
-  it('should render', () => {
+  it('should render correctly', () => {
     const { container } = render(renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should show suggestions list with a search of 3 characters and call callback function', () => {
+  it('should show the suggestions list and call callback function when typing 3 characters at least', async () => {
     const handleFetchSuggestion = jest.fn();
-    const { getByTestId, getByPlaceholderText } = render(
+
+    render(
       renderWithTheme(
         <Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} fetchSuggestions={handleFetchSuggestion} />,
       ),
     );
-    const listboxWrapper = getByTestId('listbox-wrapper');
 
     // check if suggestions list is not showed
+    const listboxWrapper = screen.getByTestId('listbox-wrapper');
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
 
-    // text 3 characters, check if suggestions list is showed and call callback function
-    fireEvent.change(getByPlaceholderText('Search for locals...'), {
-      target: { value: 'tre' },
-    });
-
+    // type 3 characters, check if suggestions list is shown and call callback function
+    await userEvent.type(screen.getByPlaceholderText('Search for locals...'), 'tre');
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
     expect(handleFetchSuggestion).toHaveBeenCalled();
   });
 
-  it('should show/hide suggestions list', async () => {
-    const handleSelectSuggestion = jest.fn();
-    const { getByTestId, getByPlaceholderText } = render(
-      renderWithTheme(
-        <Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} selectSuggestion={handleSelectSuggestion} />,
-      ),
-    );
-    const listboxWrapper = getByTestId('listbox-wrapper');
-    const input = getByPlaceholderText('Search for locals...');
+  it('should hide/show the suggestions list on blur/focus', async () => {
+    render(renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />));
 
-    // show suggestions list by texting three characters
-    fireEvent.change(input, { target: { value: 'tre' } });
+    const listboxWrapper = screen.getByTestId('listbox-wrapper');
+    const input = screen.getByPlaceholderText('Search for locals...');
 
-    expect(listboxWrapper).toHaveStyleRule('opacity', '1');
-    expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
+    // show suggestions list when typing three characters
+    await userEvent.type(input, 'tre');
 
-    // hide suggestions list by activating blur event
-    fireEvent.blur(input);
-
+    // hide suggestions list when activating blur event
+    input.blur();
     await waitFor(() => {
       expect(listboxWrapper).toHaveStyleRule('opacity', '0');
       expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
     });
 
-    // show suggestions list by activating focus event
-    fireEvent.focus(input);
-
+    // show suggestions list when activating focus event
+    input.focus();
     expect(listboxWrapper).toHaveStyleRule('opacity', '1');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'visible');
+  });
 
-    // hide suggestions list by texting two characters
-    fireEvent.change(input, { target: { value: 'tr' } });
+  it('should hide the suggestions list when cleaning input', async () => {
+    render(renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} />));
 
-    expect(listboxWrapper).toHaveStyleRule('opacity', '0');
-    expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+    const listboxWrapper = screen.getByTestId('listbox-wrapper');
+    const input = screen.getByPlaceholderText('Search for locals...');
 
-    // show suggestions list by texting three characters
-    // when clicking any suggestion hide suggestions list
-    // and call callback function
-    fireEvent.change(input, { target: { value: 'tre' } });
+    // show suggestions list when typing three characters
+    await userEvent.type(input, 'tre');
+
+    // hide suggestions list when removing characters
+    await userEvent.clear(input);
+    await waitFor(() => {
+      expect(listboxWrapper).toHaveStyleRule('opacity', '0');
+      expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
+    });
+  });
+
+  it('should hide the suggestions list and call callback function when clicking any suggestion', async () => {
+    const handleSelectSuggestion = jest.fn();
+
+    render(
+      renderWithTheme(
+        <Autocomplete {...AUTOCOMPLETE_PROPS_MOCK} selectSuggestion={handleSelectSuggestion} />,
+      ),
+    );
+
+    const listboxWrapper = screen.getByTestId('listbox-wrapper');
+    const input = screen.getByPlaceholderText('Search for locals...');
+
+    // show suggestions list by typing three characters
+    await userEvent.type(input, 'tre');
+
+    // hide suggestions list and call callback function when clicking any suggestion
     const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0].querySelector('a');
-    fireEvent.click(firstSuggestionLink);
-
+    await userEvent.click(firstSuggestionLink);
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');
     expect(handleSelectSuggestion).toHaveBeenCalled();
@@ -92,10 +104,9 @@ describe('Component: Autocomplete', () => {
       disabled: true,
     };
 
-    const { getByTestId } = render(
-      renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />),
-    );
-    const autocomplete = getByTestId('autocomplete');
+    render(renderWithTheme(<Autocomplete {...AUTOCOMPLETE_PROPS_MOCK_DISABLED} />));
+
+    const autocomplete = screen.getByTestId('autocomplete');
     expect(autocomplete).toHaveStyleRule('pointer-events', 'none');
   });
 });

@@ -3,7 +3,7 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 import { Corner } from '../Corner';
 
 describe('<Corner />', () => {
-  it('displays the content properly', () => {
+  it('should render correctly', () => {
     const { container } = render(renderWithTheme(<Corner />));
 
     expect(container).toMatchSnapshot();
