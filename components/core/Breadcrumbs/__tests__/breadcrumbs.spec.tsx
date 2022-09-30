@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
+import 'jest-styled-components';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -51,13 +53,13 @@ describe('Component: Breadcrumbs', () => {
       ),
     );
     const firstStep = screen.getByText('First step');
-    expect(firstStep.parentElement.nextElementSibling).toBeTruthy();
+    expect(firstStep.parentElement?.nextElementSibling).toBeTruthy();
 
     const secondStep = screen.getByText('Second step');
-    expect(secondStep.parentElement.nextElementSibling).toBeTruthy();
+    expect(secondStep.parentElement?.nextElementSibling).toBeTruthy();
 
     const thirdStep = screen.getByText('Third step');
-    expect(thirdStep.parentElement.nextElementSibling).toBeFalsy();
+    expect(thirdStep.parentElement?.nextElementSibling).toBeFalsy();
   });
 
   it('should display the last step with the deactivated styles', () => {

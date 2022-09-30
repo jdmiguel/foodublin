@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render } from '@testing-library/react';
 import { Title } from '../Title';
 import { TITLE_TEXT_MOCK } from '../__mocks__/title.mocks';

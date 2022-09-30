@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
+import 'jest-styled-components';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Autocomplete } from '../Autocomplete';
@@ -92,6 +94,9 @@ describe('Component: Autocomplete', () => {
 
     // hide suggestions list and call callback function when clicking any suggestion
     const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0].querySelector('a');
+
+    if (!firstSuggestionLink) return;
+
     await userEvent.click(firstSuggestionLink);
     expect(listboxWrapper).toHaveStyleRule('opacity', '0');
     expect(listboxWrapper).toHaveStyleRule('visibility', 'hidden');

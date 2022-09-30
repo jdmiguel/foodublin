@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
+import 'jest-styled-components';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown } from '../Dropdown';
@@ -21,6 +23,8 @@ describe('Component: Dropdown', () => {
     const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
 
+    if (!dropdownButton) return;
+
     // show suggestions list when clicking the dropdown button
     await userEvent.click(dropdownButton);
 
@@ -28,6 +32,8 @@ describe('Component: Dropdown', () => {
 
     expect(listbox).toHaveStyleRule('opacity', '1');
     expect(listbox).toHaveStyleRule('visibility', 'visible');
+
+    if (!listbox) return;
 
     // hide options list by activating blur event
     listbox.blur();
@@ -42,12 +48,19 @@ describe('Component: Dropdown', () => {
     const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
 
+    if (!dropdownButton) return;
+
     // show suggestions list when clicking the dropdown button
     await userEvent.click(dropdownButton);
 
     const listbox = screen.queryByRole('list');
 
+    if (!listbox) return;
+
     const closeButton = listbox.querySelector('button');
+
+    if (!closeButton) return;
+
     // hide options list when clicking the close button
     await userEvent.click(closeButton);
 
@@ -60,6 +73,8 @@ describe('Component: Dropdown', () => {
 
     const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
+
+    if (!dropdownButton) return;
 
     // show suggestions list when clicking the dropdown button
     await userEvent.click(dropdownButton);
@@ -99,8 +114,10 @@ describe('Component: Dropdown', () => {
     const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
 
+    if (!dropdownButton) return;
+
     // check if dropdown button name is 'Select any option'
-    expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
+    expect(dropdownButton.querySelector('span')?.textContent).toBe('Select any option');
 
     // click the first option of the list, call callback function and check if button name is 'First option'
     await userEvent.click(dropdownButton);
@@ -108,12 +125,15 @@ describe('Component: Dropdown', () => {
     await userEvent.click(firstOption);
 
     expect(handleSelect).toHaveBeenCalled();
-    expect(dropdownButton.querySelector('span').textContent).toBe('First option');
+    expect(dropdownButton.querySelector('span')?.textContent).toBe('First option');
+
+    const clearButton = dropdown.querySelector('button:last-of-type');
+    if (!clearButton) return;
 
     // click clear button and check if dropdown button name is 'Select any option'
-    await userEvent.click(dropdown.querySelector('button:last-of-type'));
+    await userEvent.click(clearButton);
 
-    expect(dropdownButton.querySelector('span').textContent).toBe('Select any option');
+    expect(dropdownButton.querySelector('span')?.textContent).toBe('Select any option');
   });
 
   it('should render with the clearable option', async () => {
@@ -126,12 +146,15 @@ describe('Component: Dropdown', () => {
 
     const dropdown = screen.getByTestId('dropdown');
     const dropdownButton = dropdown.querySelector('button');
+
+    if (!dropdownButton) return;
+
     // check if close button doesn't exist
     expect(dropdownButton.nextElementSibling).toBeNull();
 
     // click dropdown button, select first option of the dropdown list and click it
     // check if close button exists
-    await userEvent.click(dropdown.querySelector('button'));
+    await userEvent.click(dropdownButton);
     const [firstOption] = screen.getAllByRole('listitem');
     await userEvent.click(firstOption);
 

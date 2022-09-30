@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render } from '@testing-library/react';
 import { Loader } from '../Loader';
 import { LOADER_TEXT_MOCKS } from '../__mocks__/loader.mocks';

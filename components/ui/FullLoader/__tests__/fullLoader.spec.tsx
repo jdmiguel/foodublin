@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render } from '@testing-library/react';
 import { FullLoader } from '../FullLoader';
 import { Loader } from '../../../core/Loader/Loader';
