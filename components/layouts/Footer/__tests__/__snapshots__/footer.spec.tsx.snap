@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: Footer should render correctly 1`] = `
-.c5 {
+.c4 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16,7 +16,7 @@ exports[`Component: Footer should render correctly 1`] = `
   color: #FBA52B;
 }
 
-.c5 i {
+.c4 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -69,26 +69,26 @@ exports[`Component: Footer should render correctly 1`] = `
 
 .c3 {
   font-weight: 300;
-}
-
-.c4 {
-  font-weight: 300;
   margin-right: 3px;
 }
 
+.c5 {
+  font-weight: 300;
+}
+
 @media only screen and (min-width:330px) {
-  .c5 {
+  .c4 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c5 {
+  .c4 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c5:hover {
+  .c4:hover {
     color: #EC7E00;
   }
 }
@@ -136,14 +136,13 @@ exports[`Component: Footer should render correctly 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c4 {
+  .c5 {
     font-size: 0.85rem;
   }
 }
 
 <footer
   class="c0"
-  data-testid="footer"
 >
   <div
     class="c1"
@@ -154,20 +153,16 @@ exports[`Component: Footer should render correctly 1`] = `
       <p
         class="c3"
       >
-        FOODUBLIN ©2022
+        ©2022
       </p>
-    </div>
-    <div
-      class="c2"
-    >
       <p
-        class="c4"
+        class="c3"
       >
         BY
       </p>
       <a
-        class="c5"
-        href="https://jdmiguel.netlify.app/"
+        class="c4"
+        href="https://jdmiguel.netlify.app"
       >
         JDMIGUEL
       </a>
@@ -175,11 +170,25 @@ exports[`Component: Footer should render correctly 1`] = `
     <div
       class="c2"
     >
+      <a
+        class="c4"
+      >
+        <i
+          class="material-icons"
+        >
+          bookmarks
+        </i>
+        FAVORITES
+      </a>
+    </div>
+    <div
+      class="c2"
+    >
       <p
-        class="c3"
+        class="c5"
       />
       <a
-        class="c5"
+        class="c4"
         href="https://foodublin-design-system.netlify.app"
       >
         DESIGN SYSTEM
@@ -190,7 +199,7 @@ exports[`Component: Footer should render correctly 1`] = `
 `;
 
 exports[`Component: Footer should render with veil 1`] = `
-.c6 {
+.c5 {
   font-size: 0.85rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -205,7 +214,7 @@ exports[`Component: Footer should render with veil 1`] = `
   color: #FBA52B;
 }
 
-.c6 i {
+.c5 i {
   font-size: 0.8em;
   margin-right: 4px;
 }
@@ -266,26 +275,26 @@ exports[`Component: Footer should render with veil 1`] = `
 
 .c4 {
   font-weight: 300;
-}
-
-.c5 {
-  font-weight: 300;
   margin-right: 3px;
 }
 
+.c6 {
+  font-weight: 300;
+}
+
 @media only screen and (min-width:330px) {
-  .c6 {
+  .c5 {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width:540px) {
-  .c6 {
+  .c5 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
   }
 
-  .c6:hover {
+  .c5:hover {
     color: #EC7E00;
   }
 }
@@ -339,14 +348,13 @@ exports[`Component: Footer should render with veil 1`] = `
 }
 
 @media only screen and (max-width:330px) {
-  .c5 {
+  .c6 {
     font-size: 0.85rem;
   }
 }
 
 <footer
   class="c0"
-  data-testid="footer"
 >
   <div
     class="c1"
@@ -360,20 +368,16 @@ exports[`Component: Footer should render with veil 1`] = `
       <p
         class="c4"
       >
-        FOODUBLIN ©2022
+        ©2022
       </p>
-    </div>
-    <div
-      class="c3"
-    >
       <p
-        class="c5"
+        class="c4"
       >
         BY
       </p>
       <a
-        class="c6"
-        href="https://jdmiguel.netlify.app/"
+        class="c5"
+        href="https://jdmiguel.netlify.app"
       >
         JDMIGUEL
       </a>
@@ -381,11 +385,25 @@ exports[`Component: Footer should render with veil 1`] = `
     <div
       class="c3"
     >
+      <a
+        class="c5"
+      >
+        <i
+          class="material-icons"
+        >
+          bookmarks
+        </i>
+        FAVORITES
+      </a>
+    </div>
+    <div
+      class="c3"
+    >
       <p
-        class="c4"
+        class="c6"
       />
       <a
-        class="c6"
+        class="c5"
         href="https://foodublin-design-system.netlify.app"
       >
         DESIGN SYSTEM

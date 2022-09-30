@@ -53,7 +53,7 @@ export const Layout = ({
         onNavigationFromFinder={onNavigate}
       />
       <StyledMain>{children}</StyledMain>
-      <Footer showVeil={showFooterVeil} />
+      <Footer showVeil={showFooterVeil} onClickFavorites={() => onNavigate('/favorites')} />
       <StyledScrollUpButtonWrapper isShown={scrollUpButtonisShown}>
         <Button fullWidth={false} isFloating={true} onClick={handleScrollUp}>
           <i className="material-icons">arrow_upward</i>

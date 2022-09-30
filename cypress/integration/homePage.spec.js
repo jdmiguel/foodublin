@@ -4,18 +4,17 @@ describe('HomePage', () => {
   beforeEach(() => {
     cy.visit('/');
 
-    cy.get('[data-testid=header]').as('header');
-    cy.get('[data-testid=footer]').find('> div').last().as('footerContent');
+    cy.get('footer').find('> div').last().as('footerContent');
   });
 
   // HEADER
   it('should display the logo and the claim', () => {
-    cy.get('@header')
+    cy.get('header')
       .find('h1 > img')
       .should('have.attr', 'alt', 'FooDublin Logo')
       .should('have.attr', 'src', '/images/logo.svg');
 
-    cy.get('@header').find('h2').should('have.text', 'Discover the best food in Dublin');
+    cy.get('header').find('h2').should('have.text', 'Discover the best food in Dublin');
   });
 
   it('should not display the headerBar', () => {
@@ -50,7 +49,7 @@ describe('HomePage', () => {
     });
   });
 
-  describe('When clicking a highlight card', () => {
+  describe('when clicking a highlight card', () => {
     it('should navigate to the correct detail page', () => {
       cy.get('[data-testid="card"]').eq(0).click();
 
@@ -59,39 +58,26 @@ describe('HomePage', () => {
   });
 
   // FOOTER
-  it('should display the footer and the footer bar', () => {
-    cy.get('[data-testid="footer"]').should('have.length', 1);
-    cy.get('[data-testid="footer-bar"]').should('have.length', 1);
-  });
-
-  it('should display the correct Breadcrumbs', () => {
-    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home');
+  it('should render the correct href of the jdmiguel link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('JDMIGUEL')
+      .should('have.attr', 'href', 'https://jdmiguel.netlify.app');
   });
 
   describe('when clicking on the favorite link of the footer', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
-      cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
+      cy.get('footer').find('a').contains('FAVORITES').click();
 
       cy.url().should('equal', 'http://localhost:3000/favorites');
     });
   });
 
-  it('should display the footer content text', () => {
-    cy.get('@footerContent').should('have.text', 'GITHUBFOODUBLIN ©2020BYJDMIGUEL');
-  });
-
-  it('should render the correct href of the github link', () => {
+  it('should render the correct href of the design system link', () => {
     cy.get('@footerContent')
       .find('a')
-      .contains('GITHUB')
-      .should('have.attr', 'href', 'https://github.com/jdmiguel/foodublin');
-  });
-
-  it('should render the correct href of the jdmiguel link', () => {
-    cy.get('@footerContent')
-      .find('a')
-      .contains('JDMIGUEL')
-      .should('have.attr', 'href', 'https://jdmiguel.netlify.app/');
+      .contains('DESIGN SYSTEM')
+      .should('have.attr', 'href', 'https://foodublin-design-system.netlify.app');
   });
 });

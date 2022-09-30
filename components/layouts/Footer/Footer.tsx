@@ -9,18 +9,22 @@ import {
 
 type FooterProps = {
   showVeil?: boolean;
+  onClickFavorites: () => void;
 };
 
-export const Footer: React.FC<FooterProps> = ({ showVeil = false }) => (
-  <StyledFooterWrapper data-testid="footer">
+export const Footer: React.FC<FooterProps> = ({ showVeil = false, onClickFavorites }) => (
+  <StyledFooterWrapper>
     {showVeil && <StyledFooterVeil />}
     <StyledFooter>
       <StyledBlock>
-        <StyledText addSeparation={false}>FOODUBLIN ©2022</StyledText>
+        <StyledText addSeparation={true}>©2022</StyledText>
+        <StyledText addSeparation={true}>BY</StyledText>
+        <CustomLink route="https://jdmiguel.netlify.app">JDMIGUEL</CustomLink>
       </StyledBlock>
       <StyledBlock>
-        <StyledText addSeparation={true}>BY</StyledText>
-        <CustomLink route="https://jdmiguel.netlify.app/">JDMIGUEL</CustomLink>
+        <CustomLink onClick={onClickFavorites}>
+          <i className="material-icons">bookmarks</i>FAVORITES
+        </CustomLink>
       </StyledBlock>
       <StyledBlock>
         <StyledText addSeparation={false}></StyledText>
