@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -35,7 +36,9 @@ describe('Component: Header', () => {
     const handleClickLogo = jest.fn();
 
     render(renderWithTheme(<Header {...HEADER_MOCKS} onClickLogo={handleClickLogo} />));
-    const logoLink = screen.getByTestId('header').querySelector('a:first-of-type');
+    const logoLink = screen.getByRole('banner').querySelector('a:first-of-type');
+
+    if (!logoLink) return;
 
     await userEvent.click(logoLink);
 

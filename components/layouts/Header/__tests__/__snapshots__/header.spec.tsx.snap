@@ -295,7 +295,6 @@ exports[`Component: Header should render collapsed 1`] = `
 
 <header
   class="c0"
-  data-testid="header"
 >
   <div
     class="c1"
@@ -1062,7 +1061,6 @@ exports[`Component: Header should render extended 1`] = `
 
 <header
   class=""
-  data-testid="header"
 >
   <div
     class="c0"

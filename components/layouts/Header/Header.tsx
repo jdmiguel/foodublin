@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   onClickFavorites,
   breadcrumbs,
 }) => (
-  <StyledHeaderWrapper data-testid="header" isExtended={isExtended}>
+  <StyledHeaderWrapper isExtended={isExtended}>
     <StyledHeader bgImg={bgImgSrc}>
       <StyledOverlay isExtended={isExtended}>
         <StyledHeaderContent isExtended={isExtended}>

@@ -23,4 +23,11 @@ module.exports = {
   testURL: 'http://localhost',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   coverageDirectory: 'jest-coverage',
+  globals: {
+    'ts-jest': {
+      tsconfig: {
+        jsx: 'react-jsx',
+      },
+    },
+  },
 };

@@ -258,11 +258,11 @@ exports[`Component: Layout should render 1`] = `
 
 .c19 {
   font-weight: 300;
+  margin-right: 3px;
 }
 
 .c20 {
   font-weight: 300;
-  margin-right: 3px;
 }
 
 .c0 {
@@ -446,7 +446,6 @@ exports[`Component: Layout should render 1`] = `
 >
   <header
     class="c1"
-    data-testid="header"
   >
     <div
       class="c2"
@@ -528,7 +527,6 @@ exports[`Component: Layout should render 1`] = `
   </main>
   <footer
     class="c16"
-    data-testid="footer"
   >
     <div
       class="c17"
@@ -539,20 +537,16 @@ exports[`Component: Layout should render 1`] = `
         <p
           class="c19"
         >
-          FOODUBLIN ©2022
+          ©2022
         </p>
-      </div>
-      <div
-        class="c18"
-      >
         <p
-          class="c20"
+          class="c19"
         >
           BY
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app/"
+          href="https://jdmiguel.netlify.app"
         >
           JDMIGUEL
         </a>
@@ -560,8 +554,22 @@ exports[`Component: Layout should render 1`] = `
       <div
         class="c18"
       >
+        <a
+          class="c5"
+        >
+          <i
+            class="material-icons"
+          >
+            bookmarks
+          </i>
+          FAVORITES
+        </a>
+      </div>
+      <div
+        class="c18"
+      >
         <p
-          class="c19"
+          class="c20"
         />
         <a
           class="c5"
@@ -851,11 +859,11 @@ exports[`Component: Layout should render the extended footer 1`] = `
 
 .c19 {
   font-weight: 300;
+  margin-right: 3px;
 }
 
 .c20 {
   font-weight: 300;
-  margin-right: 3px;
 }
 
 .c0 {
@@ -1039,7 +1047,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
 >
   <header
     class="c1"
-    data-testid="header"
   >
     <div
       class="c2"
@@ -1121,7 +1128,6 @@ exports[`Component: Layout should render the extended footer 1`] = `
   </main>
   <footer
     class="c16"
-    data-testid="footer"
   >
     <div
       class="c17"
@@ -1132,20 +1138,16 @@ exports[`Component: Layout should render the extended footer 1`] = `
         <p
           class="c19"
         >
-          FOODUBLIN ©2022
+          ©2022
         </p>
-      </div>
-      <div
-        class="c18"
-      >
         <p
-          class="c20"
+          class="c19"
         >
           BY
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app/"
+          href="https://jdmiguel.netlify.app"
         >
           JDMIGUEL
         </a>
@@ -1153,8 +1155,22 @@ exports[`Component: Layout should render the extended footer 1`] = `
       <div
         class="c18"
       >
+        <a
+          class="c5"
+        >
+          <i
+            class="material-icons"
+          >
+            bookmarks
+          </i>
+          FAVORITES
+        </a>
+      </div>
+      <div
+        class="c18"
+      >
         <p
-          class="c19"
+          class="c20"
         />
         <a
           class="c5"
@@ -1759,11 +1775,11 @@ exports[`Component: Layout should render the extended header 1`] = `
 
 .c38 {
   font-weight: 300;
+  margin-right: 3px;
 }
 
 .c39 {
   font-weight: 300;
-  margin-right: 3px;
 }
 
 .c0 {
@@ -2043,7 +2059,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 >
   <header
     class=""
-    data-testid="header"
   >
     <div
       class="c1"
@@ -2674,7 +2689,6 @@ exports[`Component: Layout should render the extended header 1`] = `
   </main>
   <footer
     class="c35"
-    data-testid="footer"
   >
     <div
       class="c36"
@@ -2685,20 +2699,16 @@ exports[`Component: Layout should render the extended header 1`] = `
         <p
           class="c38"
         >
-          FOODUBLIN ©2022
+          ©2022
         </p>
-      </div>
-      <div
-        class="c37"
-      >
         <p
-          class="c39"
+          class="c38"
         >
           BY
         </p>
         <a
           class="c6"
-          href="https://jdmiguel.netlify.app/"
+          href="https://jdmiguel.netlify.app"
         >
           JDMIGUEL
         </a>
@@ -2706,8 +2716,22 @@ exports[`Component: Layout should render the extended header 1`] = `
       <div
         class="c37"
       >
+        <a
+          class="c6"
+        >
+          <i
+            class="material-icons"
+          >
+            bookmarks
+          </i>
+          FAVORITES
+        </a>
+      </div>
+      <div
+        class="c37"
+      >
         <p
-          class="c38"
+          class="c39"
         />
         <a
           class="c6"
@@ -3005,11 +3029,11 @@ exports[`Component: Layout should render the footer veil 1`] = `
 
 .c20 {
   font-weight: 300;
+  margin-right: 3px;
 }
 
 .c21 {
   font-weight: 300;
-  margin-right: 3px;
 }
 
 .c0 {
@@ -3199,7 +3223,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
 >
   <header
     class="c1"
-    data-testid="header"
   >
     <div
       class="c2"
@@ -3281,7 +3304,6 @@ exports[`Component: Layout should render the footer veil 1`] = `
   </main>
   <footer
     class="c16"
-    data-testid="footer"
   >
     <div
       class="c17"
@@ -3295,20 +3317,16 @@ exports[`Component: Layout should render the footer veil 1`] = `
         <p
           class="c20"
         >
-          FOODUBLIN ©2022
+          ©2022
         </p>
-      </div>
-      <div
-        class="c19"
-      >
         <p
-          class="c21"
+          class="c20"
         >
           BY
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app/"
+          href="https://jdmiguel.netlify.app"
         >
           JDMIGUEL
         </a>
@@ -3316,8 +3334,22 @@ exports[`Component: Layout should render the footer veil 1`] = `
       <div
         class="c19"
       >
+        <a
+          class="c5"
+        >
+          <i
+            class="material-icons"
+          >
+            bookmarks
+          </i>
+          FAVORITES
+        </a>
+      </div>
+      <div
+        class="c19"
+      >
         <p
-          class="c20"
+          class="c21"
         />
         <a
           class="c5"
