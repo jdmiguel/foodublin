@@ -17,18 +17,14 @@ describe('Smoke tests', () => {
     cy.wait('@getRestaurants');
 
     // CLICK FIRST SUGGESTION
-    cy.get('[data-testid=listbox-wrapper]')
-      .last()
-      .find('[role="option"]')
-      .eq(0)
-      .as('firstSuggestion');
+    cy.get('[data-testid=listbox-wrapper]').last().find('li').eq(0).as('firstSuggestion');
 
-    cy.get('@firstSuggestion').find('h4').should('have.text', 'Catch 22');
+    cy.get('@firstSuggestion').find('h4').should('have.text', 'The Cat and Cage');
 
     cy.get('@firstSuggestion').click();
 
     // NAVIGATE TO DETAIL
-    cy.url().should('equal', 'http://localhost:3000/detail/9101675/catch-22');
+    cy.url().should('equal', 'http://localhost:3000/detail/16509210/the-cat-and-cage');
 
     cy.wait(500);
 
@@ -39,7 +35,7 @@ describe('Smoke tests', () => {
     cy.get('@headerButton').should('contain', 'saved');
 
     // CHECK BREADCRUMBS
-    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Catch 22');
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>The Cat and Cage');
 
     // CHECK RELATED RESTAURANTS
     cy.get('[data-testid="detail-related"]').as('relatedRestaurants');
@@ -49,7 +45,7 @@ describe('Smoke tests', () => {
     cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
+    cy.get('[data-testid="header-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -64,25 +60,25 @@ describe('Smoke tests', () => {
 
     cy.get('@savedRestaurant')
       .find('img')
-      .should('have.attr', 'alt', 'Catch 22')
+      .should('have.attr', 'alt', 'The Cat and Cage')
       .should(
         'have.attr',
         'src',
-        'https://b.zmtcdn.com/data/res_imagery/9101675_RESTAURANT_80d2021edc7a45f952bd9c8fbaf8c273.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+        'https://b.zmtcdn.com/data/pictures/0/16509210/8d166a49f337a3e7443bb066e3d15dfb_featured_v2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
       );
 
-    cy.get('@savedRestaurant').find('h4').should('have.text', 'Catch 22');
+    cy.get('@savedRestaurant').find('h4').should('have.text', 'The Cat and Cage');
 
-    cy.get('@savedRestaurant').find('p').should('have.text', 'South City West');
+    cy.get('@savedRestaurant').find('p').should('have.text', 'Drumcondra');
 
     // CHECK BREADCRUMBS
-    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Catch 22>Favorites');
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>The Cat and Cage>Favorites');
 
     // CLICK SECOND BREADCRUMB
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(1).find('a').click();
 
     // NAVIGATE TO DETAIL
-    cy.url().should('equal', 'http://localhost:3000/detail/9101675/catch-22');
+    cy.url().should('equal', 'http://localhost:3000/detail/16509210/the-cat-and-cage');
 
     // CLICK FIRST BREADCRUMB
     cy.get('[data-testid="breadcrumbs"]').find('> div').eq(0).find('a').click();
@@ -98,11 +94,11 @@ describe('Smoke tests', () => {
 
     cy.get('@locationsDropdown').click();
 
-    cy.get('@locationsDropdown').find('[role="option"]').contains('South City West').click();
+    cy.get('@locationsDropdown').find('li').contains('South City West').click();
 
     cy.get('@cuisinesDropdown').click();
 
-    cy.get('@cuisinesDropdown').find('[role="option"]').contains('Mediterranean').click();
+    cy.get('@cuisinesDropdown').find('li').contains('Mediterranean').click();
 
     // NAVIGATE TO SEARCH
     cy.get('[data-testid=finder]').find('button').contains('Search').as('searchButton').click();
@@ -150,7 +146,7 @@ describe('Smoke tests', () => {
     cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
+    cy.get('[data-testid="header-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -169,7 +165,7 @@ describe('Smoke tests', () => {
       .should(
         'have.attr',
         'src',
-        'https://b.zmtcdn.com/data/res_imagery/9101223_RESTAURANT_db4d148c8e5539e1a3883882b24a8406_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+        'https://b.zmtcdn.com/data/pictures/chains/3/9101223/149d4f0a21cea9d29589ca75f9bdf3e7_featured_v2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
       );
 
     cy.get('@savedRestaurant').find('h4').should('have.text', 'Coppinger Row');
@@ -201,7 +197,7 @@ describe('Smoke tests', () => {
     cy.url().should('equal', 'http://localhost:3000/');
   });
 
-  it.only('does not smoke with the complete flow when clicking a Highlight', () => {
+  it('does not smoke with the complete flow when clicking a Highlight', () => {
     // CLICK FIRST HIGHLIGHT
     cy.get('[data-testid="card"]').eq(0).click();
 
@@ -230,7 +226,7 @@ describe('Smoke tests', () => {
     cy.get('@relatedRestaurants').find('[data-testid="card"]').should('have.length', 3);
 
     // CLICK FAVORITES BUTTON
-    cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
+    cy.get('[data-testid="header-bar"]').find('a').contains('FAVORITES').click();
 
     // NAVIGATE TO FAVORITES
     cy.url().should('equal', 'http://localhost:3000/favorites');
@@ -249,7 +245,7 @@ describe('Smoke tests', () => {
       .should(
         'have.attr',
         'src',
-        'https://b.zmtcdn.com/data/res_imagery/9100233_RESTAURANT_8b0a195f5047ea1246c77911e6f18dd4.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
+        'https://b.zmtcdn.com/data/pictures/chains/3/9100233/29b2d4d194b2a4cb5f6bb6ce4a37aac5_featured_v2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
       );
 
     cy.get('@savedRestaurant').find('h4').should('have.text', 'Cleaver East - The Clarence Hotel');
