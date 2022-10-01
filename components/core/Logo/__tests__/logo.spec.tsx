@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render } from '@testing-library/react';
 import { Logo } from '../Logo';
 import { LOGO_SRC_MOCK } from '../__mocks__/logo.mocks';

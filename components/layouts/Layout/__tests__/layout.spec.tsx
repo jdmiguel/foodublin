@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';

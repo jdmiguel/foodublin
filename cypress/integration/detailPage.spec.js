@@ -2,7 +2,6 @@ describe('DetailPage', () => {
   beforeEach(() => {
     cy.visit('/detail/16518534/bunsen');
 
-    cy.get('[data-testid=header]').as('header');
     cy.get('[data-testid="detail-header"]').find('button').as('headerButton');
     cy.get('[data-testid="detail-cuisine"]').as('cuisines');
     cy.get('[data-testid="detail-schedule"]').as('schedules');
@@ -11,34 +10,37 @@ describe('DetailPage', () => {
     cy.get('[data-testid="detail-establishment"]').as('establishment');
     cy.get('[data-testid="detail-more-info"]').as('moreInfo');
     cy.get('[data-testid="detail-address"]').as('address');
-    cy.get('[data-testid="detail-reviews"]').as('reviews');
-    cy.get('[data-testid=footer]').find('> div').last().as('footerContent');
+    cy.get('footer').find('> div').last().as('footerContent');
   });
 
   // HEADER
   it('should display the logo and the claim', () => {
-    cy.get('@header')
+    cy.get('header')
       .find('h1 > img')
       .should('have.attr', 'alt', 'FooDublin Logo')
       .should('have.attr', 'src', '/images/logo.svg');
 
-    cy.get('@header').find('h2').should('have.text', 'Discover the best food in Dublin');
+    cy.get('header').find('h2').should('have.text', 'Discover the best food in Dublin');
   });
 
   it('should display the headerBar', () => {
     cy.get('[data-testid=header-bar]').should('have.length', 1);
   });
 
-  describe('when clicking on the back button of the header', () => {
+  it('should display the correct Breadcrumbs', () => {
+    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Bunsen');
+  });
+
+  describe('when clicking on the first breadcrumb', () => {
     it('should navigate to the home page', () => {
-      // Click back button
-      cy.get('[data-testid="header-bar"]').find('a').contains('BACK').click();
+      // Click breadcrumb link
+      cy.get('[data-testid="breadcrumbs"]').find('a').contains('Home').click();
 
       cy.url().should('equal', 'http://localhost:3000/');
     });
   });
 
-  describe('when clicking on the favorite link of the header', () => {
+  describe('when clicking on the favorite link', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
       cy.get('[data-testid="header-bar"]').find('a').contains('FAVORITES').click();
@@ -84,11 +86,8 @@ describe('DetailPage', () => {
     cy.get('@schedules').find('h4').should('have.text', 'Schedule');
 
     cy.get('@schedules').find('li').eq(0).should('have.text', 'Mon-Wed : 12:30 PM to 9:30 PM');
-
     cy.get('@schedules').find('li').eq(1).should('have.text', 'Thu-Fri : 12 Noon to 10:30 PM');
-
     cy.get('@schedules').find('li').eq(2).should('have.text', 'Sat : 12:30 PM to 10:30 PM');
-
     cy.get('@schedules').find('li').eq(3).should('have.text', 'Sun : 1 PM to 9 PM');
   });
 
@@ -188,188 +187,27 @@ describe('DetailPage', () => {
       .should('have.text', '36 Wexford Street, South City West, Dublin 2');
   });
 
-  it('should display the reviews details', () => {
-    cy.get('@reviews').scrollIntoView({ duration: 200, easing: 'linear' });
-    cy.get('@reviews').find('h4').should('have.text', 'Reviews');
-
-    // First review
-    cy.get('@reviews').find('> div > div').eq(1).as('firstReview');
-    cy.get('@firstReview')
-      .find('> div')
-      .eq(0)
-      .find('img')
-      .should(
-        'have.attr',
-        'src',
-        'https://b.zmtcdn.com/images/user_avatars/pizza_2x.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
-      );
-    cy.get('@firstReview').find('> div').eq(0).find('p').should('have.text', 'Aadavan');
-
-    cy.get('@firstReview').find('> div').eq(1).as('firstReviewRating');
-
-    cy.get('@firstReviewRating').find('i').eq(0).should('have.text', 'star');
-    cy.get('@firstReviewRating').find('i').eq(1).should('have.text', 'star');
-    cy.get('@firstReviewRating').find('i').eq(2).should('have.text', 'star');
-    cy.get('@firstReviewRating').find('i').eq(3).should('have.text', 'star');
-    cy.get('@firstReviewRating').find('i').eq(4).should('have.text', 'star_outline');
-    cy.get('@firstReviewRating').find('p').should('have.text', 'Mar 22, 2020');
-
-    cy.get('@firstReview').find('> p').should('have.text', 'Great!');
-
-    // Second review
-    cy.get('@reviews').find('> div > div').eq(2).as('secondReview');
-    cy.get('@secondReview')
-      .find('> div')
-      .eq(0)
-      .find('img')
-      .should(
-        'have.attr',
-        'src',
-        'https://b.zmtcdn.com/data/user_profile_pictures/262/1ddce2637153d6303fac71cdd85bc262.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A',
-      );
-    cy.get('@secondReview')
-      .find('> div')
-      .eq(0)
-      .find('p')
-      .should('have.text', 'Blueberries & Bourbon');
-
-    cy.get('@secondReview').find('> div').eq(1).as('secondReviewRating');
-
-    cy.get('@secondReviewRating').find('i').eq(0).should('have.text', 'star');
-    cy.get('@secondReviewRating').find('i').eq(1).should('have.text', 'star');
-    cy.get('@secondReviewRating').find('i').eq(2).should('have.text', 'star');
-    cy.get('@secondReviewRating').find('i').eq(3).should('have.text', 'star');
-    cy.get('@secondReviewRating').find('i').eq(4).should('have.text', 'star_outline');
-    cy.get('@secondReviewRating').find('p').should('have.text', 'Mar 21, 2020');
-
-    cy.get('@secondReview').find('> p').should('have.text', 'Great!');
-
-    // Third review
-    cy.get('@reviews').find('> div > div').eq(3).as('thirdReview');
-    cy.get('@thirdReview')
-      .find('> div')
-      .eq(0)
-      .find('img')
-      .should(
-        'have.attr',
-        'src',
-        'https://b.zmtcdn.com/images/user_avatars/mug_2x.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A',
-      );
-    cy.get('@thirdReview').find('> div').eq(0).find('p').should('have.text', 'Aadit Bail');
-
-    cy.get('@thirdReview').find('> div').eq(1).as('thirdReviewRating');
-
-    cy.get('@thirdReviewRating').find('i').eq(0).should('have.text', 'star');
-    cy.get('@thirdReviewRating').find('i').eq(1).should('have.text', 'star');
-    cy.get('@thirdReviewRating').find('i').eq(2).should('have.text', 'star');
-    cy.get('@thirdReviewRating').find('i').eq(3).should('have.text', 'star');
-    cy.get('@thirdReviewRating').find('i').eq(4).should('have.text', 'star_outline');
-    cy.get('@thirdReviewRating').find('p').should('have.text', 'Mar 03, 2020');
-
-    cy.get('@thirdReview').find('> p').should('have.text', 'Great!');
-
-    // Fourth review
-    cy.get('@reviews').find('> div > div').eq(4).as('fourthReview');
-    cy.get('@fourthReview')
-      .find('> div')
-      .eq(0)
-      .find('img')
-      .should(
-        'have.attr',
-        'src',
-        'https://b.zmtcdn.com/data/user_profile_pictures/ede/577fa24a6b2b399079d07a71e8ca7ede.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A',
-      );
-    cy.get('@fourthReview').find('> div').eq(0).find('p').should('have.text', 'Hana');
-
-    cy.get('@fourthReview').find('> div').eq(1).as('fourthReviewRating');
-
-    cy.get('@fourthReviewRating').find('i').eq(0).should('have.text', 'star');
-    cy.get('@fourthReviewRating').find('i').eq(1).should('have.text', 'star_outline');
-    cy.get('@fourthReviewRating').find('i').eq(2).should('have.text', 'star_outline');
-    cy.get('@fourthReviewRating').find('i').eq(3).should('have.text', 'star_outline');
-    cy.get('@fourthReviewRating').find('i').eq(4).should('have.text', 'star_outline');
-    cy.get('@fourthReviewRating').find('p').should('have.text', 'Jan 21, 2020');
-
-    cy.get('@fourthReview')
-      .find('> p')
-      .should(
-        'have.text',
-        'Being at their Baggot Street  place , avoid it . Worst customer device',
-      );
-
-    // Fifth review
-    cy.get('@reviews').find('> div > div').eq(5).as('fifthReview');
-    cy.get('@fifthReview')
-      .find('> div')
-      .eq(0)
-      .find('img')
-      .should(
-        'have.attr',
-        'src',
-        'https://b.zmtcdn.com/data/user_profile_pictures/0c7/42aa5399ddb5d5f3a65e4fcf409c50c7.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A',
-      );
-    cy.get('@fifthReview').find('> div').eq(0).find('p').should('have.text', 'Arpita Chakraborty');
-
-    cy.get('@fifthReview').find('> div').eq(1).as('fifthReviewRating');
-
-    cy.get('@fifthReviewRating').find('i').eq(0).should('have.text', 'star');
-    cy.get('@fifthReviewRating').find('i').eq(1).should('have.text', 'star');
-    cy.get('@fifthReviewRating').find('i').eq(2).should('have.text', 'star');
-    cy.get('@fifthReviewRating').find('i').eq(3).should('have.text', 'star');
-    cy.get('@fifthReviewRating').find('i').eq(4).should('have.text', 'star_outline');
-    cy.get('@fifthReviewRating').find('p').should('have.text', 'May 21, 2019');
-
-    cy.get('@fifthReview')
-      .find('> p')
-      .should(
-        'have.text',
-        'I know everyone goes to Bunsen for the earthshattering burgers, but I go there more for the sweet potato fries! Must be prepared to wait for about 20 mins in average though. Happened all three times I went.',
-      );
-  });
-
   // FOOTER
-  it('should display the footer and the footer bar', () => {
-    cy.get('[data-testid="footer"]').should('have.length', 1);
-    cy.get('[data-testid="footer-bar"]').should('have.length', 1);
-  });
-
-  it('should display the correct Breadcrumbs', () => {
-    cy.get('[data-testid="breadcrumbs"]').should('have.text', 'Home>Bunsen');
-  });
-
-  describe('when clicking on the first breadcrumb', () => {
-    it('should navigate to the home page', () => {
-      // Click breadcrumb link
-      cy.get('[data-testid="breadcrumbs"]').find('a').contains('Home').click();
-
-      cy.url().should('equal', 'http://localhost:3000/');
-    });
+  it('should render the correct href of the jdmiguel link', () => {
+    cy.get('@footerContent')
+      .find('a')
+      .contains('JDMIGUEL')
+      .should('have.attr', 'href', 'https://jdmiguel.netlify.app');
   });
 
   describe('when clicking on the favorite link of the footer', () => {
     it('should navigate to the favorite page', () => {
       // Click favorite link
-      cy.get('[data-testid="footer-bar"]').find('a').contains('FAVORITES').click();
+      cy.get('footer').find('a').contains('FAVORITES').click();
 
       cy.url().should('equal', 'http://localhost:3000/favorites');
     });
   });
 
-  it('should display the footer content text', () => {
-    cy.get('@footerContent').should('have.text', 'GITHUBFOODUBLIN ©2020BYJDMIGUEL');
-  });
-
-  it('should render the correct href of the github link', () => {
+  it('should render the correct href of the design system link', () => {
     cy.get('@footerContent')
       .find('a')
-      .contains('GITHUB')
-      .should('have.attr', 'href', 'https://github.com/jdmiguel/foodublin');
-  });
-
-  it('should render the correct href of the jdmiguel link', () => {
-    cy.get('@footerContent')
-      .find('a')
-      .contains('JDMIGUEL')
-      .should('have.attr', 'href', 'https://jdmiguel.netlify.app/');
+      .contains('DESIGN SYSTEM')
+      .should('have.attr', 'href', 'https://foodublin-design-system.netlify.app');
   });
 });

@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -13,6 +14,10 @@ import { renderWithTheme } from '../../../../helpers/Theme';
 describe('Component: Finder', () => {
   let store;
 
+  const props = {
+    onNavigation: jest.fn(),
+  };
+
   beforeEach(() => {
     store = createTestStore();
   });
@@ -21,7 +26,7 @@ describe('Component: Finder', () => {
     const { container } = render(
       renderWithTheme(
         <Provider store={store}>
-          <Finder onNavigation={() => {}} />
+          <Finder {...props} />
         </Provider>,
       ),
     );
@@ -30,18 +35,16 @@ describe('Component: Finder', () => {
   });
 
   it('should call callback function on click', async () => {
-    const handleClick = jest.fn();
-
     render(
       renderWithTheme(
         <Provider store={store}>
-          <Finder onNavigation={handleClick} />
+          <Finder {...props} />
         </Provider>,
       ),
     );
 
     await userEvent.click(screen.getByText('Search'));
 
-    expect(handleClick).toHaveBeenCalled();
+    expect(props.onNavigation).toHaveBeenCalled();
   });
 });

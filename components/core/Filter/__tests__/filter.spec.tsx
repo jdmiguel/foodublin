@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
@@ -12,8 +13,12 @@ import { FILTERS } from '../../../../store/statics';
 describe('Component: Filter', () => {
   const [firstFilter] = FILTERS;
 
+  const props = {
+    onClick: jest.fn(),
+  };
+
   it('should render correctly', () => {
-    const { container } = render(renderWithTheme(<Filter onClick={() => {}} data={firstFilter} />));
+    const { container } = render(renderWithTheme(<Filter {...props} data={firstFilter} />));
 
     expect(container.firstChild).toMatchSnapshot();
   });

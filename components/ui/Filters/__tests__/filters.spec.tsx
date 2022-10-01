@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
+import 'jest-styled-components';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
@@ -32,6 +34,8 @@ describe('Component: Filter', () => {
     expect(secondFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
     expect(thirdFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
     expect(fourthFilterItem).toHaveStyleRule('background-color', '#F3F3F3');
+
+    if (!firstFilterItem) return;
 
     await userEvent.click(firstFilterItem);
 

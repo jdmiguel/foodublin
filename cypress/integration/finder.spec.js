@@ -46,7 +46,7 @@ describe('Finder', () => {
     cy.get('@locationsDropdown').click();
 
     cy.wrap(LOCATIONS).each((location, index) => {
-      cy.get('@locationsDropdown').find('[role="option"]').eq(index).as('location');
+      cy.get('@locationsDropdown').find('li').eq(index).as('location');
 
       cy.get('@location').find('p').should('have.text', location.name);
     });
@@ -56,7 +56,7 @@ describe('Finder', () => {
     cy.get('@cuisinesDropdown').click();
 
     cy.wrap(CUISINES).each((cuisine, index) => {
-      cy.get('@cuisinesDropdown').find('[role="option"]').eq(index).as('cuisine');
+      cy.get('@cuisinesDropdown').find('li').eq(index).as('cuisine');
 
       cy.get('@cuisine').find('p').should('have.text', cuisine.name);
       cy.get('@cuisine')
@@ -73,9 +73,9 @@ describe('Finder', () => {
 
         cy.wait('@getRestaurants');
 
-        cy.get('@listBox').find('[role="option"]').eq(0).as('firstSuggestion');
-        cy.get('@listBox').find('[role="option"]').eq(1).as('secondSuggestion');
-        cy.get('@listBox').find('[role="option"]').eq(2).as('thirdSuggestion');
+        cy.get('@listBox').find('li').eq(0).as('firstSuggestion');
+        cy.get('@listBox').find('li').eq(1).as('secondSuggestion');
+        cy.get('@listBox').find('li').eq(2).as('thirdSuggestion');
       });
 
       it('should display the matched restaurants', () => {
@@ -166,7 +166,7 @@ describe('Finder', () => {
           cy.get('@errorTxt').should('have.length', 0);
           cy.get('@tryButton').should('have.length', 0);
 
-          cy.get('@listBox').find('[role="option"]').should('have.length', 0);
+          cy.get('@listBox').find('li').should('have.length', 0);
           cy.get('@finder').find('input').should('have.text', '');
         });
       });
@@ -194,7 +194,7 @@ describe('Finder', () => {
       it('should navigate to search page with the correct location path', () => {
         cy.get('@locationsDropdown').click();
 
-        cy.get('@locationsDropdown').find('[role="option"]').contains('Temple Bar').click();
+        cy.get('@locationsDropdown').find('li').contains('Temple Bar').click();
 
         cy.get('@searchButton').click();
 
@@ -206,7 +206,7 @@ describe('Finder', () => {
       it('should navigate to search page with the correct cuisine path', () => {
         cy.get('@cuisinesDropdown').click();
 
-        cy.get('@cuisinesDropdown').find('[role="option"]').contains('Asian').click();
+        cy.get('@cuisinesDropdown').find('li').contains('Asian').click();
 
         cy.get('@searchButton').click();
 
@@ -218,11 +218,11 @@ describe('Finder', () => {
       it('should navigate to search page with the correct location and cuisine paths', () => {
         cy.get('@locationsDropdown').click();
 
-        cy.get('@locationsDropdown').find('[role="option"]').contains('Temple Bar').click();
+        cy.get('@locationsDropdown').find('li').contains('Temple Bar').click();
 
         cy.get('@cuisinesDropdown').click();
 
-        cy.get('@cuisinesDropdown').find('[role="option"]').contains('Asian').click();
+        cy.get('@cuisinesDropdown').find('li').contains('Asian').click();
 
         cy.get('@searchButton').click();
 

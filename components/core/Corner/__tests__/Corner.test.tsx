@@ -1,3 +1,8 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import React from 'react';
 import { render } from '@testing-library/react';
 import { renderWithTheme } from '../../../../helpers/Theme';
 import { Corner } from '../Corner';

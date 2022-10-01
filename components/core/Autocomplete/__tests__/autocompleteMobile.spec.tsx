@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
+import 'jest-styled-components';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AutocompleteMobile } from '../AutocompleteMobile';
@@ -28,10 +30,14 @@ describe('Component: AutocompleteMobile', () => {
     expect(modal).toHaveStyleRule('opacity', '0');
     expect(modal).toHaveStyleRule('visibility', 'hidden');
 
+    if (!labelButton) return;
+
     // show modal when clicking label button
     await userEvent.click(labelButton);
     expect(modal).toHaveStyleRule('opacity', '1');
     expect(modal).toHaveStyleRule('visibility', 'visible');
+
+    if (!closeButton) return;
 
     // hide modal when clicking close button
     await userEvent.click(closeButton);
@@ -102,6 +108,9 @@ describe('Component: AutocompleteMobile', () => {
 
     // call callback function when clicking any suggestion
     const firstSuggestionLink = listboxWrapper.querySelectorAll('li')[0].querySelector('a');
+
+    if (!firstSuggestionLink) return;
+
     await userEvent.click(firstSuggestionLink);
     expect(handleSelectSuggestion).toHaveBeenCalled();
   });
