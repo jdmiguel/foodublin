@@ -22,5 +22,6 @@ export const StyledCardsWrapper = styled.div`
   gap: 24px;
   @media only screen and (min-width: 768px) {
     margin-top: 35px;
+    grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
   }
 `;

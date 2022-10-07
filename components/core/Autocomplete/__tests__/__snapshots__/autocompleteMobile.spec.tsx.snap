@@ -41,7 +41,6 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
 }
 
 .c13 {
-  max-width: 535px;
   width: 100%;
   height: 100%;
   overflow: hidden;

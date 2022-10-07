@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const StyledFilters = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 
-  button {
-    flex: 1;
+  @media only screen and (min-width: 540px) {
+    display: flex;
+    gap: 10px;
+    button {
+      flex: 1;
+    }
   }
 `;

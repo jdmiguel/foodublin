@@ -12,4 +12,8 @@ export const StyledHighlightWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
   gap: 24px;
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+    margin-top: 35px;
+  }
 `;

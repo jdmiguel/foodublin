@@ -39,17 +39,9 @@ exports[`Component: Filter should render correctly 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-}
-
-.c0 button {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 @media only screen and (min-width:768px) {
@@ -83,6 +75,22 @@ exports[`Component: Filter should render correctly 1`] = `
 @media only screen and (min-width:920px) {
   .c4 {
     display: none;
+  }
+}
+
+@media only screen and (min-width:540px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+  }
+
+  .c0 button {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
   }
 }
 

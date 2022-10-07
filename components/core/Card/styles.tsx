@@ -35,7 +35,6 @@ const HighlightCardImageCss = css`
 `;
 
 export const StyledCard = styled.a<{ type: CardType }>`
-  max-width: ${({ type }) => (type === CardType.SUGGESTION ? '535px' : '380px')};
   width: 100%;
   height: 100%;
   min-height: ${({ type }) => type === CardType.STANDART && '100px'};

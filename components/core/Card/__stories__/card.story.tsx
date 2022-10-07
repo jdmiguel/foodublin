@@ -9,12 +9,14 @@ import { CardType } from '../../types';
 const stories = storiesOf('Card', module);
 
 stories.add('Standart Card', () => (
-  <Card
-    {...CARD_PROPS_MOCKS}
-    title={text('title', CARD_PROPS_MOCKS.title)}
-    content={text('content', CARD_PROPS_MOCKS.content)}
-    onClick={action('card: on click event')}
-  />
+  <div style={{ maxWidth: '380px' }}>
+    <Card
+      {...CARD_PROPS_MOCKS}
+      title={text('title', CARD_PROPS_MOCKS.title)}
+      content={text('content', CARD_PROPS_MOCKS.content)}
+      onClick={action('card: on click event')}
+    />
+  </div>
 ));
 
 stories.add('Suggestion Card', () => (
@@ -28,12 +30,14 @@ stories.add('Suggestion Card', () => (
 ));
 
 stories.add('Highlight Card', () => (
-  <Card
-    {...CARD_PROPS_MOCKS}
-    imgSrc="cleaver-east.jpg"
-    title={text('title', CARD_PROPS_MOCKS.title)}
-    content={text('content', CARD_PROPS_MOCKS.content)}
-    type={CardType.HIGHLIGHT}
-    onClick={action('card: on click event')}
-  />
+  <div style={{ maxWidth: '535px' }}>
+    <Card
+      {...CARD_PROPS_MOCKS}
+      imgSrc="cleaver-east.jpg"
+      title={text('title', CARD_PROPS_MOCKS.title)}
+      content={text('content', CARD_PROPS_MOCKS.content)}
+      type={CardType.HIGHLIGHT}
+      onClick={action('card: on click event')}
+    />
+  </div>
 ));
