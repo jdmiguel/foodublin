@@ -56,7 +56,14 @@ const Home: NextPage<HomeProps> = ({ highlights }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${server}/api/highlights`);
+  const response = await fetch(`${server}/api/highlights`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'User-Agent': '*',
+    },
+  });
   const highlights: HighlightRestaurant[] = await response.json();
 
   return {
