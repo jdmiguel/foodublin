@@ -3,6 +3,7 @@ import { NextPage, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useDispatch } from 'react-redux';
+import { server } from '@/config/index';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
@@ -55,7 +56,8 @@ const Home: NextPage<HomeProps> = ({ highlights }) => {
 };
 
 export const getStaticProps = async () => {
-  const highlights: HighlightRestaurant[] = HIGHLIGHTED_RESTAURANTS;
+  const response = await fetch(`${server}/api/highlights`);
+  const highlights: HighlightRestaurant[] = await response.json();
 
   return {
     props: {

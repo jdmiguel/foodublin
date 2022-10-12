@@ -44,6 +44,9 @@
       ],
       "@/helpers/*": [
         "./helpers/*"
+      ],
+      "@/config/*": [
+        "./config/*"
       ]
     },
     "incremental": true
