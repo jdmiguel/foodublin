@@ -5,10 +5,13 @@ import { Button } from '../../core/Button/Button';
 import { useScroll } from '../../hooks/useScroll';
 import { StyledLayout, StyledMain, StyledScrollUpButtonWrapper } from './styles';
 import { BreadcrumbsData } from '../../core/types';
+import { Location, Cuisine } from '../../pages/types';
 import { SCROLL_DELAY, SHOWING_SCROLLUP_BUTTON_HEIGHT, DEFAULT_BREADCRUMB } from '@/store/statics';
 
 type LayoutProps = {
   children: ReactNode;
+  locations?: Location[];
+  cuisines?: Cuisine[];
   isExtendedHeader?: boolean;
   showFooterVeil?: boolean;
   onNavigate: (route: string, asRoute?: string) => void;
@@ -17,6 +20,8 @@ type LayoutProps = {
 
 export const Layout = ({
   children,
+  locations,
+  cuisines,
   isExtendedHeader = false,
   showFooterVeil = false,
   onNavigate,
@@ -50,7 +55,9 @@ export const Layout = ({
         breadcrumbs={breadcrumbs || [DEFAULT_BREADCRUMB]}
         onClickBreadcrumb={(route: string, asRoute: string) => onNavigate(route, asRoute)}
         onClickFavorites={() => onNavigate('/favorites')}
-        onNavigationFromFinder={onNavigate}
+        onNavigateFromFinder={onNavigate}
+        locations={locations}
+        cuisines={cuisines}
       />
       <StyledMain>{children}</StyledMain>
       <Footer showVeil={showFooterVeil} onClickFavorites={() => onNavigate('/favorites')} />

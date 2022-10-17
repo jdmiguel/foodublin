@@ -46,12 +46,12 @@ exports[`Component: Finder should render correctly  1`] = `
   font-weight: 500;
 }
 
-.c22 {
+.c19 {
   width: 100%;
   height: 55px;
 }
 
-.c23 {
+.c20 {
   width: 100%;
   height: 100%;
   -webkit-letter-spacing: 0.5px;
@@ -82,16 +82,16 @@ exports[`Component: Finder should render correctly  1`] = `
   align-items: center;
 }
 
-.c23 i {
+.c20 i {
   margin-right: 6px;
   font-size: 1.3em;
 }
 
-.c23:hover {
+.c20:hover {
   background-color: #EC7E00;
 }
 
-.c23:focus {
+.c20:focus {
   background-color: #EC7E00;
 }
 
@@ -257,48 +257,6 @@ exports[`Component: Finder should render correctly  1`] = `
   font-size: 1.5rem;
 }
 
-.c18 {
-  width: 100%;
-  height: 55px;
-  border-bottom: 1px solid #E5EAED;
-  list-style: none;
-  display: block;
-  overflow: hidden;
-  color: #2f3235;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  padding: 9px 11px;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.c18:hover {
-  background-color: #FDF3E5;
-}
-
-.c18:focus {
-  background-color: #FDF3E5;
-}
-
-.c20 {
-  width: 18px;
-  margin-right: 12px;
-}
-
-.c19 {
-  color: #2f3235;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -359,7 +317,7 @@ exports[`Component: Finder should render correctly  1`] = `
   margin: 0 10px 15px 0;
 }
 
-.c21 {
+.c18 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -410,12 +368,6 @@ exports[`Component: Finder should render correctly  1`] = `
 @media only screen and (min-width:768px) {
   .c15 {
     display: none;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c19 {
-    font-size: 0.9rem;
   }
 }
 
@@ -494,7 +446,7 @@ exports[`Component: Finder should render correctly  1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c21 {
+  .c18 {
     -webkit-flex: 0;
     -ms-flex: 0;
     flex: 0;
@@ -604,276 +556,6 @@ exports[`Component: Finder should render correctly  1`] = `
               </i>
             </button>
           </div>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Dublin
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              South City West
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Temple Bar
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Clondalkin
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Swords
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Tallaght
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Blanchardstown
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              South City East
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Dundrum
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Finglas
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Ballyfermot
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Santry
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Lucan
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Artane
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Malahide
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Dun Laoghaire
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Walkinstown
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Blackrock
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Palmerstown
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Rathmines
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Balbriggan
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Ballybrack
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Smithfield
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Crumlin
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Castleknock
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Howth
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Cabra
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Whitehall
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Portmarnock
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <p
-              class="c19"
-            >
-              Kimmage
-            </p>
-          </li>
         </ul>
       </div>
     </div>
@@ -931,130 +613,18 @@ exports[`Component: Finder should render correctly  1`] = `
               </i>
             </button>
           </div>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Irish"
-              class="c20"
-              src="/images/stew.svg"
-            />
-            <p
-              class="c19"
-            >
-              Irish
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Italian"
-              class="c20"
-              src="/images/pizza.svg"
-            />
-            <p
-              class="c19"
-            >
-              Italian
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Mediterranean"
-              class="c20"
-              src="/images/bruschetta.svg"
-            />
-            <p
-              class="c19"
-            >
-              Mediterranean
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Asian"
-              class="c20"
-              src="/images/rice.svg"
-            />
-            <p
-              class="c19"
-            >
-              Asian
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Healthy Food"
-              class="c20"
-              src="/images/healthy_food.svg"
-            />
-            <p
-              class="c19"
-            >
-              Healthy Food
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Indian"
-              class="c20"
-              src="/images/gulab.svg"
-            />
-            <p
-              class="c19"
-            >
-              Indian
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Mexican"
-              class="c20"
-              src="/images/taco.svg"
-            />
-            <p
-              class="c19"
-            >
-              Mexican
-            </p>
-          </li>
-          <li
-            class="c18"
-          >
-            <img
-              alt="Fast Food"
-              class="c20"
-              src="/images/fries.svg"
-            />
-            <p
-              class="c19"
-            >
-              Fast Food
-            </p>
-          </li>
         </ul>
       </div>
     </div>
   </div>
   <div
-    class="c21"
+    class="c18"
   >
     <div
-      class="c22"
+      class="c19"
     >
       <button
-        class="c23"
+        class="c20"
         type="button"
       >
         Search

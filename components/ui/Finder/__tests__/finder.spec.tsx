@@ -15,7 +15,9 @@ describe('Component: Finder', () => {
   let store;
 
   const props = {
-    onNavigation: jest.fn(),
+    locations: [],
+    cuisines: [],
+    onNavigate: jest.fn(),
   };
 
   beforeEach(() => {
@@ -45,6 +47,6 @@ describe('Component: Finder', () => {
 
     await userEvent.click(screen.getByText('Search'));
 
-    expect(props.onNavigation).toHaveBeenCalled();
+    expect(props.onNavigate).toHaveBeenCalled();
   });
 });

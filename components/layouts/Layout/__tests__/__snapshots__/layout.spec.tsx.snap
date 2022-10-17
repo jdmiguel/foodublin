@@ -1256,106 +1256,12 @@ exports[`Component: Layout should render the extended header 1`] = `
   animation: WTuhh 560ms ease-in-out;
 }
 
-.c14 {
-  width: 100%;
-  border-radius: 4px;
-  padding: 0 20px;
-  background: #F3F3F3;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c14 i {
-  font-size: 1.2rem;
-  color: #A7A7A7;
-  margin-right: 10px;
-}
-
-.c15 {
-  width: 100%;
-  height: 55px;
-  padding: 10px 0;
-  line-height: 20px;
-  border: none;
-  outline: none;
-  color: #2f3235;
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.c26 {
-  color: #585858;
-  font-size: 1.35rem;
-  font-weight: 500;
-}
-
-.c32 {
-  width: 100%;
-  height: 55px;
-}
-
-.c41 {
+.c17 {
   width: 50px;
   height: 55px;
 }
 
-.c33 {
-  width: 100%;
-  height: 100%;
-  -webkit-letter-spacing: 0.5px;
-  -moz-letter-spacing: 0.5px;
-  -ms-letter-spacing: 0.5px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 0 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  background-color: #FBA52B;
-  color: #FFFFFF;
-  font-weight: 600;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c33 i {
-  margin-right: 6px;
-  font-size: 1.3em;
-}
-
-.c33:hover {
-  background-color: #EC7E00;
-}
-
-.c33:focus {
-  background-color: #EC7E00;
-}
-
-.c42 {
+.c18 {
   width: 50px;
   height: 50px;
   -webkit-letter-spacing: 0.5px;
@@ -1386,289 +1292,16 @@ exports[`Component: Layout should render the extended header 1`] = `
   align-items: center;
 }
 
-.c42 i {
+.c18 i {
   font-size: 1.3em;
 }
 
-.c42:hover {
+.c18:hover {
   background-color: #EC7E00;
 }
 
-.c42:focus {
+.c18:focus {
   background-color: #EC7E00;
-}
-
-.c12 {
-  position: relative;
-  cursor: pointer;
-}
-
-.c13 {
-  background-color: #F3F3F3;
-  border-radius: 4px;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-}
-
-.c13:hover {
-  background-color: #FDF3E5;
-}
-
-.c16 {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transform: translateY(10px);
-  -ms-transform: translateY(10px);
-  transform: translateY(10px);
-  -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-  -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-  position: absolute;
-  box-sizing: border-box;
-  background: #F3F3F3;
-  z-index: 2;
-  top: 55px;
-  left: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  overflow: auto;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.35);
-  border: 1px solid #F3F3F3;
-  border-radius: 0 0 4px 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top: 0;
-}
-
-.c17 {
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.c22 {
-  position: relative;
-  border-radius: 4px;
-  background-color: #F3F3F3;
-}
-
-.c23 {
-  width: 100%;
-  height: 55px;
-  background-color: #F3F3F3;
-  line-height: 55px;
-  padding: 0 4px 0 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
-
-.c23 i:first-of-type {
-  font-size: 1rem;
-  margin-left: 5px;
-  margin-right: 10px;
-  color: #D48C24;
-}
-
-.c23:hover {
-  background-color: #FDF3E5;
-}
-
-.c23 i:last-of-type {
-  position: absolute;
-  z-index: 1;
-  top: 14px;
-  right: 7px;
-  font-size: 1.7rem;
-}
-
-.c24 {
-  visibility: hidden;
-  opacity: 0;
-  overflow: auto;
-  -webkit-transition: opacity 0.2s ease 0s;
-  transition: opacity 0.2s ease 0s;
-  position: absolute;
-  box-sizing: border-box;
-  background-color: #F3F3F3;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  padding: 20px 10px 10px;
-  width: 100%;
-  height: 100%;
-  max-height: 100vh;
-  border: 1px solid #F3F3F3;
-  border-radius: 4px;
-  border-top: 0;
-  border-bottom: 0;
-  outline: none;
-}
-
-.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 0 10px;
-  margin: 10px 0 15px;
-}
-
-.c27 {
-  cursor: pointer;
-  line-height: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  margin-top: 4px;
-}
-
-.c27 i {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.c27 i {
-  color: #585858;
-  font-size: 1.5rem;
-}
-
-.c28 {
-  width: 100%;
-  height: 55px;
-  border-bottom: 1px solid #E5EAED;
-  list-style: none;
-  display: block;
-  overflow: hidden;
-  color: #2f3235;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  padding: 9px 11px;
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.c28:hover {
-  background-color: #FDF3E5;
-}
-
-.c28:focus {
-  background-color: #FDF3E5;
-}
-
-.c30 {
-  width: 18px;
-  margin-right: 12px;
-}
-
-.c29 {
-  color: #2f3235;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-}
-
-.c11 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin: 0 0 25px;
-}
-
-.c18 {
-  background-color: #A7A7A7;
-  width: 100%;
-  height: 1px;
-  margin: 0 0 25px 0;
-}
-
-.c19 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c19:first-child {
-  margin-right: 10px;
-}
-
-.c20 {
-  width: 100%;
-  margin: 0 10px 15px 0;
-}
-
-.c31 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin-bottom: 10px;
-  min-width: 90px;
-  width: 100%;
 }
 
 .c1 {
@@ -1727,7 +1360,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   margin-bottom: 35px;
 }
 
-.c35 {
+.c11 {
   width: 100%;
   position: absolute;
   left: 0;
@@ -1736,7 +1369,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   z-index: 1;
 }
 
-.c36 {
+.c12 {
   background-color: #2f3235;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1749,7 +1382,7 @@ exports[`Component: Layout should render the extended header 1`] = `
   padding: 20px 0;
 }
 
-.c37 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1757,28 +1390,28 @@ exports[`Component: Layout should render the extended header 1`] = `
   color: #D8D8D8;
 }
 
-.c37:first-of-type:after {
+.c13:first-of-type:after {
   content: ' | ';
 }
 
-.c37:not(:first-of-type) {
+.c13:not(:first-of-type) {
   margin-left: 5px;
 }
 
-.c37:not(:last-of-type):after {
+.c13:not(:last-of-type):after {
   margin-left: 3px;
 }
 
-.c37:last-of-type {
+.c13:last-of-type {
   display: none;
 }
 
-.c38 {
+.c14 {
   font-weight: 300;
   margin-right: 3px;
 }
 
-.c39 {
+.c15 {
   font-weight: 300;
 }
 
@@ -1794,12 +1427,12 @@ exports[`Component: Layout should render the extended header 1`] = `
   position: relative;
 }
 
-.c34 {
+.c10 {
   margin-bottom: 60px;
   padding: 0 30px;
 }
 
-.c40 {
+.c16 {
   position: fixed;
   bottom: 1%;
   right: 4%;
@@ -1840,140 +1473,6 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c14 {
-    max-width: 550px;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c26 {
-    font-size: 1.45rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c17 {
-    min-height: 200px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c21 {
-    position: relative;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c24 {
-    max-height: 440px;
-    height: auto;
-    padding: 0;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.35);
-    -webkit-transition: opacity 0.2s ease 0s,-webkit-transform 0.2s ease 0s;
-    -webkit-transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-    transition: opacity 0.2s ease 0s,transform 0.2s ease 0s;
-    -webkit-transform: translateY(20px);
-    -ms-transform: translateY(20px);
-    transform: translateY(20px);
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c25 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c29 {
-    font-size: 0.9rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c10 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media only screen and (min-width:1200px) {
-  .c10 {
-    max-width: 1200px;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c11 {
-    -webkit-flex: 0.5;
-    -ms-flex: 0.5;
-    flex: 0.5;
-    margin: 0 10px 0 0;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c11 {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    margin: 0;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c18 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .c18 {
-    display: block;
-    width: 1px;
-    height: 90%;
-    margin: 0 20px 0;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c19 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: space-around;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: space-around;
-    justify-content: space-around;
-    margin-bottom: 0;
-  }
-
-  .c19:first-child {
-    margin-right: 0;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c20 {
-    margin: 0 10px 0 0;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c31 {
-    -webkit-flex: 0;
-    -ms-flex: 0;
-    flex: 0;
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width:768px) {
   .c2 {
     height: 440px;
   }
@@ -2007,49 +1506,49 @@ exports[`Component: Layout should render the extended header 1`] = `
 }
 
 @media only screen and (min-width:1200px) {
-  .c37:first-of-type:after {
+  .c13:first-of-type:after {
     content: '';
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c37:not(:first-of-type) {
+  .c13:not(:first-of-type) {
     margin-left: 7px;
   }
 }
 
 @media only screen and (min-width:375px) {
-  .c37:not(:last-of-type):after {
+  .c13:not(:last-of-type):after {
     margin-left: 5px;
   }
 }
 
 @media only screen and (min-width:1200px) {
-  .c37:not(:last-of-type):after {
+  .c13:not(:last-of-type):after {
     content: ' | ';
   }
 }
 
 @media only screen and (min-width:1200px) {
-  .c37:last-of-type {
+  .c13:last-of-type {
     display: block;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c37 {
+  .c13 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c38 {
+  .c14 {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width:330px) {
-  .c39 {
+  .c15 {
     font-size: 0.85rem;
   }
 }
@@ -2114,572 +1613,12 @@ exports[`Component: Layout should render the extended header 1`] = `
           >
             Discover the best food in Dublin
           </h2>
-          <div
-            class="c10"
-            data-testid="finder"
-          >
-            <div
-              class="c11"
-            >
-              <div
-                class="c12"
-                data-testid="autocomplete"
-              >
-                <div
-                  class="c13"
-                >
-                  <div
-                    class="c14"
-                    data-testid="input-wrapper"
-                  >
-                    <i
-                      class="material-icons"
-                      data-testid="input-icon"
-                    >
-                      search
-                    </i>
-                    <input
-                      class="c15"
-                      placeholder="Search for locals..."
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div
-                  class="c16"
-                  data-testid="listbox-wrapper"
-                >
-                  <ul
-                    class="c17"
-                  />
-                </div>
-              </div>
-            </div>
-            <span
-              class="c18"
-            />
-            <div
-              class="c19"
-            >
-              <div
-                class="c20"
-              >
-                <div
-                  class="c21"
-                  data-testid="dropdown"
-                >
-                  <div
-                    class="c22"
-                  >
-                    <button
-                      class="c23"
-                      type="button"
-                    >
-                      <i
-                        class="material-icons"
-                        data-testid="label-icon"
-                      >
-                        near_me
-                      </i>
-                      <span>
-                        Select location
-                      </span>
-                      <i
-                        class="material-icons"
-                      >
-                        arrow_drop_down
-                      </i>
-                    </button>
-                  </div>
-                  <ul
-                    class="c24"
-                    data-testid="dropdown-list"
-                    tabindex="0"
-                  >
-                    <div
-                      class="c25"
-                    >
-                      <h4
-                        class="c26"
-                      >
-                        Select location
-                      </h4>
-                      <button
-                        class="c27"
-                        type="button"
-                      >
-                        <i
-                          class="material-icons"
-                        >
-                          close
-                        </i>
-                      </button>
-                    </div>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Dublin
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        South City West
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Temple Bar
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Clondalkin
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Swords
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Tallaght
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Blanchardstown
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        South City East
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Dundrum
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Finglas
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Ballyfermot
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Santry
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Lucan
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Artane
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Malahide
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Dun Laoghaire
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Walkinstown
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Blackrock
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Palmerstown
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Rathmines
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Balbriggan
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Ballybrack
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Smithfield
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Crumlin
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Castleknock
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Howth
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Cabra
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Whitehall
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Portmarnock
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <p
-                        class="c29"
-                      >
-                        Kimmage
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div
-                class="c20"
-              >
-                <div
-                  class="c21"
-                  data-testid="dropdown"
-                >
-                  <div
-                    class="c22"
-                  >
-                    <button
-                      class="c23"
-                      type="button"
-                    >
-                      <i
-                        class="material-icons"
-                        data-testid="label-icon"
-                      >
-                        restaurant
-                      </i>
-                      <span>
-                        Select cuisine
-                      </span>
-                      <i
-                        class="material-icons"
-                      >
-                        arrow_drop_down
-                      </i>
-                    </button>
-                  </div>
-                  <ul
-                    class="c24"
-                    data-testid="dropdown-list"
-                    tabindex="0"
-                  >
-                    <div
-                      class="c25"
-                    >
-                      <h4
-                        class="c26"
-                      >
-                        Select cuisine
-                      </h4>
-                      <button
-                        class="c27"
-                        type="button"
-                      >
-                        <i
-                          class="material-icons"
-                        >
-                          close
-                        </i>
-                      </button>
-                    </div>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Irish"
-                        class="c30"
-                        src="/images/stew.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Irish
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Italian"
-                        class="c30"
-                        src="/images/pizza.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Italian
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Mediterranean"
-                        class="c30"
-                        src="/images/bruschetta.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Mediterranean
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Asian"
-                        class="c30"
-                        src="/images/rice.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Asian
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Healthy Food"
-                        class="c30"
-                        src="/images/healthy_food.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Healthy Food
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Indian"
-                        class="c30"
-                        src="/images/gulab.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Indian
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Mexican"
-                        class="c30"
-                        src="/images/taco.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Mexican
-                      </p>
-                    </li>
-                    <li
-                      class="c28"
-                    >
-                      <img
-                        alt="Fast Food"
-                        class="c30"
-                        src="/images/fries.svg"
-                      />
-                      <p
-                        class="c29"
-                      >
-                        Fast Food
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div
-              class="c31"
-            >
-              <div
-                class="c32"
-              >
-                <button
-                  class="c33"
-                  type="button"
-                >
-                  Search
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </header>
   <main
-    class="c34"
+    class="c10"
   >
     <div>
       <h1>
@@ -2688,21 +1627,21 @@ exports[`Component: Layout should render the extended header 1`] = `
     </div>
   </main>
   <footer
-    class="c35"
+    class="c11"
   >
     <div
-      class="c36"
+      class="c12"
     >
       <div
-        class="c37"
+        class="c13"
       >
         <p
-          class="c38"
+          class="c14"
         >
           ©2022
         </p>
         <p
-          class="c38"
+          class="c14"
         >
           BY
         </p>
@@ -2714,7 +1653,7 @@ exports[`Component: Layout should render the extended header 1`] = `
         </a>
       </div>
       <div
-        class="c37"
+        class="c13"
       >
         <a
           class="c6"
@@ -2728,10 +1667,10 @@ exports[`Component: Layout should render the extended header 1`] = `
         </a>
       </div>
       <div
-        class="c37"
+        class="c13"
       >
         <p
-          class="c39"
+          class="c15"
         />
         <a
           class="c6"
@@ -2743,13 +1682,13 @@ exports[`Component: Layout should render the extended header 1`] = `
     </div>
   </footer>
   <div
-    class="c40"
+    class="c16"
   >
     <div
-      class="c41"
+      class="c17"
     >
       <button
-        class="c42"
+        class="c18"
         type="button"
       >
         <i

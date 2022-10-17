@@ -6,6 +6,13 @@ export type Location = {
   path: string;
 };
 
+export type Cuisine = {
+  id: number;
+  iconSrc: string;
+  name: string;
+  path: string;
+};
+
 export type Timming = {
   id: string;
   day: string;

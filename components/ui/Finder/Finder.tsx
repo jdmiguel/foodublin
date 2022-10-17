@@ -17,22 +17,21 @@ import {
 import { setRelatedRestaurants } from '@/store/redux/actions';
 import {
   DUBLIN_ID,
-  LOCATIONS,
-  CUISINES,
   THUMB_GENERIC_SRC,
   MIN_RESTAURANTS_LIST,
   MAX_MOBILE_WIDTH,
 } from '@/store/statics';
 import { getFormattedUrlText, getCurrentRelatedRestaurants } from '@/helpers/utils';
 import { getRestaurants } from '@/services/index';
-import { EntityType, Restaurant, RawRestaurant } from '../../pages/types';
+import { Location, Cuisine, EntityType, Restaurant, RawRestaurant } from '../../pages/types';
 
 type FinderProps = {
-  className?: string;
-  onNavigation: (route: string, asRoute: string) => void;
+  locations: Location[];
+  cuisines: Cuisine[];
+  onNavigate: (route: string, asRoute: string) => void;
 };
 
-export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
+export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate }) => {
   const [suggestions, setSuggestions] = useState<Restaurant[]>([]);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
@@ -90,7 +89,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
 
     setIsButtonLoading(true);
     setIsDropdownReset(true);
-    onNavigation(route, asRoute);
+    onNavigate(route, asRoute);
   };
 
   const handleButtonClick = () => {
@@ -102,7 +101,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
     const asRoute = `/search/${currentLocationPath}/${currentCuisinePath}`;
 
     setIsButtonLoading(true);
-    onNavigation(route, asRoute);
+    onNavigate(route, asRoute);
   };
 
   const clearSuggestions = () => {
@@ -111,7 +110,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
   };
 
   return (
-    <StyledFinder data-testid="finder" className={className}>
+    <StyledFinder data-testid="finder">
       {isMobile ? (
         <StyledAutocompleteMobileWrapper>
           <AutocompleteMobile
@@ -145,7 +144,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           <Dropdown
             icon="near_me"
             labelTxt="Select location"
-            list={LOCATIONS}
+            list={locations}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
             onSelect={(path: string) => setCurrentLocationPath(path)}
@@ -156,7 +155,7 @@ export const Finder: React.FC<FinderProps> = ({ className, onNavigation }) => {
           <Dropdown
             icon="restaurant"
             labelTxt="Select cuisine"
-            list={CUISINES}
+            list={cuisines}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
             onSelect={(path: string) => setCurrentCuisinePath(path)}
