@@ -1,0 +1,2 @@
+[build]
+  included_files = ["./json/data.json"]
