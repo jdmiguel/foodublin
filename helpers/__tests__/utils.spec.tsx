@@ -16,8 +16,6 @@ import {
   RELATED_RESTAURANTS_MOCKED,
 } from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
 
-import { LOCATIONS } from '../../store/statics';
-
 import { Restaurant } from '../../components/pages/types';
 
 describe('compose', () => {
@@ -67,9 +65,15 @@ describe('getFormattedUrlText', () => {
   });
 
   it('should be equal to mocked formatted url text if text is a path by displaying hyphen between words (instead of plus)', () => {
-    const expectedText = 'south-city-west';
+    const locations = [
+      {
+        id: 162239,
+        name: 'South City West',
+        path: 'south-city-west',
+      },
+    ];
 
-    expect(getFormattedUrlText(LOCATIONS[1].name, true)).toBe(expectedText);
+    expect(getFormattedUrlText(locations[0].name, true)).toBe('south-city-west');
   });
 });
 

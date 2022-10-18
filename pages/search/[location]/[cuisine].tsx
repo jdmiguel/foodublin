@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect, useCallback, Dispatch } from 'react';
 import { NextPage, GetStaticPropsContext } from 'next';
+import { readFile } from 'fs/promises';
+import path from 'path';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useDispatch } from 'react-redux';
@@ -12,8 +14,6 @@ import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 import {
   DEFAULT_TEXT_LOADING,
   DUBLIN_ID,
-  LOCATIONS,
-  CUISINES,
   MAX_RESTAURANT_DISPLAYED,
   MIN_RESTAURANTS_LIST,
   MAX_RESTAURANT_RETRIEVED,
@@ -283,8 +283,12 @@ const Search: NextPage<SearchProps> = ({
 };
 
 export const getStaticPaths = async () => {
-  const locationsLength = LOCATIONS.length;
-  const cuisinesLength = CUISINES.length;
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
+  const { locations, cuisines } = JSON.parse(fileContents);
+
+  const locationsLength = locations.length;
+  const cuisinesLength = cuisines.length;
 
   const emptyPaths = new Array(locationsLength * cuisinesLength).fill('', 0);
 
@@ -303,14 +307,14 @@ export const getStaticPaths = async () => {
 
     return {
       params: {
-        location: LOCATIONS[locationsCounter].path,
-        cuisine: CUISINES[updatedCuisineCounter].path,
+        location: locations[locationsCounter].path,
+        cuisine: cuisines[updatedCuisineCounter].path,
       },
     };
   };
 
   const paths = emptyPaths.map(getPaths);
-  const pathsWithoutCuisine = LOCATIONS.map((location: Location) => ({
+  const pathsWithoutCuisine = locations.map((location: Location) => ({
     params: {
       location: location.path,
       cuisine: 'any-food',
@@ -326,8 +330,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({
   params: { location, cuisine },
 }: CustomGetStaticPropsContext) => {
-  const [locationId, locationName] = getValues(location, LOCATIONS);
-  const [cuisineId, cuisineName] = getValues(cuisine, CUISINES);
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
+  const { locations, cuisines } = JSON.parse(fileContents);
+
+  const [locationId, locationName] = getValues(location, locations);
+  const [cuisineId, cuisineName] = getValues(cuisine, cuisines);
 
   const restaurantsData = await handleGetRestaurants(locationId, cuisineId);
 

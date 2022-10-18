@@ -12,13 +12,16 @@ import {
   StyledCornerWrapper,
   StyledHeaderClaim,
 } from './styles';
+import { Location, Cuisine } from '../../pages/types';
 import { BreadcrumbsData } from '../../core/types';
 
 type HeaderProps = {
-  claimTxt: string;
+  locations?: Location[];
+  cuisines?: Cuisine[];
   bgImgSrc?: string | undefined;
+  claimTxt: string;
   isExtended?: boolean;
-  onNavigationFromFinder: (route: string, asRoute: string) => void;
+  onNavigateFromFinder: (route: string, asRoute: string) => void;
   onClickLogo: () => void;
   onClickBreadcrumb: (route: string, asRoute: string) => void;
   onClickFavorites: () => void;
@@ -26,11 +29,13 @@ type HeaderProps = {
 };
 
 export const Header: React.FC<HeaderProps> = ({
+  locations,
+  cuisines,
   bgImgSrc,
   claimTxt,
   isExtended = false,
   onClickLogo,
-  onNavigationFromFinder,
+  onNavigateFromFinder,
   onClickBreadcrumb,
   onClickFavorites,
   breadcrumbs,
@@ -48,7 +53,9 @@ export const Header: React.FC<HeaderProps> = ({
             <Logo size={isExtended ? LogoSize.BIG : LogoSize.SMALL} logoSrc={'/images/logo.svg'} />
           </CustomLink>
           <StyledHeaderClaim isExtended={isExtended}>{claimTxt}</StyledHeaderClaim>
-          {isExtended && <Finder onNavigation={onNavigationFromFinder} />}
+          {isExtended && locations && cuisines && (
+            <Finder locations={locations} cuisines={cuisines} onNavigate={onNavigateFromFinder} />
+          )}
         </StyledHeaderContent>
       </StyledOverlay>
     </StyledHeader>
