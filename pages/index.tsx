@@ -58,15 +58,15 @@ const Home: NextPage<HomeProps> = ({ locations, cuisines, highlights }) => {
 };
 
 export const getStaticProps = async () => {
-  const filePath = path.join(process.cwd(), 'data.json');
-  const jsonData = await readFile(filePath, 'utf-8');
-  const data = JSON.parse(jsonData);
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
+  const { locations, cuisines, highlights } = JSON.parse(fileContents);
 
   return {
     props: {
-      locations: data.locations,
-      cuisines: data.cuisines,
-      highlights: data.highlights,
+      locations,
+      cuisines,
+      highlights,
     },
   };
 };

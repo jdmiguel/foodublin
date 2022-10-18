@@ -283,9 +283,9 @@ const Search: NextPage<SearchProps> = ({
 };
 
 export const getStaticPaths = async () => {
-  const filePath = path.join(process.cwd(), 'data.json');
-  const jsonData = await readFile(filePath, 'utf-8');
-  const { locations, cuisines } = JSON.parse(jsonData);
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
+  const { locations, cuisines } = JSON.parse(fileContents);
 
   const locationsLength = locations.length;
   const cuisinesLength = cuisines.length;
@@ -330,9 +330,9 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({
   params: { location, cuisine },
 }: CustomGetStaticPropsContext) => {
-  const filePath = path.join(process.cwd(), 'data.json');
-  const jsonData = await readFile(filePath, 'utf-8');
-  const { locations, cuisines } = JSON.parse(jsonData);
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
+  const { locations, cuisines } = JSON.parse(fileContents);
 
   const [locationId, locationName] = getValues(location, locations);
   const [cuisineId, cuisineName] = getValues(cuisine, cuisines);
