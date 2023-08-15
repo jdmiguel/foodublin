@@ -1,19 +1,17 @@
 import styled, { css } from 'styled-components';
 import { LazyImage } from 'react-lazy-images';
 
-const ReviewCardImageCSS = css`
+const ReviewImageCSS = css`
   width: 50px;
   height: 50px;
   border-radius: 50%;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
 `;
 
-export const StyledReviewCard = styled.div`
-  margin-top: 20px;
-  padding-bottom: 20px;
-  &:not(:last-of-type) {
-    border-bottom: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
-  }
+export const StyledReview = styled.div`
+  padding: 24px;
+  background-color: ${({ theme }) => theme.palette.LIGHT_MIN};
 `;
 
 export const StyledReviewBlock = styled.div`
@@ -23,11 +21,11 @@ export const StyledReviewBlock = styled.div`
 `;
 
 export const StyledReviewUserImage = styled(LazyImage)`
-  ${ReviewCardImageCSS}
+  ${ReviewImageCSS}
 `;
 
 export const StyledGenericThumb = styled.img`
-  ${ReviewCardImageCSS}
+  ${ReviewImageCSS}
 `;
 
 export const StyledReviewUserName = styled.p`

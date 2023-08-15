@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ReactNode } from 'react';
 import {
   StyledCard,
@@ -13,7 +14,7 @@ import { CardType } from '../types';
 type CardProps = {
   imgSrc: string;
   title: string;
-  content: ReactNode | string;
+  content?: ReactNode | string;
   type?: CardType;
   onClick?: () => void;
 };
@@ -21,7 +22,7 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({
   imgSrc,
   title,
-  content,
+  content = '',
   onClick,
   type = CardType.STANDART,
 }) => (

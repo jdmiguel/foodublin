@@ -1,5 +1,7 @@
 import { BreadcrumbsType } from '@/components/core/types';
 
+export const BASE_API = 'https://api.yelp.com/v3/';
+
 export const DUBLIN_ID = 91;
 
 export const DEFAULT_TEXT_LOADING = 'Coming right up...';
@@ -29,6 +31,7 @@ export enum PlaceholderText {
 export const HIGHLIGHT_GENERIC_SRC = '/images/highlight-generic.png';
 export const THUMB_GENERIC_SRC = '/images/generic-thumb.png';
 export const DETAIL_GENERIC_SRC = '/images/generic-detail.png';
+export const USER_GENERIC_SRC = '/images/user-avatar.svg';
 export const DEFAULT_RATING_STAR_LIST = [
   { id: 1, type: 'star_outline' },
   { id: 2, type: 'star_outline' },
@@ -91,3 +94,13 @@ export const DEFAULT_BREADCRUMB = {
   asRoute: '/',
   type: BreadcrumbsType.HOME,
 };
+
+export const DUBLIN_COORDINATES = {
+  latitude: 53.3434,
+  longitude: -6.26761,
+};
+
+export const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+export const MAX_PRICE_PERCENT = 80;
+export const MAX_EURO_PRICE_AMOUNT = 4;

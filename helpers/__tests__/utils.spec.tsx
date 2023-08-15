@@ -4,8 +4,6 @@ import {
   getAlphanumericText,
   getLoweredText,
   getFormattedUrlText,
-  getRandomNumbersList,
-  getCurrentRelatedRestaurants,
   getTitleText,
 } from '../utils';
 import {
@@ -13,10 +11,7 @@ import {
   SECOND_DETAIL_MOCKED,
   THIRD_DETAIL_MOCKED,
   FOURTH_DETAIL_MOCKED,
-  RELATED_RESTAURANTS_MOCKED,
 } from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
-
-import { Restaurant } from '../../components/pages/types';
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {
@@ -65,7 +60,7 @@ describe('getFormattedUrlText', () => {
   });
 
   it('should be equal to mocked formatted url text if text is a path by displaying hyphen between words (instead of plus)', () => {
-    const locations = [
+    const areas = [
       {
         id: 162239,
         name: 'South City West',
@@ -73,68 +68,7 @@ describe('getFormattedUrlText', () => {
       },
     ];
 
-    expect(getFormattedUrlText(locations[0].name, true)).toBe('south-city-west');
-  });
-});
-
-describe('getRandomNumbersList', () => {
-  it('should contain a list of numbers when it receives an array with 3 elements', () => {
-    const expectedNumberList = [0, 1, 2];
-    const numberList = getRandomNumbersList(3, 0, 3);
-
-    expect(numberList).toHaveLength(3);
-    expect(numberList).toStrictEqual(expect.arrayContaining(expectedNumberList));
-  });
-
-  it('should contain a list of numbers when it receives an array with more than 3 elements', () => {
-    const expectedMatchedNumberList = [0, 1, 2, 4, 5];
-    const numberList = getRandomNumbersList(3, 0, 6);
-    const isMatchedNumberList = numberList.every((number) =>
-      expectedMatchedNumberList.includes(number),
-    );
-
-    expect(numberList).toHaveLength(3);
-    expect(numberList).not.toContain(3);
-    expect(isMatchedNumberList).toBeTruthy();
-  });
-});
-
-describe('getCurrentRelatedRestaurants', () => {
-  it('should contain a list of numbers when it receives an array with 4 elements', () => {
-    const relatedRestaurantsMocked = RELATED_RESTAURANTS_MOCKED.slice(0, 4);
-    const expectedCurrentRelatedRestaurants = RELATED_RESTAURANTS_MOCKED.slice(0, 3);
-    const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-      relatedRestaurantsMocked,
-      relatedRestaurantsMocked[3].id,
-    );
-
-    expect(currentRelatedRestaurants).toHaveLength(3);
-    expect(currentRelatedRestaurants).toEqual(
-      expect.arrayContaining(expectedCurrentRelatedRestaurants),
-    );
-  });
-
-  it('should contain a list of numbers when it receives an array with 5 elements', () => {
-    const currentRelatedRestaurants = getCurrentRelatedRestaurants(
-      RELATED_RESTAURANTS_MOCKED,
-      RELATED_RESTAURANTS_MOCKED[4].id,
-    );
-
-    const restaurantsComparator = (isEqual: boolean, restaurant: Restaurant) => {
-      isEqual = RELATED_RESTAURANTS_MOCKED.some(
-        (relatedRestaurantMocked) => relatedRestaurantMocked.id === restaurant.id,
-      );
-
-      return isEqual;
-    };
-
-    const isMatchedCurrentRelatedRestaurants = currentRelatedRestaurants.reduce(
-      restaurantsComparator,
-      false,
-    );
-
-    expect(currentRelatedRestaurants).toHaveLength(3);
-    expect(isMatchedCurrentRelatedRestaurants).toBeTruthy();
+    expect(getFormattedUrlText(areas[0].name, true)).toBe('south-city-west');
   });
 });
 

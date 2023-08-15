@@ -32,7 +32,7 @@ describe('Finder', () => {
 
     cy.get('[data-testid=finder]').as('finder');
     cy.get('[data-testid=finder]').find('button').contains('Search').as('searchButton');
-    cy.get('[data-testid=dropdown]').first().as('locationsDropdown');
+    cy.get('[data-testid=dropdown]').first().as('areasDropdown');
     cy.get('[data-testid=dropdown]').last().as('cuisinesDropdown');
     cy.get('[data-testid=listbox-wrapper]').last().as('listBox');
   });
@@ -43,10 +43,10 @@ describe('Finder', () => {
   });
 
   it('should display the correct options of the location dropdown', () => {
-    cy.get('@locationsDropdown').click();
+    cy.get('@areasDropdown').click();
 
     cy.wrap(LOCATIONS).each((location, index) => {
-      cy.get('@locationsDropdown').find('li').eq(index).as('location');
+      cy.get('@areasDropdown').find('li').eq(index).as('location');
 
       cy.get('@location').find('p').should('have.text', location.name);
     });
@@ -192,9 +192,9 @@ describe('Finder', () => {
 
     describe('after selecting a location', () => {
       it('should navigate to search page with the correct location path', () => {
-        cy.get('@locationsDropdown').click();
+        cy.get('@areasDropdown').click();
 
-        cy.get('@locationsDropdown').find('li').contains('Temple Bar').click();
+        cy.get('@areasDropdown').find('li').contains('Temple Bar').click();
 
         cy.get('@searchButton').click();
 
@@ -216,9 +216,9 @@ describe('Finder', () => {
 
     describe('after selecting a location and a cuisine', () => {
       it('should navigate to search page with the correct location and cuisine paths', () => {
-        cy.get('@locationsDropdown').click();
+        cy.get('@areasDropdown').click();
 
-        cy.get('@locationsDropdown').find('li').contains('Temple Bar').click();
+        cy.get('@areasDropdown').find('li').contains('Temple Bar').click();
 
         cy.get('@cuisinesDropdown').click();
 

@@ -6,7 +6,7 @@ export const StyledRankStarsWrapper = styled.div`
 `;
 
 export const StyledRankStar = styled.i`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: ${({ theme }) => theme.palette.DARK_MEDIUM};
 `;
 

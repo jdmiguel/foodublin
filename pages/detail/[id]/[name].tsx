@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { NextPage, GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -8,11 +8,11 @@ import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-import { clearRelatedRestaurants, addFavorite, deleteFavorite } from '@/store/redux/actions';
+import { addFavorite, deleteFavorite } from '@/store/redux/actions';
 import { AppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { getFormattedUrlText, inferSSRProps } from '@/helpers/utils';
-import { getRestaurant } from '@/services/index';
+import { getFormattedUrlText, getFormattedHours, inferSSRProps } from '@/helpers/utils';
+import { getRestaurantDetails } from '@/services/index';
 import { RestaurantDetail, Restaurant } from '@/components/pages/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
@@ -20,7 +20,7 @@ type DetailProps = inferSSRProps<typeof getServerSideProps>;
 
 type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
   params: {
-    id: number;
+    id: string;
   };
 };
 
@@ -30,10 +30,10 @@ const DynamicDetailPage = dynamic(() => import('@/components/pages/DetailPage/De
       <Loader text={DEFAULT_TEXT_LOADING} />
     </FullLoader>
   ),
-});
+}) as any;
 
 const getRefinedRestaurant = (
-  id: number,
+  id: string,
   restaurant: RestaurantDetail | null,
 ): Restaurant | null => {
   if (!restaurant) {
@@ -41,9 +41,9 @@ const getRefinedRestaurant = (
   }
   return {
     id,
-    imgSrc: restaurant.thumbSrc,
+    imgSrc: restaurant.imgSrc,
     title: restaurant.name,
-    content: restaurant.location,
+    content: restaurant.address,
     route: '/detail/[id]/[name]',
     asRoute: `/detail/${id}/${getFormattedUrlText(restaurant.name, true)}`,
   };
@@ -58,12 +58,6 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
   const router = useRouter();
 
   const isFavorite = favorites.some((favorite) => favorite.id === id);
-
-  useEffect(() => {
-    return () => {
-      dispatch(clearRelatedRestaurants());
-    };
-  }, [dispatch, id]);
 
   const handleSaveButton = (action: string) => {
     const favorite = getRefinedRestaurant(id, detail);
@@ -109,25 +103,31 @@ const Detail: NextPage<DetailProps> = ({ detail, id }) => {
 };
 
 export const getServerSideProps = async ({ params: { id } }: CustomGetServerSidePropsContext) => {
-  const { rawRestaurantDetail, status } = await getRestaurant(id);
+  const { details, status } = await getRestaurantDetails(id);
 
   let formattedRestaurantDetail: RestaurantDetail | null = null;
 
+  const formattedCategories = details.categories?.map((category) => category.title);
+  const formattedAddress = details.location.display_address.join(' - ');
+  const formattedHours = Array.isArray(details.hours)
+    ? getFormattedHours(details.hours[0].open)
+    : null;
+
+  console.log(details);
+
   if (status === 200) {
     formattedRestaurantDetail = {
-      imgSrc: rawRestaurantDetail.featured_image,
-      thumbSrc: rawRestaurantDetail.thumb,
-      name: rawRestaurantDetail.name,
-      location: rawRestaurantDetail.location.locality,
-      cuisines: rawRestaurantDetail.cuisines,
-      timings: rawRestaurantDetail.timings,
-      rating: rawRestaurantDetail.user_rating.aggregate_rating,
-      votes: rawRestaurantDetail.user_rating.votes,
-      average: rawRestaurantDetail.average_cost_for_two,
-      establishment: rawRestaurantDetail.establishment[0] || '',
-      highlights: rawRestaurantDetail.highlights,
-      phone: rawRestaurantDetail.phone_numbers,
-      address: rawRestaurantDetail.location.address,
+      imgSrc: details.image_url,
+      name: details.name,
+      phone: details.display_phone,
+      categories: formattedCategories,
+      rating: details.rating,
+      price: details.price || null,
+      reviewCount: details.review_count,
+      hours: formattedHours,
+      address: formattedAddress,
+      street: details.location.address1,
+      reviews: details.reviews,
     };
   }
 

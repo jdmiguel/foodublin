@@ -4,39 +4,43 @@ import { Layout } from '../../layouts/Layout/Layout';
 import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
-import { BlockText } from '../../core/BlockText/BlockText';
 import { BlockTitle } from '../../core/BlockTitle/BlockTitle';
 import { Rating } from '../../core/Rating/Rating';
 import { Button } from '../../core/Button/Button';
-import { Timmings } from './Timings';
-import { Cuisines } from './Cuisines';
-import { Highlights } from './Highlights';
+import { PercentBar } from '../../core/PercentBar/PercentBar';
+import { LoaderType, BreadcrumbsData } from '../../core/types';
+import { Review } from '../../ui/Review/Review';
 import { Address } from './Address';
-import { RelatedRestaurants } from './RelatedRestaurants';
 import {
   StyledOverlay,
   StyledName,
-  StyledLocation,
+  StyledStreet,
   StyledButtonWrapper,
   StyledHeader,
   StyledDetailPage,
   StyledInformation,
-  StyledInformationContent,
-  StyledInformationDetails,
+  StyledMainInformation,
+  StyledExtraInformation,
   StyledSectionBlock,
   StyledTitleWrapper,
   StyledAddressWrapper,
   StyledPhone,
-  StyledRelatedRestaurantsWrapper,
+  StyledReviews,
 } from './styles';
 import { getFormattedUrlText } from '@/helpers/utils';
-import { DETAIL_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { LoaderType, BreadcrumbsData } from '../../core/types';
-import { RestaurantDetail, Restaurant, Timming } from '../types';
+import {
+  WEEK_DAYS,
+  MAX_PRICE_PERCENT,
+  MAX_EURO_PRICE_AMOUNT,
+  DETAIL_GENERIC_SRC,
+  DEFAULT_TEXT_LOADING,
+} from '@/store/statics';
+import { Categories } from './Categories';
+import { Timings } from './Timings';
+import { RestaurantDetail, Timing, HourDetail, Review as ReviewType } from '../types';
 
 type DetailPageProps = {
   detail: RestaurantDetail;
-  relatedRestaurants: Restaurant[];
   isFavorite: boolean;
   isNavigating: boolean;
   onClickSaveButton: (action: string) => void;
@@ -45,21 +49,21 @@ type DetailPageProps = {
   breadcrumbs: BreadcrumbsData[];
 };
 
-export const getTimmings = (timmingsStr: string) =>
-  timmingsStr.split(',').reduce((acc: Timming[], next: string) => {
-    const firstDayIndex = next.indexOf('(');
-    const lastDayIndex = next.indexOf(')');
+export const getTimings = (hours: HourDetail[]): Timing[] =>
+  hours.map((hour) => {
+    const day = WEEK_DAYS[hour.day];
+    const startHour = hour.start.slice(0, 2) + ':' + hour.start.slice(2);
+    const endHour = hour.end.slice(0, 2) + ':' + hour.end.slice(2);
 
-    if (next.includes('(') && next.includes(')')) {
-      acc.push({
-        id: next,
-        day: next.slice(firstDayIndex + 1, lastDayIndex),
-        schedule: next.slice(0, firstDayIndex - 1),
-      });
-    }
+    return {
+      id: String(hour.day),
+      day,
+      schedule: `${startHour} - ${endHour}`,
+    };
+  });
 
-    return acc;
-  }, []);
+export const getCostPercent = (euroString: string): number =>
+  (euroString.length * MAX_PRICE_PERCENT) / MAX_EURO_PRICE_AMOUNT;
 
 export const getMapSrc = (name: string, location: string) => {
   const urlName = getFormattedUrlText(name);
@@ -72,21 +76,18 @@ const DetailPage: React.FC<DetailPageProps> = ({
   detail: {
     imgSrc,
     name,
-    location,
-    cuisines,
-    timings,
-    rating,
-    votes,
-    average,
-    establishment,
-    highlights,
     phone,
+    categories,
+    rating,
+    price,
+    reviewCount,
+    hours,
     address,
+    street,
+    reviews,
   },
   isFavorite,
-  relatedRestaurants,
   onClickSaveButton,
-  onClickRelatedRestaurant,
   onNavigate,
   isNavigating,
   breadcrumbs,
@@ -98,8 +99,6 @@ const DetailPage: React.FC<DetailPageProps> = ({
     setIsloading(false);
   }, []);
 
-  const cuisinesList = cuisines.split(',');
-
   const clickSaveButton = () => {
     setIsSaved((isSaved) => !isSaved);
     onClickSaveButton(isFavorite ? 'unsave' : 'save');
@@ -109,7 +108,7 @@ const DetailPage: React.FC<DetailPageProps> = ({
     <StyledHeader data-testid="detail-header" ref={ref} bgImg={imgSrc}>
       <StyledOverlay>
         <StyledName>{name}</StyledName>
-        <StyledLocation>{location}</StyledLocation>
+        <StyledStreet>{street}</StyledStreet>
         {isLoading ? (
           <StyledButtonWrapper>
             <Button onClick={clickSaveButton}>{DEFAULT_TEXT_LOADING}</Button>
@@ -148,74 +147,67 @@ const DetailPage: React.FC<DetailPageProps> = ({
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {getHeader(imgSrc)}
+        <Title text="Relevant information" />
         <StyledInformation data-testid="detail-info">
-          <Title text="Relevant information" />
-          <StyledInformationContent>
-            <StyledInformationDetails>
-              <StyledSectionBlock data-testid="detail-cuisine">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Cuisines" />
-                </StyledTitleWrapper>
-                <Cuisines cuisines={cuisinesList} />
-              </StyledSectionBlock>
-              <StyledSectionBlock data-testid="detail-schedule">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Schedule" />
-                </StyledTitleWrapper>
-                <Timmings timmings={getTimmings(timings)} />
-              </StyledSectionBlock>
-              <StyledSectionBlock data-testid="detail-rating">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Rating" />
-                </StyledTitleWrapper>
-                <Rating value={rating} votes={votes} />
-              </StyledSectionBlock>
-              <StyledSectionBlock data-testid="detail-average">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Average Cost" />
-                </StyledTitleWrapper>
-                <BlockText text={`€${average} for two people`} />
-              </StyledSectionBlock>
-              {establishment && (
-                <StyledSectionBlock data-testid="detail-establishment">
-                  <StyledTitleWrapper>
-                    <BlockTitle text="Establishment type" />
-                  </StyledTitleWrapper>
-                  <BlockText text={establishment} />
-                </StyledSectionBlock>
-              )}
-            </StyledInformationDetails>
-            <StyledSectionBlock data-testid="detail-more-info">
-              <StyledTitleWrapper>
-                <BlockTitle text="More info" />
-              </StyledTitleWrapper>
-              <Highlights highlights={highlights} />
-            </StyledSectionBlock>
-            <StyledAddressWrapper data-testid="detail-address" className="paper">
-              <StyledSectionBlock>
+          <StyledMainInformation>
+            {phone && (
+              <StyledSectionBlock data-testid="detail-phone">
                 <StyledTitleWrapper>
                   <BlockTitle text="Phone" />
                 </StyledTitleWrapper>
                 <StyledPhone>{phone}</StyledPhone>
               </StyledSectionBlock>
-              <StyledSectionBlock>
+            )}
+            {hours && (
+              <StyledSectionBlock data-testid="detail-schedule">
                 <StyledTitleWrapper>
-                  <BlockTitle text="Address" />
+                  <BlockTitle text="Schedule" />
                 </StyledTitleWrapper>
-                <Address mapSrc={getMapSrc(name, location)} address={address} />
+                <Timings timings={getTimings(hours)} />
               </StyledSectionBlock>
+            )}
+          </StyledMainInformation>
+          <StyledExtraInformation>
+            {categories && (
+              <StyledSectionBlock data-testid="detail-categories">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Categories" />
+                </StyledTitleWrapper>
+                <Categories list={categories} />
+              </StyledSectionBlock>
+            )}
+            {price && (
+              <StyledSectionBlock data-testid="detail-price">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Cost rank" />
+                </StyledTitleWrapper>
+                <PercentBar
+                  percent={getCostPercent(price)}
+                  legend={{ initial: 'low', end: 'high' }}
+                />
+              </StyledSectionBlock>
+            )}
+            {rating && (
+              <StyledSectionBlock data-testid="detail-rating">
+                <StyledTitleWrapper>
+                  <BlockTitle text="Rating" />
+                </StyledTitleWrapper>
+                <Rating value={rating} votes={reviewCount} />
+              </StyledSectionBlock>
+            )}
+          </StyledExtraInformation>
+          {name && address && (
+            <StyledAddressWrapper data-testid="detail-address" className="paper">
+              <Address mapSrc={getMapSrc(name, address)} address={address} />
             </StyledAddressWrapper>
-          </StyledInformationContent>
+          )}
         </StyledInformation>
-        {relatedRestaurants.length > 0 && (
-          <StyledRelatedRestaurantsWrapper data-testid="detail-related">
-            <Title text="Related restaurants" />
-            <RelatedRestaurants
-              restaurants={relatedRestaurants}
-              onClickRelatedRestaurant={onClickRelatedRestaurant}
-            />
-          </StyledRelatedRestaurantsWrapper>
-        )}
+        <Title text="Reviews" />
+        <StyledReviews>
+          {reviews?.map((review: ReviewType) => (
+            <Review key={review.id} data={review} />
+          ))}
+        </StyledReviews>
       </StyledDetailPage>
     </Layout>
   );

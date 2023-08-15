@@ -1,6 +1,6 @@
 import { createStore, Reducer } from 'redux';
 import appReducer from '@/store/redux/reducer';
-import { Restaurant } from '@/components/pages/types';
+import { HourDetail } from '@/components/pages/types';
 
 // GENERAL UTILS
 
@@ -30,41 +30,26 @@ export const getFormattedUrlText = (text: string, isPath = false) => {
   }, '');
 };
 
-// RELATED RESTAURANTS
+export const getFormattedHours = (hoursDetails: HourDetail[]) => {
+  const formattedHourDetails = hoursDetails.reduce(
+    (
+      newHoursDetails: HourDetail[],
+      nextHourDetail: HourDetail,
+      currentIndex: number,
+      prevHoursDetails: HourDetail[],
+    ) => {
+      if (currentIndex > 0 && prevHoursDetails[currentIndex - 1].day === nextHourDetail.day) {
+        newHoursDetails.splice(newHoursDetails.length - 1, 1, nextHourDetail);
+      } else {
+        newHoursDetails.push(nextHourDetail);
+      }
 
-export const getRandomNumbersList = (
-  excludedValue: number,
-  minRandomValue: number,
-  maxRandomValue: number,
-) => {
-  const indexArray: number[] = [];
-
-  while (indexArray.length < 3) {
-    const random = getRandomInt(minRandomValue, maxRandomValue);
-    if (random !== excludedValue && !indexArray.includes(random)) {
-      indexArray.push(random);
-    }
-  }
-
-  return indexArray;
-};
-
-export const getCurrentRelatedRestaurants = (
-  restaurants: Restaurant[],
-  currentRestaurantId: number,
-) => {
-  const currentSuggestionIndex = restaurants.findIndex(
-    (restaurants) => restaurants.id === currentRestaurantId,
-  );
-  const getRelatedRestaurantsIndexList = getRandomNumbersList(
-    currentSuggestionIndex,
-    0,
-    restaurants.length,
+      return newHoursDetails;
+    },
+    [],
   );
 
-  return getRelatedRestaurantsIndexList.map(
-    (relatedRestaurantsIndex) => restaurants[relatedRestaurantsIndex],
-  );
+  return formattedHourDetails;
 };
 
 // SEARCH AND FAVORITES PAGE TITLE
@@ -73,10 +58,6 @@ export const getTitleText = (total: number) => ({
   totalText: total > 0 ? total : 'There are no',
   restaurantText: `restaurant${total === 0 || total >= 2 ? 's' : ''}`,
 });
-
-// CreateMockStore
-
-export const createTestStore = () => createStore(appReducer as Reducer);
 
 type GetSSRResult<TProps> = { props: TProps } | { redirect: any } | { notFound: true };
 
@@ -95,3 +76,22 @@ type GetStaticFn<TProps> = (args: any) => Promise<GetStaticResult<TProps>>;
 export type inferStaticProps<TFn extends GetStaticFn<any>> = TFn extends GetStaticFn<infer TProps>
   ? NonNullable<TProps>
   : never;
+
+// CreateMockStore
+
+export const createTestStore = () => createStore(appReducer as Reducer);
+
+// Debounce
+
+export type Timer = ReturnType<typeof setTimeout>;
+
+export const debounce = (fn: any, delay: number) => {
+  let timer: Timer;
+
+  return (...args: unknown[]) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+};

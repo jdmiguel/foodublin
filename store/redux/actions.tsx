@@ -6,7 +6,7 @@ export const addFavorite = (favorite: Restaurant) => ({
   favorite,
 });
 
-export const deleteFavorite = (id: number) => ({
+export const deleteFavorite = (id: string) => ({
   type: 'DELETE_FAVORITE',
   id,
 });

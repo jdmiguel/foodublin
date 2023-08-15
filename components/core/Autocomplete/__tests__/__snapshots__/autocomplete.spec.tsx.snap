@@ -155,7 +155,7 @@ exports[`Component: Autocomplete should render correctly 1`] = `
 
 .c6 {
   width: 100%;
-  border-bottom: 1px solid #E5EAED;
+  border-bottom: 1px solid #e1e4e6;
   list-style: none;
   display: -webkit-box;
   display: -webkit-flex;
@@ -213,12 +213,6 @@ exports[`Component: Autocomplete should render correctly 1`] = `
   .c10 {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c5 {
-    min-height: 200px;
   }
 }
 
@@ -285,9 +279,7 @@ exports[`Component: Autocomplete should render correctly 1`] = `
             <p
               class="c11"
               type="suggestion"
-            >
-              Rathmines
-            </p>
+            />
           </div>
         </a>
       </li>
@@ -322,9 +314,7 @@ exports[`Component: Autocomplete should render correctly 1`] = `
             <p
               class="c11"
               type="suggestion"
-            >
-              South City West
-            </p>
+            />
           </div>
         </a>
       </li>
@@ -359,9 +349,7 @@ exports[`Component: Autocomplete should render correctly 1`] = `
             <p
               class="c11"
               type="suggestion"
-            >
-              Drumcondra
-            </p>
+            />
           </div>
         </a>
       </li>

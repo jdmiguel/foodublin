@@ -24,17 +24,17 @@ import {
 } from './styles/autocompleteMobile';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { CardType } from '../types';
-import { Restaurant } from '../../pages/types';
+import { RestaurantSuggestion } from '../../pages/types';
 
 export type AutocompleteMobileProps = {
   hasSearchIcon?: boolean;
-  suggestions: Restaurant[];
+  suggestions: RestaurantSuggestion[];
   loading: boolean;
   className?: string;
   disabled: boolean;
   onRequestError: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: number, name: string) => void;
+  selectSuggestion: (id: string, name: string) => void;
   clearSuggestions: () => void;
 };
 
@@ -97,7 +97,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
     }
   };
 
-  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
+  const handleSuggestionClick = (restaurantId: string, showedText: string) => {
     setValue(showedText);
     setLabelTextShowed(showedText);
     setIsModalShowed(false);
@@ -124,13 +124,12 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
       );
     }
 
-    return suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
+    return suggestions.map(({ id, name }: RestaurantSuggestion) => (
       <StyledListboxItem key={id} role="option">
         <Card
-          imgSrc={imgSrc}
-          title={title}
-          content={content}
-          onClick={() => handleSuggestionClick(id, title)}
+          imgSrc="/images/generic-venue.svg"
+          title={name}
+          onClick={() => handleSuggestionClick(id, name)}
           type={CardType.SUGGESTION}
         />
       </StyledListboxItem>

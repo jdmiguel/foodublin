@@ -12,9 +12,11 @@ const CardTextCSS = css`
 const StandartCardImageCSS = css`
   max-width: 100px;
   min-width: 80px;
+  object-fit: cover;
   @media only screen and (min-width: 768px) {
     width: 100px;
     min-width: 100px;
+    height: 98px;
   }
 `;
 

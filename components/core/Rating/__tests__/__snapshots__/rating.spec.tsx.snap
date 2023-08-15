@@ -13,7 +13,7 @@ exports[`Component: Rating should render five stars 1`] = `
 }
 
 .c1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 
@@ -61,7 +61,7 @@ exports[`Component: Rating should render four stars 1`] = `
 }
 
 .c1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 
@@ -109,7 +109,7 @@ exports[`Component: Rating should render one star 1`] = `
 }
 
 .c1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 
@@ -157,7 +157,7 @@ exports[`Component: Rating should render three stars 1`] = `
 }
 
 .c1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 
@@ -205,7 +205,7 @@ exports[`Component: Rating should render two stars 1`] = `
 }
 
 .c1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 

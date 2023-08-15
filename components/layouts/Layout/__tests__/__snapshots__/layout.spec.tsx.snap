@@ -537,7 +537,7 @@ exports[`Component: Layout should render 1`] = `
         <p
           class="c19"
         >
-          ©2022
+          ©2023
         </p>
         <p
           class="c19"
@@ -546,7 +546,7 @@ exports[`Component: Layout should render 1`] = `
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app"
+          href="https://jdmiguel.com"
         >
           JDMIGUEL
         </a>
@@ -1138,7 +1138,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
         <p
           class="c19"
         >
-          ©2022
+          ©2023
         </p>
         <p
           class="c19"
@@ -1147,7 +1147,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app"
+          href="https://jdmiguel.com"
         >
           JDMIGUEL
         </a>
@@ -1638,7 +1638,7 @@ exports[`Component: Layout should render the extended header 1`] = `
         <p
           class="c14"
         >
-          ©2022
+          ©2023
         </p>
         <p
           class="c14"
@@ -1647,7 +1647,7 @@ exports[`Component: Layout should render the extended header 1`] = `
         </p>
         <a
           class="c6"
-          href="https://jdmiguel.netlify.app"
+          href="https://jdmiguel.com"
         >
           JDMIGUEL
         </a>
@@ -2256,7 +2256,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
         <p
           class="c20"
         >
-          ©2022
+          ©2023
         </p>
         <p
           class="c20"
@@ -2265,7 +2265,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
         </p>
         <a
           class="c5"
-          href="https://jdmiguel.netlify.app"
+          href="https://jdmiguel.com"
         >
           JDMIGUEL
         </a>

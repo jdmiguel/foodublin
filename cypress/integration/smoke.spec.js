@@ -89,12 +89,12 @@ describe('Smoke tests', () => {
 
   it('does not smoke with the complete flow when searching by using the location and cuisine dropdowns', () => {
     // SELECT LOCATION AND CUISINE
-    cy.get('[data-testid=dropdown]').first().as('locationsDropdown');
+    cy.get('[data-testid=dropdown]').first().as('areasDropdown');
     cy.get('[data-testid=dropdown]').last().as('cuisinesDropdown');
 
-    cy.get('@locationsDropdown').click();
+    cy.get('@areasDropdown').click();
 
-    cy.get('@locationsDropdown').find('li').contains('South City West').click();
+    cy.get('@areasDropdown').find('li').contains('South City West').click();
 
     cy.get('@cuisinesDropdown').click();
 

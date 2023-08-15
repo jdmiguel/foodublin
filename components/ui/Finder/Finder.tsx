@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useCallback } from 'react';
 import { AutocompleteMobile } from '../../core/Autocomplete/AutocompleteMobile';
 import { Autocomplete } from '../../core/Autocomplete/Autocomplete';
 import { Dropdown } from '../../core/Dropdown/Dropdown';
@@ -14,25 +13,19 @@ import {
   StyledSpacer,
   StyledButtonWrapper,
 } from './styles';
-import { setRelatedRestaurants } from '@/store/redux/actions';
-import {
-  DUBLIN_ID,
-  THUMB_GENERIC_SRC,
-  MIN_RESTAURANTS_LIST,
-  MAX_MOBILE_WIDTH,
-} from '@/store/statics';
-import { getFormattedUrlText, getCurrentRelatedRestaurants } from '@/helpers/utils';
-import { getRestaurants } from '@/services/index';
-import { Location, Cuisine, EntityType, Restaurant, RawRestaurant } from '../../pages/types';
+import { MAX_MOBILE_WIDTH } from '@/store/statics';
+import { getFormattedUrlText, debounce } from '@/helpers/utils';
+import { getRestaurantsBySearchText } from '@/services/index';
+import { Area, Cuisine, RestaurantSuggestion } from '../../pages/types';
 
 type FinderProps = {
-  locations: Location[];
+  areas: Area[];
   cuisines: Cuisine[];
   onNavigate: (route: string, asRoute: string) => void;
 };
 
-export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate }) => {
-  const [suggestions, setSuggestions] = useState<Restaurant[]>([]);
+export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) => {
+  const [suggestions, setSuggestions] = useState<RestaurantSuggestion[]>([]);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isDropdownReset, setIsDropdownReset] = useState(false);
@@ -40,32 +33,20 @@ export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate 
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
   const [onRequestError, setOnRequestError] = useState(false);
 
-  const dispatch = useDispatch();
-
   const { windowWidth } = useWindowSize();
   const isMobile = windowWidth < MAX_MOBILE_WIDTH;
 
-  const fetchSuggestions = async (search: string) => {
+  const fetchSuggestions = async (searchText: string) => {
     setIsAutocompleteLoading(true);
 
-    const { rawRestaurants, status } = await getRestaurants({
-      entity_id: DUBLIN_ID,
-      entity_type: EntityType.CITY,
-      cuisines: null,
-      q: search,
-    });
+    const { restaurants, status } = await getRestaurantsBySearchText(searchText);
 
     if (status === 200) {
-      const formattedRestaurants = rawRestaurants.map((rawRestaurant: RawRestaurant) => ({
-        id: rawRestaurant.restaurant.id,
-        imgSrc: rawRestaurant.restaurant.thumb || THUMB_GENERIC_SRC,
-        title: rawRestaurant.restaurant.name,
-        content: rawRestaurant.restaurant.location.locality,
+      const formattedRestaurants = restaurants.map((restaurant) => ({
+        id: restaurant.id,
+        name: restaurant.name,
         route: '/detail/[id]/[name]',
-        asRoute: `/detail/${rawRestaurant.restaurant.id}/${getFormattedUrlText(
-          rawRestaurant.restaurant.name,
-          true,
-        )}`,
+        asRoute: `/detail/${restaurant.id}/${getFormattedUrlText(restaurant.name, true)}`,
       }));
 
       setSuggestions(formattedRestaurants);
@@ -77,15 +58,13 @@ export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate 
     }
   };
 
-  const selectSuggestion = (id: number, name: string) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedFetchSuggestions = useCallback(debounce(fetchSuggestions, 500), []);
+
+  const selectSuggestion = (id: string, name: string) => {
     const path = getFormattedUrlText(name, true);
     const route = '/detail/[id]/[name]';
     const asRoute = `/detail/${id}/${path}`;
-    if (suggestions.length > MIN_RESTAURANTS_LIST) {
-      const currentRelatedRestaurants = getCurrentRelatedRestaurants(suggestions, id);
-
-      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
-    }
 
     setIsButtonLoading(true);
     setIsDropdownReset(true);
@@ -109,13 +88,18 @@ export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate 
     setOnRequestError(false);
   };
 
+  const handleFetchSuggestions = (searchText: string) => {
+    setIsAutocompleteLoading(true);
+    debouncedFetchSuggestions(searchText);
+  };
+
   return (
     <StyledFinder data-testid="finder">
       {isMobile ? (
         <StyledAutocompleteMobileWrapper>
           <AutocompleteMobile
             suggestions={suggestions || []}
-            fetchSuggestions={fetchSuggestions}
+            fetchSuggestions={debouncedFetchSuggestions}
             selectSuggestion={selectSuggestion}
             disabled={isButtonLoading}
             loading={isAutocompleteLoading}
@@ -128,7 +112,7 @@ export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate 
         <StyledAutocompleteWrapper>
           <Autocomplete
             suggestions={suggestions || []}
-            fetchSuggestions={fetchSuggestions}
+            fetchSuggestions={handleFetchSuggestions}
             selectSuggestion={selectSuggestion}
             disabled={isButtonLoading}
             loading={isAutocompleteLoading}
@@ -144,7 +128,7 @@ export const Finder: React.FC<FinderProps> = ({ locations, cuisines, onNavigate 
           <Dropdown
             icon="near_me"
             labelTxt="Select location"
-            list={locations}
+            list={areas}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
             onSelect={(path: string) => setCurrentLocationPath(path)}

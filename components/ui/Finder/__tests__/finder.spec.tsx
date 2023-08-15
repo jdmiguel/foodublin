@@ -15,7 +15,7 @@ describe('Component: Finder', () => {
   let store;
 
   const props = {
-    locations: [],
+    areas: [],
     cuisines: [],
     onNavigate: jest.fn(),
   };

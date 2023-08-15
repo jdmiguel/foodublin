@@ -4,21 +4,21 @@ import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
 import { LoaderType, CardType, BreadcrumbsData } from '../../core/types';
-import { Location, Cuisine, HighlightRestaurant } from '../types';
+import { Area, Cuisine, HighlightRestaurant } from '../types';
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
 type HomePageProps = {
-  locations: Location[];
+  areas: Area[];
   cuisines: Cuisine[];
   highlights: HighlightRestaurant[];
   isNavigating: boolean;
-  clickHighlight: (id: number, route: string, asRoute: string) => void;
+  clickHighlight: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
   breadcrumbs: BreadcrumbsData[];
 };
 
 const HomePage: React.FC<HomePageProps> = ({
-  locations,
+  areas,
   cuisines,
   highlights,
   clickHighlight,
@@ -27,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = ({
   breadcrumbs,
 }) => (
   <Layout
-    locations={locations}
+    areas={areas}
     cuisines={cuisines}
     isExtendedHeader={true}
     onNavigate={onNavigate}
@@ -47,7 +47,7 @@ const HomePage: React.FC<HomePageProps> = ({
               content={restaurant.content}
               type={CardType.HIGHLIGHT}
               onClick={() => {
-                clickHighlight(restaurant.id, restaurant.route, restaurant.asRoute);
+                clickHighlight(restaurant.route, restaurant.asRoute);
               }}
             />
           </div>

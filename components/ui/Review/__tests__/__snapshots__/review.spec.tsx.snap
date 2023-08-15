@@ -13,17 +13,13 @@ exports[`Component: ReviewCard should render correctly 1`] = `
 }
 
 .c5 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #585858;
 }
 
 .c0 {
-  margin-top: 20px;
-  padding-bottom: 20px;
-}
-
-.c0:not(:last-of-type) {
-  border-bottom: 1px solid #D8D8D8;
+  padding: 24px;
+  background-color: #e1e4e6;
 }
 
 .c1 {
@@ -43,6 +39,7 @@ exports[`Component: ReviewCard should render correctly 1`] = `
   height: 50px;
   border-radius: 50%;
   box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
+  object-fit: cover;
 }
 
 .c3 {
@@ -73,16 +70,13 @@ exports[`Component: ReviewCard should render correctly 1`] = `
       class="LazyImage-Placeholder"
     >
       <img
-        alt="John Hughes"
         class="c2"
         src="/images/generic-thumb.png"
       />
     </div>
     <p
       class="c3"
-    >
-      John Hughes
-    </p>
+    />
   </div>
   <div
     class="c1"
@@ -119,7 +113,7 @@ exports[`Component: ReviewCard should render correctly 1`] = `
     <p
       class="c6"
     >
-      Nov 07, 2018
+      Invalid Date
     </p>
   </div>
   <p

@@ -137,6 +137,7 @@ exports[`should render the standart card 1`] = `
 .c1 {
   max-width: 100px;
   min-width: 80px;
+  object-fit: cover;
 }
 
 .c2 {
@@ -200,6 +201,7 @@ exports[`should render the standart card 1`] = `
   .c1 {
     width: 100px;
     min-width: 100px;
+    height: 98px;
   }
 }
 

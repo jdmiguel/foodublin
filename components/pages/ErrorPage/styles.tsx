@@ -10,7 +10,6 @@ export const StyledErrorPage = styled.div`
     margin: 50px auto;
   }
   @media only screen and (min-width: 1024px) {
-    margin: 75px auto 60px;
     padding: 0 30px;
   }
 `;

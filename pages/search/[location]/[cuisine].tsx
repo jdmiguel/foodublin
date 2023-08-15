@@ -21,17 +21,12 @@ import {
   SCROLL_FACTOR,
   SCROLL_DELAY,
 } from '@/store/statics';
-import { setRelatedRestaurants } from '@/store/redux/actions';
-import {
-  getFormattedUrlText,
-  getCurrentRelatedRestaurants,
-  inferStaticProps,
-} from '@/helpers/utils';
+import { getFormattedUrlText, inferStaticProps } from '@/helpers/utils';
 import { getRestaurants } from '@/services/index';
 import { ListItem, BreadcrumbsType } from '@/components/core/types';
-import { Restaurant, RawRestaurant, EntityType, Location } from '@/components/pages/types';
+import { Restaurant, RawRestaurant, EntityType, Area } from '@/components/pages/types';
 
-export enum LocationType {
+export enum AreaType {
   CITY = 'city',
   SUBZONE = 'subzone',
 }
@@ -46,7 +41,7 @@ type SearchProps = inferStaticProps<typeof getStaticProps>;
 
 type CustomGetStaticPropsContext = GetStaticPropsContext & {
   params: {
-    location: string;
+    area: string;
     cuisine: string;
   };
 };
@@ -57,7 +52,7 @@ const DynamicSearchPage = dynamic(() => import('@/components/pages/SearchPage/Se
       <Loader text={DEFAULT_TEXT_LOADING} />
     </FullLoader>
   ),
-});
+}) as any;
 
 const getValues = (path: string, searchType: ListItem[]): [number | null, string | null] => {
   const value = searchType.find((item) => item.path === path);
@@ -83,15 +78,15 @@ const selectRestaurants =
     rawRestaurants.map((rawRestaurant: RawRestaurant) => formattedFuntion(rawRestaurant));
 
 const handleGetRestaurants = async (
-  locationId: number | null,
+  areaId: number | null,
   cuisineId: number | null,
   start?: number,
   sort?: string,
   order?: string,
 ) => {
   const { rawRestaurants, total, status } = await getRestaurants({
-    entity_id: locationId,
-    entity_type: locationId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
+    entity_id: areaId,
+    entity_type: areaId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
     cuisines: cuisineId,
     start,
     sort,
@@ -113,9 +108,9 @@ const handleGetRestaurants = async (
 };
 
 const Search: NextPage<SearchProps> = ({
-  locationId,
+  areaId,
   cuisineId,
-  locationName,
+  areaName,
   cuisineName,
   restaurants,
   total,
@@ -133,8 +128,6 @@ const Search: NextPage<SearchProps> = ({
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [isOnError, setIsOnError] = useState(false);
   const [isWarningShown, setIsWarningShown] = useState(false);
-
-  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -164,7 +157,7 @@ const Search: NextPage<SearchProps> = ({
       }
 
       const restaurantsData = await handleGetRestaurants(
-        locationId,
+        areaId,
         cuisineId,
         start,
         sortRef.current,
@@ -183,8 +176,9 @@ const Search: NextPage<SearchProps> = ({
         setIsOnError(true);
       }
     },
-    [cuisineId, currentRestaurants, locationId],
+    [areaId, cuisineId, currentRestaurants],
   );
+
 
   useScroll(
     async ({ scrollTop, scrollHeight, clientHeight }) => {
@@ -233,26 +227,20 @@ const Search: NextPage<SearchProps> = ({
     handleRestaurants(LoadType.FILTER);
   };
 
-  const handleClickCard = (id: number, route: string, asRoute: string) => {
+  const handleClickCard = (id: , route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
-
-    if (currentRestaurants.length > MIN_RESTAURANTS_LIST) {
-      const currentRelatedRestaurants = getCurrentRelatedRestaurants(currentRestaurants, id);
-
-      dispatch(setRelatedRestaurants(currentRelatedRestaurants));
-    }
 
     setIsNavigating(true);
     router.push(route, asRoute);
   };
 
   const searchBreadcrumbs = {
-    text: `${cuisineName || 'Any food'} in ${locationName}`,
+    text: `${cuisineName || 'Any food'} in ${areaName}`,
     route: '/search/[location]/[cuisine]',
-    asRoute: `/search/${getFormattedUrlText(
-      `${locationName || 'Dublin'}`,
+    asRoute: `/search/${getFormattedUrlText(`${areaName || 'Dublin'}`, true)}/${getFormattedUrlText(
+      `${cuisineName || 'Any food'}`,
       true,
-    )}/${getFormattedUrlText(`${cuisineName || 'Any food'}`, true)}`,
+    )}`,
     type: BreadcrumbsType.SEARCH,
   };
   const { breadcrumbs } = useBreadcrumbs(searchBreadcrumbs, 'search');
@@ -264,7 +252,7 @@ const Search: NextPage<SearchProps> = ({
   return (
     <DynamicSearchPage
       total={total}
-      location={locationName}
+      area={areaName}
       cuisine={cuisineName}
       restaurants={currentRestaurants}
       onClickFilter={handleFilter}
@@ -285,21 +273,21 @@ const Search: NextPage<SearchProps> = ({
 export const getStaticPaths = async () => {
   const jsonDirectory = path.join(process.cwd(), 'json');
   const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
-  const { locations, cuisines } = JSON.parse(fileContents);
+  const { areas, cuisines } = JSON.parse(fileContents);
 
-  const locationsLength = locations.length;
+  const areasLength = areas.length;
   const cuisinesLength = cuisines.length;
 
-  const emptyPaths = new Array(locationsLength * cuisinesLength).fill('', 0);
+  const emptyPaths = new Array(areasLength * cuisinesLength).fill('', 0);
 
-  let locationsCounter = 0;
+  let areasCounter = 0;
   let cuisinesCounter = 0;
 
   const getPaths = () => {
     if (cuisinesCounter < cuisinesLength) {
       cuisinesCounter++;
     } else {
-      locationsCounter++;
+      areasCounter++;
       cuisinesCounter = 0;
     }
 
@@ -307,16 +295,16 @@ export const getStaticPaths = async () => {
 
     return {
       params: {
-        location: locations[locationsCounter].path,
+        area: areas[areasCounter].path,
         cuisine: cuisines[updatedCuisineCounter].path,
       },
     };
   };
 
   const paths = emptyPaths.map(getPaths);
-  const pathsWithoutCuisine = locations.map((location: Location) => ({
+  const pathsWithoutCuisine = areas.map((area: Area) => ({
     params: {
-      location: location.path,
+      area: area.path,
       cuisine: 'any-food',
     },
   }));
@@ -328,21 +316,21 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({
-  params: { location, cuisine },
+  params: { area, cuisine },
 }: CustomGetStaticPropsContext) => {
   const jsonDirectory = path.join(process.cwd(), 'json');
   const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
-  const { locations, cuisines } = JSON.parse(fileContents);
+  const { areas, cuisines } = JSON.parse(fileContents);
 
-  const [locationId, locationName] = getValues(location, locations);
+  const [areaId, areaName] = getValues(area, areas);
   const [cuisineId, cuisineName] = getValues(cuisine, cuisines);
 
-  const restaurantsData = await handleGetRestaurants(locationId, cuisineId);
+  const restaurantsData = await handleGetRestaurants(areaId, cuisineId);
 
   return {
     props: {
-      locationId,
-      locationName,
+      areaId,
+      areaName,
       cuisineId,
       cuisineName,
       total: restaurantsData.total,

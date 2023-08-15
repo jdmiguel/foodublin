@@ -2,6 +2,19 @@ import styled, { css } from 'styled-components';
 
 // Address
 
+export const StyledAddressWrapper = styled.div`
+  padding: 20px;
+  top: 140px;
+  height: fit-content;
+  grid-column: 1/5;
+  @media only screen and (min-width: 992px) {
+    grid-column: 3/5;
+  }
+  @media only screen and (min-width: 1200px) {
+    grid-column: 3/6;
+  }
+`;
+
 export const StyledAddressMapWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.LIGHT_MIN};
   border: 1px solid ${({ theme }) => theme.palette.LIGHT_SOFT};
@@ -22,13 +35,9 @@ export const StyledAddressIcon = styled.i`
   margin: 1px 5px 0 0;
 `;
 
-// Cuisines
+// Categories
 
-export const StyledCuisinesWrapper = styled.div`
-  margin-top: 20px;
-`;
-
-export const StyledCuisine = styled.p`
+export const StyledCategory = styled.p`
   background-color: ${({ theme }) => theme.palette.DARK_MIN};
   color: ${({ theme }) => theme.palette.LIGHT_MAX};
   font-weight: 500;
@@ -65,10 +74,7 @@ export const StyledHeader = styled.div<{ bgImg: string }>`
   display: flex;
   width: 100%;
   height: 250px;
-  margin: 0;
-  @media only screen and (min-width: 640px) {
-    height: 300px;
-  }
+  margin-bottom: 40px;
 `;
 
 export const StyledOverlay = styled.div`
@@ -92,23 +98,15 @@ export const StyledName = styled.h2`
     line-height: 2.3rem;
     font-size: 2.6rem;
   }
-  @media only screen and (min-width: 992px) {
-    line-height: 2.5rem;
-    font-size: 3rem;
-  }
 `;
 
-export const StyledLocation = styled.h3`
+export const StyledStreet = styled.h3`
   ${HeaderTextCSS}
   font-size: 1.3rem;
   line-height: 1.3rem;
   @media only screen and (min-width: 640px) {
     line-height: 2rem;
     font-size: 2rem;
-  }
-  @media only screen and (min-width: 992px) {
-    line-height: 2rem;
-    font-size: 2.6rem;
   }
 `;
 
@@ -122,25 +120,36 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledInformation = styled.div`
-  margin: 50px 0;
-`;
-
-export const StyledInformationContent = styled.div`
-  margin: 50px 0 0;
-  @media only screen and (min-width: 640px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 50px;
+  margin-bottom: 30px;
   @media only screen and (min-width: 992px) {
+    grid-column-gap: 30px;
     grid-template-columns: repeat(4, 1fr);
   }
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 
-export const StyledInformationDetails = styled.div``;
+export const StyledMainInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+
+export const StyledExtraInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
 
 export const StyledSectionBlock = styled.div`
-  margin-bottom: 30px;
+  flex: 1;
+  @media only screen and (min-width: 992px) {
+    flex: unset;
+  }
 `;
 
 export const StyledTitleWrapper = styled.div`
@@ -151,32 +160,6 @@ export const StyledPhone = styled.h5`
   color: ${({ theme }) => theme.palette.PRIMARY};
   font-size: 1.2rem;
   line-height: 0;
-`;
-
-export const StyledAddressWrapper = styled.div`
-  grid-column: 1 / span 4;
-  padding: 15px;
-  top: 140px;
-  height: fit-content;
-  position: sticky;
-  @media only screen and (min-width: 992px) {
-    grid-column: 3 / span 2;
-  }
-`;
-
-export const StyledRelatedRestaurantsWrapper = styled.div`
-  @media only screen and (max-width: 1024px) {
-    margin-top: 50px;
-  }
-`;
-
-export const StyledRelatedRestaurants = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  @media only screen and (min-width: 992px) {
-    flex-direction: row;
-  }
 `;
 
 // Highlights
@@ -198,21 +181,21 @@ export const StyledHighlightIcon = styled.i`
   margin-right: 5px;
 `;
 
-// Timmings
+// Timings
 
-export const StyledTimming = styled.li`
+export const StyledTiming = styled.li`
   display: flex;
   align-items: flex-end;
 `;
 
-export const StyledTimmingDay = styled.span`
+export const StyledTimingDay = styled.span`
   font-size: 1.1rem;
   font-weight: 500;
   color: ${({ theme }) => theme.palette.DARK_MEDIUM};
   margin-right: 5px;
 `;
 
-export const StyledTimmingSchedule = styled.span`
+export const StyledTimingSchedule = styled.span`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.palette.DARK_MIN};
   margin-bottom: 1px;
@@ -220,8 +203,8 @@ export const StyledTimmingSchedule = styled.span`
 
 // Reviews
 
-export const StyledReviewsWrapper = styled.div`
-  @media only screen and (min-width: 1024px) {
-    padding-right: 30px;
-  }
+export const StyledReviews = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 30px;
 `;

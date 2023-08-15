@@ -12,11 +12,11 @@ import {
   StyledCornerWrapper,
   StyledHeaderClaim,
 } from './styles';
-import { Location, Cuisine } from '../../pages/types';
+import { Area, Cuisine } from '../../pages/types';
 import { BreadcrumbsData } from '../../core/types';
 
 type HeaderProps = {
-  locations?: Location[];
+  areas?: Area[];
   cuisines?: Cuisine[];
   bgImgSrc?: string | undefined;
   claimTxt: string;
@@ -29,7 +29,7 @@ type HeaderProps = {
 };
 
 export const Header: React.FC<HeaderProps> = ({
-  locations,
+  areas,
   cuisines,
   bgImgSrc,
   claimTxt,
@@ -53,8 +53,8 @@ export const Header: React.FC<HeaderProps> = ({
             <Logo size={isExtended ? LogoSize.BIG : LogoSize.SMALL} logoSrc={'/images/logo.svg'} />
           </CustomLink>
           <StyledHeaderClaim isExtended={isExtended}>{claimTxt}</StyledHeaderClaim>
-          {isExtended && locations && cuisines && (
-            <Finder locations={locations} cuisines={cuisines} onNavigate={onNavigateFromFinder} />
+          {isExtended && areas && cuisines && (
+            <Finder areas={areas} cuisines={cuisines} onNavigate={onNavigateFromFinder} />
           )}
         </StyledHeaderContent>
       </StyledOverlay>

@@ -4,10 +4,9 @@ import {
   RestaurantsRequestParams,
   RawRestaurantDetail,
   RawRestaurant,
+  BasicRestaurant,
   RawReview,
 } from '@/components/pages/types';
-
-const BASE_API = 'https://developers.zomato.com/api/v2.1/';
 
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
@@ -43,17 +42,17 @@ export const getRestaurants = async (
   );
 
   try {
-    const response = await axios(`${BASE_API}search`, {
+    const response = await axios(`${BASE_API}businesses/search`, {
       method: 'GET',
       headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-        'content-type': 'application/json',
+        accept: 'application/json',
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
-      params: currentParams,
+      params: { location: 'dublin', term: 'restaurants', sort_by: 'best_match', ...currentParams },
     });
 
     return {
-      rawRestaurants: response.data.restaurants,
+      rawRestaurants: response.data.businesses,
       total: response.data.results_found,
       status: response.status,
     };
@@ -62,20 +61,38 @@ export const getRestaurants = async (
   }
 };
 
-export const getRestaurant = async (
-  res_id: number,
-): Promise<{ rawRestaurantDetail: RawRestaurantDetail; status: number }> => {
+export const getRestaurantsBySearchText = async (
+  searchText: string,
+): Promise<{
+  restaurants: BasicRestaurant[];
+  status: number;
+}> => {
   try {
-    const response = await axios(`${BASE_API}restaurant?res_id=${res_id}`, {
-      method: 'GET',
-      headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-        'content-type': 'application/json',
-      },
-    });
+    const { data, status } = await axios.get(`/api/autocomplete?searchText=${searchText}`);
 
-    return { rawRestaurantDetail: response.data, status: response.status };
+    return {
+      restaurants: data,
+      status,
+    };
   } catch (error) {
+    return handleApiError(error as AxiosError);
+  }
+};
+
+export const getRestaurantDetails = async (
+  id: string,
+): Promise<{ details: RawRestaurantDetail; status: number }> => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:3000/api/details?id=${id}`);
+    //const response = await fetch(`http:localhost:3000/api/detail?id=${id}`);
+    //const data = await response.json();
+
+    return {
+      details: response.data,
+      status: response.status,
+    };
+  } catch (error) {
+    console.log({ error });
     return handleApiError(error as AxiosError);
   }
 };

@@ -1,17 +1,17 @@
-import { StyledTimming, StyledTimmingDay, StyledTimmingSchedule } from './styles';
-import { Timming } from '../types';
+import { StyledTiming, StyledTimingDay, StyledTimingSchedule } from './styles';
+import { Timing } from '../types';
 
 type TimingsProps = {
-  timmings: Timming[];
+  timings: Timing[];
 };
 
-export const Timmings = ({ timmings }: TimingsProps) => (
+export const Timings = ({ timings }: TimingsProps) => (
   <ul>
-    {timmings.map((timming) => (
-      <StyledTimming key={timming.id}>
-        <StyledTimmingDay>{`${timming.day} : `}</StyledTimmingDay>
-        <StyledTimmingSchedule>{timming.schedule}</StyledTimmingSchedule>
-      </StyledTimming>
+    {timings.map((timing) => (
+      <StyledTiming key={timing.id}>
+        <StyledTimingDay>{`${timing.day} : `}</StyledTimingDay>
+        <StyledTimingSchedule>{timing.schedule}</StyledTimingSchedule>
+      </StyledTiming>
     ))}
   </ul>
 );
