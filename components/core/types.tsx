@@ -16,8 +16,8 @@ export enum LoaderMode {
 }
 
 export type ListItem = {
-  iconSrc?: string;
   id: number;
+  iconSrc?: string;
   isActive?: boolean;
   name: string;
   path: string;

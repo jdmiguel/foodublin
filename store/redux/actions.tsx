@@ -11,15 +11,6 @@ export const deleteFavorite = (id: string) => ({
   id,
 });
 
-export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
-  type: 'SET_RELATED_RESTAURANTS',
-  relatedRestaurants,
-});
-
-export const clearRelatedRestaurants = () => ({
-  type: 'CLEAR_RELATED_RESTAURANTS',
-});
-
 export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({
   type: 'ADD_BREADCRUMBS',
   breadcrumbs,

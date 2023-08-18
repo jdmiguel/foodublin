@@ -1,11 +1,10 @@
 import axios, { AxiosError } from 'axios';
+import { DUBLIN_COORDINATES } from '@/store/statics';
 import {
-  RestaurantsRequestParam,
   RestaurantsRequestParams,
-  RawRestaurantDetail,
-  RawRestaurant,
-  BasicRestaurant,
-  RawReview,
+  FetchedRestaurant,
+  FetchedRestaurantDetails,
+  Suggestion,
 } from '@/components/pages/types';
 
 const handleApiError = (error: AxiosError) => {
@@ -24,54 +23,48 @@ const handleApiError = (error: AxiosError) => {
   }
 };
 
-export const getRestaurants = async (
-  params: RestaurantsRequestParams,
-): Promise<{
-  rawRestaurants: RawRestaurant[];
+export const getRestaurants = async ({
+  latitude,
+  longitude,
+  cuisine = '',
+  offset = 0,
+}: RestaurantsRequestParams): Promise<{
+  restaurants: FetchedRestaurant[];
   total: number;
   status: number;
 }> => {
-  const currentParams = Object.entries(params).reduce(
-    (params: any, [key, value]: [string, RestaurantsRequestParam]) => {
-      if (value) {
-        params[key] = value;
-      }
-      return params;
-    },
-    {},
-  );
+  const updatedLatitude = latitude || DUBLIN_COORDINATES.latitude;
+  const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    const response = await axios(`${BASE_API}businesses/search`, {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-      },
-      params: { location: 'dublin', term: 'restaurants', sort_by: 'best_match', ...currentParams },
-    });
+    const { data, status } = await axios.get(
+      `http://127.0.0.1:3000/api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
+    );
 
     return {
-      rawRestaurants: response.data.businesses,
-      total: response.data.results_found,
-      status: response.status,
+      restaurants: data.businesses,
+      total: data.total,
+      status,
     };
   } catch (error) {
+    console.log('error');
     return handleApiError(error as AxiosError);
   }
 };
 
-export const getRestaurantsBySearchText = async (
+export const getSuggestionsBySearchText = async (
   searchText: string,
 ): Promise<{
-  restaurants: BasicRestaurant[];
+  suggestions: Suggestion[];
   status: number;
 }> => {
   try {
-    const { data, status } = await axios.get(`/api/autocomplete?searchText=${searchText}`);
+    const { data, status } = await axios.get(
+      `/api/autocomplete?searchText=${searchText}&latitude=${DUBLIN_COORDINATES.latitude}&longitude=${DUBLIN_COORDINATES.longitude}`,
+    );
 
     return {
-      restaurants: data,
+      suggestions: data,
       status,
     };
   } catch (error) {
@@ -81,7 +74,7 @@ export const getRestaurantsBySearchText = async (
 
 export const getRestaurantDetails = async (
   id: string,
-): Promise<{ details: RawRestaurantDetail; status: number }> => {
+): Promise<{ details: FetchedRestaurantDetails; status: number }> => {
   try {
     const response = await axios.get(`http://127.0.0.1:3000/api/details?id=${id}`);
     //const response = await fetch(`http:localhost:3000/api/detail?id=${id}`);
@@ -93,24 +86,6 @@ export const getRestaurantDetails = async (
     };
   } catch (error) {
     console.log({ error });
-    return handleApiError(error as AxiosError);
-  }
-};
-
-export const getReviews = async (
-  res_id: number,
-): Promise<{ rawReviews: RawReview[]; status: number }> => {
-  try {
-    const response = await axios(`${BASE_API}reviews?res_id=${res_id}`, {
-      method: 'GET',
-      headers: {
-        'user-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-        'content-type': 'application/json',
-      },
-    });
-
-    return { rawReviews: response.data.user_reviews, status: response.status };
-  } catch (error) {
     return handleApiError(error as AxiosError);
   }
 };

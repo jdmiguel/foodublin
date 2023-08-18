@@ -15,8 +15,8 @@ import {
 } from './styles';
 import { MAX_MOBILE_WIDTH } from '@/store/statics';
 import { getFormattedUrlText, debounce } from '@/helpers/utils';
-import { getRestaurantsBySearchText } from '@/services/index';
-import { Area, Cuisine, RestaurantSuggestion } from '../../pages/types';
+import { getSuggestionsBySearchText } from '@/services/index';
+import { Area, Cuisine, Suggestion } from '../../pages/types';
 
 type FinderProps = {
   areas: Area[];
@@ -25,11 +25,11 @@ type FinderProps = {
 };
 
 export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) => {
-  const [suggestions, setSuggestions] = useState<RestaurantSuggestion[]>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isAutocompleteLoading, setIsAutocompleteLoading] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isDropdownReset, setIsDropdownReset] = useState(false);
-  const [currentLocationPath, setCurrentLocationPath] = useState('dublin');
+  const [currentAreaPath, setCurrentAreaPath] = useState('dublin');
   const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
   const [onRequestError, setOnRequestError] = useState(false);
 
@@ -39,17 +39,17 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
   const fetchSuggestions = async (searchText: string) => {
     setIsAutocompleteLoading(true);
 
-    const { restaurants, status } = await getRestaurantsBySearchText(searchText);
+    const { suggestions, status } = await getSuggestionsBySearchText(searchText);
 
     if (status === 200) {
-      const formattedRestaurants = restaurants.map((restaurant) => ({
-        id: restaurant.id,
-        name: restaurant.name,
-        route: '/detail/[id]/[name]',
-        asRoute: `/detail/${restaurant.id}/${getFormattedUrlText(restaurant.name, true)}`,
+      const formattedSuggestions = suggestions.map((suggestion) => ({
+        id: suggestion.id,
+        name: suggestion.name,
+        route: '/details/[id]/[name]',
+        asRoute: `/details/${suggestion.id}/${getFormattedUrlText(suggestion.name, true)}`,
       }));
 
-      setSuggestions(formattedRestaurants);
+      setSuggestions(formattedSuggestions);
       setOnRequestError(false);
       setIsAutocompleteLoading(false);
     } else {
@@ -63,8 +63,8 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
 
   const selectSuggestion = (id: string, name: string) => {
     const path = getFormattedUrlText(name, true);
-    const route = '/detail/[id]/[name]';
-    const asRoute = `/detail/${id}/${path}`;
+    const route = '/details/[id]/[name]';
+    const asRoute = `/details/${id}/${path}`;
 
     setIsButtonLoading(true);
     setIsDropdownReset(true);
@@ -76,8 +76,8 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
       return null;
     }
 
-    const route = '/search/[location]/[cuisine]';
-    const asRoute = `/search/${currentLocationPath}/${currentCuisinePath}`;
+    const route = '/search/[area]/[cuisine]';
+    const asRoute = `/search/${currentAreaPath}/${currentCuisinePath}`;
 
     setIsButtonLoading(true);
     onNavigate(route, asRoute);
@@ -131,8 +131,8 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
             list={areas}
             disabled={isButtonLoading}
             isReset={isDropdownReset}
-            onSelect={(path: string) => setCurrentLocationPath(path)}
-            onClear={() => setCurrentLocationPath('dublin')}
+            onSelect={(path: string) => setCurrentAreaPath(path)}
+            onClear={() => setCurrentAreaPath('dublin')}
           />
         </StyledDropdownWrapper>
         <StyledDropdownWrapper>

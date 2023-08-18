@@ -11,7 +11,7 @@ import {
   SECOND_DETAIL_MOCKED,
   THIRD_DETAIL_MOCKED,
   FOURTH_DETAIL_MOCKED,
-} from '../../components/pages/DetailPage/__mocks__/detailpage.mocks';
+} from '../../components/pages/DetailsPage/__mocks__/detailspage.mocks';
 
 describe('compose', () => {
   it('should be equal to mocked text', () => {

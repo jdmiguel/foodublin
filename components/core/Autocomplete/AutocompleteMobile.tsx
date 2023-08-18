@@ -24,11 +24,11 @@ import {
 } from './styles/autocompleteMobile';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { CardType } from '../types';
-import { RestaurantSuggestion } from '../../pages/types';
+import { Suggestion } from '../../pages/types';
 
 export type AutocompleteMobileProps = {
   hasSearchIcon?: boolean;
-  suggestions: RestaurantSuggestion[];
+  suggestions: Suggestion[];
   loading: boolean;
   className?: string;
   disabled: boolean;
@@ -124,7 +124,7 @@ export const AutocompleteMobile: React.FC<AutocompleteMobileProps> = ({
       );
     }
 
-    return suggestions.map(({ id, name }: RestaurantSuggestion) => (
+    return suggestions.map(({ id, name }: Suggestion) => (
       <StyledListboxItem key={id} role="option">
         <Card
           imgSrc="/images/generic-venue.svg"

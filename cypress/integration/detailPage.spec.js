@@ -1,15 +1,15 @@
-describe('DetailPage', () => {
+describe('DetailsPage', () => {
   beforeEach(() => {
-    cy.visit('/detail/16518534/bunsen');
+    cy.visit('/details/16518534/bunsen');
 
-    cy.get('[data-testid="detail-header"]').find('button').as('headerButton');
-    cy.get('[data-testid="detail-cuisine"]').as('cuisines');
-    cy.get('[data-testid="detail-schedule"]').as('schedules');
-    cy.get('[data-testid="detail-rating"]').as('rating');
-    cy.get('[data-testid="detail-average"]').as('average');
-    cy.get('[data-testid="detail-establishment"]').as('establishment');
-    cy.get('[data-testid="detail-more-info"]').as('moreInfo');
-    cy.get('[data-testid="detail-address"]').as('address');
+    cy.get('[data-testid="details-header"]').find('button').as('headerButton');
+    cy.get('[data-testid="details-cuisine"]').as('cuisines');
+    cy.get('[data-testid="details-schedule"]').as('schedules');
+    cy.get('[data-testid="details-rating"]').as('rating');
+    cy.get('[data-testid="details-average"]').as('average');
+    cy.get('[data-testid="details-establishment"]').as('establishment');
+    cy.get('[data-testid="details-more-info"]').as('moreInfo');
+    cy.get('[data-testid="details-address"]').as('address');
     cy.get('footer').find('> div').last().as('footerContent');
   });
 

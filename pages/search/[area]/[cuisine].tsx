@@ -4,18 +4,17 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { useDispatch } from 'react-redux';
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useWindowSize } from '@/components/hooks/useWindowSize';
 import { useScroll } from '@/components/hooks/useScroll';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
+import { BreadcrumbsType } from '@/components/core/types';
+import { Area, Cuisine, FetchedRestaurant, Restaurant } from '@/components/pages/types';
 import {
   DEFAULT_TEXT_LOADING,
-  DUBLIN_ID,
   MAX_RESTAURANT_DISPLAYED,
-  MIN_RESTAURANTS_LIST,
   MAX_RESTAURANT_RETRIEVED,
   MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
@@ -23,13 +22,6 @@ import {
 } from '@/store/statics';
 import { getFormattedUrlText, inferStaticProps } from '@/helpers/utils';
 import { getRestaurants } from '@/services/index';
-import { ListItem, BreadcrumbsType } from '@/components/core/types';
-import { Restaurant, RawRestaurant, EntityType, Area } from '@/components/pages/types';
-
-export enum AreaType {
-  CITY = 'city',
-  SUBZONE = 'subzone',
-}
 
 export enum LoadType {
   EXTRA = 'extra',
@@ -52,51 +44,49 @@ const DynamicSearchPage = dynamic(() => import('@/components/pages/SearchPage/Se
       <Loader text={DEFAULT_TEXT_LOADING} />
     </FullLoader>
   ),
-}) as any;
+});
 
-const getValues = (path: string, searchType: ListItem[]): [number | null, string | null] => {
-  const value = searchType.find((item) => item.path === path);
+const getValues = <T extends Area | Cuisine>(path: string, items: T[]): T =>
+  items.find((item: Area | Cuisine) => item.path === path) || ({} as any);
 
-  return [value?.id || null, value?.name || null];
-};
-
-const getRefinedRestaurant = (rawRestaurant: RawRestaurant): Restaurant => ({
-  id: rawRestaurant.restaurant.id,
-  imgSrc: rawRestaurant.restaurant.thumb,
-  title: rawRestaurant.restaurant.name,
-  content: rawRestaurant.restaurant.location.locality,
-  route: '/detail/[id]/[name]',
-  asRoute: `/detail/${rawRestaurant.restaurant.id}/${getFormattedUrlText(
-    rawRestaurant.restaurant.name,
-    true,
-  )}`,
+const getRefinedRestaurant = (fetchedRestaurant: FetchedRestaurant): Restaurant => ({
+  id: fetchedRestaurant.id,
+  imgSrc: fetchedRestaurant.image_url,
+  title: fetchedRestaurant.name,
+  content: fetchedRestaurant.location.address1,
+  route: '/details/[id]/[name]',
+  asRoute: `/details/${fetchedRestaurant.id}/${getFormattedUrlText(fetchedRestaurant.name, true)}`,
 });
 
 const selectRestaurants =
-  (rawRestaurants: RawRestaurant[]) =>
-  (formattedFuntion: (rawRestaurant: RawRestaurant) => Restaurant) =>
-    rawRestaurants.map((rawRestaurant: RawRestaurant) => formattedFuntion(rawRestaurant));
+  (fetchedRestaurants: FetchedRestaurant[]) =>
+  (formattedFuntion: (fetchedRestaurant: FetchedRestaurant) => Restaurant) =>
+    fetchedRestaurants.map((fetchedRestaurant: FetchedRestaurant) =>
+      formattedFuntion(fetchedRestaurant),
+    );
 
-const handleGetRestaurants = async (
-  areaId: number | null,
-  cuisineId: number | null,
-  start?: number,
-  sort?: string,
-  order?: string,
-) => {
-  const { rawRestaurants, total, status } = await getRestaurants({
-    entity_id: areaId,
-    entity_type: areaId === DUBLIN_ID ? EntityType.CITY : EntityType.SUBZONE,
-    cuisines: cuisineId,
-    start,
-    sort,
-    order,
+const handleGetRestaurants = async ({
+  latitude,
+  longitude,
+  cuisine,
+  offset = 0,
+}: {
+  latitude: number;
+  longitude: number;
+  cuisine: string;
+  offset?: number;
+}) => {
+  const { restaurants, total, status } = await getRestaurants({
+    latitude,
+    longitude,
+    cuisine,
+    offset,
   });
   if (status === 200) {
-    const restaurants = selectRestaurants(rawRestaurants) || [];
+    const formattedRestaurants = selectRestaurants(restaurants) || [];
 
     return {
-      restaurants: restaurants(getRefinedRestaurant),
+      restaurants: formattedRestaurants(getRefinedRestaurant),
       total,
     };
   }
@@ -108,9 +98,9 @@ const handleGetRestaurants = async (
 };
 
 const Search: NextPage<SearchProps> = ({
-  areaId,
-  cuisineId,
   areaName,
+  latitude,
+  longitude,
   cuisineName,
   restaurants,
   total,
@@ -138,47 +128,45 @@ const Search: NextPage<SearchProps> = ({
 
   const handleRestaurants = useCallback(
     async (loadType: LoadType) => {
-      let start: number;
+      let offset: number;
 
       switch (loadType) {
         case LoadType.EXTRA:
           setIsLoadingByScroll(true);
-          start = MAX_RESTAURANT_DISPLAYED;
+          offset = MAX_RESTAURANT_DISPLAYED;
           break;
         case LoadType.FILTER:
           setIsLoadingByFilter(true);
-          start = 0;
+          offset = 0;
           loadedRestaurantsRef.current = 0;
           break;
         case LoadType.SCROLL:
           setIsLoadingByScroll(true);
-          start = loadedRestaurantsRef.current;
+          offset = loadedRestaurantsRef.current;
           break;
       }
 
-      const restaurantsData = await handleGetRestaurants(
-        areaId,
-        cuisineId,
-        start,
-        sortRef.current,
-        orderRef.current,
-      );
+      const { restaurants } = await handleGetRestaurants({
+        latitude,
+        longitude,
+        cuisine: cuisineName,
+        offset,
+      });
 
-      if (restaurantsData.restaurants) {
+      if (restaurants) {
         if (loadType === LoadType.FILTER) {
-          setCurrentRestaurants(restaurantsData.restaurants);
+          setCurrentRestaurants(restaurants);
           setIsLoadingByFilter(false);
         } else {
-          setCurrentRestaurants([...currentRestaurants, ...restaurantsData.restaurants]);
+          setCurrentRestaurants([...currentRestaurants, ...restaurants]);
           setIsLoadingByScroll(false);
         }
       } else {
         setIsOnError(true);
       }
     },
-    [areaId, cuisineId, currentRestaurants],
+    [latitude, longitude, cuisineName, currentRestaurants],
   );
-
 
   useScroll(
     async ({ scrollTop, scrollHeight, clientHeight }) => {
@@ -227,7 +215,7 @@ const Search: NextPage<SearchProps> = ({
     handleRestaurants(LoadType.FILTER);
   };
 
-  const handleClickCard = (id: , route: string, asRoute: string) => {
+  const handleClickCard = (route: string, asRoute: string) => {
     scrollDelayRef.current = 0;
 
     setIsNavigating(true);
@@ -236,7 +224,7 @@ const Search: NextPage<SearchProps> = ({
 
   const searchBreadcrumbs = {
     text: `${cuisineName || 'Any food'} in ${areaName}`,
-    route: '/search/[location]/[cuisine]',
+    route: '/search/[area]/[cuisine]',
     asRoute: `/search/${getFormattedUrlText(`${areaName || 'Dublin'}`, true)}/${getFormattedUrlText(
       `${cuisineName || 'Any food'}`,
       true,
@@ -322,17 +310,17 @@ export const getStaticProps = async ({
   const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
   const { areas, cuisines } = JSON.parse(fileContents);
 
-  const [areaId, areaName] = getValues(area, areas);
-  const [cuisineId, cuisineName] = getValues(cuisine, cuisines);
+  const { name: areaName, latitude, longitude } = getValues<Area>(area, areas);
+  const { name: cuisineName, path: cuisinePath } = getValues<Cuisine>(cuisine, cuisines);
 
-  const restaurantsData = await handleGetRestaurants(areaId, cuisineId);
+  const restaurantsData = await handleGetRestaurants({ latitude, longitude, cuisine: cuisinePath });
 
   return {
     props: {
-      areaId,
       areaName,
-      cuisineId,
-      cuisineName,
+      latitude,
+      longitude,
+      cuisineName: cuisineName ?? '',
       total: restaurantsData.total,
       restaurants: restaurantsData.restaurants,
     },

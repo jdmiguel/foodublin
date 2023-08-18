@@ -16,12 +16,12 @@ import {
   StyledListboxItem,
 } from './styles/autocomplete';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { RestaurantSuggestion } from '../../pages/types';
+import { Suggestion } from '../../pages/types';
 import { CardType } from '../types';
 
 export type AutocompleteProps = {
   hasSearchIcon?: boolean;
-  suggestions: RestaurantSuggestion[];
+  suggestions: Suggestion[];
   loading: boolean;
   className?: string;
   disabled: boolean;
@@ -110,7 +110,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       );
     }
 
-    return suggestions.map(({ id, name }: RestaurantSuggestion) => (
+    return suggestions.map(({ id, name }: Suggestion) => (
       <StyledListboxItem key={id}>
         <Card
           imgSrc="/images/generic-venue.svg"

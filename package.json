@@ -17,6 +17,7 @@
     "test:coverage": "NODE_ENV=test jest --coverage",
     "test:watch": "NODE_ENV=test jest --watch",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
+    "type-check": "tsc",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -59,7 +60,7 @@
     "@types/lodash": "^4.14.176",
     "@types/node": "^16.11.6",
     "@types/raven": "^2.5.4",
-    "@types/react": "^17.0.34",
+    "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.11",
     "@types/react-modal": "^3.13.1",
     "@types/react-redux": "^7.1.20",

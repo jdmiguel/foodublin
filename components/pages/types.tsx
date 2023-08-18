@@ -1,17 +1,7 @@
 import { ReactNode } from 'react';
 
-export type Area = {
-  id: number;
-  name: string;
-  path: string;
-};
-
-export type Cuisine = {
-  id: number;
-  iconSrc: string;
-  name: string;
-  path: string;
-};
+export type Area = { id: number; name: string; path: string; latitude: number; longitude: number };
+export type Cuisine = { id: number; iconSrc: string; name: string; path: string };
 
 export type Timing = {
   id: string;
@@ -19,22 +9,13 @@ export type Timing = {
   schedule: string;
 };
 
-export enum EntityType {
-  CITY = 'city',
-  SUBZONE = 'subzone',
-}
-
 export type RestaurantsRequestParam = number | null | string | undefined;
 
 export type RestaurantsRequestParams = {
-  entity_id: number | null;
-  cuisines: number | null;
-  entity_type: EntityType.CITY | EntityType.SUBZONE;
-  start?: number;
-  sort?: string;
-  order?: string;
-  q?: string;
-  count?: number;
+  latitude: number;
+  longitude: number;
+  cuisine?: string;
+  offset?: number;
 };
 
 export type Restaurant = {
@@ -75,7 +56,6 @@ export type Location = {
   country: string;
   state: string;
   display_address: string[];
-  cross_streets: string;
 };
 
 export type Category = {
@@ -99,7 +79,7 @@ export type Review = {
   user: UserReview;
 };
 
-export type RawRestaurantDetail = {
+export type FetchedRestaurantDetails = {
   id: string;
   alias: string;
   name: string;
@@ -112,7 +92,7 @@ export type RawRestaurantDetail = {
   review_count: number;
   categories: Category[];
   rating: number;
-  location: Location;
+  location: Location & { cross_streets: string };
   coordinates: Coordinates;
   photos: string[];
   price: string;
@@ -121,18 +101,7 @@ export type RawRestaurantDetail = {
   reviews: Review[];
 };
 
-export type RawRestaurant = {
-  restaurant: RawRestaurantDetail;
-};
-
-export type RawRestaurantsSearch = {
-  results_found: number;
-  results_start: number;
-  results_shown: number;
-  restaurants: RawRestaurant[];
-};
-
-export type RestaurantDetail = {
+export type RestaurantDetails = {
   imgSrc: string;
   name: string;
   address: string;
@@ -146,9 +115,11 @@ export type RestaurantDetail = {
   reviews: Review[];
 };
 
-export type BasicRestaurant = {
-  id: string;
-  name: string;
+export type Suggestion = Pick<FetchedRestaurantDetails, 'id' | 'name'> & {
+  route: string;
+  asRoute: string;
 };
 
-export type RestaurantSuggestion = BasicRestaurant & { route: string; asRoute: string };
+export type FetchedRestaurant = Omit<FetchedRestaurantDetails, 'is_claimed'> & {
+  distance: number;
+};

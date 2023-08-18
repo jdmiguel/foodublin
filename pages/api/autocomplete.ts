@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { BASE_API, DUBLIN_COORDINATES } from '@/store/statics';
+import { BASE_API } from '@/store/statics';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = `${BASE_API}autocomplete`;
-  const { searchText } = req.query;
+  const { searchText, latitude, longitude } = req.query;
 
   try {
-    const response = await axios(url, {
+    const response = await axios(`${BASE_API}autocomplete`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -17,8 +16,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
       params: {
         text: searchText,
-        latitude: DUBLIN_COORDINATES.latitude,
-        longitude: DUBLIN_COORDINATES.longitude,
+        latitude,
+        longitude,
       },
     });
 

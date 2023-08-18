@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { BASE_API } from '@/store/statics';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { latitude, longitude, category } = req.query;
+  const { latitude, longitude, cuisine, offset } = req.query;
 
   try {
     const response = await axios(`${BASE_API}businesses/search`, {
@@ -18,11 +18,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         term: 'restaurants',
         latitude,
         longitude,
-        category,
+        radius: 1000,
+        categories: cuisine,
+        offset,
+        limit: 20,
       },
     });
 
-    res.status(200).json(response.data.businesses);
+    res.status(200).json(response.data);
   } catch (error: any) {
     console.error('Error fetching data from Yelp API:', error);
     res.status(error.response?.status || 500).json({ error: 'An error occurred' });

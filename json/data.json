@@ -1,204 +1,324 @@
 {
   "areas": [
     {
-      "id": 91,
-      "name": "Dublin",
-      "path": "dublin"
-    },
-    {
-      "id": 162239,
-      "name": "South City West",
-      "path": "south-city-west"
-    },
-    {
-      "id": 96201,
-      "name": "Temple Bar",
-      "path": "temple-bar"
-    },
-    {
-      "id": 95051,
-      "name": "Clondalkin",
-      "path": "clondalkin"
-    },
-    {
-      "id": 96181,
-      "name": "Swords",
-      "path": "swords"
-    },
-    {
-      "id": 96191,
-      "name": "Tallaght",
-      "path": "tallaght"
-    },
-    {
-      "id": 94881,
-      "name": "Blanchardstown",
-      "path": "blanchardstown"
-    },
-    {
-      "id": 162240,
-      "name": "South City East",
-      "path": "south-city-east"
-    },
-    {
-      "id": 95311,
-      "name": "Dundrum",
-      "path": "dundrum"
-    },
-    {
-      "id": 95341,
-      "name": "Finglas",
-      "path": "finglas"
-    },
-    {
-      "id": 94791,
-      "name": "Ballyfermot",
-      "path": "ballyfermot"
-    },
-    {
-      "id": 96081,
-      "name": "Santry",
-      "path": "santry"
-    },
-    {
-      "id": 95711,
-      "name": "Lucan",
-      "path": "lucan"
-    },
-    {
-      "id": 94671,
+      "id": 1,
       "name": "Artane",
-      "path": "artane"
+      "path": "artane",
+      "latitude": 53.3831971,
+      "longitude": -6.2095194
     },
     {
-      "id": 95721,
-      "name": "Malahide",
-      "path": "malahide"
-    },
-    {
-      "id": 95301,
-      "name": "Dun Laoghaire",
-      "path": "dun-laoghaire"
-    },
-    {
-      "id": 96271,
-      "name": "Walkinstown",
-      "path": "walkinstown"
-    },
-    {
-      "id": 94871,
-      "name": "Blackrock",
-      "path": "blackrock"
-    },
-    {
-      "id": 95851,
-      "name": "Palmerstown",
-      "path": "palmerstown"
-    },
-    {
-      "id": 95981,
-      "name": "Rathmines",
-      "path": "rathmines"
-    },
-    {
-      "id": 94701,
+      "id": 2,
       "name": "Balbriggan",
-      "path": "balbriggan"
+      "path": "balbriggan",
+      "latitude": 53.6069932,
+      "longitude": -6.2098574
     },
-    {
-      "id": 94761,
+    { "id": 3,
       "name": "Ballybrack",
-      "path": "ballybrack"
+      "path": "ballybrack",
+      "latitude": 53.2487818,
+      "longitude": -6.158288
     },
     {
-      "id": 96111,
-      "name": "Smithfield",
-      "path": "smithfield"
+      "id": 4,
+      "name": "Ballyfermot",
+      "path": "ballyfermot",
+      "latitude": 53.3422498,
+      "longitude": -6.363881
     },
     {
-      "id": 95181,
-      "name": "Crumlin",
-      "path": "crumlin"
+      "id": 5,
+      "name": "Blackrock",
+      "path": "blackrock",
+      "latitude": 53.3007901,
+      "longitude": -6.1873879
     },
     {
-      "id": 94971,
-      "name": "Castleknock",
-      "path": "castleknock"
+      "id": 6,
+      "name": "Blanchardstown",
+      "path": "blanchardstown",
+      "latitude": 53.3873933,
+      "longitude": -6.4035991
     },
     {
-      "id": 95511,
-      "name": "Howth",
-      "path": "howth"
-    },
-    {
-      "id": 94951,
+      "id": 7,
       "name": "Cabra",
-      "path": "cabra"
+      "path": "cabra",
+      "latitude": 53.3673936,
+      "longitude": -6.312656
     },
     {
-      "id": 96291,
-      "name": "Whitehall",
-      "path": "whitehall"
+      "id": 8,
+      "name": "Castleknock",
+      "path": "castleknock",
+      "latitude": 53.369282,
+      "longitude": -6.3817558
     },
     {
-      "id": 95901,
-      "name": "Portmarnock",
-      "path": "portmarnock"
+      "id": 9,
+      "name": "Clonskeagh",
+      "path": "clonskeagh",
+      "latitude": 53.3084806,
+      "longitude": -6.2521863
     },
     {
-      "id": 95641,
+      "id": 10,
+      "name": "Clondalkin",
+      "path": "clondalkin",
+      "latitude": 53.3216703,
+      "longitude": -6.4201575
+    },
+    {
+      "id": 11,
+      "name": "Crumlin",
+      "path": "crumlin",
+      "latitude": 53.322613,
+      "longitude": -6.3357854
+    },
+    {
+      "id": 12,
+      "name": "Docklands",
+      "path": "docklands",
+      "latitude": 53.3470903,
+      "longitude": -6.2497693
+    },
+    {
+      "id": 13,
+      "name": "Donnybrook",
+      "path": "donnybrook",
+      "latitude": 53.3228751,
+      "longitude": -6.2484627
+    },
+    {
+      "id": 14,
+      "name": "Drumcondra",
+      "path": "drumcondra",
+      "latitude": 53.3678511,
+      "longitude": -6.2755838
+    },
+    {
+      "id": 15,
+      "name": "Dublin",
+      "path": "dublin",
+      "latitude": 53.3434,
+      "longitude": -6.26761
+    },
+    {
+      "id": 16,
+      "name": "Dun Laoghaire",
+      "path": "dun-laoghaire",
+      "latitude": 53.2961389,
+      "longitude": -6.1476447
+    },
+    {
+      "id": 17,
+      "name": "Dundrum",
+      "path": "dundrum",
+      "latitude": 53.2873876,
+      "longitude": -6.2551556
+    },
+    {
+      "id": 18,
+      "name": "Finglas",
+      "path": "finglas",
+      "latitude": 53.3903241,
+      "longitude": -6.3087219
+    },
+    {
+      "id": 19,
+      "name": "Howth",
+      "path": "howth",
+      "latitude": 53.3776087,
+      "longitude": -6.0812313
+    },
+    {
+      "id": 20,
       "name": "Kimmage",
-      "path": "kimmage"
+      "path": "kimmage",
+      "latitude": 53.3188932,
+      "longitude": -6.3140732
+    },
+    {
+      "id": 21,
+      "name": "Lucan",
+      "path": "lucan",
+      "latitude": 53.3446879,
+      "longitude": -6.4808501
+    },
+    {
+      "id": 22,
+      "name": "Malahide",
+      "path": "malahide",
+      "latitude": 53.4448882,
+      "longitude": -6.1813024
+    },
+    {
+      "id": 23,
+      "name": "Merrion",
+      "path": "merrion",
+      "latitude": 53.3183951,
+      "longitude": -6.2218591
+    },
+    {
+      "id": 24,
+      "name": "Palmerstown",
+      "path": "palmerstown",
+      "latitude": 53.3566127,
+      "longitude": -6.381802
+    },
+    {
+      "id": 25,
+      "name": "Portmarnock",
+      "path": "portmarnock",
+      "latitude": 53.4304082,
+      "longitude": -6.1529875
+    },
+    {
+      "id": 26,
+      "name": "Ranelagh",
+      "path": "ranelagh",
+      "latitude": 53.3226495,
+      "longitude": -6.2624184
+    },
+    {
+      "id": 27,
+      "name": "Rathmines",
+      "path": "rathmines",
+      "latitude": 53.3188928,
+      "longitude": -6.2764865
+    },
+    {
+      "id": 28,
+      "name": "Santry",
+      "path": "santry",
+      "latitude": 53.3978915,
+      "longitude": -6.2664922
+    },
+    {
+      "id": 29,
+      "name": "Sandyford",
+      "path": "sandyford",
+      "latitude": 53.2740692,
+      "longitude": -6.2456506
+    },
+    {
+      "id": 30,
+      "name": "Smithfield",
+      "path": "smithfield",
+      "latitude": 53.3153691,
+      "longitude": -6.4916012
+    },
+    {
+      "id": 31,
+      "name": "Stillorgan",
+      "path": "stillorgan",
+      "latitude": 53.2899728,
+      "longitude": -6.2114349
+    },
+    {
+      "id": 32,
+      "name": "Swords",
+      "path": "swords",
+      "latitude": 53.4577982,
+      "longitude": -6.2477555
+    },
+    {
+      "id": 33,
+      "name": "Tallaght",
+      "path": "tallaght",
+      "latitude": 53.2865894,
+      "longitude": -6.3769093
+    },
+    {
+      "id": 34,
+      "name": "Temple Bar",
+      "path": "temple-bar",
+      "latitude": 53.3454324,
+      "longitude": -6.2698406
+    },
+    {
+      "id": 35,
+      "name": "Terenure",
+      "path": "terenure",
+      "latitude": 53.3111146,
+      "longitude": -6.3114779
+    },
+    {
+      "id": 36,
+      "name": "Walkinstown",
+      "path": "walkinstown",
+      "latitude": 53.3224134,
+      "longitude": -6.3408449
+    },
+    {
+      "id": 37,
+      "name": "Whitehall",
+      "path": "whitehall",
+      "latitude": 53.3864486,
+      "longitude": -6.270216
     }
   ],
   "cuisines": [
     {
-      "id": 135,
+      "id": 1,
       "iconSrc": "/images/stew.svg",
       "name": "Irish",
       "path": "irish"
     },
     {
-      "id": 55,
+      "id": 2,
       "iconSrc": "/images/pizza.svg",
       "name": "Italian",
       "path": "italian"
     },
     {
-      "id": 70,
-      "iconSrc": "/images/bruschetta.svg",
-      "name": "Mediterranean",
-      "path": "mediterranean"
-    },
-    {
       "id": 3,
+      "iconSrc": "/images/paella.svg",
+      "name": "Spanish",
+      "path": "spanish"
+    },
+    {
+      "id": 4,
       "iconSrc": "/images/rice.svg",
-      "name": "Asian",
-      "path": "asian"
+      "name": "Chinese",
+      "path": "chinese"
     },
     {
-      "id": 143,
-      "iconSrc": "/images/healthy_food.svg",
-      "name": "Healthy Food",
-      "path": "healthy-food"
+      "id": 5,
+      "iconSrc": "/images/sushi.svg",
+      "name": "Japanese",
+      "path": "japanese"
     },
     {
-      "id": 148,
+      "id": 6,
+      "iconSrc": "/images/noodles.svg",
+      "name": "Thai",
+      "path": "thai"
+    },
+    {
+      "id": 7,
+      "iconSrc": "/images/salad.svg",
+      "name": "Vegetarian",
+      "path": "vegetarian"
+    },
+    {
+      "id": 8,
       "iconSrc": "/images/gulab.svg",
       "name": "Indian",
-      "path": "indian"
+      "path": "indpak"
     },
     {
-      "id": 73,
+      "id": 9,
       "iconSrc": "/images/taco.svg",
       "name": "Mexican",
       "path": "mexican"
     },
     {
-      "id": 40,
-      "iconSrc": "/images/fries.svg",
+      "id": 10,
+      "iconSrc": "/images/burger.svg",
       "name": "Fast Food",
-      "path": "fast-food"
+      "path": "hotdogs"
     }
   ],
   "highlights": [
@@ -208,8 +328,8 @@
       "title": "Cleaver East Restaurant",
       "content":
         "Situated in the heart of Ireland’s capital city, on East Essex Street in the popular Temple Bar area, Cleaver East Restaurant offers the finest Irish and European cuisine.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/8NjewOK0qJPQAFrIIf7pYg/cleaver-east"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/8NjewOK0qJPQAFrIIf7pYg/cleaver-east"
     },
     {
       "id": "fSAW6MvJcD6TiooXAcFCZA",
@@ -217,8 +337,8 @@
       "title": "Tapas de Lola",
       "content":
         "This restaurant is a love letter to all things Spanish and flavorful. Its owners make regular pilgrimages to Spain for inspiration and pack it all into a lively menu of small plates.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/fSAW6MvJcD6TiooXAcFCZA/tapas-de-lola"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/fSAW6MvJcD6TiooXAcFCZA/tapas-de-lola"
     },
     {
       "id": "zKkmNe7aT88PzOwm1T42SA",
@@ -226,8 +346,8 @@
       "title": "Ely Wine Bar",
       "content":
         "Eric and his wife Michelle are the founders of this clubby place where you can eat and drink well both downstairs in the cozy basement and upstairs in an elegant dining room.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/zKkmNe7aT88PzOwm1T42SA/ely-wine"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/zKkmNe7aT88PzOwm1T42SA/ely-wine"
     },
     {
       "id": "MC2Rf3T55qRguic6d80MNg",
@@ -235,8 +355,8 @@
       "title": "Oxmantown",
       "content":
         "In this small place, the art of a brilliant sandwich means every element is taken seriously, like the breakfast sandwich that comes with butcher Jack McCarthy’s black pudding.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/MC2Rf3T55qRguic6d80MNg/oxmantown"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/MC2Rf3T55qRguic6d80MNg/oxmantown"
     },
     {
       "id": "gGBss1wEcaTyHrh_Gb6kLw",
@@ -244,8 +364,8 @@
       "title": "Chapter One",
       "content":
         "Dublin writers are more closely associated with booze rather than food, but Chapter One is a Michelin-starred restaurant in the basement of the Dublin Writers Museum.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/gGBss1wEcaTyHrh_Gb6kLw/chapter-one"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/gGBss1wEcaTyHrh_Gb6kLw/chapter-one"
     },
     {
       "id": "fj84l5cUPIJm3RU1kuUhVA",
@@ -253,8 +373,8 @@
       "title": "Rosa Madre",
       "content":
         "In the menu-hawking clamor of Temple Bar you might long for a quieter restaurant where you won’t feel like a tourist on a conveyor belt. If so, Rosa Madre is your place.",
-      "route": "/detail/[id]/[name]",
-      "asRoute": "/detail/fj84l5cUPIJm3RU1kuUhVA/rosa-madre"
+      "route": "/details/[id]/[name]",
+      "asRoute": "/details/fj84l5cUPIJm3RU1kuUhVA/rosa-madre"
     }
   ]
 }

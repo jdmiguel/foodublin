@@ -11,23 +11,23 @@ import { LoaderType, BreadcrumbsData } from '../../core/types';
 import { Restaurant } from '../types';
 
 type SearchPageProps = {
-  restaurants: Restaurant[];
-  location: string | null;
-  cuisine: string | null;
   total: number;
+  area: string | null;
+  cuisine: string | null;
+  restaurants: Restaurant[];
   isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
   isNavigating: boolean;
   isWarningShown: boolean;
   onClickFilter: (sort: string, order: string) => void;
-  onClickCard: (id: number, route: string, asRoute: string) => void;
+  onClickCard: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
   breadcrumbs: BreadcrumbsData[];
 };
 
 const SearchPage: React.FC<SearchPageProps> = ({
   total,
-  location,
+  area,
   cuisine,
   restaurants,
   onClickFilter,
@@ -50,7 +50,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
         <FullLoader isShown={isLoadingByScroll || isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
-        <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${location}`} />
+        <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${area}`} />
         {total > 0 && <Filters onClick={onClickFilter} data={FILTERS} />}
         <StyledCardsWrapper isWarningShown={isWarningShown}>
           {restaurants.map((restaurant) => (
@@ -60,7 +60,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
                 title={restaurant.title}
                 content={restaurant.content}
                 onClick={() => {
-                  onClickCard(restaurant.id, restaurant.route, restaurant.asRoute);
+                  onClickCard(restaurant.route, restaurant.asRoute);
                 }}
               />
             </div>
@@ -69,7 +69,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
         {isWarningShown && (
           <StyledWarning>
             <StyledWarningIcon className="material-icons">warning</StyledWarningIcon>
-            You have reached the limit of 100 results because of Zomato API restrinctions
+            You have reached the limit of 2000 results because of Yelp API restrinctions
           </StyledWarning>
         )}
       </StyledSearchPage>

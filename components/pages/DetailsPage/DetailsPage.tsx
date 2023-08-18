@@ -37,14 +37,13 @@ import {
 } from '@/store/statics';
 import { Categories } from './Categories';
 import { Timings } from './Timings';
-import { RestaurantDetail, Timing, HourDetail, Review as ReviewType } from '../types';
+import { RestaurantDetails, Timing, HourDetail, Review as ReviewType } from '../types';
 
-type DetailPageProps = {
-  detail: RestaurantDetail;
+type DetailsPageProps = {
+  details: RestaurantDetails;
   isFavorite: boolean;
   isNavigating: boolean;
   onClickSaveButton: (action: string) => void;
-  onClickRelatedRestaurant: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
   breadcrumbs: BreadcrumbsData[];
 };
@@ -72,8 +71,8 @@ export const getMapSrc = (name: string, location: string) => {
   return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}&q=${urlName}-${urlLocation},Dublin&zoom=16`;
 };
 
-const DetailPage: React.FC<DetailPageProps> = ({
-  detail: {
+const DetailsPage: React.FC<DetailsPageProps> = ({
+  details: {
     imgSrc,
     name,
     phone,
@@ -213,4 +212,4 @@ const DetailPage: React.FC<DetailPageProps> = ({
   );
 };
 
-export default DetailPage;
+export default DetailsPage;
