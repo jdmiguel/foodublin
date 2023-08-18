@@ -30,7 +30,7 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isDropdownReset, setIsDropdownReset] = useState(false);
   const [currentAreaPath, setCurrentAreaPath] = useState('dublin');
-  const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
+  const [currentCuisinePath, setCurrentCuisinePath] = useState('international');
   const [onRequestError, setOnRequestError] = useState(false);
 
   const { windowWidth } = useWindowSize();
@@ -143,7 +143,7 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
             disabled={isButtonLoading}
             isReset={isDropdownReset}
             onSelect={(path: string) => setCurrentCuisinePath(path)}
-            onClear={() => setCurrentCuisinePath('any-food')}
+            onClear={() => setCurrentCuisinePath('international')}
           />
         </StyledDropdownWrapper>
       </StyledDropdownsWrapper>

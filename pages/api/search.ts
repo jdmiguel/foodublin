@@ -24,7 +24,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         limit: 20,
       },
     });
-
     res.status(200).json(response.data);
   } catch (error: any) {
     console.error('Error fetching data from Yelp API:', error);

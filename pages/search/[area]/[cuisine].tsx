@@ -293,7 +293,7 @@ export const getStaticPaths = async () => {
   const pathsWithoutCuisine = areas.map((area: Area) => ({
     params: {
       area: area.path,
-      cuisine: 'any-food',
+      cuisine: 'international',
     },
   }));
 
