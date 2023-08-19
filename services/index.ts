@@ -7,6 +7,20 @@ import {
   Suggestion,
 } from '@/components/pages/types';
 
+const delayRequest = (ms = 3000): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+const client = axios.create({
+  baseURL: BASE_API,
+});
+
+client.interceptors.response.use(async (response) => {
+  if (process.env.NODE_ENV === 'production') {
+    await delayRequest();
+  }
+  return response;
+});
+
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
     const { data, status } = error.response;
@@ -56,7 +70,7 @@ export const getRestaurants = async ({
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    const { data } = await axios(`${BASE_API}businesses/search`, {
+    const { data } = await client(`businesses/search`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
