@@ -7,6 +7,9 @@ import {
   Suggestion,
 } from '@/components/pages/types';
 
+const baseURL =
+  process.env.NODE_ENV === 'development' ? 'http:localhost:3000/' : 'https://foodublin.vercel.app/';
+
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
     const { data, status } = error.response;
@@ -61,7 +64,7 @@ export const getRestaurants = async ({
       `http://127.0.0.1:3000/api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
     ); */
     const response = await fetch(
-      `http:localhost:3000/api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
+      `${baseURL}api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
     );
     const data = await response.json();
 
@@ -81,7 +84,7 @@ export const getRestaurantDetails = async (
 ): Promise<{ details: FetchedRestaurantDetails; status: number }> => {
   try {
     //const response = await axios.get(`http://127.0.0.1:3000/api/details?id=${id}`);
-    const response = await fetch(`http:localhost:3000/api/details?id=${id}`);
+    const response = await fetch(`${baseURL}/api/details?id=${id}`);
     const data = await response.json();
 
     return {
