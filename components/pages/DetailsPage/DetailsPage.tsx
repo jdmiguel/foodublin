@@ -130,8 +130,8 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
       return (
         <LazyImage
           src={imgSrc}
-          placeholder={({ ref }) => getStyledHeader(ref, DETAIL_GENERIC_SRC)}
-          actual={({ imageProps }) => getStyledHeader(null, imageProps.src)}
+          placeholder={({ ref }: any) => getStyledHeader(ref, DETAIL_GENERIC_SRC)}
+          actual={({ imageProps }: any) => getStyledHeader(null, imageProps.src)}
         />
       );
     }

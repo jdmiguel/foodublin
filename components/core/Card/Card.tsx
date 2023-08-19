@@ -36,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
       src={imgSrc}
       alt={title}
       type={type}
-      placeholder={({ imageProps, ref }) => (
+      placeholder={({ imageProps, ref }: any) => (
         <div ref={ref} className="LazyImage-Placeholder">
           <StyledGenericThumb
             src={type === CardType.HIGHLIGHT ? HIGHLIGHT_GENERIC_SRC : THUMB_GENERIC_SRC}
@@ -45,7 +45,7 @@ export const Card: React.FC<CardProps> = ({
           />
         </div>
       )}
-      actual={({ imageProps }) => (
+      actual={({ imageProps }: any) => (
         <div className="LazyImage-Actual">
           <img {...imageProps} alt={title} />
         </div>

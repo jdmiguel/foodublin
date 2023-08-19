@@ -33,12 +33,12 @@ export const Review: React.FC<ReviewProps> = ({ data: { text, rating, time_creat
       <StyledReviewUserImage
         src={user.image_url || USER_GENERIC_SRC}
         alt={user.name}
-        placeholder={({ imageProps, ref }) => (
+        placeholder={({ imageProps, ref }: any) => (
           <div ref={ref} className="LazyImage-Placeholder">
             <StyledGenericThumb src={THUMB_GENERIC_SRC} alt={imageProps.alt} />
           </div>
         )}
-        actual={({ imageProps }) => (
+        actual={({ imageProps }: any) => (
           <div className="LazyImage-Actual">
             <img {...imageProps} alt="user" />
           </div>
