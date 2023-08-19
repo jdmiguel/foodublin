@@ -7,9 +7,6 @@ import {
   Suggestion,
 } from '@/components/pages/types';
 
-const baseURL =
-  process.env.NODE_ENV === 'development' ? 'http:localhost:3000/' : 'https://foodublin.vercel.app/';
-
 const handleApiError = (error: AxiosError) => {
   if (error.response) {
     const { data, status } = error.response;
@@ -54,13 +51,12 @@ export const getRestaurants = async ({
 }: RestaurantsRequestParams): Promise<{
   restaurants: FetchedRestaurant[];
   total: number;
-  status: number;
 }> => {
   const updatedLatitude = latitude || DUBLIN_COORDINATES.latitude;
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    const { data, status } = await axios(`${BASE_API}businesses/search`, {
+    const { data } = await axios(`${BASE_API}businesses/search`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -82,7 +78,6 @@ export const getRestaurants = async ({
     return {
       restaurants: data.businesses,
       total: data.total,
-      status,
     };
   } catch (error) {
     console.log({ error });
@@ -92,15 +87,33 @@ export const getRestaurants = async ({
 
 export const getRestaurantDetails = async (
   id: string,
-): Promise<{ details: FetchedRestaurantDetails; status: number }> => {
+): Promise<{ details: FetchedRestaurantDetails }> => {
   try {
-    //const response = await axios.get(`http://127.0.0.1:3000/api/details?id=${id}`);
-    const response = await fetch(`${baseURL}/api/details?id=${id}`);
-    const data = await response.json();
+    const { data: detailsData }: any = await axios(`${BASE_API}businesses/${id}`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'x-requested-with': 'xmlhttprequest',
+        accept: 'application/json',
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`,
+      },
+    });
+
+    const { data: reviewsData }: any = await axios(
+      `${BASE_API}businesses/${detailsData.id}/reviews`,
+      {
+        method: 'GET',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'x-requested-with': 'xmlhttprequest',
+          accept: 'application/json',
+          Authorization: `Bearer ${process.env.YELP_API_KEY}`,
+        },
+      },
+    );
 
     return {
-      details: data,
-      status: response.status,
+      details: { ...detailsData, ...reviewsData },
     };
   } catch (error) {
     console.log({ error });

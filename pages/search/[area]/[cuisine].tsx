@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback, Dispatch } from 'react';
-import { NextPage, GetStaticPropsContext } from 'next';
+import { NextPage, GetServerSidePropsContext } from 'next';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import { useRouter } from 'next/router';
@@ -29,9 +29,9 @@ export enum LoadType {
   SCROLL = 'scroll',
 }
 
-type SearchProps = inferStaticProps<typeof getStaticProps>;
+type SearchProps = inferStaticProps<typeof getServerSideProps>;
 
-type CustomGetStaticPropsContext = GetStaticPropsContext & {
+type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
   params: {
     area: string;
     cuisine: string;
@@ -76,13 +76,13 @@ const handleGetRestaurants = async ({
   cuisine: string;
   offset?: number;
 }) => {
-  const { restaurants, total, status } = await getRestaurants({
+  const { restaurants, total } = await getRestaurants({
     latitude,
     longitude,
     cuisine,
     offset,
   });
-  if (status === 200) {
+  if (Array.isArray(restaurants)) {
     const formattedRestaurants = selectRestaurants(restaurants) || [];
 
     return {
@@ -258,54 +258,9 @@ const Search: NextPage<SearchProps> = ({
   );
 };
 
-export const getStaticPaths = async () => {
-  const jsonDirectory = path.join(process.cwd(), 'json');
-  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
-  const { areas, cuisines } = JSON.parse(fileContents);
-
-  const areasLength = areas.length;
-  const cuisinesLength = cuisines.length;
-
-  const emptyPaths = new Array(areasLength * cuisinesLength).fill('', 0);
-
-  let areasCounter = 0;
-  let cuisinesCounter = 0;
-
-  const getPaths = () => {
-    if (cuisinesCounter < cuisinesLength) {
-      cuisinesCounter++;
-    } else {
-      areasCounter++;
-      cuisinesCounter = 0;
-    }
-
-    const updatedCuisineCounter = cuisinesCounter ? cuisinesCounter - 1 : cuisinesCounter;
-
-    return {
-      params: {
-        area: areas[areasCounter].path,
-        cuisine: cuisines[updatedCuisineCounter].path,
-      },
-    };
-  };
-
-  const paths = emptyPaths.map(getPaths);
-  const pathsWithoutCuisine = areas.map((area: Area) => ({
-    params: {
-      area: area.path,
-      cuisine: 'international',
-    },
-  }));
-
-  return {
-    paths: [...pathsWithoutCuisine, ...paths],
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({
+export const getServerSideProps = async ({
   params: { area, cuisine },
-}: CustomGetStaticPropsContext) => {
+}: CustomGetServerSidePropsContext) => {
   const jsonDirectory = path.join(process.cwd(), 'json');
   const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
   const { areas, cuisines } = JSON.parse(fileContents);
@@ -321,8 +276,8 @@ export const getStaticProps = async ({
       latitude,
       longitude,
       cuisineName: cuisineName ?? '',
-      total: restaurantsData.total,
-      restaurants: restaurantsData.restaurants,
+      total: restaurantsData.total ?? 0,
+      restaurants: restaurantsData.restaurants ?? [],
     },
   };
 };

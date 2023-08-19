@@ -98,17 +98,17 @@ const Detail: NextPage<DetailProps> = ({ details, id }) => {
 };
 
 export const getServerSideProps = async ({ params: { id } }: CustomGetServerSidePropsContext) => {
-  const { details, status } = await getRestaurantDetails(id);
+  const { details } = await getRestaurantDetails(id);
 
   let restaurantDetails: RestaurantDetails | null = null;
 
-  const formattedCategories = details.categories?.map((category) => category.title);
-  const formattedAddress = details.location.display_address.join(' - ');
-  const formattedHours = Array.isArray(details.hours)
-    ? getFormattedHours(details.hours[0].open)
-    : null;
+  if (details) {
+    const formattedCategories = details.categories?.map((category) => category.title);
+    const formattedAddress = details.location.display_address.join(' - ');
+    const formattedHours = Array.isArray(details.hours)
+      ? getFormattedHours(details.hours[0].open)
+      : null;
 
-  if (status === 200) {
     restaurantDetails = {
       imgSrc: details.image_url,
       name: details.name,
