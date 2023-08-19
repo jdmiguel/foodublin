@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { DUBLIN_COORDINATES } from '@/store/statics';
+import { BASE_API, DUBLIN_COORDINATES } from '@/store/statics';
 import {
   RestaurantsRequestParams,
   FetchedRestaurant,
@@ -60,21 +60,32 @@ export const getRestaurants = async ({
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    /*  const { data, status } = await axios.get(
-      `http://127.0.0.1:3000/api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
-    ); */
-    const response = await fetch(
-      `${baseURL}api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&cuisine=${cuisine}&offset=${offset}`,
-    );
-    const data = await response.json();
+    const { data, status } = await axios(`${BASE_API}businesses/search`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'x-requested-with': 'xmlhttprequest',
+        accept: 'application/json',
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`,
+      },
+      params: {
+        term: 'restaurants',
+        latitude: updatedLatitude,
+        longitude: updatedLongitude,
+        radius: 1000,
+        categories: cuisine,
+        offset,
+        limit: 20,
+      },
+    });
 
     return {
       restaurants: data.businesses,
       total: data.total,
-      status: response.status,
+      status,
     };
   } catch (error) {
-    console.log('error');
+    console.log({ error });
     return handleApiError(error as AxiosError);
   }
 };
