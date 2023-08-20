@@ -104,7 +104,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
   };
 
   const getStyledHeader = (ref: any, imgSrc: string) => (
-    <StyledHeader data-testid="detail-header" ref={ref} bgImg={imgSrc}>
+    <StyledHeader data-testid="details-header" ref={ref} bgImg={imgSrc}>
       <StyledOverlay>
         <StyledName>{name}</StyledName>
         <StyledStreet>{street}</StyledStreet>
@@ -141,16 +141,16 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
 
   return (
     <Layout onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
-      <StyledDetailPage data-testid="detail-page">
+      <StyledDetailPage data-testid="details-page">
         <FullLoader isShown={isNavigating} type={LoaderType.LINE}>
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {getHeader(imgSrc)}
         <Title text="Relevant information" />
-        <StyledInformation data-testid="detail-info">
+        <StyledInformation data-testid="details-info">
           <StyledMainInformation>
             {phone && (
-              <StyledSectionBlock data-testid="detail-phone">
+              <StyledSectionBlock data-testid="details-phone">
                 <StyledTitleWrapper>
                   <BlockTitle text="Phone" />
                 </StyledTitleWrapper>
@@ -158,7 +158,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
               </StyledSectionBlock>
             )}
             {hours && (
-              <StyledSectionBlock data-testid="detail-schedule">
+              <StyledSectionBlock data-testid="details-schedule">
                 <StyledTitleWrapper>
                   <BlockTitle text="Schedule" />
                 </StyledTitleWrapper>
@@ -168,7 +168,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
           </StyledMainInformation>
           <StyledExtraInformation>
             {categories && (
-              <StyledSectionBlock data-testid="detail-categories">
+              <StyledSectionBlock data-testid="details-categories">
                 <StyledTitleWrapper>
                   <BlockTitle text="Categories" />
                 </StyledTitleWrapper>
@@ -176,7 +176,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
               </StyledSectionBlock>
             )}
             {price && (
-              <StyledSectionBlock data-testid="detail-price">
+              <StyledSectionBlock data-testid="details-price">
                 <StyledTitleWrapper>
                   <BlockTitle text="Cost rank" />
                 </StyledTitleWrapper>
@@ -187,7 +187,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
               </StyledSectionBlock>
             )}
             {rating && (
-              <StyledSectionBlock data-testid="detail-rating">
+              <StyledSectionBlock data-testid="details-rating">
                 <StyledTitleWrapper>
                   <BlockTitle text="Rating" />
                 </StyledTitleWrapper>
@@ -196,7 +196,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
             )}
           </StyledExtraInformation>
           {name && address && (
-            <StyledAddressWrapper data-testid="detail-address" className="paper">
+            <StyledAddressWrapper data-testid="details-address" className="paper">
               <Address mapSrc={getMapSrc(name, address)} address={address} />
             </StyledAddressWrapper>
           )}

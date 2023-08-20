@@ -20,7 +20,7 @@ export const HEADER_MOCKS = {
       text: 'Fake restaurant',
       route: '/',
       asRoute: '/',
-      type: BreadcrumbsType.DETAIL,
+      type: BreadcrumbsType.DETAILS,
     },
   ],
 };
@@ -39,7 +39,7 @@ export const HEADER_BAR_MOCKS = {
       text: 'Fake restaurant',
       route: '/',
       asRoute: '/',
-      type: BreadcrumbsType.DETAIL,
+      type: BreadcrumbsType.DETAILS,
     },
   ],
 };

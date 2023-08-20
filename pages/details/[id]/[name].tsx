@@ -69,9 +69,9 @@ const Detail: NextPage<DetailProps> = ({ details, id }) => {
     text: details?.name || '',
     route: '/details/[id]/[name]',
     asRoute: `/details/${id}/${getFormattedUrlText(details?.name || '', true)}`,
-    type: BreadcrumbsType.DETAIL,
+    type: BreadcrumbsType.DETAILS,
   };
-  const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'detail');
+  const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'details');
 
   if (!details) {
     return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;

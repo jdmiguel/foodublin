@@ -70,7 +70,7 @@ export const getRestaurants = async ({
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    const { data } = await client(`businesses/search`, {
+    const { data } = await client('businesses/search', {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -103,7 +103,7 @@ export const getRestaurantDetails = async (
   id: string,
 ): Promise<{ details: FetchedRestaurantDetails }> => {
   try {
-    const { data: detailsData }: any = await axios(`${BASE_API}businesses/${id}`, {
+    const { data: detailsData } = await axios(`${BASE_API}businesses/${id}`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -113,18 +113,15 @@ export const getRestaurantDetails = async (
       },
     });
 
-    const { data: reviewsData }: any = await axios(
-      `${BASE_API}businesses/${detailsData.id}/reviews`,
-      {
-        method: 'GET',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'x-requested-with': 'xmlhttprequest',
-          accept: 'application/json',
-          Authorization: `Bearer ${process.env.YELP_API_KEY}`,
-        },
+    const { data: reviewsData } = await axios(`${BASE_API}businesses/${detailsData.id}/reviews`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'x-requested-with': 'xmlhttprequest',
+        accept: 'application/json',
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`,
       },
-    );
+    });
 
     return {
       details: { ...detailsData, ...reviewsData },

@@ -37,7 +37,7 @@ export enum CustomLinkSize {
 export enum BreadcrumbsType {
   HOME = 'home',
   SEARCH = 'search',
-  DETAIL = 'detail',
+  DETAILS = 'details',
   FAVORITES = 'favorite',
 }
 
@@ -48,7 +48,7 @@ export type BreadcrumbsData = {
   type:
     | BreadcrumbsType.HOME
     | BreadcrumbsType.SEARCH
-    | BreadcrumbsType.DETAIL
+    | BreadcrumbsType.DETAILS
     | BreadcrumbsType.FAVORITES;
 };
 

@@ -327,28 +327,4 @@ export const getStaticProps = async ({
   };
 };
 
-/* export const getServerSideProps = async ({
-  params: { area, cuisine },
-}: CustomGetServerSidePropsContext) => {
-  const jsonDirectory = path.join(process.cwd(), 'json');
-  const fileContents = await readFile(jsonDirectory + '/data.json', 'utf8');
-  const { areas, cuisines } = JSON.parse(fileContents);
-
-  const { name: areaName, latitude, longitude } = getValues<Area>(area, areas);
-  const { name: cuisineName, path: cuisinePath } = getValues<Cuisine>(cuisine, cuisines);
-
-  const restaurantsData = await handleGetRestaurants({ latitude, longitude, cuisine: cuisinePath });
-
-  return {
-    props: {
-      areaName,
-      latitude,
-      longitude,
-      cuisineName: cuisineName ?? '',
-      total: restaurantsData.total ?? 0,
-      restaurants: restaurantsData.restaurants ?? [],
-    },
-  };
-}; */
-
 export default Search;
