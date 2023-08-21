@@ -6,18 +6,17 @@ export const DUBLIN_ID = 91;
 
 export const DEFAULT_TEXT_LOADING = 'Coming right up...';
 
-export const MAX_RESTAURANT_DISPLAYED = 20;
-export const MAX_RESTAURANT_RETRIEVED = 100;
+export const SEARCH_TERM_QUERY_PARAM = 'restaurants';
+export const SEARCH_RADIUS_QUERY_PARAM = 1000;
+
+export const MAX_RESTAURANT_DISPLAYED = 30;
 
 export const MAX_SMALL_DEVICE_WIDTH = 640;
-export const MIN_BIG_DEVICE_HEIGHT = 1200;
 
-export const SCROLL_FACTOR = 1.3;
+export const SCROLL_FACTOR = 1.1;
 export const SCROLL_DELAY = 100;
 
 export const SHOWING_SCROLLUP_BUTTON_HEIGHT = 900;
-
-export const MIN_RESTAURANTS_LIST = 3;
 
 export const MAX_SEARCH_BREADCRUMBS = 2;
 

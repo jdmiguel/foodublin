@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback, Dispatch } from 'react';
+import { useRef, useState } from 'react';
 import { NextPage, GetStaticPropsContext } from 'next';
 import { readFile } from 'fs/promises';
 import path from 'path';
@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
-import { useWindowSize } from '@/components/hooks/useWindowSize';
 import { useScroll } from '@/components/hooks/useScroll';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
 import { BreadcrumbsType } from '@/components/core/types';
@@ -15,16 +14,13 @@ import { Area, Cuisine, FetchedRestaurant, Restaurant } from '@/components/pages
 import {
   DEFAULT_TEXT_LOADING,
   MAX_RESTAURANT_DISPLAYED,
-  MAX_RESTAURANT_RETRIEVED,
-  MIN_BIG_DEVICE_HEIGHT,
   SCROLL_FACTOR,
   SCROLL_DELAY,
 } from '@/store/statics';
 import { getFormattedUrlText, inferStaticProps } from '@/helpers/utils';
-import { getRestaurants } from '@/services/index';
+import { getRestaurantsOnServer, getRestaurantsOnClient } from '@/services/index';
 
 export enum LoadType {
-  EXTRA = 'extra',
   FILTER = 'filter',
   SCROLL = 'scroll',
 }
@@ -66,17 +62,21 @@ const selectRestaurants =
     );
 
 const handleGetRestaurants = async ({
+  isClientRequest = false,
   latitude,
   longitude,
   cuisine,
   offset = 0,
 }: {
+  isClientRequest?: boolean;
   latitude: number;
   longitude: number;
   cuisine: string;
   offset?: number;
 }) => {
+  const getRestaurants = isClientRequest ? getRestaurantsOnClient : getRestaurantsOnServer;
   const { restaurants, total } = await getRestaurants({
+    isClientRequest,
     latitude,
     longitude,
     cuisine,
@@ -101,118 +101,75 @@ const Search: NextPage<SearchProps> = ({
   areaName,
   latitude,
   longitude,
+  cuisinePath,
   cuisineName,
-  restaurants,
+  restaurants: initialRestaurants,
   total,
 }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const loadedRestaurantsRef = useRef(0);
   const sortRef = useRef('');
   const orderRef = useRef('');
   const scrollDelayRef = useRef(SCROLL_DELAY);
 
-  const [currentRestaurants, setCurrentRestaurants]: [Restaurant[], Dispatch<Restaurant[]>] =
-    useState(restaurants);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>(initialRestaurants);
   const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [isOnError, setIsOnError] = useState(false);
-  const [isWarningShown, setIsWarningShown] = useState(false);
+  const [currentOffset, setCurrentOffset] = useState(0);
 
   const router = useRouter();
 
-  const { windowHeight } = useWindowSize();
+  const handleRestaurantsOnClient = async (loadType: LoadType) => {
+    let offset = 0;
 
-  const maxRestaurantStarter = MAX_RESTAURANT_RETRIEVED - MAX_RESTAURANT_DISPLAYED;
-  const currentTotal = total > MAX_RESTAURANT_RETRIEVED ? MAX_RESTAURANT_RETRIEVED : total;
+    if (loadType === LoadType.FILTER) {
+      setIsLoadingByFilter(true);
+    } else {
+      offset = currentOffset + MAX_RESTAURANT_DISPLAYED;
+      setIsLoadingByScroll(true);
+    }
 
-  const handleRestaurants = useCallback(
-    async (loadType: LoadType) => {
-      let offset: number;
+    setCurrentOffset(offset);
 
-      switch (loadType) {
-        case LoadType.EXTRA:
-          setIsLoadingByScroll(true);
-          offset = MAX_RESTAURANT_DISPLAYED;
-          break;
-        case LoadType.FILTER:
-          setIsLoadingByFilter(true);
-          offset = 0;
-          loadedRestaurantsRef.current = 0;
-          break;
-        case LoadType.SCROLL:
-          setIsLoadingByScroll(true);
-          offset = loadedRestaurantsRef.current;
-          break;
-      }
+    const { restaurants } = await handleGetRestaurants({
+      isClientRequest: true,
+      latitude,
+      longitude,
+      cuisine: cuisinePath,
+      offset,
+    });
 
-      const { restaurants } = await handleGetRestaurants({
-        latitude,
-        longitude,
-        cuisine: cuisineName,
-        offset,
-      });
-
-      if (restaurants) {
-        if (loadType === LoadType.FILTER) {
-          setCurrentRestaurants(restaurants);
-          setIsLoadingByFilter(false);
-        } else {
-          setCurrentRestaurants([...currentRestaurants, ...restaurants]);
-          setIsLoadingByScroll(false);
-        }
+    if (restaurants) {
+      if (loadType === LoadType.FILTER) {
+        setRestaurants(restaurants);
+        setIsLoadingByFilter(false);
       } else {
-        setIsOnError(true);
+        setRestaurants((prevRestaurants) => [...prevRestaurants, ...restaurants]);
+        setIsLoadingByScroll(false);
       }
-    },
-    [latitude, longitude, cuisineName, currentRestaurants],
-  );
+    } else {
+      setIsOnError(true);
+    }
+  };
 
   useScroll(
     async ({ scrollTop, scrollHeight, clientHeight }) => {
-      const { current: loadedRestaurants } = loadedRestaurantsRef;
       const isScrollDownLimit = scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
-      const isRetrievingDataAllowed =
-        loadedRestaurants < currentTotal && loadedRestaurants <= maxRestaurantStarter;
+      const isRetrievingDataAllowed = currentOffset + MAX_RESTAURANT_DISPLAYED < total;
 
       if (isScrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
-        handleRestaurants(LoadType.SCROLL);
+        handleRestaurantsOnClient(LoadType.SCROLL);
       }
     },
-    [isLoadingByScroll],
+    [isLoadingByScroll, currentOffset],
     scrollDelayRef.current,
   );
-
-  useEffect(() => {
-    if (windowHeight) {
-      const isHighDevice = windowHeight >= MIN_BIG_DEVICE_HEIGHT;
-      const areItemsToLoad = currentTotal > MAX_RESTAURANT_DISPLAYED;
-
-      if (isHighDevice && areItemsToLoad && !isLoadingByFilter) {
-        handleRestaurants(LoadType.EXTRA);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowHeight, isLoadingByFilter]);
-
-  useEffect(() => {
-    loadedRestaurantsRef.current += MAX_RESTAURANT_DISPLAYED;
-
-    if (
-      currentTotal >= MAX_RESTAURANT_RETRIEVED &&
-      loadedRestaurantsRef.current > maxRestaurantStarter
-    ) {
-      setIsWarningShown(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRestaurants]);
 
   const handleFilter = (sort: string, order: string) => {
     sortRef.current = sort;
     orderRef.current = order;
-
-    setIsWarningShown(false);
-    handleRestaurants(LoadType.FILTER);
+    handleRestaurantsOnClient(LoadType.FILTER);
   };
 
   const handleClickCard = (route: string, asRoute: string) => {
@@ -242,13 +199,12 @@ const Search: NextPage<SearchProps> = ({
       total={total}
       area={areaName}
       cuisine={cuisineName}
-      restaurants={currentRestaurants}
+      restaurants={restaurants}
       onClickFilter={handleFilter}
       onClickCard={handleClickCard}
       isLoadingByFilter={isLoadingByFilter}
       isLoadingByScroll={isLoadingByScroll}
       isNavigating={isNavigating}
-      isWarningShown={isWarningShown}
       onNavigate={(route: string, asRoute?: string) => {
         setIsNavigating(true);
         router.push(route, asRoute && asRoute);
@@ -293,7 +249,7 @@ export const getStaticPaths = async () => {
   const pathsWithoutCuisine = areas.map((area: Area) => ({
     params: {
       area: area.path,
-      cuisine: 'international',
+      cuisine: 'any-food',
     },
   }));
 
@@ -313,14 +269,22 @@ export const getStaticProps = async ({
   const { name: areaName, latitude, longitude } = getValues<Area>(area, areas);
   const { name: cuisineName, path: cuisinePath } = getValues<Cuisine>(cuisine, cuisines);
 
-  const restaurantsData = await handleGetRestaurants({ latitude, longitude, cuisine: cuisinePath });
+  const updatedCuisinePath = cuisinePath ?? '';
+  const updatedCuisineName = cuisineName ?? '';
+
+  const restaurantsData = await handleGetRestaurants({
+    latitude,
+    longitude,
+    cuisine: cuisinePath,
+  });
 
   return {
     props: {
       areaName,
       latitude,
       longitude,
-      cuisineName: cuisineName ?? '',
+      cuisinePath: updatedCuisinePath,
+      cuisineName: updatedCuisineName,
       total: restaurantsData.total,
       restaurants: restaurantsData.restaurants,
     },

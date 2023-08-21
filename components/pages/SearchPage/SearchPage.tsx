@@ -4,7 +4,7 @@ import { FullLoader } from '../../ui/FullLoader/FullLoader';
 import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
-import { StyledSearchPage, StyledCardsWrapper, StyledWarning, StyledWarningIcon } from './styles';
+import { StyledSearchPage, StyledCardsWrapper } from './styles';
 import { FILTERS, THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
@@ -18,7 +18,6 @@ type SearchPageProps = {
   isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
   isNavigating: boolean;
-  isWarningShown: boolean;
   onClickFilter: (sort: string, order: string) => void;
   onClickCard: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
@@ -34,7 +33,6 @@ const SearchPage: React.FC<SearchPageProps> = ({
   onClickCard,
   isLoadingByFilter,
   isLoadingByScroll,
-  isWarningShown,
   isNavigating,
   onNavigate,
   breadcrumbs,
@@ -52,7 +50,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
         </FullLoader>
         <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${area}`} />
         {total > 0 && <Filters onClick={onClickFilter} data={FILTERS} />}
-        <StyledCardsWrapper isWarningShown={isWarningShown}>
+        <StyledCardsWrapper>
           {restaurants.map((restaurant) => (
             <div key={`${restaurant.id}-${restaurant.title}`}>
               <Card
@@ -66,12 +64,6 @@ const SearchPage: React.FC<SearchPageProps> = ({
             </div>
           ))}
         </StyledCardsWrapper>
-        {isWarningShown && (
-          <StyledWarning>
-            <StyledWarningIcon className="material-icons">warning</StyledWarningIcon>
-            You have reached the limit of 2000 results because of Yelp API restrinctions
-          </StyledWarning>
-        )}
       </StyledSearchPage>
     </Layout>
   );

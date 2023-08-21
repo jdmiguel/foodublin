@@ -12,6 +12,7 @@ export type Timing = {
 export type RestaurantsRequestParam = number | null | string | undefined;
 
 export type RestaurantsRequestParams = {
+  isClientRequest: boolean;
   latitude: number;
   longitude: number;
   cuisine?: string;

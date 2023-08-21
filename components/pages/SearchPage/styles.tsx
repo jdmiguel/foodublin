@@ -5,9 +5,9 @@ export const StyledSearchPage = styled.div`
   margin: 50px auto;
 `;
 
-export const StyledCardsWrapper = styled.div<{ isWarningShown: boolean }>`
+export const StyledCardsWrapper = styled.div`
   margin-top: 20px;
-  margin-bottom: ${({ isWarningShown }) => (isWarningShown ? '35px' : '40px')};
+  margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
   gap: 24px;

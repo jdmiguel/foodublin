@@ -30,7 +30,7 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isDropdownReset, setIsDropdownReset] = useState(false);
   const [currentAreaPath, setCurrentAreaPath] = useState('dublin');
-  const [currentCuisinePath, setCurrentCuisinePath] = useState('international');
+  const [currentCuisinePath, setCurrentCuisinePath] = useState('any-food');
   const [onRequestError, setOnRequestError] = useState(false);
 
   const { windowWidth } = useWindowSize();

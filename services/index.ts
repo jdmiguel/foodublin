@@ -1,5 +1,11 @@
 import axios, { AxiosError } from 'axios';
-import { BASE_API, DUBLIN_COORDINATES } from '@/store/statics';
+import {
+  BASE_API,
+  DUBLIN_COORDINATES,
+  SEARCH_TERM_QUERY_PARAM,
+  SEARCH_RADIUS_QUERY_PARAM,
+  MAX_RESTAURANT_DISPLAYED,
+} from '@/store/statics';
 import {
   RestaurantsRequestParams,
   FetchedRestaurant,
@@ -10,11 +16,11 @@ import {
 const delayRequest = (ms = 3000): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-const client = axios.create({
+const customAxiosInstance = axios.create({
   baseURL: BASE_API,
 });
 
-client.interceptors.response.use(async (response) => {
+customAxiosInstance.interceptors.response.use(async (response) => {
   if (process.env.NODE_ENV === 'production') {
     await delayRequest();
   }
@@ -57,7 +63,7 @@ export const getSuggestionsBySearchText = async (
   }
 };
 
-export const getRestaurants = async ({
+export const getRestaurantsOnClient = async ({
   latitude,
   longitude,
   cuisine = '',
@@ -70,7 +76,34 @@ export const getRestaurants = async ({
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
   try {
-    const { data } = await client('businesses/search', {
+    const { data } = await axios.get(
+      `/api/search?term=${SEARCH_TERM_QUERY_PARAM}&latitude=${updatedLatitude}&longitude=${updatedLongitude}&radius=${SEARCH_RADIUS_QUERY_PARAM}&categories=${cuisine}&offset=${offset}&limit=${MAX_RESTAURANT_DISPLAYED}`,
+    );
+
+    return {
+      restaurants: data.businesses,
+      total: data.total,
+    };
+  } catch (error) {
+    console.log({ error });
+    return handleApiError(error as AxiosError);
+  }
+};
+
+export const getRestaurantsOnServer = async ({
+  latitude,
+  longitude,
+  cuisine = '',
+  offset = 0,
+}: RestaurantsRequestParams): Promise<{
+  restaurants: FetchedRestaurant[];
+  total: number;
+}> => {
+  const updatedLatitude = latitude || DUBLIN_COORDINATES.latitude;
+  const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
+
+  try {
+    const { data } = await customAxiosInstance(`${BASE_API}businesses/search`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -79,13 +112,13 @@ export const getRestaurants = async ({
         Authorization: `Bearer ${process.env.YELP_API_KEY}`,
       },
       params: {
-        term: 'restaurants',
+        term: SEARCH_TERM_QUERY_PARAM,
         latitude: updatedLatitude,
         longitude: updatedLongitude,
-        radius: 1000,
+        radius: SEARCH_RADIUS_QUERY_PARAM,
         categories: cuisine,
         offset,
-        limit: 20,
+        limit: MAX_RESTAURANT_DISPLAYED,
       },
     });
 
