@@ -30,16 +30,9 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
   }
 `;
 
-export const StyledFilterPrimaryText = styled.span`
+export const StyledFilterText = styled.span`
   text-transform: uppercase;
-  font-weight: 600;
-`;
-
-export const StyledFilterSecondaryText = styled.span`
-  display: none;
-  @media only screen and (min-width: 920px) {
-    display: block;
-  }
+  font-weight: 500;
 `;
 
 export const StyledFilterIcon = styled.i`

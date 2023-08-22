@@ -8,7 +8,7 @@ import { StyledFavoritesPage, StyledTitleLoading, StyledCardsWrapper } from './s
 import { THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
 import { LoaderType, BreadcrumbsData } from '../../core/types';
-import { Restaurant } from '../types';
+import { Restaurant } from '../../../helpers/types';
 
 type FavoritesPageProps = {
   restaurants: Restaurant[];

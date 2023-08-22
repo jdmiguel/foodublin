@@ -1,5 +1,5 @@
 import { StyledTiming, StyledTimingDay, StyledTimingSchedule } from './styles';
-import { Timing } from '../types';
+import { Timing } from '../../../helpers/types';
 
 type TimingsProps = {
   timings: Timing[];

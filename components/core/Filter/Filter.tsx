@@ -1,29 +1,18 @@
-import {
-  StyledFilter,
-  StyledFilterPrimaryText,
-  StyledFilterSecondaryText,
-  StyledFilterIcon,
-} from './styles';
-import { FilterData } from '../types';
+import { StyledFilter, StyledFilterText, StyledFilterIcon } from './styles';
+import { FilterData, FilterType } from '../types';
 
 type FilterProps = {
   className?: string;
   data: FilterData;
-  onClick: (sort: string, order: string) => void;
+  onClick: (filter: FilterType) => void;
 };
 
-export const Filter: React.FC<FilterProps> = ({ data, onClick }) => {
-  return (
-    <StyledFilter
-      isActive={data.isActive}
-      key={data.id}
-      onClick={() => {
-        onClick(data.sort, data.order);
-      }}
-    >
-      <StyledFilterPrimaryText>{data.primaryText}</StyledFilterPrimaryText>
-      <StyledFilterSecondaryText>{` ${data.secondaryText}`}</StyledFilterSecondaryText>
-      <StyledFilterIcon className="material-icons">{data.icon}</StyledFilterIcon>
-    </StyledFilter>
-  );
-};
+export const Filter: React.FC<FilterProps> = ({
+  data: { isActive, text, icon, type },
+  onClick,
+}) => (
+  <StyledFilter isActive={isActive} onClick={() => onClick(type)}>
+    <StyledFilterText>{text}</StyledFilterText>
+    <StyledFilterIcon className="material-icons">{icon}</StyledFilterIcon>
+  </StyledFilter>
+);

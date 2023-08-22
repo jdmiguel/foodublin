@@ -1,4 +1,4 @@
-import { BreadcrumbsType } from '@/components/core/types';
+import { BreadcrumbsType, FilterData } from '@/components/core/types';
 
 export const BASE_API = 'https://api.yelp.com/v3/';
 
@@ -9,7 +9,7 @@ export const DEFAULT_TEXT_LOADING = 'Coming right up...';
 export const SEARCH_TERM_QUERY_PARAM = 'restaurants';
 export const SEARCH_RADIUS_QUERY_PARAM = 1000;
 
-export const MAX_RESTAURANT_DISPLAYED = 30;
+export const MAX_RESTAURANT_DISPLAYED = 20;
 
 export const MAX_SMALL_DEVICE_WIDTH = 640;
 
@@ -39,51 +39,34 @@ export const DEFAULT_RATING_STAR_LIST = [
   { id: 5, type: 'star_outline' },
 ];
 
-export enum FilterSort {
-  COST = 'cost',
-  RANK = 'rating',
-}
-export enum FilterOrder {
-  ASC = 'asc',
-  DESC = 'desc',
-}
-
-export const FILTERS = [
+export const FILTERS: FilterData[] = [
   {
-    isActive: false,
-    primaryText: 'cost',
-    secondaryText: '- high to low',
-    icon: 'keyboard_arrow_up',
-    sort: FilterSort.COST,
-    order: FilterOrder.ASC,
     id: 1,
-  },
-  {
     isActive: false,
-    primaryText: 'cost',
-    secondaryText: '- low to high',
-    icon: 'keyboard_arrow_down',
-    sort: FilterSort.COST,
-    order: FilterOrder.DESC,
-    id: 2,
-  },
-  {
-    isActive: false,
-    primaryText: 'rank',
-    secondaryText: '- high to low',
+    text: 'high cost',
     icon: 'keyboard_arrow_up',
-    sort: FilterSort.RANK,
-    order: FilterOrder.ASC,
-    id: 3,
+    type: 'high_cost',
   },
   {
+    id: 2,
     isActive: false,
-    primaryText: 'rank',
-    secondaryText: '- low to high',
+    text: 'low cost',
     icon: 'keyboard_arrow_down',
-    sort: FilterSort.RANK,
-    order: FilterOrder.DESC,
+    type: 'low_cost',
+  },
+  {
+    id: 3,
+    isActive: false,
+    text: 'popularity',
+    icon: 'keyboard_arrow_up',
+    type: 'rating',
+  },
+  {
     id: 4,
+    isActive: false,
+    text: 'distance',
+    icon: 'keyboard_arrow_down',
+    type: 'distance',
   },
 ];
 

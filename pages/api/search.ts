@@ -3,7 +3,20 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { BASE_API } from '@/store/statics';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { term, latitude, longitude, radius, categories, offset, limit } = req.query;
+  const { term, latitude, longitude, radius, offset, limit, categories, price, sort_by } =
+    req.query;
+
+  const requestParams = {
+    latitude,
+    longitude,
+    term,
+    categories,
+    radius,
+    offset,
+    limit,
+    ...(Array.isArray(price) && { price: price.join(',') }),
+    ...(sort_by && { sort_by }),
+  };
 
   try {
     const response = await axios(`${BASE_API}businesses/search`, {
@@ -14,15 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         accept: 'application/json',
         Authorization: `Bearer ${process.env.YELP_API_KEY}`,
       },
-      params: {
-        term,
-        latitude,
-        longitude,
-        radius,
-        categories,
-        offset,
-        limit,
-      },
+      params: requestParams,
     });
 
     res.status(200).json(response.data);

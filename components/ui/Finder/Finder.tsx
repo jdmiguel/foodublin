@@ -16,7 +16,7 @@ import {
 import { MAX_MOBILE_WIDTH } from '@/store/statics';
 import { getFormattedUrlText, debounce } from '@/helpers/utils';
 import { getSuggestionsBySearchText } from '@/services/index';
-import { Area, Cuisine, Suggestion } from '../../pages/types';
+import { Area, Cuisine, Suggestion } from '../../../helpers/types';
 
 type FinderProps = {
   areas: Area[];

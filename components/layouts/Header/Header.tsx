@@ -12,7 +12,7 @@ import {
   StyledCornerWrapper,
   StyledHeaderClaim,
 } from './styles';
-import { Area, Cuisine } from '../../pages/types';
+import { Area, Cuisine } from '../../../helpers/types';
 import { BreadcrumbsData } from '../../core/types';
 
 type HeaderProps = {

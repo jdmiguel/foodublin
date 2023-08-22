@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { FilterType } from '@/components/core/types';
 
 export type Area = { id: number; name: string; path: string; latitude: number; longitude: number };
 export type Cuisine = { id: number; iconSrc: string; name: string; path: string };
@@ -9,14 +10,23 @@ export type Timing = {
   schedule: string;
 };
 
-export type RestaurantsRequestParam = number | null | string | undefined;
-
-export type RestaurantsRequestParams = {
-  isClientRequest: boolean;
+export type SearchRequestParams = {
   latitude: number;
   longitude: number;
+  term?: string;
   cuisine?: string;
   offset?: number;
+  categories?: string;
+  attributes?: string;
+  price?: string;
+  sort_by?: string;
+};
+
+export type SearchBasicParams = Pick<
+  SearchRequestParams,
+  'latitude' | 'longitude' | 'cuisine' | 'offset'
+> & {
+  sortBy?: FilterType;
 };
 
 export type Restaurant = {
@@ -124,3 +134,5 @@ export type Suggestion = Pick<FetchedRestaurantDetails, 'id' | 'name'> & {
 export type FetchedRestaurant = Omit<FetchedRestaurantDetails, 'is_claimed'> & {
   distance: number;
 };
+
+export type SearchUserAction = 'filter' | 'scroll';

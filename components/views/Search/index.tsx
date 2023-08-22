@@ -7,8 +7,8 @@ import { Card } from '../../core/Card/Card';
 import { StyledSearchPage, StyledCardsWrapper } from './styles';
 import { FILTERS, THUMB_GENERIC_SRC, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getTitleText } from '@/helpers/utils';
-import { LoaderType, BreadcrumbsData } from '../../core/types';
-import { Restaurant } from '../types';
+import { LoaderType, BreadcrumbsData, FilterType } from '../../core/types';
+import { Restaurant } from '../../../helpers/types';
 
 type SearchPageProps = {
   total: number;
@@ -18,7 +18,7 @@ type SearchPageProps = {
   isLoadingByFilter: boolean;
   isLoadingByScroll: boolean;
   isNavigating: boolean;
-  onClickFilter: (sort: string, order: string) => void;
+  onClickFilter: (sortBy?: FilterType) => void;
   onClickCard: (route: string, asRoute: string) => void;
   onNavigate: (route: string, asRoute?: string) => void;
   breadcrumbs: BreadcrumbsData[];

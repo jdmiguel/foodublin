@@ -11,7 +11,7 @@ import { DEFAULT_TEXT_LOADING, DEFAULT_BREADCRUMB } from '@/store/statics';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const DynamicHomePage = dynamic(() => import('@/components/pages/HomePage/HomePage'), {
+const DynamicHomePage = dynamic(() => import('@/components/views/Home'), {
   loading: () => (
     <FullLoader>
       <Loader text={DEFAULT_TEXT_LOADING} />

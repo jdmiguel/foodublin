@@ -1,12 +1,12 @@
 import { useReducer, Dispatch } from 'react';
 import { Filter } from '../../core/Filter/Filter';
-import { FilterData } from '../../core/types';
+import { FilterData, FilterType } from '../../core/types';
 import { StyledFilters } from './styles';
 
 type FilterProps = {
   className?: string;
   data: FilterData[];
-  onClick: (sort: string, order: string) => void;
+  onClick: (filter?: FilterType) => void;
 };
 
 type DataAction = { type: 'select'; id: number } | { type: 'clear' };
@@ -36,9 +36,9 @@ export const Filters: React.FC<FilterProps> = ({ data, onClick }) => {
     dataWithIsActiveProp,
   );
 
-  const handleClick = (isActive: boolean, id: number, sort: string, order: string) => {
+  const handleClick = (isActive: boolean, id: number, filter: FilterType) => {
     dispatch(!isActive ? { type: 'select', id } : { type: 'clear' });
-    onClick(!isActive ? sort : '', !isActive ? order : '');
+    onClick(!isActive ? filter : undefined);
   };
 
   return (
@@ -48,7 +48,7 @@ export const Filters: React.FC<FilterProps> = ({ data, onClick }) => {
           key={item.id}
           data={item}
           onClick={() => {
-            handleClick(item.isActive, item.id, item.sort, item.order);
+            handleClick(item.isActive, item.id, item.type);
           }}
         />
       ))}

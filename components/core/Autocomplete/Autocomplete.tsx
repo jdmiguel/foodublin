@@ -16,7 +16,7 @@ import {
   StyledListboxItem,
 } from './styles/autocomplete';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { Suggestion } from '../../pages/types';
+import { Suggestion } from '../../../helpers/types';
 import { CardType } from '../types';
 
 export type AutocompleteProps = {

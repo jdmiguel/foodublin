@@ -37,7 +37,12 @@ import {
 } from '@/store/statics';
 import { Categories } from './Categories';
 import { Timings } from './Timings';
-import { RestaurantDetails, Timing, HourDetail, Review as ReviewType } from '../types';
+import {
+  RestaurantDetails,
+  Timing,
+  HourDetail,
+  Review as ReviewType,
+} from '../../../helpers/types';
 
 type DetailsPageProps = {
   details: RestaurantDetails;

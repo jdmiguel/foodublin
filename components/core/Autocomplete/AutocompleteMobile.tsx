@@ -24,7 +24,7 @@ import {
 } from './styles/autocompleteMobile';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { CardType } from '../types';
-import { Suggestion } from '../../pages/types';
+import { Suggestion } from '../../../helpers/types';
 
 export type AutocompleteMobileProps = {
   hasSearchIcon?: boolean;

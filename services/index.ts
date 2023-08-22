@@ -7,11 +7,13 @@ import {
   MAX_RESTAURANT_DISPLAYED,
 } from '@/store/statics';
 import {
-  RestaurantsRequestParams,
+  SearchRequestParams,
+  SearchBasicParams,
   FetchedRestaurant,
   FetchedRestaurantDetails,
   Suggestion,
-} from '@/components/pages/types';
+} from '@/helpers/types';
+import { FilterType } from '@/components/core/types';
 
 const delayRequest = (ms = 3000): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -43,6 +45,27 @@ const handleApiError = (error: AxiosError) => {
   }
 };
 
+const getFormattedUrlBySort = (url: string, sortBy: FilterType) => {
+  let newUrl = url;
+
+  if (sortBy === 'high_cost') {
+    newUrl += '&price=3';
+    newUrl += '&price=4';
+  }
+  if (sortBy === 'low_cost') {
+    newUrl += '&price=1';
+    newUrl += '&price=2';
+  }
+  if (sortBy === 'rating') {
+    newUrl += '&sort_by=rating';
+  }
+  if (sortBy === 'distance') {
+    newUrl += '&sort_by=distance';
+  }
+
+  return newUrl;
+};
+
 export const getSuggestionsBySearchText = async (
   searchText: string,
 ): Promise<{
@@ -68,21 +91,24 @@ export const getRestaurantsOnClient = async ({
   longitude,
   cuisine = '',
   offset = 0,
-}: RestaurantsRequestParams): Promise<{
+  sortBy,
+}: SearchBasicParams): Promise<{
   restaurants: FetchedRestaurant[];
   total: number;
 }> => {
   const updatedLatitude = latitude || DUBLIN_COORDINATES.latitude;
   const updatedLongitude = longitude || DUBLIN_COORDINATES.longitude;
 
+  const requestUrl = `/api/search?latitude=${updatedLatitude}&longitude=${updatedLongitude}&term=${SEARCH_TERM_QUERY_PARAM}&categories=${cuisine}&radius=${SEARCH_RADIUS_QUERY_PARAM}&offset=${offset}&limit=${MAX_RESTAURANT_DISPLAYED}`;
+
+  const updatedRequestUrl = sortBy ? getFormattedUrlBySort(requestUrl, sortBy) : requestUrl;
+
   try {
-    const { data } = await axios.get(
-      `/api/search?term=${SEARCH_TERM_QUERY_PARAM}&latitude=${updatedLatitude}&longitude=${updatedLongitude}&radius=${SEARCH_RADIUS_QUERY_PARAM}&categories=${cuisine}&offset=${offset}&limit=${MAX_RESTAURANT_DISPLAYED}`,
-    );
+    const { data } = await axios.get(updatedRequestUrl);
 
     return {
-      restaurants: data.businesses,
-      total: data.total,
+      restaurants: data.businesses ?? [],
+      total: data.total ?? 0,
     };
   } catch (error) {
     console.log({ error });
@@ -95,7 +121,7 @@ export const getRestaurantsOnServer = async ({
   longitude,
   cuisine = '',
   offset = 0,
-}: RestaurantsRequestParams): Promise<{
+}: SearchRequestParams): Promise<{
   restaurants: FetchedRestaurant[];
   total: number;
 }> => {
@@ -123,8 +149,8 @@ export const getRestaurantsOnServer = async ({
     });
 
     return {
-      restaurants: data.businesses,
-      total: data.total,
+      restaurants: data.businesses ?? [],
+      total: data.total ?? 0,
     };
   } catch (error) {
     console.log({ error });

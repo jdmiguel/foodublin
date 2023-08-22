@@ -24,14 +24,10 @@ exports[`Component: Filter should render correctly 1`] = `
 
 .c2 {
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .c3 {
-  display: none;
-}
-
-.c4 {
   font-size: 1.1rem;
   line-height: 18px;
   margin-left: 10px;
@@ -68,12 +64,6 @@ exports[`Component: Filter should render correctly 1`] = `
 
 @media only screen and (min-width:920px) {
   .c3 {
-    display: block;
-  }
-}
-
-@media only screen and (min-width:920px) {
-  .c4 {
     display: none;
   }
 }
@@ -104,15 +94,10 @@ exports[`Component: Filter should render correctly 1`] = `
     <span
       class="c2"
     >
-      cost
-    </span>
-    <span
-      class="c3"
-    >
-       - high to low
+      high cost
     </span>
     <i
-      class="c4 material-icons"
+      class="c3 material-icons"
     >
       keyboard_arrow_up
     </i>
@@ -123,15 +108,10 @@ exports[`Component: Filter should render correctly 1`] = `
     <span
       class="c2"
     >
-      cost
-    </span>
-    <span
-      class="c3"
-    >
-       - low to high
+      low cost
     </span>
     <i
-      class="c4 material-icons"
+      class="c3 material-icons"
     >
       keyboard_arrow_down
     </i>
@@ -142,15 +122,10 @@ exports[`Component: Filter should render correctly 1`] = `
     <span
       class="c2"
     >
-      rank
-    </span>
-    <span
-      class="c3"
-    >
-       - high to low
+      popularity
     </span>
     <i
-      class="c4 material-icons"
+      class="c3 material-icons"
     >
       keyboard_arrow_up
     </i>
@@ -161,15 +136,10 @@ exports[`Component: Filter should render correctly 1`] = `
     <span
       class="c2"
     >
-      rank
-    </span>
-    <span
-      class="c3"
-    >
-       - low to high
+      distance
     </span>
     <i
-      class="c4 material-icons"
+      class="c3 material-icons"
     >
       keyboard_arrow_down
     </i>

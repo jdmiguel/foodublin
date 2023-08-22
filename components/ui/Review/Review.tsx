@@ -8,7 +8,7 @@ import {
   StyledReviewDate,
   StyledReviewText,
 } from './styles';
-import { Review as ReviewType } from '@/components/pages/types';
+import { Review as ReviewType } from '@/helpers/types';
 import { THUMB_GENERIC_SRC, USER_GENERIC_SRC } from '@/store/statics';
 
 type ReviewProps = {

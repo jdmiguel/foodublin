@@ -4,13 +4,20 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
+import ErrorPage from '@/components/views/Error';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useScroll } from '@/components/hooks/useScroll';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
-import { BreadcrumbsType } from '@/components/core/types';
-import { Area, Cuisine, FetchedRestaurant, Restaurant } from '@/components/pages/types';
+import { BreadcrumbsType, FilterType } from '@/components/core/types';
+import {
+  Area,
+  Cuisine,
+  SearchBasicParams,
+  FetchedRestaurant,
+  Restaurant,
+  SearchUserAction,
+} from '@/helpers/types';
 import {
   DEFAULT_TEXT_LOADING,
   MAX_RESTAURANT_DISPLAYED,
@@ -19,11 +26,6 @@ import {
 } from '@/store/statics';
 import { getFormattedUrlText, inferStaticProps } from '@/helpers/utils';
 import { getRestaurantsOnServer, getRestaurantsOnClient } from '@/services/index';
-
-export enum LoadType {
-  FILTER = 'filter',
-  SCROLL = 'scroll',
-}
 
 type SearchProps = inferStaticProps<typeof getStaticProps>;
 
@@ -34,7 +36,7 @@ type CustomGetStaticPropsContext = GetStaticPropsContext & {
   };
 };
 
-const DynamicSearchPage = dynamic(() => import('@/components/pages/SearchPage/SearchPage'), {
+const DynamicSearchPage = dynamic(() => import('@/components/views/Search'), {
   loading: () => (
     <FullLoader>
       <Loader text={DEFAULT_TEXT_LOADING} />
@@ -61,39 +63,26 @@ const selectRestaurants =
       formattedFuntion(fetchedRestaurant),
     );
 
-const handleGetRestaurants = async ({
-  isClientRequest = false,
+const fetchRestaurantsOnClient = async ({
   latitude,
   longitude,
   cuisine,
   offset = 0,
-}: {
-  isClientRequest?: boolean;
-  latitude: number;
-  longitude: number;
-  cuisine: string;
-  offset?: number;
-}) => {
-  const getRestaurants = isClientRequest ? getRestaurantsOnClient : getRestaurantsOnServer;
-  const { restaurants, total } = await getRestaurants({
-    isClientRequest,
+  sortBy,
+}: SearchBasicParams) => {
+  const { restaurants, total } = await getRestaurantsOnClient({
     latitude,
     longitude,
     cuisine,
     offset,
+    sortBy,
   });
-  if (Array.isArray(restaurants)) {
-    const formattedRestaurants = selectRestaurants(restaurants) || [];
-
-    return {
-      restaurants: formattedRestaurants(getRefinedRestaurant),
-      total,
-    };
-  }
+  const formattedRestaurants = selectRestaurants(restaurants) || [];
+  const refinedRestaurants = formattedRestaurants(getRefinedRestaurant);
 
   return {
-    restaurants: [],
-    total: 0,
+    restaurants: refinedRestaurants,
+    total,
   };
 };
 
@@ -104,44 +93,58 @@ const Search: NextPage<SearchProps> = ({
   cuisinePath,
   cuisineName,
   restaurants: initialRestaurants,
-  total,
+  total: initialTotal,
 }) => {
   const [isNavigating, setIsNavigating] = useState(false);
-
-  const sortRef = useRef('');
-  const orderRef = useRef('');
-  const scrollDelayRef = useRef(SCROLL_DELAY);
-
   const [restaurants, setRestaurants] = useState<Restaurant[]>(initialRestaurants);
   const [isLoadingByFilter, setIsLoadingByFilter] = useState(false);
   const [isLoadingByScroll, setIsLoadingByScroll] = useState(false);
   const [isOnError, setIsOnError] = useState(false);
-  const [currentOffset, setCurrentOffset] = useState(0);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(initialTotal);
+
+  const filter = useRef<FilterType | undefined>();
 
   const router = useRouter();
 
-  const handleRestaurantsOnClient = async (loadType: LoadType) => {
-    let offset = 0;
+  useScroll(
+    async ({ scrollTop, scrollHeight, clientHeight }) => {
+      const isScrollDownLimit = scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
+      const isRetrievingDataAllowed = offset + MAX_RESTAURANT_DISPLAYED < total;
 
-    if (loadType === LoadType.FILTER) {
+      if (isScrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
+        handleRestaurantsOnClient('scroll');
+      }
+    },
+    [isLoadingByScroll, offset],
+    SCROLL_DELAY,
+  );
+
+  const handleRestaurantsOnClient = async (userAction: SearchUserAction) => {
+    const isFilterAction = userAction === 'filter';
+
+    let updatedOffset: number;
+
+    if (isFilterAction) {
+      updatedOffset = 0;
       setIsLoadingByFilter(true);
     } else {
-      offset = currentOffset + MAX_RESTAURANT_DISPLAYED;
+      updatedOffset = offset + MAX_RESTAURANT_DISPLAYED;
       setIsLoadingByScroll(true);
     }
+    setOffset(updatedOffset);
 
-    setCurrentOffset(offset);
-
-    const { restaurants } = await handleGetRestaurants({
-      isClientRequest: true,
+    const { restaurants, total: fetchedTotal } = await fetchRestaurantsOnClient({
       latitude,
       longitude,
       cuisine: cuisinePath,
-      offset,
+      offset: updatedOffset,
+      sortBy: filter.current,
     });
 
     if (restaurants) {
-      if (loadType === LoadType.FILTER) {
+      setTotal(fetchedTotal);
+      if (isFilterAction) {
         setRestaurants(restaurants);
         setIsLoadingByFilter(false);
       } else {
@@ -153,30 +156,14 @@ const Search: NextPage<SearchProps> = ({
     }
   };
 
-  useScroll(
-    async ({ scrollTop, scrollHeight, clientHeight }) => {
-      const isScrollDownLimit = scrollTop >= (scrollHeight - clientHeight) / SCROLL_FACTOR;
-      const isRetrievingDataAllowed = currentOffset + MAX_RESTAURANT_DISPLAYED < total;
-
-      if (isScrollDownLimit && !isLoadingByScroll && isRetrievingDataAllowed) {
-        handleRestaurantsOnClient(LoadType.SCROLL);
-      }
-    },
-    [isLoadingByScroll, currentOffset],
-    scrollDelayRef.current,
-  );
-
-  const handleFilter = (sort: string, order: string) => {
-    sortRef.current = sort;
-    orderRef.current = order;
-    handleRestaurantsOnClient(LoadType.FILTER);
-  };
-
   const handleClickCard = (route: string, asRoute: string) => {
-    scrollDelayRef.current = 0;
-
     setIsNavigating(true);
     router.push(route, asRoute);
+  };
+
+  const handleFilter = (newFilter: FilterType | undefined) => {
+    filter.current = newFilter;
+    handleRestaurantsOnClient('filter');
   };
 
   const searchBreadcrumbs = {
@@ -272,11 +259,14 @@ export const getStaticProps = async ({
   const updatedCuisinePath = cuisinePath ?? '';
   const updatedCuisineName = cuisineName ?? '';
 
-  const restaurantsData = await handleGetRestaurants({
+  const { restaurants, total } = await getRestaurantsOnServer({
     latitude,
     longitude,
     cuisine: cuisinePath,
   });
+
+  const formattedRestaurants = selectRestaurants(restaurants);
+  const refinedRestaurants = formattedRestaurants(getRefinedRestaurant);
 
   return {
     props: {
@@ -285,8 +275,8 @@ export const getStaticProps = async ({
       longitude,
       cuisinePath: updatedCuisinePath,
       cuisineName: updatedCuisineName,
-      total: restaurantsData.total,
-      restaurants: restaurantsData.restaurants,
+      total: total ?? 0,
+      restaurants: refinedRestaurants ?? 0,
     },
   };
 };

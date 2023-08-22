@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { getMapSrc } from '../DetailsPage';
-import { FIRST_DETAIL_MOCKED, FOURTH_DETAIL_MOCKED } from '../__mocks__/detailspage.mocks';
+import { getMapSrc } from '..';
+import { FIRST_DETAIL_MOCKED, FOURTH_DETAIL_MOCKED } from '../__mocks__/mocks';
 
 describe('getMapSrc', () => {
   it('should be equal to mocked map src if name is composed of one word and location is composed of two', () => {

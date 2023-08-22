@@ -1,6 +1,6 @@
 import { createStore, Reducer } from 'redux';
 import appReducer from '@/store/redux/reducer';
-import { HourDetail } from '@/components/pages/types';
+import { HourDetail } from '@/helpers/types';
 
 // GENERAL UTILS
 

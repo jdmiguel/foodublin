@@ -5,7 +5,7 @@ import { Button } from '../../core/Button/Button';
 import { useScroll } from '../../hooks/useScroll';
 import { StyledLayout, StyledMain, StyledScrollUpButtonWrapper } from './styles';
 import { BreadcrumbsData } from '../../core/types';
-import { Area, Cuisine } from '../../pages/types';
+import { Area, Cuisine } from '../../../helpers/types';
 import { SCROLL_DELAY, SHOWING_SCROLLUP_BUTTON_HEIGHT, DEFAULT_BREADCRUMB } from '@/store/statics';
 
 type LayoutProps = {

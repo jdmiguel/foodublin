@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useSelector, useDispatch } from 'react-redux';
-import ErrorPage from '@/components/pages/ErrorPage/ErrorPage';
+import ErrorPage from '@/components/views/Error';
 import { FullLoader } from '@/components/ui/FullLoader/FullLoader';
 import { Loader } from '@/components/core/Loader/Loader';
 import { useBreadcrumbs } from '@/components/hooks/useBreadcrumbs';
@@ -13,7 +13,7 @@ import { AppState } from '@/store/redux/types';
 import { DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { getFormattedUrlText, getFormattedHours, inferSSRProps } from '@/helpers/utils';
 import { getRestaurantDetails } from '@/services/index';
-import { RestaurantDetails, Restaurant } from '@/components/pages/types';
+import { RestaurantDetails, Restaurant } from '@/helpers/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
 type DetailProps = inferSSRProps<typeof getServerSideProps>;
@@ -24,7 +24,7 @@ type CustomGetServerSidePropsContext = GetServerSidePropsContext & {
   };
 };
 
-const DynamicDetailsPage = dynamic(() => import('@/components/pages/DetailsPage/DetailsPage'), {
+const DynamicDetailsPage = dynamic(() => import('@/components/views/Details'), {
   loading: () => (
     <FullLoader>
       <Loader text={DEFAULT_TEXT_LOADING} />

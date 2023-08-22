@@ -4,7 +4,7 @@ import { Loader } from '../../core/Loader/Loader';
 import { Title } from '../../core/Title/Title';
 import { Card } from '../../core/Card/Card';
 import { LoaderType, CardType, BreadcrumbsData } from '../../core/types';
-import { Area, Cuisine, HighlightRestaurant } from '../types';
+import { Area, Cuisine, HighlightRestaurant } from '../../../helpers/types';
 import { StyledHighlights, StyledHighlightWrapper } from './styles';
 
 type HomePageProps = {
