@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 export const theme: DefaultTheme = {
@@ -10,7 +10,7 @@ export const theme: DefaultTheme = {
     SECONDARY: '#660000',
     LIGHT_MAX: '#FFFFFF',
     LIGHT_MEDIUM: '#F3F3F3',
-    LIGHT_MIN: '#E5EAED',
+    LIGHT_MIN: '#e1e4e6',
     LIGHT_SOFT: '#D8D8D8',
     DARK_MAX: '#2f3235',
     DARK_MEDIUM: '#585858',
@@ -20,6 +20,6 @@ export const theme: DefaultTheme = {
   },
 };
 
-export const renderWithTheme = (component: ReactNode) => (
+export const renderWithTheme = (component: any) => (
   <ThemeProvider theme={theme}>{component}</ThemeProvider>
 );

@@ -38,7 +38,6 @@ const localState = loadStateFromLocalStorage();
 
 const defaultAppState: AppState = {
   favorites: [],
-  relatedRestaurants: [],
   breadcrumbs: [DEFAULT_BREADCRUMB],
 };
 

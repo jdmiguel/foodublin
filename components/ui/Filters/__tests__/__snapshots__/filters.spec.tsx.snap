@@ -17,31 +17,32 @@ exports[`Component: Filter should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   background-color: #F3F3F3;
 }
 
-.c2 {
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .c3 {
-  display: none;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.c4 {
+.c2 {
   font-size: 1.1rem;
-  line-height: 18px;
-  margin-left: 10px;
-  display: block;
+  margin-right: 8px;
 }
 
 .c0 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 10px;
 }
 
 @media only screen and (min-width:768px) {
@@ -53,12 +54,6 @@ exports[`Component: Filter should render correctly 1`] = `
   }
 }
 
-@media only screen and (min-width:992px) {
-  .c1 {
-    padding: 20px;
-  }
-}
-
 @media only screen and (min-width:1200px) {
   .c1:hover {
     background-color: #FDF3E5;
@@ -66,31 +61,9 @@ exports[`Component: Filter should render correctly 1`] = `
   }
 }
 
-@media only screen and (min-width:920px) {
-  .c3 {
-    display: block;
-  }
-}
-
-@media only screen and (min-width:920px) {
-  .c4 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width:540px) {
+@media only screen and (min-width:768px) {
   .c0 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    gap: 10px;
-  }
-
-  .c0 button {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
   }
 }
 
@@ -101,78 +74,58 @@ exports[`Component: Filter should render correctly 1`] = `
   <button
     class="c1"
   >
-    <span
-      class="c2"
+    <i
+      class="c2 material-icons"
     >
-      cost
-    </span>
+      monetization_on
+    </i>
     <span
       class="c3"
     >
-       - high to low
+      high cost
     </span>
-    <i
-      class="c4 material-icons"
-    >
-      keyboard_arrow_up
-    </i>
   </button>
   <button
     class="c1"
   >
-    <span
-      class="c2"
+    <i
+      class="c2 material-icons"
     >
-      cost
-    </span>
+      savings
+    </i>
     <span
       class="c3"
     >
-       - low to high
+      low cost
     </span>
-    <i
-      class="c4 material-icons"
-    >
-      keyboard_arrow_down
-    </i>
   </button>
   <button
     class="c1"
   >
-    <span
-      class="c2"
+    <i
+      class="c2 material-icons"
     >
-      rank
-    </span>
+      star
+    </i>
     <span
       class="c3"
     >
-       - high to low
+      popularity
     </span>
-    <i
-      class="c4 material-icons"
-    >
-      keyboard_arrow_up
-    </i>
   </button>
   <button
     class="c1"
   >
-    <span
-      class="c2"
+    <i
+      class="c2 material-icons"
     >
-      rank
-    </span>
+      pin_drop
+    </i>
     <span
       class="c3"
     >
-       - low to high
+      distance
     </span>
-    <i
-      class="c4 material-icons"
-    >
-      keyboard_arrow_down
-    </i>
   </button>
 </div>
 `;

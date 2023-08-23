@@ -12,7 +12,6 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **STYLED-COMPONENTS**
 - **JEST**
 - **REACT-TESTING-LIBRARY**
-- **CYPRESS**
 - **AXIOS**
 - **BABEL**
 - **ESLINT**
@@ -28,8 +27,7 @@ Web application to find restaurants in Dublin by filtering by name, cuisine or/a
 - **create production files**: Execute _yarn start_
 - **run storybook**: Execute _yarn storybook_
 - **run test suites**: Execute _yarn test_
-- **run cypress suites**: Execute _cy:run_
 
 ### API
 
-The [ZOMATO API](https://developers.zomato.com/documentation#/) was used in this project to get restaurants information.
+The [YELP API](https://docs.developer.yelp.com/docs/fusion-intro#/) was used in this project to get restaurants information.

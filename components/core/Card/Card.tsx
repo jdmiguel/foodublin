@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ReactNode } from 'react';
 import {
   StyledCard,
@@ -13,7 +14,7 @@ import { CardType } from '../types';
 type CardProps = {
   imgSrc: string;
   title: string;
-  content: ReactNode | string;
+  content?: ReactNode | string;
   type?: CardType;
   onClick?: () => void;
 };
@@ -21,7 +22,7 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({
   imgSrc,
   title,
-  content,
+  content = '',
   onClick,
   type = CardType.STANDART,
 }) => (
@@ -35,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
       src={imgSrc}
       alt={title}
       type={type}
-      placeholder={({ imageProps, ref }) => (
+      placeholder={({ imageProps, ref }: any) => (
         <div ref={ref} className="LazyImage-Placeholder">
           <StyledGenericThumb
             src={type === CardType.HIGHLIGHT ? HIGHLIGHT_GENERIC_SRC : THUMB_GENERIC_SRC}
@@ -44,7 +45,7 @@ export const Card: React.FC<CardProps> = ({
           />
         </div>
       )}
-      actual={({ imageProps }) => (
+      actual={({ imageProps }: any) => (
         <div className="LazyImage-Actual">
           <img {...imageProps} alt={title} />
         </div>

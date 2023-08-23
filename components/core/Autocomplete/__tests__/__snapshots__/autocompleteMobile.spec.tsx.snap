@@ -63,6 +63,8 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
   display: inline-block;
   border-radius: 4px;
   -webkit-appearance: button-bevel;
+  -moz-appearance: button-bevel;
+  appearance: button-bevel;
   box-shadow: 1px 2px 5px #798186;
 }
 
@@ -106,7 +108,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
 
 .c5 {
   color: #585858;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -250,7 +252,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
 
 .c12 {
   width: 100%;
-  border-bottom: 1px solid #E5EAED;
+  border-bottom: 1px solid #e1e4e6;
   list-style: none;
   overflow: hidden;
   background-color: #F3F3F3;
@@ -315,7 +317,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
 
 @media only screen and (min-width:992px) {
   .c5 {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -426,9 +428,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
               <p
                 class="c17"
                 type="suggestion"
-              >
-                Rathmines
-              </p>
+              />
             </div>
           </a>
         </li>
@@ -464,9 +464,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
               <p
                 class="c17"
                 type="suggestion"
-              >
-                South City West
-              </p>
+              />
             </div>
           </a>
         </li>
@@ -502,9 +500,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
               <p
                 class="c17"
                 type="suggestion"
-              >
-                Drumcondra
-              </p>
+              />
             </div>
           </a>
         </li>

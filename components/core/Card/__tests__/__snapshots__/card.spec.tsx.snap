@@ -135,8 +135,9 @@ exports[`should render the standart card 1`] = `
 }
 
 .c1 {
-  max-width: 100px;
-  min-width: 80px;
+  width: 98px;
+  height: 98px;
+  object-fit: cover;
 }
 
 .c2 {
@@ -189,17 +190,6 @@ exports[`should render the standart card 1`] = `
 
   .c0:hover h4 {
     color: #EC7E00;
-  }
-}
-
-@media only screen and (min-width:768px) {
-
-}
-
-@media only screen and (min-width:768px) {
-  .c1 {
-    width: 100px;
-    min-width: 100px;
   }
 }
 
@@ -284,6 +274,8 @@ exports[`should render the suggestion card 1`] = `
   display: inline-block;
   border-radius: 4px;
   -webkit-appearance: button-bevel;
+  -moz-appearance: button-bevel;
+  appearance: button-bevel;
   box-shadow: 1px 2px 5px #798186;
 }
 

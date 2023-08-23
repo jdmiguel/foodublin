@@ -12,7 +12,7 @@ export const BREADCRUMBS_DATA_MOCK = [
     text: 'Third step',
     route: '/',
     asRoute: '/',
-    type: BreadcrumbsType.DETAIL,
+    type: BreadcrumbsType.DETAILS,
   },
 ];
 

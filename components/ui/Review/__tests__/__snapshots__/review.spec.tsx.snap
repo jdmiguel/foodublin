@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: ReviewCard should render correctly 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.3rem;
+  color: #585858;
+}
+
+.c0 {
+  padding: 24px;
+  background-color: #e1e4e6;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.c2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+.c3 {
+  color: #585858;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 12px;
+}
+
+.c6 {
+  color: #798186;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.c7 {
+  color: #585858;
+  line-height: 1.3rem;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="LazyImage-Placeholder"
+    >
+      <img
+        class="c2"
+        src="/images/generic-thumb.png"
+      />
+    </div>
+    <p
+      class="c3"
+    />
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c4"
+    >
+      <i
+        class="c5 material-icons"
+      >
+        star
+      </i>
+      <i
+        class="c5 material-icons"
+      >
+        star
+      </i>
+      <i
+        class="c5 material-icons"
+      >
+        star
+      </i>
+      <i
+        class="c5 material-icons"
+      >
+        star
+      </i>
+      <i
+        class="c5 material-icons"
+      >
+        star_outline
+      </i>
+    </div>
+    <p
+      class="c6"
+    >
+      Invalid Date
+    </p>
+  </div>
+  <p
+    class="c7"
+  >
+    Perfect
+  </p>
+</div>
+`;

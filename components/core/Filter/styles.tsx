@@ -10,6 +10,8 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex: 1;
   transition: all 0.2s ease-out;
   background-color: ${({ theme, isActive }) =>
     `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MEDIUM}`};
@@ -19,9 +21,6 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
     padding: 15px;
     font-size: 1rem;
   }
-  @media only screen and (min-width: 992px) {
-    padding: 20px;
-  }
   @media only screen and (min-width: 1200px) {
     &:hover {
       background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};
@@ -30,24 +29,12 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
   }
 `;
 
-export const StyledFilterPrimaryText = styled.span`
+export const StyledFilterText = styled.span`
   text-transform: uppercase;
-  font-weight: 600;
-`;
-
-export const StyledFilterSecondaryText = styled.span`
-  display: none;
-  @media only screen and (min-width: 920px) {
-    display: block;
-  }
+  font-weight: 500;
 `;
 
 export const StyledFilterIcon = styled.i`
   font-size: 1.1rem;
-  line-height: 18px;
-  margin-left: 10px;
-  display: block;
-  @media only screen and (min-width: 920px) {
-    display: none;
-  }
+  margin-right: 8px;
 `;

@@ -1,4 +1,4 @@
-import { Restaurant } from '@/components/pages/types';
+import { Restaurant } from '@/helpers/types';
 import { BreadcrumbsData } from '@/components/core/types';
 
 export const addFavorite = (favorite: Restaurant) => ({
@@ -6,18 +6,9 @@ export const addFavorite = (favorite: Restaurant) => ({
   favorite,
 });
 
-export const deleteFavorite = (id: number) => ({
+export const deleteFavorite = (id: string) => ({
   type: 'DELETE_FAVORITE',
   id,
-});
-
-export const setRelatedRestaurants = (relatedRestaurants: Restaurant[]) => ({
-  type: 'SET_RELATED_RESTAURANTS',
-  relatedRestaurants,
-});
-
-export const clearRelatedRestaurants = () => ({
-  type: 'CLEAR_RELATED_RESTAURANTS',
 });
 
 export const addBreadcrumbs = (breadcrumbs: BreadcrumbsData) => ({

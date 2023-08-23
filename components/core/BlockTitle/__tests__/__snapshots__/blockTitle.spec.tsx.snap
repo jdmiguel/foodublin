@@ -3,13 +3,13 @@
 exports[`Component: BlockTitle should render correctly 1`] = `
 .c0 {
   color: #585858;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
 @media only screen and (min-width:992px) {
   .c0 {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 }
 

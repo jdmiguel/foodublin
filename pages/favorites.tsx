@@ -9,16 +9,13 @@ import { DEFAULT_TEXT_LOADING } from '@/store/statics';
 import { AppState } from '@/store/redux/types';
 import { BreadcrumbsType } from '@/components/core/types';
 
-const DynamicFavoritesPage = dynamic(
-  () => import('@/components/pages/FavoritesPage/FavoritesPage'),
-  {
-    loading: () => (
-      <FullLoader>
-        <Loader text={DEFAULT_TEXT_LOADING} />
-      </FullLoader>
-    ),
-  },
-);
+const DynamicFavoritesPage = dynamic(() => import('@/components/views/Favorites'), {
+  loading: () => (
+    <FullLoader>
+      <Loader text={DEFAULT_TEXT_LOADING} />
+    </FullLoader>
+  ),
+});
 
 const favoriteRoute = '/favorites';
 

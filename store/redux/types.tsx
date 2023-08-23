@@ -1,9 +1,8 @@
-import { Restaurant } from '@/components/pages/types';
+import { Restaurant } from '@/helpers/types';
 import { BreadcrumbsData } from '@/components/core/types';
 
 export type AppState = {
   favorites: Restaurant[];
-  relatedRestaurants: Restaurant[];
   breadcrumbs: BreadcrumbsData[];
 };
 
@@ -16,16 +15,7 @@ type AddFavoriteAction = {
 
 type DeleteFavoriteAction = {
   type: 'DELETE_FAVORITE';
-  id: number;
-};
-
-type SetRelatedRestaurantsAction = {
-  type: 'SET_RELATED_RESTAURANTS';
-  relatedRestaurants: Restaurant[];
-};
-
-type ClearRelatedRestaurantsAction = {
-  type: 'CLEAR_RELATED_RESTAURANTS';
+  id: string;
 };
 
 type AddBreadcrumbsAction = {
@@ -42,7 +32,5 @@ type ReplaceBreadcrumbsAction = {
 export type Actions =
   | AddFavoriteAction
   | DeleteFavoriteAction
-  | SetRelatedRestaurantsAction
-  | ClearRelatedRestaurantsAction
   | AddBreadcrumbsAction
   | ReplaceBreadcrumbsAction;

@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PercentBar should render 25 percent 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c1 {
+  background-color: #e1e4e6;
+  position: relative;
+  height: 16px;
+  width: 100%;
+  display: block;
+}
+
+.c1:after {
+  background-color: #EC7E00;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 25%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #798186;
+}
+
+<div
+  class="c0"
+>
+  <span
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    <span>
+      0%
+    </span>
+    <span>
+      100%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Component: PercentBar should render 50 percent 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c1 {
+  background-color: #e1e4e6;
+  position: relative;
+  height: 16px;
+  width: 100%;
+  display: block;
+}
+
+.c1:after {
+  background-color: #EC7E00;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #798186;
+}
+
+<div
+  class="c0"
+>
+  <span
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    <span>
+      0%
+    </span>
+    <span>
+      100%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Component: PercentBar should render 75 percent 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c1 {
+  background-color: #e1e4e6;
+  position: relative;
+  height: 16px;
+  width: 100%;
+  display: block;
+}
+
+.c1:after {
+  background-color: #EC7E00;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 75%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #798186;
+}
+
+<div
+  class="c0"
+>
+  <span
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    <span>
+      0%
+    </span>
+    <span>
+      100%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Component: PercentBar should render 100 percent 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c1 {
+  background-color: #e1e4e6;
+  position: relative;
+  height: 16px;
+  width: 100%;
+  display: block;
+}
+
+.c1:after {
+  background-color: #EC7E00;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #798186;
+}
+
+<div
+  class="c0"
+>
+  <span
+    class="c1"
+  />
+  <div
+    class="c2"
+  >
+    <span>
+      0%
+    </span>
+    <span>
+      100%
+    </span>
+  </div>
+</div>
+`;

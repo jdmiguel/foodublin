@@ -16,18 +16,18 @@ import {
   StyledListboxItem,
 } from './styles/autocomplete';
 import { PlaceholderText, DEFAULT_TEXT_LOADING } from '@/store/statics';
-import { Restaurant } from '../../pages/types';
+import { Suggestion } from '../../../helpers/types';
 import { CardType } from '../types';
 
 export type AutocompleteProps = {
   hasSearchIcon?: boolean;
-  suggestions: Restaurant[];
+  suggestions: Suggestion[];
   loading: boolean;
   className?: string;
   disabled: boolean;
   onRequestError: boolean;
   fetchSuggestions: (search: string) => void;
-  selectSuggestion: (id: number, name: string) => void;
+  selectSuggestion: (id: string, name: string) => void;
   clearSuggestions: () => void;
 };
 
@@ -61,6 +61,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentValue = event.target.value;
 
+    if (currentValue.length < 3) handleClearSuggestion();
+
     setIsListboxFocused(currentValue.length > 2);
     setValue(currentValue);
   };
@@ -84,7 +86,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     blurDelay.current = window.setTimeout(() => setIsListboxFocused(false), 100);
   };
 
-  const handleSuggestionClick = (restaurantId: number, showedText: string) => {
+  const handleSuggestionClick = (restaurantId: string, showedText: string) => {
     clearTimeout(blurDelay.current);
 
     setValue(showedText);
@@ -108,13 +110,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       );
     }
 
-    return suggestions.map(({ id, imgSrc, title, content }: Restaurant) => (
+    return suggestions.map(({ id, name }: Suggestion) => (
       <StyledListboxItem key={id}>
         <Card
-          imgSrc={imgSrc}
-          title={title}
-          content={content}
-          onClick={() => handleSuggestionClick(id, title)}
+          imgSrc="/images/generic-venue.svg"
+          title={name}
+          onClick={() => handleSuggestionClick(id, name)}
           type={CardType.SUGGESTION}
         />
       </StyledListboxItem>

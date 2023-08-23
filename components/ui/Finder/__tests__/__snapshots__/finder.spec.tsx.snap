@@ -42,7 +42,7 @@ exports[`Component: Finder should render correctly  1`] = `
 
 .c16 {
   color: #585858;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -334,13 +334,7 @@ exports[`Component: Finder should render correctly  1`] = `
 
 @media only screen and (min-width:992px) {
   .c16 {
-    font-size: 1.45rem;
-  }
-}
-
-@media only screen and (min-width:768px) {
-  .c7 {
-    min-height: 200px;
+    font-size: 1.3rem;
   }
 }
 

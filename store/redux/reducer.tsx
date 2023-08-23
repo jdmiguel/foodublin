@@ -12,16 +12,6 @@ const appReducer = (state: AppState, action: Actions): AppState => {
         ...state,
         favorites: state.favorites.filter((favorite) => favorite.id !== action.id),
       };
-    case 'SET_RELATED_RESTAURANTS':
-      return {
-        ...state,
-        relatedRestaurants: action.relatedRestaurants,
-      };
-    case 'CLEAR_RELATED_RESTAURANTS':
-      return {
-        ...state,
-        relatedRestaurants: [],
-      };
     case 'ADD_BREADCRUMBS':
       return {
         ...state,

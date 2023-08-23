@@ -55,16 +55,13 @@ export const StyledLoaderWrapper = styled.div`
   height: 100%;
   background: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
   @media only screen and (min-width: 768px) {
-    min-height: 200px;
+    min-height: 126px;
   }
 `;
 
 export const StyledListbox = styled.ul`
   width: 100%;
   -webkit-tap-highlight-color: transparent;
-  @media only screen and (min-width: 768px) {
-    min-height: 200px;
-  }
 `;
 
 export const StyledNoSuggestionsWrapper = styled.div`
@@ -73,9 +70,7 @@ export const StyledNoSuggestionsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media only screen and (min-width: 768px) {
-    min-height: 200px;
-  }
+  margin-bottom: 16px;
 `;
 
 export const StyledErrorWrapper = styled.div`
@@ -85,9 +80,6 @@ export const StyledErrorWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  @media only screen and (min-width: 768px) {
-    min-height: 200px;
-  }
 `;
 
 export const StyledErrorButtonWrapper = styled.div`

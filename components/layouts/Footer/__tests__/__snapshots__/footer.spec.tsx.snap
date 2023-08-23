@@ -153,7 +153,7 @@ exports[`Component: Footer should render correctly 1`] = `
       <p
         class="c3"
       >
-        ©2022
+        ©2023
       </p>
       <p
         class="c3"
@@ -162,7 +162,7 @@ exports[`Component: Footer should render correctly 1`] = `
       </p>
       <a
         class="c4"
-        href="https://jdmiguel.netlify.app"
+        href="https://jdmiguel.com"
       >
         JDMIGUEL
       </a>
@@ -368,7 +368,7 @@ exports[`Component: Footer should render with veil 1`] = `
       <p
         class="c4"
       >
-        ©2022
+        ©2023
       </p>
       <p
         class="c4"
@@ -377,7 +377,7 @@ exports[`Component: Footer should render with veil 1`] = `
       </p>
       <a
         class="c5"
-        href="https://jdmiguel.netlify.app"
+        href="https://jdmiguel.com"
       >
         JDMIGUEL
       </a>

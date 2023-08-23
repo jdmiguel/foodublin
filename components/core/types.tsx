@@ -1,5 +1,3 @@
-import { FilterSort, FilterOrder } from '@/store/statics';
-
 export enum LogoSize {
   BIG = 'big',
   SMALL = 'small',
@@ -16,8 +14,8 @@ export enum LoaderMode {
 }
 
 export type ListItem = {
-  iconSrc?: string;
   id: number;
+  iconSrc?: string;
   isActive?: boolean;
   name: string;
   path: string;
@@ -37,7 +35,7 @@ export enum CustomLinkSize {
 export enum BreadcrumbsType {
   HOME = 'home',
   SEARCH = 'search',
-  DETAIL = 'detail',
+  DETAILS = 'details',
   FAVORITES = 'favorite',
 }
 
@@ -48,16 +46,17 @@ export type BreadcrumbsData = {
   type:
     | BreadcrumbsType.HOME
     | BreadcrumbsType.SEARCH
-    | BreadcrumbsType.DETAIL
+    | BreadcrumbsType.DETAILS
     | BreadcrumbsType.FAVORITES;
 };
 
+export type FilterType = 'high_cost' | 'low_cost' | 'rating' | 'distance';
+export type FilterIcon = 'monetization_on' | 'savings' | 'star' | 'pin_drop';
+
 export type FilterData = {
-  isActive: boolean;
-  primaryText: string;
-  secondaryText: string;
-  icon: string;
-  sort: FilterSort.COST | FilterSort.RANK;
-  order: FilterOrder.ASC | FilterOrder.DESC;
   id: number;
+  isActive: boolean;
+  type: FilterType;
+  text: string;
+  icon: FilterIcon;
 };
