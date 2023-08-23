@@ -53,6 +53,7 @@ export const StyledCard = styled.a<{ type: CardType }>`
   cursor: pointer;
   background-color: ${({ type, theme }) => type !== CardType.SUGGESTION && theme.palette.LIGHT_MAX};
   @media only screen and (min-width: 768px) {
+    max-width: 521px;
     transition: background-color 0.2s ease-out;
     &:hover {
       background-color: ${({ theme }) => theme.palette.PRIMARY_LIGHT};

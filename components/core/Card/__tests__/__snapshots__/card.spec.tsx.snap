@@ -53,6 +53,7 @@ exports[`should render the highlight card 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
+    max-width: 521px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
@@ -180,6 +181,7 @@ exports[`should render the standart card 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
+    max-width: 521px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
@@ -319,6 +321,7 @@ exports[`should render the suggestion card 1`] = `
 
 @media only screen and (min-width:768px) {
   .c0 {
+    max-width: 521px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }

@@ -280,6 +280,7 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
 
 @media only screen and (min-width:768px) {
   .c13 {
+    max-width: 521px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
   }
