@@ -37,10 +37,5 @@ export const StyledFilterText = styled.span`
 
 export const StyledFilterIcon = styled.i`
   font-size: 1.1rem;
-  line-height: 18px;
-  margin-left: 10px;
-  display: block;
-  @media only screen and (min-width: 920px) {
-    display: none;
-  }
+  margin-right: 8px;
 `;

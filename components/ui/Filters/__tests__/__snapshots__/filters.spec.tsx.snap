@@ -22,16 +22,14 @@ exports[`Component: Filter should render correctly 1`] = `
   background-color: #F3F3F3;
 }
 
-.c2 {
+.c3 {
   text-transform: uppercase;
   font-weight: 500;
 }
 
-.c3 {
+.c2 {
   font-size: 1.1rem;
-  line-height: 18px;
-  margin-left: 10px;
-  display: block;
+  margin-right: 8px;
 }
 
 .c0 {
@@ -62,12 +60,6 @@ exports[`Component: Filter should render correctly 1`] = `
   }
 }
 
-@media only screen and (min-width:920px) {
-  .c3 {
-    display: none;
-  }
-}
-
 @media only screen and (min-width:540px) {
   .c0 {
     display: -webkit-box;
@@ -91,58 +83,58 @@ exports[`Component: Filter should render correctly 1`] = `
   <button
     class="c1"
   >
+    <i
+      class="c2 material-icons"
+    >
+      monetization_on
+    </i>
     <span
-      class="c2"
+      class="c3"
     >
       high cost
     </span>
-    <i
-      class="c3 material-icons"
-    >
-      keyboard_arrow_up
-    </i>
   </button>
   <button
     class="c1"
   >
+    <i
+      class="c2 material-icons"
+    >
+      savings
+    </i>
     <span
-      class="c2"
+      class="c3"
     >
       low cost
     </span>
-    <i
-      class="c3 material-icons"
-    >
-      keyboard_arrow_down
-    </i>
   </button>
   <button
     class="c1"
   >
+    <i
+      class="c2 material-icons"
+    >
+      star
+    </i>
     <span
-      class="c2"
+      class="c3"
     >
       popularity
     </span>
-    <i
-      class="c3 material-icons"
-    >
-      keyboard_arrow_up
-    </i>
   </button>
   <button
     class="c1"
   >
+    <i
+      class="c2 material-icons"
+    >
+      pin_drop
+    </i>
     <span
-      class="c2"
+      class="c3"
     >
       distance
     </span>
-    <i
-      class="c3 material-icons"
-    >
-      keyboard_arrow_down
-    </i>
   </button>
 </div>
 `;

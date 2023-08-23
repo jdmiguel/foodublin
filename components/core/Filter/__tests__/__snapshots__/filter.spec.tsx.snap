@@ -22,16 +22,14 @@ exports[`Component: Filter should render correctly 1`] = `
   background-color: #F3F3F3;
 }
 
-.c1 {
+.c2 {
   text-transform: uppercase;
   font-weight: 500;
 }
 
-.c2 {
+.c1 {
   font-size: 1.1rem;
-  line-height: 18px;
-  margin-left: 10px;
-  display: block;
+  margin-right: 8px;
 }
 
 @media only screen and (min-width:768px) {
@@ -56,24 +54,18 @@ exports[`Component: Filter should render correctly 1`] = `
   }
 }
 
-@media only screen and (min-width:920px) {
-  .c2 {
-    display: none;
-  }
-}
-
 <button
   class="c0"
 >
+  <i
+    class="c1 material-icons"
+  >
+    monetization_on
+  </i>
   <span
-    class="c1"
+    class="c2"
   >
     high cost
   </span>
-  <i
-    class="c2 material-icons"
-  >
-    keyboard_arrow_up
-  </i>
 </button>
 `;

@@ -49,7 +49,7 @@ const SearchPage: React.FC<SearchPageProps> = ({
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         <Title text={`${totalText} ${cuisine || ''} ${restaurantText} in ${area}`} />
-        {total > 0 && <Filters onClick={onClickFilter} data={FILTERS} />}
+        <Filters onClick={onClickFilter} data={FILTERS} />
         <StyledCardsWrapper>
           {restaurants.map((restaurant) => (
             <div key={`${restaurant.id}-${restaurant.title}`}>

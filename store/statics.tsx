@@ -43,30 +43,30 @@ export const FILTERS: FilterData[] = [
   {
     id: 1,
     isActive: false,
-    text: 'high cost',
-    icon: 'keyboard_arrow_up',
     type: 'high_cost',
+    text: 'high cost',
+    icon: 'monetization_on',
   },
   {
     id: 2,
     isActive: false,
-    text: 'low cost',
-    icon: 'keyboard_arrow_down',
     type: 'low_cost',
+    text: 'low cost',
+    icon: 'savings',
   },
   {
     id: 3,
     isActive: false,
-    text: 'popularity',
-    icon: 'keyboard_arrow_up',
     type: 'rating',
+    text: 'popularity',
+    icon: 'star',
   },
   {
     id: 4,
     isActive: false,
-    text: 'distance',
-    icon: 'keyboard_arrow_down',
     type: 'distance',
+    text: 'distance',
+    icon: 'pin_drop',
   },
 ];
 

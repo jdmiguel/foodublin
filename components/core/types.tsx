@@ -51,11 +51,12 @@ export type BreadcrumbsData = {
 };
 
 export type FilterType = 'high_cost' | 'low_cost' | 'rating' | 'distance';
+export type FilterIcon = 'monetization_on' | 'savings' | 'star' | 'pin_drop';
 
 export type FilterData = {
   id: number;
   isActive: boolean;
-  text: string;
-  icon: string;
   type: FilterType;
+  text: string;
+  icon: FilterIcon;
 };

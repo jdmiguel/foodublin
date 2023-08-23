@@ -8,11 +8,11 @@ type FilterProps = {
 };
 
 export const Filter: React.FC<FilterProps> = ({
-  data: { isActive, text, icon, type },
+  data: { isActive, type, text, icon },
   onClick,
 }) => (
   <StyledFilter isActive={isActive} onClick={() => onClick(type)}>
-    <StyledFilterText>{text}</StyledFilterText>
     <StyledFilterIcon className="material-icons">{icon}</StyledFilterIcon>
+    <StyledFilterText>{text}</StyledFilterText>
   </StyledFilter>
 );
