@@ -10,6 +10,8 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex: 1;
   transition: all 0.2s ease-out;
   background-color: ${({ theme, isActive }) =>
     `${isActive ? theme.palette.PRIMARY_LIGHT : theme.palette.LIGHT_MEDIUM}`};
@@ -18,9 +20,6 @@ export const StyledFilter = styled.button<{ isActive: boolean }>`
     margin: 0;
     padding: 15px;
     font-size: 1rem;
-  }
-  @media only screen and (min-width: 992px) {
-    padding: 20px;
   }
   @media only screen and (min-width: 1200px) {
     &:hover {

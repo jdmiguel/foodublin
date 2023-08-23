@@ -99,7 +99,7 @@ export const Finder: React.FC<FinderProps> = ({ areas, cuisines, onNavigate }) =
         <StyledAutocompleteMobileWrapper>
           <AutocompleteMobile
             suggestions={suggestions || []}
-            fetchSuggestions={debouncedFetchSuggestions}
+            fetchSuggestions={handleFetchSuggestions}
             selectSuggestion={selectSuggestion}
             disabled={isButtonLoading}
             loading={isAutocompleteLoading}

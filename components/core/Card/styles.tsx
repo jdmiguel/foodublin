@@ -10,14 +10,9 @@ const CardTextCSS = css`
 `;
 
 const StandartCardImageCSS = css`
-  max-width: 100px;
-  min-width: 80px;
+  width: 98px;
+  height: 98px;
   object-fit: cover;
-  @media only screen and (min-width: 768px) {
-    width: 100px;
-    min-width: 100px;
-    height: 98px;
-  }
 `;
 
 const SuggestionCardImageCSS = css`
@@ -26,7 +21,7 @@ const SuggestionCardImageCSS = css`
   border: solid ${({ theme }) => theme.palette.LIGHT_MAX} 1px;
   display: inline-block;
   border-radius: 4px;
-  -webkit-appearance: button-bevel;
+  appearance: button-bevel;
   box-shadow: 1px 2px 5px ${({ theme }) => theme.palette.DARK_MIN};
 `;
 

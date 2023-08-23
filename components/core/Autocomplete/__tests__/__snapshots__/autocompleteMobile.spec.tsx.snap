@@ -63,6 +63,8 @@ exports[`Component: AutocompleteMobile should render correctly 1`] = `
   display: inline-block;
   border-radius: 4px;
   -webkit-appearance: button-bevel;
+  -moz-appearance: button-bevel;
+  appearance: button-bevel;
   box-shadow: 1px 2px 5px #798186;
 }
 

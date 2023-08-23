@@ -144,6 +144,11 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
     return getStyledHeader(null, DETAIL_GENERIC_SRC);
   };
 
+  const hasMainInformation = phone || hours;
+  const hasExtraInformation = categories || price || rating;
+  const hasAddress = name && address;
+  const hasInformation = hasMainInformation || hasExtraInformation || hasExtraInformation;
+
   return (
     <Layout onNavigate={onNavigate} breadcrumbs={breadcrumbs}>
       <StyledDetailPage data-testid="details-page">
@@ -151,67 +156,79 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
           <Loader type={LoaderType.LINE} />
         </FullLoader>
         {getHeader(imgSrc)}
-        <Title text="Relevant information" />
-        <StyledInformation data-testid="details-info">
-          <StyledMainInformation>
-            {phone && (
-              <StyledSectionBlock data-testid="details-phone">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Phone" />
-                </StyledTitleWrapper>
-                <StyledPhone>{phone}</StyledPhone>
-              </StyledSectionBlock>
-            )}
-            {hours && (
-              <StyledSectionBlock data-testid="details-schedule">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Schedule" />
-                </StyledTitleWrapper>
-                <Timings timings={getTimings(hours)} />
-              </StyledSectionBlock>
-            )}
-          </StyledMainInformation>
-          <StyledExtraInformation>
-            {categories && (
-              <StyledSectionBlock data-testid="details-categories">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Categories" />
-                </StyledTitleWrapper>
-                <Categories list={categories} />
-              </StyledSectionBlock>
-            )}
-            {price && (
-              <StyledSectionBlock data-testid="details-price">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Cost rank" />
-                </StyledTitleWrapper>
-                <PercentBar
-                  percent={getCostPercent(price)}
-                  legend={{ initial: 'low', end: 'high' }}
-                />
-              </StyledSectionBlock>
-            )}
-            {rating && (
-              <StyledSectionBlock data-testid="details-rating">
-                <StyledTitleWrapper>
-                  <BlockTitle text="Rating" />
-                </StyledTitleWrapper>
-                <Rating value={rating} votes={reviewCount} />
-              </StyledSectionBlock>
-            )}
-          </StyledExtraInformation>
-          {name && address && (
-            <StyledAddressWrapper data-testid="details-address" className="paper">
-              <Address mapSrc={getMapSrc(name, address)} address={address} />
-            </StyledAddressWrapper>
-          )}
-        </StyledInformation>
-        <Title text="Reviews" />
-        <StyledReviews>
-          {reviews?.map((review: ReviewType) => (
-            <Review key={review.id} data={review} />
-          ))}
-        </StyledReviews>
+        {hasInformation && (
+          <>
+            <Title text="Relevant information" />
+            <StyledInformation data-testid="details-info">
+              {hasMainInformation && (
+                <StyledMainInformation>
+                  {phone && (
+                    <StyledSectionBlock data-testid="details-phone">
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Phone" />
+                      </StyledTitleWrapper>
+                      <StyledPhone>{phone}</StyledPhone>
+                    </StyledSectionBlock>
+                  )}
+                  {hours && (
+                    <StyledSectionBlock data-testid="details-schedule">
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Schedule" />
+                      </StyledTitleWrapper>
+                      <Timings timings={getTimings(hours)} />
+                    </StyledSectionBlock>
+                  )}
+                </StyledMainInformation>
+              )}
+              {hasExtraInformation && (
+                <StyledExtraInformation>
+                  {categories && (
+                    <StyledSectionBlock data-testid="details-categories">
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Categories" />
+                      </StyledTitleWrapper>
+                      <Categories list={categories} />
+                    </StyledSectionBlock>
+                  )}
+                  {price && (
+                    <StyledSectionBlock data-testid="details-price">
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Cost rank" />
+                      </StyledTitleWrapper>
+                      <PercentBar
+                        percent={getCostPercent(price)}
+                        legend={{ initial: 'low', end: 'high' }}
+                      />
+                    </StyledSectionBlock>
+                  )}
+                  {rating && (
+                    <StyledSectionBlock data-testid="details-rating">
+                      <StyledTitleWrapper>
+                        <BlockTitle text="Rating" />
+                      </StyledTitleWrapper>
+                      <Rating value={rating} votes={reviewCount} />
+                    </StyledSectionBlock>
+                  )}
+                </StyledExtraInformation>
+              )}
+              {hasAddress && (
+                <StyledAddressWrapper data-testid="details-address" className="paper">
+                  <Address mapSrc={getMapSrc(name, address)} address={address} />
+                </StyledAddressWrapper>
+              )}
+            </StyledInformation>
+          </>
+        )}
+        {reviews && (
+          <>
+            <Title text="Reviews" />
+            <StyledReviews>
+              {reviews.map((review: ReviewType) => (
+                <Review key={review.id} data={review} />
+              ))}
+            </StyledReviews>
+          </>
+        )}
       </StyledDetailPage>
     </Layout>
   );

@@ -102,7 +102,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   };
 
   const renderSuggestions = () => {
-    if (!loading && suggestions.length === 0 && value.length > 2) {
+    if (suggestions.length === 0 && value.length > 2) {
       return (
         <StyledNoSuggestionsWrapper>
           <BlockText text="There are no suggestions for this search" />
