@@ -9,7 +9,7 @@ import { LoaderType } from '../../core/types';
 
 type ErrorPage = {
   isNavigating: boolean;
-  onNavigate: () => void;
+  onNavigate: (route: string, asRoute?: string) => void;
 };
 
 const ErrorPage: React.FC<ErrorPage> = ({ isNavigating, onNavigate }) => {

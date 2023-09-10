@@ -74,7 +74,15 @@ const Detail: NextPage<DetailProps> = ({ details, id }) => {
   const { breadcrumbs } = useBreadcrumbs(detailBreadcrumbs, 'details');
 
   if (!details) {
-    return <ErrorPage isNavigating={isNavigating} onNavigate={() => setIsNavigating(true)} />;
+    return (
+      <ErrorPage
+        isNavigating={isNavigating}
+        onNavigate={(route: string, asRoute?: string) => {
+          setIsNavigating(true);
+          router.push(route, asRoute && asRoute);
+        }}
+      />
+    );
   }
 
   return (
@@ -102,6 +110,8 @@ export const getServerSideProps = async ({ params: { id } }: CustomGetServerSide
 
   let restaurantDetails: RestaurantDetails | null = null;
 
+  console.log({ details });
+
   if (details) {
     const formattedCategories = details.categories?.map((category) => category.title);
     const formattedAddress = details.location.display_address.join(' - ');
@@ -126,7 +136,7 @@ export const getServerSideProps = async ({ params: { id } }: CustomGetServerSide
 
   return {
     props: {
-      details: restaurantDetails,
+      details: restaurantDetails ?? null,
       id,
     },
   };
