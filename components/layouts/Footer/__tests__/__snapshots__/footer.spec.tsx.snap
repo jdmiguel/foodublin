@@ -153,7 +153,7 @@ exports[`Component: Footer should render correctly 1`] = `
       <p
         class="c3"
       >
-        ©2023
+        ©2024
       </p>
       <p
         class="c3"
@@ -368,7 +368,7 @@ exports[`Component: Footer should render with veil 1`] = `
       <p
         class="c4"
       >
-        ©2023
+        ©2024
       </p>
       <p
         class="c4"

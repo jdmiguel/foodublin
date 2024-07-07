@@ -537,7 +537,7 @@ exports[`Component: Layout should render 1`] = `
         <p
           class="c19"
         >
-          ©2023
+          ©2024
         </p>
         <p
           class="c19"
@@ -1138,7 +1138,7 @@ exports[`Component: Layout should render the extended footer 1`] = `
         <p
           class="c19"
         >
-          ©2023
+          ©2024
         </p>
         <p
           class="c19"
@@ -1638,7 +1638,7 @@ exports[`Component: Layout should render the extended header 1`] = `
         <p
           class="c14"
         >
-          ©2023
+          ©2024
         </p>
         <p
           class="c14"
@@ -2256,7 +2256,7 @@ exports[`Component: Layout should render the footer veil 1`] = `
         <p
           class="c20"
         >
-          ©2023
+          ©2024
         </p>
         <p
           class="c20"

@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ showVeil = false, onClickFavorit
     {showVeil && <StyledFooterVeil />}
     <StyledFooter>
       <StyledBlock>
-        <StyledText addSeparation={true}>©2023</StyledText>
+        <StyledText addSeparation={true}>©2024</StyledText>
         <StyledText addSeparation={true}>BY</StyledText>
         <CustomLink route="https://jdmiguel.com">JDMIGUEL</CustomLink>
       </StyledBlock>
